@@ -59,16 +59,18 @@
         <!-- Fallback de imagem imediata da Amazônia -->
         <div class="hero-asset-fallback" style="background-image: url('assets/hero-bg.png');"></div>
         
-        <!-- Video Background Mudo Autoplay Loop -->
+        <!-- Background Vídeo Nativo Autoplay Mudo Loop -->
         <div class="hero-video-wrapper">
-          <iframe 
+          <video 
             id="heroVideo"
-            src="https://www.youtube-nocookie.com/embed/Q3G3XXAN3jE?autoplay=1&mute=1&controls=0&loop=1&playlist=Q3G3XXAN3jE&playsinline=1&showinfo=0&rel=0&iv_load_policy=3&disablekb=1&modestbranding=1" 
-            title="LENSES Video Background" 
-            frameborder="0" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-            allowfullscreen>
-          </iframe>
+            class="hero-video-element"
+            autoplay 
+            muted 
+            loop 
+            playsinline 
+            preload="auto">
+            <source src="assets/S1%20TOPO%20HERO/TOPO-VIDEO-AMAZONIA.mp4" type="video/mp4">
+          </video>
         </div>
 
         <!-- Overlay Cinematográfico para Máxima Legibilidade -->

@@ -67,4 +67,18 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+
+  // 3. Autoplay Garantido para o Vídeo de Background
+  const heroVideo = document.getElementById('heroVideo');
+  if (heroVideo) {
+    heroVideo.muted = true;
+    const playPromise = heroVideo.play();
+    if (playPromise !== undefined) {
+      playPromise.catch(() => {
+        // Fallback caso navegador necessite de nova tentativa
+        heroVideo.muted = true;
+        heroVideo.play();
+      });
+    }
+  }
 });
