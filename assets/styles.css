@@ -231,12 +231,13 @@ a {
   inset: 0;
   background: linear-gradient(
     180deg,
-    rgba(5, 5, 5, 0.4) 0%,
-    rgba(5, 5, 5, 0.15) 40%,
-    rgba(5, 5, 5, 0.6) 80%,
-    rgba(3, 3, 4, 0.95) 100%
+    rgba(5, 5, 5, 0.45) 0%,
+    rgba(5, 5, 5, 0.05) 25%,
+    rgba(5, 5, 5, 0.05) 70%,
+    rgba(3, 3, 4, 0.5) 100%
   );
   z-index: 2;
+  pointer-events: none;
 }
 
 .hero-content {
@@ -246,72 +247,17 @@ a {
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  min-height: calc(100vh - 140px);
+  justify-content: flex-end;
+  align-items: center;
+  min-height: calc(100vh - 120px);
+  padding-bottom: 24px;
 }
 
-.hero-center-titles {
-  text-align: center;
-  margin: auto 0;
-  padding: 40px 0;
-}
-
-.hero-title {
-  font-family: var(--font-serif);
-  font-size: clamp(3.8rem, 8.8vw, 8.2rem);
-  font-weight: 500;
-  letter-spacing: 0.32em;
-  color: #ffffff;
-  line-height: 1.05;
-  text-transform: uppercase;
-  margin-bottom: 18px;
-  text-shadow: 0 4px 32px rgba(0, 0, 0, 0.8);
-}
-
-.hero-subtitle {
-  font-family: var(--font-main);
-  font-size: clamp(0.88rem, 1.5vw, 1.25rem);
-  font-weight: 600;
-  letter-spacing: 0.46em;
-  color: rgba(255, 255, 255, 0.88);
-  text-transform: uppercase;
-  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.9);
-}
-
-.hero-bottom-bar {
+.hero-scroll-wrapper {
   display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 24px;
+  justify-content: center;
+  align-items: center;
   width: 100%;
-}
-
-.hero-info-badge {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  max-width: 380px;
-  padding: 16px 20px;
-  background: rgba(10, 10, 12, 0.65);
-  border: 1px solid var(--border-subtle-dark);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  position: relative;
-}
-
-.hero-info-text {
-  font-size: 0.82rem;
-  letter-spacing: 0.08em;
-  line-height: 1.6;
-  font-weight: 500;
-  color: var(--text-white-muted);
-  margin-bottom: 12px;
-}
-
-.ico-arrow-corner svg {
-  width: 16px;
-  height: 16px;
-  color: var(--text-white-dim);
 }
 
 /* Indicador Circular de Scroll Estilo Zion */
@@ -321,7 +267,6 @@ a {
   justify-content: center;
   text-decoration: none;
   cursor: pointer;
-  margin-bottom: 4px;
   transition: var(--transition-smooth);
 }
 
@@ -365,53 +310,6 @@ a {
   50% {
     transform: translateY(8px);
   }
-}
-
-.hero-showreel-btn {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  color: var(--text-white);
-  cursor: pointer;
-}
-
-.showreel-label {
-  display: flex;
-  flex-direction: column;
-  text-align: right;
-  font-size: 0.78rem;
-  letter-spacing: 0.15em;
-  font-weight: 700;
-  text-transform: uppercase;
-  color: var(--text-white-muted);
-  line-height: 1.3;
-}
-
-.showreel-icon-wrap {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  border: 1px solid var(--text-white-muted);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(10, 10, 14, 0.45);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  transition: var(--transition-smooth);
-}
-
-.ico-play {
-  width: 16px;
-  height: 16px;
-  margin-left: 2px;
-}
-
-.hero-showreel-btn:hover .showreel-icon-wrap {
-  background-color: var(--color-electric-blue);
-  border-color: var(--color-electric-blue);
-  box-shadow: var(--shadow-blue-glow);
-  transform: scale(1.08);
 }
 
 /* ==========================================================================
