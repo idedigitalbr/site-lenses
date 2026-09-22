@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 32" fill="#ABC3E4" color="#ABC3E4" style="color: #ABC3E4;">
+  <g transform="translate(0, 4)">
+    <g transform="translate(10, 11)">
+      <rect x="-8" y="-8" width="16" height="16" fill="none" stroke="#ABC3E4" stroke-width="2" rx="2" transform="rotate(45)"/>
+      <circle cx="0" cy="0" r="3" fill="#ABC3E4"/>
+    </g>
+    <text x="26" y="16" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="800" letter-spacing="1" fill="#ABC3E4">EUROCHEM</text>
+  </g>
+</svg>

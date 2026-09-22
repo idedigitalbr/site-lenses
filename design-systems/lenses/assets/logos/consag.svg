@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 32" fill="#ABC3E4" color="#ABC3E4" style="color: #ABC3E4;">
+  <g transform="translate(0, 4)">
+    <polygon points="10,2 19,7 19,17 10,22 1,17 1,7" fill="none" stroke="#ABC3E4" stroke-width="2.2"/>
+    <line x1="10" y1="2" x2="10" y2="22" stroke="#ABC3E4" stroke-width="1.5"/>
+    <line x1="1" y1="7" x2="19" y2="17" stroke="#ABC3E4" stroke-width="1.5"/>
+    <text x="25" y="14" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="800" letter-spacing="1.2" fill="#ABC3E4">CONSAG</text>
+    <text x="25" y="21" font-family="'Plus Jakarta Sans', sans-serif" font-size="6" font-weight="600" letter-spacing="1.5" opacity="0.8" fill="#ABC3E4">ENGENHARIA</text>
+  </g>
+</svg>

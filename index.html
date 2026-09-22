@@ -5,10 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>LENSES — Amazônia em Outro Olhar</title>
   
-  <!-- Fontes Oficiais: Plus Jakarta Sans & Cormorant Garamond (Estilo Cinematográfico da Referência) -->
+  <!-- Favicon Oficial LENSES -->
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/favicon-192x192.png">
+  <link rel="apple-touch-icon" href="assets/favicon-192x192.png">
+  
+  <!-- Fontes Oficiais: Inter Tight, Plus Jakarta Sans & Cormorant Garamond -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Inter+Tight:wght@300;400;500;600&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
   
   <!-- Estilos Oficiais -->
   <link rel="stylesheet" href="assets/styles.css">
@@ -25,51 +30,55 @@
       <!-- 0. FAIXA SUPERIOR COMPACTA (REFERÊNCIA ZION / 100% LARGURA) -->
       <div class="top-blue-ticker" id="topTicker" aria-label="Destaques Lenses">
         <div class="top-ticker-track">
-          <span class="ticker-text">AMAZÔNIA EM OUTRO OLHAR</span>
-          <span class="ticker-dot">•</span>
-          <span class="ticker-text">PRODUÇÃO AUDIOVISUAL</span>
-          <span class="ticker-dot">•</span>
-          <span class="ticker-text">ESTRATÉGIA &amp; CONTEÚDO</span>
-          <span class="ticker-dot">•</span>
-          <span class="ticker-text">CINEMATOGRAFIA</span>
-          <span class="ticker-dot">•</span>
-          <span class="ticker-text">DIREÇÃO ARTÍSTICA</span>
-          <span class="ticker-dot">•</span>
-          <span class="ticker-text">EVENTOS &amp; FESTIVAIS</span>
-          <span class="ticker-dot">•</span>
-          <span class="ticker-text">DOCUMENTÁRIOS</span>
-          <span class="ticker-dot">•</span>
-          <!-- Duplicação para loop contínuo infinito perfeito -->
-          <span class="ticker-text">AMAZÔNIA EM OUTRO OLHAR</span>
-          <span class="ticker-dot">•</span>
-          <span class="ticker-text">PRODUÇÃO AUDIOVISUAL</span>
-          <span class="ticker-dot">•</span>
-          <span class="ticker-text">ESTRATÉGIA &amp; CONTEÚDO</span>
-          <span class="ticker-dot">•</span>
-          <span class="ticker-text">CINEMATOGRAFIA</span>
-          <span class="ticker-dot">•</span>
-          <span class="ticker-text">DIREÇÃO ARTÍSTICA</span>
-          <span class="ticker-dot">•</span>
-          <span class="ticker-text">EVENTOS &amp; FESTIVAIS</span>
-          <span class="ticker-dot">•</span>
-          <span class="ticker-text">DOCUMENTÁRIOS</span>
-          <span class="ticker-dot">•</span>
+          <span class="ticker-text">amazônia em outro olhar</span>
+          <span class="ticker-text">produção audiovisual</span>
+          <span class="ticker-text">estratégia &amp; conteúdo</span>
+          <span class="ticker-text">cinematografia</span>
+          <span class="ticker-text">direção artística</span>
+          <span class="ticker-text">eventos &amp; festivais</span>
+          <span class="ticker-text">documentários</span>
+          <!-- Repetições para loop contínuo infinito perfeito -->
+          <span class="ticker-text">amazônia em outro olhar</span>
+          <span class="ticker-text">produção audiovisual</span>
+          <span class="ticker-text">estratégia &amp; conteúdo</span>
+          <span class="ticker-text">cinematografia</span>
+          <span class="ticker-text">direção artística</span>
+          <span class="ticker-text">eventos &amp; festivais</span>
+          <span class="ticker-text">documentários</span>
+          <span class="ticker-text">amazônia em outro olhar</span>
+          <span class="ticker-text">produção audiovisual</span>
+          <span class="ticker-text">estratégia &amp; conteúdo</span>
+          <span class="ticker-text">cinematografia</span>
+          <span class="ticker-text">direção artística</span>
+          <span class="ticker-text">eventos &amp; festivais</span>
+          <span class="ticker-text">documentários</span>
         </div>
       </div>
 
       <!-- 1. NAVBAR / HEADER MENU DINÂMICO -->
       <div class="nav" id="mainNav">
         <div class="nav-container">
-          <a href="#inicio" class="nav-logo">LENSES</a>
-          <nav class="nav-actions">
-            <a href="#sobre" class="lnk">SOBRE NÓS</a>
+          <!-- Lado esquerdo: Início | Sobre | Portfólio / Cases -->
+          <nav class="nav-actions nav-actions-left" aria-label="Menu Principal Esquerdo">
+            <a href="#inicio" class="lnk">Início</a>
+            <a href="#sobre" class="lnk">Sobre</a>
+            <a href="#projetos" class="lnk">Portfólio / Cases</a>
+          </nav>
+
+          <!-- Centro: LOGO LENSES -->
+          <a href="#inicio" class="nav-logo" aria-label="Lenses - Início">LENSES</a>
+
+          <!-- Lado direito: Nossos Serviços | Botão CTA Contate-nos -->
+          <nav class="nav-actions nav-actions-right" aria-label="Menu Principal Direito">
+            <a href="#servicos" class="lnk">Nossos Serviços</a>
             <a href="#contato" class="btn btn-pill">
               <svg class="ico-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
               </svg>
-              <span>Contato-nos</span>
+              <span>Contate-nos</span>
             </a>
           </nav>
+
           <button class="nav-mobile-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false">
             <span></span>
             <span></span>
@@ -80,12 +89,10 @@
         <div class="nav-mobile-drawer" id="mobileNav">
           <nav class="nav-mobile-links">
             <a href="#inicio" class="mobile-lnk">Início</a>
-            <a href="#sobre" class="mobile-lnk">Sobre Nós</a>
-            <a href="#projetos" class="mobile-lnk">Projetos</a>
-            <a href="#servicos" class="mobile-lnk">O que fazemos</a>
-            <a href="#revista" class="mobile-lnk">Revista</a>
-            <a href="#informes" class="mobile-lnk">Informes</a>
-            <a href="#contato" class="btn btn-pill mobile-lnk">Falar com a gente</a>
+            <a href="#sobre" class="mobile-lnk">Sobre</a>
+            <a href="#projetos" class="mobile-lnk">Portfólio / Cases</a>
+            <a href="#servicos" class="mobile-lnk">Nossos Serviços</a>
+            <a href="#contato" class="btn btn-pill mobile-lnk">Contate-nos</a>
           </nav>
         </div>
       </div>
@@ -113,15 +120,56 @@
       </div>
 
       <div class="hero-content">
-        <!-- Indicador Circular de Scroll Estilo Zion Centralizado no Rodapé do Hero -->
+        <!-- Seta Minimalista de Scroll Centralizada no Rodapé do Hero -->
         <div class="hero-scroll-wrapper">
           <a href="#marcas" class="hero-scroll-indicator" id="scrollDownBtn" aria-label="Rolar para baixo">
-            <div class="scroll-circle">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M7 17L17 7M17 17H7M17 17V7"/>
-              </svg>
-            </div>
+            <svg class="hero-scroll-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 5v14M18 13l-6 6-6-6"/>
+            </svg>
           </a>
+        </div>
+      </div>
+
+      <!-- Zona de Interação e Controles Minimalistas de Vídeo (Canto Inferior Direito) -->
+      <div class="hero-video-controls-zone" id="heroVideoControlsZone" aria-label="Controles do vídeo de destaque">
+        <div class="hero-video-controls" id="heroVideoControls">
+          <!-- Botão Mute / Unmute -->
+          <button 
+            type="button" 
+            class="hero-ctrl-btn is-muted" 
+            id="heroMuteBtn" 
+            aria-label="Ativar som" 
+            title="Ativar som">
+            <!-- Ícone Mute (Som Desligado) -->
+            <svg class="ctrl-icon icon-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M11 5L6 9H2v6h4l5 4V5z"/>
+              <line x1="23" y1="9" x2="17" y2="15"/>
+              <line x1="17" y1="9" x2="23" y2="15"/>
+            </svg>
+            <!-- Ícone Unmute (Som Ligado) -->
+            <svg class="ctrl-icon icon-unmuted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M11 5L6 9H2v6h4l5 4V5z"/>
+              <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+              <path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+            </svg>
+          </button>
+
+          <!-- Botão Fullscreen -->
+          <button 
+            type="button" 
+            class="hero-ctrl-btn" 
+            id="heroFullscreenBtn" 
+            aria-label="Tela cheia" 
+            title="Tela cheia">
+            <!-- Ícone Entrar em Fullscreen -->
+            <svg class="ctrl-icon icon-fs-enter" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
+            </svg>
+            <!-- Ícone Sair de Fullscreen -->
+            <svg class="ctrl-icon icon-fs-exit" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 14h6m0 0v6m0-6L3 21m17-7h-6m0 0v6m0-6l7 7M14 4v6m0 0h6m-6 0L21 3M4 10h6m0 0V4m0 6L3 3"/>
+            </svg>
+          </button>
         </div>
       </div>
     </section>
@@ -161,52 +209,8 @@
       </div>
     </section>
 
-    <!-- 4. CATEGORIAS DE PRODUÇÃO -->
-    <section class="section section-categories">
-      <div class="categories-grid reveal-on-scroll">
-        <article class="card category-card">
-          <div class="card-media-bg">
-            <img src="assets/cat-institucional.png" alt="Produção Institucional LENSES" class="card-img-asset">
-            <div class="card-gradient-overlay"></div>
-          </div>
-          <div class="card-footer-label">
-            <h3 class="h3 category-title">INSTITUCIONAL <span class="cross-decor">✕</span></h3>
-            <span class="ico-arrow">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7h10v10M7 17L17 7"/></svg>
-            </span>
-          </div>
-        </article>
-
-        <article class="card category-card">
-          <div class="card-media-bg">
-            <img src="assets/cat-eventos.png" alt="Produção de Eventos LENSES" class="card-img-asset">
-            <div class="card-gradient-overlay"></div>
-          </div>
-          <div class="card-footer-label">
-            <h3 class="h3 category-title">EVENTOS <span class="cross-decor">✕</span></h3>
-            <span class="ico-arrow">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7h10v10M7 17L17 7"/></svg>
-            </span>
-          </div>
-        </article>
-
-        <article class="card category-card">
-          <div class="card-media-bg">
-            <img src="assets/cat-conteudo.png" alt="Produção de Conteúdo LENSES" class="card-img-asset">
-            <div class="card-gradient-overlay"></div>
-          </div>
-          <div class="card-footer-label">
-            <h3 class="h3 category-title">CONTEÚDO <span class="cross-decor">✕</span></h3>
-            <span class="ico-arrow">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7h10v10M7 17L17 7"/></svg>
-            </span>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- 5. SPLIT CTA EXPANSÍVEL: HISTÓRIA & CONTATO -->
-    <section class="section section-cta-split" id="historia-contato" aria-label="Breve História e Contato da Lenses">
+    <!-- 4. SPLIT CTA EXPANSÍVEL: BREVE HISTÓRIA & CONTATO -->
+    <section class="section section-cta-split" id="sobre" aria-label="Breve História e Contato da Lenses">
       <div class="split-interactive-wrapper reveal-on-scroll" data-state="idle" id="splitInteractive">
         
         <!-- PAINEL 1: BREVE HISTÓRIA (BRANCO) -->
@@ -339,6 +343,64 @@
       </div>
     </section>
 
+    <!-- 5. O QUE FAZEMOS / SERVIÇOS (OPÇÃO 1 DEFINITIVA) -->
+    <section class="section section-services section-services-op1" id="servicos">
+      <!-- Trilha dos Cards de Serviços 100% Largura -->
+      <div class="services-container reveal-on-scroll" style="height: clamp(600px, 75vh, 800px);">
+        <div class="services-track">
+          <div class="card6 service-item">
+            <video class="service-media-asset" muted loop playsinline preload="metadata" poster="assets/servicos/serv-producao-audiovisual-poster.jpg">
+              <source src="assets/servicos/serv-producao-audiovisual.mp4" type="video/mp4">
+            </video>
+            <p class="t2 service-name">PRODUÇÃO AUDIOVISUAL</p>
+          </div>
+
+          <div class="card6 service-item">
+            <img src="assets/servicos/serv-filmes-publicitarios.jpg" alt="Filmes Publicitários" class="service-media-asset" loading="lazy">
+            <p class="t2 service-name">FILMES PUBLICITÁRIOS</p>
+          </div>
+
+          <div class="card6 service-item">
+            <video class="service-media-asset" muted loop playsinline preload="metadata" poster="assets/servicos/serv-cobertura-eventos-poster.jpg">
+              <source src="assets/servicos/serv-cobertura-eventos.mp4" type="video/mp4">
+            </video>
+            <p class="t2 service-name">COBERTURA DE EVENTOS</p>
+          </div>
+
+          <div class="card6 service-item">
+            <img src="assets/servicos/serv-mapeamento-cenarios.jpg" alt="Mapeamento de Cenários" class="service-media-asset" loading="lazy">
+            <p class="t2 service-name">MAPEAMENTO DE CENÁRIOS</p>
+          </div>
+
+          <div class="card6 service-item">
+            <video class="service-media-asset" muted loop playsinline preload="metadata" poster="assets/servicos/serv-propaganda-esg-poster.jpg">
+              <source src="assets/servicos/serv-propaganda-esg.mp4" type="video/mp4">
+            </video>
+            <p class="t2 service-name">PROPAGANDA E ESG</p>
+          </div>
+
+          <div class="card6 service-item">
+            <img src="assets/servicos/serv-planejamento-estrategico.jpg" alt="Planejamento Estratégico de Comunicação" class="service-media-asset" loading="lazy">
+            <p class="t2 service-name">PLANEJAMENTO ESTRATÉGICO DE COMUNICAÇÃO</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Barra de Título e Detalhes Posicionada Abaixo dos Cards -->
+      <div class="services-header-op1 reveal-on-scroll">
+        <div class="services-header-op1-left">
+          <span class="services-header-op1-kicker">NOSSAS FRENTES DE ATUAÇÃO</span>
+          <h2 class="h2 services-header-op1-title">O QUE FAZEMOS</h2>
+        </div>
+        <div class="services-header-op1-right">
+          <p class="services-header-op1-desc">Soluções completas em comunicação estratégica, produção audiovisual e impacto visual.</p>
+          <span class="ico-arrow-large">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7h10v10M7 17L17 7"/></svg>
+          </span>
+        </div>
+      </div>
+    </section>
+
     <!-- 6. DESTAQUE PROJETO: FESTIVAL DO FUTURO / ALGUNS PROJETOS -->
     <section class="section section-highlight-project" id="projetos">
       <div class="highlight-project-bg">
@@ -392,143 +454,7 @@
       </div>
     </section>
 
-    <!-- 8. O QUE FAZEMOS -->
-    <section class="section section-services" id="servicos">
-      <div class="services-container reveal-on-scroll">
-        <div class="card5 services-title-card">
-          <h2 class="h2 services-main-title">O QUE<br>FAZEMOS</h2>
-          <span class="ico-arrow-large">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7h10v10M7 17L17 7"/></svg>
-          </span>
-        </div>
-
-        <div class="services-track">
-          <div class="card6 service-item">
-            <video class="service-media-asset" muted loop playsinline preload="metadata" poster="assets/servicos/serv-producao-audiovisual-poster.jpg">
-              <source src="assets/servicos/serv-producao-audiovisual.mp4" type="video/mp4">
-            </video>
-            <p class="t2 service-name">PRODUÇÃO AUDIOVISUAL</p>
-          </div>
-
-          <div class="card6 service-item">
-            <img src="assets/servicos/serv-filmes-publicitarios.jpg" alt="Filmes Publicitários" class="service-media-asset" loading="lazy">
-            <p class="t2 service-name">FILMES PUBLICITÁRIOS</p>
-          </div>
-
-          <div class="card6 service-item">
-            <video class="service-media-asset" muted loop playsinline preload="metadata" poster="assets/servicos/serv-cobertura-eventos-poster.jpg">
-              <source src="assets/servicos/serv-cobertura-eventos.mp4" type="video/mp4">
-            </video>
-            <p class="t2 service-name">COBERTURA DE EVENTOS</p>
-          </div>
-
-          <div class="card6 service-item">
-            <img src="assets/servicos/serv-mapeamento-cenarios.jpg" alt="Mapeamento de Cenários" class="service-media-asset" loading="lazy">
-            <p class="t2 service-name">MAPEAMENTO DE CENÁRIOS</p>
-          </div>
-
-          <div class="card6 service-item">
-            <video class="service-media-asset" muted loop playsinline preload="metadata" poster="assets/servicos/serv-propaganda-esg-poster.jpg">
-              <source src="assets/servicos/serv-propaganda-esg.mp4" type="video/mp4">
-            </video>
-            <p class="t2 service-name">PROPAGANDA E ESG</p>
-          </div>
-
-          <div class="card6 service-item">
-            <img src="assets/servicos/serv-planejamento-estrategico.jpg" alt="Planejamento Estratégico de Comunicação" class="service-media-asset" loading="lazy">
-            <p class="t2 service-name">PLANEJAMENTO ESTRATÉGICO DE COMUNICAÇÃO</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 9. SOBRE A LENSES + KPIS -->
-    <section class="section section-about" id="sobre">
-      <div class="about-grid reveal-on-scroll">
-        <div class="about-media-card">
-          <img src="assets/about-back.png" alt="Estúdio LENSES" class="about-img-asset">
-          <div class="about-photo-overlay">
-            <span class="about-photo-tag">LENSES</span>
-          </div>
-        </div>
-
-        <div class="card2 about-content-card">
-          <div class="about-heading-row">
-            <h2 class="h2 about-title">SOBRE<br>A LENSES</h2>
-            <span class="ico-arrow-large">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7h10v10M7 17L17 7"/></svg>
-            </span>
-          </div>
-          <p class="t2 about-manifesto">
-            Mais que uma produtora, somos um estúdio de ideias em movimento. Unimos criatividade, técnica e propósito para transformar histórias em experiências que geram impacto real.
-          </p>
-        </div>
-
-        <div class="card3 about-kpis-card">
-          <div class="kpi-stat">
-            <span class="h2 kpi-number">+150</span>
-            <span class="t3 kpi-label">PROJETOS REALIZADOS</span>
-          </div>
-          <div class="kpi-stat">
-            <span class="h2 kpi-number">+80</span>
-            <span class="t3 kpi-label">MARCAS ATENDIDAS</span>
-          </div>
-          <div class="kpi-stat">
-            <span class="h2 kpi-number">+8</span>
-            <span class="t3 kpi-label">ANOS DE EXPERIÊNCIA</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 10. PROVA SOCIAL (DEPOIMENTOS + MARCAS ATENDIDAS) -->
-    <section class="section section-social-proof">
-      <div class="social-proof-grid reveal-on-scroll">
-        <div class="card7 proof-intro-card">
-          <img src="assets/testimonials-bg.png" alt="Depoimentos Clientes" class="proof-bg-img">
-          <div class="proof-intro-content">
-            <h3 class="h3 proof-intro-title">O QUE NOSSOS CLIENTES DIZEM</h3>
-            <span class="ico-arrow">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7h10v10M7 17L17 7"/></svg>
-            </span>
-          </div>
-        </div>
-
-        <div class="quote quote-card">
-          <span class="quote-mark">“</span>
-          <p class="t2 quote-body">
-            A LENSES conseguiu traduzir nossa essência em um filme que emocionou e gerou resultados reais.
-          </p>
-          <div class="quote-author">
-            <p class="t3 author-role">Diretor de Comunicação</p>
-            <p class="t3 author-company">Empresa Parceira</p>
-          </div>
-          <div class="quote-pagination">
-            <span class="dot active"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
-          </div>
-        </div>
-
-        <div class="card2 proof-brands-intro">
-          <h3 class="h3 proof-brands-title">MARCAS ATENDIDAS</h3>
-          <span class="ico-arrow">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7h10v10M7 17L17 7"/></svg>
-          </span>
-        </div>
-
-        <div class="proof-brands-grid">
-          <div class="brand-grid-item"><img src="assets/logos/albras.svg" alt="ALBRAS"></div>
-          <div class="brand-grid-item"><img src="assets/logos/hydro.svg" alt="Hydro"></div>
-          <div class="brand-grid-item"><img src="assets/logos/eurochem.svg" alt="EUROCHEM"></div>
-          <div class="brand-grid-item"><img src="assets/logos/mitsubishi.svg" alt="MITSUBISHI POWER"></div>
-          <div class="brand-grid-item"><img src="assets/logos/moveinfra.svg" alt="moveinfra"></div>
-          <div class="brand-grid-item"><img src="assets/logos/ultracargo.svg" alt="ultracargo"></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 11. PUBLICAÇÕES (REVISTA & INFORMES) -->
+    <!-- 8. PUBLICAÇÕES (REVISTA & INFORMES) -->
     <section class="section section-publications" id="revista">
       <div class="publications-grid reveal-on-scroll">
         <div class="card8 pub-card-dark">
@@ -572,7 +498,7 @@
       </div>
     </section>
 
-    <!-- 12. BANNER FINAL CTA CONTATO -->
+    <!-- 9. BANNER FINAL CTA CONTATO -->
     <section class="section section-cta-contact" id="contato">
       <div class="cta-contact-bg">
         <img src="assets/contact-bg.png" alt="Estúdio Audiovisual LENSES" class="cta-img-asset">
@@ -607,7 +533,7 @@
       </div>
     </section>
 
-    <!-- 13. FOOTER -->
+    <!-- 10. FOOTER -->
     <footer class="footer">
       <div class="footer-container">
         <div class="footer-left">

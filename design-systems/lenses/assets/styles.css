@@ -286,11 +286,6 @@ a {
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.45);
 }
 
-/* Scroll Margin para navegação por âncoras compensar a navbar fixa */
-section[id] {
-  scroll-margin-top: 85px;
-}
-
 /* ==========================================================================
    2. HERO SECTION COM BACKGROUND VÍDEO CINEMATOGRÁFICO (100VH)
    ========================================================================== */
@@ -373,182 +368,55 @@ section[id] {
   width: 100%;
 }
 
-/* Indicador Minimalista de Scroll (Seta Fina Animada) */
+/* Indicador Circular de Scroll Estilo Zion */
 .hero-scroll-indicator {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: center;
   text-decoration: none;
-  background: transparent;
-  border: none;
-  color: rgba(255, 255, 255, 0.72);
   cursor: pointer;
-  padding: 12px;
-  transition: color 0.3s ease, opacity 0.3s ease;
-  animation: heroArrowSubtleBounce 2.8s ease-in-out infinite;
-  will-change: transform;
+  transition: var(--transition-smooth);
 }
 
-.hero-scroll-indicator:hover {
+.scroll-circle {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: rgba(8, 8, 12, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: #ffffff;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: floatDownIndicator 3s ease-in-out infinite;
 }
 
-.hero-scroll-arrow {
-  width: 22px;
-  height: 22px;
-  display: block;
-  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.65));
+.scroll-circle svg {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.3s ease;
 }
 
-@keyframes heroArrowSubtleBounce {
+.hero-scroll-indicator:hover .scroll-circle {
+  background-color: var(--color-electric-blue);
+  border-color: var(--color-electric-blue);
+  box-shadow: 0 0 24px rgba(0, 60, 251, 0.65);
+  transform: scale(1.12);
+}
+
+.hero-scroll-indicator:hover .scroll-circle svg {
+  transform: translateY(3px);
+}
+
+@keyframes floatDownIndicator {
   0%, 100% {
     transform: translateY(0);
   }
   50% {
-    transform: translateY(5px);
-  }
-}
-
-/* ==========================================================================
-   2.1 CONTROLES MINIMALISTAS DE VÍDEO NO HERO (CANTO INFERIOR DIREITO)
-   ========================================================================== */
-
-/* Zona de Interação Invisível no Canto Inferior Direito */
-.hero-video-controls-zone {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  width: 220px;
-  height: 120px;
-  z-index: 10;
-  display: flex;
-  align-items: flex-end;
-  justify-content: flex-end;
-  padding: 0 44px 28px 0;
-  pointer-events: auto;
-}
-
-/* Container dos Botões de Controle (Ocultos por padrão) */
-.hero-video-controls {
-  display: inline-flex;
-  align-items: center;
-  gap: 22px;
-  opacity: 0;
-  transform: translateY(6px);
-  pointer-events: none;
-  transition: opacity 0.28s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, transform;
-}
-
-/* Revelação Suave ao Aproximar o Mouse da Zona de Interação */
-.hero-video-controls-zone:hover .hero-video-controls,
-.hero-video-controls-zone:focus-within .hero-video-controls,
-.hero-video-controls.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
-}
-
-/* Botões Customizados Minimalistas (Apenas ícones finos e área clicável ergonômica) */
-.hero-ctrl-btn {
-  background: transparent;
-  border: none;
-  padding: 8px;
-  color: rgba(255, 255, 255, 0.82);
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  transition: color 0.2s ease, transform 0.2s ease;
-  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.7));
-  outline: none;
-}
-
-.hero-ctrl-btn:hover,
-.hero-ctrl-btn:focus-visible {
-  color: #ffffff;
-  transform: scale(1.12);
-}
-
-.hero-ctrl-btn .ctrl-icon {
-  width: 20px;
-  height: 20px;
-  display: none;
-}
-
-/* Alternância de Estado Mute / Unmute */
-.hero-ctrl-btn.is-muted .icon-muted {
-  display: block;
-}
-.hero-ctrl-btn.is-muted .icon-unmuted {
-  display: none;
-}
-
-.hero-ctrl-btn:not(.is-muted) .icon-muted {
-  display: none;
-}
-.hero-ctrl-btn:not(.is-muted) .icon-unmuted {
-  display: block;
-}
-
-/* Alternância de Estado Fullscreen */
-.hero-ctrl-btn.is-fullscreen .icon-fs-enter {
-  display: none;
-}
-.hero-ctrl-btn.is-fullscreen .icon-fs-exit {
-  display: block;
-}
-
-.hero-ctrl-btn:not(.is-fullscreen) .icon-fs-enter {
-  display: block;
-}
-.hero-ctrl-btn:not(.is-fullscreen) .icon-fs-exit {
-  display: none;
-}
-
-/* Regras de Fullscreen Nativo para o Hero */
-.hero-main:fullscreen {
-  width: 100vw;
-  height: 100vh;
-  background-color: #000000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
-}
-
-.hero-main:-webkit-full-screen {
-  width: 100vw;
-  height: 100vh;
-  background-color: #000000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
-}
-
-.hero-main:fullscreen .hero-scroll-wrapper,
-.hero-main:-webkit-full-screen .hero-scroll-wrapper {
-  display: none;
-}
-
-/* Adaptação para Dispositivos Mobile / Touch */
-@media (max-width: 768px), (hover: none) {
-  .hero-video-controls-zone {
-    width: auto;
-    height: auto;
-    padding: 0 20px 24px 0;
-  }
-
-  .hero-video-controls {
-    opacity: 0.75;
-    transform: translateY(0);
-    pointer-events: auto;
-  }
-
-  .hero-video-controls.is-visible {
-    opacity: 1;
+    transform: translateY(8px);
   }
 }
 

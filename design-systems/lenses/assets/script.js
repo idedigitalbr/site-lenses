@@ -97,107 +97,6 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('touchstart', onFirstUserGesture, { once: true });
   }
 
-  // 3.01. Controles Minimalistas do Vídeo do Hero (Mute/Unmute e Fullscreen)
-  const heroMuteBtn = document.getElementById('heroMuteBtn');
-  const heroFullscreenBtn = document.getElementById('heroFullscreenBtn');
-  const heroSection = document.getElementById('inicio');
-  const heroControlsZone = document.getElementById('heroVideoControlsZone');
-  const heroControls = document.getElementById('heroVideoControls');
-
-  // MUTE / UNMUTE (Sincronizado com o vídeo nativo)
-  if (heroVideo && heroMuteBtn) {
-    const updateMuteUi = () => {
-      const isMuted = heroVideo.muted;
-      heroMuteBtn.classList.toggle('is-muted', isMuted);
-      const titleText = isMuted ? 'Ativar som' : 'Desativar som';
-      heroMuteBtn.setAttribute('aria-label', titleText);
-      heroMuteBtn.setAttribute('title', titleText);
-    };
-
-    heroMuteBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      heroVideo.muted = !heroVideo.muted;
-      if (!heroVideo.muted && heroVideo.paused) {
-        heroVideo.play().catch(() => {});
-      }
-      updateMuteUi();
-    });
-
-    heroVideo.addEventListener('volumechange', updateMuteUi);
-    updateMuteUi();
-  }
-
-  // FULLSCREEN NATIVO (Fullscreen API com alternância dinâmica de ícones)
-  if (heroSection && heroFullscreenBtn) {
-    const isFullscreenActive = () => {
-      return !!(
-        document.fullscreenElement ||
-        document.webkitFullscreenElement ||
-        document.mozFullScreenElement ||
-        document.msFullscreenElement
-      );
-    };
-
-    const updateFullscreenUi = () => {
-      const isFs = isFullscreenActive();
-      heroFullscreenBtn.classList.toggle('is-fullscreen', isFs);
-      const titleText = isFs ? 'Sair da tela cheia' : 'Tela cheia';
-      heroFullscreenBtn.setAttribute('aria-label', titleText);
-      heroFullscreenBtn.setAttribute('title', titleText);
-    };
-
-    heroFullscreenBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      if (!isFullscreenActive()) {
-        if (heroSection.requestFullscreen) {
-          heroSection.requestFullscreen();
-        } else if (heroSection.webkitRequestFullscreen) {
-          heroSection.webkitRequestFullscreen();
-        } else if (heroSection.msRequestFullscreen) {
-          heroSection.msRequestFullscreen();
-        }
-      } else {
-        if (document.exitFullscreen) {
-          document.exitFullscreen();
-        } else if (document.webkitExitFullscreen) {
-          document.webkitExitFullscreen();
-        } else if (document.msExitFullscreen) {
-          document.msExitFullscreen();
-        }
-      }
-    });
-
-    document.addEventListener('fullscreenchange', updateFullscreenUi);
-    document.addEventListener('webkitfullscreenchange', updateFullscreenUi);
-    document.addEventListener('mozfullscreenchange', updateFullscreenUi);
-    document.addEventListener('MSFullscreenChange', updateFullscreenUi);
-    updateFullscreenUi();
-  }
-
-  // SUPORTE MOBILE / TOUCH (Acessibilidade discreta com auto-hide temporário)
-  if (heroControls && heroControlsZone) {
-    let hideTimer = null;
-    const triggerMobileControls = () => {
-      heroControls.classList.add('is-visible');
-      if (hideTimer) clearTimeout(hideTimer);
-      hideTimer = setTimeout(() => {
-        heroControls.classList.remove('is-visible');
-      }, 4000);
-    };
-
-    heroControlsZone.addEventListener('touchstart', () => {
-      triggerMobileControls();
-    }, { passive: true });
-
-    if (heroSection) {
-      heroSection.addEventListener('touchstart', (e) => {
-        if (!e.target.closest('.hero-ctrl-btn') && !e.target.closest('#scrollDownBtn')) {
-          triggerMobileControls();
-        }
-      }, { passive: true });
-    }
-  }
-
   // 3.1 Controle Interativo de Vídeos nos Cards de Serviços (Play no Hover)
   const serviceCards = document.querySelectorAll('.service-item');
   serviceCards.forEach(card => {
@@ -251,7 +150,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       // 1. Estado no Topo absoluto da página:
-      // Header visível com fundo preto + faixa superior azul visível
+      // Header visível + fundo transparente sobre o Hero + faixa superior azul visível
       if (currentScrollY <= TOP_THRESHOLD) {
         siteHeader.classList.add('is-top');
         siteHeader.classList.remove('is-hidden', 'is-scrolled-up');
@@ -295,7 +194,7 @@ document.addEventListener('DOMContentLoaded', () => {
     handleHeaderScroll();
   }
 
-  // 4.1. Scroll Suave para a Seta Minimalista de Scroll do Hero
+  // 4.1. Scroll Suave para o Indicador de Scroll Circular do Hero
   const scrollDownBtn = document.getElementById('scrollDownBtn');
   const marcasSection = document.getElementById('marcas');
   if (scrollDownBtn && marcasSection) {
@@ -326,8 +225,49 @@ document.addEventListener('DOMContentLoaded', () => {
     revealElements.forEach(el => el.classList.add('is-revealed'));
   }
 
+  // 6. Testimonial Dots Interactivity
+  const dots = document.querySelectorAll('.quote-pagination .dot');
+  const testimonials = [
+    {
+      text: 'A LENSES conseguiu traduzir nossa essência em um filme que emocionou e gerou resultados reais.',
+      role: 'Diretor de Comunicação',
+      company: 'Empresa Parceira'
+    },
+    {
+      text: 'Trabalhar com a equipe da LENSES nos deu a certeza de uma entrega com padrão cinematográfico internacional.',
+      role: 'Gerente Executivo de Marca',
+      company: 'Grupo Industrial'
+    },
+    {
+      text: 'Sensibilidade amazônica e precisão técnica raras no mercado. Uma parceria estratégica indispensável.',
+      role: 'Head de Conteúdo & Relações Institucionais',
+      company: 'Operação Nacional'
+    }
+  ];
 
-  // 6. Split CTA Interativo Cinematográfico (Breve História & Contato)
+  const quoteBody = document.querySelector('.quote-body');
+  const authorRole = document.querySelector('.author-role');
+  const authorCompany = document.querySelector('.author-company');
+
+  if (dots.length > 0 && quoteBody && authorRole && authorCompany) {
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        dots.forEach(d => d.classList.remove('active'));
+        dot.classList.add('active');
+        if (testimonials[index]) {
+          quoteBody.style.opacity = '0';
+          setTimeout(() => {
+            quoteBody.textContent = testimonials[index].text;
+            authorRole.textContent = testimonials[index].role;
+            authorCompany.textContent = testimonials[index].company;
+            quoteBody.style.opacity = '1';
+          }, 200);
+        }
+      });
+    });
+  }
+
+  // 7. Split CTA Interativo Cinematográfico (Breve História & Contato)
   const splitWrapper = document.getElementById('splitInteractive');
   const panelStory = document.getElementById('panelStory');
   const panelContact = document.getElementById('panelContact');
@@ -357,13 +297,6 @@ document.addEventListener('DOMContentLoaded', () => {
         panelContact.setAttribute('aria-expanded', 'false');
       }
     }
-
-    // Ativação ao clicar em links que apontam para #sobre
-    document.querySelectorAll('a[href="#sobre"]').forEach(link => {
-      link.addEventListener('click', () => {
-        applyState('story');
-      });
-    });
 
     // Interações de Clique (Apenas no clique os painéis se abrem ou fecham)
     function handlePanelClick(targetPanelName, event) {
