@@ -1,0 +1,9 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 170 32" fill="currentColor">
+  <g transform="translate(0, 4)">
+    <circle cx="10" cy="11" r="3" fill="currentColor"/>
+    <path d="M10 8 C10 2 15 2 15 6 C15 10 11 10 10 11 Z" fill="currentColor"/>
+    <path d="M8 12 C3 14 3 19 7 19 C11 19 10 14 10 12 Z" fill="currentColor"/>
+    <path d="M12 12 C16 15 14 20 10 20 C7 18 9 13 12 12 Z" fill="currentColor"/>
+    <text x="24" y="15" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="700">Hidrovias <tspan font-weight="400">do Brasil</tspan></text>
+  </g>
+</svg>

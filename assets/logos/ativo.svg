@@ -1,0 +1,8 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 32" fill="currentColor">
+  <g transform="translate(0, 4)">
+    <path d="M11 2 L2 22 L20 22 Z M7 15 L15 15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
+    <circle cx="11" cy="9" r="1.5" fill="currentColor"/>
+    <text x="26" y="14" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="800" letter-spacing="1">ATIVO</text>
+    <text x="26" y="21" font-family="'Plus Jakarta Sans', sans-serif" font-size="6" font-weight="600" letter-spacing="1.5" opacity="0.8">ENGENHARIA</text>
+  </g>
+</svg>
