@@ -3,22 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LENSES — Design System & Guia Canônico de Componentes</title>
-  
-  <!-- Fontes Oficiais: Plus Jakarta Sans & JetBrains Mono -->
+  <title>LENSES — Design System v2.0 (sincronizado com o index.html)</title>
+
+  <!-- Fontes Oficiais do Ambiente de Documentação: Plus Jakarta Sans & JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
-  
-  <!-- Font Awesome 6 Icons -->
+
+  <!-- Font Awesome 6 (apenas ícones da interface da documentação) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  
-  <!-- CSS Oficial da Aplicação -->
+
+  <!-- CSS Oficial da Aplicação (mesmo usado pelo index.html) -->
   <link rel="stylesheet" href="assets/styles.css">
 
   <style>
     /* ==========================================================================
        ESTILOS DO AMBIENTE DESIGN SYSTEM PREVIEW (LENSES THEME)
+       Chrome da documentação — não faz parte do site.
        ========================================================================== */
     :root {
       --ds-sidebar-w: 300px;
@@ -38,11 +39,7 @@
       overflow-x: hidden;
     }
 
-    /* Layout Geral */
-    .ds-wrapper {
-      display: flex;
-      min-height: 100vh;
-    }
+    .ds-wrapper { display: flex; min-height: 100vh; }
 
     /* Sidebar Fixa */
     .ds-sidebar {
@@ -50,9 +47,7 @@
       background: var(--ds-bg-sidebar);
       border-right: 1px solid var(--ds-border-ui);
       position: fixed;
-      top: 0;
-      bottom: 0;
-      left: 0;
+      top: 0; bottom: 0; left: 0;
       display: flex;
       flex-direction: column;
       z-index: 1000;
@@ -61,10 +56,7 @@
       scrollbar-color: #222 var(--ds-bg-sidebar);
     }
 
-    .ds-sidebar-header {
-      padding: 24px 20px;
-      border-bottom: 1px solid var(--ds-border-ui);
-    }
+    .ds-sidebar-header { padding: 24px 20px; border-bottom: 1px solid var(--ds-border-ui); }
 
     .ds-sidebar-logo {
       font-size: 1.3rem;
@@ -90,11 +82,7 @@
       text-transform: uppercase;
     }
 
-    .ds-sidebar-search {
-      padding: 16px 20px;
-      border-bottom: 1px solid var(--ds-border-ui);
-      position: relative;
-    }
+    .ds-sidebar-search { padding: 16px 20px; border-bottom: 1px solid var(--ds-border-ui); position: relative; }
 
     .ds-sidebar-search input {
       width: 100%;
@@ -114,17 +102,9 @@
       box-shadow: 0 0 10px rgba(0, 60, 251, 0.3);
     }
 
-    .ds-sidebar-search i {
-      position: absolute;
-      left: 32px;
-      top: 28px;
-      color: #646472;
-      font-size: 0.85rem;
-    }
+    .ds-sidebar-search i { position: absolute; left: 32px; top: 28px; color: #646472; font-size: 0.85rem; }
 
-    .ds-nav-group {
-      padding: 18px 20px 6px;
-    }
+    .ds-nav-group { padding: 18px 20px 6px; }
 
     .ds-nav-title {
       font-size: 0.75rem;
@@ -146,14 +126,7 @@
       border-radius: 3px;
     }
 
-    .ds-nav-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 3px;
-    }
+    .ds-nav-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 3px; }
 
     .ds-nav-link {
       display: flex;
@@ -168,22 +141,11 @@
       font-weight: 500;
     }
 
-    .ds-nav-link:hover, .ds-nav-link.active {
-      color: #ffffff;
-      background: rgba(255, 255, 255, 0.05);
-    }
+    .ds-nav-link:hover, .ds-nav-link.active { color: #ffffff; background: rgba(255, 255, 255, 0.05); }
 
-    .ds-nav-link.active {
-      background: rgba(0, 60, 251, 0.15);
-      color: #688eff;
-      font-weight: 600;
-    }
+    .ds-nav-link.active { background: rgba(0, 60, 251, 0.15); color: #688eff; font-weight: 600; }
 
-    .ds-sidebar-footer {
-      margin-top: auto;
-      padding: 16px 20px;
-      border-top: 1px solid var(--ds-border-ui);
-    }
+    .ds-sidebar-footer { margin-top: auto; padding: 16px 20px; border-top: 1px solid var(--ds-border-ui); }
 
     .ds-btn-live {
       display: flex;
@@ -201,19 +163,10 @@
       transition: var(--transition-fast);
     }
 
-    .ds-btn-live:hover {
-      background: var(--ds-accent-blue);
-      border-color: var(--ds-accent-blue);
-      box-shadow: var(--shadow-blue-glow);
-    }
+    .ds-btn-live:hover { background: var(--ds-accent-blue); border-color: var(--ds-accent-blue); box-shadow: var(--shadow-blue-glow); }
 
     /* Conteúdo Principal */
-    .ds-content {
-      margin-left: var(--ds-sidebar-w);
-      flex: 1;
-      padding: 40px 60px 100px;
-      max-width: 1400px;
-    }
+    .ds-content { margin-left: var(--ds-sidebar-w); flex: 1; padding: 40px 60px 100px; max-width: 1400px; }
 
     /* Header Banner */
     .ds-banner {
@@ -229,20 +182,13 @@
     .ds-banner::before {
       content: '';
       position: absolute;
-      top: -80px;
-      right: -80px;
-      width: 320px;
-      height: 320px;
+      top: -80px; right: -80px;
+      width: 320px; height: 320px;
       background: radial-gradient(circle, rgba(0, 60, 251, 0.25) 0%, transparent 70%);
       pointer-events: none;
     }
 
-    .ds-banner-tags {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 16px;
-      flex-wrap: wrap;
-    }
+    .ds-banner-tags { display: flex; gap: 10px; margin-bottom: 16px; flex-wrap: wrap; }
 
     .ds-tag {
       font-size: 0.72rem;
@@ -257,53 +203,18 @@
     .ds-tag-gold { background: rgba(245, 158, 11, 0.15); border: 1px solid #f59e0b; color: #fbbf24; }
     .ds-tag-cyan { background: rgba(6, 182, 212, 0.15); border: 1px solid #06b6d4; color: #67e8f9; }
 
-    .ds-banner-title {
-      font-size: clamp(2rem, 3.5vw, 3rem);
-      font-weight: 700;
-      letter-spacing: -0.01em;
-      margin-bottom: 12px;
-      color: #fff;
-    }
+    .ds-banner-title { font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 700; letter-spacing: -0.01em; margin-bottom: 12px; color: #fff; }
 
-    .ds-banner-desc {
-      font-size: 1.05rem;
-      color: #9fa1b0;
-      max-width: 820px;
-      line-height: 1.6;
-      margin-bottom: 24px;
-    }
+    .ds-banner-desc { font-size: 1.05rem; color: #9fa1b0; max-width: 820px; line-height: 1.6; margin-bottom: 24px; }
 
-    .ds-banner-stats {
-      display: flex;
-      gap: 36px;
-      padding-top: 20px;
-      border-top: 1px solid var(--ds-border-ui);
-      flex-wrap: wrap;
-    }
+    .ds-banner-stats { display: flex; gap: 36px; padding-top: 20px; border-top: 1px solid var(--ds-border-ui); flex-wrap: wrap; }
 
-    .ds-stat-item {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .ds-stat-val {
-      font-size: 1.35rem;
-      font-weight: 800;
-      color: #fff;
-    }
-
-    .ds-stat-lbl {
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: #727384;
-    }
+    .ds-stat-item { display: flex; flex-direction: column; }
+    .ds-stat-val { font-size: 1.35rem; font-weight: 800; color: #fff; }
+    .ds-stat-lbl { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: #727384; }
 
     /* Seções do Design System */
-    .ds-section {
-      margin-bottom: 80px;
-      scroll-margin-top: 40px;
-    }
+    .ds-section { margin-bottom: 80px; scroll-margin-top: 40px; }
 
     .ds-section-header {
       margin-bottom: 28px;
@@ -312,17 +223,11 @@
       display: flex;
       align-items: flex-end;
       justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
     }
 
-    .ds-section-title {
-      font-size: 1.7rem;
-      font-weight: 700;
-      letter-spacing: -0.01em;
-      color: #ffffff;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
+    .ds-section-title { font-size: 1.7rem; font-weight: 700; letter-spacing: -0.01em; color: #ffffff; display: flex; align-items: center; gap: 12px; }
 
     .ds-section-badge {
       font-size: 0.75rem;
@@ -332,38 +237,31 @@
       padding: 3px 9px;
       border-radius: 4px;
       border: 1px solid rgba(0, 60, 251, 0.3);
+      white-space: nowrap;
     }
 
-    .ds-card-box {
-      background: #09090d;
-      border: 1px solid var(--ds-border-ui);
-      border-radius: 12px;
-      padding: 30px;
-      margin-bottom: 24px;
+    .ds-card-box { background: #09090d; border: 1px solid var(--ds-border-ui); border-radius: 12px; padding: 30px; margin-bottom: 24px; }
+    .ds-card-box.flush { padding: 0; overflow: hidden; }
+
+    .ds-card-box-header { margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+
+    .ds-card-box-title { font-size: 1.1rem; font-weight: 700; color: #fff; display: flex; align-items: center; gap: 8px; }
+
+    .ds-note {
+      font-size: 0.88rem;
+      color: #a5a7b8;
+      background: rgba(0, 60, 251, 0.06);
+      border: 1px solid rgba(0, 60, 251, 0.25);
+      border-left: 3px solid var(--ds-accent-blue);
+      border-radius: 6px;
+      padding: 12px 16px;
+      margin-top: 16px;
     }
 
-    .ds-card-box-header {
-      margin-bottom: 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .ds-card-box-title {
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: #fff;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
+    .ds-note strong { color: #fff; }
 
     /* Swatches de Cores */
-    .color-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 16px;
-    }
+    .color-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
 
     .color-swatch {
       background: #101017;
@@ -374,49 +272,33 @@
       transition: var(--transition-fast);
     }
 
-    .color-swatch:hover {
-      transform: translateY(-3px);
-      border-color: rgba(255, 255, 255, 0.25);
+    .color-swatch:hover { transform: translateY(-3px); border-color: rgba(255, 255, 255, 0.25); }
+
+    .color-preview { height: 90px; width: 100%; position: relative; }
+    .color-info { padding: 12px 14px; }
+    .color-name { font-size: 0.88rem; font-weight: 700; color: #fff; margin-bottom: 2px; }
+    .color-var { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; color: #6688ff; margin-bottom: 4px; display: block; }
+    .color-hex { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #888898; }
+
+    .swatch-group-title {
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #6a6a78;
+      margin: 26px 0 12px;
+      grid-column: 1 / -1;
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
 
-    .color-preview {
-      height: 100px;
-      width: 100%;
-      position: relative;
-    }
+    .swatch-group-title:first-child { margin-top: 0; }
 
-    .color-info {
-      padding: 12px 14px;
-    }
+    /* Tabelas de especificação */
+    .spec-table { width: 100%; border-collapse: collapse; }
 
-    .color-name {
-      font-size: 0.88rem;
-      font-weight: 700;
-      color: #fff;
-      margin-bottom: 2px;
-    }
-
-    .color-var {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.72rem;
-      color: #6688ff;
-      margin-bottom: 4px;
-      display: block;
-    }
-
-    .color-hex {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.75rem;
-      color: #888898;
-    }
-
-    /* Tipografia Tabela */
-    .typo-spec-table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-
-    .typo-spec-table th {
+    .spec-table th {
       text-align: left;
       font-size: 0.75rem;
       text-transform: uppercase;
@@ -424,23 +306,18 @@
       color: #66667a;
       padding: 12px 16px;
       border-bottom: 1px solid var(--ds-border-ui);
+      white-space: nowrap;
     }
 
-    .typo-spec-table td {
-      padding: 20px 16px;
-      border-bottom: 1px solid var(--ds-border-ui);
-      vertical-align: middle;
-    }
+    .spec-table td { padding: 16px; border-bottom: 1px solid var(--ds-border-ui); vertical-align: middle; font-size: 0.92rem; }
 
-    .typo-sample {
-      color: #ffffff;
-    }
+    .spec-table tr:last-child td { border-bottom: none; }
 
-    .typo-meta {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.76rem;
-      color: #88889a;
-    }
+    .typo-sample { color: #ffffff; display: inline-block; }
+
+    .spec-meta { font-family: 'JetBrains Mono', monospace; font-size: 0.76rem; color: #88889a; }
+
+    .spec-code { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: #79a2ff; }
 
     /* Componentes Showcase */
     .components-canvas {
@@ -455,20 +332,66 @@
       align-items: center;
     }
 
-    /* Live Preview Comparativo */
-    .preview-split {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
-      margin-top: 20px;
+    .components-canvas.dark-stage { background: #050505; }
+    .components-canvas.light-stage { background: #ffffff; }
+
+    .components-canvas.stage-blue { background: var(--color-electric-blue); }
+
+    .canvas-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #646472;
+      margin-top: 14px;
+      display: block;
     }
 
-    .preview-col {
-      background: #0a0a0f;
-      border: 1px solid var(--ds-border-ui);
+    /* Demonstração ao vivo de blocos do site */
+    .live-block {
+      border: 1px dashed var(--ds-border-ui);
       border-radius: 10px;
       overflow: hidden;
+      margin-top: 16px;
     }
+
+    .live-block-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 16px;
+      background: #111118;
+      border-bottom: 1px solid var(--ds-border-ui);
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #9c9cae;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      flex-wrap: wrap;
+    }
+
+    .live-block-head .file { font-family: 'JetBrains Mono', monospace; color: #5c84ff; text-transform: none; letter-spacing: 0; font-weight: 400; font-size: 0.74rem; }
+
+    .state-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 2px 9px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--ds-border-ui);
+      color: #b7b9c8;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    /* Live Preview Comparativo */
+    .preview-split { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 20px; }
+
+    .preview-col { background: #0a0a0f; border: 1px solid var(--ds-border-ui); border-radius: 10px; overflow: hidden; }
 
     .preview-col-head {
       padding: 12px 18px;
@@ -482,24 +405,14 @@
       align-items: center;
     }
 
-    .preview-col-body {
-      padding: 20px;
-      max-height: 520px;
-      overflow-y: auto;
-    }
+    .preview-col-body { padding: 20px; max-height: 520px; overflow-y: auto; }
 
-    .preview-col-body img {
-      width: 100%;
-      height: auto;
-      display: block;
-      border-radius: 6px;
-    }
+    .preview-col-body img { width: 100%; height: auto; display: block; border-radius: 6px; }
 
     /* Copiar Token Toast */
     .ds-toast {
       position: fixed;
-      bottom: 30px;
-      right: 30px;
+      bottom: 30px; right: 30px;
       background: var(--ds-accent-blue);
       color: #fff;
       padding: 12px 22px;
@@ -516,62 +429,65 @@
       gap: 8px;
     }
 
-    .ds-toast.show {
-      transform: translateY(0);
-      opacity: 1;
-    }
+    .ds-toast.show { transform: translateY(0); opacity: 1; }
 
     /* Do & Don'ts */
-    .guidelines-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-    }
+    .guidelines-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
 
-    .guideline-card {
-      padding: 24px;
-      border-radius: 10px;
-      border: 1px solid var(--ds-border-ui);
-    }
+    .guideline-card { padding: 24px; border-radius: 10px; border: 1px solid var(--ds-border-ui); }
+    .guideline-do { background: rgba(16, 185, 129, 0.05); border-color: rgba(16, 185, 129, 0.3); }
+    .guideline-dont { background: rgba(239, 68, 68, 0.05); border-color: rgba(239, 68, 68, 0.3); }
 
-    .guideline-do {
-      background: rgba(16, 185, 129, 0.05);
-      border-color: rgba(16, 185, 129, 0.3);
-    }
-
-    .guideline-dont {
-      background: rgba(239, 68, 68, 0.05);
-      border-color: rgba(239, 68, 68, 0.3);
-    }
-
-    .guideline-title {
-      font-size: 1rem;
-      font-weight: 700;
-      margin-bottom: 12px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
+    .guideline-title { font-size: 1rem; font-weight: 700; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
     .guideline-do .guideline-title { color: #34d399; }
     .guideline-dont .guideline-title { color: #f87171; }
 
-    .guideline-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      font-size: 0.88rem;
-      color: #d1d5db;
+    .guideline-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; font-size: 0.88rem; color: #d1d5db; }
+    .guideline-list li { display: flex; align-items: flex-start; gap: 10px; }
+
+    .token-pre {
+      background: #020203;
+      padding: 20px;
+      border-radius: 8px;
+      border: 1px solid var(--ds-border-ui);
+      overflow-x: auto;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.82rem;
+      line-height: 1.7;
+      color: #79a2ff;
+      white-space: pre;
     }
 
-    .guideline-list li {
+    .icon-demo-row { display: flex; flex-wrap: wrap; gap: 18px; align-items: flex-end; }
+
+    .icon-demo-item {
+      background: #0f0f15;
+      border: 1px solid var(--ds-border-ui);
+      border-radius: 8px;
+      padding: 16px 18px;
       display: flex;
-      align-items: flex-start;
+      flex-direction: column;
+      align-items: center;
       gap: 10px;
+      min-width: 110px;
     }
+
+    .icon-demo-item .label { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: #88889a; text-align: center; }
+    .icon-demo-item svg { color: #ffffff; }
+    .icon-demo-item.blue svg { color: var(--color-electric-blue); }
+
+    .grid-specs { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+
+    .grid-spec-card {
+      background: #111116;
+      border: 1px solid var(--ds-border-ui);
+      border-radius: 8px;
+      padding: 20px;
+      border-left: 3px solid #003cfb;
+    }
+
+    .grid-spec-card h4 { color: #fff; margin-bottom: 8px; font-size: 0.95rem; }
+    .grid-spec-card p { font-size: 0.84rem; color: #8c8c9e; margin-bottom: 6px; }
 
     /* Mobile Responsive */
     @media (max-width: 1024px) {
@@ -592,7 +508,7 @@
     <aside class="ds-sidebar">
       <div class="ds-sidebar-header">
         <span class="ds-sidebar-logo">LENSES</span>
-        <span class="ds-sidebar-badge"><i class="fa-solid fa-gem"></i> Design System v1.0</span>
+        <span class="ds-sidebar-badge"><i class="fa-solid fa-gem"></i> Design System v2.0</span>
       </div>
 
       <div class="ds-sidebar-search">
@@ -608,36 +524,52 @@
             <li><a href="#identidade" class="ds-nav-link"><i class="fa-solid fa-fingerprint"></i> Identidade &amp; Conceito</a></li>
             <li><a href="#cores" class="ds-nav-link"><i class="fa-solid fa-palette"></i> Cores &amp; Tokens CSS</a></li>
             <li><a href="#tipografia" class="ds-nav-link"><i class="fa-solid fa-font"></i> Tipografia Canônica</a></li>
-            <li><a href="#icones" class="ds-nav-link"><i class="fa-solid fa-icons"></i> Linguagem de Setas &amp; Ícones</a></li>
+            <li><a href="#icones" class="ds-nav-link"><i class="fa-solid fa-arrow-trend-up"></i> Linguagem de Setas</a></li>
+            <li><a href="#layout" class="ds-nav-link"><i class="fa-solid fa-table-cells-large"></i> Grids &amp; Espaçamentos</a></li>
+            <li><a href="#responsivo" class="ds-nav-link"><i class="fa-solid fa-mobile-screen"></i> Breakpoints</a></li>
+            <li><a href="#animacao" class="ds-nav-link"><i class="fa-solid fa-wand-magic-sparkles"></i> Movimento &amp; Animação</a></li>
           </ul>
         </div>
 
-        <!-- 02 COMPONENTES ATÔMICOS -->
+        <!-- 02 HEADER & NAVEGAÇÃO -->
         <div class="ds-nav-group">
-          <div class="ds-nav-title"><span class="num-pill">02</span> Componentes</div>
+          <div class="ds-nav-title"><span class="num-pill">02</span> Header &amp; Navegação</div>
           <ul class="ds-nav-list">
-            <li><a href="#botoes" class="ds-nav-link"><i class="fa-solid fa-toggle-on"></i> Botões &amp; Ações</a></li>
-            <li><a href="#badges" class="ds-nav-link"><i class="fa-solid fa-tag"></i> Badges Translúcidos</a></li>
-            <li><a href="#navbar" class="ds-nav-link"><i class="fa-solid fa-compass"></i> Barra de Navegação</a></li>
-            <li><a href="#rail-marcas" class="ds-nav-link"><i class="fa-solid fa-handshake"></i> Rail de Parceiros</a></li>
+            <li><a href="#navbar" class="ds-nav-link"><i class="fa-solid fa-bars"></i> Ticker &amp; Navbar</a></li>
+            <li><a href="#menu-mobile" class="ds-nav-link"><i class="fa-solid fa-mobile-screen-button"></i> Menu Mobile</a></li>
           </ul>
         </div>
 
-        <!-- 03 CARDS & LAYOUTS -->
+        <!-- 03 SEÇÕES DA ONE PAGE -->
         <div class="ds-nav-group">
-          <div class="ds-nav-title"><span class="num-pill">03</span> Cards &amp; Estruturas</div>
+          <div class="ds-nav-title"><span class="num-pill">03</span> Seções da One Page</div>
           <ul class="ds-nav-list">
-            <li><a href="#cards-categorias" class="ds-nav-link"><i class="fa-solid fa-film"></i> Cards de Categoria</a></li>
-            <li><a href="#cards-split" class="ds-nav-link"><i class="fa-solid fa-table-columns"></i> Split CTA Maciço</a></li>
-            <li><a href="#cards-servicos" class="ds-nav-link"><i class="fa-solid fa-cubes"></i> Módulos de Serviços</a></li>
-            <li><a href="#cards-editorial" class="ds-nav-link"><i class="fa-solid fa-book-open"></i> Cards Editoriais &amp; Revista</a></li>
-            <li><a href="#cards-social" class="ds-nav-link"><i class="fa-solid fa-quote-left"></i> Depoimentos &amp; Citações</a></li>
+            <li><a href="#hero" class="ds-nav-link"><i class="fa-solid fa-film"></i> S1 · Hero (Vídeo)</a></li>
+            <li><a href="#rail-marcas" class="ds-nav-link"><i class="fa-solid fa-handshake"></i> S2 · Rail de Marcas</a></li>
+            <li><a href="#cards-split" class="ds-nav-link"><i class="fa-solid fa-table-columns"></i> S3 · Split Interativo</a></li>
+            <li><a href="#cards-servicos" class="ds-nav-link"><i class="fa-solid fa-cubes"></i> S4 · Trilha de Serviços</a></li>
+            <li><a href="#destaque" class="ds-nav-link"><i class="fa-solid fa-star"></i> S5 · Destaque / Festival</a></li>
+            <li><a href="#duo" class="ds-nav-link"><i class="fa-solid fa-images"></i> S6 · Duo Cards</a></li>
+            <li><a href="#cards-editorial" class="ds-nav-link"><i class="fa-solid fa-book-open"></i> S7 · Revista &amp; Informes</a></li>
+            <li><a href="#cta-contato" class="ds-nav-link"><i class="fa-solid fa-paper-plane"></i> S8 · CTA Contato</a></li>
+            <li><a href="#prefooter" class="ds-nav-link"><i class="fa-solid fa-photo-film"></i> S9 · Pré-Footer</a></li>
+            <li><a href="#footer" class="ds-nav-link"><i class="fa-solid fa-shoe-prints"></i> S10 · Footer</a></li>
           </ul>
         </div>
 
-        <!-- 04 DIRETRIZES & COMPARATIVO -->
+        <!-- 04 COMPONENTES ATÔMICOS -->
         <div class="ds-nav-group">
-          <div class="ds-nav-title"><span class="num-pill">04</span> Validação &amp; Regras</div>
+          <div class="ds-nav-title"><span class="num-pill">04</span> Componentes</div>
+          <ul class="ds-nav-list">
+            <li><a href="#botoes" class="ds-nav-link"><i class="fa-solid fa-toggle-on"></i> Botões, Pílulas &amp; Ações</a></li>
+            <li><a href="#badges" class="ds-nav-link"><i class="fa-solid fa-tag"></i> Badges &amp; Boxes</a></li>
+            <li><a href="#modal" class="ds-nav-link"><i class="fa-solid fa-clapperboard"></i> Modal Lightbox</a></li>
+          </ul>
+        </div>
+
+        <!-- 05 VALIDAÇÃO & REGRAS -->
+        <div class="ds-nav-group">
+          <div class="ds-nav-title"><span class="num-pill">05</span> Validação &amp; Regras</div>
           <ul class="ds-nav-list">
             <li><a href="#comparativo" class="ds-nav-link"><i class="fa-solid fa-code-compare"></i> Comparativo Side-by-Side</a></li>
             <li><a href="#guidelines" class="ds-nav-link"><i class="fa-solid fa-check-double"></i> Do's &amp; Don'ts</a></li>
@@ -661,13 +593,15 @@
       <!-- BANNER DE APRESENTAÇÃO -->
       <header class="ds-banner" id="inicio">
         <div class="ds-banner-tags">
-          <span class="ds-tag ds-tag-blue"><i class="fa-solid fa-shield-check"></i> Design System Oficial</span>
+          <span class="ds-tag ds-tag-blue"><i class="fa-solid fa-shield-check"></i> Sincronizado com o index.html</span>
           <span class="ds-tag ds-tag-gold"><i class="fa-solid fa-video"></i> Estúdio Audiovisual</span>
           <span class="ds-tag ds-tag-cyan"><i class="fa-solid fa-wand-magic-sparkles"></i> Pure CSS &amp; HTML5</span>
         </div>
         <h1 class="ds-banner-title">LENSES — Design System &amp; Documentação Oficial</h1>
         <p class="ds-banner-desc">
-          Fonte canônica de verdade para tokens de design, tipografia editorial, componentes interativos, grids modulares e estética cinematográfica para o projeto <strong>LENSES ("Amazônia em Outro Olhar")</strong>. Criado sem dependências ou frameworks, pronto para deploy ultra-rápido.
+          Fonte canônica de verdade para tokens, tipografia editorial, componentes e estética cinematográfica do projeto
+          <strong>LENSES ("Amazônia em Outro Olhar")</strong>. Esta v2.0 foi <strong>extraída diretamente do index.html atual</strong>:
+          tudo que você vê aqui é exatamente o que o site real renderiza hoje, usando o mesmo <code>assets/styles.css</code>.
         </p>
         <div class="ds-banner-stats">
           <div class="ds-stat-item">
@@ -683,8 +617,8 @@
             <span class="ds-stat-lbl">Família Tipográfica</span>
           </div>
           <div class="ds-stat-item">
-            <span class="ds-stat-val">13 Seções</span>
-            <span class="ds-stat-lbl">Componentes Atômicos</span>
+            <span class="ds-stat-val">30 Tokens</span>
+            <span class="ds-stat-lbl">Variáveis :root</span>
           </div>
         </div>
       </header>
@@ -692,31 +626,42 @@
       <!-- ====================================================================
            01 FUNDAMENTOS
            ==================================================================== -->
-      
+
       <!-- IDENTIDADE & CONCEITO -->
       <section class="ds-section" id="identidade">
         <div class="ds-section-header">
-          <h2 class="ds-section-title"><i class="fa-solid fa-fingerprint text-primary"></i> Identidade &amp; Conceito Visual</h2>
+          <h2 class="ds-section-title"><i class="fa-solid fa-fingerprint"></i> Identidade &amp; Conceito Visual</h2>
           <span class="ds-section-badge">Fundamento 01</span>
         </div>
         <div class="ds-card-box">
           <p style="font-size: 1.05rem; line-height: 1.7; color: #b5b7c6; margin-bottom: 20px;">
-            A identidade visual da <strong>LENSES</strong> combina o peso dramático do cinema com a precisão minimalista do design editorial contemporâneo. 
-            Utiliza grandes contrastes: fundos escuros imersivos intercalados com blocos sólidos brancos e o marcante <strong>Azul Royal Elétrico</strong>, transmitindo autoridade, inovação e sofisticação audiovisual.
+            A identidade da <strong>LENSES</strong> combina o peso dramático do cinema com a precisão minimalista do design editorial contemporâneo.
+            O site trabalha um <strong>ritmo alternado de áreas escuras e claras</strong>: canvas preto cinematográfico como base,
+            com dois grandes blocos de respiro — o <strong>painel branco "Sobre a Lenses"</strong> e o <strong>azul elétrico</strong> —
+            além de um hero <strong>100% vídeo, sem texto sobreposto</strong> (decisão consciente de design: o showreel fala por si).
           </p>
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px;">
-            <div style="background: #111116; padding: 20px; border-radius: 8px; border-left: 3px solid #003cfb;">
-              <h4 style="color: #fff; margin-bottom: 6px; font-size: 0.95rem;">Cinema &amp; Escuridão</h4>
-              <p style="font-size: 0.82rem; color: #8c8c9e;">Fundos profundos que valorizam o brilho e a textura das produções cinematográficas.</p>
+          <div class="grid-specs">
+            <div class="grid-spec-card" style="border-left-color: #050505; background: #0b0b0e;">
+              <h4>Canvas Cinema Dark</h4>
+              <p>Hero (vídeo), rail, serviços, destaque, duo e footer vivem em <code>#050505/#030304/#000</code> — valorizam brilho e textura das produções.</p>
             </div>
-            <div style="background: #111116; padding: 20px; border-radius: 8px; border-left: 3px solid #ffffff;">
-              <h4 style="color: #fff; margin-bottom: 6px; font-size: 0.95rem;">Contraste Editorial</h4>
-              <p style="font-size: 0.82rem; color: #8c8c9e;">Blocos brancos maciços (Breve História, O Que Fazemos) para descanso visual e impacto.</p>
+            <div class="grid-spec-card" style="border-left-color: #ffffff;">
+              <h4>Contraste Editorial (Branco)</h4>
+              <p>Painel "Sobre a Lenses" (<code>--bg-surface-light</code>) é o maior bloco light da página: descanso visual e legibilidade do manifesto + KPIs.</p>
             </div>
-            <div style="background: #111116; padding: 20px; border-radius: 8px; border-left: 3px solid #003cfb;">
-              <h4 style="color: #fff; margin-bottom: 6px; font-size: 0.95rem;">Linguagem Angular</h4>
-              <p style="font-size: 0.82rem; color: #8c8c9e;">Setas diagonais em 45° que guiam o olho do visitante entre os blocos narrativos.</p>
+            <div class="grid-spec-card">
+              <h4>Azul Royal Elétrico</h4>
+              <p><code>#003cfb</code> em: ticker do header, painel Contato, card Informes, CTAs, kickers e indicadores. Reservado a conversão e destaques.</p>
             </div>
+            <div class="grid-spec-card" style="border-left-color: #ffffff;">
+              <h4>Linguagem Angular</h4>
+              <p>Setas diagonais 45° (traço 2 / 2.35) guiam o olhar entre blocos: ↗ painéis, → cards, ↑ voltar ao topo.</p>
+            </div>
+          </div>
+          <div class="ds-note">
+            <strong>Mapa de ritmo dark/light do index.html atual:</strong>
+            Hero dark → Rail dark → <strong>Split BRANCO + AZUL (momento light principal)</strong> → Serviços dark → Destaque (imagem dark) →
+            Duo dark → Publicações (card escuro <code>#09090b</code> + <strong>card AZUL</strong>) → CTA (imagem escura) → Footer preto.
           </div>
         </div>
       </section>
@@ -724,36 +669,29 @@
       <!-- CORES & TOKENS -->
       <section class="ds-section" id="cores">
         <div class="ds-section-header">
-          <h2 class="ds-section-title"><i class="fa-solid fa-palette text-primary"></i> Cores &amp; Tokens Cromáticos</h2>
+          <h2 class="ds-section-title"><i class="fa-solid fa-palette"></i> Cores &amp; Tokens Cromáticos</h2>
           <span class="ds-section-badge">Clique para Copiar</span>
         </div>
         <div class="ds-card-box">
           <div class="color-grid">
-            
-            <div class="color-swatch" onclick="copyToken('--color-electric-blue', '#003cfb')">
-              <div class="color-preview" style="background-color: #003cfb;"></div>
-              <div class="color-info">
-                <div class="color-name">Azul Royal Elétrico</div>
-                <span class="color-var">--color-electric-blue</span>
-                <span class="color-hex">#003cfb</span>
-              </div>
-            </div>
 
-            <div class="color-swatch" onclick="copyToken('--color-blue-hover', '#002ec4')">
-              <div class="color-preview" style="background-color: #002ec4;"></div>
-              <div class="color-info">
-                <div class="color-name">Azul Hover / Ativo</div>
-                <span class="color-var">--color-blue-hover</span>
-                <span class="color-hex">#002ec4</span>
-              </div>
-            </div>
+            <div class="swatch-group-title"><i class="fa-solid fa-square"></i> Backgrounds / Superfícies</div>
 
             <div class="color-swatch" onclick="copyToken('--bg-body', '#050505')">
-              <div class="color-preview" style="background-color: #050505; border-bottom: 1px solid #222;"></div>
+              <div class="color-preview" style="background-color: #050505;"></div>
               <div class="color-info">
                 <div class="color-name">Canvas Dark Principal</div>
                 <span class="color-var">--bg-body</span>
                 <span class="color-hex">#050505</span>
+              </div>
+            </div>
+
+            <div class="color-swatch" onclick="copyToken('--bg-surface-dark', '#0b0b0e')">
+              <div class="color-preview" style="background-color: #0b0b0e;"></div>
+              <div class="color-info">
+                <div class="color-name">Superfície Dark</div>
+                <span class="color-var">--bg-surface-dark</span>
+                <span class="color-hex">#0b0b0e</span>
               </div>
             </div>
 
@@ -784,6 +722,64 @@
               </div>
             </div>
 
+            <div class="color-swatch" onclick="copyToken('--bg-surface-gray', '#ededf2')">
+              <div class="color-preview" style="background-color: #ededf2;"></div>
+              <div class="color-info">
+                <div class="color-name">Cinza Claro Gray</div>
+                <span class="color-var">--bg-surface-gray</span>
+                <span class="color-hex">#ededf2</span>
+              </div>
+            </div>
+
+            <div class="color-swatch" onclick="copyToken('--bg-nav', 'rgba(5, 5, 5, 0.95)')">
+              <div class="color-preview" style="background-color: rgba(5, 5, 5, 0.95);"></div>
+              <div class="color-info">
+                <div class="color-name">Navbar Glass Escuro</div>
+                <span class="color-var">--bg-nav</span>
+                <span class="color-hex">rgba(5,5,5,.95) + blur 16px</span>
+              </div>
+            </div>
+
+            <div class="color-swatch" onclick="copyToken('--bg-rail', '#030304')">
+              <div class="color-preview" style="background-color: #030304;"></div>
+              <div class="color-info">
+                <div class="color-name">Rail de Marcas</div>
+                <span class="color-var">--bg-rail</span>
+                <span class="color-hex">#030304</span>
+              </div>
+            </div>
+
+            <div class="swatch-group-title"><i class="fa-solid fa-droplet"></i> Azul Royal Elétrico</div>
+
+            <div class="color-swatch" onclick="copyToken('--color-electric-blue', '#003cfb')">
+              <div class="color-preview" style="background-color: #003cfb;"></div>
+              <div class="color-info">
+                <div class="color-name">Azul Royal Elétrico</div>
+                <span class="color-var">--color-electric-blue</span>
+                <span class="color-hex">#003cfb</span>
+              </div>
+            </div>
+
+            <div class="color-swatch" onclick="copyToken('--color-blue-hover', '#002ec4')">
+              <div class="color-preview" style="background-color: #002ec4;"></div>
+              <div class="color-info">
+                <div class="color-name">Azul Hover / Ativo</div>
+                <span class="color-var">--color-blue-hover</span>
+                <span class="color-hex">#002ec4</span>
+              </div>
+            </div>
+
+            <div class="color-swatch" onclick="copyToken('--color-blue-light', '#3364fb')">
+              <div class="color-preview" style="background-color: #3364fb;"></div>
+              <div class="color-info">
+                <div class="color-name">Azul Claro (apoio)</div>
+                <span class="color-var">--color-blue-light</span>
+                <span class="color-hex">#3364fb</span>
+              </div>
+            </div>
+
+            <div class="swatch-group-title"><i class="fa-solid fa-font"></i> Texto</div>
+
             <div class="color-swatch" onclick="copyToken('--text-white', '#ffffff')">
               <div class="color-preview" style="background-color: #ffffff;"></div>
               <div class="color-info">
@@ -793,15 +789,87 @@
               </div>
             </div>
 
+            <div class="color-swatch" onclick="copyToken('--text-white-muted', 'rgba(255,255,255,0.78)')">
+              <div class="color-preview" style="background-color: rgba(255, 255, 255, 0.78);"></div>
+              <div class="color-info">
+                <div class="color-name">Branco Muted</div>
+                <span class="color-var">--text-white-muted</span>
+                <span class="color-hex">rgba(255,255,255,.78)</span>
+              </div>
+            </div>
+
+            <div class="color-swatch" onclick="copyToken('--text-white-dim', 'rgba(255,255,255,0.50)')">
+              <div class="color-preview" style="background-color: rgba(255, 255, 255, 0.5);"></div>
+              <div class="color-info">
+                <div class="color-name">Branco Dim</div>
+                <span class="color-var">--text-white-dim</span>
+                <span class="color-hex">rgba(255,255,255,.50)</span>
+              </div>
+            </div>
+
             <div class="color-swatch" onclick="copyToken('--text-dark', '#0a0a0c')">
               <div class="color-preview" style="background-color: #0a0a0c;"></div>
               <div class="color-info">
-                <div class="color-name">Texto Escuro em Superfícies Claras</div>
+                <div class="color-name">Texto Escuro em Light</div>
                 <span class="color-var">--text-dark</span>
                 <span class="color-hex">#0a0a0c</span>
               </div>
             </div>
 
+            <div class="color-swatch" onclick="copyToken('--text-dark-muted', '#5e5e68')">
+              <div class="color-preview" style="background-color: #5e5e68;"></div>
+              <div class="color-info">
+                <div class="color-name">Escuro Muted</div>
+                <span class="color-var">--text-dark-muted</span>
+                <span class="color-hex">#5e5e68</span>
+              </div>
+            </div>
+
+            <div class="color-swatch" onclick="copyToken('--text-dark-dim', '#8b8b98')">
+              <div class="color-preview" style="background-color: #8b8b98;"></div>
+              <div class="color-info">
+                <div class="color-name">Escuro Dim</div>
+                <span class="color-var">--text-dark-dim</span>
+                <span class="color-hex">#8b8b98</span>
+              </div>
+            </div>
+
+            <div class="swatch-group-title"><i class="fa-solid fa-minus"></i> Bordas</div>
+
+            <div class="color-swatch" onclick="copyToken('--border-subtle-dark', 'rgba(255,255,255,0.14)')">
+              <div class="color-preview" style="background-color: #101014; border-bottom: 3px solid rgba(255,255,255,0.14);"></div>
+              <div class="color-info">
+                <div class="color-name">Borda Sutil Dark</div>
+                <span class="color-var">--border-subtle-dark</span>
+                <span class="color-hex">rgba(255,255,255,.14)</span>
+              </div>
+            </div>
+
+            <div class="color-swatch" onclick="copyToken('--border-hairline', 'rgba(255,255,255,0.08)')">
+              <div class="color-preview" style="background-color: #101014; border-bottom: 3px solid rgba(255,255,255,0.08);"></div>
+              <div class="color-info">
+                <div class="color-name">Hairline (grids 2px)</div>
+                <span class="color-var">--border-hairline</span>
+                <span class="color-hex">rgba(255,255,255,.08)</span>
+              </div>
+            </div>
+
+            <div class="color-swatch" onclick="copyToken('--border-light', 'rgba(0,0,0,0.08)')">
+              <div class="color-preview" style="background-color: #f6f7f9; border-bottom: 3px solid rgba(0,0,0,0.08);"></div>
+              <div class="color-info">
+                <div class="color-name">Borda Light</div>
+                <span class="color-var">--border-light</span>
+                <span class="color-hex">rgba(0,0,0,.08)</span>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="ds-note">
+            <strong>Valores estruturais hardcoded (não tokenizados — usados uma única vez cada):</strong>
+            <code>#09090b</code> (card Revista) · <code>#08080a</code> (duo cards) · <code>#fafafc</code> (hover painel branco) ·
+            <code>#1a1a1e</code> (manifesto) · <code>#4a4a55</code> (rótulo KPI) · <code>#000000</code> (hero/footer) ·
+            <code>#ABC3E4</code> (glow dos logos no rail). Se um desses valores se repetir em novo código, promova a token.
           </div>
         </div>
       </section>
@@ -809,48 +877,334 @@
       <!-- TIPOGRAFIA CANÔNICA -->
       <section class="ds-section" id="tipografia">
         <div class="ds-section-header">
-          <h2 class="ds-section-title"><i class="fa-solid fa-font text-primary"></i> Tipografia Canônica &amp; Escala</h2>
+          <h2 class="ds-section-title"><i class="fa-solid fa-font"></i> Tipografia Canônica &amp; Escala</h2>
           <span class="ds-section-badge">Plus Jakarta Sans</span>
         </div>
         <div class="ds-card-box">
-          <table class="typo-spec-table">
+          <table class="spec-table">
             <thead>
               <tr>
-                <th>Elemento / Tag</th>
+                <th>Classe / Uso</th>
                 <th>Exemplo Visual</th>
                 <th>Especificações CSS</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td><strong>Display H1 (Hero)</strong></td>
-                <td><span class="typo-sample" style="font-size: 2.8rem; font-weight: 300; letter-spacing: 0.35em;">AMAZÔNIA</span></td>
-                <td class="typo-meta">clamp(3.2rem, 7vw, 6.5rem) • Peso 300 • tracking 0.38em</td>
+                <td><strong>.nav-logo / .footer-logo</strong><br><span class="spec-meta">Wordmark LENSES</span></td>
+                <td><span class="typo-sample" style="font-size: 1.25rem; font-weight: 800; letter-spacing: 0.25em;">LENSES</span></td>
+                <td class="spec-meta">1.25rem (footer 1.2rem) • Peso 800 • tracking 0.25em</td>
               </tr>
               <tr>
-                <td><strong>Subtitle T2 (Hero)</strong></td>
-                <td><span class="typo-sample" style="font-size: 1.1rem; font-weight: 400; letter-spacing: 0.55em; color: var(--text-white-muted);">EM OUTRO OLHAR</span></td>
-                <td class="typo-meta">1.2rem • Peso 400 • tracking 0.55em • uppercase</td>
+                <td><strong>.split-heading</strong><br><span class="spec-meta">SOBRE A LENSES / CONTATO</span></td>
+                <td><span class="typo-sample" style="font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase;">Sobre a Lenses</span></td>
+                <td class="spec-meta">clamp(2.4rem, 3.8vw, 3.6rem) • Peso 800 • 0.04em • uppercase • lh 1.08</td>
               </tr>
               <tr>
-                <td><strong>Heading H2 (Maciço)</strong></td>
-                <td><span class="typo-sample" style="font-size: 2rem; font-weight: 600; letter-spacing: 0.08em;">BREVE HISTÓRIA / CONTATO</span></td>
-                <td class="typo-meta">clamp(2rem, 3.2vw, 3.4rem) • Peso 600 • tracking 0.08em</td>
+                <td><strong>.services-header-op1-title</strong><br><span class="spec-meta">O QUE FAZEMOS</span></td>
+                <td><span class="typo-sample" style="font-size: clamp(1.4rem, 2.6vw, 2rem); font-weight: 800; letter-spacing: 0.03em; text-transform: uppercase;">O Que Fazemos</span></td>
+                <td class="spec-meta">clamp(2.2rem, 3.8vw, 4rem) • Peso 800 • 0.03em • lh 1</td>
               </tr>
               <tr>
-                <td><strong>Display H2 (Seções)</strong></td>
-                <td><span class="typo-sample" style="font-size: 2rem; font-weight: 300; letter-spacing: 0.2em;">ALGUNS PROJETOS</span></td>
-                <td class="typo-meta">clamp(2.4rem, 4vw, 4rem) • Peso 300 • tracking 0.2em</td>
+                <td><strong>.section-display-title</strong><br><span class="spec-meta">ALGUNS PROJETOS</span></td>
+                <td><span class="typo-sample" style="font-size: clamp(1.5rem, 2.8vw, 2.2rem); font-weight: 300; letter-spacing: 0.2em; text-transform: uppercase;">Alguns Projetos</span></td>
+                <td class="spec-meta">clamp(2.4rem, 4vw, 4rem) • Peso 300 • 0.2em • uppercase • lh 1.05</td>
               </tr>
               <tr>
-                <td><strong>Card H3 (Categorias)</strong></td>
-                <td><span class="typo-sample" style="font-size: 1.1rem; font-weight: 600; letter-spacing: 0.18em;">INSTITUCIONAL ✕</span></td>
-                <td class="typo-meta">1.15rem • Peso 600 • tracking 0.18em • uppercase</td>
+                <td><strong>.cta-massive-title</strong> <span class="spec-meta">(h1)</span><br><span class="spec-meta">Vamos criar algo incrível juntos?</span></td>
+                <td><span class="typo-sample" style="font-size: clamp(1.5rem, 2.6vw, 2.1rem); font-weight: 400; letter-spacing: -0.02em;">Vamos criar algo <span style="font-weight: 700;">incrível</span> juntos?</span></td>
+                <td class="spec-meta">clamp(2.6rem, 5vw, 5.2rem) • Peso 400 (span .highlight-inline = 700) • -0.02em • lh 1.1</td>
               </tr>
               <tr>
-                <td><strong>Body T2 (Manifesto)</strong></td>
-                <td><span class="typo-sample" style="font-size: 1rem; color: #a4a5b5; max-width: 500px; display: block;">Mais que uma produtora, somos um estúdio de ideias em movimento. Unimos criatividade, técnica e propósito.</span></td>
-                <td class="typo-meta">1.05rem • Peso 400 • line-height 1.7</td>
+                <td><strong>.pub-title</strong><br><span class="spec-meta">Revista Eletrônica / Informes</span></td>
+                <td><span class="typo-sample" style="font-size: clamp(1.3rem, 2.2vw, 1.7rem); font-weight: 500; letter-spacing: -0.01em;">Revista Eletrônica</span></td>
+                <td class="spec-meta">clamp(2rem, 3vw, 3.2rem) • Peso 500 • -0.01em</td>
+              </tr>
+              <tr>
+                <td><strong>.story-kpi-num</strong><br><span class="spec-meta">+150 / +80 / +8</span></td>
+                <td><span class="typo-sample" style="font-size: clamp(1.4rem, 2vw, 2rem); font-weight: 800; letter-spacing: -0.02em; color: var(--color-electric-blue);">+150</span></td>
+                <td class="spec-meta">clamp(2rem, 2.8vw, 3.2rem) • Peso 800 • -0.02em • <span style="color:#6688ff">var(--color-electric-blue)</span></td>
+              </tr>
+              <tr>
+                <td><strong>.contact-lead-title</strong><br><span class="spec-meta">Título do painel Contato</span></td>
+                <td><span class="typo-sample" style="font-size: clamp(1.1rem, 1.6vw, 1.4rem); font-weight: 700; line-height: 1.25;">Vamos conversar sobre o seu próximo projeto?</span></td>
+                <td class="spec-meta">clamp(1.4rem, 2.2vw, 2.2rem) • Peso 700 • lh 1.25</td>
+              </tr>
+              <tr>
+                <td><strong>.story-manifesto</strong><br><span class="spec-meta">Corpo editorial</span></td>
+                <td><span class="typo-sample" style="font-size: 1rem; font-weight: 500; line-height: 1.6; color: #b5b7c6; max-width: 520px;">Mais que uma produtora, somos um estúdio de ideias em movimento. Unimos criatividade, técnica e propósito.</span></td>
+                <td class="spec-meta">clamp(1.05rem, 1.22vw, 1.35rem) • Peso 500 • lh 1.6</td>
+              </tr>
+              <tr>
+                <td><strong>.service-name</strong> <span class="spec-meta">(.t2)</span><br><span class="spec-meta">Nomes dos serviços</span></td>
+                <td><span class="typo-sample" style="font-size: clamp(0.78rem, 0.88vw, 0.95rem); font-weight: 700; letter-spacing: 0.11em; text-transform: uppercase;">Produção Audiovisual</span></td>
+                <td class="spec-meta">clamp(0.78rem, 0.88vw, 0.95rem) • Peso 700 • 0.11em • uppercase • lh 1.38</td>
+              </tr>
+              <tr>
+                <td><strong>.compressed-text</strong><br><span class="spec-meta">Rótulo vertical do split</span></td>
+                <td><span class="typo-sample" style="font-size: 1rem; font-weight: 800; letter-spacing: 0.25em; text-transform: uppercase; writing-mode: vertical-rl; transform: rotate(180deg);">CONTATO</span></td>
+                <td class="spec-meta">1.15rem • Peso 800 • 0.25em • writing-mode: vertical-rl</td>
+              </tr>
+              <tr>
+                <td><strong>.story-kicker / .services-header-op1-kicker</strong><br><span class="spec-meta">Kickers azuis</span></td>
+                <td><span class="typo-sample" style="font-size: 0.8rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--color-electric-blue);">Sobre a Lenses</span></td>
+                <td class="spec-meta">0.8rem (op1: 0.76rem) • Peso 700/800 • 0.18–0.22em • uppercase • azul (ou branco no painel azul)</td>
+              </tr>
+              <tr>
+                <td><strong>.lnk</strong><br><span class="spec-meta">Links de navegação</span></td>
+                <td><span class="typo-sample" style="font-size: 0.82rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-white-muted);">Nossos Serviços</span></td>
+                <td class="spec-meta">0.82rem • Peso 600 • 0.12em • uppercase • <span class="spec-meta">(footer: peso 500, 0.04em, sem uppercase)</span></td>
+              </tr>
+              <tr>
+                <td><strong>.ticker-text</strong><br><span class="spec-meta">Faixa azul do header</span></td>
+                <td><span class="typo-sample" style="font-size: 0.85rem; font-weight: 500; letter-spacing: -0.01em; text-transform: lowercase; color: #000;">produção audiovisual</span></td>
+                <td class="spec-meta">0.85rem • Peso 500 • lowercase • <strong style="color:#000; background:#fff; padding:0 4px;">preto sobre azul</strong></td>
+              </tr>
+              <tr>
+                <td><strong>.caption-text / .highlight-title</strong> <span class="spec-meta">(.t2)</span></td>
+                <td><span class="typo-sample" style="font-size: 0.95rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;">Transformamos ideias em histórias.</span></td>
+                <td class="spec-meta">0.95rem • Peso 600/700 • 0.08–0.12em • uppercase</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="ds-note">
+            <strong>Regra de composição tipográfica (padrão do index):</strong> as classes <code>.h1 .h2 .t1 .t2 .t3 .section .hero .card2 .card4 .card6 .card8 .card9</code>
+            são <strong>marcadores semânticos sem CSS próprio</strong> — elas nunca definem tamanho/peso sozinhas. O estilo real sempre vem da
+            <strong>classe específica acoplada</strong> (ex.: <code>&lt;h2 class="h2 split-heading"&gt;</code> → quem renderiza é <code>.split-heading</code>).
+            Em novos componentes: use o marcador semântico para leitura do HTML e a classe específica para o estilo.
+            <br><br>
+            <strong>Fonte aplicada:</strong> apenas <code>--font-main</code> (Plus Jakarta Sans). O token <code>--font-serif</code> está
+            <strong>reservado e não aplicado</strong> no site atual.
+          </div>
+        </div>
+      </section>
+
+      <!-- LINGUAGEM DE SETAS -->
+      <section class="ds-section" id="icones">
+        <div class="ds-section-header">
+          <h2 class="ds-section-title"><i class="fa-solid fa-arrow-trend-up"></i> Linguagem de Setas &amp; Ícones</h2>
+          <span class="ds-section-badge">SVG inline, traço 2</span>
+        </div>
+        <div class="ds-card-box">
+          <p style="font-size: 0.95rem; color: #a5a7b8; margin-bottom: 4px;">
+            Todo o site usa <strong>SVG inline</strong> (sem biblioteca de ícones). O caminho canônico da seta é
+            <code>M7 7h10v10M7 17L17 7</code> (diag. 45° ↗), espelhado para ↖/↘ conforme o painel. Traço padrão <strong>2</strong> (2.35 nas variantes large).
+          </p>
+
+          <div class="icon-demo-row" style="margin-top: 18px;">
+            <div class="icon-demo-item">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7h10v10M7 17L17 7"/></svg>
+              <span class="label">.ico-arrow-small<br>14px</span>
+            </div>
+            <div class="icon-demo-item">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7h10v10M7 17L17 7"/></svg>
+              <span class="label">.ico-arrow<br>24px</span>
+            </div>
+            <div class="icon-demo-item blue">
+              <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.35"><path d="M7 7h10v10M7 17L17 7"/></svg>
+              <span class="label">.ico-arrow-large<br>52px (58 no card)</span>
+            </div>
+            <div class="icon-demo-item">
+              <svg width="54" height="54" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7h10v10M7 17L17 7"/></svg>
+              <span class="label">.ico-arrow-giant<br>54px (CTA)</span>
+            </div>
+            <div class="icon-demo-item blue">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 7h10v10M7 17L17 7"/></svg>
+              <span class="label">.ico-arrow-diag<br>40px (painel)</span>
+            </div>
+            <div class="icon-demo-item">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+              <span class="label">.ico-close<br>40px (pinned)</span>
+            </div>
+            <div class="icon-demo-item">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17l10-10M17 7H7v10"/></svg>
+              <span class="label">.ico-arrow-compressed<br>26px (↖)</span>
+            </div>
+            <div class="icon-demo-item">
+              <svg class="ico-chat" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+              <span class="label">.ico-chat<br>16px (CTA nav)</span>
+            </div>
+            <div class="icon-demo-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--text-white-muted);"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <span class="label">.ico-channel<br>20px (CTA final)</span>
+            </div>
+            <div class="icon-demo-item">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M18 13l-6 6-6-6"/></svg>
+              <span class="label">.hero-scroll-arrow<br>22px (bouce 2.8s)</span>
+            </div>
+          </div>
+
+          <div class="ds-note">
+            <strong>Comportamento:</strong> setas de card ganham <code>translate(x, y)</code> no hover; seta azul do header de serviços desloca
+            <code>translate(6px, -6px)</code>. No painel split, a seta vira ✕ quando fixado (<code>.is-pinned</code>).
+            Ícones de controle de vídeo usam traço <strong>1.3</strong> (estética fina/cinematográfica).
+          </div>
+        </div>
+      </section>
+
+      <!-- GRIDS & ESPAÇAMENTOS -->
+      <section class="ds-section" id="layout">
+        <div class="ds-section-header">
+          <h2 class="ds-section-title"><i class="fa-solid fa-table-cells-large"></i> Grids, Containers &amp; Espaçamentos</h2>
+          <span class="ds-section-badge">Full-bleed + hairline 2px</span>
+        </div>
+        <div class="ds-card-box">
+          <div class="grid-specs">
+            <div class="grid-spec-card">
+              <h4>Navbar — 3 zonas</h4>
+              <p><span class="spec-code">grid-template-columns: 1fr auto 1fr</span></p>
+              <p>Padding <span class="spec-code">16px 40px</span> (tablet 16px 24px · mobile 14px 20px). Gap dos links: <span class="spec-code">32px</span>.</p>
+            </div>
+            <div class="grid-spec-card">
+              <h4>Split Story — 3 colunas</h4>
+              <p><span class="spec-code">280px 1.4fr 1fr</span> · gap 40px</p>
+              <p>Tablet: <span class="spec-code">220px 1.2fr 0.9fr</span> · gap 24px → Mobile: 1 coluna.</p>
+            </div>
+            <div class="grid-spec-card">
+              <h4>Split Contato — 2 colunas</h4>
+              <p><span class="spec-code">1.3fr 1fr</span> · gap 48px</p>
+              <p>Tablet: <span class="spec-code">1.1fr 1fr</span> · gap 28px → Mobile: 1 coluna.</p>
+            </div>
+            <div class="grid-spec-card">
+              <h4>Publicações — 2 colunas</h4>
+              <p><span class="spec-code">1.5fr 1fr</span> · min-height 420px</p>
+              <p>≤1100px vira 1 coluna (Revista em cima, Informes embaixo).</p>
+            </div>
+            <div class="grid-spec-card">
+              <h4>Duo Cards</h4>
+              <p><span class="spec-code">1fr 1fr</span> · gap <strong>2px</strong></p>
+              <p>O <code>2px</code> é o padrão de "hairline physical" do site (divisórias entre blocos com fundo <code>--border-hairline</code>). ≤768px: 1 coluna.</p>
+            </div>
+            <div class="grid-spec-card">
+              <h4>Trilha de Serviços</h4>
+              <p><span class="spec-code">flex</span> · gap 2px · itens <span class="spec-code">flex: 1 1 0</span></p>
+              <p>Hover expande: ativo <code>2.35</code>, demais <code>0.68</code> (opacity .68). ≤1100px: grid 3 col → ≤768px: 1 col.</p>
+            </div>
+          </div>
+
+          <table class="spec-table" style="margin-top: 26px;">
+            <thead>
+              <tr>
+                <th>Escala de espaçamento</th>
+                <th>Valores observados no index</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Micro (gaps internos)</td><td class="spec-meta">2px (hairline grids) · 4–8px (kicker/rótulos) · 10–16px (linhas de conteúdo)</td></tr>
+              <tr><td>Bloco (padding de card)</td><td class="spec-meta">24px (info box) · 28–32px (channels/painel) · 36–40px (duo/service cards) · 40px 60px (painéis split)</td></tr>
+              <tr><td>Seção (padding externo)</td><td class="spec-meta">28px 36px (barra serviços) · 50px 60px (destaque/cards publicação) · 80px 60px (CTA final) · 30px 40px (footer)</td></tr>
+              <tr><td>Anchors</td><td class="spec-meta">section[id] → <code>scroll-margin-top: 85px</code> (compensa header fixo)</td></tr>
+              <tr><td>Raios</td><td class="spec-meta"><code>--radius-pill: 999px</code> (botões pílula) · 8px (boxes) · 4px (story img) · 16px (modal) · 50% (btn-top / dots)</td></tr>
+              <tr><td>Sombras</td><td class="spec-meta"><code>--shadow-card: 0 12px 36px rgba(0,0,0,.35)</code> · <code>--shadow-blue-glow: 0 0 35px rgba(0,60,251,.4)</code> · btn-pill <code>0 4px 18px rgba(0,60,251,.35)</code></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- BREAKPOINTS -->
+      <section class="ds-section" id="responsivo">
+        <div class="ds-section-header">
+          <h2 class="ds-section-title"><i class="fa-solid fa-mobile-screen"></i> Breakpoints &amp; Responsividade</h2>
+          <span class="ds-section-badge">3 faixas + hover:none</span>
+        </div>
+        <div class="ds-card-box">
+          <div class="grid-specs">
+            <div class="grid-spec-card">
+              <h4>Desktop &gt; 1100px</h4>
+              <p>Layout de referência: split 85/15 horizontal, trilha de serviços flex com hover, grids 2–3 colunas, navbar 3 zonas completa.</p>
+            </div>
+            <div class="grid-spec-card">
+              <h4>Tablet 769–1100px <span class="spec-meta">(queries: ≤1100 e 1080–769)</span></h4>
+              <p>Publicações/Sobre/Categorias em 1 coluna · serviços vira grid 3 col (sem efeito flex) · split reduz padding (36px) · nav comprime gaps (20px) e links para 0.78rem.</p>
+            </div>
+            <div class="grid-spec-card">
+              <h4>Mobile ≤768px + <code>(hover: none)</code></h4>
+              <p>Hamburger + drawer full-screen · split vira <strong>accordion vertical</strong> (painéis empilhados, sem rótulo comprimido) · duo/serviços em 1 coluna · footer empilhado · controles de vídeo do hero sempre visíveis (op. .75) · KPIs viram linha horizontal.</p>
+            </div>
+          </div>
+          <div class="ds-note">
+            <strong>Testar sempre:</strong> 1440 · 1280 · 1100 · 1024 · 768 · 414 · 375. O efeito hover dos serviços tem fallback de
+            <strong>toque</strong> (touchstart toca o vídeo e pausa os demais) via <code>assets/script.js</code>.
+          </div>
+        </div>
+      </section>
+
+      <!-- MOVIMENTO & ANIMAÇÃO -->
+      <section class="ds-section" id="animacao">
+        <div class="ds-section-header">
+          <h2 class="ds-section-title"><i class="fa-solid fa-wand-magic-sparkles"></i> Movimento &amp; Animação</h2>
+          <span class="ds-section-badge">Motion cinematográfico</span>
+        </div>
+        <div class="ds-card-box">
+          <table class="spec-table">
+            <thead>
+              <tr>
+                <th>Token / Padrão</th>
+                <th>Valor</th>
+                <th>Onde é usado</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>--ease-cinematic</code></td>
+                <td class="spec-meta">cubic-bezier(0.16, 1, 0.3, 1)</td>
+                <td class="spec-meta">Praticamente todas as transições do site (sai rápido, desacelera suave)</td>
+              </tr>
+              <tr>
+                <td><code>--ease-split</code></td>
+                <td class="spec-meta">cubic-bezier(0.22, 1, 0.36, 1)</td>
+                <td class="spec-meta">Accordion split e staggered entrance dos painéis</td>
+              </tr>
+              <tr>
+                <td><code>--transition-smooth</code></td>
+                <td class="spec-meta">all 0.3s var(--ease-cinematic)</td>
+                <td class="spec-meta">Botões, btn-top, links utilitários</td>
+              </tr>
+              <tr>
+                <td><code>--transition-fast</code></td>
+                <td class="spec-meta">all 0.2s ease</td>
+                <td class="spec-meta">Links &lt;a&gt;, canais de contato</td>
+              </tr>
+              <tr>
+                <td>Scroll reveal</td>
+                <td class="spec-meta">opacity 0→1 + translateY(26px) · 0.85s</td>
+                <td class="spec-meta"><code>.reveal-on-scroll</code> — IntersectionObserver, threshold 0.15, dispara 1 vez</td>
+              </tr>
+              <tr>
+                <td>Accordion split</td>
+                <td class="spec-meta">650ms · alturas 232 → 560/520px</td>
+                <td class="spec-meta">Wrapper + painéis (flex/width/padding coordenados)</td>
+              </tr>
+              <tr>
+                <td>Staggered entrance</td>
+                <td class="spec-meta">180ms / 230ms / 260ms / 280ms</td>
+                <td class="spec-meta">Colunas do painel História e do painel Contato</td>
+              </tr>
+              <tr>
+                <td>Tickers infinitos</td>
+                <td class="spec-meta">35s linear infinite · translateX(-50%)</td>
+                <td class="spec-meta">Faixa azul do header e rail de marcas (pausa no hover)</td>
+              </tr>
+              <tr>
+                <td>Header show/hide</td>
+                <td class="spec-meta">transform 0.4s · threshold 6px (rAF)</td>
+                <td class="spec-meta">Estados is-top / is-hidden / is-scrolled-up</td>
+              </tr>
+              <tr>
+                <td>Serviços flex hover</td>
+                <td class="spec-meta">flex 0.65s · filtro grayscale 0.6s</td>
+                <td class="spec-meta">Trilha: item ativo cresce, vizinhos encolhem</td>
+              </tr>
+              <tr>
+                <td>Bounce do scroll</td>
+                <td class="spec-meta">translateY(0→5px) · 2.8s ease-in-out</td>
+                <td class="spec-meta">Seta do hero</td>
+              </tr>
+              <tr>
+                <td><code>prefers-reduced-motion: reduce</code></td>
+                <td class="spec-meta">transition-duration: 0.01ms !important</td>
+                <td class="spec-meta">Acessibilidade — desliga animações do split/reveal</td>
               </tr>
             </tbody>
           </table>
@@ -858,239 +1212,1117 @@
       </section>
 
       <!-- ====================================================================
-           02 COMPONENTES ATÔMICOS
+           02 HEADER & NAVEGAÇÃO
            ==================================================================== -->
-      
+
+      <!-- TICKER & NAVBAR -->
+      <section class="ds-section" id="navbar">
+        <div class="ds-section-header">
+          <h2 class="ds-section-title"><i class="fa-solid fa-bars"></i> Ticker Azul &amp; Navbar</h2>
+          <span class="ds-section-badge">Header fixo · 3 estados</span>
+        </div>
+
+        <div class="ds-card-box flush">
+          <div class="live-block-head" style="border-radius: 12px 12px 0 0;">
+            <span>Demonstração ao vivo</span>
+            <span class="file">index.html → .top-blue-ticker + .nav</span>
+          </div>
+          <div style="overflow: hidden;">
+            <!-- Faixa ticker idêntica ao site -->
+            <div class="top-blue-ticker" aria-label="Destaques Lenses">
+              <div class="top-ticker-track">
+                <span class="ticker-text">amazônia em outro olhar</span>
+                <span class="ticker-text">produção audiovisual</span>
+                <span class="ticker-text">estratégia &amp; conteúdo</span>
+                <span class="ticker-text">cinematografia</span>
+                <span class="ticker-text">direção artística</span>
+                <span class="ticker-text">eventos &amp; festivais</span>
+                <span class="ticker-text">documentários</span>
+                <span class="ticker-text">amazônia em outro olhar</span>
+                <span class="ticker-text">produção audiovisual</span>
+                <span class="ticker-text">estratégia &amp; conteúdo</span>
+                <span class="ticker-text">cinematografia</span>
+                <span class="ticker-text">direção artística</span>
+                <span class="ticker-text">eventos &amp; festivais</span>
+                <span class="ticker-text">documentários</span>
+                <span class="ticker-text">amazônia em outro olhar</span>
+                <span class="ticker-text">produção audiovisual</span>
+                <span class="ticker-text">estratégia &amp; conteúdo</span>
+                <span class="ticker-text">cinematografia</span>
+                <span class="ticker-text">direção artística</span>
+                <span class="ticker-text">eventos &amp; festivais</span>
+                <span class="ticker-text">documentários</span>
+              </div>
+            </div>
+
+            <!-- Navbar idêntica ao site (sem position:fixed nesta demo) -->
+            <div class="nav">
+              <div class="nav-container">
+                <nav class="nav-actions nav-actions-left" aria-label="Menu Principal Esquerdo">
+                  <a href="javascript:void(0)" class="lnk">Início</a>
+                  <a href="javascript:void(0)" class="lnk">Sobre</a>
+                  <a href="javascript:void(0)" class="lnk">Portfólio / Cases</a>
+                </nav>
+
+                <a href="javascript:void(0)" class="nav-logo" aria-label="Lenses - Início"><img src="assets/logos/logo-lenses-white.webp" alt="LENSES" class="nav-logo-img"></a>
+
+                <nav class="nav-actions nav-actions-right" aria-label="Menu Principal Direito">
+                  <a href="javascript:void(0)" class="lnk">Nossos Serviços</a>
+                  <a href="javascript:void(0)" class="btn btn-pill">
+                    <svg class="ico-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+                    </svg>
+                    <span>Contate-nos</span>
+                  </a>
+                </nav>
+
+                <button class="nav-mobile-toggle" aria-label="Abrir menu" disabled style="opacity: .35; cursor: default;">
+                  <span></span>
+                  <span></span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ds-card-box">
+          <div class="ds-card-box-header">
+            <h4 class="ds-card-box-title">Estados dinâmicos de scroll</h4>
+          </div>
+          <table class="spec-table">
+            <thead>
+              <tr>
+                <th>Estado</th>
+                <th>Classe</th>
+                <th>Comportamento</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>No topo</strong></td>
+                <td class="spec-code">.site-header.is-top</td>
+                <td class="spec-meta">translateY(0) — ticker azul + navbar visíveis · threshold: 28px (altura do ticker)</td>
+              </tr>
+              <tr>
+                <td><strong>Scroll ↓</strong></td>
+                <td class="spec-code">.site-header.is-hidden</td>
+                <td class="spec-meta">translateY(-100%) — header inteiro some · ignora micro-movimentos &lt; 6px</td>
+              </tr>
+              <tr>
+                <td><strong>Scroll ↑ (abaixo do topo)</strong></td>
+                <td class="spec-code">.site-header.is-scrolled-up</td>
+                <td class="spec-meta">translateY(-28px) — só a navbar reaparece (ticker fica escondido acima)</td>
+              </tr>
+              <tr>
+                <td><strong>Base (sempre)</strong></td>
+                <td class="spec-code">.nav</td>
+                <td class="spec-meta">bg <code>var(--bg-nav)</code> · backdrop blur 16px · border-bottom hairline · shadow 0 4px 24px rgba(0,0,0,.45)</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="ds-note">
+            <strong>Estrutura:</strong> 3 zonas (<code>1fr auto 1fr</code>) — esquerda: Início · Sobre · Portfólio/Cases ·
+            centro: wordmark <strong>LENSES</strong> (1.25rem/800/0.25em) · direita: Nossos Serviços + pílula azul <strong>"Contate-nos"</strong>.
+            O ticker tem 7 frases repetidas 3× para loop perfeito de 50% e pausa no hover.
+          </div>
+        </div>
+      </section>
+
+      <!-- MENU MOBILE -->
+      <section class="ds-section" id="menu-mobile">
+        <div class="ds-section-header">
+          <h2 class="ds-section-title"><i class="fa-solid fa-mobile-screen-button"></i> Menu Mobile (Drawer)</h2>
+          <span class="ds-section-badge">≤768px</span>
+        </div>
+        <div class="ds-card-box">
+          <table class="spec-table">
+            <thead>
+              <tr><th>Elemento</th><th>Especificação</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><code>.nav-mobile-toggle</code></td><td class="spec-meta">2 traços de 24×2px · gap 6px · ativo forma ✕ (rotate ±45°, translateY 4px)</td></tr>
+              <tr><td><code>.nav-mobile-drawer</code></td><td class="spec-meta">full-screen sob a navbar · bg rgba(5,5,5,.98) · blur 20px · entra com translateY(-10px)→0 + opacity · padding 40px 24px</td></tr>
+              <tr><td><code>.mobile-lnk</code></td><td class="spec-meta">1.15rem · 600 · 0.05em · centralizados · gap 24px</td></tr>
+              <tr><td>CTA no drawer</td><td class="spec-meta">pílula azul <code>.btn</code> com 80% de largura (máx. 260px), margin-top 16px</td></tr>
+              <tr><td>Comportamento JS</td><td class="spec-meta">trava o scroll do body · fecha ao clicar em qualquer link · impede o hide-on-scroll do header enquanto aberto</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           03 SEÇÕES DA ONE PAGE
+           ==================================================================== -->
+
+      <!-- S1 HERO -->
+      <section class="ds-section" id="hero">
+        <div class="ds-section-header">
+          <h2 class="ds-section-title"><i class="fa-solid fa-film"></i> S1 · Hero — Vídeo Cinematográfico</h2>
+          <span class="ds-section-badge">100vh · sem texto (decisão de design)</span>
+        </div>
+
+        <div class="ds-card-box flush">
+          <div class="live-block-head" style="border-radius: 12px 12px 0 0;">
+            <span>Demonstração ao vivo <span class="state-pill">passe o mouse no canto inferior direito</span></span>
+            <span class="file">index.html → section#inicio</span>
+          </div>
+          <div style="overflow: hidden;">
+            <section class="hero hero-main">
+              <div class="hero-bg-media">
+                <div class="hero-video-wrapper">
+                  <video class="hero-video-element" autoplay muted loop playsinline preload="metadata">
+                    <source src="assets/S1%20TOPO%20HERO/TOPO-VIDEO-AMAZONIA.mp4" type="video/mp4">
+                  </video>
+                </div>
+                <div class="hero-bg-overlay"></div>
+              </div>
+
+              <div class="hero-content">
+                <div class="hero-scroll-wrapper">
+                  <a href="javascript:void(0)" class="hero-scroll-indicator" aria-label="Rolar para baixo">
+                    <svg class="hero-scroll-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M12 5v14M18 13l-6 6-6-6"/>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+
+              <div class="hero-video-controls-zone" aria-label="Controles do vídeo de destaque">
+                <div class="hero-video-controls">
+                  <button type="button" class="hero-ctrl-btn is-muted" aria-label="Ativar som" title="Ativar som">
+                    <svg class="ctrl-icon icon-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M11 5L6 9H2v6h4l5 4V5z"/>
+                      <line x1="23" y1="9" x2="17" y2="15"/>
+                      <line x1="17" y1="9" x2="23" y2="15"/>
+                    </svg>
+                    <svg class="ctrl-icon icon-unmuted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M11 5L6 9H2v6h4l5 4V5z"/>
+                      <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+                      <path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+                    </svg>
+                  </button>
+                  <button type="button" class="hero-ctrl-btn" aria-label="Tela cheia" title="Tela cheia">
+                    <svg class="ctrl-icon icon-fs-enter" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
+                    </svg>
+                    <svg class="ctrl-icon icon-fs-exit" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M4 14h6m0 0v6m0-6L3 21m17-7h-6m0 0v6m0-6l7 7M14 4v6m0 0h6m-6 0L21 3M4 10h6m0 0V4m0 6L3 3"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+
+        <div class="ds-card-box">
+          <table class="spec-table">
+            <thead><tr><th>Elemento</th><th>Especificação</th></tr></thead>
+            <tbody>
+              <tr><td>Container</td><td class="spec-meta">100vh · padding 100px 48px 40px · overflow hidden · fundo #000</td></tr>
+              <tr><td>Vídeo</td><td class="spec-meta"><code>autoplay muted loop playsinline</code> · object-fit cover · opacidade 100% · sem imagem de fundo duplicada</td></tr>
+              <tr><td>Overlay</td><td class="spec-meta">gradiente 180°: rgba(5,5,5,.45) → .05 (25%) → .05 (70%) → rgba(3,3,4,.5)</td></tr>
+              <tr><td>Seta de scroll</td><td class="spec-meta">centralizada no rodapé · bounce 5px/2.8s · hover branco pleno · rola suave até #marcas</td></tr>
+              <tr><td>Controles de vídeo</td><td class="spec-meta">zona invisível 220×120 no canto inferior direito (padding 0 44px 28px) · grupo revela no hover (opacity 0→1, translateY 6→0, .28s) · gap 22px · ícones 20px traço 1.3 · hover scale 1.12</td></tr>
+              <tr><td>Touch / mobile</td><td class="spec-meta">controles com opacidade .75 sempre visíveis · toque no hero os revela por 4s (auto-hide via JS)</td></tr>
+              <tr><td>Fullscreen nativo</td><td class="spec-meta">.hero-main:fullscreen → 100vw×100vh, padding 0, seta de scroll ocultada</td></tr>
+            </tbody>
+          </table>
+          <div class="ds-note">
+            <strong>Não adicionar texto sobre o hero.</strong> O hero é intencionalmente limpo (showreel puro, referência zion.art).
+            A hierarquia H1 da página pertence ao CTA final (<code>.cta-massive-title</code>).
+          </div>
+        </div>
+      </section>
+
+      <!-- S2 RAIL DE MARCAS -->
+      <section class="ds-section" id="rail-marcas">
+        <div class="ds-section-header">
+          <h2 class="ds-section-title"><i class="fa-solid fa-handshake"></i> S2 · Rail de Parceiros &amp; Logos Vetoriais</h2>
+          <span class="ds-section-badge">12 Logos SVG + Marquee</span>
+        </div>
+
+        <div class="ds-card-box flush">
+          <div class="live-block-head" style="border-radius: 12px 12px 0 0;">
+            <span>Demonstração ao vivo <span class="state-pill">hover pausa</span></span>
+            <span class="file">index.html → section#marcas</span>
+          </div>
+          <div class="rail">
+            <div class="rail-ticker">
+              <div class="rail-track">
+                <div class="rail-item"><img src="assets/logos/albras.svg" alt="ALBRAS"></div>
+                <div class="rail-item"><img src="assets/logos/ativo.svg" alt="ATIVO ENGENHARIA"></div>
+                <div class="rail-item"><img src="assets/logos/consag.svg" alt="CONSAG ENGENHARIA"></div>
+                <div class="rail-item"><img src="assets/logos/eurochem.svg" alt="EUROCHEM"></div>
+                <div class="rail-item"><img src="assets/logos/gaspara.svg" alt="GÁS-PARÁ"></div>
+                <div class="rail-item"><img src="assets/logos/hidrovias.svg" alt="Hidrovias do Brasil"></div>
+                <div class="rail-item"><img src="assets/logos/hydro.svg" alt="Hydro"></div>
+                <div class="rail-item"><img src="assets/logos/mitsubishi.svg" alt="MITSUBISHI POWER"></div>
+                <div class="rail-item"><img src="assets/logos/moveinfra.svg" alt="moveinfra"></div>
+                <div class="rail-item"><img src="assets/logos/newfortress.svg" alt="NewFortress energy"></div>
+                <div class="rail-item"><img src="assets/logos/ultracargo.svg" alt="ultracargo"></div>
+                <div class="rail-item"><img src="assets/logos/unitapajos.svg" alt="UNITAPAJÓS"></div>
+
+                <div class="rail-item"><img src="assets/logos/albras.svg" alt="ALBRAS"></div>
+                <div class="rail-item"><img src="assets/logos/ativo.svg" alt="ATIVO ENGENHARIA"></div>
+                <div class="rail-item"><img src="assets/logos/consag.svg" alt="CONSAG ENGENHARIA"></div>
+                <div class="rail-item"><img src="assets/logos/eurochem.svg" alt="EUROCHEM"></div>
+                <div class="rail-item"><img src="assets/logos/gaspara.svg" alt="GÁS-PARÁ"></div>
+                <div class="rail-item"><img src="assets/logos/hidrovias.svg" alt="Hidrovias do Brasil"></div>
+                <div class="rail-item"><img src="assets/logos/hydro.svg" alt="Hydro"></div>
+                <div class="rail-item"><img src="assets/logos/mitsubishi.svg" alt="MITSUBISHI POWER"></div>
+                <div class="rail-item"><img src="assets/logos/moveinfra.svg" alt="moveinfra"></div>
+                <div class="rail-item"><img src="assets/logos/newfortress.svg" alt="NewFortress energy"></div>
+                <div class="rail-item"><img src="assets/logos/ultracargo.svg" alt="ultracargo"></div>
+                <div class="rail-item"><img src="assets/logos/unitapajos.svg" alt="UNITAPAJÓS"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ds-card-box">
+          <table class="spec-table">
+            <thead><tr><th>Propriedade</th><th>Valor</th></tr></thead>
+            <tbody>
+              <tr><td>Fundo</td><td class="spec-meta"><code>var(--bg-rail)</code> #030304 · border-top/bottom hairline · padding 24px 0</td></tr>
+              <tr><td>Logos</td><td class="spec-meta">SVG branco sólido · height 28px · max-width 190px · opacity .95 · container 40px</td></tr>
+              <tr><td>Marquee</td><td class="spec-meta">gap 70px · 35s linear infinite · lista duplicada 2× (loop de 50%) · pausa no hover</td></tr>
+              <tr><td>Fades laterais</td><td class="spec-meta">120px de gradiente nas bordas (esquerda/direita) sobre a cor do rail</td></tr>
+              <tr><td>Hover</td><td class="spec-meta">scale 1.08 + glow drop-shadow rgba(171,195,228,.5) · transição .3s</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- S3 SPLIT INTERATIVO -->
+      <section class="ds-section" id="cards-split">
+        <div class="ds-section-header">
+          <h2 class="ds-section-title"><i class="fa-solid fa-table-columns"></i> S3 · Split Interativo (Branco vs Azul)</h2>
+          <span class="ds-section-badge">Accordion 50/50 → 85/15</span>
+        </div>
+
+        <!-- ESTADO IDLE -->
+        <div class="ds-card-box flush">
+          <div class="live-block-head" style="border-radius: 12px 12px 0 0;">
+            <span>Estado idle <span class="state-pill">data-state="idle"</span></span>
+            <span class="file">index.html → #splitInteractive (50% / 50%, altura 232px)</span>
+          </div>
+          <div class="split-interactive-wrapper" data-state="idle">
+            <div class="split-panel split-panel-story" tabindex="0" role="button" aria-expanded="false">
+              <div class="panel-header">
+                <div class="panel-title-wrap">
+                  <h2 class="h2 split-heading">SOBRE A LENSES</h2>
+                </div>
+                <div class="panel-indicator" aria-hidden="true">
+                  <svg class="ico-arrow-diag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 7h10v10M7 17L17 7"/></svg>
+                  <svg class="ico-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+                </div>
+              </div>
+              <div class="panel-compressed-label" aria-hidden="true">
+                <span class="compressed-text">SOBRE A LENSES</span>
+                <svg class="ico-arrow-compressed" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 7h10v10M7 17L17 7"/></svg>
+              </div>
+            </div>
+
+            <div class="split-panel split-panel-contact" tabindex="0" role="button" aria-expanded="false">
+              <div class="panel-header">
+                <div class="panel-indicator indicator-left" aria-hidden="true">
+                  <svg class="ico-arrow-diag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17l10-10M17 7H7v10"/></svg>
+                  <svg class="ico-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+                </div>
+                <div class="panel-title-wrap">
+                  <h2 class="h2 split-heading">CONTATO</h2>
+                </div>
+              </div>
+              <div class="panel-compressed-label" aria-hidden="true">
+                <span class="compressed-text">CONTATO</span>
+                <svg class="ico-arrow-compressed" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17l10-10M17 7H7v10"/></svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ESTADO STORY -->
+        <div class="ds-card-box flush">
+          <div class="live-block-head" style="border-radius: 12px 12px 0 0;">
+            <span>Estado "story" expandido <span class="state-pill">85% / 15% · 560px</span></span>
+            <span class="file">painel branco → manifesto + KPIs</span>
+          </div>
+          <div class="split-interactive-wrapper" data-state="story">
+            <div class="split-panel split-panel-story is-active is-pinned" tabindex="0" role="button" aria-expanded="true">
+              <div class="panel-header">
+                <div class="panel-title-wrap">
+                  <h2 class="h2 split-heading">SOBRE A LENSES</h2>
+                </div>
+                <div class="panel-indicator" aria-hidden="true">
+                  <svg class="ico-arrow-diag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 7h10v10M7 17L17 7"/></svg>
+                  <svg class="ico-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+                </div>
+              </div>
+
+              <div class="panel-body panel-body-story">
+                <div class="story-content-grid">
+                  <div class="story-media-col">
+                    <div class="story-img-card">
+                      <img src="assets/about-back.png" alt="Estúdio LENSES" class="story-img">
+                      <div class="story-img-tag">LENSES</div>
+                    </div>
+                  </div>
+                  <div class="story-text-col">
+                    <span class="story-kicker">SOBRE A LENSES</span>
+                    <p class="story-manifesto">
+                      Mais que uma produtora, somos um estúdio de ideias em movimento. Unimos criatividade, técnica e propósito para transformar histórias em experiências que geram impacto real.
+                    </p>
+                  </div>
+                  <div class="story-kpis-col">
+                    <div class="story-kpi-item">
+                      <span class="story-kpi-num">+150</span>
+                      <span class="story-kpi-lbl">PROJETOS REALIZADOS</span>
+                    </div>
+                    <div class="story-kpi-item">
+                      <span class="story-kpi-num">+80</span>
+                      <span class="story-kpi-lbl">MARCAS ATENDIDAS</span>
+                    </div>
+                    <div class="story-kpi-item">
+                      <span class="story-kpi-num">+8</span>
+                      <span class="story-kpi-lbl">ANOS DE EXPERIÊNCIA</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="panel-compressed-label" aria-hidden="true">
+                <span class="compressed-text">SOBRE A LENSES</span>
+                <svg class="ico-arrow-compressed" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 7h10v10M7 17L17 7"/></svg>
+              </div>
+            </div>
+
+            <div class="split-panel split-panel-contact" tabindex="0" role="button" aria-expanded="false">
+              <div class="panel-header">
+                <div class="panel-indicator indicator-left" aria-hidden="true">
+                  <svg class="ico-arrow-diag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17l10-10M17 7H7v10"/></svg>
+                  <svg class="ico-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+                </div>
+                <div class="panel-title-wrap">
+                  <h2 class="h2 split-heading">CONTATO</h2>
+                </div>
+              </div>
+              <div class="panel-compressed-label" aria-hidden="true">
+                <span class="compressed-text">CONTATO</span>
+                <svg class="ico-arrow-compressed" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17l10-10M17 7H7v10"/></svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ESTADO CONTACT -->
+        <div class="ds-card-box flush">
+          <div class="live-block-head" style="border-radius: 12px 12px 0 0;">
+            <span>Estado "contact" expandido <span class="state-pill">15% / 85% · 520px</span></span>
+            <span class="file">painel azul → CTA + canais oficiais</span>
+          </div>
+          <div class="split-interactive-wrapper" data-state="contact">
+            <div class="split-panel split-panel-story" tabindex="0" role="button" aria-expanded="false">
+              <div class="panel-header">
+                <div class="panel-title-wrap">
+                  <h2 class="h2 split-heading">SOBRE A LENSES</h2>
+                </div>
+                <div class="panel-indicator" aria-hidden="true">
+                  <svg class="ico-arrow-diag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 7h10v10M7 17L17 7"/></svg>
+                  <svg class="ico-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+                </div>
+              </div>
+              <div class="panel-compressed-label" aria-hidden="true">
+                <span class="compressed-text">SOBRE A LENSES</span>
+                <svg class="ico-arrow-compressed" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 7h10v10M7 17L17 7"/></svg>
+              </div>
+            </div>
+
+            <div class="split-panel split-panel-contact is-active is-pinned" tabindex="0" role="button" aria-expanded="true">
+              <div class="panel-header">
+                <div class="panel-indicator indicator-left" aria-hidden="true">
+                  <svg class="ico-arrow-diag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17l10-10M17 7H7v10"/></svg>
+                  <svg class="ico-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+                </div>
+                <div class="panel-title-wrap">
+                  <h2 class="h2 split-heading">CONTATO</h2>
+                </div>
+              </div>
+
+              <div class="panel-body panel-body-contact">
+                <div class="contact-content-grid">
+                  <div class="contact-intro-col">
+                    <span class="contact-kicker">FALE COM A NOSSA EQUIPE</span>
+                    <h3 class="contact-lead-title">Vamos conversar sobre o seu próximo projeto?</h3>
+                    <p class="contact-lead-desc">
+                      Transformamos ideias e narrativas em filmes, coberturas e experiências audiovisuais de alto impacto.
+                    </p>
+                    <a href="javascript:void(0)" class="btn btn-contact-direct">
+                      <span>ENTRAR EM CONTATO</span>
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7h10v10M7 17L17 7"/></svg>
+                    </a>
+                  </div>
+
+                  <div class="contact-channels-col">
+                    <div class="contact-channel-block">
+                      <span class="contact-channel-type">WHATSAPP / TELEFONE</span>
+                      <a href="javascript:void(0)" class="contact-channel-link">
+                        <svg class="ico-channel-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+                        <span>+55 91 99200-0000</span>
+                      </a>
+                    </div>
+                    <div class="contact-channel-block">
+                      <span class="contact-channel-type">E-MAIL INSTITUCIONAL</span>
+                      <a href="javascript:void(0)" class="contact-channel-link">
+                        <svg class="ico-channel-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        <span>contato@lenses.com.br</span>
+                      </a>
+                    </div>
+                    <div class="contact-channel-block">
+                      <span class="contact-channel-type">INSTAGRAM OFICIAL</span>
+                      <a href="javascript:void(0)" class="contact-channel-link">
+                        <svg class="ico-channel-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                        <span>@lensesagencia</span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="panel-compressed-label" aria-hidden="true">
+                <span class="compressed-text">CONTATO</span>
+                <svg class="ico-arrow-compressed" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17l10-10M17 7H7v10"/></svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ds-card-box">
+          <table class="spec-table">
+            <thead><tr><th>Propriedade</th><th>Valor</th></tr></thead>
+            <tbody>
+              <tr><td>Painel Branco (História)</td><td class="spec-meta">bg <code>--bg-surface-light</code> · texto <code>--text-dark</code> · hover #fafafc · heading vira azul no hover</td></tr>
+              <tr><td>Painel Azul (Contato)</td><td class="spec-meta">bg <code>--color-electric-blue</code> · hover <code>--color-blue-hover</code></td></tr>
+              <tr><td>Alturas</td><td class="spec-meta">idle 232px → story 560px → contact 520px · transição 650ms <code>--ease-split</code></td></tr>
+              <tr><td>Hover idle</td><td class="spec-meta">header desloca ±10px horizontalmente · heading/seta mudam de cor (feedback sutil)</td></tr>
+              <tr><td>Fixado</td><td class="spec-meta">indicador ↗ vira ✕ (rotate/scale .35s) · painel comprimido mostra rótulo vertical 1.15rem/800/0.25em</td></tr>
+              <tr><td>Conteúdo</td><td class="spec-meta">História: img 290px (r4, tag "LENSES") + manifesto + KPIs azuis · Contato: CTA branco pílula + box de canais rgba(0,0,0,.18)</td></tr>
+              <tr><td>Acessibilidade</td><td class="spec-meta">role=button · aria-expanded · Enter/Espace alternam · Escape volta ao idle · focus-visible: outline 2px azul</td></tr>
+              <tr><td>Mobile ≤768px</td><td class="spec-meta">accordion vertical empilhado (painéis full-width, min 90px fechados) · sem rótulo comprimido</td></tr>
+            </tbody>
+          </table>
+          <div class="ds-note">
+            <strong>Nota de implementação:</strong> no site real a troca de estados é feita pelo <code>assets/script.js</code>
+            (atributo <code>data-state</code> no wrapper). Nestas demonstrações os estados estão fixos para visualização.
+          </div>
+        </div>
+      </section>
+
+      <!-- S4 TRILHA DE SERVIÇOS -->
+      <section class="ds-section" id="cards-servicos">
+        <div class="ds-section-header">
+          <h2 class="ds-section-title"><i class="fa-solid fa-cubes"></i> S4 · Trilha de Serviços + Barra Editorial</h2>
+          <span class="ds-section-badge">grayscale → cor + expansão flex</span>
+        </div>
+
+        <div class="ds-card-box flush">
+          <div class="live-block-head" style="border-radius: 12px 12px 0 0;">
+            <span>Demonstração ao vivo <span class="state-pill">hover nos cards</span></span>
+            <span class="file">index.html → section#servicos (Opção 1)</span>
+          </div>
+          <div class="services-container" style="height: clamp(500px, 65vh, 700px);">
+            <div class="services-track">
+              <div class="card6 service-item">
+                <video class="service-media-asset" muted loop playsinline preload="metadata" poster="assets/servicos/serv-producao-audiovisual-poster.jpg">
+                  <source src="assets/servicos/serv-producao-audiovisual.mp4" type="video/mp4">
+                </video>
+                <p class="t2 service-name">PRODUÇÃO AUDIOVISUAL</p>
+              </div>
+
+              <div class="card6 service-item">
+                <img src="assets/servicos/serv-filmes-publicitarios.jpg" alt="Filmes Publicitários" class="service-media-asset">
+                <p class="t2 service-name">FILMES PUBLICITÁRIOS</p>
+              </div>
+
+              <div class="card6 service-item">
+                <video class="service-media-asset" muted loop playsinline preload="metadata" poster="assets/servicos/serv-cobertura-eventos-poster.jpg">
+                  <source src="assets/servicos/serv-cobertura-eventos.mp4" type="video/mp4">
+                </video>
+                <p class="t2 service-name">COBERTURA DE EVENTOS</p>
+              </div>
+
+              <div class="card6 service-item">
+                <img src="assets/servicos/serv-mapeamento-cenarios.jpg" alt="Mapeamento de Cenários" class="service-media-asset">
+                <p class="t2 service-name">MAPEAMENTO DE CENÁRIOS</p>
+              </div>
+
+              <div class="card6 service-item">
+                <video class="service-media-asset" muted loop playsinline preload="metadata" poster="assets/servicos/serv-propaganda-esg-poster.jpg">
+                  <source src="assets/servicos/serv-propaganda-esg.mp4" type="video/mp4">
+                </video>
+                <p class="t2 service-name">PROPAGANDA E ESG</p>
+              </div>
+
+              <div class="card6 service-item">
+                <img src="assets/servicos/serv-planejamento-estrategico.jpg" alt="Planejamento Estratégico de Comunicação" class="service-media-asset">
+                <p class="t2 service-name">PLANEJAMENTO ESTRATÉGICO DE COMUNICAÇÃO</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="services-header-op1">
+            <div class="services-header-op1-left">
+              <span class="services-header-op1-kicker">NOSSAS FRENTES DE ATUAÇÃO</span>
+              <h2 class="h2 services-header-op1-title">O QUE FAZEMOS</h2>
+            </div>
+            <div class="services-header-op1-right">
+              <p class="services-header-op1-desc">Soluções completas em comunicação estratégica, produção audiovisual e impacto visual.</p>
+              <span class="ico-arrow-large">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7h10v10M7 17L17 7"/></svg>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="ds-card-box">
+          <table class="spec-table">
+            <thead><tr><th>Propriedade</th><th>Valor</th></tr></thead>
+            <tbody>
+              <tr><td>Altura da trilha</td><td class="spec-meta"><strong>Inline no index:</strong> <code>style="height: clamp(600px, 75vh, 800px)"</code> (fallback do CSS: clamp(680px, 80vh, 880px)) · gap 2px · fundo hairline</td></tr>
+              <tr><td>Imagem padrão</td><td class="spec-meta"><code>filter: grayscale(100%) brightness(.85) contrast(1.08)</code> · overlay gradiente até rgba(0,0,0,.94)</td></tr>
+              <tr><td>Hover</td><td class="spec-meta">grayscale 0 + brightness 1 + scale 1.05 (.6–.7s) · card ativo <code>flex: 2.35</code>, vizinhos <code>0.68</code> opacity .68 (.65s)</td></tr>
+              <tr><td>Vídeos</td><td class="spec-meta">3 dos 6 cards têm vídeo: toca no hover (desktop) / toque (mobile, pausando os demais) via <code>script.js</code> · poster JPG sempre presente</td></tr>
+              <tr><td>Nome do serviço</td><td class="spec-meta">bottom-aligned · padding 36px 20px · sobe 4px no hover · <code>word-break: break-word</code></td></tr>
+              <tr><td>Barra editorial</td><td class="spec-meta">bg <code>--bg-surface-dark</code> · border-top 2px hairline · padding 28px 36px · kicker azul 0.76rem/800 + título + descrição 260px + seta 52px</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- S5 DESTAQUE / FESTIVAL -->
+      <section class="ds-section" id="destaque">
+        <div class="ds-section-header">
+          <h2 class="ds-section-title"><i class="fa-solid fa-star"></i> S5 · Destaque de Projeto (Festival do Futuro)</h2>
+          <span class="ds-section-badge">Full-bleed + info box</span>
+        </div>
+
+        <div class="ds-card-box flush">
+          <div class="live-block-head" style="border-radius: 12px 12px 0 0;">
+            <span>Demonstração ao vivo</span>
+            <span class="file">index.html → section#projetos</span>
+          </div>
+          <section class="section section-highlight-project" style="margin: 0;">
+            <div class="highlight-project-bg">
+              <img src="assets/festival-futuro.png" alt="Festival do Futuro Brasília" class="highlight-img-asset">
+              <div class="highlight-project-overlay"></div>
+            </div>
+
+            <div class="highlight-project-inner">
+              <div class="highlight-info-box">
+                <p class="t2 highlight-title">FESTIVAL DO FUTURO<br>BRASÍLIA (DISTRITO FEDERAL)</p>
+                <p class="t3 highlight-desc">Festival de arte e cultura gratuito para público de 300 mil pessoas.</p>
+              </div>
+
+              <div class="highlight-action-title">
+                <span class="ico-arrow-large">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7h10v10M7 17L17 7"/></svg>
+                </span>
+                <h2 class="h2 section-display-title">ALGUNS<br>PROJETOS</h2>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <div class="ds-card-box">
+          <table class="spec-table">
+            <thead><tr><th>Elemento</th><th>Especificação</th></tr></thead>
+            <tbody>
+              <tr><td>Seção</td><td class="spec-meta">min-height 580px · padding 50px 60px · conteúdo alinhado ao rodapé (flex-end)</td></tr>
+              <tr><td>Overlay</td><td class="spec-meta">gradiente 0°: rgba(0,0,0,.9) → .3 (60%) → .7 (100%)</td></tr>
+              <tr><td>Info box</td><td class="spec-meta">max-width 440px · bg rgba(0,0,0,.65) · backdrop blur 10px · padding 24px · <strong>border-left 2px azul elétrico</strong></td></tr>
+              <tr><td>Título display</td><td class="spec-meta">.section-display-title → clamp(2.4rem,4vw,4rem) / 300 / 0.2em / uppercase, alinhado à direita</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- S6 DUO CARDS -->
+      <section class="ds-section" id="duo">
+        <div class="ds-section-header">
+          <h2 class="ds-section-title"><i class="fa-solid fa-images"></i> S6 · Duo Cards Editoriais</h2>
+          <span class="ds-section-badge">2 colunas · gap 2px</span>
+        </div>
+
+        <div class="ds-card-box flush">
+          <div class="live-block-head" style="border-radius: 12px 12px 0 0;">
+            <span>Demonstração ao vivo <span class="state-pill">hover dá zoom</span></span>
+            <span class="file">index.html → section.section-duo-projects</span>
+          </div>
+          <div class="duo-grid">
+            <article class="card4 duo-card" style="height: 380px;">
+              <div class="card4-media">
+                <img src="assets/duo-amazonia.png" alt="A Amazônia não é apenas o que vemos" class="duo-img-asset">
+                <div class="card4-overlay"></div>
+              </div>
+              <div class="card4-caption">
+                <p class="t2 caption-text">A AMAZÔNIA NÃO É APENAS O QUE VEMOS.</p>
+                <span class="ico-arrow">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7h10v10M7 17L17 7"/></svg>
+                </span>
+              </div>
+            </article>
+
+            <article class="card4 duo-card" style="height: 380px;">
+              <div class="card4-media">
+                <img src="assets/duo-historias.png" alt="Transformamos ideias em histórias" class="duo-img-asset">
+                <div class="card4-overlay"></div>
+              </div>
+              <div class="card4-caption">
+                <p class="t2 caption-text">TRANSFORMAMOS IDEIAS EM HISTÓRIAS.</p>
+                <span class="ico-arrow">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7h10v10M7 17L17 7"/></svg>
+                </span>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div class="ds-card-box">
+          <table class="spec-table">
+            <thead><tr><th>Elemento</th><th>Especificação</th></tr></thead>
+            <tbody>
+              <tr><td>Card</td><td class="spec-meta">height 420px (no site) · padding 36px 40px · bg #08080a · bottom-aligned · overflow hidden</td></tr>
+              <tr><td>Overlay</td><td class="spec-meta">gradiente 180° rgba(0,0,0,.1) → rgba(0,0,0,.85)</td></tr>
+              <tr><td>Hover</td><td class="spec-meta">imagem scale 1.04 (.6s) · seta desloca (translate 4,4) e vira azul</td></tr>
+              <tr><td>Legenda</td><td class="spec-meta">.caption-text — 0.95rem/600/0.12em/uppercase · max-width 80%</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- S7 REVISTA & INFORMES -->
+      <section class="ds-section" id="cards-editorial">
+        <div class="ds-section-header">
+          <h2 class="ds-section-title"><i class="fa-solid fa-book-open"></i> S7 · Publicações — Revista &amp; Informes</h2>
+          <span class="ds-section-badge">Conteúdo obrigatório ✔</span>
+        </div>
+
+        <div class="ds-card-box flush">
+          <div class="live-block-head" style="border-radius: 12px 12px 0 0;">
+            <span>Demonstração ao vivo</span>
+            <span class="file">index.html → section#revista + #informes</span>
+          </div>
+          <div class="publications-grid">
+            <div class="card8 pub-card-dark">
+              <div class="pub-header">
+                <span class="t3 pub-tag">CONFIRA NOSSA</span>
+                <div class="pub-title-row">
+                  <h2 class="h2 pub-title">Revista Eletrônica</h2>
+                  <span class="ico-arrow">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7h10v10M7 17L17 7"/></svg>
+                  </span>
+                </div>
+              </div>
+
+              <div class="pub-mockup-area">
+                <img src="assets/magazine-mockup.png" alt="Edições da Revista Eletrônica LENSES" class="pub-mockup-img">
+              </div>
+
+              <div class="pub-footer">
+                <p class="t2 pub-desc">Conteúdos, bastidores, projetos e ideias que nos movem.</p>
+                <a href="javascript:void(0)" class="lnk pub-link">
+                  <span>Ver edições</span>
+                  <svg class="ico-arrow-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7h10v10M7 17L17 7"/></svg>
+                </a>
+              </div>
+            </div>
+
+            <div class="card9 pub-card-blue">
+              <div class="pub-header">
+                <div class="pub-title-row">
+                  <h2 class="h2 pub-title">Informes trimestrais</h2>
+                  <span class="ico-arrow">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7h10v10M7 17L17 7"/></svg>
+                  </span>
+                </div>
+              </div>
+
+              <div class="pub-mockup-area">
+                <img src="assets/reports-mockup.png" alt="Informes Trimestrais LENSES" class="pub-mockup-img">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ds-card-box">
+          <table class="spec-table">
+            <thead><tr><th>Elemento</th><th>Especificação</th></tr></thead>
+            <tbody>
+              <tr><td>Grid</td><td class="spec-meta">1.5fr / 1fr · min-height 420px · ≤1100px empilha</td></tr>
+              <tr><td>Card Revista (escuro)</td><td class="spec-meta">bg #09090b · padding 50px 60px · border-right hairline · tag 0.8rem/600/0.2em dim</td></tr>
+              <tr><td>Card Informes (azul)</td><td class="spec-meta">bg <code>--color-electric-blue</code> · padding 50px 60px · texto branco</td></tr>
+              <tr><td>Títulos</td><td class="spec-meta">.pub-title → clamp(2rem, 3vw, 3.2rem) / 500 / -0.01em (case original: "Revista Eletrônica" e "Informes trimestrais" em sentence case)</td></tr>
+              <tr><td>Mockups</td><td class="spec-meta">max-height 220px · object-fit contain · drop-shadow 0 14px 28px rgba(0,0,0,.45)</td></tr>
+              <tr><td>Link "Ver edições"</td><td class="spec-meta">.lnk.pub-link → 700 · border-bottom 1px rgba(255,255,255,.4) · padding-bottom 4px · seta 14px</td></tr>
+            </tbody>
+          </table>
+          <div class="ds-note">
+            <strong>Conteúdo obrigatório:</strong> "CONFIRA NOSSA Revista Eletrônica" e "Informes trimestrais" devem permanecer em toda nova
+            versão da one page (âncoras <code>#revista</code> e <code>#informes</code>, também presentes no footer).
+          </div>
+        </div>
+      </section>
+
+      <!-- S8 CTA CONTATO -->
+      <section class="ds-section" id="cta-contato">
+        <div class="ds-section-header">
+          <h2 class="ds-section-title"><i class="fa-solid fa-paper-plane"></i> S8 · Banner Final CTA Contato</h2>
+          <span class="ds-section-badge">Único H1 da página</span>
+        </div>
+
+        <div class="ds-card-box flush">
+          <div class="live-block-head" style="border-radius: 12px 12px 0 0;">
+            <span>Demonstração ao vivo</span>
+            <span class="file">index.html → section#contato</span>
+          </div>
+          <section class="section section-cta-contact" style="margin: 0;">
+            <div class="cta-contact-bg">
+              <img src="assets/contact-bg.png" alt="Estúdio Audiovisual LENSES" class="cta-img-asset">
+              <div class="cta-contact-overlay"></div>
+            </div>
+
+            <div class="cta-contact-inner">
+              <div class="cta-contact-left">
+                <h1 class="h1 cta-massive-title">Vamos criar<br>algo <span class="highlight-inline">incrível</span> juntos?</h1>
+                <span class="ico-arrow-giant">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7h10v10M7 17L17 7"/></svg>
+                </span>
+              </div>
+
+              <div class="card2 cta-contact-right">
+                <p class="t2 contact-lead">Fale com a nossa equipe</p>
+                <div class="contact-channels">
+                  <a href="javascript:void(0)" class="lnk contact-channel-item">
+                    <svg class="ico-channel" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+                    <span>+55 91 99200-0000</span>
+                  </a>
+                  <a href="javascript:void(0)" class="lnk contact-channel-item">
+                    <svg class="ico-channel" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    <span>contato@lenses.com.br</span>
+                  </a>
+                  <a href="javascript:void(0)" class="lnk contact-channel-item">
+                    <svg class="ico-channel" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                    <span>@lensesagencia</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <div class="ds-card-box">
+          <table class="spec-table">
+            <thead><tr><th>Elemento</th><th>Especificação</th></tr></thead>
+            <tbody>
+              <tr><td>Seção</td><td class="spec-meta">min-height 480px · padding 80px 60px · radial overlay rgba(0,0,0,.7)→.95</td></tr>
+              <tr><td>H1</td><td class="spec-meta">.cta-massive-title → clamp(2.6rem, 5vw, 5.2rem) / 400 · "incrível" em <strong>700</strong> (.highlight-inline) · alinhado à esquerda com seta giant 54px</td></tr>
+              <tr><td>Card de canais</td><td class="spec-meta">min-width 320px · linhas com border-bottom hairline · hover: azul + translateX(4px) + sublinhado</td></tr>
+              <tr><td>Mobile</td><td class="spec-meta">empilha (título em cima, canais embaixo), alinhados à esquerda</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- S9 PRÉ-FOOTER -->
+      <section class="ds-section" id="prefooter">
+        <div class="ds-section-header">
+          <h2 class="ds-section-title"><i class="fa-solid fa-photo-film"></i> S9 · Pré-Footer</h2>
+          <span class="ds-section-badge">GIF full-bleed + kicker editorial + wordmark</span>
+        </div>
+
+        <div class="ds-card-box flush">
+          <div class="live-block-head" style="border-radius: 12px 12px 0 0;">
+            <span>Demonstração ao vivo</span>
+            <span class="file">index.html → .section-prefooter</span>
+          </div>
+          <section class="section-prefooter" aria-label="Lenses - Amazônia em outro olhar" style="margin:0;">
+            <div class="prefooter-media">
+              <img src="assets/prefooter-stage.gif" alt="Cobertura de evento audiovisual LENSES" class="prefooter-media-img" loading="lazy" decoding="async">
+            </div>
+            <div class="prefooter-overlay"></div>
+            <div class="prefooter-inner">
+              <span class="prefooter-kicker">amazônia em outro olhar</span>
+              <img src="assets/logos/logo-lenses-white.webp" alt="LENSES" class="prefooter-mark" loading="lazy" decoding="async">
+            </div>
+          </section>
+        </div>
+
+        <table class="ds-table">
+          <thead>
+            <tr><th>Elemento</th><th>Especificação</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>.section-prefooter</code></td><td class="spec-meta">full-bleed · height clamp(340px, 36.5vw, 700px) · bg #000 · overflow hidden · tablet 300–620px · mobile clamp(280px, 64vw, 380px)</td></tr>
+            <tr><td><code>.prefooter-media-img</code></td><td class="spec-meta">cover center · Ken Burns scale 1 → 1.06 em 26s ease-in-out alternate (34s no mobile) · prefers-reduced-motion: animation none</td></tr>
+            <tr><td><code>.prefooter-overlay</code></td><td class="spec-meta">linear 180deg rgba(5,5,5,.5) → 0 → rgba(0,0,0,.92) fundindo com o footer + radial 135% 105% preto .28 nas bordas</td></tr>
+            <tr><td><code>.prefooter-inner</code></td><td class="spec-meta">flex column · justify space-between · align flex-start · gap clamp(24px,4vw,48px) · padding clamp(26px,3vw,46px) clamp(24px,4vw,64px) …</td></tr>
+            <tr><td><code>.prefooter-kicker</code></td><td class="spec-meta">0.75rem / 700 / 0.24em uppercase branco .82 · ::before fio azul --color-electric-blue 2px clamp(28px,3vw,46px) · ::after fio gradiente 1px até 88%</td></tr>
+            <tr><td><code>.prefooter-mark</code></td><td class="spec-meta">width min(58vw, 780px) · tablet min(70vw,660px) · mobile min(80vw,460px) · margem esquerda -0.5vw</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- S10 FOOTER -->
+      <section class="ds-section" id="footer">
+        <div class="ds-section-header">
+          <h2 class="ds-section-title"><i class="fa-solid fa-shoe-prints"></i> S10 · Footer</h2>
+          <span class="ds-section-badge">Preto puro + voltar ao topo</span>
+        </div>
+
+        <div class="ds-card-box flush">
+          <div class="live-block-head" style="border-radius: 12px 12px 0 0;">
+            <span>Demonstração ao vivo</span>
+            <span class="file">index.html → footer</span>
+          </div>
+          <footer class="footer" style="margin: 0;">
+            <div class="footer-container">
+              <div class="footer-left">
+                <span class="footer-logo">LENSES</span>
+                <span class="t3 footer-copyright">© 2026 LENSES Todos os direitos reservados.</span>
+              </div>
+
+              <div class="footer-right">
+                <nav class="footer-nav">
+                  <a href="javascript:void(0)" class="lnk">Início</a>
+                  <a href="javascript:void(0)" class="lnk">Sobre</a>
+                  <a href="javascript:void(0)" class="lnk">Projetos</a>
+                  <a href="javascript:void(0)" class="lnk">Revista</a>
+                  <a href="javascript:void(0)" class="lnk">Informes</a>
+                  <a href="javascript:void(0)" class="lnk">Contato</a>
+                </nav>
+                <a href="javascript:void(0)" class="btn-top" title="Voltar ao topo" aria-label="Voltar ao topo">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M18 15l-6-6-6 6"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </footer>
+        </div>
+
+        <div class="ds-card-box">
+          <table class="spec-table">
+            <thead><tr><th>Elemento</th><th>Especificação</th></tr></thead>
+            <tbody>
+              <tr><td>.footer</td><td class="spec-meta">bg #000000 · border-top hairline · padding 30px 40px · layout flex space-between</td></tr>
+              <tr><td>.footer-nav .lnk</td><td class="spec-meta">0.82rem / 500 / 0.04em · <strong>sem uppercase</strong> (override do .lnk) · gap 24px</td></tr>
+              <tr><td>.btn-top</td><td class="spec-meta">36px circular · border subtle-dark · hover: azul + translateY(-3px) · ícone 18px</td></tr>
+              <tr><td>Âncoras</td><td class="spec-meta">Início · Sobre · Projetos · <strong>Revista</strong> · <strong>Informes</strong> · Contato (manter sempre)</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           04 COMPONENTES ATÔMICOS
+           ==================================================================== -->
+
       <!-- BOTÕES & AÇÕES -->
       <section class="ds-section" id="botoes">
         <div class="ds-section-header">
-          <h2 class="ds-section-title"><i class="fa-solid fa-toggle-on text-primary"></i> Botões, Pílulas &amp; Ações Interativas</h2>
+          <h2 class="ds-section-title"><i class="fa-solid fa-toggle-on"></i> Botões, Pílulas &amp; Ações</h2>
           <span class="ds-section-badge">Componentes Atômicos</span>
         </div>
         <div class="ds-card-box">
           <div class="ds-card-box-header">
-            <h4 class="ds-card-box-title">Variantes de Botões Oficiais</h4>
+            <h4 class="ds-card-box-title">Variações oficiais (passe o mouse)</h4>
           </div>
-          
-          <div class="components-canvas">
-            <!-- Botão Pill Azul Primário -->
+
+          <div class="components-canvas dark-stage">
+            <!-- Pílula azul primária -->
             <a href="javascript:void(0)" class="btn btn-pill">
               <svg class="ico-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 16px; height: 16px;">
                 <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
               </svg>
-              <span>Contato-nos</span>
+              <span>Contate-nos</span>
             </a>
 
-            <!-- Botão Showreel Circular -->
-            <div class="hero-showreel-btn" style="background: #111116; padding: 10px 18px; border-radius: 999px; border: 1px solid var(--border-subtle-dark);">
-              <span class="showreel-label">
-                <span>ASSISTA</span>
-                <span>AO SHOWREEL</span>
-              </span>
-              <span class="showreel-icon-wrap">
-                <svg class="ico-play" viewBox="0 0 24 24" fill="currentColor">
-                  <polygon points="5 3 19 12 5 21 5 3"/>
-                </svg>
-              </span>
-            </div>
+            <!-- Pílula branca de conversão (painel Contato) -->
+            <a href="javascript:void(0)" class="btn btn-contact-direct">
+              <span>ENTRAR EM CONTATO</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 18px; height: 18px;"><path d="M7 7h10v10M7 17L17 7"/></svg>
+            </a>
 
-            <!-- Botão Voltar ao Topo -->
-            <div class="btn-top">
+            <!-- Voltar ao topo -->
+            <a href="javascript:void(0)" class="btn-top">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 18px; height: 18px;">
                 <path d="M18 15l-6-6-6 6"/>
               </svg>
-            </div>
+            </a>
 
-            <!-- Link de Navegação com Hover -->
-            <a href="javascript:void(0)" class="lnk">SOBRE NÓS</a>
+            <!-- Link utilitário -->
+            <a href="javascript:void(0)" class="lnk">Nossos Serviços</a>
 
-            <!-- Link Editorial Sublinhado -->
+            <!-- Link editorial sublinhado -->
             <a href="javascript:void(0)" class="lnk pub-link">
               <span>Ver edições</span>
               <svg class="ico-arrow-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 14px; height: 14px;"><path d="M7 7h10v10M7 17L17 7"/></svg>
             </a>
+
+            <!-- Item de canal de contato -->
+            <a href="javascript:void(0)" class="lnk contact-channel-item" style="min-width: 240px;">
+              <svg class="ico-channel" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+              <span>@lensesagencia</span>
+            </a>
+
+            <!-- Controle de vídeo minimalista -->
+            <button type="button" class="hero-ctrl-btn" style="opacity: 1; pointer-events: auto;" aria-label="Tela cheia">
+              <svg class="ctrl-icon icon-fs-enter" style="display: block;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
+              </svg>
+            </button>
           </div>
+
+          <table class="spec-table" style="margin-top: 22px;">
+            <thead>
+              <tr><th>Componente</th><th>Spec</th><th>Estados</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>.btn + .btn-pill</code></td>
+                <td class="spec-meta">pad 10px 22px · r 999px · 0.85rem/600 · bg azul · shadow 0 4px 18px rgba(0,60,251,.35)</td>
+                <td class="spec-meta">hover: #002ec4 · translateY(-2px) · shadow 0 6px 24px rgba(0,60,251,.5)</td>
+              </tr>
+              <tr>
+                <td><code>.btn-contact-direct</code></td>
+                <td class="spec-meta">pad 14px 28px · r 999px · branco/azul · 700 · 0.08em · shadow 0 8px 24px rgba(0,0,0,.25)</td>
+                <td class="spec-meta">hover: bg #0a0a0c · texto branco · translateY(-2px) · seta move (3,-3)</td>
+              </tr>
+              <tr>
+                <td><code>.lnk</code></td>
+                <td class="spec-meta">0.82rem/600/0.12em uppercase · cor white-muted · gap 8px</td>
+                <td class="spec-meta">hover: branco pleno</td>
+              </tr>
+              <tr>
+                <td><code>.lnk.pub-link</code></td>
+                <td class="spec-meta">700 · branco · border-bottom 1px rgba(255,255,255,.4) · pb 4px</td>
+                <td class="spec-meta">herda hover do .lnk</td>
+              </tr>
+              <tr>
+                <td><code>.contact-channel-item</code></td>
+                <td class="spec-meta">1.05rem/500 · pad 10px 0 · border-bottom hairline · ícone 20px</td>
+                <td class="spec-meta">hover: azul (texto+ícone+borda) · translateX(4px)</td>
+              </tr>
+              <tr>
+                <td><code>.btn-top</code></td>
+                <td class="spec-meta">36×36 circle · border subtle-dark · ícone 18px</td>
+                <td class="spec-meta">hover: bg/border azul · branco · translateY(-3px)</td>
+              </tr>
+              <tr>
+                <td><code>.hero-ctrl-btn</code></td>
+                <td class="spec-meta">transparente · pad 8px · ícone 20px traço 1.3 · drop-shadow</td>
+                <td class="spec-meta">hover/focus: branco · scale 1.12</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </section>
 
-      <!-- BADGES & BOX TRANSLÚCIDO -->
+      <!-- BADGES & BOXES -->
       <section class="ds-section" id="badges">
         <div class="ds-section-header">
-          <h2 class="ds-section-title"><i class="fa-solid fa-tag text-primary"></i> Badges &amp; Containers Translúcidos</h2>
-          <span class="ds-section-badge">Glassmorphism</span>
+          <h2 class="ds-section-title"><i class="fa-solid fa-tag"></i> Badges, Tags &amp; Boxes</h2>
+          <span class="ds-section-badge">Overlays editoriais</span>
         </div>
+
         <div class="ds-card-box">
-          <div class="components-canvas" style="background: radial-gradient(circle, #1a2a20 0%, #06090c 100%);">
-            
-            <div class="hero-info-badge" style="position: static; max-width: 380px;">
-              <p class="t2 hero-info-text">PRODUÇÃO AUDIOVISUAL QUE CONECTA PESSOAS, LUGARES E PROPÓSITOS.</p>
-              <div class="ico-arrow-corner">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M7 7h10v10M7 17L17 7"/>
-                </svg>
-              </div>
+          <div class="components-canvas" style="background: linear-gradient(135deg, #0a0a0d 0%, #050505 100%); align-items: flex-start;">
+
+            <!-- Tag de imagem (painel História) -->
+            <div style="position: relative; width: 240px; height: 150px; border-radius: 4px; overflow: hidden; background: #0b0b0e;">
+              <img src="assets/about-back.png" alt="Estúdio LENSES" style="width: 100%; height: 100%; object-fit: cover;">
+              <div class="story-img-tag" style="position: absolute;">LENSES</div>
             </div>
 
-            <div class="highlight-info-box" style="max-width: 380px;">
+            <!-- Info box do destaque -->
+            <div class="highlight-info-box" style="position: static; max-width: 340px; backdrop-filter: none;">
               <p class="t2 highlight-title">FESTIVAL DO FUTURO<br>BRASÍLIA (DISTRITO FEDERAL)</p>
               <p class="t3 highlight-desc">Festival de arte e cultura gratuito para público de 300 mil pessoas.</p>
             </div>
 
-          </div>
-        </div>
-      </section>
+            <!-- Kicker -->
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+              <span class="story-kicker">SOBRE A LENSES</span>
+              <span class="contact-kicker" style="color: rgba(255,255,255,.75);">FALE COM A NOSSA EQUIPE</span>
+              <span class="services-header-op1-kicker">NOSSAS FRENTES DE ATUAÇÃO</span>
+              <span class="pub-tag" style="color: var(--text-white-dim);">CONFIRA NOSSA</span>
+            </div>
 
-      <!-- RAIL DE PARCEIROS & LOGOS VETORIAIS -->
-      <section class="ds-section" id="rail-marcas">
-        <div class="ds-section-header">
-          <h2 class="ds-section-title"><i class="fa-solid fa-handshake text-primary"></i> Rail de Parceiros &amp; Logos Vetoriais</h2>
-          <span class="ds-section-badge">12 Logos SVG + Marquee</span>
-        </div>
-        <div class="ds-card-box">
-          <p style="font-size: 0.95rem; color: #a5a7b8; margin-bottom: 20px;">
-            Logotipos corporativos recriados 100% em <strong>vetor SVG nítido</strong> (estilo Logoipsum / marcas reais da referência), exibidos em ticker animado com rolagem infinita contínua e pausa no hover:
-          </p>
-
-          <!-- Ticker ao vivo -->
-          <div style="background: #030304; border: 1px solid var(--border-hairline); border-radius: 8px; overflow: hidden; margin-bottom: 24px;">
-            <div class="rail" style="border: none;">
-              <div class="rail-ticker">
-                <div class="rail-track">
-                  <div class="rail-item"><img src="assets/logos/albras.svg" alt="ALBRAS"></div>
-                  <div class="rail-item"><img src="assets/logos/ativo.svg" alt="ATIVO ENGENHARIA"></div>
-                  <div class="rail-item"><img src="assets/logos/consag.svg" alt="CONSAG ENGENHARIA"></div>
-                  <div class="rail-item"><img src="assets/logos/eurochem.svg" alt="EUROCHEM"></div>
-                  <div class="rail-item"><img src="assets/logos/gaspara.svg" alt="GÁS-PARÁ"></div>
-                  <div class="rail-item"><img src="assets/logos/hidrovias.svg" alt="Hidrovias do Brasil"></div>
-                  <div class="rail-item"><img src="assets/logos/hydro.svg" alt="Hydro"></div>
-                  <div class="rail-item"><img src="assets/logos/mitsubishi.svg" alt="MITSUBISHI POWER"></div>
-                  <div class="rail-item"><img src="assets/logos/moveinfra.svg" alt="moveinfra"></div>
-                  <div class="rail-item"><img src="assets/logos/newfortress.svg" alt="NewFortress energy"></div>
-                  <div class="rail-item"><img src="assets/logos/ultracargo.svg" alt="ultracargo"></div>
-                  <div class="rail-item"><img src="assets/logos/unitapajos.svg" alt="UNITAPAJÓS"></div>
-                  
-                  <div class="rail-item"><img src="assets/logos/albras.svg" alt="ALBRAS"></div>
-                  <div class="rail-item"><img src="assets/logos/ativo.svg" alt="ATIVO ENGENHARIA"></div>
-                  <div class="rail-item"><img src="assets/logos/consag.svg" alt="CONSAG ENGENHARIA"></div>
-                  <div class="rail-item"><img src="assets/logos/eurochem.svg" alt="EUROCHEM"></div>
-                  <div class="rail-item"><img src="assets/logos/gaspara.svg" alt="GÁS-PARÁ"></div>
-                  <div class="rail-item"><img src="assets/logos/hidrovias.svg" alt="Hidrovias do Brasil"></div>
-                  <div class="rail-item"><img src="assets/logos/hydro.svg" alt="Hydro"></div>
-                  <div class="rail-item"><img src="assets/logos/mitsubishi.svg" alt="MITSUBISHI POWER"></div>
-                  <div class="rail-item"><img src="assets/logos/moveinfra.svg" alt="moveinfra"></div>
-                  <div class="rail-item"><img src="assets/logos/newfortress.svg" alt="NewFortress energy"></div>
-                  <div class="rail-item"><img src="assets/logos/ultracargo.svg" alt="ultracargo"></div>
-                  <div class="rail-item"><img src="assets/logos/unitapajos.svg" alt="UNITAPAJÓS"></div>
-                </div>
+            <!-- Box de canais -->
+            <div class="contact-channels-col" style="width: 300px; background: rgba(0,0,0,.4);">
+              <div class="contact-channel-block">
+                <span class="contact-channel-type">WHATSAPP / TELEFONE</span>
+                <a href="javascript:void(0)" class="contact-channel-link">
+                  <svg class="ico-channel-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+                  <span>+55 91 99200-0000</span>
+                </a>
               </div>
             </div>
+
+            <!-- KPI -->
+            <div style="display: flex; flex-direction: column;">
+              <span class="story-kpi-num">+150</span>
+              <span class="story-kpi-lbl">PROJETOS REALIZADOS</span>
+            </div>
+
           </div>
 
-          <!-- Grade Individual de Logos -->
-          <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 14px;">
-            <div style="background: #0f0f15; padding: 18px; border-radius: 8px; border: 1px solid var(--border-hairline); display: flex; align-items: center; justify-content: center;">
-              <img src="assets/logos/albras.svg" alt="ALBRAS" style="height: 24px; opacity: 0.85;">
-            </div>
-            <div style="background: #0f0f15; padding: 18px; border-radius: 8px; border: 1px solid var(--border-hairline); display: flex; align-items: center; justify-content: center;">
-              <img src="assets/logos/ativo.svg" alt="ATIVO" style="height: 24px; opacity: 0.85;">
-            </div>
-            <div style="background: #0f0f15; padding: 18px; border-radius: 8px; border: 1px solid var(--border-hairline); display: flex; align-items: center; justify-content: center;">
-              <img src="assets/logos/consag.svg" alt="CONSAG" style="height: 24px; opacity: 0.85;">
-            </div>
-            <div style="background: #0f0f15; padding: 18px; border-radius: 8px; border: 1px solid var(--border-hairline); display: flex; align-items: center; justify-content: center;">
-              <img src="assets/logos/eurochem.svg" alt="EUROCHEM" style="height: 24px; opacity: 0.85;">
-            </div>
-            <div style="background: #0f0f15; padding: 18px; border-radius: 8px; border: 1px solid var(--border-hairline); display: flex; align-items: center; justify-content: center;">
-              <img src="assets/logos/gaspara.svg" alt="GÁS-PARÁ" style="height: 24px; opacity: 0.85;">
-            </div>
-            <div style="background: #0f0f15; padding: 18px; border-radius: 8px; border: 1px solid var(--border-hairline); display: flex; align-items: center; justify-content: center;">
-              <img src="assets/logos/hidrovias.svg" alt="Hidrovias" style="height: 24px; opacity: 0.85;">
-            </div>
-            <div style="background: #0f0f15; padding: 18px; border-radius: 8px; border: 1px solid var(--border-hairline); display: flex; align-items: center; justify-content: center;">
-              <img src="assets/logos/hydro.svg" alt="Hydro" style="height: 24px; opacity: 0.85;">
-            </div>
-            <div style="background: #0f0f15; padding: 18px; border-radius: 8px; border: 1px solid var(--border-hairline); display: flex; align-items: center; justify-content: center;">
-              <img src="assets/logos/mitsubishi.svg" alt="MITSUBISHI" style="height: 24px; opacity: 0.85;">
-            </div>
-            <div style="background: #0f0f15; padding: 18px; border-radius: 8px; border: 1px solid var(--border-hairline); display: flex; align-items: center; justify-content: center;">
-              <img src="assets/logos/moveinfra.svg" alt="moveinfra" style="height: 24px; opacity: 0.85;">
-            </div>
-            <div style="background: #0f0f15; padding: 18px; border-radius: 8px; border: 1px solid var(--border-hairline); display: flex; align-items: center; justify-content: center;">
-              <img src="assets/logos/newfortress.svg" alt="NewFortress" style="height: 24px; opacity: 0.85;">
-            </div>
-            <div style="background: #0f0f15; padding: 18px; border-radius: 8px; border: 1px solid var(--border-hairline); display: flex; align-items: center; justify-content: center;">
-              <img src="assets/logos/ultracargo.svg" alt="ultracargo" style="height: 24px; opacity: 0.85;">
-            </div>
-            <div style="background: #0f0f15; padding: 18px; border-radius: 8px; border: 1px solid var(--border-hairline); display: flex; align-items: center; justify-content: center;">
-              <img src="assets/logos/unitapajos.svg" alt="UNITAPAJÓS" style="height: 24px; opacity: 0.85;">
-            </div>
-          </div>
+          <table class="spec-table" style="margin-top: 22px;">
+            <thead><tr><th>Componente</th><th>Spec</th></tr></thead>
+            <tbody>
+              <tr><td><code>.story-img-tag</code></td><td class="spec-meta">bg rgba(0,0,0,.75) · blur 8px · 0.72rem/700/0.18em · pad 5px 12px · r 2px · posição 14px/14px</td></tr>
+              <tr><td><code>.highlight-info-box</code></td><td class="spec-meta">max-w 440px · rgba(0,0,0,.65) · blur 10px · pad 24px · border-left 2px azul</td></tr>
+              <tr><td><code>.contact-channels-col</code></td><td class="spec-meta">rgba(0,0,0,.18) · border rgba(255,255,255,.15) · r 8px · pad 28px 32px · gap 20px</td></tr>
+              <tr><td>Kickers</td><td class="spec-meta">0.8rem/700/0.22em uppercase — azul em fundo claro, branco 75% em fundo azul, azul na barra de serviços</td></tr>
+              <tr><td><code>.story-kpi-num / .story-kpi-lbl</code></td><td class="spec-meta">número clamp(2rem,2.8vw,3.2rem)/800 azul · rótulo 0.75rem/700/0.14em uppercase #4a4a55</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- MODAL LIGHTBOX -->
+      <section class="ds-section" id="modal">
+        <div class="ds-section-header">
+          <h2 class="ds-section-title"><i class="fa-solid fa-clapperboard"></i> Modal Lightbox de Vídeo</h2>
+          <span class="ds-section-badge">Estrutural (sem botão gatilho hoje)</span>
+        </div>
+        <div class="ds-card-box">
+          <p style="font-size: 0.95rem; color: #a5a7b8;">
+            O modal existe no <code>index.html</code> e é controlado pelo <code>script.js</code> (classe <code>.active</code>,
+            Esc/fundo para fechar, iframe YouTube nocookie). <strong>Não há botão gatilho (#openShowreel) no HTML atual</strong> —
+            o componente está documentado como estrutura pronta para reativação.
+          </p>
+          <table class="spec-table" style="margin-top: 16px;">
+            <thead><tr><th>Elemento</th><th>Especificação</th></tr></thead>
+            <tbody>
+              <tr><td><code>.video-modal</code></td><td class="spec-meta">fixed inset 0 · z 9999 · bg rgba(0,0,0,.88) · blur 12px · opacity 0 → .active 1 (.3s)</td></tr>
+              <tr><td><code>.video-modal-dialog</code></td><td class="spec-meta">max-width 960px · bg #000 · r 16px · border subtle-dark · shadow 0 20px 60px rgba(0,0,0,.8) · scale .95 → 1</td></tr>
+              <tr><td><code>.video-modal-close</code></td><td class="spec-meta">38px circle · bg rgba(255,255,255,.15) · 2rem · hover rgba(255,255,255,.3) + scale 1.05</td></tr>
+              <tr><td>Proporção</td><td class="spec-meta"><code>padding-bottom: 56.25%</code> (16:9)</td></tr>
+            </tbody>
+          </table>
         </div>
       </section>
 
       <!-- ====================================================================
-           03 CARDS & ESTRUTURAS DO SITE
+           05 VALIDAÇÃO & DIRETRIZES
            ==================================================================== -->
-      
-      <!-- SPLIT CTA -->
-      <section class="ds-section" id="cards-split">
-        <div class="ds-section-header">
-          <h2 class="ds-section-title"><i class="fa-solid fa-table-columns text-primary"></i> Split CTA Maciço (Branco vs Azul)</h2>
-          <span class="ds-section-badge">Bloco de Impacto</span>
-        </div>
-        <div class="ds-card-box" style="padding: 0; overflow: hidden;">
-          <div class="split-cta-grid" style="min-height: 140px;">
-            <a href="javascript:void(0)" class="card2 split-card-white" style="padding: 36px 40px;">
-              <h2 class="h2 split-heading" style="font-size: 1.8rem;">BREVE HISTÓRIA</h2>
-              <span class="ico-arrow-large">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 32px; height: 32px;"><path d="M7 7h10v10M7 17L17 7"/></svg>
-              </span>
-            </a>
 
-            <a href="javascript:void(0)" class="card3 split-card-blue" style="padding: 36px 40px;">
-              <span class="ico-arrow-large">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 32px; height: 32px;"><path d="M7 17l10-10M17 7H7v10"/></svg>
-              </span>
-              <h2 class="h2 split-heading" style="font-size: 1.8rem;">CONTATO</h2>
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <!-- DEPOIMENTO & CITAÇÃO -->
-      <section class="ds-section" id="cards-social">
-        <div class="ds-section-header">
-          <h2 class="ds-section-title"><i class="fa-solid fa-quote-left text-primary"></i> Card de Depoimento &amp; Citação</h2>
-          <span class="ds-section-badge">Prova Social</span>
-        </div>
-        <div class="ds-card-box" style="padding: 0; overflow: hidden; max-width: 600px;">
-          <div class="quote quote-card" style="padding: 36px 40px; border-radius: 8px;">
-            <span class="quote-mark">“</span>
-            <p class="t2 quote-body" style="font-size: 1.05rem; margin: 12px 0 20px;">
-              A LENSES conseguiu traduzir nossa essência em um filme que emocionou e gerou resultados reais.
-            </p>
-            <div class="quote-author">
-              <p class="t3 author-role" style="font-size: 0.9rem;">Diretor de Comunicação</p>
-              <p class="t3 author-company" style="font-size: 0.8rem;">Empresa Parceira</p>
-            </div>
-            <div class="quote-pagination" style="margin-top: 14px;">
-              <span class="dot active"></span>
-              <span class="dot"></span>
-              <span class="dot"></span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ====================================================================
-           04 VALIDAÇÃO & DIRETRIZES
-           ==================================================================== -->
-      
       <!-- COMPARATIVO SIDE BY SIDE -->
       <section class="ds-section" id="comparativo">
         <div class="ds-section-header">
-          <h2 class="ds-section-title"><i class="fa-solid fa-code-compare text-primary"></i> Comparativo Canônico Side-by-Side</h2>
-          <span class="ds-section-badge">Mock vs Recriação</span>
+          <h2 class="ds-section-title"><i class="fa-solid fa-code-compare"></i> Comparativo Canônico Side-by-Side</h2>
+          <span class="ds-section-badge">Referência vs Site real</span>
         </div>
         <div class="preview-split">
           <div class="preview-col">
@@ -1105,7 +2337,7 @@
 
           <div class="preview-col">
             <div class="preview-col-head">
-              <span><i class="fa-solid fa-code"></i> HTML + CSS Recriado</span>
+              <span><i class="fa-solid fa-code"></i> Site Atual (fonte da verdade)</span>
               <span style="font-size: 0.75rem; color: #5c84ff;">index.html</span>
             </div>
             <div class="preview-col-body" style="background: #050505;">
@@ -1118,28 +2350,34 @@
       <!-- DIRETRIZES DO'S & DONT'S -->
       <section class="ds-section" id="guidelines">
         <div class="ds-section-header">
-          <h2 class="ds-section-title"><i class="fa-solid fa-check-double text-primary"></i> Diretrizes Oficiais (Do's &amp; Don'ts)</h2>
+          <h2 class="ds-section-title"><i class="fa-solid fa-check-double"></i> Diretrizes Oficiais (Do's &amp; Don'ts)</h2>
           <span class="ds-section-badge">Regras de Ouro</span>
         </div>
         <div class="guidelines-grid">
           <div class="guideline-card guideline-do">
             <h4 class="guideline-title"><i class="fa-solid fa-circle-check"></i> Práticas Recomendadas (Do's)</h4>
             <ul class="guideline-list">
-              <li><i class="fa-solid fa-check text-success"></i> Usar as variáveis de <code>:root</code> para todas as cores e fontes.</li>
-              <li><i class="fa-solid fa-check text-success"></i> Preservar o tracking amplo (<code>letter-spacing: 0.35em</code>) nos títulos da marca.</li>
-              <li><i class="fa-solid fa-check text-success"></i> Manter o contraste intencional entre o canvas escuro e blocos brancos.</li>
-              <li><i class="fa-solid fa-check text-success"></i> Garantir que o Azul Royal Elétrico (<code>#003cfb</code>) seja reservado para conversão e destaques.</li>
-              <li><i class="fa-solid fa-check text-success"></i> Testar a responsividade em todos os breakpoints.</li>
+              <li><i class="fa-solid fa-check"></i> Usar os 30 tokens de <code>:root</code> para cores, easings, sombras e formas.</li>
+              <li><i class="fa-solid fa-check"></i> Compor tipografia com <strong>marcador semântico + classe específica</strong> (padrão do index: <code>class="h2 split-heading"</code>).</li>
+              <li><i class="fa-solid fa-check"></i> Manter o ritmo dark/light: preto como base, branco e azul como blocos de impacto.</li>
+              <li><i class="fa-solid fa-check"></i> Reservar o azul <code>#003cfb</code> para CTAs, kickers, destaques e painel Contato.</li>
+              <li><i class="fa-solid fa-check"></i> Usar setas SVG inline (traço 2 / 2.35) — nunca emoji ou ícone de biblioteca.</li>
+              <li><i class="fa-solid fa-check"></i> Divisórias entre blocos com <code>gap: 2px</code> sobre fundo <code>--border-hairline</code>.</li>
+              <li><i class="fa-solid fa-check"></i> Aplicar <code>.reveal-on-scroll</code> nas novas seções e respeitar os breakpoints 1100 / 1080–769 / 768.</li>
+              <li><i class="fa-solid fa-check"></i> Preservar os conteúdos obrigatórios: <strong>Revista Eletrônica</strong> e <strong>Informes trimestrais</strong>.</li>
             </ul>
           </div>
 
           <div class="guideline-card guideline-dont">
             <h4 class="guideline-title"><i class="fa-solid fa-circle-xmark"></i> Práticas Proibidas (Don'ts)</h4>
             <ul class="guideline-list">
-              <li><i class="fa-solid fa-xmark text-danger"></i> NUNCA usar estilos inline (<code>style="..."</code>) no HTML principal.</li>
-              <li><i class="fa-solid fa-xmark text-danger"></i> NÃO alterar os nomes dos tokens CSS definidos no Design System.</li>
-              <li><i class="fa-solid fa-xmark text-danger"></i> EVITAR adicionar bibliotecas pesadas ou bundlers externos.</li>
-              <li><i class="fa-solid fa-xmark text-danger"></i> NÃO utilizar cores fora da paleta canônica documentada.</li>
+              <li><i class="fa-solid fa-xmark"></i> NÃO adicionar texto/tipografia sobre o hero (hero = showreel puro, decisão de design).</li>
+              <li><i class="fa-solid fa-xmark"></i> NÃO usar cores fora da paleta nem novas famílias tipográficas.</li>
+              <li><i class="fa-solid fa-xmark"></i> NÃO alterar nomes dos tokens existentes em <code>:root</code>.</li>
+              <li><i class="fa-solid fa-xmark"></i> NÃO adicionar bibliotecas/bundlers (o site é HTML+CSS+JS puros).</li>
+              <li><i class="fa-solid fa-xmark"></i> NÃO criar novos styles inline sem necessidade — <strong>exceção canônica única:</strong> a altura da trilha de serviços no index (<code>style="height: clamp(600px, 75vh, 800px)"</code>), já documentada acima.</li>
+              <li><i class="fa-solid fa-xmark"></i> NÃO estilizar pelas classes semânticas <code>.h2/.t2/.cardN</code> sozinhas (elas não têm CSS — não têm efeito).</li>
+              <li><i class="fa-solid fa-xmark"></i> NÃO transformar o site inteiro em dark mode nem remover os blocos branco/azul (quebram o ritmo editorial).</li>
             </ul>
           </div>
         </div>
@@ -1148,33 +2386,65 @@
       <!-- TABELA DE TOKENS CSS -->
       <section class="ds-section" id="tabela-tokens">
         <div class="ds-section-header">
-          <h2 class="ds-section-title"><i class="fa-solid fa-code text-primary"></i> Tabela Canônica de Tokens CSS</h2>
-          <span class="ds-section-badge">assets/styles.css</span>
+          <h2 class="ds-section-title"><i class="fa-solid fa-code"></i> Tabela Canônica de Tokens CSS</h2>
+          <span class="ds-section-badge">assets/styles.css → :root (30 tokens)</span>
         </div>
         <div class="ds-card-box">
-          <pre style="background: #020203; padding: 20px; border-radius: 8px; border: 1px solid var(--ds-border-ui); overflow-x: auto; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: #79a2ff;">
-:root {
-  /* Cores Base */
+<pre class="token-pre">:root {
+  /* Cores Base Extraídas da Referência */
   --bg-body: #050505;
   --bg-surface-dark: #0b0b0e;
   --bg-card-dark: #111115;
   --bg-surface-light: #ffffff;
   --bg-surface-muted: #f6f7f9;
-  
-  /* Azul Royal Elétrico */
+  --bg-surface-gray: #ededf2;
+
+  /* Azul Royal Elétrico Característico */
   --color-electric-blue: #003cfb;
   --color-blue-hover: #002ec4;
+  --color-blue-light: #3364fb;
+
+  /* Cores de Texto */
+  --text-white: #ffffff;
+  --text-white-muted: rgba(255, 255, 255, 0.78);
+  --text-white-dim: rgba(255, 255, 255, 0.50);
+  --text-dark: #0a0a0c;
+  --text-dark-muted: #5e5e68;
+  --text-dark-dim: #8b8b98;
+
+  /* Bordas e Delimitadores */
+  --border-subtle-dark: rgba(255, 255, 255, 0.14);
+  --border-hairline: rgba(255, 255, 255, 0.08);
+  --border-light: rgba(0, 0, 0, 0.08);
 
   /* Tipografia */
-  --font-main: 'Plus Jakarta Sans', sans-serif;
-  --letter-spacing-wide: 0.38em;
-  --letter-spacing-ultra: 0.55em;
+  --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-serif: 'Cormorant Garamond', Georgia, serif; /* reservada: sem uso no site atual */
 
-  /* Sombras & Efeitos */
+  /* Transições e Efeitos */
+  --transition-smooth: all 0.3s var(--ease-cinematic);
+  --transition-fast: all 0.2s ease;
+  --shadow-card: 0 12px 36px rgba(0, 0, 0, 0.35);
   --shadow-blue-glow: 0 0 35px rgba(0, 60, 251, 0.4);
-  --transition-smooth: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-          </pre>
+
+  /* Curvas de Easing */
+  --ease-cinematic: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-split: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* Superficies Estruturais */
+  --bg-nav: rgba(5, 5, 5, 0.95);
+  --bg-rail: #030304;
+
+  /* Formas */
+  --radius-pill: 999px;
+
+  /* Dimensões do Header Dinâmico */
+  --top-ticker-height: 28px;
+}</pre>
+          <div class="ds-note">
+            Esta é a cópia de referência para consulta. <strong>Arquivo real:</strong> <code>assets/styles.css</code> → bloco <code>:root</code>.
+            Se divergirem, o CSS real prevalece e esta seção deve ser atualizada.
+          </div>
         </div>
       </section>
 
