@@ -1,7 +1,7 @@
-﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 32" fill="currentColor">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 32" fill="#ABC3E4" color="#ABC3E4" style="color: #ABC3E4;">
   <g transform="translate(0, 4)">
-    <path d="M8 3 C14 7 14 15 8 19 C12 16 12 6 8 3 Z" fill="currentColor"/>
-    <path d="M13 5 C17 8 17 14 13 17 C16 14 16 8 13 5 Z" fill="currentColor"/>
-    <text x="24" y="16" font-family="'Plus Jakarta Sans', sans-serif" font-size="15" font-weight="800" letter-spacing="0.5">Hydro</text>
+    <path d="M8 3 C14 7 14 15 8 19 C12 16 12 6 8 3 Z" fill="#ABC3E4"/>
+    <path d="M13 5 C17 8 17 14 13 17 C16 14 16 8 13 5 Z" fill="#ABC3E4"/>
+    <text x="24" y="16" font-family="'Plus Jakarta Sans', sans-serif" font-size="15" font-weight="800" letter-spacing="0.5" fill="#ABC3E4">Hydro</text>
   </g>
 </svg>

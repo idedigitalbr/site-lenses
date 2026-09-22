@@ -1,9 +1,9 @@
-﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 32" fill="currentColor">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 32" fill="#ABC3E4" color="#ABC3E4" style="color: #ABC3E4;">
   <g transform="translate(0, 4)">
-    <polygon points="10,2 14,9 10,16 6,9" fill="currentColor"/>
-    <polygon points="4,12 8,19 4,26 0,19" transform="rotate(-60 10 16)" fill="currentColor"/>
-    <polygon points="16,12 20,19 16,26 12,19" transform="rotate(60 10 16)" fill="currentColor"/>
-    <text x="26" y="12" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="800" letter-spacing="1">MITSUBISHI</text>
-    <text x="26" y="21" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="800" letter-spacing="1.5">POWER</text>
+    <polygon points="10,2 14,9 10,16 6,9" fill="#ABC3E4"/>
+    <polygon points="4,12 8,19 4,26 0,19" transform="rotate(-60 10 16)" fill="#ABC3E4"/>
+    <polygon points="16,12 20,19 16,26 12,19" transform="rotate(60 10 16)" fill="#ABC3E4"/>
+    <text x="26" y="12" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="800" letter-spacing="1" fill="#ABC3E4">MITSUBISHI</text>
+    <text x="26" y="21" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="800" letter-spacing="1.5" fill="#ABC3E4">POWER</text>
   </g>
 </svg>
