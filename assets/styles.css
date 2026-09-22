@@ -834,9 +834,12 @@ a {
   visibility: hidden;
   pointer-events: none;
   width: 100%;
+  max-height: 0;
+  overflow: hidden;
   transform: translateY(18px);
   transition: opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1),
               transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+              max-height 0.65s cubic-bezier(0.22, 1, 0.36, 1),
               visibility 0.4s;
   position: relative;
   z-index: 4;
@@ -847,6 +850,8 @@ a {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
+  max-height: 800px;
+  overflow: visible;
   transform: translateY(0);
 }
 
