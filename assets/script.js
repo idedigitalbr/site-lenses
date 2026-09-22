@@ -5,10 +5,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const mobileLinks = document.querySelectorAll('.mobile-lnk');
 
   if (menuToggle && mobileNav) {
+    const siteHeaderEl = document.getElementById('siteHeader');
     const toggleMenu = () => {
       const isOpen = mobileNav.classList.toggle('active');
       menuToggle.classList.toggle('active', isOpen);
       menuToggle.setAttribute('aria-expanded', isOpen);
+      if (siteHeaderEl) siteHeaderEl.classList.toggle('menu-open', isOpen);
       document.body.style.overflow = isOpen ? 'hidden' : '';
     };
 
@@ -19,6 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
         mobileNav.classList.remove('active');
         menuToggle.classList.remove('active');
         menuToggle.setAttribute('aria-expanded', 'false');
+        if (siteHeaderEl) siteHeaderEl.classList.remove('menu-open');
         document.body.style.overflow = '';
       });
     });
@@ -68,47 +71,136 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 3. Autoplay Resiliente para os Vídeos (Hero e Cards de Serviços)
+  // 3. Autoplay Resiliente exclusivo para o Vídeo de Background (Hero)
   const heroVideo = document.getElementById('heroVideo') || document.querySelector('.hero-video-wrapper video');
-  const allBgVideos = [
-    heroVideo,
-    ...document.querySelectorAll('.service-item video')
-  ].filter(Boolean);
-
-  allBgVideos.forEach(vid => {
-    vid.muted = true;
-    const playPromise = vid.play();
+  if (heroVideo) {
+    heroVideo.muted = true;
+    const playPromise = heroVideo.play();
     if (playPromise !== undefined) {
       playPromise.catch(() => {
-        vid.muted = true;
-        vid.play().catch(() => {});
+        heroVideo.muted = true;
+        heroVideo.play().catch(() => {});
       });
+    }
+
+    const onFirstUserGesture = () => {
+      if (heroVideo.paused) {
+        heroVideo.muted = true;
+        heroVideo.play().catch(() => {});
+      }
+      window.removeEventListener('click', onFirstUserGesture);
+      window.removeEventListener('scroll', onFirstUserGesture);
+      window.removeEventListener('touchstart', onFirstUserGesture);
+    };
+    window.addEventListener('click', onFirstUserGesture, { once: true });
+    window.addEventListener('scroll', onFirstUserGesture, { once: true });
+    window.addEventListener('touchstart', onFirstUserGesture, { once: true });
+  }
+
+  // 3.1 Controle Interativo de Vídeos nos Cards de Serviços (Play no Hover)
+  const serviceCards = document.querySelectorAll('.service-item');
+  serviceCards.forEach(card => {
+    const video = card.querySelector('video');
+    if (video) {
+      video.muted = true;
+      video.pause();
+
+      card.addEventListener('mouseenter', () => {
+        const playPromise = video.play();
+        if (playPromise !== undefined) {
+          playPromise.catch(() => {});
+        }
+      });
+
+      card.addEventListener('mouseleave', () => {
+        video.pause();
+      });
+
+      // Suporte a toque em mobile e tablets
+      card.addEventListener('touchstart', () => {
+        serviceCards.forEach(otherCard => {
+          const otherVid = otherCard.querySelector('video');
+          if (otherVid && otherVid !== video) {
+            otherVid.pause();
+          }
+        });
+        if (video.paused) {
+          video.play().catch(() => {});
+        }
+      }, { passive: true });
     }
   });
 
-  // Tentar tocar novamente caso haja qualquer primeira interação do usuário
-  const onFirstUserGesture = () => {
-    allBgVideos.forEach(vid => {
-      if (vid.paused) {
-        vid.muted = true;
-        vid.play().catch(() => {});
-      }
-    });
-    window.removeEventListener('click', onFirstUserGesture);
-    window.removeEventListener('scroll', onFirstUserGesture);
-    window.removeEventListener('touchstart', onFirstUserGesture);
-  };
-  window.addEventListener('click', onFirstUserGesture, { once: true });
-  window.addEventListener('scroll', onFirstUserGesture, { once: true });
-  window.addEventListener('touchstart', onFirstUserGesture, { once: true });
+  // 4. Header Menu Dinâmico com Detecção de Direção de Scroll (Padrão Zion)
+  const siteHeader = document.getElementById('siteHeader');
+  if (siteHeader) {
+    let lastScrollY = Math.max(0, window.pageYOffset || document.documentElement.scrollTop);
+    let isTicking = false;
+    const SCROLL_THRESHOLD = 6; // Sensibilidade de scroll para evitar micro-oscilações
+    const TOP_THRESHOLD = 28;   // Altura da faixa superior compacta
 
-  // 4. Scroll Suave para o Indicador de Scroll Circular
+    const handleHeaderScroll = () => {
+      const currentScrollY = Math.max(0, window.pageYOffset || document.documentElement.scrollTop);
+
+      // Não esconde se o drawer mobile estiver ativo
+      if (mobileNav && mobileNav.classList.contains('active')) {
+        lastScrollY = currentScrollY;
+        isTicking = false;
+        return;
+      }
+
+      // 1. Estado no Topo absoluto da página:
+      // Header visível + fundo transparente sobre o Hero + faixa superior azul visível
+      if (currentScrollY <= TOP_THRESHOLD) {
+        siteHeader.classList.add('is-top');
+        siteHeader.classList.remove('is-hidden', 'is-scrolled-up');
+        lastScrollY = currentScrollY;
+        isTicking = false;
+        return;
+      }
+
+      const scrollDiff = currentScrollY - lastScrollY;
+
+      // Ignora micro-movimentos
+      if (Math.abs(scrollDiff) < SCROLL_THRESHOLD) {
+        isTicking = false;
+        return;
+      }
+
+      if (scrollDiff > 0) {
+        // 2. Scroll para BAIXO:
+        // Header sobe suavemente e desaparece completamente da tela
+        siteHeader.classList.remove('is-top', 'is-scrolled-up');
+        siteHeader.classList.add('is-hidden');
+      } else {
+        // 3. Scroll para CIMA (estando abaixo do topo):
+        // Header reaparece pelo topo com fundo preto elegante e permanece fixo
+        siteHeader.classList.remove('is-top', 'is-hidden');
+        siteHeader.classList.add('is-scrolled-up');
+      }
+
+      lastScrollY = currentScrollY;
+      isTicking = false;
+    };
+
+    window.addEventListener('scroll', () => {
+      if (!isTicking) {
+        window.requestAnimationFrame(handleHeaderScroll);
+        isTicking = true;
+      }
+    }, { passive: true });
+
+    // Dispara no carregamento
+    handleHeaderScroll();
+  }
+
+  // 4.1. Scroll Suave para o Indicador de Scroll Circular do Hero
   const scrollDownBtn = document.getElementById('scrollDownBtn');
-  const blueTicker = document.getElementById('blueTicker');
-  if (scrollDownBtn && blueTicker) {
+  const marcasSection = document.getElementById('marcas');
+  if (scrollDownBtn && marcasSection) {
     scrollDownBtn.addEventListener('click', (e) => {
       e.preventDefault();
-      blueTicker.scrollIntoView({ behavior: 'smooth' });
+      marcasSection.scrollIntoView({ behavior: 'smooth' });
     });
   }
 
