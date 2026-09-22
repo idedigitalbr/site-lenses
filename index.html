@@ -4,16 +4,30 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>LENSES — Amazônia em Outro Olhar</title>
+
+  <!-- SEO -->
+  <meta name="description" content="LENSES — produtora audiovisual e estúdio de ideias em movimento. Produção audiovisual, filmes publicitários, cobertura de eventos, documentários e estratégia de conteúdo. Amazônia em outro olhar.">
+  <meta name="theme-color" content="#050505">
+
+  <!-- Open Graph / Social -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="LENSES">
+  <meta property="og:title" content="LENSES — Amazônia em Outro Olhar">
+  <meta property="og:description" content="Estúdio de ideias em movimento: produção audiovisual, filmes publicitários, cobertura de eventos e estratégia de conteúdo.">
+  <!-- TODO: og:image e <link rel="canonical"> precisam de URL absoluta — preencher quando o domínio definitivo for definido -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="LENSES — Amazônia em Outro Olhar">
+  <meta name="twitter:description" content="Estúdio de ideias em movimento: produção audiovisual, filmes publicitários, cobertura de eventos e estratégia de conteúdo.">
   
   <!-- Favicon Oficial LENSES -->
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="192x192" href="assets/favicon-192x192.png">
   <link rel="apple-touch-icon" href="assets/favicon-192x192.png">
   
-  <!-- Fontes Oficiais: Inter Tight, Plus Jakarta Sans & Cormorant Garamond -->
+  <!-- Fonte Oficial: Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Inter+Tight:wght@300;400;500;600&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
   
   <!-- Estilos Oficiais -->
   <link rel="stylesheet" href="assets/styles.css">
@@ -66,7 +80,7 @@
           </nav>
 
           <!-- Centro: LOGO LENSES -->
-          <a href="#inicio" class="nav-logo" aria-label="Lenses - Início">LENSES</a>
+          <a href="#inicio" class="nav-logo" aria-label="Lenses - Início"><img src="assets/logos/logo-lenses-white.webp" alt="LENSES" class="nav-logo-img"></a>
 
           <!-- Lado direito: Nossos Serviços | Botão CTA Contate-nos -->
           <nav class="nav-actions nav-actions-right" aria-label="Menu Principal Direito">
@@ -99,7 +113,7 @@
     </header>
 
     <!-- 2. HERO SECTION COM BACKGROUND VÍDEO CINEMATOGRÁFICO -->
-    <section class="hero hero-main" id="inicio">
+    <section class="hero hero-main" id="inicio" aria-label="Showreel da Lenses">
       <div class="hero-bg-media">
         <!-- Background Vídeo Nativo Autoplay Mudo Loop em Proporção Cinematográfica -->
         <div class="hero-video-wrapper">
@@ -175,7 +189,7 @@
     </section>
 
     <!-- 3. RAIL: MARCAS E PARCEIROS (VECTOR LOGOS MARQUEE) -->
-    <section class="rail" id="marcas">
+    <section class="rail" id="marcas" aria-label="Marcas e parceiros">
       <div class="rail-ticker">
         <div class="rail-track">
           <!-- 12 Logos Vetoriais Oficiais -->
@@ -209,16 +223,16 @@
       </div>
     </section>
 
-    <!-- 4. SPLIT CTA EXPANSÍVEL: BREVE HISTÓRIA & CONTATO -->
-    <section class="section section-cta-split" id="sobre" aria-label="Breve História e Contato da Lenses">
+    <!-- 4. SPLIT CTA EXPANSÍVEL: SOBRE A LENSES & CONTATO -->
+    <section class="section section-cta-split" id="sobre" aria-label="Sobre a Lenses e Contato da Lenses">
       <div class="split-interactive-wrapper reveal-on-scroll" data-state="idle" id="splitInteractive">
         
-        <!-- PAINEL 1: BREVE HISTÓRIA (BRANCO) -->
-        <div class="split-panel split-panel-story" id="panelStory" tabindex="0" role="button" aria-expanded="false" aria-controls="storyContent" aria-label="Expandir Breve História">
+        <!-- PAINEL 1: SOBRE A LENSES (BRANCO) -->
+        <div class="split-panel split-panel-story" id="panelStory" tabindex="0" role="button" aria-expanded="false" aria-controls="storyContent" aria-label="Expandir Sobre a Lenses">
           <!-- Cabeçalho Principal do Painel -->
           <div class="panel-header">
             <div class="panel-title-wrap">
-              <h2 class="h2 split-heading">BREVE HISTÓRIA</h2>
+              <h2 class="h2 split-heading">SOBRE A LENSES</h2>
             </div>
             <div class="panel-indicator" aria-hidden="true">
               <svg class="ico-arrow-diag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 7h10v10M7 17L17 7"/></svg>
@@ -228,7 +242,7 @@
 
           <!-- Rótulo Comprimido (visível quando o painel Contato está expandido em desktop) -->
           <div class="panel-compressed-label" aria-hidden="true">
-            <span class="compressed-text">BREVE HISTÓRIA</span>
+            <span class="compressed-text">SOBRE A LENSES</span>
             <svg class="ico-arrow-compressed" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 7h10v10M7 17L17 7"/></svg>
           </div>
 
@@ -239,7 +253,7 @@
               <!-- Coluna 1: Imagem Editorial com Tag Lenses -->
               <div class="story-media-col">
                 <div class="story-img-card">
-                  <img src="assets/about-back.png" alt="Estúdio LENSES" class="story-img" loading="lazy">
+                  <img src="assets/about-back.png" alt="Estúdio LENSES" class="story-img" loading="lazy" decoding="async">
                   <div class="story-img-tag">LENSES</div>
                 </div>
               </div>
@@ -401,61 +415,56 @@
       </div>
     </section>
 
-    <!-- 6. DESTAQUE PROJETO: FESTIVAL DO FUTURO / ALGUNS PROJETOS -->
-    <section class="section section-highlight-project" id="projetos">
-      <div class="highlight-project-bg">
-        <img src="assets/festival-futuro.png" alt="Festival do Futuro Brasília" class="highlight-img-asset">
-        <div class="highlight-project-overlay"></div>
-      </div>
-
-      <div class="highlight-project-inner reveal-on-scroll">
-        <div class="highlight-info-box">
-          <p class="t2 highlight-title">FESTIVAL DO FUTURO<br>BRASÍLIA (DISTRITO FEDERAL)</p>
-          <p class="t3 highlight-desc">Festival de arte e cultura gratuito para público de 300 mil pessoas.</p>
+    <!-- 6. CARROSSEL PRINCIPAL: CASES EM DESTAQUE / ALGUNS PROJETOS -->
+    <section class="section section-highlight-project" id="projetos" aria-label="Destaque de projetos">
+      <div class="carousel carousel-featured" data-carousel="featured" role="region" aria-roledescription="carrossel" aria-label="Cases em destaque">
+        <!-- Slides renderizados por assets/script.js a partir de PROJECTS.featured -->
+        <div class="carousel-viewport" data-carousel-viewport>
+          <div class="carousel-track" data-carousel-track></div>
         </div>
 
-        <div class="highlight-action-title">
-          <span class="ico-arrow-large">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7h10v10M7 17L17 7"/></svg>
-          </span>
-          <h2 class="h2 section-display-title">ALGUNS<br>PROJETOS</h2>
+        <!-- Título editorial permanece integrado e estático sobre a composição -->
+        <div class="highlight-project-inner reveal-on-scroll">
+          <div class="highlight-action-title">
+            <span class="ico-arrow-large" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7h10v10M7 17L17 7"/></svg>
+            </span>
+            <h2 class="h2 section-display-title">ALGUNS<br>PROJETOS</h2>
+          </div>
         </div>
+
+        <button class="carousel-btn carousel-btn-prev" type="button" data-carousel-prev aria-label="Case anterior">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button class="carousel-btn carousel-btn-next" type="button" data-carousel-next aria-label="Próximo case">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+
+        <div class="carousel-dots" data-carousel-dots aria-label="Selecionar case"></div>
       </div>
     </section>
 
-    <!-- 7. DUPLA DE PROJETOS HORIZONTAIS -->
-    <section class="section section-duo-projects">
-      <div class="duo-grid reveal-on-scroll">
-        <article class="card4 duo-card">
-          <div class="card4-media">
-            <img src="assets/duo-amazonia.png" alt="A Amazônia não é apenas o que vemos" class="duo-img-asset">
-            <div class="card4-overlay"></div>
-          </div>
-          <div class="card4-caption">
-            <p class="t2 caption-text">A AMAZÔNIA NÃO É APENAS O QUE VEMOS.</p>
-            <span class="ico-arrow">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7h10v10M7 17L17 7"/></svg>
-            </span>
-          </div>
-        </article>
+    <!-- 7. CARROSSEL SECUNDÁRIO: PROJETOS / CASES (2 SIMULTÂNEOS NO DESKTOP) -->
+    <section class="section section-duo-projects" aria-label="Projetos em destaque">
+      <div class="carousel carousel-duo reveal-on-scroll" data-carousel="duo" role="region" aria-roledescription="carrossel" aria-label="Projetos e cases">
+        <!-- Slides renderizados por assets/script.js a partir de PROJECTS.secondary -->
+        <div class="carousel-viewport" data-carousel-viewport>
+          <div class="carousel-track" data-carousel-track></div>
+        </div>
 
-        <article class="card4 duo-card">
-          <div class="card4-media">
-            <img src="assets/duo-historias.png" alt="Transformamos ideias em histórias" class="duo-img-asset">
-            <div class="card4-overlay"></div>
-          </div>
-          <div class="card4-caption">
-            <p class="t2 caption-text">TRANSFORMAMOS IDEIAS EM HISTÓRIAS.</p>
-            <span class="ico-arrow">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7h10v10M7 17L17 7"/></svg>
-            </span>
-          </div>
-        </article>
+        <button class="carousel-btn carousel-btn-prev" type="button" data-carousel-prev aria-label="Projeto anterior">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button class="carousel-btn carousel-btn-next" type="button" data-carousel-next aria-label="Próximo projeto">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+
+        <div class="carousel-dots" data-carousel-dots aria-label="Selecionar grupo de projetos"></div>
       </div>
     </section>
 
     <!-- 8. PUBLICAÇÕES (REVISTA & INFORMES) -->
-    <section class="section section-publications" id="revista">
+    <section class="section section-publications" id="revista" aria-label="Publicações: Revista Eletrônica e Informes">
       <div class="publications-grid reveal-on-scroll">
         <div class="card8 pub-card-dark">
           <div class="pub-header">
@@ -469,7 +478,7 @@
           </div>
 
           <div class="pub-mockup-area">
-            <img src="assets/magazine-mockup.png" alt="Edições da Revista Eletrônica LENSES" class="pub-mockup-img">
+            <img src="assets/magazine-mockup.png" alt="Edições da Revista Eletrônica LENSES" class="pub-mockup-img" loading="lazy" decoding="async">
           </div>
 
           <div class="pub-footer">
@@ -492,7 +501,7 @@
           </div>
 
           <div class="pub-mockup-area">
-            <img src="assets/reports-mockup.png" alt="Informes Trimestrais LENSES" class="pub-mockup-img">
+            <img src="assets/reports-mockup.png" alt="Informes Trimestrais LENSES" class="pub-mockup-img" loading="lazy" decoding="async">
           </div>
         </div>
       </div>
@@ -501,7 +510,7 @@
     <!-- 9. BANNER FINAL CTA CONTATO -->
     <section class="section section-cta-contact" id="contato">
       <div class="cta-contact-bg">
-        <img src="assets/contact-bg.png" alt="Estúdio Audiovisual LENSES" class="cta-img-asset">
+        <img src="assets/contact-bg.png" alt="Estúdio Audiovisual LENSES" class="cta-img-asset" loading="lazy" decoding="async">
         <div class="cta-contact-overlay"></div>
       </div>
 
@@ -533,6 +542,33 @@
       </div>
     </section>
 
+    <!-- PRÉ-FOOTER: BANDA VISUAL CINEMATOGRÁFICA (REFERÊNCIA ZION) -->
+    <section class="section-prefooter" aria-label="Lenses — Amazônia em outro olhar">
+      <!-- Mídia de Fundo Ocupando 100% da Largura (Enquadramento Cine) -->
+      <div class="prefooter-media">
+        <img 
+          src="assets/prefooter-stage.gif" 
+          alt="Cobertura de evento audiovisual LENSES" 
+          class="prefooter-media-img" 
+          loading="lazy" 
+          decoding="async">
+      </div>
+
+      <!-- Overlay de Contraste e Transição Suave para o Footer -->
+      <div class="prefooter-overlay"></div>
+
+      <!-- Marca LENSES Sobreposta à Mídia de Fundo -->
+      <div class="prefooter-inner reveal-on-scroll">
+        <span class="prefooter-kicker">amazônia em outro olhar</span>
+        <img 
+          src="assets/logos/logo-lenses-white.webp" 
+          alt="LENSES" 
+          class="prefooter-mark" 
+          loading="lazy" 
+          decoding="async">
+      </div>
+    </section>
+
     <!-- 10. FOOTER -->
     <footer class="footer">
       <div class="footer-container">
@@ -542,7 +578,7 @@
         </div>
 
         <div class="footer-right">
-          <nav class="footer-nav">
+          <nav class="footer-nav" aria-label="Navegação do rodapé">
             <a href="#inicio" class="lnk">Início</a>
             <a href="#sobre" class="lnk">Sobre</a>
             <a href="#projetos" class="lnk">Projetos</a>
