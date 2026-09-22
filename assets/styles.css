@@ -29,6 +29,7 @@
 
   /* Tipografia */
   --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
   
   /* Transições e Efeitos */
   --transition-smooth: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
@@ -171,15 +172,16 @@ a {
 }
 
 /* ==========================================================================
-   2. HERO SECTION COM BACKGROUND VÍDEO (YOUTUBE MUTE / LOOP)
+   2. HERO SECTION COM BACKGROUND VÍDEO CINEMATOGRÁFICO (100VH)
    ========================================================================== */
 .hero-main {
   position: relative;
-  min-height: 88vh;
+  min-height: 100vh;
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 80px 40px 40px;
+  padding: 100px 48px 40px;
   overflow: hidden;
 }
 
@@ -213,7 +215,7 @@ a {
   height: 100%;
   object-fit: cover;
   object-position: center;
-  opacity: 0.78;
+  opacity: 0.92;
 }
 
 .hero-video-wrapper iframe {
@@ -221,13 +223,19 @@ a {
   height: 100%;
   border: 0;
   pointer-events: none;
-  opacity: 0.72;
+  opacity: 0.85;
 }
 
 .hero-bg-overlay {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at center, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.82) 90%);
+  background: linear-gradient(
+    180deg,
+    rgba(5, 5, 5, 0.4) 0%,
+    rgba(5, 5, 5, 0.15) 40%,
+    rgba(5, 5, 5, 0.6) 80%,
+    rgba(3, 3, 4, 0.95) 100%
+  );
   z-index: 2;
 }
 
@@ -239,7 +247,7 @@ a {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  min-height: calc(88vh - 120px);
+  min-height: calc(100vh - 140px);
 }
 
 .hero-center-titles {
@@ -249,28 +257,32 @@ a {
 }
 
 .hero-title {
-  font-size: clamp(3.2rem, 7vw, 6.5rem);
-  font-weight: 300;
-  letter-spacing: 0.38em;
-  color: var(--text-white);
-  line-height: 1.1;
+  font-family: var(--font-serif);
+  font-size: clamp(3.8rem, 8.8vw, 8.2rem);
+  font-weight: 500;
+  letter-spacing: 0.32em;
+  color: #ffffff;
+  line-height: 1.05;
   text-transform: uppercase;
-  margin-bottom: 14px;
+  margin-bottom: 18px;
+  text-shadow: 0 4px 32px rgba(0, 0, 0, 0.8);
 }
 
 .hero-subtitle {
-  font-size: clamp(0.95rem, 1.8vw, 1.45rem);
-  font-weight: 400;
-  letter-spacing: 0.55em;
-  color: var(--text-white-muted);
+  font-family: var(--font-main);
+  font-size: clamp(0.88rem, 1.5vw, 1.25rem);
+  font-weight: 600;
+  letter-spacing: 0.46em;
+  color: rgba(255, 255, 255, 0.88);
   text-transform: uppercase;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.9);
 }
 
 .hero-bottom-bar {
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-  gap: 30px;
+  gap: 24px;
   width: 100%;
 }
 
@@ -280,9 +292,10 @@ a {
   justify-content: space-between;
   max-width: 380px;
   padding: 16px 20px;
-  background: rgba(10, 10, 12, 0.55);
+  background: rgba(10, 10, 12, 0.65);
   border: 1px solid var(--border-subtle-dark);
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   position: relative;
 }
 
@@ -299,6 +312,59 @@ a {
   width: 16px;
   height: 16px;
   color: var(--text-white-dim);
+}
+
+/* Indicador Circular de Scroll Estilo Zion */
+.hero-scroll-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  cursor: pointer;
+  margin-bottom: 4px;
+  transition: var(--transition-smooth);
+}
+
+.scroll-circle {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: rgba(8, 8, 12, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: floatDownIndicator 3s ease-in-out infinite;
+}
+
+.scroll-circle svg {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.3s ease;
+}
+
+.hero-scroll-indicator:hover .scroll-circle {
+  background-color: var(--color-electric-blue);
+  border-color: var(--color-electric-blue);
+  box-shadow: 0 0 24px rgba(0, 60, 251, 0.65);
+  transform: scale(1.12);
+}
+
+.hero-scroll-indicator:hover .scroll-circle svg {
+  transform: translateY(3px);
+}
+
+@keyframes floatDownIndicator {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(8px);
+  }
 }
 
 .hero-showreel-btn {
@@ -322,13 +388,16 @@ a {
 }
 
 .showreel-icon-wrap {
-  width: 48px;
-  height: 48px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   border: 1px solid var(--text-white-muted);
   display: flex;
   align-items: center;
   justify-content: center;
+  background: rgba(10, 10, 14, 0.45);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   transition: var(--transition-smooth);
 }
 
@@ -346,13 +415,68 @@ a {
 }
 
 /* ==========================================================================
+   2.1. FAIXA AZUL DE TRANSIÇÃO PÓS-HERO (ASSINATURA ZION / 44PX OFICIAL LENSES)
+   ========================================================================== */
+.hero-blue-ticker {
+  width: 100%;
+  height: 44px;
+  background-color: var(--color-electric-blue);
+  background: linear-gradient(90deg, #002ec4 0%, #003cfb 50%, #0026a3 100%);
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 0 28px rgba(0, 60, 251, 0.35);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+  z-index: 10;
+}
+
+.blue-ticker-track {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  white-space: nowrap;
+  animation: scrollBlueTicker 30s linear infinite;
+  will-change: transform;
+}
+
+.hero-blue-ticker:hover .blue-ticker-track {
+  animation-play-state: paused;
+}
+
+@keyframes scrollBlueTicker {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.ticker-text {
+  font-family: var(--font-main);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: #ffffff;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
+}
+
+.ticker-dot {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+/* ==========================================================================
    3. RAIL: MARCAS E PARCEIROS (MARQUEE INFINITO COM LOGOS VETORIAIS)
    ========================================================================== */
 .rail {
   background-color: #030304;
   border-top: 1px solid var(--border-hairline);
   border-bottom: 1px solid var(--border-hairline);
-  padding: 22px 0;
+  padding: 24px 0;
   overflow: hidden;
   position: relative;
   width: 100%;
@@ -364,7 +488,7 @@ a {
   position: absolute;
   top: 0;
   bottom: 0;
-  width: 100px;
+  width: 120px;
   z-index: 2;
   pointer-events: none;
 }
@@ -388,9 +512,9 @@ a {
 .rail-track {
   display: flex;
   align-items: center;
-  gap: 60px;
+  gap: 70px;
   white-space: nowrap;
-  animation: scrollRail 32s linear infinite;
+  animation: scrollRail 35s linear infinite;
   will-change: transform;
 }
 
@@ -412,23 +536,25 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 38px;
+  height: 40px;
+  color: #ffffff;
 }
 
 .rail-item img {
-  height: 26px;
+  height: 28px;
   width: auto;
-  max-width: 180px;
+  max-width: 190px;
   object-fit: contain;
-  opacity: 0.85;
+  opacity: 0.95;
+  color: #ffffff;
+  filter: brightness(1.2) contrast(1.1) drop-shadow(0 2px 6px rgba(0, 0, 0, 0.7));
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
 }
 
 .rail-item:hover img {
   opacity: 1;
-  transform: scale(1.1);
-  filter: drop-shadow(0 0 14px rgba(255, 255, 255, 0.5));
+  transform: scale(1.08);
+  filter: brightness(1.4) drop-shadow(0 0 10px rgba(255, 255, 255, 0.4));
 }
 
 /* ==========================================================================
@@ -448,11 +574,11 @@ a {
 
 .category-card {
   position: relative;
-  height: 460px;
+  height: 525px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding: 30px;
+  padding: 36px 32px;
   overflow: hidden;
   background-color: #0a0a0d;
 }
@@ -468,17 +594,18 @@ a {
   height: 100%;
   object-fit: cover;
   object-position: center;
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), filter 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .category-card:hover .card-img-asset {
-  transform: scale(1.05);
+  transform: scale(1.045);
+  filter: contrast(1.05) brightness(1.06);
 }
 
 .card-gradient-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.85) 100%);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.05) 0%, rgba(0, 0, 0, 0.88) 100%);
 }
 
 .card-footer-label {
@@ -490,9 +617,9 @@ a {
 }
 
 .category-title {
-  font-size: 1.15rem;
-  font-weight: 600;
-  letter-spacing: 0.18em;
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--text-white);
   display: flex;
@@ -501,23 +628,24 @@ a {
 }
 
 .cross-decor {
-  font-size: 0.8rem;
-  opacity: 0.4;
+  font-size: 0.9rem;
+  opacity: 0.45;
+  margin-left: 4px;
 }
 
 .ico-arrow svg {
-  width: 22px;
-  height: 22px;
-  transition: transform 0.3s ease;
+  width: 24px;
+  height: 24px;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s ease;
 }
 
 .category-card:hover .ico-arrow svg {
-  transform: translate(3px, 3px);
+  transform: translate(4px, 4px);
   color: var(--color-electric-blue);
 }
 
 /* ==========================================================================
-   5. SPLIT CTA: HISTÓRIA & CONTATO
+   5. SPLIT CTA: HISTÓRIA & CONTATO (PROPORÇÃO EXATA ZION / 232PX)
    ========================================================================== */
 .section-cta-split {
   padding: 0;
@@ -526,7 +654,8 @@ a {
 .split-cta-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  min-height: 180px;
+  min-height: 232px;
+  height: 232px;
 }
 
 .split-card-white {
@@ -535,12 +664,17 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 50px 60px;
+  padding: 40px 60px;
   transition: var(--transition-smooth);
 }
 
 .split-card-white:hover {
   background-color: var(--bg-surface-muted);
+}
+
+.split-card-white:hover .ico-arrow-large svg {
+  transform: translate(6px, -6px);
+  color: var(--color-electric-blue);
 }
 
 .split-card-blue {
@@ -549,7 +683,7 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 50px 60px;
+  padding: 40px 60px;
   transition: var(--transition-smooth);
 }
 
@@ -557,16 +691,21 @@ a {
   background-color: var(--color-blue-hover);
 }
 
+.split-card-blue:hover .ico-arrow-large svg {
+  transform: translate(-6px, 6px);
+}
+
 .split-heading {
-  font-size: clamp(2rem, 3.2vw, 3.4rem);
-  font-weight: 600;
-  letter-spacing: 0.08em;
+  font-size: clamp(2.4rem, 3.8vw, 3.6rem);
+  font-weight: 800;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
 }
 
 .ico-arrow-large svg {
   width: 44px;
   height: 44px;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s ease;
 }
 
 /* ==========================================================================
@@ -1562,4 +1701,27 @@ a {
   height: 100%;
   border: 0;
 }
+
+/* ==========================================================================
+   ANIMAÇÕES CINEMATOGRÁFICAS DE SCROLL REVEAL (PADRÃO ZION)
+   ========================================================================== */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-on-scroll.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Suavização de scroll global */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
 

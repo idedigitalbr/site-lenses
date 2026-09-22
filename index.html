@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>LENSES — Amazônia em Outro Olhar</title>
   
-  <!-- Fontes Oficiais: Plus Jakarta Sans -->
+  <!-- Fontes Oficiais: Plus Jakarta Sans & Cormorant Garamond (Estilo Cinematográfico da Referência) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
   
   <!-- Estilos Oficiais -->
   <link rel="stylesheet" href="assets/styles.css">
@@ -53,13 +53,13 @@
       </div>
     </header>
 
-    <!-- 2. HERO SECTION COM BACKGROUND VÍDEO (YOUTUBE MUTE / LOOP) -->
+    <!-- 2. HERO SECTION COM BACKGROUND VÍDEO CINEMATOGRÁFICO -->
     <section class="hero hero-main" id="inicio">
       <div class="hero-bg-media">
         <!-- Fallback de imagem imediata da Amazônia -->
         <div class="hero-asset-fallback" style="background-image: url('assets/hero-bg.png');"></div>
         
-        <!-- Background Vídeo Nativo Autoplay Mudo Loop -->
+        <!-- Background Vídeo Nativo Autoplay Mudo Loop em Proporção Cinematográfica -->
         <div class="hero-video-wrapper">
           <video 
             id="heroVideo"
@@ -69,22 +69,23 @@
             loop 
             playsinline 
             preload="auto">
+            <source src="assets/zion-reference-reel.mp4" type="video/mp4">
             <source src="assets/S1%20TOPO%20HERO/TOPO-VIDEO-AMAZONIA.mp4" type="video/mp4">
           </video>
         </div>
 
-        <!-- Overlay Cinematográfico para Máxima Legibilidade -->
+        <!-- Overlay Cinematográfico para Máxima Legibilidade e Contraste -->
         <div class="hero-bg-overlay"></div>
       </div>
 
       <div class="hero-content">
-        <div class="hero-center-titles">
+        <div class="hero-center-titles reveal-on-scroll">
           <h1 class="h1 hero-title">AMAZÔNIA</h1>
           <p class="t2 hero-subtitle">EM OUTRO OLHAR</p>
         </div>
 
         <div class="hero-bottom-bar">
-          <div class="hero-info-badge">
+          <div class="hero-info-badge reveal-on-scroll">
             <p class="t2 hero-info-text">PRODUÇÃO AUDIOVISUAL QUE CONECTA PESSOAS, LUGARES E PROPÓSITOS.</p>
             <div class="ico-arrow-corner">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -93,7 +94,16 @@
             </div>
           </div>
 
-          <a href="https://www.youtube.com/watch?v=Q3G3XXAN3jE" id="openShowreel" target="_blank" rel="noopener noreferrer" class="btn2 hero-showreel-btn">
+          <!-- Indicador Circular de Scroll Estilo Zion -->
+          <a href="#blueTicker" class="hero-scroll-indicator" id="scrollDownBtn" aria-label="Rolar para baixo">
+            <div class="scroll-circle">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M7 17L17 7M17 17H7M17 17V7"/>
+              </svg>
+            </div>
+          </a>
+
+          <a href="https://www.youtube.com/watch?v=Q3G3XXAN3jE" id="openShowreel" target="_blank" rel="noopener noreferrer" class="btn2 hero-showreel-btn reveal-on-scroll">
             <span class="showreel-label">
               <span>ASSISTA</span>
               <span>AO SHOWREEL</span>
@@ -107,6 +117,41 @@
         </div>
       </div>
     </section>
+
+    <!-- 2.1. FAIXA AZUL DE TRANSIÇÃO PÓS-HERO (ASSINATURA VISUAL ZION / 44PX OFICIAL LENSES) -->
+    <div class="hero-blue-ticker" id="blueTicker" aria-label="Destaques Lenses">
+      <div class="blue-ticker-track">
+        <span class="ticker-text">AMAZÔNIA EM OUTRO OLHAR</span>
+        <span class="ticker-dot">•</span>
+        <span class="ticker-text">PRODUÇÃO AUDIOVISUAL</span>
+        <span class="ticker-dot">•</span>
+        <span class="ticker-text">ESTRATÉGIA &amp; CONTEÚDO</span>
+        <span class="ticker-dot">•</span>
+        <span class="ticker-text">CINEMATOGRAFIA</span>
+        <span class="ticker-dot">•</span>
+        <span class="ticker-text">DIREÇÃO ARTÍSTICA</span>
+        <span class="ticker-dot">•</span>
+        <span class="ticker-text">EVENTOS &amp; FESTIVAIS</span>
+        <span class="ticker-dot">•</span>
+        <span class="ticker-text">DOCUMENTÁRIOS</span>
+        <span class="ticker-dot">•</span>
+        <!-- Duplicação para loop contínuo infinito perfeito -->
+        <span class="ticker-text">AMAZÔNIA EM OUTRO OLHAR</span>
+        <span class="ticker-dot">•</span>
+        <span class="ticker-text">PRODUÇÃO AUDIOVISUAL</span>
+        <span class="ticker-dot">•</span>
+        <span class="ticker-text">ESTRATÉGIA &amp; CONTEÚDO</span>
+        <span class="ticker-dot">•</span>
+        <span class="ticker-text">CINEMATOGRAFIA</span>
+        <span class="ticker-dot">•</span>
+        <span class="ticker-text">DIREÇÃO ARTÍSTICA</span>
+        <span class="ticker-dot">•</span>
+        <span class="ticker-text">EVENTOS &amp; FESTIVAIS</span>
+        <span class="ticker-dot">•</span>
+        <span class="ticker-text">DOCUMENTÁRIOS</span>
+        <span class="ticker-dot">•</span>
+      </div>
+    </div>
 
     <!-- 3. RAIL: MARCAS E PARCEIROS (VECTOR LOGOS MARQUEE) -->
     <section class="rail">
@@ -145,7 +190,7 @@
 
     <!-- 4. CATEGORIAS DE PRODUÇÃO -->
     <section class="section section-categories">
-      <div class="categories-grid">
+      <div class="categories-grid reveal-on-scroll">
         <article class="card category-card">
           <div class="card-media-bg">
             <img src="assets/cat-institucional.png" alt="Produção Institucional LENSES" class="card-img-asset">
@@ -189,7 +234,7 @@
 
     <!-- 5. SPLIT CTA: HISTÓRIA & CONTATO -->
     <section class="section section-cta-split">
-      <div class="split-cta-grid">
+      <div class="split-cta-grid reveal-on-scroll">
         <a href="#sobre" class="card2 split-card-white">
           <h2 class="h2 split-heading">BREVE HISTÓRIA</h2>
           <span class="ico-arrow-large">
@@ -213,7 +258,7 @@
         <div class="highlight-project-overlay"></div>
       </div>
 
-      <div class="highlight-project-inner">
+      <div class="highlight-project-inner reveal-on-scroll">
         <div class="highlight-info-box">
           <p class="t2 highlight-title">FESTIVAL DO FUTURO<br>BRASÍLIA (DISTRITO FEDERAL)</p>
           <p class="t3 highlight-desc">Festival de arte e cultura gratuito para público de 300 mil pessoas.</p>
@@ -230,7 +275,7 @@
 
     <!-- 7. DUPLA DE PROJETOS HORIZONTAIS -->
     <section class="section section-duo-projects">
-      <div class="duo-grid">
+      <div class="duo-grid reveal-on-scroll">
         <article class="card4 duo-card">
           <div class="card4-media">
             <img src="assets/duo-amazonia.png" alt="A Amazônia não é apenas o que vemos" class="duo-img-asset">
@@ -261,7 +306,7 @@
 
     <!-- 8. O QUE FAZEMOS -->
     <section class="section section-services" id="servicos">
-      <div class="services-container">
+      <div class="services-container reveal-on-scroll">
         <div class="card5 services-title-card">
           <h2 class="h2 services-main-title">O QUE<br>FAZEMOS</h2>
           <span class="ico-arrow-large">
@@ -300,7 +345,7 @@
 
     <!-- 9. SOBRE A LENSES + KPIS -->
     <section class="section section-about" id="sobre">
-      <div class="about-grid">
+      <div class="about-grid reveal-on-scroll">
         <div class="about-media-card">
           <img src="assets/about-back.png" alt="Estúdio LENSES" class="about-img-asset">
           <div class="about-photo-overlay">
@@ -339,7 +384,7 @@
 
     <!-- 10. PROVA SOCIAL (DEPOIMENTOS + MARCAS ATENDIDAS) -->
     <section class="section section-social-proof">
-      <div class="social-proof-grid">
+      <div class="social-proof-grid reveal-on-scroll">
         <div class="card7 proof-intro-card">
           <img src="assets/testimonials-bg.png" alt="Depoimentos Clientes" class="proof-bg-img">
           <div class="proof-intro-content">
@@ -386,7 +431,7 @@
 
     <!-- 11. PUBLICAÇÕES (REVISTA & INFORMES) -->
     <section class="section section-publications" id="revista">
-      <div class="publications-grid">
+      <div class="publications-grid reveal-on-scroll">
         <div class="card8 pub-card-dark">
           <div class="pub-header">
             <span class="t3 pub-tag">CONFIRA NOSSA</span>
