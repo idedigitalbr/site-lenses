@@ -401,4 +401,414 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+
+  // 7. CARROSSÉIS DE PROJETOS (01 Destaque / 02 Duplos) — motor próprio, sem dependências
+  const PROJECTS = {
+    featured: [
+      {
+        title: 'Manifesto All Amazônia',
+        description: 'Performance audiovisual na Times Square durante a Assembleia Geral da ONU.',
+        image: 'assets/festival-futuro.png',
+        category: 'Eventos',
+        location: 'Nova York',
+        year: '2023',
+        url: '',
+        // A foto já traz a legenda gravada na imagem: não duplicar o texto
+        imageCaption: true
+      },
+      {
+        title: 'Echoes',
+        description: 'Produção de filme institucional em estúdio, com equipe e equipamento próprio.',
+        image: 'assets/about-back.png',
+        category: 'Filme',
+        location: 'Brasil',
+        year: '2024',
+        url: ''
+      },
+      {
+        title: 'Estúdio LENSES',
+        description: 'Captação multicâmera e finalização em 4K no estúdio próprio da LENSES.',
+        image: 'assets/contact-bg.png',
+        category: 'Audiovisual',
+        location: 'Brasil',
+        year: '2025',
+        url: ''
+      }
+    ],
+    secondary: [
+      {
+        title: 'Conversas que Inspiram',
+        description: 'Cobertura de evento com podcast e transmissão ao vivo.',
+        image: 'assets/servicos/serv-cobertura-eventos-poster.jpg',
+        category: 'Eventos',
+        year: '2025',
+        url: ''
+      },
+      {
+        title: 'Estrada Seca',
+        description: 'Filme publicitário com direção de arte e captação em locação.',
+        image: 'assets/servicos/serv-filmes-publicitarios.jpg',
+        category: 'Publicidade',
+        year: '2024',
+        url: ''
+      },
+      {
+        title: 'War Room de Marca',
+        description: 'Planejamento estratégico com time multidisciplinar.',
+        image: 'assets/servicos/serv-planejamento-estrategico.jpg',
+        category: 'Estratégia',
+        year: '2024',
+        url: ''
+      },
+      {
+        title: 'Painel de Cenários',
+        description: 'Mapeamento de cenários e leitura de dados para comunicação.',
+        image: 'assets/servicos/serv-mapeamento-cenarios.jpg',
+        category: 'Estratégia',
+        year: '2023',
+        url: ''
+      },
+      {
+        title: 'ESG em Movimento',
+        description: 'Campanha publicitária com abordagem documental.',
+        image: 'assets/servicos/serv-propaganda-esg-poster.jpg',
+        category: 'Publicidade',
+        year: '2025',
+        url: ''
+      },
+      {
+        title: 'Câmera em Movimento',
+        description: 'Produção audiovisual autoral, do conceito à finalização.',
+        image: 'assets/servicos/serv-producao-audiovisual-poster.jpg',
+        category: 'Audiovisual',
+        year: '2024',
+        url: ''
+      }
+    ]
+  };
+
+  const esc = (value) => String(value == null ? '' : value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+
+  // Informações do slide: texto sobre a foto (título branco + tracinho azul)
+  function renderInfoCard(project, variant) {
+    const parts = variant === 'sm'
+      ? [project.category, project.year]
+      : [project.category, project.location, project.year];
+    const meta = parts.filter(Boolean).join(' · ');
+    const isLink = Boolean(project.url);
+    const tag = isLink ? 'a' : 'div';
+    const attrs = isLink ? ` href="${esc(project.url)}"` : '';
+
+    return `<${tag} class="pc-card${variant === 'sm' ? ' pc-card-sm' : ''}"${attrs}>` +
+      `<div class="pc-card-title">${esc(project.title)}</div>` +
+      `<div class="pc-card-desc">${esc(project.description)}</div>` +
+      (meta ? `<div class="pc-card-meta">${esc(meta)}</div>` : '') +
+      `</${tag}>`;
+  }
+
+  function renderFeaturedSlide(project) {
+    // Suporte futuro a vídeo: basta informar `video` (+ `poster` opcional) nos dados.
+    // `imageCaption`: foto já traz legenda gravada → não renderizar o texto por cima.
+    const media = project.video
+      ? `<video class="featured-slide-media" src="${esc(project.video)}" poster="${esc(project.poster || project.image)}" muted loop playsinline preload="none"></video>`
+      : `<img class="featured-slide-media${project.imageCaption ? ' featured-slide-media--caption' : ''}" src="${esc(project.image)}" alt="${esc(project.title)}" decoding="async">`;
+
+    return media +
+      `<div class="featured-slide-overlay" aria-hidden="true"></div>` +
+      (project.imageCaption ? '' : renderInfoCard(project, 'lg'));
+  }
+
+  function renderDuoSlide(project) {
+    return `<img class="duo-slide-media" src="${esc(project.image)}" alt="${esc(project.title)}" decoding="async">` +
+      `<div class="duo-slide-overlay" aria-hidden="true"></div>` +
+      renderInfoCard(project, 'sm');
+  }
+
+  function initCarousel(root, config) {
+    const viewport = root.querySelector('[data-carousel-viewport]');
+    const track = root.querySelector('[data-carousel-track]');
+    const prevBtn = root.querySelector('[data-carousel-prev]');
+    const nextBtn = root.querySelector('[data-carousel-next]');
+    const dotsWrap = root.querySelector('[data-carousel-dots]');
+    if (!viewport || !track || !dotsWrap) return;
+
+    const items = config.items;
+    const total = items.length;
+    if (!total) return;
+
+    const COPIES = 3; // clone + original + clone (margem de segurança visual)
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    let page = 0;
+    let pages = 0;
+    let perView = 1;
+    let step = 1;
+    let slideWidth = 0;
+    let stride = 0;
+
+    // --- Slides (3 cópias; bloco central = original) ---
+    const slides = [];
+    const fragment = document.createDocumentFragment();
+    for (let copy = 0; copy < COPIES; copy++) {
+      for (let i = 0; i < total; i++) {
+        const itemIndex = config.reverse ? total - 1 - i : i;
+        const project = items[itemIndex];
+        const slide = document.createElement('div');
+        slide.className = 'carousel-slide ' + (config.reverse ? 'featured-slide' : 'duo-slide');
+        slide.setAttribute('role', 'group');
+        slide.setAttribute('aria-roledescription', 'slide');
+        slide.setAttribute('aria-label', `${itemIndex + 1} de ${total}`);
+        slide.innerHTML = config.render(project);
+        fragment.appendChild(slide);
+        slides.push(slide);
+      }
+    }
+    track.appendChild(fragment);
+
+    // Índice do slide mais à esquerdo da janela para uma página (bloco central)
+    function posOf(targetPage) {
+      const offset = targetPage * step;
+      return config.reverse ? 2 * total - 1 - offset : total + offset;
+    }
+
+    function setPos(index, animate) {
+      const instant = !animate || reducedMotion.matches;
+      track.classList.toggle('is-instant', instant);
+      track.style.transform = `translate3d(${-index * stride}px, 0, 0)`;
+      if (instant) void track.offsetHeight; // aplica o salto antes de reativar a transição
+    }
+
+    function buildDots() {
+      dotsWrap.innerHTML = '';
+      for (let i = 0; i < pages; i++) {
+        const dot = document.createElement('button');
+        dot.type = 'button';
+        dot.className = 'carousel-dot';
+        dot.setAttribute('aria-label', config.dotLabel(i, pages));
+        dot.addEventListener('click', () => goTo(i));
+        dotsWrap.appendChild(dot);
+      }
+    }
+
+    function measure() {
+      const computed = window.getComputedStyle(track);
+      const gap = parseFloat(computed.columnGap) || 0;
+      perView = config.perView();
+      step = perView; // avança de 2 em 2 no desktop, de 1 em 1 no mobile
+      const available = viewport.clientWidth;
+      slideWidth = perView > 1 ? (available - gap * (perView - 1)) / perView : available;
+      stride = slideWidth + gap;
+      slides.forEach((slide) => {
+        slide.style.width = `${slideWidth}px`;
+      });
+
+      const nextPages = Math.ceil(total / step);
+      if (nextPages !== pages) {
+        pages = nextPages;
+        page = Math.min(page, pages - 1);
+        buildDots();
+      }
+    }
+
+    function syncUI() {
+      const start = posOf(page);
+      const end = start + perView;
+
+      for (let i = 0; i < dotsWrap.children.length; i++) {
+        if (i === page) {
+          dotsWrap.children[i].setAttribute('aria-current', 'true');
+        } else {
+          dotsWrap.children[i].removeAttribute('aria-current');
+        }
+      }
+
+      slides.forEach((slide, index) => {
+        const inView = index >= start && index < end;
+        slide.setAttribute('aria-hidden', inView ? 'false' : 'true');
+        slide.querySelectorAll('a, button').forEach((el) => {
+          if (inView) el.removeAttribute('tabindex');
+          else el.setAttribute('tabindex', '-1');
+        });
+        const video = slide.querySelector('video');
+        if (video) {
+          if (inView && !shouldPause()) video.play().catch(() => {});
+          else video.pause();
+        }
+      });
+    }
+
+    function goTo(targetPage, animate = true) {
+      page = ((targetPage % pages) + pages) % pages;
+      setPos(posOf(page), animate);
+      syncUI();
+      schedule();
+    }
+
+    // --- Autoplay com pausas (hover, foco, drag, fora da tela, aba oculta, reduced-motion) ---
+    let hoverPause = false;
+    let focusPause = false;
+    let inViewport = true;
+    let dragging = false;
+    let autoplayTimer = null;
+
+    function shouldPause() {
+      return reducedMotion.matches || hoverPause || focusPause || !inViewport ||
+        document.hidden || dragging;
+    }
+
+    function schedule() {
+      clearTimeout(autoplayTimer);
+      if (shouldPause() || pages < 2) return;
+      autoplayTimer = setTimeout(() => goTo(page + 1), config.interval);
+    }
+
+    root.addEventListener('mouseenter', () => {
+      hoverPause = true;
+      schedule();
+    });
+    root.addEventListener('mouseleave', () => {
+      hoverPause = false;
+      schedule();
+    });
+    root.addEventListener('focusin', () => {
+      focusPause = true;
+      schedule();
+    });
+    root.addEventListener('focusout', () => {
+      focusPause = root.contains(document.activeElement);
+      schedule();
+    });
+    document.addEventListener('visibilitychange', schedule);
+    if (typeof reducedMotion.addEventListener === 'function') {
+      reducedMotion.addEventListener('change', schedule);
+    }
+
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          inViewport = entry.isIntersecting;
+        });
+        schedule();
+      }, { threshold: 0.2 });
+      io.observe(root);
+    }
+
+    // --- Controles ---
+    if (prevBtn) prevBtn.addEventListener('click', () => goTo(page - 1));
+    if (nextBtn) nextBtn.addEventListener('click', () => goTo(page + 1));
+
+    root.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        goTo(page - 1);
+      } else if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        goTo(page + 1);
+      }
+    });
+
+    // --- Swipe / drag (touch-action: pan-y no CSS preserva o scroll vertical) ---
+    let dragStartX = 0;
+    let dragOffset = 0;
+    let dragMoved = false;
+    let activePointer = null;
+
+    viewport.addEventListener('pointerdown', (e) => {
+      if (e.button != null && e.button !== 0) return;
+      if (e.target.closest('button, a')) return;
+      dragging = true;
+      dragMoved = false;
+      dragOffset = 0;
+      dragStartX = e.clientX;
+      activePointer = e.pointerId;
+      clearTimeout(autoplayTimer);
+      try {
+        viewport.setPointerCapture(e.pointerId);
+      } catch (err) { /* noop */ }
+    });
+
+    viewport.addEventListener('pointermove', (e) => {
+      if (!dragging || e.pointerId !== activePointer) return;
+      dragOffset = e.clientX - dragStartX;
+      if (!dragMoved && Math.abs(dragOffset) < 8) return;
+      dragMoved = true;
+      track.classList.add('is-instant');
+      track.style.transform = `translate3d(${-(posOf(page) * stride) + dragOffset}px, 0, 0)`;
+    });
+
+    function endDrag(e) {
+      if (!dragging || (e && e.pointerId !== activePointer)) return;
+      dragging = false;
+      try {
+        viewport.releasePointerCapture(activePointer);
+      } catch (err) { /* noop */ }
+      activePointer = null;
+
+      if (dragMoved) {
+        const threshold = Math.min(80, slideWidth * 0.18);
+        if (Math.abs(dragOffset) > threshold) {
+          // Sentido oposto ao carrossel grande: aqui o arrasto avança para a esquerda
+          const advancing = config.reverse ? dragOffset > 0 : dragOffset < 0;
+          goTo(advancing ? page + 1 : page - 1);
+        } else {
+          setPos(posOf(page), true); // volta para a posição atual com transição
+        }
+        const suppressClick = (event) => {
+          event.preventDefault();
+          event.stopPropagation();
+        };
+        root.addEventListener('click', suppressClick, { capture: true, once: true });
+      }
+      schedule();
+    }
+
+    viewport.addEventListener('pointerup', endDrag);
+    viewport.addEventListener('pointercancel', endDrag);
+
+    // --- Resize: recalcula larguras, passo e dots (sem transição) ---
+    let resizeFrame = null;
+    window.addEventListener('resize', () => {
+      if (resizeFrame) cancelAnimationFrame(resizeFrame);
+      resizeFrame = requestAnimationFrame(() => {
+        measure();
+        setPos(posOf(page), false);
+        syncUI();
+        schedule();
+      });
+    });
+
+    // --- Estado inicial (síncrono: evita qualquer flash de layout) ---
+    measure();
+    setPos(posOf(page), false);
+    syncUI();
+    schedule();
+  }
+
+  const CAROUSEL_CONFIGS = {
+    featured: {
+      items: PROJECTS.featured,
+      reverse: true, // movimento → direita
+      interval: 5500,
+      perView: () => 1,
+      render: renderFeaturedSlide,
+      dotLabel: (index, total) => `Ir para o case ${index + 1} de ${total}`
+    },
+    duo: {
+      items: PROJECTS.secondary,
+      reverse: false, // movimento ← esquerda (oposto ao grande)
+      interval: 6500,
+      perView: () => (window.matchMedia('(max-width: 768px)').matches ? 1 : 2),
+      render: renderDuoSlide,
+      dotLabel: (index, total) => `Ir para o grupo ${index + 1} de ${total}`
+    }
+  };
+
+  document.querySelectorAll('[data-carousel]').forEach((rootEl) => {
+    const config = CAROUSEL_CONFIGS[rootEl.getAttribute('data-carousel')];
+    if (config) initCarousel(rootEl, config);
+  });
 });

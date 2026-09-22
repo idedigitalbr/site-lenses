@@ -246,24 +246,33 @@
             <svg class="ico-arrow-compressed" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 7h10v10M7 17L17 7"/></svg>
           </div>
 
-          <!-- Conteúdo Revelado: Sobre a Lenses -->
+          <!-- Conteúdo Revelado: Sobre a Lenses (layout tela cheia: foto à esquerda) -->
           <div class="panel-body panel-body-story" id="storyContent">
             <div class="story-content-grid">
               
-              <!-- Coluna 1: Imagem Editorial com Tag Lenses -->
+              <!-- Coluna 1: Foto Editorial Full-Height com Tag e Legenda -->
               <div class="story-media-col">
                 <div class="story-img-card">
-                  <img src="assets/about-back.png" alt="Estúdio LENSES" class="story-img" loading="lazy" decoding="async">
+                  <img src="assets/about-back.png" alt="Estúdio de produção LENSES" class="story-img" loading="lazy" decoding="async">
                   <div class="story-img-tag">LENSES</div>
+                  <div class="story-img-caption" aria-hidden="true">
+                    <span class="caption-rule"></span>
+                    <span class="caption-text">Histórias<br>que geram<br>impacto</span>
+                  </div>
                 </div>
               </div>
 
               <!-- Coluna 2: Manifesto Oficial da Lenses -->
               <div class="story-text-col">
-                <span class="story-kicker">SOBRE A LENSES</span>
+                <span class="story-kicker">Sobre a</span>
+                <h3 class="story-title">LENSES</h3>
                 <p class="story-manifesto">
                   Mais que uma produtora, somos um estúdio de ideias em movimento. Unimos criatividade, técnica e propósito para transformar histórias em experiências que geram impacto real.
                 </p>
+                <div class="story-signature" aria-hidden="true">
+                  <span class="sig-rule"></span>
+                  <span class="sig-text">Ideias em movimento</span>
+                </div>
               </div>
 
               <!-- Coluna 3: Indicadores / KPIs Consolidados -->
@@ -445,7 +454,7 @@
     </section>
 
     <!-- 7. CARROSSEL SECUNDÁRIO: PROJETOS / CASES (2 SIMULTÂNEOS NO DESKTOP) -->
-    <section class="section section-duo-projects" aria-label="Projetos em destaque">
+    <section class="section section-duo-projects" id="projetos-todos" aria-label="Projetos em destaque">
       <div class="carousel carousel-duo reveal-on-scroll" data-carousel="duo" role="region" aria-roledescription="carrossel" aria-label="Projetos e cases">
         <!-- Slides renderizados por assets/script.js a partir de PROJECTS.secondary -->
         <div class="carousel-viewport" data-carousel-viewport>
