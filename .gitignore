@@ -4,6 +4,7 @@ node_modules/
 Thumbs.db
 *.tmp
 *.log
+*.bak*
 
 # Design duplicates / raw dumps if not needed
 # (design-systems folder can be kept or excluded based on preference, standard git will track it)

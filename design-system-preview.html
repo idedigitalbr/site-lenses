@@ -552,8 +552,8 @@
             <li><a href="#duo" class="ds-nav-link"><i class="fa-solid fa-images"></i> S6 · Duo Cards</a></li>
             <li><a href="#cards-editorial" class="ds-nav-link"><i class="fa-solid fa-book-open"></i> S7 · Revista &amp; Informes</a></li>
             <li><a href="#cta-contato" class="ds-nav-link"><i class="fa-solid fa-paper-plane"></i> S8 · CTA Contato</a></li>
-            <li><a href="#prefooter" class="ds-nav-link"><i class="fa-solid fa-photo-film"></i> S9 · Pré-Footer</a></li>
-            <li><a href="#footer" class="ds-nav-link"><i class="fa-solid fa-shoe-prints"></i> S10 · Footer</a></li>
+            <li><a href="#footer-media" class="ds-nav-link"><i class="fa-solid fa-photo-film"></i> S9 · Cena do Rodapé</a></li>
+            <li><a href="#footer" class="ds-nav-link"><i class="fa-solid fa-shoe-prints"></i> S10 · Rodapé</a></li>
           </ul>
         </div>
 
@@ -2033,28 +2033,27 @@
         </div>
       </section>
 
-      <!-- S9 PRÉ-FOOTER -->
-      <section class="ds-section" id="prefooter">
+      <!-- S9 CENA CINEMATOGRÁFICA DO RODAPÉ -->
+      <section class="ds-section" id="footer-media">
         <div class="ds-section-header">
-          <h2 class="ds-section-title"><i class="fa-solid fa-photo-film"></i> S9 · Pré-Footer</h2>
-          <span class="ds-section-badge">GIF full-bleed + kicker editorial + wordmark</span>
+          <h2 class="ds-section-title"><i class="fa-solid fa-photo-film"></i> S9 · Cena do Rodapé</h2>
+          <span class="ds-section-badge">GIF full-bleed herdado do antigo pré-footer</span>
         </div>
 
         <div class="ds-card-box flush">
           <div class="live-block-head" style="border-radius: 12px 12px 0 0;">
             <span>Demonstração ao vivo</span>
-            <span class="file">index.html → .section-prefooter</span>
+            <span class="file">index.html → .footer-media / .footer-overlay</span>
           </div>
-          <section class="section-prefooter" aria-label="Lenses - Amazônia em outro olhar" style="margin:0;">
-            <div class="prefooter-media">
-              <img src="assets/prefooter-stage.gif" alt="Cobertura de evento audiovisual LENSES" class="prefooter-media-img" loading="lazy" decoding="async">
+          <div class="footer" style="margin:0; min-height: 260px;">
+            <div class="footer-media" aria-hidden="true">
+              <img src="assets/prefooter-stage.gif" alt="" class="footer-media-img" loading="lazy" decoding="async">
             </div>
-            <div class="prefooter-overlay"></div>
-            <div class="prefooter-inner">
-              <span class="prefooter-kicker">amazônia em outro olhar</span>
-              <img src="assets/logos/logo-lenses-white.webp" alt="LENSES" class="prefooter-mark" loading="lazy" decoding="async">
+            <div class="footer-overlay" aria-hidden="true"></div>
+            <div class="footer-container" style="padding-top: clamp(40px, 5vw, 64px);">
+              <p class="t3" style="color: rgba(255,255,255,.72); letter-spacing: .2em; text-transform: uppercase;">amazônia em outro olhar</p>
             </div>
-          </section>
+          </div>
         </div>
 
         <table class="ds-table">
@@ -2062,21 +2061,20 @@
             <tr><th>Elemento</th><th>Especificação</th></tr>
           </thead>
           <tbody>
-            <tr><td><code>.section-prefooter</code></td><td class="spec-meta">full-bleed · height clamp(340px, 36.5vw, 700px) · bg #000 · overflow hidden · tablet 300–620px · mobile clamp(280px, 64vw, 380px)</td></tr>
-            <tr><td><code>.prefooter-media-img</code></td><td class="spec-meta">cover center · Ken Burns scale 1 → 1.06 em 26s ease-in-out alternate (34s no mobile) · prefers-reduced-motion: animation none</td></tr>
-            <tr><td><code>.prefooter-overlay</code></td><td class="spec-meta">linear 180deg rgba(5,5,5,.5) → 0 → rgba(0,0,0,.92) fundindo com o footer + radial 135% 105% preto .28 nas bordas</td></tr>
-            <tr><td><code>.prefooter-inner</code></td><td class="spec-meta">flex column · justify space-between · align flex-start · gap clamp(24px,4vw,48px) · padding clamp(26px,3vw,46px) clamp(24px,4vw,64px) …</td></tr>
-            <tr><td><code>.prefooter-kicker</code></td><td class="spec-meta">0.75rem / 700 / 0.24em uppercase branco .82 · ::before fio azul --color-electric-blue 2px clamp(28px,3vw,46px) · ::after fio gradiente 1px até 88%</td></tr>
-            <tr><td><code>.prefooter-mark</code></td><td class="spec-meta">width min(58vw, 780px) · tablet min(70vw,660px) · mobile min(80vw,460px) · margem esquerda -0.5vw</td></tr>
+            <tr><td><code>.footer</code></td><td class="spec-meta">position relative · isolation isolate · overflow hidden · bg #000000 · o GIF vive <strong>dentro</strong> do rodapé (pré-footer unificado)</td></tr>
+            <tr><td><code>.footer-media</code></td><td class="spec-meta">absolute inset 0 · z-index 0 · bg #000 · ::after aplica fade 180deg da base → preto puro</td></tr>
+            <tr><td><code>.footer-media-img</code></td><td class="spec-meta">cover · object-position 68% center · Ken Burns footerSlowPan 32s ease-in-out alternate · will-change transform · reduced-motion: none</td></tr>
+            <tr><td><code>.footer-overlay</code></td><td class="spec-meta">gradiente mais escuro à esquerda/topo (leitura do texto) dissolvendo para preto na base · z-index 1 · pointer-events none</td></tr>
+            <tr><td>Breakpoints</td><td class="spec-meta">≤768px: .footer-media passa a <code>inset 0 0 auto 0</code> com altura clamp(300px, 78vw, 460px) — cena só no topo do rodapé</td></tr>
           </tbody>
         </table>
       </section>
 
-      <!-- S10 FOOTER -->
+      <!-- S10 RODAPÉ -->
       <section class="ds-section" id="footer">
         <div class="ds-section-header">
-          <h2 class="ds-section-title"><i class="fa-solid fa-shoe-prints"></i> S10 · Footer</h2>
-          <span class="ds-section-badge">Preto puro + voltar ao topo</span>
+          <h2 class="ds-section-title"><i class="fa-solid fa-shoe-prints"></i> S10 · Rodapé</h2>
+          <span class="ds-section-badge">Marca topo-esquerda + 4 colunas + barra inferior</span>
         </div>
 
         <div class="ds-card-box flush">
@@ -2085,26 +2083,64 @@
             <span class="file">index.html → footer</span>
           </div>
           <footer class="footer" style="margin: 0;">
+            <div class="footer-media" aria-hidden="true">
+              <img src="assets/prefooter-stage.gif" alt="" class="footer-media-img" loading="lazy" decoding="async">
+            </div>
+            <div class="footer-overlay" aria-hidden="true"></div>
             <div class="footer-container">
-              <div class="footer-left">
-                <span class="footer-logo">LENSES</span>
-                <span class="t3 footer-copyright">© 2026 LENSES Todos os direitos reservados.</span>
+              <div class="footer-brand">
+                <a href="javascript:void(0)" class="footer-logo-link" aria-label="LENSES">
+                  <img src="assets/logos/lenses-outlined-logo.png" alt="LENSES" class="footer-logo-img" loading="lazy" decoding="async">
+                </a>
+                <span class="footer-brand-rule" aria-hidden="true"></span>
               </div>
 
-              <div class="footer-right">
-                <nav class="footer-nav">
-                  <a href="javascript:void(0)" class="lnk">Início</a>
-                  <a href="javascript:void(0)" class="lnk">Sobre</a>
-                  <a href="javascript:void(0)" class="lnk">Projetos</a>
-                  <a href="javascript:void(0)" class="lnk">Revista</a>
-                  <a href="javascript:void(0)" class="lnk">Informes</a>
-                  <a href="javascript:void(0)" class="lnk">Contato</a>
-                </nav>
-                <a href="javascript:void(0)" class="btn-top" title="Voltar ao topo" aria-label="Voltar ao topo">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M18 15l-6-6-6 6"/>
-                  </svg>
-                </a>
+              <div class="footer-grid">
+                <div class="footer-col footer-col--manifesto">
+                  <p class="footer-manifesto">Transformamos ideias em grandes histórias.</p>
+                  <p class="footer-text">Filmes, coberturas e experiências audiovisuais que conectam marcas e pessoas através de narrativas reais e de alto impacto.</p>
+                </div>
+
+                <div class="footer-col">
+                  <h3 class="footer-col-title">Contato</h3>
+                  <ul class="footer-list">
+                    <li><span class="footer-list-item"><svg class="footer-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg><span>+55 91 99200-0000</span></span></li>
+                    <li><span class="footer-list-item"><svg class="footer-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><span>contato@lenses.com.br</span></span></li>
+                    <li><span class="footer-list-item"><svg class="footer-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span>Belém, PA – Brasil</span></span></li>
+                  </ul>
+                </div>
+
+                <div class="footer-col">
+                  <h3 class="footer-col-title">Acompanhe</h3>
+                  <ul class="footer-list">
+                    <li><span class="footer-list-item"><svg class="footer-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16.11 8z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg><span>@lensesagencia</span></span></li>
+                    <li><span class="footer-list-item"><svg class="footer-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="4"/><path d="M10 9l5 3-5 3z"/></svg><span>Lenses no YouTube</span></span></li>
+                    <li><span class="footer-list-item"><svg class="footer-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="4"/><path d="M7.2 10.5V17M7.2 7.4v.01M11.4 17v-3.6a2.4 2.4 0 0 1 4.8 0V17"/></svg><span>Lenses no LinkedIn</span></span></li>
+                  </ul>
+                </div>
+
+                <div class="footer-col footer-col--cta">
+                  <h3 class="footer-col-title">Vamos criar juntos?</h3>
+                  <p class="footer-text">Fale com a nossa equipe e descubra como podemos dar vida ao seu próximo projeto.</p>
+                  <a href="javascript:void(0)" class="footer-cta">
+                    <span>Entrar em contato</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+                  </a>
+                </div>
+              </div>
+
+              <div class="footer-bottom">
+                <div class="footer-bottom-brand">
+                  <span class="footer-wordmark">LENSES</span>
+                  <span class="footer-bottom-rule" aria-hidden="true"></span>
+                  <span class="footer-copyright">© 2026 Lenses. Todos os direitos reservados.</span>
+                </div>
+                <p class="footer-axes">
+                  <span>Audiovisual</span><span class="sep" aria-hidden="true">/</span>
+                  <span>Conteúdo</span><span class="sep" aria-hidden="true">/</span>
+                  <span>Estratégia</span><span class="sep" aria-hidden="true">/</span>
+                  <span>Impacto</span>
+                </p>
               </div>
             </div>
           </footer>
@@ -2114,10 +2150,13 @@
           <table class="spec-table">
             <thead><tr><th>Elemento</th><th>Especificação</th></tr></thead>
             <tbody>
-              <tr><td>.footer</td><td class="spec-meta">bg #000000 · border-top hairline · padding 30px 40px · layout flex space-between</td></tr>
-              <tr><td>.footer-nav .lnk</td><td class="spec-meta">0.82rem / 500 / 0.04em · <strong>sem uppercase</strong> (override do .lnk) · gap 24px</td></tr>
-              <tr><td>.btn-top</td><td class="spec-meta">36px circular · border subtle-dark · hover: azul + translateY(-3px) · ícone 18px</td></tr>
-              <tr><td>Âncoras</td><td class="spec-meta">Início · Sobre · Projetos · <strong>Revista</strong> · <strong>Informes</strong> · Contato (manter sempre)</td></tr>
+              <tr><td>.footer-container</td><td class="spec-meta">relative · z-index 3 · padding clamp(72px,8vw,132px) clamp(24px,5vw,96px) clamp(28px,3vw,48px)</td></tr>
+              <tr><td>.footer-logo-img</td><td class="spec-meta">logo empilhado <strong>até 320px</strong> de largura (PNG 541×575) · topo-esquerda + fio azul .footer-brand-rule</td></tr>
+              <tr><td>.footer-grid</td><td class="spec-meta">grid 4 colunas · colunas separadas por fio vertical 1px rgba(255,255,255,.16) · manifesto ocupa coluna larga</td></tr>
+              <tr><td>.footer-cta</td><td class="spec-meta">botão contornado azul pill (--radius-pill) + seta ↗ · hover: preenchimento --color-electric-blue</td></tr>
+              <tr><td>.footer-bottom</td><td class="spec-meta">flex space-between · esquerda: LENSES — © 2026 Lenses. Todos os direitos reservados. · direita: AUDIOVISUAL / CONTEÚDO / ESTRATÉGIA / IMPACTO</td></tr>
+              <tr><td>Conteúdo</td><td class="spec-meta">WhatsApp wa.me/5591992000000 · contato@lenses.com.br · Belém, PA – Brasil · IG/YT/LinkedIn @lensesagencia</td></tr>
+              <tr><td>Breakpoints</td><td class="spec-meta">≤1100px: 2 colunas (manifesto e CTA em full-width, fios viram linhas horizontais) · ≤768px: 1 coluna · padding 22px</td></tr>
             </tbody>
           </table>
         </div>

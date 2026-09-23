@@ -2,7 +2,25 @@
 
 > Registro cronológico das atualizações do projeto (padrão Obsidian `.MD/`).
 
+## 2026-09-23 — feat: nova seção ISO 9001, grid de clientes oficiais e novo footer cinematográfico
+
+### Alterações
+- **Certificação ISO 9001 (`#certificacao`):** Novo bloco institucional com card visual (`assets/iso9001-card.jpg`), 4 pilares/features operacionais de qualidade e assinatura de marca com fio azul.
+- **Seção Clientes / "Com quem já trabalhamos" (`#clientes`):** Grid responsivo com 18 logos oficiais importados (`assets/logos-zion/`), efeito monocromático de repouso e ativação cromática vibrante ao hover.
+- **Novo Footer Cinematográfico:** Unificação do rodapé com fundo em GIF de cena de palco (`assets/prefooter-stage.gif`), overlay com leitura em alto contraste, logo outlined oficial, grid de 4 colunas (Manifesto, Contato, Acompanhe e CTA) e barra de eixos da marca.
+- **Tipografia:** Inclusão e pareamento da fonte Google Fonts `Inter Tight` com `Plus Jakarta Sans`.
+- **Design System Preview:** Atualização do `design-system-preview.html` com o novo footer e tabela de especificações técnicas.
+- **Governança:** Inclusão de `*.bak*` no `.gitignore` e higienização de arquivos temporários.
+
+### Status
+- Obsidian `.MD/`: ✅ atualizado
+- Notion `DB_IDE`: ⏳ pendente confirmação de deploy
+- Deploy VPS: ⏳ aguardando confirmação do usuário
+
+---
+
 ## 2026-09-23 — Retomada Antigravity · fix: resolução de pendências do OpenCode, logo outlined e refinamento visual
+
 
 ### Alterações
 - **Pasta do Vídeo Hero:** Renomeada de `assets/S1 TOPO HERO/` para `assets/hero/`, corrigido caminho no `index.html` para eliminar risco de falhas com `%20`.
