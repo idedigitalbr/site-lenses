@@ -2,6 +2,16 @@
 
 > Registro cronológico das atualizações do projeto (padrão Obsidian `.MD/`).
 
+## 2026-09-23 — refactor: remoção de texto vazado, seção de publicações e banner de contato
+
+### Alterações
+- **Remoção de Texto Vazado:** Eliminado comentário HTML mal formatado que exibia nota interna de rodapé na tela.
+- **Remoção da Seção Publicações (`#revista` / `#informes`):** Removidos cards da Revista Eletrônica e Informes Trimestrais.
+- **Remoção do Banner CTA Contato (`#contato`):** Eliminado banner duplicado "Vamos criar algo incrível juntos?".
+- **Preservação de Âncora `#contato`:** Atribuído `id="contato"` diretamente ao novo Footer Cinematográfico, mantendo navegação e atalhos de contato plenamente funcionais.
+
+---
+
 ## 2026-09-23 — feat: nova seção ISO 9001, grid de clientes oficiais e novo footer cinematográfico
 
 ### Alterações
