@@ -11,6 +11,7 @@
 - **Navegação `#projetos-todos`:** Título `ALGUNS PROJETOS` transformado em link interativo para o carrossel duplo com micro-interação no hover e texto `TODOS OS CASES ↓`.
 - **QA de Altura do Split "Sobre":** Adicionada regra `@media (min-width: 1101px) and (max-height: 740px)` para prevenir aperto vertical em notebooks compactos.
 - **Contraste de Legibilidade:** Reforçados os gradientes lineares inferiores em `.featured-slide-overlay` e `.duo-slide-overlay` para garantir leitura nítida sobre qualquer imagem.
+- **Publicações Simétricas:** Adicionado rodapé com botão de solicitação e descrição nos Informes Trimestrais e WhatsApp direto na Revista Eletrônica.
 
 ### Status
 - Obsidian `.MD/`: ✅ atualizado
