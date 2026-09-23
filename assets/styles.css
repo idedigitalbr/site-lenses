@@ -1465,7 +1465,7 @@ section[id] {
   position: absolute;
   inset: 0;
   z-index: 1;
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.3) 60%, rgba(0, 0, 0, 0.7) 100%);
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.94) 0%, rgba(0, 0, 0, 0.35) 45%, rgba(0, 0, 0, 0.65) 100%);
   pointer-events: none;
 }
 
@@ -1486,7 +1486,15 @@ section[id] {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 16px;
+  gap: 12px;
+  pointer-events: auto;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.35s var(--ease-cinematic);
+}
+
+.highlight-action-title:hover {
+  transform: translateY(-4px);
 }
 
 .highlight-action-title .ico-arrow-large {
@@ -1496,11 +1504,31 @@ section[id] {
   align-items: center;
   justify-content: center;
   color: var(--text-white);
+  transition: transform 0.35s var(--ease-cinematic), color 0.3s ease;
+}
+
+.highlight-action-title:hover .ico-arrow-large {
+  transform: translateX(4px) translateY(4px);
+  color: var(--color-electric-blue);
 }
 
 .highlight-action-title .ico-arrow-large svg {
   width: 100%;
   height: 100%;
+}
+
+.highlight-action-sub {
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  font-weight: 700;
+  color: var(--color-electric-blue);
+  opacity: 0.9;
+  transition: opacity 0.3s ease, letter-spacing 0.3s ease;
+}
+
+.highlight-action-title:hover .highlight-action-sub {
+  opacity: 1;
+  letter-spacing: 0.24em;
 }
 
 .section-display-title {
@@ -1740,7 +1768,7 @@ a.pc-card:focus-visible {
   position: absolute;
   inset: 0;
   z-index: 1;
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.05) 0%, rgba(0, 0, 0, 0.18) 45%, rgba(0, 0, 0, 0.78) 100%);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.05) 0%, rgba(0, 0, 0, 0.28) 45%, rgba(0, 0, 0, 0.90) 100%);
   pointer-events: none;
 }
 
@@ -2386,6 +2414,24 @@ a.pc-card:focus-visible {
   gap: 30px;
 }
 
+.footer-logo-link {
+  display: inline-flex;
+  align-items: center;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.footer-logo-link:hover {
+  opacity: 0.82;
+  transform: translateY(-1px);
+}
+
+.footer-logo-img {
+  height: 24px;
+  width: auto;
+  display: block;
+  object-fit: contain;
+}
+
 .footer-logo {
   font-size: 1.2rem;
   font-weight: 800;
@@ -2860,6 +2906,28 @@ a.pc-card:focus-visible {
 .reveal-on-scroll.is-revealed {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* Adaptação para Telas Desktop/Notebook com Altura Compacta (<= 740px) */
+@media (min-width: 1101px) and (max-height: 740px) {
+  .split-interactive-wrapper[data-state="story"] {
+    height: clamp(500px, 82vh, 600px);
+    min-height: 500px;
+  }
+  .story-title {
+    font-size: clamp(2.2rem, 3.8vw, 3.4rem);
+    margin: 0 0 10px;
+  }
+  .story-manifesto {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+  .story-signature {
+    margin-top: 18px;
+  }
+  .story-kpi-num {
+    font-size: clamp(2.2rem, 3.4vw, 3.2rem);
+  }
 }
 
 /* Suavização de scroll global */

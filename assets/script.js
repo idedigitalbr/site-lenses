@@ -412,7 +412,7 @@ document.addEventListener('DOMContentLoaded', () => {
         category: 'Eventos',
         location: 'Nova York',
         year: '2023',
-        url: '',
+        url: 'https://wa.me/5591992000000?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20o%20case%20Manifesto%20All%20Amaz%C3%B4nia.',
         // A foto já traz a legenda gravada na imagem: não duplicar o texto
         imageCaption: true
       },
@@ -423,7 +423,7 @@ document.addEventListener('DOMContentLoaded', () => {
         category: 'Filme',
         location: 'Brasil',
         year: '2024',
-        url: ''
+        url: 'https://wa.me/5591992000000?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20a%20produ%C3%A7%C3%A3o%20de%20filmes%20institucionais.'
       },
       {
         title: 'Estúdio LENSES',
@@ -432,7 +432,7 @@ document.addEventListener('DOMContentLoaded', () => {
         category: 'Audiovisual',
         location: 'Brasil',
         year: '2025',
-        url: ''
+        url: 'https://wa.me/5591992000000?text=Ol%C3%A1!%20Gostaria%20de%20conhecer%20a%20estrutura%20do%20Est%C3%BAdio%20LENSES.'
       }
     ],
     secondary: [
@@ -442,7 +442,7 @@ document.addEventListener('DOMContentLoaded', () => {
         image: 'assets/servicos/serv-cobertura-eventos-poster.jpg',
         category: 'Eventos',
         year: '2025',
-        url: ''
+        url: 'https://wa.me/5591992000000?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20cobertura%20de%20eventos%20e%20podcasts.'
       },
       {
         title: 'Estrada Seca',
@@ -450,7 +450,7 @@ document.addEventListener('DOMContentLoaded', () => {
         image: 'assets/servicos/serv-filmes-publicitarios.jpg',
         category: 'Publicidade',
         year: '2024',
-        url: ''
+        url: 'https://wa.me/5591992000000?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20filmes%20publicit%C3%A1rios.'
       },
       {
         title: 'War Room de Marca',
@@ -458,7 +458,7 @@ document.addEventListener('DOMContentLoaded', () => {
         image: 'assets/servicos/serv-planejamento-estrategico.jpg',
         category: 'Estratégia',
         year: '2024',
-        url: ''
+        url: 'https://wa.me/5591992000000?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20planejamento%20estrat%C3%A9gico%20de%20comunica%C3%A7%C3%A3o.'
       },
       {
         title: 'Painel de Cenários',
@@ -466,7 +466,7 @@ document.addEventListener('DOMContentLoaded', () => {
         image: 'assets/servicos/serv-mapeamento-cenarios.jpg',
         category: 'Estratégia',
         year: '2023',
-        url: ''
+        url: 'https://wa.me/5591992000000?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20mapeamento%20de%20cen%C3%A1rios.'
       },
       {
         title: 'ESG em Movimento',
@@ -474,7 +474,7 @@ document.addEventListener('DOMContentLoaded', () => {
         image: 'assets/servicos/serv-propaganda-esg-poster.jpg',
         category: 'Publicidade',
         year: '2025',
-        url: ''
+        url: 'https://wa.me/5591992000000?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20campanhas%20de%20Propaganda%20e%20ESG.'
       },
       {
         title: 'Câmera em Movimento',
@@ -482,7 +482,7 @@ document.addEventListener('DOMContentLoaded', () => {
         image: 'assets/servicos/serv-producao-audiovisual-poster.jpg',
         category: 'Audiovisual',
         year: '2024',
-        url: ''
+        url: 'https://wa.me/5591992000000?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20produ%C3%A7%C3%A3o%20audiovisual.'
       }
     ]
   };
@@ -501,7 +501,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const meta = parts.filter(Boolean).join(' · ');
     const isLink = Boolean(project.url);
     const tag = isLink ? 'a' : 'div';
-    const attrs = isLink ? ` href="${esc(project.url)}"` : '';
+    const isExternal = isLink && (project.url.startsWith('http://') || project.url.startsWith('https://'));
+    const targetAttrs = isExternal ? ' target="_blank" rel="noopener noreferrer"' : '';
+    const attrs = isLink ? ` href="${esc(project.url)}"${targetAttrs}` : '';
 
     return `<${tag} class="pc-card${variant === 'sm' ? ' pc-card-sm' : ''}"${attrs}>` +
       `<div class="pc-card-title">${esc(project.title)}</div>` +

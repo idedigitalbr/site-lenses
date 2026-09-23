@@ -2,6 +2,23 @@
 
 > Registro cronológico das atualizações do projeto (padrão Obsidian `.MD/`).
 
+## 2026-09-23 — Retomada Antigravity · fix: resolução de pendências do OpenCode, logo outlined e refinamento visual
+
+### Alterações
+- **Pasta do Vídeo Hero:** Renomeada de `assets/S1 TOPO HERO/` para `assets/hero/`, corrigido caminho no `index.html` para eliminar risco de falhas com `%20`.
+- **Logo Outlined Oficial:** Inserida no rodapé (`footer`) substituindo texto simples por `assets/logos/lenses-outlined-logo.png` com transições suaves e link para o topo.
+- **Ações dos 9 Cases nos Carrosséis:** Ativação dos links com chamadas inteligentes contextuais de WhatsApp para cada um dos 9 projetos com `target="_blank"` seguro.
+- **Navegação `#projetos-todos`:** Título `ALGUNS PROJETOS` transformado em link interativo para o carrossel duplo com micro-interação no hover e texto `TODOS OS CASES ↓`.
+- **QA de Altura do Split "Sobre":** Adicionada regra `@media (min-width: 1101px) and (max-height: 740px)` para prevenir aperto vertical em notebooks compactos.
+- **Contraste de Legibilidade:** Reforçados os gradientes lineares inferiores em `.featured-slide-overlay` e `.duo-slide-overlay` para garantir leitura nítida sobre qualquer imagem.
+
+### Status
+- Obsidian `.MD/`: ✅ atualizado
+- Notion `DB_IDE`: ⏳ aguardando homologação
+- Deploy VPS: ⏳ aguardando homologação
+
+---
+
 ## 2026-09-22 — Commit `aba283d` · feat: motor de carrossel de cases, split Sobre em tela cheia e cards editorial sobre foto
 
 **Push:** https://github.com/idedigitalbr/site-lenses.git (`main`)
