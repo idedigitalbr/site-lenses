@@ -2,6 +2,14 @@
 
 > Registro cronológico das atualizações do projeto (padrão Obsidian `.MD/`).
 
+## 2026-09-25 — refactor: remoção da seção rail marquee de marcas sob o hero
+
+### Alterações
+- **Remoção do Rail Marquee (`#marcas`):** Eliminada a faixa preta horizontal intermediária com logos vetoriais repetidos logo abaixo do vídeo hero.
+- **Redirecionamento do Scroll do Hero (`#scrollDownBtn`):** Atualizada a âncora e o gatilho JS da seta de rolagem do Hero diretamente para a seção Sobre (`#sobre`).
+
+---
+
 ## 2026-09-23 — refactor: remoção de texto vazado, seção de publicações e banner de contato
 
 ### Alterações

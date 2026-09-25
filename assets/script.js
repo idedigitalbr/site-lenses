@@ -297,11 +297,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 4.1. Scroll Suave para a Seta Minimalista de Scroll do Hero
   const scrollDownBtn = document.getElementById('scrollDownBtn');
-  const marcasSection = document.getElementById('marcas');
-  if (scrollDownBtn && marcasSection) {
+  const sobreSection = document.getElementById('sobre');
+  if (scrollDownBtn && sobreSection) {
     scrollDownBtn.addEventListener('click', (e) => {
       e.preventDefault();
-      marcasSection.scrollIntoView({ behavior: 'smooth' });
+      sobreSection.scrollIntoView({ behavior: 'smooth' });
     });
   }
 
