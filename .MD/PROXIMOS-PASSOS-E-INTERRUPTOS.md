@@ -1,12 +1,24 @@
 # LENSES — Próximos Passos e Itens Interrompidos
 
-> **Projeto:** site-lenses (landing page LENSES)
-> **Última atualização:** 23/09/2026
+> **Projeto:** site-lenses (landing page e institucional LENSES)
+> **Última atualização:** 29/09/2026
 > **Repositório:** https://github.com/idedigitalbr/site-lenses.git (branch `main`)
 
 ---
 
-## 🟢 Itens Resolvidos nesta Retomada (23/09/2026)
+## 🟢 Itens Resolvidos na Sessão de 29/09/2026
+
+| # | Item | Status | O que foi feito |
+|---|------|--------|-----------------|
+| 11 | **Página Sobre Nós Oficial (`sobre.html` / `sobre-nos.html`)** | ✅ Resolvido | Criada página institucional completa com Hero 100vh em vídeo, seção Sobre 100% full-width com split interativo, contadores animados de KPIs (+150, +80, +8, 100%), blocos de Missão, Visão e Valores com efeito iluminação real no hover, seção Nossa Equipe editorial em fundo branco com 4 retratos de estúdio e bios em modal, e CTA final com degradê oficial. |
+| 12 | **Degradês Oficiais e Tom Sobre Tom** | ✅ Resolvido | Implementados degradês canônicos (Azul Espacial `#202A44` → Azul Sabóia `#5C6CA4`) no header ticker e botões, além de marca d'água monumental translúcida Tom Sobre Tom conforme Manual da Marca (Anexos 2 e 3). |
+| 13 | **Redesign do Footer em 5 Colunas** | ✅ Resolvido | Logotipo empilhado integrado na Coluna 1, Manifesto verticalizado na Coluna 2, Contato na Coluna 3, Redes na Coluna 4 e CTA na Coluna 5, separados por divisores verticais sutis. Breakpoint calibrado para `<= 860px` para linha contínua em 1024px. |
+| 14 | **Preenchimento do Vão da Logo & Barra Inferior Agência** | ✅ Resolvido | Coluna 1 em `max-content` e logo ampliada para `clamp(210px, 17.5vw, 270px)` com `aspect-ratio: 541 / 575`, eliminando o vão até a divisória. Barra inferior tripartite (Copyright à esquerda, Termos & Privacidade ao centro e Desenvolvido por IDE Digital com logo branco mono à direita). |
+| 15 | **Sincronização Total Multi-Páginas** | ✅ Resolvido | Header e footer perfeitamente idênticos e sincronizados em `index.html`, `sobre.html`, `sobre-nos.html` e `design-system-preview.html`. |
+
+---
+
+## 🟢 Itens Resolvidos em Sessões Anteriores (23/09/2026)
 
 | # | Item | Status | O que foi feito |
 |---|------|--------|-----------------|
