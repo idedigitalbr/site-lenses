@@ -24,10 +24,10 @@
   <link rel="icon" type="image/png" sizes="192x192" href="assets/favicon-192x192.png">
   <link rel="apple-touch-icon" href="assets/favicon-192x192.png">
   
-  <!-- Fontes Oficiais: Inter Tight & Plus Jakarta Sans -->
+  <!-- Fonte Oficial da Marca: Inter (Manual da Marca 2025) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
   
   <!-- Estilos Oficiais -->
   <link rel="stylesheet" href="assets/styles.css">
@@ -75,7 +75,7 @@
           <!-- Lado esquerdo: Início | Sobre | Portfólio / Cases -->
           <nav class="nav-actions nav-actions-left" aria-label="Menu Principal Esquerdo">
             <a href="#inicio" class="lnk">Início</a>
-            <a href="#sobre" class="lnk">Sobre</a>
+            <a href="sobre.html" class="lnk">Sobre</a>
             <a href="#projetos" class="lnk">Portfólio / Cases</a>
           </nav>
 
@@ -103,7 +103,7 @@
         <div class="nav-mobile-drawer" id="mobileNav">
           <nav class="nav-mobile-links">
             <a href="#inicio" class="mobile-lnk">Início</a>
-            <a href="#sobre" class="mobile-lnk">Sobre</a>
+            <a href="sobre.html" class="mobile-lnk">Sobre</a>
             <a href="#projetos" class="mobile-lnk">Portfólio / Cases</a>
             <a href="#servicos" class="mobile-lnk">Nossos Serviços</a>
             <a href="#contato" class="btn btn-pill mobile-lnk">Contate-nos</a>
@@ -238,6 +238,10 @@
                   <span class="sig-rule"></span>
                   <span class="sig-text">Ideias em movimento</span>
                 </div>
+                <a href="sobre.html" class="btn btn-pill" style="margin-top: 18px; align-self: flex-start; font-size: 0.78rem; padding: 8px 18px;">
+                  <span>CONHEÇA NOSSA HISTÓRIA COMPLETA</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 14px; height: 14px;"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
               </div>
 
               <!-- Coluna 3: Indicadores / KPIs Consolidados -->
@@ -262,6 +266,9 @@
 
         <!-- PAINEL 2: CONTATO (AZUL) -->
         <div class="split-panel split-panel-contact" id="panelContact" tabindex="0" role="button" aria-expanded="false" aria-controls="contactContent" aria-label="Expandir Contato">
+          <!-- Marca d'Água Oficial Tom Sobre Tom (Manual da Marca 2025 - Anexos 2 e 3) -->
+          <div class="brand-watermark" aria-hidden="true">LENSES</div>
+
           <!-- Cabeçalho Principal do Painel -->
           <div class="panel-header">
             <div class="panel-indicator indicator-left" aria-hidden="true">
@@ -502,7 +509,8 @@
               <div class="certified-feature-body">
                 <p class="certified-feature-title">Sua tranquilidade</p>
                 <p class="certified-feature-desc">Foco total na estratégia, não no problema</p>
-              </div>           </div>
+              </div>
+           </div>
           </div>
 
           <div class="certified-footer">
@@ -600,23 +608,23 @@
       <div class="footer-overlay" aria-hidden="true"></div>
 
       <div class="footer-container">
-        <!-- Marca + acento azul -->
-        <div class="footer-brand">
-          <a href="#inicio" class="footer-logo-link" aria-label="LENSES - Voltar ao início">
-            <img src="assets/logos/lenses-outlined-logo.png" alt="LENSES" class="footer-logo-img" loading="lazy" decoding="async">
-          </a>
-          <span class="footer-brand-rule" aria-hidden="true"></span>
-        </div>
-
-        <!-- Colunas separadas por fios verticais -->
+        <!-- Grade de 5 colunas: Marca | Manifesto | Contato | Acompanhe | Ação -->
         <div class="footer-grid">
-          <!-- Coluna 1: manifesto editorial -->
+          <!-- Coluna 1: Marca / Logo empilhado oficial -->
+          <div class="footer-col footer-col--brand">
+            <a href="#inicio" class="footer-logo-link" aria-label="LENSES - Voltar ao início">
+              <img src="assets/logos/lenses-outlined-logo.png" alt="LENSES" class="footer-logo-img" loading="lazy" decoding="async">
+            </a>
+          </div>
+
+          <!-- Coluna 2: Manifesto editorial -->
           <div class="footer-col footer-col--manifesto">
+            <span class="footer-brand-rule" aria-hidden="true"></span>
             <p class="footer-manifesto">Transformamos ideias em grandes histórias.</p>
             <p class="footer-text">Filmes, coberturas e experiências audiovisuais que conectam marcas e pessoas através de narrativas reais e de alto impacto.</p>
           </div>
 
-          <!-- Coluna 2: contato -->
+          <!-- Coluna 3: Contato -->
           <div class="footer-col">
             <h3 class="footer-col-title">Contato</h3>
             <ul class="footer-list">
@@ -641,7 +649,7 @@
             </ul>
           </div>
 
-          <!-- Coluna 3: redes sociais -->
+          <!-- Coluna 4: Redes sociais -->
           <div class="footer-col">
             <h3 class="footer-col-title">Acompanhe</h3>
             <ul class="footer-list">
@@ -666,7 +674,7 @@
             </ul>
           </div>
 
-          <!-- Coluna 4: chamada para ação -->
+          <!-- Coluna 5: Chamada para ação -->
           <div class="footer-col footer-col--cta">
             <h3 class="footer-col-title">Vamos criar juntos?</h3>
             <p class="footer-text">Fale com a nossa equipe e descubra como podemos dar vida ao seu próximo projeto.</p>
@@ -679,20 +687,14 @@
 
         <!-- Barra inferior -->
         <div class="footer-bottom">
-          <div class="footer-bottom-brand">
-            <span class="footer-wordmark">LENSES</span>
-            <span class="footer-bottom-rule" aria-hidden="true"></span>
-            <span class="footer-copyright">© 2026 Lenses. Todos os direitos reservados.</span>
+          <p class="footer-copyright">Copyright © 2026 Lenses – All rights reserved</p>
+          <a href="#" class="footer-bottom-link">Termos &amp; Privacidade</a>
+          <div class="footer-dev">
+            <span class="footer-dev-text">Desenvolvido por:</span>
+            <a href="https://digital.ideinstituto.com.br/" target="_blank" rel="noopener noreferrer" class="footer-dev-link" aria-label="IDE Digital - Abrir em nova aba">
+              <img src="assets/logos/logo-idedigital-white.webp" alt="IDE Digital" class="footer-dev-logo" loading="lazy">
+            </a>
           </div>
-          <p class="footer-axes">
-            <span>Audiovisual</span>
-            <span class="sep" aria-hidden="true">/</span>
-            <span>Conteúdo</span>
-            <span class="sep" aria-hidden="true">/</span>
-            <span>Estratégia</span>
-            <span class="sep" aria-hidden="true">/</span>
-            <span>Impacto</span>
-          </p>
         </div>
       </div>
     </footer>

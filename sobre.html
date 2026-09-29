@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sobre Nós — LENSES | Amazônia em Outro Olhar</title>
+
+  <!-- SEO -->
+  <meta name="description" content="Conheça a LENSES: produtora audiovisual e estúdio de ideias em movimento. Missão, Visão, Valores e Equipe de excelência.">
+  <meta name="theme-color" content="#050505">
+
+  <!-- Open Graph / Social -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="LENSES">
+  <meta property="og:title" content="Sobre Nós — LENSES | Amazônia em Outro Olhar">
+  <meta property="og:description" content="Estúdio de ideias em movimento: criatividade, técnica e propósito para transformar histórias em experiências audiovisuais de alto impacto.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Sobre Nós — LENSES | Amazônia em Outro Olhar">
+  <meta name="twitter:description" content="Estúdio de ideias em movimento: criatividade, técnica e propósito para transformar histórias em experiências audiovisuais de alto impacto.">
+  
+  <!-- Favicon Oficial LENSES -->
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/favicon-192x192.png">
+  <link rel="apple-touch-icon" href="assets/favicon-192x192.png">
+  
+  <!-- Fonte Oficial da Marca: Inter (Manual da Marca 2025) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+  
+  <!-- Estilos Oficiais -->
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+
+  <!-- Camada Decorativa de Iluminação de Fundo -->
+  <div class="bg-ambient-layer"></div>
+
+  <div class="page-wrapper">
+
+    <!-- HEADER MASTER DINÂMICO COM FAIXA TICKER SUPERIOR (PADRÃO LENSES / ZION) -->
+    <header class="site-header is-top" id="siteHeader">
+      <!-- Faixa Superior Ticker Compacta -->
+      <div class="top-blue-ticker" id="topTicker" aria-label="Destaques Lenses">
+        <div class="top-ticker-track">
+          <span class="ticker-text">amazônia em outro olhar</span>
+          <span class="ticker-text">produção audiovisual</span>
+          <span class="ticker-text">estratégia &amp; conteúdo</span>
+          <span class="ticker-text">cinematografia</span>
+          <span class="ticker-text">direção artística</span>
+          <span class="ticker-text">eventos &amp; festivais</span>
+          <span class="ticker-text">documentários</span>
+          <!-- Repetições para loop contínuo infinito -->
+          <span class="ticker-text">amazônia em outro olhar</span>
+          <span class="ticker-text">produção audiovisual</span>
+          <span class="ticker-text">estratégia &amp; conteúdo</span>
+          <span class="ticker-text">cinematografia</span>
+          <span class="ticker-text">direção artística</span>
+          <span class="ticker-text">eventos &amp; festivais</span>
+          <span class="ticker-text">documentários</span>
+          <span class="ticker-text">amazônia em outro olhar</span>
+          <span class="ticker-text">produção audiovisual</span>
+          <span class="ticker-text">estratégia &amp; conteúdo</span>
+          <span class="ticker-text">cinematografia</span>
+          <span class="ticker-text">direção artística</span>
+          <span class="ticker-text">eventos &amp; festivais</span>
+          <span class="ticker-text">documentários</span>
+        </div>
+      </div>
+
+      <!-- Barra de Navegação Principal -->
+      <div class="nav" id="mainNav">
+        <div class="nav-container">
+          <!-- Esquerda: Início | Sobre (Ativo) | Portfólio / Cases -->
+          <nav class="nav-actions nav-actions-left" aria-label="Menu Principal Esquerdo">
+            <a href="index.html" class="lnk">Início</a>
+            <a href="sobre.html" class="lnk is-active">Sobre</a>
+            <a href="index.html#projetos" class="lnk">Portfólio / Cases</a>
+          </nav>
+
+          <!-- Centro: Logotipo LENSES -->
+          <a href="index.html" class="nav-logo" aria-label="Lenses - Início">
+            <img src="assets/logos/logo-lenses-white.webp" alt="LENSES" class="nav-logo-img">
+          </a>
+
+          <!-- Direita: Nossos Serviços | Botão Contate-nos -->
+          <nav class="nav-actions nav-actions-right" aria-label="Menu Principal Direito">
+            <a href="index.html#servicos" class="lnk">Nossos Serviços</a>
+            <a href="#contato" class="btn btn-pill">
+              <svg class="ico-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+              </svg>
+              <span>Contate-nos</span>
+            </a>
+          </nav>
+
+          <button class="nav-mobile-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+
+        <!-- Mobile Drawer Nav -->
+        <div class="nav-mobile-drawer" id="mobileNav">
+          <nav class="nav-mobile-links">
+            <a href="index.html" class="mobile-lnk">Início</a>
+            <a href="sobre.html" class="mobile-lnk is-active">Sobre</a>
+            <a href="index.html#projetos" class="mobile-lnk">Portfólio / Cases</a>
+            <a href="index.html#servicos" class="mobile-lnk">Nossos Serviços</a>
+            <a href="#contato" class="btn btn-pill mobile-lnk">Contate-nos</a>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <!-- 1. HERO CINEMATOGRÁFICO PURO (SEM TEXTO - 100VH) -->
+    <section class="about-hero-clean" id="topo" aria-label="Showreel Cinematográfico Lenses">
+      <div class="hero-video-wrapper">
+        <video 
+          id="aboutHeroVideo"
+          class="hero-video-element"
+          autoplay 
+          muted 
+          loop 
+          playsinline 
+          preload="auto">
+          <source src="assets/hero/TOPO-VIDEO-AMAZONIA.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <!-- Overlay muito sutil -->
+      <div class="about-hero-overlay"></div>
+
+      <!-- Seta Minimalista de Scroll Centralizada no Rodapé do Hero -->
+      <div class="hero-scroll-wrapper">
+        <a href="#sobre" class="hero-scroll-indicator" id="aboutScrollDownBtn" aria-label="Rolar para baixo para ver Sobre a Lenses">
+          <svg class="hero-scroll-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 5v14M18 13l-6 6-6-6"/>
+          </svg>
+        </a>
+      </div>
+
+      <!-- Controles Minimalistas de Áudio e Tela Cheia (Canto Inferior Direito) -->
+      <div class="hero-video-controls-zone" aria-label="Controles do vídeo de fundo">
+        <div class="hero-video-controls" id="aboutHeroControls">
+          <button 
+            type="button" 
+            class="hero-ctrl-btn is-muted" 
+            id="aboutMuteBtn" 
+            aria-label="Ativar som" 
+            title="Ativar som">
+            <svg class="ctrl-icon icon-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M11 5L6 9H2v6h4l5 4V5z"/>
+              <line x1="23" y1="9" x2="17" y2="15"/>
+              <line x1="17" y1="9" x2="23" y2="15"/>
+            </svg>
+            <svg class="ctrl-icon icon-unmuted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M11 5L6 9H2v6h4l5 4V5z"/>
+              <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+              <path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+            </svg>
+          </button>
+
+          <button 
+            type="button" 
+            class="hero-ctrl-btn" 
+            id="aboutFullscreenBtn" 
+            aria-label="Tela cheia" 
+            title="Tela cheia">
+            <svg class="ctrl-icon icon-fs-enter" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
+            </svg>
+            <svg class="ctrl-icon icon-fs-exit" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 14h6m0 0v6m0-6L3 21m17-7h-6m0 0v6m0-6l7 7M14 4v6m0 0h6m-6 0L21 3M4 10h6m0 0V4m0 6L3 3"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. SOBRE A LENSES (SPLIT EXPANSÍVEL 100% LARGURA - EXATO ANEXO 1) -->
+    <section class="section section-cta-split" id="sobre" aria-label="Sobre a Lenses e Contato da Lenses">
+      <div class="split-interactive-wrapper reveal-on-scroll is-revealed" data-state="story" id="splitInteractive">
+        
+        <!-- PAINEL 1: SOBRE A LENSES (BRANCO - ABERTO) -->
+        <div class="split-panel split-panel-story is-active is-pinned" id="panelStory" tabindex="0" role="button" aria-expanded="true" aria-controls="storyContent" aria-label="Sobre a Lenses">
+          <!-- Cabeçalho Principal do Painel -->
+          <div class="panel-header">
+            <div class="panel-title-wrap">
+              <h2 class="h2 split-heading">SOBRE A LENSES</h2>
+            </div>
+            <div class="panel-indicator" aria-hidden="true">
+              <svg class="ico-arrow-diag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 7h10v10M7 17L17 7"/></svg>
+              <svg class="ico-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+            </div>
+          </div>
+
+          <!-- Rótulo Comprimido (visível quando o painel Contato está expandido em desktop) -->
+          <div class="panel-compressed-label" aria-hidden="true">
+            <span class="compressed-text">SOBRE A LENSES</span>
+            <svg class="ico-arrow-compressed" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 7h10v10M7 17L17 7"/></svg>
+          </div>
+
+          <!-- Conteúdo Revelado: Sobre a Lenses (layout tela cheia: foto à esquerda) -->
+          <div class="panel-body panel-body-story" id="storyContent">
+            <div class="story-content-grid">
+              
+              <!-- Coluna 1: Foto Editorial Full-Height com Tag e Legenda -->
+              <div class="story-media-col">
+                <div class="story-img-card">
+                  <img src="assets/about-back.png" alt="Estúdio de produção LENSES" class="story-img" loading="lazy" decoding="async">
+                  <div class="story-img-tag">LENSES</div>
+                  <div class="story-img-caption" aria-hidden="true">
+                    <span class="caption-rule"></span>
+                    <span class="caption-text">Histórias<br>que geram<br>impacto</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Coluna 2: Manifesto Oficial da Lenses -->
+              <div class="story-text-col">
+                <span class="story-kicker">Sobre a</span>
+                <h3 class="story-title">LENSES</h3>
+                <p class="story-manifesto">
+                  Mais que uma produtora, somos um estúdio de ideias em movimento. Unimos criatividade, técnica e propósito para transformar histórias em experiências que geram impacto real.
+                </p>
+                <div class="story-signature" aria-hidden="true">
+                  <span class="sig-rule"></span>
+                  <span class="sig-text">Ideias em movimento</span>
+                </div>
+                <a href="#pilares" class="btn btn-pill" style="margin-top: 18px; align-self: flex-start; font-size: 0.78rem; padding: 10px 22px;">
+                  <span>CONHEÇA NOSSA HISTÓRIA COMPLETA</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 14px; height: 14px;"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+              </div>
+
+              <!-- Coluna 3: Indicadores / KPIs Consolidados -->
+              <div class="story-kpis-col">
+                <div class="story-kpi-item">
+                  <span class="story-kpi-num">+150</span>
+                  <span class="story-kpi-lbl">PROJETOS REALIZADOS</span>
+                </div>
+                <div class="story-kpi-item">
+                  <span class="story-kpi-num">+80</span>
+                  <span class="story-kpi-lbl">MARCAS ATENDIDAS</span>
+                </div>
+                <div class="story-kpi-item">
+                  <span class="story-kpi-num">+8</span>
+                  <span class="story-kpi-lbl">ANOS DE EXPERIÊNCIA</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- PAINEL 2: CONTATO (AZUL) -->
+        <div class="split-panel split-panel-contact" id="panelContact" tabindex="0" role="button" aria-expanded="false" aria-controls="contactContent" aria-label="Expandir Contato">
+          <!-- Marca d'Água Oficial Tom Sobre Tom (Manual da Marca 2025 - Anexos 2 e 3) -->
+          <div class="brand-watermark" aria-hidden="true">LENSES</div>
+
+          <!-- Cabeçalho Principal do Painel -->
+          <div class="panel-header">
+            <div class="panel-indicator indicator-left" aria-hidden="true">
+              <svg class="ico-arrow-diag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17l10-10M17 7H7v10"/></svg>
+              <svg class="ico-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+            </div>
+            <div class="panel-title-wrap">
+              <h2 class="h2 split-heading">CONTATO</h2>
+            </div>
+          </div>
+
+          <!-- Rótulo Comprimido (visível quando o painel História está expandido em desktop) -->
+          <div class="panel-compressed-label" aria-hidden="true">
+            <span class="compressed-text">CONTATO</span>
+            <svg class="ico-arrow-compressed" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17l10-10M17 7H7v10"/></svg>
+          </div>
+
+          <!-- Conteúdo Revelado: Dados e Canais Reais de Contato -->
+          <div class="panel-body panel-body-contact" id="contactContent">
+            <div class="contact-content-grid">
+              
+              <!-- Coluna 1: Chamada Editorial & Ação Direta -->
+              <div class="contact-intro-col">
+                <span class="contact-kicker">FALE COM A NOSSA EQUIPE</span>
+                <h3 class="contact-lead-title">Vamos conversar sobre o seu próximo projeto?</h3>
+                <p class="contact-lead-desc">
+                  Transformamos ideias e narrativas em filmes, coberturas e experiências audiovisuais de alto impacto.
+                </p>
+                <a href="https://wa.me/5591992000000" target="_blank" rel="noopener noreferrer" class="btn btn-contact-direct">
+                  <span>ENTRAR EM CONTATO</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7h10v10M7 17L17 7"/></svg>
+                </a>
+              </div>
+
+              <!-- Coluna 2: Canais Oficiais da Lenses -->
+              <div class="contact-channels-col">
+                <div class="contact-channel-block">
+                  <span class="contact-channel-type">WHATSAPP / TELEFONE</span>
+                  <a href="https://wa.me/5591992000000" target="_blank" rel="noopener noreferrer" class="contact-channel-link">
+                    <svg class="ico-channel-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+                    <span>+55 91 99200-0000</span>
+                  </a>
+                </div>
+
+                <div class="contact-channel-block">
+                  <span class="contact-channel-type">E-MAIL INSTITUCIONAL</span>
+                  <a href="mailto:contato@lenses.com.br" class="contact-channel-link">
+                    <svg class="ico-channel-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    <span>contato@lenses.com.br</span>
+                  </a>
+                </div>
+
+                <div class="contact-channel-block">
+                  <span class="contact-channel-type">INSTAGRAM OFICIAL</span>
+                  <a href="https://instagram.com/lensesagencia" target="_blank" rel="noopener noreferrer" class="contact-channel-link">
+                    <svg class="ico-channel-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                    <span>@lensesagencia</span>
+                  </a>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 3. MISSÃO, VISÃO E VALORES (FIEL AO ANEXO 2 - 3 CARDS LADO A LADO COM HOVER QUE ACENDE) -->
+    <section class="about-mvv-section" id="pilares" aria-label="Missão, Visão e Valores da Lenses">
+      <div class="about-container">
+        
+        <div class="mvv-cards-grid reveal-on-scroll">
+          
+          <!-- Card 1: MISSÃO -->
+          <div class="mvv-card" tabindex="0">
+            <!-- Imagem de fundo de cinema -->
+            <img 
+              src="assets/pilares/card-missao.jpg" 
+              alt="Câmera de cinema em estúdio da Lenses" 
+              class="mvv-bg-img" 
+              loading="lazy" 
+              decoding="async">
+            
+            <!-- Filtro escuro: sai a opacidade para 0% no hover e ACENDE! -->
+            <div class="mvv-dark-filter" aria-hidden="true"></div>
+            
+            <!-- Sombra gradiente inferior para legibilidade contínua -->
+            <div class="mvv-gradient-shadow" aria-hidden="true"></div>
+
+            <!-- Conteúdo -->
+            <div class="mvv-content">
+              <!-- Ícone Alvo / Target estilizado fino como no Anexo 2 -->
+              <div class="mvv-icon-wrap" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"/>
+                  <circle cx="12" cy="12" r="6"/>
+                  <circle cx="12" cy="12" r="2"/>
+                  <line x1="12" y1="2" x2="12" y2="4"/>
+                  <line x1="12" y1="20" x2="12" y2="22"/>
+                  <line x1="2" y1="12" x2="4" y2="12"/>
+                  <line x1="20" y1="12" x2="22" y2="12"/>
+                </svg>
+              </div>
+
+              <h3 class="mvv-title">Missão</h3>
+              
+              <p class="mvv-desc">
+                Damos asas à sua inspiração. Com um toque de arte e o rigor do cinema, transformamos vivências e propósitos em experiências audiovisuais impactantes, cultivando um legado que irradia luz, verdade e emoção, tocando corações por gerações.
+              </p>
+            </div>
+          </div>
+
+          <!-- Card 2: VISÃO -->
+          <div class="mvv-card" tabindex="0">
+            <!-- Imagem de fundo de cinema -->
+            <img 
+              src="assets/pilares/card-visao.jpg" 
+              alt="Direção cinematográfica e paisagem Lenses" 
+              class="mvv-bg-img" 
+              loading="lazy" 
+              decoding="async">
+            
+            <!-- Filtro escuro: sai a opacidade para 0% no hover e ACENDE! -->
+            <div class="mvv-dark-filter" aria-hidden="true"></div>
+            
+            <!-- Sombra gradiente inferior para legibilidade contínua -->
+            <div class="mvv-gradient-shadow" aria-hidden="true"></div>
+
+            <!-- Conteúdo -->
+            <div class="mvv-content">
+              <!-- Ícone Olho estilizado fino como no Anexo 2 -->
+              <div class="mvv-icon-wrap" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                  <circle cx="12" cy="12" r="3.5"/>
+                  <circle cx="12" cy="12" r="1.2" fill="currentColor"/>
+                </svg>
+              </div>
+
+              <h3 class="mvv-title">Visão</h3>
+              
+              <p class="mvv-desc">
+                Ver cada história florescer, liberando o poder de sua narrativa para que ela inspire, emocione e se transforme em uma fonte inesgotável de sabedoria, arte e transformação para o mundo.
+              </p>
+            </div>
+          </div>
+
+          <!-- Card 3: VALORES -->
+          <div class="mvv-card" tabindex="0">
+            <!-- Imagem de fundo de cinema -->
+            <img 
+              src="assets/pilares/card-valores.jpg" 
+              alt="Lentes prime de cinema de alta precisão Lenses" 
+              class="mvv-bg-img" 
+              loading="lazy" 
+              decoding="async">
+            
+            <!-- Filtro escuro: sai a opacidade para 0% no hover e ACENDE! -->
+            <div class="mvv-dark-filter" aria-hidden="true"></div>
+            
+            <!-- Sombra gradiente inferior para legibilidade contínua -->
+            <div class="mvv-gradient-shadow" aria-hidden="true"></div>
+
+            <!-- Conteúdo -->
+            <div class="mvv-content">
+              <!-- Ícone Mãos segurando Estrela como no Anexo 2 -->
+              <div class="mvv-icon-wrap" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                </svg>
+              </div>
+
+              <h3 class="mvv-title">Valores</h3>
+              
+              <ul class="mvv-list">
+                <li>Excelência em cada detalhe</li>
+                <li>Respeito à essência de cada história</li>
+                <li>Qualidade com padrão elevado</li>
+                <li>Organização em todo o processo</li>
+                <li>Compromisso com legados que permanecem</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 4. NOSSA EQUIPE (FIEL AO ANEXO 3 - FUNDO CLARO, TÍTULO DISPLAY & CARDS COM BASE ESCURA) -->
+    <section class="about-team-section-clean" id="equipe" aria-label="Nossa Equipe">
+      <div class="about-container">
+        
+        <!-- Cabeçalho Elegante idêntico à Leggacy (Anexo 3) -->
+        <header class="team-header-clean reveal-on-scroll">
+          <span class="team-kicker-clean">LENSES</span>
+          <h2 class="team-title-clean">Nossa Equipe</h2>
+          <span class="team-rule-clean" aria-hidden="true"></span>
+        </header>
+
+        <!-- Grid de 4 Cards com Cantos Arredondados e Base Escura -->
+        <div class="team-grid-clean reveal-on-scroll">
+          
+          <!-- Card 1: Lucas Silveira -->
+          <div class="team-card-clean" tabindex="0">
+            <div class="team-card-media-clean">
+              <img 
+                src="assets/equipe/01-direcao-criativa.jpg" 
+                alt="Lucas Silveira" 
+                class="team-card-img-clean" 
+                loading="lazy" 
+                decoding="async">
+            </div>
+            <div class="team-card-info-clean">
+              <h3 class="team-card-name-clean">Lucas Silveira</h3>
+              <p class="team-card-role-clean">Diretor Geral &amp; Fundador (Direção De Cena E Estratégia Audiovisual)</p>
+            </div>
+          </div>
+
+          <!-- Card 2: Mariana Castro -->
+          <div class="team-card-clean" tabindex="0">
+            <div class="team-card-media-clean">
+              <img 
+                src="assets/equipe/02-direcao-fotografia.jpg" 
+                alt="Mariana Castro" 
+                class="team-card-img-clean" 
+                loading="lazy" 
+                decoding="async">
+            </div>
+            <div class="team-card-info-clean">
+              <h3 class="team-card-name-clean">Mariana Castro</h3>
+              <p class="team-card-role-clean">Diretora De Fotografia (Cinematografia &amp; Iluminação Cênica)</p>
+            </div>
+          </div>
+
+          <!-- Card 3: Camila Vasconcelos -->
+          <div class="team-card-clean" tabindex="0">
+            <div class="team-card-media-clean">
+              <img 
+                src="assets/equipe/03-direcao-producao.jpg" 
+                alt="Camila Vasconcelos" 
+                class="team-card-img-clean" 
+                loading="lazy" 
+                decoding="async">
+            </div>
+            <div class="team-card-info-clean">
+              <h3 class="team-card-name-clean">Camila Vasconcelos</h3>
+              <p class="team-card-role-clean">Diretora De Produção (Coordenação Geral &amp; Gestão ISO 9001)</p>
+            </div>
+          </div>
+
+          <!-- Card 4: Rodrigo Albuquerque -->
+          <div class="team-card-clean" tabindex="0">
+            <div class="team-card-media-clean">
+              <img 
+                src="assets/equipe/04-estrategia-narrativa.jpg" 
+                alt="Rodrigo Albuquerque" 
+                class="team-card-img-clean" 
+                loading="lazy" 
+                decoding="async">
+            </div>
+            <div class="team-card-info-clean">
+              <h3 class="team-card-name-clean">Rodrigo Albuquerque</h3>
+              <p class="team-card-role-clean">Head De Estratégia E Roteiro (Storytelling &amp; Narrativas De Impacto)</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 5. CTA FINAL CINEMATOGRÁFICO DE IMPACTO -->
+    <section class="about-cta-section" id="cta-final" aria-label="Chamada para Ação Final">
+      <div class="about-cta-media" aria-hidden="true">
+        <img src="assets/prefooter-stage.gif" alt="" class="about-cta-media-img" loading="lazy" decoding="async">
+      </div>
+      <div class="about-cta-overlay" aria-hidden="true"></div>
+      <!-- Marca d'Água Oficial Tom Sobre Tom (Manual da Marca 2025) -->
+      <div class="brand-watermark brand-watermark-center" style="color: rgba(92, 108, 164, 0.05); font-size: clamp(8rem, 24vw, 26rem);" aria-hidden="true">LENSES</div>
+
+      <div class="about-container">
+        <div class="about-cta-content reveal-on-scroll">
+          <span class="about-cta-kicker">VAMOS CRIAR JUNTOS</span>
+          <h2 class="about-cta-title">TRANSFORMAR IDEIAS EM IMAGEM, HISTÓRIAS OU EXPERIÊNCIAS AUDIOVISUAIS.</h2>
+          <p class="about-cta-desc">
+            Seja para um filme publicitário, grande cobertura institucional, documentário ou narrativa de impacto socioambiental, a LENSES está pronta para dar o próximo passo com a sua marca.
+          </p>
+
+          <a href="https://wa.me/5591992000000?text=Ol%C3%A1!%20Gostaria%20de%20conversar%20sobre%20um%20projeto%20audiovisual%20com%20a%20Lenses." target="_blank" rel="noopener noreferrer" class="btn btn-pill btn-cta-large">
+            <svg class="ico-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+            </svg>
+            <span>FALE COM A NOSSA EQUIPE</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. FOOTER OFICIAL LENSES — CENA CINEMATOGRÁFICA (GIF) + CONTEÚDO -->
+    <footer class="footer" id="contato">
+      <!-- Mídia de fundo: GIF cinematográfico herdado do antigo pré-footer -->
+      <div class="footer-media" aria-hidden="true">
+        <img src="assets/prefooter-stage.gif" alt="" class="footer-media-img" loading="lazy" decoding="async">
+      </div>
+
+      <!-- Overlay: escurece a lateral esquerda (leitura) e converge para preto na base -->
+      <div class="footer-overlay" aria-hidden="true"></div>
+
+      <div class="footer-container">
+        <!-- Grade de 5 colunas: Marca | Manifesto | Contato | Acompanhe | Ação -->
+        <div class="footer-grid">
+          <!-- Coluna 1: Marca / Logo empilhado oficial -->
+          <div class="footer-col footer-col--brand">
+            <a href="index.html" class="footer-logo-link" aria-label="LENSES - Voltar ao início">
+              <img src="assets/logos/lenses-outlined-logo.png" alt="LENSES" class="footer-logo-img" loading="lazy" decoding="async">
+            </a>
+          </div>
+
+          <!-- Coluna 2: Manifesto editorial -->
+          <div class="footer-col footer-col--manifesto">
+            <span class="footer-brand-rule" aria-hidden="true"></span>
+            <p class="footer-manifesto">Transformamos ideias em grandes histórias.</p>
+            <p class="footer-text">Filmes, coberturas e experiências audiovisuais que conectam marcas e pessoas através de narrativas reais e de alto impacto.</p>
+          </div>
+
+          <!-- Coluna 3: Contato -->
+          <div class="footer-col">
+            <h3 class="footer-col-title">Contato</h3>
+            <ul class="footer-list">
+              <li>
+                <a href="https://wa.me/5591992000000" target="_blank" rel="noopener noreferrer" class="footer-list-item">
+                  <svg class="footer-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+                  <span>+55 91 99200-0000</span>
+                </a>
+              </li>
+              <li>
+                <a href="mailto:contato@lenses.com.br" class="footer-list-item">
+                  <svg class="footer-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                  <span>contato@lenses.com.br</span>
+                </a>
+              </li>
+              <li>
+                <span class="footer-list-item">
+                  <svg class="footer-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  <span>Belém, PA – Brasil</span>
+                </span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Coluna 4: Redes sociais -->
+          <div class="footer-col">
+            <h3 class="footer-col-title">Acompanhe</h3>
+            <ul class="footer-list">
+              <li>
+                <a href="https://instagram.com/lensesagencia" target="_blank" rel="noopener noreferrer" class="footer-list-item">
+                  <svg class="footer-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16.11 8z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                  <span>@lensesagencia</span>
+                </a>
+              </li>
+              <li>
+                <a href="https://youtube.com/@lensesagencia" target="_blank" rel="noopener noreferrer" class="footer-list-item">
+                  <svg class="footer-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="4"/><path d="M10 9l5 3-5 3z"/></svg>
+                  <span>Lenses no YouTube</span>
+                </a>
+              </li>
+              <li>
+                <a href="https://linkedin.com/company/lensesagencia" target="_blank" rel="noopener noreferrer" class="footer-list-item">
+                  <svg class="footer-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="4"/><path d="M7.2 10.5V17M7.2 7.4v.01M11.4 17v-3.6a2.4 2.4 0 0 1 4.8 0V17"/></svg>
+                  <span>Lenses no LinkedIn</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Coluna 5: Chamada para ação -->
+          <div class="footer-col footer-col--cta">
+            <h3 class="footer-col-title">Vamos criar juntos?</h3>
+            <p class="footer-text">Fale com a nossa equipe e descubra como podemos dar vida ao seu próximo projeto.</p>
+            <a href="https://wa.me/5591992000000" target="_blank" rel="noopener noreferrer" class="footer-cta">
+              <span>Entrar em contato</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Barra inferior -->
+        <div class="footer-bottom">
+          <p class="footer-copyright">Copyright © 2026 Lenses – All rights reserved</p>
+          <a href="#" class="footer-bottom-link">Termos &amp; Privacidade</a>
+          <div class="footer-dev">
+            <span class="footer-dev-text">Desenvolvido por:</span>
+            <a href="https://digital.ideinstituto.com.br/" target="_blank" rel="noopener noreferrer" class="footer-dev-link" aria-label="IDE Digital - Abrir em nova aba">
+              <img src="assets/logos/logo-idedigital-white.webp" alt="IDE Digital" class="footer-dev-logo" loading="lazy">
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Scripts -->
+  <script src="assets/script.js"></script>
+
+</body>
+</html>

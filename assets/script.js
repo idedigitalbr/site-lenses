@@ -297,12 +297,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 4.1. Scroll Suave para a Seta Minimalista de Scroll do Hero
   const scrollDownBtn = document.getElementById('scrollDownBtn');
+  const aboutScrollDownBtn = document.getElementById('aboutScrollDownBtn');
   const sobreSection = document.getElementById('sobre');
+
+  const scrollToSobre = (e) => {
+    e.preventDefault();
+    if (sobreSection) sobreSection.scrollIntoView({ behavior: 'smooth' });
+  };
+
   if (scrollDownBtn && sobreSection) {
-    scrollDownBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      sobreSection.scrollIntoView({ behavior: 'smooth' });
-    });
+    scrollDownBtn.addEventListener('click', scrollToSobre);
+  }
+  if (aboutScrollDownBtn && sobreSection) {
+    aboutScrollDownBtn.addEventListener('click', scrollToSobre);
   }
 
   // 5. Scroll Reveal com IntersectionObserver (Padrão Zion)
@@ -333,7 +340,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const panelContact = document.getElementById('panelContact');
 
   if (splitWrapper && panelStory && panelContact) {
-    let currentState = 'idle'; // 'idle' | 'story' | 'contact'
+    const initialState = splitWrapper.getAttribute('data-state') || 'idle';
+    let currentState = initialState;
 
     function applyState(state) {
       currentState = state;
@@ -356,6 +364,10 @@ document.addEventListener('DOMContentLoaded', () => {
         panelStory.setAttribute('aria-expanded', 'false');
         panelContact.setAttribute('aria-expanded', 'false');
       }
+    }
+
+    if (initialState !== 'idle') {
+      applyState(initialState);
     }
 
     // Ativação ao clicar em links que apontam para #sobre
@@ -813,4 +825,196 @@ document.addEventListener('DOMContentLoaded', () => {
     const config = CAROUSEL_CONFIGS[rootEl.getAttribute('data-carousel')];
     if (config) initCarousel(rootEl, config);
   });
+
+  // ==========================================================================
+  // 8. INTERAÇÕES DA PÁGINA SOBRE NÓS (CONTADORES, MODAL DE EQUIPE & HERO VÍDEO)
+  // ==========================================================================
+
+  // 8.1. Contadores Animados de Indicadores (Counter Up)
+  const counterElements = document.querySelectorAll('.counter-val[data-target]');
+  if (counterElements.length > 0) {
+    const animateCounter = (el) => {
+      const target = parseInt(el.getAttribute('data-target'), 10);
+      if (isNaN(target)) return;
+
+      const duration = 1800; // ms
+      const startTime = performance.now();
+
+      const updateCount = (currentTime) => {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        
+        // Easing easeOutExpo para aceleração inicial rápida e desaceleração suave
+        const easeProgress = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+        const currentCount = Math.floor(easeProgress * target);
+
+        el.textContent = currentCount;
+
+        if (progress < 1) {
+          requestAnimationFrame(updateCount);
+        } else {
+          el.textContent = target;
+        }
+      };
+
+      requestAnimationFrame(updateCount);
+    };
+
+    if ('IntersectionObserver' in window) {
+      const counterObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            animateCounter(entry.target);
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.25 });
+
+      counterElements.forEach(el => counterObserver.observe(el));
+    } else {
+      counterElements.forEach(el => animateCounter(el));
+    }
+  }
+
+  // 8.2. Modal Interativo com Biografia da Equipe
+  const teamCards = document.querySelectorAll('.team-card[data-team-name]');
+  const teamModal = document.getElementById('teamModal');
+  const teamModalClose = document.getElementById('teamModalClose');
+  const teamModalAvatar = document.getElementById('teamModalAvatar');
+  const teamModalName = document.getElementById('teamModalName');
+  const teamModalRole = document.getElementById('teamModalRole');
+  const teamModalBio = document.getElementById('teamModalBio');
+
+  if (teamCards.length > 0 && teamModal) {
+    const openTeamCard = (card) => {
+      const name = card.getAttribute('data-team-name') || '';
+      const role = card.getAttribute('data-team-role') || '';
+      const bio = card.getAttribute('data-team-bio') || '';
+      const img = card.getAttribute('data-team-img') || '';
+
+      if (teamModalName) teamModalName.textContent = name;
+      if (teamModalRole) teamModalRole.textContent = role;
+      if (teamModalBio) teamModalBio.innerHTML = bio;
+      if (teamModalAvatar && img) {
+        teamModalAvatar.src = img;
+        teamModalAvatar.alt = name;
+      }
+
+      teamModal.classList.add('active');
+      teamModal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    };
+
+    const closeTeamModal = () => {
+      teamModal.classList.remove('active');
+      teamModal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    };
+
+    teamCards.forEach(card => {
+      card.addEventListener('click', () => openTeamCard(card));
+      card.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          openTeamCard(card);
+        }
+      });
+    });
+
+    if (teamModalClose) {
+      teamModalClose.addEventListener('click', closeTeamModal);
+    }
+
+    teamModal.addEventListener('click', (e) => {
+      if (e.target === teamModal) {
+        closeTeamModal();
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && teamModal.classList.contains('active')) {
+        closeTeamModal();
+      }
+    });
+  }
+
+  // 8.3. Controles do Vídeo do Hero da Página Sobre (Mute / Fullscreen)
+  const aboutVideo = document.getElementById('aboutHeroVideo');
+  const aboutMuteBtn = document.getElementById('aboutMuteBtn');
+  const aboutFullscreenBtn = document.getElementById('aboutFullscreenBtn');
+  const aboutHeroSection = document.getElementById('topo');
+
+  if (aboutVideo) {
+    aboutVideo.muted = true;
+    const playPromise = aboutVideo.play();
+    if (playPromise !== undefined) {
+      playPromise.catch(() => {
+        aboutVideo.muted = true;
+        aboutVideo.play().catch(() => {});
+      });
+    }
+
+    if (aboutMuteBtn) {
+      const updateAboutMuteUi = () => {
+        const isMuted = aboutVideo.muted;
+        aboutMuteBtn.classList.toggle('is-muted', isMuted);
+        const titleText = isMuted ? 'Ativar som' : 'Desativar som';
+        aboutMuteBtn.setAttribute('aria-label', titleText);
+        aboutMuteBtn.setAttribute('title', titleText);
+      };
+
+      aboutMuteBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        aboutVideo.muted = !aboutVideo.muted;
+        if (!aboutVideo.muted && aboutVideo.paused) {
+          aboutVideo.play().catch(() => {});
+        }
+        updateAboutMuteUi();
+      });
+
+      aboutVideo.addEventListener('volumechange', updateAboutMuteUi);
+      updateAboutMuteUi();
+    }
+
+    if (aboutHeroSection && aboutFullscreenBtn) {
+      const isFsActive = () => {
+        return !!(
+          document.fullscreenElement ||
+          document.webkitFullscreenElement ||
+          document.mozFullScreenElement ||
+          document.msFullscreenElement
+        );
+      };
+
+      const updateAboutFsUi = () => {
+        const isFs = isFsActive();
+        aboutFullscreenBtn.classList.toggle('is-fullscreen', isFs);
+        const titleText = isFs ? 'Sair da tela cheia' : 'Tela cheia';
+        aboutFullscreenBtn.setAttribute('aria-label', titleText);
+        aboutFullscreenBtn.setAttribute('title', titleText);
+      };
+
+      aboutFullscreenBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (!isFsActive()) {
+          if (aboutHeroSection.requestFullscreen) {
+            aboutHeroSection.requestFullscreen();
+          } else if (aboutHeroSection.webkitRequestFullscreen) {
+            aboutHeroSection.webkitRequestFullscreen();
+          }
+        } else {
+          if (document.exitFullscreen) {
+            document.exitFullscreen();
+          } else if (document.webkitExitFullscreen) {
+            document.webkitExitFullscreen();
+          }
+        }
+      });
+
+      document.addEventListener('fullscreenchange', updateAboutFsUi);
+      document.addEventListener('webkitfullscreenchange', updateAboutFsUi);
+      updateAboutFsUi();
+    }
+  }
 });
+
