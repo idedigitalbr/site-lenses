@@ -2,6 +2,17 @@
 
 > Registro cronológico das atualizações do projeto (padrão Obsidian `.MD/`).
 
+## 2026-10-05 — fix(hero): atualização do vídeo de fundo hero para nova versão Dia da Amazônia
+
+### Alterações
+- **Vídeo do Topo (Hero Cinematográfico):**
+  - Substituição da mídia por `assets/hero/290926-dia-da-amazonia-lenses-v2.mp4` em todas as instâncias:
+    - Home (`index.html`)
+    - Sobre (`sobre.html` e `sobre-nos.html`)
+    - Design System Oficial (`design-system-preview.html`)
+
+---
+
 ## 2026-10-02 — refactor(design-system): atualização completa do Design System Oficial e eliminação de seções obsoletas
 
 ### Alterações
