@@ -2,6 +2,18 @@
 
 > Registro cronológico das atualizações do projeto (padrão Obsidian `.MD/`).
 
+## 2026-10-05 — feat(clients): integração dos 12 logos oficiais de clientes LENSES e remoção do acervo legado Zion
+
+### Alterações
+- **Substituição Oficial de Logos de Clientes:**
+  - Removido o acervo legado de marcas da Zion (`assets/logos-zion/`).
+  - Integrado o acervo com os 12 clientes oficiais da LENSES em `assets/logos-clientes-lenses/`:
+    - Albras, Ativo Construções, Consag Engenharia, EuroChem, Gás do Pará, Hidrovias do Brasil, Hydro, Mitsubishi Power, MoveInfra, New Fortress Energy, Ultracargo e Unitapajós.
+  - Processamento e otimização visual de alta definição: conversão para PNG transparente, eliminação de margens brancas e compatibilidade total com Retina.
+  - Atualização da seção `#clientes` na Home (`index.html`), Design System (`design-system-preview.html`) e regras de layout CSS (`assets/styles.css`).
+
+---
+
 ## 2026-10-05 — fix(hero): atualização do vídeo de fundo hero para nova versão Dia da Amazônia
 
 ### Alterações

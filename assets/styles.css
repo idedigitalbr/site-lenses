@@ -2271,7 +2271,7 @@ a.pc-card:focus-visible {
 .clients-grid {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  grid-template-rows: repeat(3, auto);
+  grid-template-rows: repeat(2, auto);
   column-gap: 48px;
   row-gap: 56px;
   width: 100%;
