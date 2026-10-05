@@ -22,7 +22,7 @@
        Chrome da documentação — alinhado aos tokens oficiais da marca.
        ========================================================================== */
     :root {
-      --ds-sidebar-w: 300px;
+      --ds-sidebar-w: 310px;
       --ds-header-h: 70px;
       --ds-bg-sidebar: #070709;
       --ds-border-ui: rgba(255, 255, 255, 0.09);
@@ -147,7 +147,7 @@
 
     .ds-nav-link.active { background: rgba(92, 108, 164, 0.18); color: #a4b3dd; font-weight: 600; }
 
-    .ds-sidebar-footer { margin-top: auto; padding: 16px 20px; border-top: 1px solid var(--ds-border-ui); }
+    .ds-sidebar-footer { margin-top: auto; padding: 16px 20px; border-top: 1px solid var(--ds-border-ui); display: flex; flex-direction: column; gap: 8px; }
 
     .ds-btn-live {
       display: flex;
@@ -157,12 +157,13 @@
       width: 100%;
       background: #0f0f16;
       border: 1px solid var(--ds-border-ui);
-      padding: 10px 14px;
+      padding: 9px 12px;
       border-radius: 8px;
-      font-size: 0.84rem;
+      font-size: 0.82rem;
       color: #fff;
       font-weight: 600;
       transition: var(--transition-fast);
+      text-decoration: none;
     }
 
     .ds-btn-live:hover { background: var(--ds-accent-blue); border-color: var(--ds-accent-blue); box-shadow: var(--shadow-blue-glow); }
@@ -207,7 +208,7 @@
 
     .ds-banner-title { font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 700; letter-spacing: -0.01em; margin-bottom: 12px; color: #fff; }
 
-    .ds-banner-desc { font-size: 1.05rem; color: #9fa1b0; max-width: 820px; line-height: 1.6; margin-bottom: 24px; }
+    .ds-banner-desc { font-size: 1.05rem; color: #9fa1b0; max-width: 860px; line-height: 1.6; margin-bottom: 24px; }
 
     .ds-banner-stats { display: flex; gap: 36px; padding-top: 20px; border-top: 1px solid var(--ds-border-ui); flex-wrap: wrap; }
 
@@ -335,9 +336,7 @@
     }
 
     .components-canvas.dark-stage { background: #050505; }
-    .components-canvas.light-stage { background: #ffffff; }
-
-    .components-canvas.stage-blue { background: var(--color-electric-blue); }
+    .components-canvas.light-stage { background: #ffffff; color: #111; }
 
     .canvas-label {
       font-family: var(--font-main);
@@ -347,16 +346,10 @@
       color: #646472;
       margin-top: 14px;
       display: block;
+      width: 100%;
     }
 
     /* Demonstração ao vivo de blocos do site */
-    .live-block {
-      border: 1px dashed var(--ds-border-ui);
-      border-radius: 10px;
-      overflow: hidden;
-      margin-top: 16px;
-    }
-
     .live-block-head {
       display: flex;
       justify-content: space-between;
@@ -407,7 +400,7 @@
       align-items: center;
     }
 
-    .preview-col-body { padding: 20px; max-height: 520px; overflow-y: auto; }
+    .preview-col-body { padding: 20px; max-height: 540px; overflow-y: auto; }
 
     .preview-col-body img { width: 100%; height: auto; display: block; border-radius: 6px; }
 
@@ -476,7 +469,7 @@
 
     .icon-demo-item .label { font-family: var(--font-main); font-size: 0.7rem; color: #88889a; text-align: center; }
     .icon-demo-item svg { color: #ffffff; }
-    .icon-demo-item.blue svg { color: var(--color-electric-blue); }
+    .icon-demo-item.blue svg { color: var(--color-primary); }
 
     .grid-specs { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
 
@@ -560,12 +553,52 @@
       color: rgba(92, 108, 164, 0.26);
     }
 
+    /* Live Showcase Helper Overrides para os carrosséis dentro do Design System */
+    .ds-carousel-stage {
+      position: relative;
+      min-height: 480px;
+      background: #000;
+      overflow: hidden;
+      border-radius: 0 0 12px 12px;
+    }
+
+    .ds-carousel-stage .carousel-slide {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .ds-duo-stage {
+      position: relative;
+      padding: 0;
+      background: #050505;
+      overflow: hidden;
+      border-radius: 0 0 12px 12px;
+    }
+
+    .ds-duo-grid-sample {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      background: var(--border-hairline);
+    }
+
+    .ds-duo-grid-sample .duo-slide {
+      position: relative;
+      height: 400px;
+      overflow: hidden;
+      background: #08080a;
+    }
+
     /* Mobile Responsive */
     @media (max-width: 1024px) {
       .ds-sidebar { display: none; }
       .ds-content { margin-left: 0; padding: 24px 20px; }
       .preview-split { grid-template-columns: 1fr; }
       .guidelines-grid { grid-template-columns: 1fr; }
+      .tone-stage-grid { grid-template-columns: 1fr; }
+      .ds-duo-grid-sample { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -574,17 +607,17 @@
   <div class="ds-wrapper">
 
     <!-- ====================================================================
-         SIDEBAR DE NAVEGAÇÃO DO DESIGN SYSTEM
+         SIDEBAR DE NAVEGAÇÃO DO DESIGN SYSTEM (100% ATUALIZADA)
          ==================================================================== -->
     <aside class="ds-sidebar">
       <div class="ds-sidebar-header">
         <span class="ds-sidebar-logo">LENSES</span>
-        <span class="ds-sidebar-badge"><i class="fa-solid fa-gem"></i> Design System v2.0</span>
+        <span class="ds-sidebar-badge"><i class="fa-solid fa-gem"></i> Design System v2.2</span>
       </div>
 
       <div class="ds-sidebar-search">
         <i class="fa-solid fa-magnifying-glass"></i>
-        <input type="text" id="dsSearch" placeholder="Buscar tokens e componentes..." oninput="searchDS(this.value)">
+        <input type="text" id="dsSearch" placeholder="Buscar tokens e seções..." oninput="searchDS(this.value)">
       </div>
 
       <nav class="ds-nav-wrap">
@@ -595,11 +628,11 @@
             <li><a href="#identidade" class="ds-nav-link"><i class="fa-solid fa-fingerprint"></i> Identidade &amp; Conceito</a></li>
             <li><a href="#cores" class="ds-nav-link"><i class="fa-solid fa-palette"></i> Cores &amp; Tokens CSS</a></li>
             <li><a href="#degrades" class="ds-nav-link"><i class="fa-solid fa-wand-magic-sparkles"></i> Degradês &amp; Tom Sobre Tom</a></li>
-            <li><a href="#tipografia" class="ds-nav-link"><i class="fa-solid fa-font"></i> Tipografia Canônica</a></li>
+            <li><a href="#tipografia" class="ds-nav-link"><i class="fa-solid fa-font"></i> Tipografia Canônica Inter</a></li>
             <li><a href="#icones" class="ds-nav-link"><i class="fa-solid fa-arrow-trend-up"></i> Linguagem de Setas</a></li>
             <li><a href="#layout" class="ds-nav-link"><i class="fa-solid fa-table-cells-large"></i> Grids &amp; Espaçamentos</a></li>
             <li><a href="#responsivo" class="ds-nav-link"><i class="fa-solid fa-mobile-screen"></i> Breakpoints</a></li>
-            <li><a href="#animacao" class="ds-nav-link"><i class="fa-solid fa-wand-magic-sparkles"></i> Movimento &amp; Animação</a></li>
+            <li><a href="#animacao" class="ds-nav-link"><i class="fa-solid fa-film"></i> Movimento &amp; Motion</a></li>
           </ul>
         </div>
 
@@ -607,44 +640,53 @@
         <div class="ds-nav-group">
           <div class="ds-nav-title"><span class="num-pill">02</span> Header &amp; Navegação</div>
           <ul class="ds-nav-list">
-            <li><a href="#navbar" class="ds-nav-link"><i class="fa-solid fa-bars"></i> Ticker &amp; Navbar</a></li>
-            <li><a href="#menu-mobile" class="ds-nav-link"><i class="fa-solid fa-mobile-screen-button"></i> Menu Mobile</a></li>
+            <li><a href="#navbar" class="ds-nav-link"><i class="fa-solid fa-bars"></i> Ticker Azul &amp; Navbar</a></li>
+            <li><a href="#menu-mobile" class="ds-nav-link"><i class="fa-solid fa-mobile-screen-button"></i> Menu Mobile (Drawer)</a></li>
           </ul>
         </div>
 
-        <!-- 03 SEÇÕES DA ONE PAGE -->
+        <!-- 03 SEÇÕES DA ONE PAGE (HOME ATUAL) -->
         <div class="ds-nav-group">
-          <div class="ds-nav-title"><span class="num-pill">03</span> Seções da One Page</div>
+          <div class="ds-nav-title"><span class="num-pill">03</span> One Page (Home)</div>
           <ul class="ds-nav-list">
-            <li><a href="#hero" class="ds-nav-link"><i class="fa-solid fa-film"></i> S1 · Hero (Vídeo)</a></li>
-            <li><a href="#rail-marcas" class="ds-nav-link"><i class="fa-solid fa-handshake"></i> S2 · Rail de Marcas</a></li>
-            <li><a href="#cards-split" class="ds-nav-link"><i class="fa-solid fa-table-columns"></i> S3 · Split Interativo</a></li>
-            <li><a href="#cards-servicos" class="ds-nav-link"><i class="fa-solid fa-cubes"></i> S4 · Trilha de Serviços</a></li>
-            <li><a href="#destaque" class="ds-nav-link"><i class="fa-solid fa-star"></i> S5 · Destaque / Festival</a></li>
-            <li><a href="#duo" class="ds-nav-link"><i class="fa-solid fa-images"></i> S6 · Duo Cards</a></li>
-            <li><a href="#cards-editorial" class="ds-nav-link"><i class="fa-solid fa-book-open"></i> S7 · Revista &amp; Informes</a></li>
-            <li><a href="#cta-contato" class="ds-nav-link"><i class="fa-solid fa-paper-plane"></i> S8 · CTA Contato</a></li>
-            <li><a href="#footer-media" class="ds-nav-link"><i class="fa-solid fa-photo-film"></i> S9 · Cena do Rodapé</a></li>
-            <li><a href="#footer" class="ds-nav-link"><i class="fa-solid fa-shoe-prints"></i> S10 · Rodapé</a></li>
+            <li><a href="#hero" class="ds-nav-link"><i class="fa-solid fa-video"></i> S1 · Hero (Vídeo Nativo)</a></li>
+            <li><a href="#cards-split" class="ds-nav-link"><i class="fa-solid fa-table-columns"></i> S2 · Split Sobre &amp; Contato</a></li>
+            <li><a href="#cards-servicos" class="ds-nav-link"><i class="fa-solid fa-cubes"></i> S3 · Trilha de Serviços</a></li>
+            <li><a href="#cases-destaque" class="ds-nav-link"><i class="fa-solid fa-star"></i> S4 · Carrossel Destaque</a></li>
+            <li><a href="#cases-duo" class="ds-nav-link"><i class="fa-solid fa-images"></i> S5 · Carrossel Duo (Cases)</a></li>
+            <li><a href="#certificacao" class="ds-nav-link"><i class="fa-solid fa-award"></i> S6 · Certificação ISO 9001</a></li>
+            <li><a href="#clientes" class="ds-nav-link"><i class="fa-solid fa-handshake"></i> S7 · Clientes &amp; Parceiros</a></li>
+            <li><a href="#footer" class="ds-nav-link"><i class="fa-solid fa-shoe-prints"></i> S8 · Rodapé Cinematográfico</a></li>
           </ul>
         </div>
 
-        <!-- 04 COMPONENTES ATÔMICOS -->
+        <!-- 04 PÁGINA SOBRE NÓS -->
         <div class="ds-nav-group">
-          <div class="ds-nav-title"><span class="num-pill">04</span> Componentes</div>
+          <div class="ds-nav-title"><span class="num-pill">04</span> Página Sobre Nós</div>
           <ul class="ds-nav-list">
-            <li><a href="#botoes" class="ds-nav-link"><i class="fa-solid fa-toggle-on"></i> Botões, Pílulas &amp; Ações</a></li>
-            <li><a href="#badges" class="ds-nav-link"><i class="fa-solid fa-tag"></i> Badges &amp; Boxes</a></li>
-            <li><a href="#modal" class="ds-nav-link"><i class="fa-solid fa-clapperboard"></i> Modal Lightbox</a></li>
+            <li><a href="#sobre-hero" class="ds-nav-link"><i class="fa-solid fa-clapperboard"></i> P1 · Hero Showreel Clean</a></li>
+            <li><a href="#sobre-mvv" class="ds-nav-link"><i class="fa-solid fa-bullseye"></i> P2 · Missão, Visão e Valores</a></li>
+            <li><a href="#sobre-equipe" class="ds-nav-link"><i class="fa-solid fa-users"></i> P3 · Nossa Equipe Editorial</a></li>
+            <li><a href="#sobre-cta" class="ds-nav-link"><i class="fa-solid fa-paper-plane"></i> P4 · CTA Final de Impacto</a></li>
           </ul>
         </div>
 
-        <!-- 05 VALIDAÇÃO & REGRAS -->
+        <!-- 05 COMPONENTES ATÔMICOS -->
         <div class="ds-nav-group">
-          <div class="ds-nav-title"><span class="num-pill">05</span> Validação &amp; Regras</div>
+          <div class="ds-nav-title"><span class="num-pill">05</span> Componentes</div>
+          <ul class="ds-nav-list">
+            <li><a href="#botoes" class="ds-nav-link"><i class="fa-solid fa-toggle-on"></i> Botões &amp; Ações Pílula</a></li>
+            <li><a href="#badges" class="ds-nav-link"><i class="fa-solid fa-tag"></i> Badges, Tags &amp; Boxes</a></li>
+            <li><a href="#modal" class="ds-nav-link"><i class="fa-solid fa-play"></i> Modal Lightbox de Vídeo</a></li>
+          </ul>
+        </div>
+
+        <!-- 06 VALIDAÇÃO & REGRAS -->
+        <div class="ds-nav-group">
+          <div class="ds-nav-title"><span class="num-pill">06</span> Validação &amp; Regras</div>
           <ul class="ds-nav-list">
             <li><a href="#comparativo" class="ds-nav-link"><i class="fa-solid fa-code-compare"></i> Comparativo Side-by-Side</a></li>
-            <li><a href="#guidelines" class="ds-nav-link"><i class="fa-solid fa-check-double"></i> Do's &amp; Don'ts</a></li>
+            <li><a href="#guidelines" class="ds-nav-link"><i class="fa-solid fa-check-double"></i> Do's &amp; Don'ts Oficiais</a></li>
             <li><a href="#tabela-tokens" class="ds-nav-link"><i class="fa-solid fa-code"></i> Tabela Canônica de Tokens</a></li>
           </ul>
         </div>
@@ -652,7 +694,10 @@
 
       <div class="ds-sidebar-footer">
         <a href="index.html" target="_blank" class="ds-btn-live">
-          <i class="fa-solid fa-arrow-up-right-from-square"></i> Ver Site ao Vivo
+          <i class="fa-solid fa-arrow-up-right-from-square"></i> Ver Home (index.html)
+        </a>
+        <a href="sobre.html" target="_blank" class="ds-btn-live">
+          <i class="fa-solid fa-book-open"></i> Ver Sobre Nós (sobre.html)
         </a>
       </div>
     </aside>
@@ -669,12 +714,12 @@
           <span class="ds-tag ds-tag-gold"><i class="fa-solid fa-font"></i> Família Oficial Inter</span>
           <span class="ds-tag ds-tag-cyan"><i class="fa-solid fa-palette"></i> Azul Sabóia &amp; Azul Espacial</span>
         </div>
-        <h1 class="ds-banner-title">LENSES — Design System &amp; Documentação Oficial</h1>
+        <h1 class="ds-banner-title">LENSES — Design System Oficial &amp; Documentação Viva</h1>
         <p class="ds-banner-desc">
-          Padrão oficial de identidade visual da <strong>LENSES ("Amazônia em Outro Olhar")</strong>, fundamentado no <strong>Manual da Marca 2025</strong> oficial (PDF).
+          Padrão oficial de identidade visual da <strong>LENSES ("Amazônia em Outro Olhar")</strong>, fundamentado no <strong>Manual de Identidade Visual 2025</strong> oficial (PDF).
           Centraliza a tipografia canônica <strong>Inter</strong> (todos os pesos 100 a 900, com destaque normativo para Regular 400 e SemiBold 600)
           e a identidade cromática digital alicerçada no <strong>Azul Sabóia (#5C6CA4)</strong> e <strong>Azul Espacial (#202A44)</strong>,
-          além de superfícies cinematográficas e neutros institucionais (Branco anti-flash <code>#EDECED</code> e Branco puro).
+          além do <strong>Branco anti-flash (#EDECED)</strong>, superfícies cinematográficas e blocos contemporâneos ativos do site.
         </p>
         <div class="ds-banner-stats">
           <div class="ds-stat-item">
@@ -708,34 +753,33 @@
         </div>
         <div class="ds-card-box">
           <p style="font-size: 1.05rem; line-height: 1.7; color: #b5b7c6; margin-bottom: 20px;">
-            A identidade visual da <strong>LENSES</strong> combina o peso dramático do cinema com a precisão minimalista do design editorial contemporâneo,
-            alinhada às diretrizes do <strong>Manual de Identidade Visual 2025</strong>. A composição digital trabalha um <strong>ritmo alternado de áreas escuras e claras</strong>:
-            canvas preto cinematográfico como base, com blocos de respiro claro (<strong>painel branco "Sobre a Lenses"</strong> com Branco Puro e Branco anti-flash <code>#EDECED</code>),
+            A identidade visual da <strong>LENSES</strong> combina o peso dramático do cinema com a precisão minimalista do design editorial contemporâneo.
+            A composição digital trabalha um <strong>ritmo alternado de áreas escuras e claras</strong>:
+            canvas preto cinematográfico como base, com blocos de respiro editorial claro (<strong>painel "Sobre a Lenses"</strong> com Branco Puro e Branco anti-flash <code>#EDECED</code>),
             equilibrados pela elegância dos azuis institucionais — <strong>Azul Sabóia (#5C6CA4)</strong> e <strong>Azul Espacial (#202A44)</strong> —
             e um hero <strong>100% vídeo, sem texto sobreposto</strong> (o showreel fala por si).
           </p>
           <div class="grid-specs">
             <div class="grid-spec-card" style="border-left-color: #050505; background: #0b0b0e;">
               <h4>Canvas Cinema Dark</h4>
-              <p>Hero (vídeo), rail, serviços, destaque, duo e footer vivem em <code>#050505/#030304/#000</code> — valorizam brilho e textura das produções.</p>
+              <p>Hero (vídeo), trilha de serviços, carrosséis de cases e rodapé vivem em <code>#050505/#030304/#000</code> — valorizam o brilho e textura das produções audiovisuais.</p>
             </div>
             <div class="grid-spec-card" style="border-left-color: #ffffff;">
               <h4>Contraste Editorial (Branco &amp; Anti-flash)</h4>
-              <p>Painel "Sobre a Lenses" (<code>--bg-surface-light</code> / <code>#EDECED</code>) é o maior bloco light da página: descanso visual e legibilidade do manifesto + KPIs.</p>
+              <p>Painel "Sobre a Lenses" (<code>#ffffff</code> / <code>#EDECED</code>) e seção "Nossa Equipe" em <code>sobre.html</code> trazem descanso visual e clareza informativa institucional.</p>
             </div>
             <div class="grid-spec-card" style="border-left-color: #5C6CA4;">
               <h4>Azuis Institucionais Oficiais</h4>
-              <p><strong>Azul Sabóia</strong> (<code>#5C6CA4</code>) em: ticker, botões CTAs, kickers e destaques. <strong>Azul Espacial</strong> (<code>#202A44</code>) como âncora escura e contraste profundo.</p>
+              <p><strong>Azul Sabóia</strong> (<code>#5C6CA4</code>) em tickers, botões CTAs, kickers e links ativos. <strong>Azul Espacial</strong> (<code>#202A44</code>) como âncora escura e contraste profundo.</p>
             </div>
             <div class="grid-spec-card" style="border-left-color: #5C6CA4;">
               <h4>Linguagem Angular &amp; Proporção Áurea</h4>
-              <p>Construção baseada na proporção áurea (X e X/1,618) definida no manual, com setas diagonais 45° (traço 2 / 2.35) que guiam o olhar entre os blocos.</p>
+              <p>Construção baseada na proporção áurea (X e X/1,618) com setas diagonais 45° (traço 2 / 2.35) que guiam o olhar entre os blocos narrativos.</p>
             </div>
           </div>
           <div class="ds-note">
-            <strong>Mapa de ritmo dark/light oficial:</strong>
-            Hero dark → Rail dark → <strong>Split BRANCO + AZUL SABÓIA (momento light principal)</strong> → Serviços dark → Destaque (imagem dark) →
-            Duo dark → Publicações (card escuro <code>#09090b</code> + <strong>card AZUL SABÓIA</strong>) → CTA (imagem escura) → Footer preto.
+            <strong>Mapa de ritmo dark/light oficial da Home (index.html):</strong>
+            Hero vídeo dark → <strong>Split BRANCO + AZUL SABÓIA (respiro editorial)</strong> → Serviços dark → Carrossel Destaque (Cases) → Carrossel Duo (Cases) → Certificação ISO 9001 (Qualidade) → Clientes &amp; Parceiros (18 Logos Zion) → Rodapé Cinematográfico (5 Colunas + GIF de Palco + IDE Digital).
           </div>
         </div>
       </section>
@@ -854,15 +898,6 @@
               </div>
             </div>
 
-            <div class="color-swatch" onclick="copyToken('--bg-rail', '#030304')">
-              <div class="color-preview" style="background-color: #030304;"></div>
-              <div class="color-info">
-                <div class="color-name">Rail de Marcas</div>
-                <span class="color-var">--bg-rail</span>
-                <span class="color-hex">#030304</span>
-              </div>
-            </div>
-
             <div class="swatch-group-title"><i class="fa-solid fa-font"></i> Texto &amp; Contraste</div>
 
             <div class="color-swatch" onclick="copyToken('--text-white', '#ffffff')">
@@ -883,39 +918,12 @@
               </div>
             </div>
 
-            <div class="color-swatch" onclick="copyToken('--text-white-dim', 'rgba(255,255,255,0.50)')">
-              <div class="color-preview" style="background-color: rgba(255, 255, 255, 0.5);"></div>
-              <div class="color-info">
-                <div class="color-name">Branco Dim</div>
-                <span class="color-var">--text-white-dim</span>
-                <span class="color-hex">rgba(255,255,255,.50)</span>
-              </div>
-            </div>
-
             <div class="color-swatch" onclick="copyToken('--text-dark', '#0a0a0c')">
               <div class="color-preview" style="background-color: #0a0a0c;"></div>
               <div class="color-info">
                 <div class="color-name">Texto Escuro em Light</div>
                 <span class="color-var">--text-dark</span>
                 <span class="color-hex">#0a0a0c</span>
-              </div>
-            </div>
-
-            <div class="color-swatch" onclick="copyToken('--text-dark-muted', '#5e5e68')">
-              <div class="color-preview" style="background-color: #5e5e68;"></div>
-              <div class="color-info">
-                <div class="color-name">Escuro Muted</div>
-                <span class="color-var">--text-dark-muted</span>
-                <span class="color-hex">#5e5e68</span>
-              </div>
-            </div>
-
-            <div class="color-swatch" onclick="copyToken('--text-dark-dim', '#8b8b98')">
-              <div class="color-preview" style="background-color: #8b8b98;"></div>
-              <div class="color-info">
-                <div class="color-name">Escuro Dim</div>
-                <span class="color-var">--text-dark-dim</span>
-                <span class="color-hex">#8b8b98</span>
               </div>
             </div>
 
@@ -936,15 +944,6 @@
                 <div class="color-name">Hairline (grids 2px)</div>
                 <span class="color-var">--border-hairline</span>
                 <span class="color-hex">rgba(255,255,255,.08)</span>
-              </div>
-            </div>
-
-            <div class="color-swatch" onclick="copyToken('--border-light', 'rgba(0,0,0,0.08)')">
-              <div class="color-preview" style="background-color: #f6f7f9; border-bottom: 3px solid rgba(0,0,0,0.08);"></div>
-              <div class="color-info">
-                <div class="color-name">Borda Light</div>
-                <span class="color-var">--border-light</span>
-                <span class="color-hex">rgba(0,0,0,.08)</span>
               </div>
             </div>
 
@@ -970,7 +969,7 @@
               </span>
             </div>
             <p style="font-size: 0.86rem; color: #a5a7b8; line-height: 1.6; margin-bottom: 16px;">
-              O Manual da Marca da Lenses (pág. 13) cataloga tonalidades secundárias institucionais (<strong>Vermelho Cardeal <code>#B23B3C</code></strong>, <strong>Laranja Mascavo <code>#C06841</code></strong> e <strong>Amarelo Real <code>#D9A440</code></strong>) para aplicações impressas. <strong>Por definição estratégica do projeto web, essas cores NÃO são utilizadas no site</strong>. É proibido aplicá-las em botões, destaques, fundos ou gradientes. A identidade digital é conduzida com rigor pela dupla <strong>Azul Sabóia (#5C6CA4)</strong> e <strong>Azul Espacial (#202A44)</strong>.
+              O Manual da Marca da Lenses (pág. 13) cataloga tonalidades secundárias institucionais (<strong>Vermelho Cardeal <code>#B23B3C</code></strong>, <strong>Laranja Mascavo <code>#C06841</code></strong> e <strong>Amarelo Real <code>#D9A440</code></strong>) para impressos. <strong>Por definição estratégica do projeto web, essas cores NÃO são utilizadas no site</strong>. A identidade digital é conduzida com rigor pela dupla <strong>Azul Sabóia (#5C6CA4)</strong> e <strong>Azul Espacial (#202A44)</strong>.
             </p>
             <div style="display: flex; gap: 14px; flex-wrap: wrap;">
               <div style="display: flex; align-items: center; gap: 8px; font-size: 0.76rem; color: #88889a;">
@@ -984,11 +983,6 @@
               </div>
             </div>
           </div>
-
-          <div class="ds-note" style="margin-top: 20px;">
-            <strong>Compatibilidade e Herança Automática:</strong>
-            Os tokens legados <code>--color-electric-blue</code> e <code>--color-blue-hover</code> foram mapeados diretamente para <code>var(--color-primary)</code> (Azul Sabóia) e <code>var(--color-primary-hover)</code>, garantindo que qualquer componente existente ou futuro herde automaticamente o padrão oficial do manual sem divergência visual.
-          </div>
         </div>
       </section>
 
@@ -1000,14 +994,13 @@
         </div>
         <div class="ds-card-box">
           <p style="font-size: 1.05rem; line-height: 1.7; color: #b5b7c6; margin-bottom: 24px;">
-            A identidade visual oficial da <strong>LENSES</strong> autoriza e incentiva o uso de <strong>degradês institucionais</strong> entre suas duas cores mestras:
+            A identidade visual oficial da <strong>LENSES</strong> explora <strong>degradês institucionais</strong> entre suas duas cores mestras:
             <strong>Azul Espacial (<code>#202A44</code>)</strong> e <strong>Azul Sabóia (<code>#5C6CA4</code>)</strong>, exatamente como ilustrado na barra horizontal de cores primárias do manual (Pág. 13).
             Além disso, conforme comprovado nas diretrizes de aplicação da marca (Anexos 2 e 3), a marca explora de forma brilhante o efeito de <strong>Tom Sobre Tom (Tone-on-Tone)</strong>:
-            fundos institucionais escuros ou médios com a palavra <strong>LENSES</strong> vazada em marca d'água monumental translúcida com opacidade calculada,
-            conferindo sofisticação cinematográfica e profundidade editorial sem poluição visual.
+            fundos institucionais com a palavra <strong>LENSES</strong> vazada em marca d'água monumental translúcida com opacidade calculada.
           </p>
 
-          <!-- SHOWCASE 1: A BARRA OFICIAL DE CORES PRIMÁRIAS (IDÊNTICA À PÁG. 13 DO MANUAL / ANEXO 1) -->
+          <!-- SHOWCASE 1: A BARRA OFICIAL DE CORES PRIMÁRIAS -->
           <div class="gradient-hero-bar">
             <div style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 16px;">
               <div>
@@ -1050,20 +1043,8 @@
             </div>
           </div>
 
-          <!-- SHOWCASE 2: PALCOS VIVOS DE TOM SOBRE TOM (FIÉIS AOS ANEXOS 2 E 3 DO MANUAL) -->
-          <div style="margin: 32px 0 16px;">
-            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
-              <span style="font-size: 0.78rem; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; color: var(--color-primary);">Técnica Oficial de Design</span>
-              <span style="font-size: 0.7rem; background: rgba(255,255,255,0.06); padding: 2px 8px; border-radius: 4px; color: #aaa;">Tone-on-Tone</span>
-            </div>
-            <h3 style="font-size: 1.4rem; font-weight: 800; color: #ffffff;">Palcos Vivos de Tom Sobre Tom (Anexos 2 e 3)</h3>
-            <p style="font-size: 0.88rem; color: #8c8c9e; margin-top: 4px;">
-              Reprodução idêntica dos padrões de layout oficiais do manual. O wordmark <strong>LENSES</strong> em caixa alta vazada gera textura nobre sem interferir na leitura.
-            </p>
-          </div>
-
+          <!-- SHOWCASE 2: PALCOS VIVOS DE TOM SOBRE TOM -->
           <div class="tone-stage-grid">
-            <!-- Palco 1: Azul Sabóia (Fiel ao Anexo 2 — "Áreas de segurança") -->
             <div class="tone-stage tone-stage-saboia">
               <div class="stage-watermark" aria-hidden="true">LENSES</div>
               <div style="position: relative; z-index: 2; max-width: 480px;">
@@ -1074,7 +1055,7 @@
                   Áreas de segurança
                 </h3>
                 <p style="font-size: 0.92rem; line-height: 1.6; color: rgba(255, 255, 255, 0.92); margin-bottom: 16px;">
-                  A área de segurança garante a legibilidade e o destaque da marca, evitando interferências visuais. Deve ser respeitada em todas as aplicações, mantendo o espaço livre ao redor do logotipo.
+                  A área de segurança garante legibilidade e destaque da marca, aplicada no painel Contato e rodapé.
                 </p>
                 <div style="display: flex; gap: 10px; align-items: center;">
                   <button class="btn btn-pill" style="background: #ffffff; color: var(--color-primary); font-size: 0.78rem; padding: 8px 18px; font-weight: 700;">
@@ -1085,7 +1066,6 @@
               </div>
             </div>
 
-            <!-- Palco 2: Azul Espacial (Fiel ao Anexo 3 — Profundidade & Prestígio) -->
             <div class="tone-stage tone-stage-space">
               <div class="stage-watermark" aria-hidden="true">LENSES</div>
               <div style="position: relative; z-index: 2; max-width: 480px;">
@@ -1096,7 +1076,7 @@
                   Presença &amp; Profundidade
                 </h3>
                 <p style="font-size: 0.92rem; line-height: 1.6; color: rgba(255, 255, 255, 0.82); margin-bottom: 16px;">
-                  O tom escuro institucional proporciona uma âncora visual de prestígio, seriedade e autoridade cinematográfica. A marca d'água monumental translúcida enriquece a cena com refinamento.
+                  O tom escuro institucional proporciona uma âncora de prestígio e autoridade cinematográfica.
                 </p>
                 <div style="display: flex; gap: 10px; align-items: center;">
                   <button class="btn btn-pill btn-gradient" style="font-size: 0.78rem; padding: 8px 18px;">
@@ -1106,102 +1086,6 @@
                 </div>
               </div>
             </div>
-          </div>
-
-          <!-- SHOWCASE 3: GRID DE TOKENS DE GRADIENTE & TOAST COPIÁVEL -->
-          <div style="margin: 32px 0 16px;">
-            <div class="swatch-group-title" style="margin: 0 0 16px;">
-              <i class="fa-solid fa-layer-group" style="color: var(--color-primary);"></i>
-              Gradientes Funcionais do Sistema (Tokens CSS)
-            </div>
-            <div class="color-grid">
-              <!-- Swatch 1: Gradiente Primário Horizontal -->
-              <div class="color-swatch" onclick="copyToken('--gradient-brand-primary', 'linear-gradient(90deg, #202A44 0%, #5C6CA4 100%)')">
-                <div class="color-preview" style="background: var(--gradient-brand-primary);"></div>
-                <div class="color-info">
-                  <div class="color-name">Primário Linear (90°)</div>
-                  <span class="color-var">--gradient-brand-primary</span>
-                  <span class="color-hex">#202A44 → #5C6CA4</span>
-                </div>
-              </div>
-
-              <!-- Swatch 2: Gradiente Angular 135° -->
-              <div class="color-swatch" onclick="copyToken('--gradient-brand-angle', 'linear-gradient(135deg, #202A44 0%, #5C6CA4 100%)')">
-                <div class="color-preview" style="background: var(--gradient-brand-angle);"></div>
-                <div class="color-info">
-                  <div class="color-name">Primário Angular (135°)</div>
-                  <span class="color-var">--gradient-brand-angle</span>
-                  <span class="color-hex">#202A44 → #5C6CA4</span>
-                </div>
-              </div>
-
-              <!-- Swatch 3: Gradiente Invertido -->
-              <div class="color-swatch" onclick="copyToken('--gradient-brand-reverse', 'linear-gradient(135deg, #5C6CA4 0%, #202A44 100%)')">
-                <div class="color-preview" style="background: var(--gradient-brand-reverse);"></div>
-                <div class="color-info">
-                  <div class="color-name">Angular Invertido (135°)</div>
-                  <span class="color-var">--gradient-brand-reverse</span>
-                  <span class="color-hex">#5C6CA4 → #202A44</span>
-                </div>
-              </div>
-
-              <!-- Swatch 4: Glow Radial -->
-              <div class="color-swatch" onclick="copyToken('--gradient-brand-glow', 'radial-gradient(circle, rgba(92,108,164,0.28), transparent)')">
-                <div class="color-preview" style="background: #050505; background-image: var(--gradient-brand-glow);"></div>
-                <div class="color-info">
-                  <div class="color-name">Glow Radial de Fundo</div>
-                  <span class="color-var">--gradient-brand-glow</span>
-                  <span class="color-hex">Sabóia translúcido</span>
-                </div>
-              </div>
-
-              <!-- Swatch 5: Superfície Profunda -->
-              <div class="color-swatch" onclick="copyToken('--gradient-brand-surface', 'linear-gradient(180deg, rgba(32,42,68,0.5), rgba(11,11,14,0.95))')">
-                <div class="color-preview" style="background: var(--gradient-brand-surface);"></div>
-                <div class="color-info">
-                  <div class="color-name">Superfície Profunda</div>
-                  <span class="color-var">--gradient-brand-surface</span>
-                  <span class="color-hex">#202A44 → #0b0b0e</span>
-                </div>
-              </div>
-
-              <!-- Swatch 6: Card Institucional -->
-              <div class="color-swatch" onclick="copyToken('--gradient-brand-card', 'linear-gradient(145deg, rgba(32,42,68,0.45), rgba(17,17,21,0.85))')">
-                <div class="color-preview" style="background: var(--gradient-brand-card);"></div>
-                <div class="color-info">
-                  <div class="color-name">Card Institucional</div>
-                  <span class="color-var">--gradient-brand-card</span>
-                  <span class="color-hex">Espacial + Card Dark</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- SHOWCASE 4: COMPONENTES COM DEGRADÊ EM AÇÃO -->
-          <div style="margin: 28px 0 10px;">
-            <div class="swatch-group-title" style="margin: 0 0 16px;">
-              <i class="fa-solid fa-shapes" style="color: var(--color-primary);"></i>
-              Aplicações em Componentes de Produção
-            </div>
-            <div class="components-canvas dark-stage">
-              <div style="display: flex; flex-wrap: wrap; gap: 16px; align-items: center;">
-                <button class="btn btn-pill btn-gradient">
-                  <i class="fa-solid fa-play"></i> Assistir Showreel (.btn-gradient)
-                </button>
-                <button class="btn btn-pill btn-cta-large" style="padding: 12px 28px; font-size: 0.85rem;">
-                  Fale com a Nossa Equipe (.btn-cta-large) ↗
-                </button>
-                <div style="display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; background: var(--gradient-brand-primary); border-radius: 999px; font-size: 0.76rem; font-weight: 700; color: #fff; box-shadow: 0 4px 14px rgba(32,42,68,0.4);">
-                  <i class="fa-solid fa-sparkles"></i> Badge com Degradê Oficial
-                </div>
-              </div>
-              <span class="canvas-label">Componentes reais de interface utilizando os gradientes normativos</span>
-            </div>
-          </div>
-
-          <div class="ds-note" style="margin-top: 24px;">
-            <strong>Regra de Ouro para Degradês &amp; Tom Sobre Tom:</strong>
-            O uso de degradê na Lenses deve sempre respeitar a sobriedade e o prestígio da marca. Utilize exclusivamente as conexões entre <strong>Azul Espacial (#202A44)</strong> e <strong>Azul Sabóia (#5C6CA4)</strong>. É terminantemente proibido utilizar degradês multicoloridos, arco-íris, com cores fluorescentes ou que descaracterizem o tom cinematográfico e nobre da produtora.
           </div>
         </div>
       </section>
@@ -1213,8 +1097,6 @@
           <span class="ds-section-badge">Família Oficial: Inter (Manual 2025)</span>
         </div>
         <div class="ds-card-box">
-
-          <!-- ESPÉCIME OFICIAL DO MANUAL DA MARCA (PÁG. 12) -->
           <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid var(--ds-border-ui); border-radius: 10px; padding: 24px 28px; margin-bottom: 28px;">
             <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 18px; flex-wrap: wrap; gap: 10px;">
               <div>
@@ -1227,10 +1109,9 @@
             </div>
 
             <p style="font-size: 0.95rem; color: #b5b7c6; line-height: 1.6; margin-bottom: 18px; max-width: 850px;">
-              <em>"A tipografia principal da marca é a Inter. Moderna e funcional, reflete clareza e versatilidade, garantindo unidade visual em todas as aplicações. Todos os pesos podem ser utilizados conforme a necessidade, para organizar a hierarquia e destacar informações importantes."</em> — <strong>Manual de Identidade Visual 2025 (pág. 12)</strong>.
+              <em>"A tipografia principal da marca é a Inter. Moderna e funcional, reflete clareza e versatilidade, garantindo unidade visual em todas as aplicações. Todos os pesos podem ser utilizados conforme a necessidade."</em> — <strong>Manual de Identidade Visual 2025 (pág. 12)</strong>.
             </p>
 
-            <!-- Alfabeto e Glifos -->
             <div style="padding: 16px 20px; background: #060609; border-radius: 8px; border: 1px solid rgba(255,255,255,0.06); margin-bottom: 22px;">
               <div style="font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; color: #727384; text-transform: uppercase; margin-bottom: 6px;">Conjunto de Glifos &amp; Numerais</div>
               <div style="font-size: 1.05rem; letter-spacing: 0.04em; color: #ffffff; line-height: 1.5; font-weight: 400;">
@@ -1238,139 +1119,6 @@
                 <span style="color: var(--color-primary); font-weight: 500;">0123456789 ! @ # $ % &amp; * ( ) _ + - = / [ ] { } &lt; &gt;</span>
               </div>
             </div>
-
-            <!-- Grade com os 9 Pesos do Manual da Marca -->
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px;">
-              <div style="padding: 12px 14px; background: #0c0c12; border-radius: 6px; border: 1px solid rgba(255,255,255,0.05);">
-                <div style="display: flex; justify-content: space-between; font-size: 0.72rem; color: #727384; margin-bottom: 4px;"><span>Thin</span><span>100</span></div>
-                <div style="font-size: 1rem; font-weight: 100; color: #fff;">Lenses Ideias em Movimento</div>
-              </div>
-              <div style="padding: 12px 14px; background: #0c0c12; border-radius: 6px; border: 1px solid rgba(255,255,255,0.05);">
-                <div style="display: flex; justify-content: space-between; font-size: 0.72rem; color: #727384; margin-bottom: 4px;"><span>ExtraLight</span><span>200</span></div>
-                <div style="font-size: 1rem; font-weight: 200; color: #fff;">Lenses Ideias em Movimento</div>
-              </div>
-              <div style="padding: 12px 14px; background: #0c0c12; border-radius: 6px; border: 1px solid rgba(255,255,255,0.05);">
-                <div style="display: flex; justify-content: space-between; font-size: 0.72rem; color: #727384; margin-bottom: 4px;"><span>Light</span><span>300</span></div>
-                <div style="font-size: 1rem; font-weight: 300; color: #fff;">Lenses Ideias em Movimento</div>
-              </div>
-              <div style="padding: 12px 14px; background: rgba(92, 108, 164, 0.08); border-radius: 6px; border: 1px solid rgba(92, 108, 164, 0.4);">
-                <div style="display: flex; justify-content: space-between; font-size: 0.72rem; color: #8e9ecc; font-weight: 600; margin-bottom: 4px;"><span>Regular (Destaque Manual)</span><span>400</span></div>
-                <div style="font-size: 1rem; font-weight: 400; color: #fff;">Lenses Ideias em Movimento</div>
-              </div>
-              <div style="padding: 12px 14px; background: #0c0c12; border-radius: 6px; border: 1px solid rgba(255,255,255,0.05);">
-                <div style="display: flex; justify-content: space-between; font-size: 0.72rem; color: #727384; margin-bottom: 4px;"><span>Medium</span><span>500</span></div>
-                <div style="font-size: 1rem; font-weight: 500; color: #fff;">Lenses Ideias em Movimento</div>
-              </div>
-              <div style="padding: 12px 14px; background: rgba(92, 108, 164, 0.08); border-radius: 6px; border: 1px solid rgba(92, 108, 164, 0.4);">
-                <div style="display: flex; justify-content: space-between; font-size: 0.72rem; color: #8e9ecc; font-weight: 600; margin-bottom: 4px;"><span>SemiBold (Destaque Manual)</span><span>600</span></div>
-                <div style="font-size: 1rem; font-weight: 600; color: #fff;">Lenses Ideias em Movimento</div>
-              </div>
-              <div style="padding: 12px 14px; background: #0c0c12; border-radius: 6px; border: 1px solid rgba(255,255,255,0.05);">
-                <div style="display: flex; justify-content: space-between; font-size: 0.72rem; color: #727384; margin-bottom: 4px;"><span>Bold</span><span>700</span></div>
-                <div style="font-size: 1rem; font-weight: 700; color: #fff;">Lenses Ideias em Movimento</div>
-              </div>
-              <div style="padding: 12px 14px; background: #0c0c12; border-radius: 6px; border: 1px solid rgba(255,255,255,0.05);">
-                <div style="display: flex; justify-content: space-between; font-size: 0.72rem; color: #727384; margin-bottom: 4px;"><span>ExtraBold</span><span>800</span></div>
-                <div style="font-size: 1rem; font-weight: 800; color: #fff;">Lenses Ideias em Movimento</div>
-              </div>
-              <div style="padding: 12px 14px; background: #0c0c12; border-radius: 6px; border: 1px solid rgba(255,255,255,0.05);">
-                <div style="display: flex; justify-content: space-between; font-size: 0.72rem; color: #727384; margin-bottom: 4px;"><span>Black</span><span>900</span></div>
-                <div style="font-size: 1rem; font-weight: 900; color: #fff;">Lenses Ideias em Movimento</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- TABELA DE HIERARQUIA TIPOGRÁFICA -->
-          <table class="spec-table">
-            <thead>
-              <tr>
-                <th>Classe / Uso</th>
-                <th>Exemplo Visual (Inter)</th>
-                <th>Especificações CSS &amp; Peso</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>.nav-logo / .footer-logo</strong><br><span class="spec-meta">Wordmark LENSES</span></td>
-                <td><span class="typo-sample" style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 800; letter-spacing: 0.25em;">LENSES</span></td>
-                <td class="spec-meta">1.25rem • Inter ExtraBold (800) • tracking 0.25em</td>
-              </tr>
-              <tr>
-                <td><strong>.split-heading</strong><br><span class="spec-meta">SOBRE A LENSES / CONTATO</span></td>
-                <td><span class="typo-sample" style="font-family: var(--font-heading); font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase;">Sobre a Lenses</span></td>
-                <td class="spec-meta">clamp(2.4rem, 3.8vw, 3.6rem) • Inter ExtraBold (800) • 0.04em • uppercase • lh 1.08</td>
-              </tr>
-              <tr>
-                <td><strong>.services-header-op1-title</strong><br><span class="spec-meta">O QUE FAZEMOS</span></td>
-                <td><span class="typo-sample" style="font-family: var(--font-heading); font-size: clamp(1.4rem, 2.6vw, 2rem); font-weight: 800; letter-spacing: 0.03em; text-transform: uppercase;">O Que Fazemos</span></td>
-                <td class="spec-meta">clamp(2.2rem, 3.8vw, 4rem) • Inter ExtraBold (800) • 0.03em • lh 1</td>
-              </tr>
-              <tr>
-                <td><strong>.section-display-title</strong><br><span class="spec-meta">ALGUNS PROJETOS</span></td>
-                <td><span class="typo-sample" style="font-family: var(--font-heading); font-size: clamp(1.5rem, 2.8vw, 2.2rem); font-weight: 300; letter-spacing: 0.2em; text-transform: uppercase;">Alguns Projetos</span></td>
-                <td class="spec-meta">clamp(2.4rem, 4vw, 4rem) • Inter Light (300) • 0.2em • uppercase • lh 1.05</td>
-              </tr>
-              <tr>
-                <td><strong>.cta-massive-title</strong> <span class="spec-meta">(h1)</span><br><span class="spec-meta">Título de Chamada Master</span></td>
-                <td><span class="typo-sample" style="font-family: var(--font-heading); font-size: clamp(1.5rem, 2.6vw, 2.1rem); font-weight: 400; letter-spacing: -0.02em;">Vamos criar algo <span style="font-weight: 700; color: var(--color-primary);">incrível</span> juntos?</span></td>
-                <td class="spec-meta">clamp(2.6rem, 5vw, 5.2rem) • Inter Regular (400) / Bold (700) • -0.02em • lh 1.1</td>
-              </tr>
-              <tr>
-                <td><strong>.pub-title</strong><br><span class="spec-meta">Revista Eletrônica / Informes</span></td>
-                <td><span class="typo-sample" style="font-family: var(--font-heading); font-size: clamp(1.3rem, 2.2vw, 1.7rem); font-weight: 500; letter-spacing: -0.01em;">Revista Eletrônica</span></td>
-                <td class="spec-meta">clamp(2rem, 3vw, 3.2rem) • Inter Medium (500) • -0.01em</td>
-              </tr>
-              <tr>
-                <td><strong>.story-kpi-num</strong><br><span class="spec-meta">+150 / +80 / +8</span></td>
-                <td><span class="typo-sample" style="font-family: var(--font-heading); font-size: clamp(1.4rem, 2vw, 2rem); font-weight: 800; letter-spacing: -0.02em; color: var(--color-primary);">+150</span></td>
-                <td class="spec-meta">clamp(2rem, 2.8vw, 3.2rem) • Inter ExtraBold (800) • -0.02em • <span style="color:var(--color-primary);">var(--color-primary)</span></td>
-              </tr>
-              <tr>
-                <td><strong>.contact-lead-title</strong><br><span class="spec-meta">Título do painel Contato</span></td>
-                <td><span class="typo-sample" style="font-family: var(--font-heading); font-size: clamp(1.1rem, 1.6vw, 1.4rem); font-weight: 700; line-height: 1.25;">Vamos conversar sobre o seu próximo projeto?</span></td>
-                <td class="spec-meta">clamp(1.4rem, 2.2vw, 2.2rem) • Inter Bold (700) • lh 1.25</td>
-              </tr>
-              <tr>
-                <td><strong>.story-manifesto</strong><br><span class="spec-meta">Corpo editorial / Parágrafos</span></td>
-                <td><span class="typo-sample" style="font-family: var(--font-main); font-size: 1rem; font-weight: 400; line-height: 1.65; color: #b5b7c6; max-width: 520px;">Mais que uma produtora, somos um estúdio de ideias em movimento. Unimos criatividade, técnica e propósito para transformar histórias.</span></td>
-                <td class="spec-meta">clamp(1.05rem, 1.22vw, 1.35rem) • Inter Regular (400) • lh 1.65</td>
-              </tr>
-              <tr>
-                <td><strong>.service-name</strong> <span class="spec-meta">(.t2)</span><br><span class="spec-meta">Nomes dos serviços</span></td>
-                <td><span class="typo-sample" style="font-family: var(--font-heading); font-size: clamp(0.78rem, 0.88vw, 0.95rem); font-weight: 700; letter-spacing: 0.11em; text-transform: uppercase;">Produção Audiovisual</span></td>
-                <td class="spec-meta">clamp(0.78rem, 0.88vw, 0.95rem) • Inter Bold (700) • 0.11em • uppercase • lh 1.38</td>
-              </tr>
-              <tr>
-                <td><strong>.compressed-text</strong><br><span class="spec-meta">Rótulo vertical do split</span></td>
-                <td><span class="typo-sample" style="font-family: var(--font-heading); font-size: 1rem; font-weight: 800; letter-spacing: 0.25em; text-transform: uppercase; writing-mode: vertical-rl; transform: rotate(180deg);">CONTATO</span></td>
-                <td class="spec-meta">1.15rem • Inter ExtraBold (800) • 0.25em • writing-mode: vertical-rl</td>
-              </tr>
-              <tr>
-                <td><strong>.story-kicker / .services-header-op1-kicker</strong><br><span class="spec-meta">Kickers institucionais</span></td>
-                <td><span class="typo-sample" style="font-family: var(--font-nav); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--color-primary);">Sobre a Lenses</span></td>
-                <td class="spec-meta">0.8rem • Inter Bold (700) • 0.18–0.22em • uppercase • Azul Sabóia</td>
-              </tr>
-              <tr>
-                <td><strong>.lnk / Menus</strong><br><span class="spec-meta">Links de navegação</span></td>
-                <td><span class="typo-sample" style="font-family: var(--font-nav); font-size: 0.82rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-white-muted);">Nossos Serviços</span></td>
-                <td class="spec-meta">0.82rem • Inter SemiBold (600) • 0.12em • uppercase</td>
-              </tr>
-              <tr>
-                <td><strong>.ticker-text</strong><br><span class="spec-meta">Faixa azul do header</span></td>
-                <td><span class="typo-sample" style="font-family: var(--font-main); font-size: 0.85rem; font-weight: 500; letter-spacing: -0.01em; text-transform: lowercase; color: #fff;">produção audiovisual</span></td>
-                <td class="spec-meta">0.85rem • Inter Medium (500) • lowercase</td>
-              </tr>
-              <tr>
-                <td><strong>.btn / .btn-pill</strong><br><span class="spec-meta">Botões e Ações Principais</span></td>
-                <td><span class="typo-sample" style="font-family: var(--font-main); font-size: 0.85rem; font-weight: 600; letter-spacing: 0.04em;">Entrar em Contato</span></td>
-                <td class="spec-meta">0.85rem • Inter SemiBold (600) • radius 999px</td>
-              </tr>
-            </tbody>
-          </table>
-
-          <div class="ds-note">
-            <strong>Padronização Canônica Oficial:</strong>
-            Todo o projeto agora adota exclusivamente a família <strong>Inter</strong> (Manual da Marca 2025). Todas as tags semânticas (<code>h1, h2, h3, h4, h5, h6, p, button, input</code>) possuem herança tipográfica centralizada e padronizada em <code>assets/styles.css</code>, eliminando valores manuais ou fontes secundárias arbitrárias no projeto.
           </div>
         </div>
       </section>
@@ -1379,61 +1127,33 @@
       <section class="ds-section" id="icones">
         <div class="ds-section-header">
           <h2 class="ds-section-title"><i class="fa-solid fa-arrow-trend-up"></i> Linguagem de Setas &amp; Ícones</h2>
-          <span class="ds-section-badge">SVG inline, traço 2</span>
+          <span class="ds-section-badge">Setas 45° &amp; SVG Inline</span>
         </div>
         <div class="ds-card-box">
-          <p style="font-size: 0.95rem; color: #a5a7b8; margin-bottom: 4px;">
-            Todo o site usa <strong>SVG inline</strong> (sem biblioteca de ícones). O caminho canônico da seta é
-            <code>M7 7h10v10M7 17L17 7</code> (diag. 45° ↗), espelhado para ↖/↘ conforme o painel. Traço padrão <strong>2</strong> (2.35 nas variantes large).
+          <p style="font-size: 0.95rem; color: #a5a7b8; margin-bottom: 20px;">
+            A linguagem gráfica da Lenses utiliza setas diagonais (45°) finas e precisas, que orientam o fluxo de leitura entre os blocos.
           </p>
-
-          <div class="icon-demo-row" style="margin-top: 18px;">
-            <div class="icon-demo-item">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7h10v10M7 17L17 7"/></svg>
-              <span class="label">.ico-arrow-small<br>14px</span>
-            </div>
-            <div class="icon-demo-item">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7h10v10M7 17L17 7"/></svg>
-              <span class="label">.ico-arrow<br>24px</span>
-            </div>
-            <div class="icon-demo-item blue">
-              <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.35"><path d="M7 7h10v10M7 17L17 7"/></svg>
-              <span class="label">.ico-arrow-large<br>52px (58 no card)</span>
-            </div>
-            <div class="icon-demo-item">
-              <svg width="54" height="54" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7h10v10M7 17L17 7"/></svg>
-              <span class="label">.ico-arrow-giant<br>54px (CTA)</span>
-            </div>
+          <div class="icon-demo-row">
             <div class="icon-demo-item blue">
               <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 7h10v10M7 17L17 7"/></svg>
-              <span class="label">.ico-arrow-diag<br>40px (painel)</span>
+              <span class="label">.ico-arrow-diag<br>40px (painel split)</span>
             </div>
             <div class="icon-demo-item">
               <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M18 6L6 18M6 6l12 12"/></svg>
-              <span class="label">.ico-close<br>40px (pinned)</span>
+              <span class="label">.ico-close<br>40px (pinned split)</span>
             </div>
             <div class="icon-demo-item">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17l10-10M17 7H7v10"/></svg>
-              <span class="label">.ico-arrow-compressed<br>26px (↖)</span>
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7h10v10M7 17L17 7"/></svg>
+              <span class="label">.ico-arrow-large<br>32px (serviços/destaque)</span>
             </div>
             <div class="icon-demo-item">
-              <svg class="ico-chat" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
-              <span class="label">.ico-chat<br>16px (CTA nav)</span>
+              <svg class="ico-chat" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+              <span class="label">.ico-chat<br>18px (CTA nav)</span>
             </div>
             <div class="icon-demo-item">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--text-white-muted);"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-              <span class="label">.ico-channel<br>20px (CTA final)</span>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M18 13l-6 6-6-6"/></svg>
+              <span class="label">.hero-scroll-arrow<br>22px (bounce 2.8s)</span>
             </div>
-            <div class="icon-demo-item">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M18 13l-6 6-6-6"/></svg>
-              <span class="label">.hero-scroll-arrow<br>22px (bouce 2.8s)</span>
-            </div>
-          </div>
-
-          <div class="ds-note">
-            <strong>Comportamento:</strong> setas de card ganham <code>translate(x, y)</code> no hover; seta azul do header de serviços desloca
-            <code>translate(6px, -6px)</code>. No painel split, a seta vira ✕ quando fixado (<code>.is-pinned</code>).
-            Ícones de controle de vídeo usam traço <strong>1.3</strong> (estética fina/cinematográfica).
           </div>
         </div>
       </section>
@@ -1442,58 +1162,56 @@
       <section class="ds-section" id="layout">
         <div class="ds-section-header">
           <h2 class="ds-section-title"><i class="fa-solid fa-table-cells-large"></i> Grids, Containers &amp; Espaçamentos</h2>
-          <span class="ds-section-badge">Full-bleed + hairline 2px</span>
+          <span class="ds-section-badge">Arquitetura de Layout Ativa</span>
         </div>
         <div class="ds-card-box">
           <div class="grid-specs">
             <div class="grid-spec-card">
               <h4>Navbar — 3 zonas</h4>
               <p><span class="spec-code">grid-template-columns: 1fr auto 1fr</span></p>
-              <p>Padding <span class="spec-code">16px 40px</span> (tablet 16px 24px · mobile 14px 20px). Gap dos links: <span class="spec-code">32px</span>.</p>
+              <p>Padding 16px 40px (mobile 14px 20px). Links: 32px gap.</p>
             </div>
             <div class="grid-spec-card">
-              <h4>Split Story — 3 colunas</h4>
-              <p><span class="spec-code">280px 1.4fr 1fr</span> · gap 40px</p>
-              <p>Tablet: <span class="spec-code">220px 1.2fr 0.9fr</span> · gap 24px → Mobile: 1 coluna.</p>
-            </div>
-            <div class="grid-spec-card">
-              <h4>Split Contato — 2 colunas</h4>
-              <p><span class="spec-code">1.3fr 1fr</span> · gap 48px</p>
-              <p>Tablet: <span class="spec-code">1.1fr 1fr</span> · gap 28px → Mobile: 1 coluna.</p>
-            </div>
-            <div class="grid-spec-card">
-              <h4>Publicações — 2 colunas</h4>
-              <p><span class="spec-code">1.5fr 1fr</span> · min-height 420px</p>
-              <p>≤1100px vira 1 coluna (Revista em cima, Informes embaixo).</p>
-            </div>
-            <div class="grid-spec-card">
-              <h4>Duo Cards</h4>
-              <p><span class="spec-code">1fr 1fr</span> · gap <strong>2px</strong></p>
-              <p>O <code>2px</code> é o padrão de "hairline physical" do site (divisórias entre blocos com fundo <code>--border-hairline</code>). ≤768px: 1 coluna.</p>
+              <h4>Split Interativo</h4>
+              <p><span class="spec-code">Idle 50/50 → Expandido 85/15</span></p>
+              <p>Painel Story (Branco) e Contato (Azul Sabóia) com transição coordenada 650ms.</p>
             </div>
             <div class="grid-spec-card">
               <h4>Trilha de Serviços</h4>
-              <p><span class="spec-code">flex</span> · gap 2px · itens <span class="spec-code">flex: 1 1 0</span></p>
-              <p>Hover expande: ativo <code>2.35</code>, demais <code>0.68</code> (opacity .68). ≤1100px: grid 3 col → ≤768px: 1 col.</p>
+              <p><span class="spec-code">display: flex · gap: 2px</span></p>
+              <p>Hover expande ativo para <code>flex: 2.35</code> e comprime vizinhos para <code>0.68</code>.</p>
+            </div>
+            <div class="grid-spec-card">
+              <h4>Carrosséis de Cases</h4>
+              <p><span class="spec-code">Destaque: 100vw / Duo: 2 colunas</span></p>
+              <p>Motor JS próprio, drag, autoplay, dots e cards de informações sobrepostos.</p>
+            </div>
+            <div class="grid-spec-card">
+              <h4>Certificação ISO 9001</h4>
+              <p><span class="spec-code">2 colunas assimétricas</span></p>
+              <p>Card visual à esquerda + 4 pilares operacionais com ícones vetoriais à direita.</p>
+            </div>
+            <div class="grid-spec-card">
+              <h4>Clientes &amp; Parceiros</h4>
+              <p><span class="spec-code">repeat(6, 1fr) desktop</span></p>
+              <p>18 marcas oficiais importadas com repouso monocromático e hover iluminado.</p>
+            </div>
+            <div class="grid-spec-card">
+              <h4>Missão, Visão e Valores</h4>
+              <p><span class="spec-code">repeat(3, 1fr) · gap: 24px</span></p>
+              <p>Cards com fotos de cinema e filtro escuro que acende para opacidade 0% no hover.</p>
+            </div>
+            <div class="grid-spec-card">
+              <h4>Nossa Equipe (sobre.html)</h4>
+              <p><span class="spec-code">repeat(4, 1fr) · gap: 24px</span></p>
+              <p>Fundo branco, fotos de estúdio com cantos arredondados e base escura.</p>
+            </div>
+            <div class="grid-spec-card">
+              <h4>Rodapé Cinematográfico</h4>
+              <p><span class="spec-code">5 colunas + Barra tripartite</span></p>
+              <p>GIF de fundo de palco, logo outlined 541×575 e barra IDE Digital.</p>
             </div>
           </div>
-
-          <table class="spec-table" style="margin-top: 26px;">
-            <thead>
-              <tr>
-                <th>Escala de espaçamento</th>
-                <th>Valores observados no index</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td>Micro (gaps internos)</td><td class="spec-meta">2px (hairline grids) · 4–8px (kicker/rótulos) · 10–16px (linhas de conteúdo)</td></tr>
-              <tr><td>Bloco (padding de card)</td><td class="spec-meta">24px (info box) · 28–32px (channels/painel) · 36–40px (duo/service cards) · 40px 60px (painéis split)</td></tr>
-              <tr><td>Seção (padding externo)</td><td class="spec-meta">28px 36px (barra serviços) · 50px 60px (destaque/cards publicação) · 80px 60px (CTA final) · 30px 40px (footer)</td></tr>
-              <tr><td>Anchors</td><td class="spec-meta">section[id] → <code>scroll-margin-top: 85px</code> (compensa header fixo)</td></tr>
-              <tr><td>Raios</td><td class="spec-meta"><code>--radius-pill: 999px</code> (botões pílula) · 8px (boxes) · 4px (story img) · 16px (modal) · 50% (btn-top / dots)</td></tr>
-              <tr><td>Sombras</td><td class="spec-meta"><code>--shadow-card: 0 12px 36px rgba(0,0,0,.35)</code> · <code>--shadow-blue-glow: 0 0 35px var(--color-primary-glow)</code> · btn-pill <code>0 4px 18px rgba(92,108,164,.35)</code></td></tr>
-            </tbody>
-          </table>
         </div>
       </section>
 
@@ -1501,26 +1219,22 @@
       <section class="ds-section" id="responsivo">
         <div class="ds-section-header">
           <h2 class="ds-section-title"><i class="fa-solid fa-mobile-screen"></i> Breakpoints &amp; Responsividade</h2>
-          <span class="ds-section-badge">3 faixas + hover:none</span>
+          <span class="ds-section-badge">Adaptação Fluída</span>
         </div>
         <div class="ds-card-box">
           <div class="grid-specs">
             <div class="grid-spec-card">
               <h4>Desktop &gt; 1100px</h4>
-              <p>Layout de referência: split 85/15 horizontal, trilha de serviços flex com hover, grids 2–3 colunas, navbar 3 zonas completa.</p>
+              <p>Layout completo: split 85/15, trilha de serviços flex com hover, carrosséis plenos, grid de 6 colunas de clientes e rodapé de 5 colunas.</p>
             </div>
             <div class="grid-spec-card">
-              <h4>Tablet 769–1100px <span class="spec-meta">(queries: ≤1100 e 1080–769)</span></h4>
-              <p>Publicações/Sobre/Categorias em 1 coluna · serviços vira grid 3 col (sem efeito flex) · split reduz padding (36px) · nav comprime gaps (20px) e links para 0.78rem.</p>
+              <h4>Tablet 769–1100px</h4>
+              <p>Trilha de serviços em grid de 3 colunas, ISO 9001 e clientes ajustados para 4 ou 3 colunas, split com padding compacto e rodapé em 2 colunas.</p>
             </div>
             <div class="grid-spec-card">
-              <h4>Mobile ≤768px + <code>(hover: none)</code></h4>
-              <p>Hamburger + drawer full-screen · split vira <strong>accordion vertical</strong> (painéis empilhados, sem rótulo comprimido) · duo/serviços em 1 coluna · footer empilhado · controles de vídeo do hero sempre visíveis (op. .75) · KPIs viram linha horizontal.</p>
+              <h4>Mobile ≤768px</h4>
+              <p>Drawer hamburger fullscreen, split vira accordion vertical empilhado, carrossel duo em 1 slide, clientes em 2 colunas e rodapé em 1 coluna.</p>
             </div>
-          </div>
-          <div class="ds-note">
-            <strong>Testar sempre:</strong> 1440 · 1280 · 1100 · 1024 · 768 · 414 · 375. O efeito hover dos serviços tem fallback de
-            <strong>toque</strong> (touchstart toca o vídeo e pausa os demais) via <code>assets/script.js</code>.
           </div>
         </div>
       </section>
@@ -1528,78 +1242,39 @@
       <!-- MOVIMENTO & ANIMAÇÃO -->
       <section class="ds-section" id="animacao">
         <div class="ds-section-header">
-          <h2 class="ds-section-title"><i class="fa-solid fa-wand-magic-sparkles"></i> Movimento &amp; Animação</h2>
-          <span class="ds-section-badge">Motion cinematográfico</span>
+          <h2 class="ds-section-title"><i class="fa-solid fa-film"></i> Movimento &amp; Motion Design</h2>
+          <span class="ds-section-badge">Curvas Cinematográficas</span>
         </div>
         <div class="ds-card-box">
           <table class="spec-table">
             <thead>
-              <tr>
-                <th>Token / Padrão</th>
-                <th>Valor</th>
-                <th>Onde é usado</th>
-              </tr>
+              <tr><th>Token / Padrão</th><th>Valor</th><th>Aplicação</th></tr>
             </thead>
             <tbody>
               <tr>
                 <td><code>--ease-cinematic</code></td>
                 <td class="spec-meta">cubic-bezier(0.16, 1, 0.3, 1)</td>
-                <td class="spec-meta">Praticamente todas as transições do site (sai rápido, desacelera suave)</td>
+                <td class="spec-meta">Transição mestre de aceleração e desaceleração cinematográfica</td>
               </tr>
               <tr>
                 <td><code>--ease-split</code></td>
                 <td class="spec-meta">cubic-bezier(0.22, 1, 0.36, 1)</td>
-                <td class="spec-meta">Accordion split e staggered entrance dos painéis</td>
-              </tr>
-              <tr>
-                <td><code>--transition-smooth</code></td>
-                <td class="spec-meta">all 0.3s var(--ease-cinematic)</td>
-                <td class="spec-meta">Botões, btn-top, links utilitários</td>
-              </tr>
-              <tr>
-                <td><code>--transition-fast</code></td>
-                <td class="spec-meta">all 0.2s ease</td>
-                <td class="spec-meta">Links &lt;a&gt;, canais de contato</td>
+                <td class="spec-meta">Accordion dos painéis do split Sobre e Contato</td>
               </tr>
               <tr>
                 <td>Scroll reveal</td>
                 <td class="spec-meta">opacity 0→1 + translateY(26px) · 0.85s</td>
-                <td class="spec-meta"><code>.reveal-on-scroll</code> — IntersectionObserver, threshold 0.15, dispara 1 vez</td>
+                <td class="spec-meta"><code>.reveal-on-scroll</code> disparado via IntersectionObserver</td>
               </tr>
               <tr>
-                <td>Accordion split</td>
-                <td class="spec-meta">650ms · alturas 232 → 560/520px</td>
-                <td class="spec-meta">Wrapper + painéis (flex/width/padding coordenados)</td>
+                <td>Iluminação MVV</td>
+                <td class="spec-meta">opacity 0.88 → 0% · 0.55s ease</td>
+                <td class="spec-meta">Cards de Missão, Visão e Valores acendem no hover</td>
               </tr>
               <tr>
-                <td>Staggered entrance</td>
-                <td class="spec-meta">180ms / 230ms / 260ms / 280ms</td>
-                <td class="spec-meta">Colunas do painel História e do painel Contato</td>
-              </tr>
-              <tr>
-                <td>Tickers infinitos</td>
-                <td class="spec-meta">35s linear infinite · translateX(-50%)</td>
-                <td class="spec-meta">Faixa azul do header e rail de marcas (pausa no hover)</td>
-              </tr>
-              <tr>
-                <td>Header show/hide</td>
-                <td class="spec-meta">transform 0.4s · threshold 6px (rAF)</td>
-                <td class="spec-meta">Estados is-top / is-hidden / is-scrolled-up</td>
-              </tr>
-              <tr>
-                <td>Serviços flex hover</td>
-                <td class="spec-meta">flex 0.65s · filtro grayscale 0.6s</td>
-                <td class="spec-meta">Trilha: item ativo cresce, vizinhos encolhem</td>
-              </tr>
-              <tr>
-                <td>Bounce do scroll</td>
-                <td class="spec-meta">translateY(0→5px) · 2.8s ease-in-out</td>
-                <td class="spec-meta">Seta do hero</td>
-              </tr>
-              <tr>
-                <td><code>prefers-reduced-motion: reduce</code></td>
-                <td class="spec-meta">transition-duration: 0.01ms !important</td>
-                <td class="spec-meta">Acessibilidade — desliga animações do split/reveal</td>
+                <td>Ticker do Header</td>
+                <td class="spec-meta">35s linear infinite · pausa no hover</td>
+                <td class="spec-meta">Faixa superior de destaques editoriais</td>
               </tr>
             </tbody>
           </table>
@@ -1614,16 +1289,15 @@
       <section class="ds-section" id="navbar">
         <div class="ds-section-header">
           <h2 class="ds-section-title"><i class="fa-solid fa-bars"></i> Ticker Azul &amp; Navbar</h2>
-          <span class="ds-section-badge">Header fixo · 3 estados</span>
+          <span class="ds-section-badge">Header Dinâmico Oficial</span>
         </div>
 
         <div class="ds-card-box flush">
-          <div class="live-block-head" style="border-radius: 12px 12px 0 0;">
+          <div class="live-block-head">
             <span>Demonstração ao vivo</span>
             <span class="file">index.html → .top-blue-ticker + .nav</span>
           </div>
           <div style="overflow: hidden;">
-            <!-- Faixa ticker idêntica ao site -->
             <div class="top-blue-ticker" aria-label="Destaques Lenses">
               <div class="top-ticker-track">
                 <span class="ticker-text">amazônia em outro olhar</span>
@@ -1640,26 +1314,20 @@
                 <span class="ticker-text">direção artística</span>
                 <span class="ticker-text">eventos &amp; festivais</span>
                 <span class="ticker-text">documentários</span>
-                <span class="ticker-text">amazônia em outro olhar</span>
-                <span class="ticker-text">produção audiovisual</span>
-                <span class="ticker-text">estratégia &amp; conteúdo</span>
-                <span class="ticker-text">cinematografia</span>
-                <span class="ticker-text">direção artística</span>
-                <span class="ticker-text">eventos &amp; festivais</span>
-                <span class="ticker-text">documentários</span>
               </div>
             </div>
 
-            <!-- Navbar idêntica ao site (sem position:fixed nesta demo) -->
             <div class="nav">
               <div class="nav-container">
                 <nav class="nav-actions nav-actions-left" aria-label="Menu Principal Esquerdo">
                   <a href="javascript:void(0)" class="lnk">Início</a>
-                  <a href="javascript:void(0)" class="lnk">Sobre</a>
+                  <a href="sobre.html" class="lnk">Sobre</a>
                   <a href="javascript:void(0)" class="lnk">Portfólio / Cases</a>
                 </nav>
 
-                <a href="javascript:void(0)" class="nav-logo" aria-label="Lenses - Início"><img src="assets/logos/logo-lenses-white.webp" alt="LENSES" class="nav-logo-img"></a>
+                <a href="javascript:void(0)" class="nav-logo" aria-label="Lenses - Início">
+                  <img src="assets/logos/logo-lenses-white.webp" alt="LENSES" class="nav-logo-img">
+                </a>
 
                 <nav class="nav-actions nav-actions-right" aria-label="Menu Principal Direito">
                   <a href="javascript:void(0)" class="lnk">Nossos Serviços</a>
@@ -1670,55 +1338,8 @@
                     <span>Contate-nos</span>
                   </a>
                 </nav>
-
-                <button class="nav-mobile-toggle" aria-label="Abrir menu" disabled style="opacity: .35; cursor: default;">
-                  <span></span>
-                  <span></span>
-                </button>
               </div>
             </div>
-          </div>
-        </div>
-
-        <div class="ds-card-box">
-          <div class="ds-card-box-header">
-            <h4 class="ds-card-box-title">Estados dinâmicos de scroll</h4>
-          </div>
-          <table class="spec-table">
-            <thead>
-              <tr>
-                <th>Estado</th>
-                <th>Classe</th>
-                <th>Comportamento</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>No topo</strong></td>
-                <td class="spec-code">.site-header.is-top</td>
-                <td class="spec-meta">translateY(0) — ticker azul + navbar visíveis · threshold: 28px (altura do ticker)</td>
-              </tr>
-              <tr>
-                <td><strong>Scroll ↓</strong></td>
-                <td class="spec-code">.site-header.is-hidden</td>
-                <td class="spec-meta">translateY(-100%) — header inteiro some · ignora micro-movimentos &lt; 6px</td>
-              </tr>
-              <tr>
-                <td><strong>Scroll ↑ (abaixo do topo)</strong></td>
-                <td class="spec-code">.site-header.is-scrolled-up</td>
-                <td class="spec-meta">translateY(-28px) — só a navbar reaparece (ticker fica escondido acima)</td>
-              </tr>
-              <tr>
-                <td><strong>Base (sempre)</strong></td>
-                <td class="spec-code">.nav</td>
-                <td class="spec-meta">bg <code>var(--bg-nav)</code> · backdrop blur 16px · border-bottom hairline · shadow 0 4px 24px rgba(0,0,0,.45)</td>
-              </tr>
-            </tbody>
-          </table>
-          <div class="ds-note">
-            <strong>Estrutura:</strong> 3 zonas (<code>1fr auto 1fr</code>) — esquerda: Início · Sobre · Portfólio/Cases ·
-            centro: wordmark <strong>LENSES</strong> (1.25rem/800/0.25em) · direita: Nossos Serviços + pílula azul <strong>"Contate-nos"</strong>.
-            O ticker tem 7 frases repetidas 3× para loop perfeito de 50% e pausa no hover.
           </div>
         </div>
       </section>
@@ -1735,34 +1356,32 @@
               <tr><th>Elemento</th><th>Especificação</th></tr>
             </thead>
             <tbody>
-              <tr><td><code>.nav-mobile-toggle</code></td><td class="spec-meta">2 traços de 24×2px · gap 6px · ativo forma ✕ (rotate ±45°, translateY 4px)</td></tr>
-              <tr><td><code>.nav-mobile-drawer</code></td><td class="spec-meta">full-screen sob a navbar · bg rgba(5,5,5,.98) · blur 20px · entra com translateY(-10px)→0 + opacity · padding 40px 24px</td></tr>
-              <tr><td><code>.mobile-lnk</code></td><td class="spec-meta">1.15rem · 600 · 0.05em · centralizados · gap 24px</td></tr>
-              <tr><td>CTA no drawer</td><td class="spec-meta">pílula azul <code>.btn</code> com 80% de largura (máx. 260px), margin-top 16px</td></tr>
-              <tr><td>Comportamento JS</td><td class="spec-meta">trava o scroll do body · fecha ao clicar em qualquer link · impede o hide-on-scroll do header enquanto aberto</td></tr>
+              <tr><td><code>.nav-mobile-toggle</code></td><td class="spec-meta">2 traços de 24×2px com transição para ✕ ao abrir</td></tr>
+              <tr><td><code>.nav-mobile-drawer</code></td><td class="spec-meta">Full-screen com fundo <code>rgba(5,5,5,.98)</code>, blur 20px e links verticais centralizados</td></tr>
+              <tr><td>Gatilho CTA</td><td class="spec-meta">Botão pílula azul centralizado na base do drawer</td></tr>
             </tbody>
           </table>
         </div>
       </section>
 
       <!-- ====================================================================
-           03 SEÇÕES DA ONE PAGE
+           03 SEÇÕES DA ONE PAGE (HOME)
            ==================================================================== -->
 
       <!-- S1 HERO -->
       <section class="ds-section" id="hero">
         <div class="ds-section-header">
-          <h2 class="ds-section-title"><i class="fa-solid fa-film"></i> S1 · Hero — Vídeo Cinematográfico</h2>
-          <span class="ds-section-badge">100vh · sem texto (decisão de design)</span>
+          <h2 class="ds-section-title"><i class="fa-solid fa-video"></i> S1 · Hero — Vídeo Cinematográfico</h2>
+          <span class="ds-section-badge">100vh · Showreel Puro (sem texto sobreposto)</span>
         </div>
 
         <div class="ds-card-box flush">
-          <div class="live-block-head" style="border-radius: 12px 12px 0 0;">
-            <span>Demonstração ao vivo <span class="state-pill">passe o mouse no canto inferior direito</span></span>
+          <div class="live-block-head">
+            <span>Demonstração ao vivo</span>
             <span class="file">index.html → section#inicio</span>
           </div>
           <div style="overflow: hidden;">
-            <section class="hero hero-main">
+            <section class="hero hero-main" style="min-height: 520px; height: 60vh;">
               <div class="hero-bg-media">
                 <div class="hero-video-wrapper">
                   <video class="hero-video-element" autoplay muted loop playsinline preload="metadata">
@@ -1790,18 +1409,10 @@
                       <line x1="23" y1="9" x2="17" y2="15"/>
                       <line x1="17" y1="9" x2="23" y2="15"/>
                     </svg>
-                    <svg class="ctrl-icon icon-unmuted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M11 5L6 9H2v6h4l5 4V5z"/>
-                      <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
-                      <path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
-                    </svg>
                   </button>
                   <button type="button" class="hero-ctrl-btn" aria-label="Tela cheia" title="Tela cheia">
                     <svg class="ctrl-icon icon-fs-enter" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
                       <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
-                    </svg>
-                    <svg class="ctrl-icon icon-fs-exit" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M4 14h6m0 0v6m0-6L3 21m17-7h-6m0 0v6m0-6l7 7M14 4v6m0 0h6m-6 0L21 3M4 10h6m0 0V4m0 6L3 3"/>
                     </svg>
                   </button>
                 </div>
@@ -1811,139 +1422,25 @@
         </div>
 
         <div class="ds-card-box">
-          <table class="spec-table">
-            <thead><tr><th>Elemento</th><th>Especificação</th></tr></thead>
-            <tbody>
-              <tr><td>Container</td><td class="spec-meta">100vh · padding 100px 48px 40px · overflow hidden · fundo #000</td></tr>
-              <tr><td>Vídeo</td><td class="spec-meta"><code>autoplay muted loop playsinline</code> · object-fit cover · opacidade 100% · sem imagem de fundo duplicada</td></tr>
-              <tr><td>Overlay</td><td class="spec-meta">gradiente 180°: rgba(5,5,5,.45) → .05 (25%) → .05 (70%) → rgba(3,3,4,.5)</td></tr>
-              <tr><td>Seta de scroll</td><td class="spec-meta">centralizada no rodapé · bounce 5px/2.8s · hover branco pleno · rola suave até #marcas</td></tr>
-              <tr><td>Controles de vídeo</td><td class="spec-meta">zona invisível 220×120 no canto inferior direito (padding 0 44px 28px) · grupo revela no hover (opacity 0→1, translateY 6→0, .28s) · gap 22px · ícones 20px traço 1.3 · hover scale 1.12</td></tr>
-              <tr><td>Touch / mobile</td><td class="spec-meta">controles com opacidade .75 sempre visíveis · toque no hero os revela por 4s (auto-hide via JS)</td></tr>
-              <tr><td>Fullscreen nativo</td><td class="spec-meta">.hero-main:fullscreen → 100vw×100vh, padding 0, seta de scroll ocultada</td></tr>
-            </tbody>
-          </table>
           <div class="ds-note">
-            <strong>Não adicionar texto sobre o hero.</strong> O hero é intencionalmente limpo (showreel puro, referência zion.art).
-            A hierarquia H1 da página pertence ao CTA final (<code>.cta-massive-title</code>).
+            <strong>Decisão de Design Oficial:</strong> O hero é intencionalmente limpo de textos, apresentando o showreel em sua potência visual pura. A seta de rolagem na base conduz diretamente ao Split Interativo Sobre a Lenses (<code>#sobre</code>).
           </div>
         </div>
       </section>
 
-      <!-- S2 RAIL DE MARCAS -->
-      <section class="ds-section" id="rail-marcas">
-        <div class="ds-section-header">
-          <h2 class="ds-section-title"><i class="fa-solid fa-handshake"></i> S2 · Rail de Parceiros &amp; Logos Vetoriais</h2>
-          <span class="ds-section-badge">12 Logos SVG + Marquee</span>
-        </div>
-
-        <div class="ds-card-box flush">
-          <div class="live-block-head" style="border-radius: 12px 12px 0 0;">
-            <span>Demonstração ao vivo <span class="state-pill">hover pausa</span></span>
-            <span class="file">index.html → section#marcas</span>
-          </div>
-          <div class="rail">
-            <div class="rail-ticker">
-              <div class="rail-track">
-                <div class="rail-item"><img src="assets/logos/albras.svg" alt="ALBRAS"></div>
-                <div class="rail-item"><img src="assets/logos/ativo.svg" alt="ATIVO ENGENHARIA"></div>
-                <div class="rail-item"><img src="assets/logos/consag.svg" alt="CONSAG ENGENHARIA"></div>
-                <div class="rail-item"><img src="assets/logos/eurochem.svg" alt="EUROCHEM"></div>
-                <div class="rail-item"><img src="assets/logos/gaspara.svg" alt="GÁS-PARÁ"></div>
-                <div class="rail-item"><img src="assets/logos/hidrovias.svg" alt="Hidrovias do Brasil"></div>
-                <div class="rail-item"><img src="assets/logos/hydro.svg" alt="Hydro"></div>
-                <div class="rail-item"><img src="assets/logos/mitsubishi.svg" alt="MITSUBISHI POWER"></div>
-                <div class="rail-item"><img src="assets/logos/moveinfra.svg" alt="moveinfra"></div>
-                <div class="rail-item"><img src="assets/logos/newfortress.svg" alt="NewFortress energy"></div>
-                <div class="rail-item"><img src="assets/logos/ultracargo.svg" alt="ultracargo"></div>
-                <div class="rail-item"><img src="assets/logos/unitapajos.svg" alt="UNITAPAJÓS"></div>
-
-                <div class="rail-item"><img src="assets/logos/albras.svg" alt="ALBRAS"></div>
-                <div class="rail-item"><img src="assets/logos/ativo.svg" alt="ATIVO ENGENHARIA"></div>
-                <div class="rail-item"><img src="assets/logos/consag.svg" alt="CONSAG ENGENHARIA"></div>
-                <div class="rail-item"><img src="assets/logos/eurochem.svg" alt="EUROCHEM"></div>
-                <div class="rail-item"><img src="assets/logos/gaspara.svg" alt="GÁS-PARÁ"></div>
-                <div class="rail-item"><img src="assets/logos/hidrovias.svg" alt="Hidrovias do Brasil"></div>
-                <div class="rail-item"><img src="assets/logos/hydro.svg" alt="Hydro"></div>
-                <div class="rail-item"><img src="assets/logos/mitsubishi.svg" alt="MITSUBISHI POWER"></div>
-                <div class="rail-item"><img src="assets/logos/moveinfra.svg" alt="moveinfra"></div>
-                <div class="rail-item"><img src="assets/logos/newfortress.svg" alt="NewFortress energy"></div>
-                <div class="rail-item"><img src="assets/logos/ultracargo.svg" alt="ultracargo"></div>
-                <div class="rail-item"><img src="assets/logos/unitapajos.svg" alt="UNITAPAJÓS"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="ds-card-box">
-          <table class="spec-table">
-            <thead><tr><th>Propriedade</th><th>Valor</th></tr></thead>
-            <tbody>
-              <tr><td>Fundo</td><td class="spec-meta"><code>var(--bg-rail)</code> #030304 · border-top/bottom hairline · padding 24px 0</td></tr>
-              <tr><td>Logos</td><td class="spec-meta">SVG branco sólido · height 28px · max-width 190px · opacity .95 · container 40px</td></tr>
-              <tr><td>Marquee</td><td class="spec-meta">gap 70px · 35s linear infinite · lista duplicada 2× (loop de 50%) · pausa no hover</td></tr>
-              <tr><td>Fades laterais</td><td class="spec-meta">120px de gradiente nas bordas (esquerda/direita) sobre a cor do rail</td></tr>
-              <tr><td>Hover</td><td class="spec-meta">scale 1.08 + glow drop-shadow rgba(171,195,228,.5) · transição .3s</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
-
-      <!-- S3 SPLIT INTERATIVO -->
+      <!-- S2 SPLIT INTERATIVO -->
       <section class="ds-section" id="cards-split">
         <div class="ds-section-header">
-          <h2 class="ds-section-title"><i class="fa-solid fa-table-columns"></i> S3 · Split Interativo (Branco vs Azul)</h2>
+          <h2 class="ds-section-title"><i class="fa-solid fa-table-columns"></i> S2 · Split Interativo: Sobre &amp; Contato</h2>
           <span class="ds-section-badge">Accordion 50/50 → 85/15</span>
         </div>
 
-        <!-- ESTADO IDLE -->
         <div class="ds-card-box flush">
-          <div class="live-block-head" style="border-radius: 12px 12px 0 0;">
-            <span>Estado idle <span class="state-pill">data-state="idle"</span></span>
-            <span class="file">index.html → #splitInteractive (50% / 50%, altura 232px)</span>
+          <div class="live-block-head">
+            <span>Demonstração com Estado "Story" Expandido</span>
+            <span class="file">index.html → section.section-cta-split (Painel Branco)</span>
           </div>
-          <div class="split-interactive-wrapper" data-state="idle">
-            <div class="split-panel split-panel-story" tabindex="0" role="button" aria-expanded="false">
-              <div class="panel-header">
-                <div class="panel-title-wrap">
-                  <h2 class="h2 split-heading">SOBRE A LENSES</h2>
-                </div>
-                <div class="panel-indicator" aria-hidden="true">
-                  <svg class="ico-arrow-diag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 7h10v10M7 17L17 7"/></svg>
-                  <svg class="ico-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M18 6L6 18M6 6l12 12"/></svg>
-                </div>
-              </div>
-              <div class="panel-compressed-label" aria-hidden="true">
-                <span class="compressed-text">SOBRE A LENSES</span>
-                <svg class="ico-arrow-compressed" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 7h10v10M7 17L17 7"/></svg>
-              </div>
-            </div>
-
-            <div class="split-panel split-panel-contact" tabindex="0" role="button" aria-expanded="false">
-              <div class="panel-header">
-                <div class="panel-indicator indicator-left" aria-hidden="true">
-                  <svg class="ico-arrow-diag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17l10-10M17 7H7v10"/></svg>
-                  <svg class="ico-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M18 6L6 18M6 6l12 12"/></svg>
-                </div>
-                <div class="panel-title-wrap">
-                  <h2 class="h2 split-heading">CONTATO</h2>
-                </div>
-              </div>
-              <div class="panel-compressed-label" aria-hidden="true">
-                <span class="compressed-text">CONTATO</span>
-                <svg class="ico-arrow-compressed" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17l10-10M17 7H7v10"/></svg>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- ESTADO STORY -->
-        <div class="ds-card-box flush">
-          <div class="live-block-head" style="border-radius: 12px 12px 0 0;">
-            <span>Estado "story" expandido <span class="state-pill">85% / 15% · 560px</span></span>
-            <span class="file">painel branco → manifesto + KPIs</span>
-          </div>
-          <div class="split-interactive-wrapper" data-state="story">
+          <div class="split-interactive-wrapper" data-state="story" style="border-radius: 0 0 12px 12px; overflow: hidden;">
             <div class="split-panel split-panel-story is-active is-pinned" tabindex="0" role="button" aria-expanded="true">
               <div class="panel-header">
                 <div class="panel-title-wrap">
@@ -1961,13 +1458,26 @@
                     <div class="story-img-card">
                       <img src="assets/about-back.png" alt="Estúdio LENSES" class="story-img">
                       <div class="story-img-tag">LENSES</div>
+                      <div class="story-img-caption" aria-hidden="true">
+                        <span class="caption-rule"></span>
+                        <span class="caption-text">Histórias<br>que geram<br>impacto</span>
+                      </div>
                     </div>
                   </div>
                   <div class="story-text-col">
-                    <span class="story-kicker">SOBRE A LENSES</span>
+                    <span class="story-kicker">Sobre a</span>
+                    <h3 class="story-title">LENSES</h3>
                     <p class="story-manifesto">
                       Mais que uma produtora, somos um estúdio de ideias em movimento. Unimos criatividade, técnica e propósito para transformar histórias em experiências que geram impacto real.
                     </p>
+                    <div class="story-signature" aria-hidden="true">
+                      <span class="sig-rule"></span>
+                      <span class="sig-text">Ideias em movimento</span>
+                    </div>
+                    <a href="sobre.html" class="btn btn-pill" style="margin-top: 18px; align-self: flex-start; font-size: 0.78rem; padding: 8px 18px;">
+                      <span>CONHEÇA NOSSA HISTÓRIA COMPLETA</span>
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 14px; height: 14px;"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
                   </div>
                   <div class="story-kpis-col">
                     <div class="story-kpi-item">
@@ -1993,6 +1503,7 @@
             </div>
 
             <div class="split-panel split-panel-contact" tabindex="0" role="button" aria-expanded="false">
+              <div class="brand-watermark" aria-hidden="true">LENSES</div>
               <div class="panel-header">
                 <div class="panel-indicator indicator-left" aria-hidden="true">
                   <svg class="ico-arrow-diag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17l10-10M17 7H7v10"/></svg>
@@ -2007,125 +1518,23 @@
                 <svg class="ico-arrow-compressed" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17l10-10M17 7H7v10"/></svg>
               </div>
             </div>
-          </div>
-        </div>
-
-        <!-- ESTADO CONTACT -->
-        <div class="ds-card-box flush">
-          <div class="live-block-head" style="border-radius: 12px 12px 0 0;">
-            <span>Estado "contact" expandido <span class="state-pill">15% / 85% · 520px</span></span>
-            <span class="file">painel azul → CTA + canais oficiais</span>
-          </div>
-          <div class="split-interactive-wrapper" data-state="contact">
-            <div class="split-panel split-panel-story" tabindex="0" role="button" aria-expanded="false">
-              <div class="panel-header">
-                <div class="panel-title-wrap">
-                  <h2 class="h2 split-heading">SOBRE A LENSES</h2>
-                </div>
-                <div class="panel-indicator" aria-hidden="true">
-                  <svg class="ico-arrow-diag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 7h10v10M7 17L17 7"/></svg>
-                  <svg class="ico-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M18 6L6 18M6 6l12 12"/></svg>
-                </div>
-              </div>
-              <div class="panel-compressed-label" aria-hidden="true">
-                <span class="compressed-text">SOBRE A LENSES</span>
-                <svg class="ico-arrow-compressed" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 7h10v10M7 17L17 7"/></svg>
-              </div>
-            </div>
-
-            <div class="split-panel split-panel-contact is-active is-pinned" tabindex="0" role="button" aria-expanded="true">
-              <div class="panel-header">
-                <div class="panel-indicator indicator-left" aria-hidden="true">
-                  <svg class="ico-arrow-diag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17l10-10M17 7H7v10"/></svg>
-                  <svg class="ico-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M18 6L6 18M6 6l12 12"/></svg>
-                </div>
-                <div class="panel-title-wrap">
-                  <h2 class="h2 split-heading">CONTATO</h2>
-                </div>
-              </div>
-
-              <div class="panel-body panel-body-contact">
-                <div class="contact-content-grid">
-                  <div class="contact-intro-col">
-                    <span class="contact-kicker">FALE COM A NOSSA EQUIPE</span>
-                    <h3 class="contact-lead-title">Vamos conversar sobre o seu próximo projeto?</h3>
-                    <p class="contact-lead-desc">
-                      Transformamos ideias e narrativas em filmes, coberturas e experiências audiovisuais de alto impacto.
-                    </p>
-                    <a href="javascript:void(0)" class="btn btn-contact-direct">
-                      <span>ENTRAR EM CONTATO</span>
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7h10v10M7 17L17 7"/></svg>
-                    </a>
-                  </div>
-
-                  <div class="contact-channels-col">
-                    <div class="contact-channel-block">
-                      <span class="contact-channel-type">WHATSAPP / TELEFONE</span>
-                      <a href="javascript:void(0)" class="contact-channel-link">
-                        <svg class="ico-channel-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
-                        <span>+55 91 99200-0000</span>
-                      </a>
-                    </div>
-                    <div class="contact-channel-block">
-                      <span class="contact-channel-type">E-MAIL INSTITUCIONAL</span>
-                      <a href="javascript:void(0)" class="contact-channel-link">
-                        <svg class="ico-channel-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                        <span>contato@lenses.com.br</span>
-                      </a>
-                    </div>
-                    <div class="contact-channel-block">
-                      <span class="contact-channel-type">INSTAGRAM OFICIAL</span>
-                      <a href="javascript:void(0)" class="contact-channel-link">
-                        <svg class="ico-channel-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-                        <span>@lensesagencia</span>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="panel-compressed-label" aria-hidden="true">
-                <span class="compressed-text">CONTATO</span>
-                <svg class="ico-arrow-compressed" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17l10-10M17 7H7v10"/></svg>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="ds-card-box">
-          <table class="spec-table">
-            <thead><tr><th>Propriedade</th><th>Valor</th></tr></thead>
-            <tbody>
-              <tr><td>Painel Branco (História)</td><td class="spec-meta">bg <code>--bg-surface-light</code> · texto <code>--text-dark</code> · hover #fafafc · heading vira azul no hover</td></tr>
-              <tr><td>Painel Azul (Contato)</td><td class="spec-meta">bg <code>--color-electric-blue</code> · hover <code>--color-blue-hover</code></td></tr>
-              <tr><td>Alturas</td><td class="spec-meta">idle 232px → story 560px → contact 520px · transição 650ms <code>--ease-split</code></td></tr>
-              <tr><td>Hover idle</td><td class="spec-meta">header desloca ±10px horizontalmente · heading/seta mudam de cor (feedback sutil)</td></tr>
-              <tr><td>Fixado</td><td class="spec-meta">indicador ↗ vira ✕ (rotate/scale .35s) · painel comprimido mostra rótulo vertical 1.15rem/800/0.25em</td></tr>
-              <tr><td>Conteúdo</td><td class="spec-meta">História: img 290px (r4, tag "LENSES") + manifesto + KPIs azuis · Contato: CTA branco pílula + box de canais rgba(0,0,0,.18)</td></tr>
-              <tr><td>Acessibilidade</td><td class="spec-meta">role=button · aria-expanded · Enter/Espace alternam · Escape volta ao idle · focus-visible: outline 2px azul</td></tr>
-              <tr><td>Mobile ≤768px</td><td class="spec-meta">accordion vertical empilhado (painéis full-width, min 90px fechados) · sem rótulo comprimido</td></tr>
-            </tbody>
-          </table>
-          <div class="ds-note">
-            <strong>Nota de implementação:</strong> no site real a troca de estados é feita pelo <code>assets/script.js</code>
-            (atributo <code>data-state</code> no wrapper). Nestas demonstrações os estados estão fixos para visualização.
           </div>
         </div>
       </section>
 
-      <!-- S4 TRILHA DE SERVIÇOS -->
+      <!-- S3 TRILHA DE SERVIÇOS -->
       <section class="ds-section" id="cards-servicos">
         <div class="ds-section-header">
-          <h2 class="ds-section-title"><i class="fa-solid fa-cubes"></i> S4 · Trilha de Serviços + Barra Editorial</h2>
-          <span class="ds-section-badge">grayscale → cor + expansão flex</span>
+          <h2 class="ds-section-title"><i class="fa-solid fa-cubes"></i> S3 · Trilha de Serviços + Barra Editorial</h2>
+          <span class="ds-section-badge">Expansão Flex + Vídeo Autoplay</span>
         </div>
 
         <div class="ds-card-box flush">
-          <div class="live-block-head" style="border-radius: 12px 12px 0 0;">
-            <span>Demonstração ao vivo <span class="state-pill">hover nos cards</span></span>
-            <span class="file">index.html → section#servicos (Opção 1)</span>
+          <div class="live-block-head">
+            <span>Demonstração ao vivo</span>
+            <span class="file">index.html → section#servicos</span>
           </div>
-          <div class="services-container" style="height: clamp(500px, 65vh, 700px);">
+          <div class="services-container" style="height: clamp(480px, 60vh, 680px);">
             <div class="services-track">
               <div class="card6 service-item">
                 <video class="service-media-asset" muted loop playsinline preload="metadata" poster="assets/servicos/serv-producao-audiovisual-poster.jpg">
@@ -2178,352 +1587,354 @@
             </div>
           </div>
         </div>
-
-        <div class="ds-card-box">
-          <table class="spec-table">
-            <thead><tr><th>Propriedade</th><th>Valor</th></tr></thead>
-            <tbody>
-              <tr><td>Altura da trilha</td><td class="spec-meta"><strong>Inline no index:</strong> <code>style="height: clamp(600px, 75vh, 800px)"</code> (fallback do CSS: clamp(680px, 80vh, 880px)) · gap 2px · fundo hairline</td></tr>
-              <tr><td>Imagem padrão</td><td class="spec-meta"><code>filter: grayscale(100%) brightness(.85) contrast(1.08)</code> · overlay gradiente até rgba(0,0,0,.94)</td></tr>
-              <tr><td>Hover</td><td class="spec-meta">grayscale 0 + brightness 1 + scale 1.05 (.6–.7s) · card ativo <code>flex: 2.35</code>, vizinhos <code>0.68</code> opacity .68 (.65s)</td></tr>
-              <tr><td>Vídeos</td><td class="spec-meta">3 dos 6 cards têm vídeo: toca no hover (desktop) / toque (mobile, pausando os demais) via <code>script.js</code> · poster JPG sempre presente</td></tr>
-              <tr><td>Nome do serviço</td><td class="spec-meta">bottom-aligned · padding 36px 20px · sobe 4px no hover · <code>word-break: break-word</code></td></tr>
-              <tr><td>Barra editorial</td><td class="spec-meta">bg <code>--bg-surface-dark</code> · border-top 2px hairline · padding 28px 36px · kicker azul 0.76rem/800 + título + descrição 260px + seta 52px</td></tr>
-            </tbody>
-          </table>
-        </div>
       </section>
 
-      <!-- S5 DESTAQUE / FESTIVAL -->
-      <section class="ds-section" id="destaque">
+      <!-- S4 CARROSSEL DE CASES EM DESTAQUE -->
+      <section class="ds-section" id="cases-destaque">
         <div class="ds-section-header">
-          <h2 class="ds-section-title"><i class="fa-solid fa-star"></i> S5 · Destaque de Projeto (Festival do Futuro)</h2>
-          <span class="ds-section-badge">Full-bleed + info box</span>
+          <h2 class="ds-section-title"><i class="fa-solid fa-star"></i> S4 · Carrossel de Cases em Destaque</h2>
+          <span class="ds-section-badge">Motor Dinâmico · PROJECTS.featured</span>
         </div>
 
         <div class="ds-card-box flush">
-          <div class="live-block-head" style="border-radius: 12px 12px 0 0;">
-            <span>Demonstração ao vivo</span>
-            <span class="file">index.html → section#projetos</span>
+          <div class="live-block-head">
+            <span>Amostra Visual do Slide em Destaque com Título Sobreposto</span>
+            <span class="file">index.html → section#projetos (.carousel-featured)</span>
           </div>
-          <section class="section section-highlight-project" style="margin: 0;">
-            <div class="highlight-project-bg">
-              <img src="assets/festival-futuro.png" alt="Festival do Futuro Brasília" class="highlight-img-asset">
-              <div class="highlight-project-overlay"></div>
+
+          <div class="ds-carousel-stage">
+            <div class="carousel-slide featured-slide" style="position: absolute; inset: 0;">
+              <img class="featured-slide-media" src="assets/festival-futuro.png" alt="Festival do Futuro Brasília" style="object-position: center; width: 100%; height: 100%; object-fit: cover;">
+              <div class="featured-slide-overlay" aria-hidden="true"></div>
+
+              <a class="pc-card" href="https://wa.me/5591992000000?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20o%20case%20Festival%20do%20Futuro." target="_blank" rel="noopener noreferrer">
+                <div class="pc-card-title">Manifesto All Amazônia</div>
+                <div class="pc-card-desc">Performance audiovisual na Times Square durante a Assembleia Geral da ONU.</div>
+                <div class="pc-card-meta">Eventos · Nova York · 2023</div>
+              </a>
             </div>
 
-            <div class="highlight-project-inner">
-              <div class="highlight-info-box">
-                <p class="t2 highlight-title">FESTIVAL DO FUTURO<br>BRASÍLIA (DISTRITO FEDERAL)</p>
-                <p class="t3 highlight-desc">Festival de arte e cultura gratuito para público de 300 mil pessoas.</p>
-              </div>
-
-              <div class="highlight-action-title">
-                <span class="ico-arrow-large">
+            <div class="highlight-project-inner" style="position: absolute; inset: 0; pointer-events: none; z-index: 3;">
+              <a href="#cases-duo" class="highlight-action-title" style="pointer-events: auto;">
+                <span class="ico-arrow-large" aria-hidden="true">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7h10v10M7 17L17 7"/></svg>
                 </span>
                 <h2 class="h2 section-display-title">ALGUNS<br>PROJETOS</h2>
-              </div>
+                <span class="highlight-action-sub">TODOS OS CASES &darr;</span>
+              </a>
             </div>
-          </section>
-        </div>
 
-        <div class="ds-card-box">
-          <table class="spec-table">
-            <thead><tr><th>Elemento</th><th>Especificação</th></tr></thead>
-            <tbody>
-              <tr><td>Seção</td><td class="spec-meta">min-height 580px · padding 50px 60px · conteúdo alinhado ao rodapé (flex-end)</td></tr>
-              <tr><td>Overlay</td><td class="spec-meta">gradiente 0°: rgba(0,0,0,.9) → .3 (60%) → .7 (100%)</td></tr>
-              <tr><td>Info box</td><td class="spec-meta">max-width 440px · bg rgba(0,0,0,.65) · backdrop blur 10px · padding 24px · <strong>border-left 2px azul elétrico</strong></td></tr>
-              <tr><td>Título display</td><td class="spec-meta">.section-display-title → clamp(2.4rem,4vw,4rem) / 300 / 0.2em / uppercase, alinhado à direita</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
+            <button class="carousel-btn carousel-btn-prev" type="button" aria-label="Case anterior" style="z-index: 4;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+            <button class="carousel-btn carousel-btn-next" type="button" aria-label="Próximo case" style="z-index: 4;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+            </button>
 
-      <!-- S6 DUO CARDS -->
-      <section class="ds-section" id="duo">
-        <div class="ds-section-header">
-          <h2 class="ds-section-title"><i class="fa-solid fa-images"></i> S6 · Duo Cards Editoriais</h2>
-          <span class="ds-section-badge">2 colunas · gap 2px</span>
-        </div>
-
-        <div class="ds-card-box flush">
-          <div class="live-block-head" style="border-radius: 12px 12px 0 0;">
-            <span>Demonstração ao vivo <span class="state-pill">hover dá zoom</span></span>
-            <span class="file">index.html → section.section-duo-projects</span>
-          </div>
-          <div class="duo-grid">
-            <article class="card4 duo-card" style="height: 380px;">
-              <div class="card4-media">
-                <img src="assets/duo-amazonia.png" alt="A Amazônia não é apenas o que vemos" class="duo-img-asset">
-                <div class="card4-overlay"></div>
-              </div>
-              <div class="card4-caption">
-                <p class="t2 caption-text">A AMAZÔNIA NÃO É APENAS O QUE VEMOS.</p>
-                <span class="ico-arrow">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7h10v10M7 17L17 7"/></svg>
-                </span>
-              </div>
-            </article>
-
-            <article class="card4 duo-card" style="height: 380px;">
-              <div class="card4-media">
-                <img src="assets/duo-historias.png" alt="Transformamos ideias em histórias" class="duo-img-asset">
-                <div class="card4-overlay"></div>
-              </div>
-              <div class="card4-caption">
-                <p class="t2 caption-text">TRANSFORMAMOS IDEIAS EM HISTÓRIAS.</p>
-                <span class="ico-arrow">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7h10v10M7 17L17 7"/></svg>
-                </span>
-              </div>
-            </article>
+            <div class="carousel-dots" style="z-index: 4;">
+              <button class="carousel-dot" aria-current="true" aria-label="Slide 1"></button>
+              <button class="carousel-dot" aria-label="Slide 2"></button>
+              <button class="carousel-dot" aria-label="Slide 3"></button>
+            </div>
           </div>
         </div>
 
         <div class="ds-card-box">
           <table class="spec-table">
-            <thead><tr><th>Elemento</th><th>Especificação</th></tr></thead>
+            <thead><tr><th>Propriedade</th><th>Especificação</th></tr></thead>
             <tbody>
-              <tr><td>Card</td><td class="spec-meta">height 420px (no site) · padding 36px 40px · bg #08080a · bottom-aligned · overflow hidden</td></tr>
-              <tr><td>Overlay</td><td class="spec-meta">gradiente 180° rgba(0,0,0,.1) → rgba(0,0,0,.85)</td></tr>
-              <tr><td>Hover</td><td class="spec-meta">imagem scale 1.04 (.6s) · seta desloca (translate 4,4) e vira azul</td></tr>
-              <tr><td>Legenda</td><td class="spec-meta">.caption-text — 0.95rem/600/0.12em/uppercase · max-width 80%</td></tr>
+              <tr><td>Motor JS</td><td class="spec-meta">Inicializado via <code>assets/script.js</code> a partir de <code>PROJECTS.featured</code> sem dependências de terceiros</td></tr>
+              <tr><td>Card de Informações</td><td class="spec-meta"><code>.pc-card</code> com borda esquerda sutil, título em <code>0.95rem/700</code>, descrição e meta com link direto de WhatsApp</td></tr>
+              <tr><td>Navegação Cruzada</td><td class="spec-meta">O título display <strong>ALGUNS PROJETOS</strong> ancora para <code>#projetos-todos</code> com seta diagonal</td></tr>
             </tbody>
           </table>
         </div>
       </section>
 
-      <!-- S7 REVISTA & INFORMES -->
-      <section class="ds-section" id="cards-editorial">
+      <!-- S5 CARROSSEL DUO DE PROJETOS -->
+      <section class="ds-section" id="cases-duo">
         <div class="ds-section-header">
-          <h2 class="ds-section-title"><i class="fa-solid fa-book-open"></i> S7 · Publicações — Revista &amp; Informes</h2>
-          <span class="ds-section-badge">Conteúdo obrigatório ✔</span>
+          <h2 class="ds-section-title"><i class="fa-solid fa-images"></i> S5 · Carrossel Secundário Duo (Cases)</h2>
+          <span class="ds-section-badge">2 Simultâneos no Desktop · PROJECTS.secondary</span>
         </div>
 
         <div class="ds-card-box flush">
-          <div class="live-block-head" style="border-radius: 12px 12px 0 0;">
-            <span>Demonstração ao vivo</span>
-            <span class="file">index.html → section#revista + #informes</span>
+          <div class="live-block-head">
+            <span>Amostra Visual com 2 Slides Simultâneos</span>
+            <span class="file">index.html → section#projetos-todos (.carousel-duo)</span>
           </div>
-          <div class="publications-grid">
-            <div class="card8 pub-card-dark">
-              <div class="pub-header">
-                <span class="t3 pub-tag">CONFIRA NOSSA</span>
-                <div class="pub-title-row">
-                  <h2 class="h2 pub-title">Revista Eletrônica</h2>
-                  <span class="ico-arrow">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7h10v10M7 17L17 7"/></svg>
-                  </span>
-                </div>
+
+          <div class="ds-duo-stage">
+            <div class="ds-duo-grid-sample">
+              <!-- Slide 1 -->
+              <div class="duo-slide">
+                <img class="duo-slide-media" src="assets/servicos/serv-cobertura-eventos-poster.jpg" alt="Conversas que Inspiram">
+                <div class="duo-slide-overlay"></div>
+                <a class="pc-card pc-card-sm" href="javascript:void(0)">
+                  <div class="pc-card-title">Conversas que Inspiram</div>
+                  <div class="pc-card-desc">Cobertura de evento com podcast e transmissão ao vivo.</div>
+                  <div class="pc-card-meta">Eventos · 2025</div>
+                </a>
               </div>
 
-              <div class="pub-mockup-area">
-                <img src="assets/magazine-mockup.png" alt="Edições da Revista Eletrônica LENSES" class="pub-mockup-img">
-              </div>
-
-              <div class="pub-footer">
-                <p class="t2 pub-desc">Conteúdos, bastidores, projetos e ideias que nos movem.</p>
-                <a href="javascript:void(0)" class="lnk pub-link">
-                  <span>Ver edições</span>
-                  <svg class="ico-arrow-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7h10v10M7 17L17 7"/></svg>
+              <!-- Slide 2 -->
+              <div class="duo-slide">
+                <img class="duo-slide-media" src="assets/servicos/serv-filmes-publicitarios.jpg" alt="Estrada Seca">
+                <div class="duo-slide-overlay"></div>
+                <a class="pc-card pc-card-sm" href="javascript:void(0)">
+                  <div class="pc-card-title">Estrada Seca</div>
+                  <div class="pc-card-desc">Filme publicitário com direção de arte e captação em locação.</div>
+                  <div class="pc-card-meta">Publicidade · 2024</div>
                 </a>
               </div>
             </div>
-
-            <div class="card9 pub-card-blue">
-              <div class="pub-header">
-                <div class="pub-title-row">
-                  <h2 class="h2 pub-title">Informes trimestrais</h2>
-                  <span class="ico-arrow">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7h10v10M7 17L17 7"/></svg>
-                  </span>
-                </div>
-              </div>
-
-              <div class="pub-mockup-area">
-                <img src="assets/reports-mockup.png" alt="Informes Trimestrais LENSES" class="pub-mockup-img">
-              </div>
-            </div>
           </div>
         </div>
 
         <div class="ds-card-box">
           <table class="spec-table">
-            <thead><tr><th>Elemento</th><th>Especificação</th></tr></thead>
+            <thead><tr><th>Propriedade</th><th>Especificação</th></tr></thead>
             <tbody>
-              <tr><td>Grid</td><td class="spec-meta">1.5fr / 1fr · min-height 420px · ≤1100px empilha</td></tr>
-              <tr><td>Card Revista (escuro)</td><td class="spec-meta">bg #09090b · padding 50px 60px · border-right hairline · tag 0.8rem/600/0.2em dim</td></tr>
-              <tr><td>Card Informes (azul)</td><td class="spec-meta">bg <code>--color-electric-blue</code> · padding 50px 60px · texto branco</td></tr>
-              <tr><td>Títulos</td><td class="spec-meta">.pub-title → clamp(2rem, 3vw, 3.2rem) / 500 / -0.01em (case original: "Revista Eletrônica" e "Informes trimestrais" em sentence case)</td></tr>
-              <tr><td>Mockups</td><td class="spec-meta">max-height 220px · object-fit contain · drop-shadow 0 14px 28px rgba(0,0,0,.45)</td></tr>
-              <tr><td>Link "Ver edições"</td><td class="spec-meta">.lnk.pub-link → 700 · border-bottom 1px rgba(255,255,255,.4) · padding-bottom 4px · seta 14px</td></tr>
+              <tr><td>Responsividade</td><td class="spec-meta">Desktop (&gt;768px): 2 slides simultâneos com gap de 2px · Mobile (≤768px): 1 slide full-width</td></tr>
+              <tr><td>Hover Interativo</td><td class="spec-meta">Ao passar o mouse sobre o slide, a imagem amplia sutilmente (scale 1.04) e o card se move 6px</td></tr>
             </tbody>
           </table>
-          <div class="ds-note">
-            <strong>Conteúdo obrigatório:</strong> "CONFIRA NOSSA Revista Eletrônica" e "Informes trimestrais" devem permanecer em toda nova
-            versão da one page (âncoras <code>#revista</code> e <code>#informes</code>, também presentes no footer).
-          </div>
         </div>
       </section>
 
-      <!-- S8 CTA CONTATO -->
-      <section class="ds-section" id="cta-contato">
+      <!-- S6 CERTIFICAÇÃO ISO 9001 -->
+      <section class="ds-section" id="certificacao">
         <div class="ds-section-header">
-          <h2 class="ds-section-title"><i class="fa-solid fa-paper-plane"></i> S8 · Banner Final CTA Contato</h2>
-          <span class="ds-section-badge">Único H1 da página</span>
+          <h2 class="ds-section-title"><i class="fa-solid fa-award"></i> S6 · Certificação ISO 9001 da LENSES</h2>
+          <span class="ds-section-badge">Credibilidade &amp; Processos Internacionais</span>
         </div>
 
         <div class="ds-card-box flush">
-          <div class="live-block-head" style="border-radius: 12px 12px 0 0;">
+          <div class="live-block-head">
             <span>Demonstração ao vivo</span>
-            <span class="file">index.html → section#contato</span>
+            <span class="file">index.html → section#certificacao</span>
           </div>
-          <section class="section section-cta-contact" style="margin: 0;">
-            <div class="cta-contact-bg">
-              <img src="assets/contact-bg.png" alt="Estúdio Audiovisual LENSES" class="cta-img-asset">
-              <div class="cta-contact-overlay"></div>
-            </div>
 
-            <div class="cta-contact-inner">
-              <div class="cta-contact-left">
-                <h1 class="h1 cta-massive-title">Vamos criar<br>algo <span class="highlight-inline">incrível</span> juntos?</h1>
-                <span class="ico-arrow-giant">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7h10v10M7 17L17 7"/></svg>
-                </span>
+          <section class="section section-certified" style="margin: 0;">
+            <div class="certified-grid">
+              <!-- Coluna Esquerda: Card Visual -->
+              <div class="card8 certified-visual">
+                <img src="assets/iso9001-card.jpg" alt="Certificação ISO 9001 — LENSES" class="certified-visual-img" loading="lazy">
+                <span class="certified-visual-overlay" aria-hidden="true"></span>
+                <div class="certified-visual-caption">
+                  <span class="certified-visual-rule" aria-hidden="true"></span>
+                  <p class="t3 certified-visual-text">CONECTANDO IDEIAS<br>A UM FUTURO MELHOR.</p>
+                </div>
               </div>
 
-              <div class="card2 cta-contact-right">
-                <p class="t2 contact-lead">Fale com a nossa equipe</p>
-                <div class="contact-channels">
-                  <a href="javascript:void(0)" class="lnk contact-channel-item">
-                    <svg class="ico-channel" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
-                    <span>+55 91 99200-0000</span>
+              <!-- Coluna Direita: Conteúdo Editorial -->
+              <div class="certified-content">
+                <span class="certified-deco-arcs" aria-hidden="true"></span>
+                <span class="certified-kicker">QUALIDADE QUE<br>IMPULSIONA<br>RESULTADOS</span>
+                <span class="certified-kicker-rule" aria-hidden="true"></span>
+
+                <div class="certified-headline">
+                  <h2 class="h2 certified-title">Criatividade com<br><strong class="certified-title-strong">processos certificados.</strong></h2>
+                  <p class="t2 certified-lead">A ISO 9001 atesta que nossos processos seguem o mais alto padrão internacional, entregando mais segurança, eficiência e valor para cada projeto da LENSES.</p>
+                </div>
+
+                <div class="certified-features">
+                  <div class="certified-feature">
+                    <span class="certified-feature-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M8 17v-5"/><path d="M13 17V8"/><path d="M18 17v-3"/></svg>
+                    </span>
+                    <div class="certified-feature-body">
+                      <p class="certified-feature-title">Mais previsibilidade</p>
+                      <p class="certified-feature-desc">Processos mapeados e redução de riscos</p>
+                    </div>
+                  </div>
+
+                  <div class="certified-feature">
+                    <span class="certified-feature-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3.2"/><path d="M12 2.8v2.4M12 18.8v2.4M21.2 12h-2.4M5.2 12H2.8M18.5 5.5l-1.7 1.7M7.2 16.8l-1.7 1.7M18.5 18.5l-1.7-1.7M7.2 7.2 5.5 5.5"/></svg>
+                    </span>
+                    <div class="certified-feature-body">
+                      <p class="certified-feature-title">Menos retrabalho</p>
+                      <p class="certified-feature-desc">Cada etapa já validada antes da entrega</p>
+                    </div>
+                  </div>
+
+                  <div class="certified-feature">
+                    <span class="certified-feature-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 6.8V12l3.4 2.2"/></svg>
+                    </span>
+                    <div class="certified-feature-body">
+                      <p class="certified-feature-title">Prazos cumpridos</p>
+                      <p class="certified-feature-desc">Cronograma de entregas organizado</p>
+                    </div>
+                  </div>
+
+                  <div class="certified-feature">
+                    <span class="certified-feature-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7.5 3v6.2C19.5 17 16.2 20.6 12 21.5 7.8 20.6 4.5 17 4.5 12.2V6z"/><path d="M8.8 12.2l2.3 2.3 4.1-4.4"/></svg>
+                    </span>
+                    <div class="certified-feature-body">
+                      <p class="certified-feature-title">Sua tranquilidade</p>
+                      <p class="certified-feature-desc">Foco total na estratégia, não no problema</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="certified-footer">
+                  <a href="#contato" class="certified-cta" aria-label="Falar com a LENSES sobre certificação e processos">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
                   </a>
-                  <a href="javascript:void(0)" class="lnk contact-channel-item">
-                    <svg class="ico-channel" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                    <span>contato@lenses.com.br</span>
-                  </a>
-                  <a href="javascript:void(0)" class="lnk contact-channel-item">
-                    <svg class="ico-channel" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-                    <span>@lensesagencia</span>
-                  </a>
+                  <span class="certified-footer-rule" aria-hidden="true"></span>
+                  <p class="certified-footer-note">QUALIDADE HOJE.<br>PROJETOS MELHORES AMANHÃ.</p>
+                  <span class="certified-footer-brand">LENSES<span class="certified-footer-brand-rule" aria-hidden="true"></span></span>
                 </div>
               </div>
             </div>
           </section>
         </div>
-
-        <div class="ds-card-box">
-          <table class="spec-table">
-            <thead><tr><th>Elemento</th><th>Especificação</th></tr></thead>
-            <tbody>
-              <tr><td>Seção</td><td class="spec-meta">min-height 480px · padding 80px 60px · radial overlay rgba(0,0,0,.7)→.95</td></tr>
-              <tr><td>H1</td><td class="spec-meta">.cta-massive-title → clamp(2.6rem, 5vw, 5.2rem) / 400 · "incrível" em <strong>700</strong> (.highlight-inline) · alinhado à esquerda com seta giant 54px</td></tr>
-              <tr><td>Card de canais</td><td class="spec-meta">min-width 320px · linhas com border-bottom hairline · hover: azul + translateX(4px) + sublinhado</td></tr>
-              <tr><td>Mobile</td><td class="spec-meta">empilha (título em cima, canais embaixo), alinhados à esquerda</td></tr>
-            </tbody>
-          </table>
-        </div>
       </section>
 
-      <!-- S9 CENA CINEMATOGRÁFICA DO RODAPÉ -->
-      <section class="ds-section" id="footer-media">
+      <!-- S7 CLIENTES & PARCEIROS -->
+      <section class="ds-section" id="clientes">
         <div class="ds-section-header">
-          <h2 class="ds-section-title"><i class="fa-solid fa-photo-film"></i> S9 · Cena do Rodapé</h2>
-          <span class="ds-section-badge">GIF full-bleed herdado do antigo pré-footer</span>
+          <h2 class="ds-section-title"><i class="fa-solid fa-handshake"></i> S7 · Clientes &amp; Parceiros ("Com quem já trabalhamos")</h2>
+          <span class="ds-section-badge">18 Marcas Oficiais Zion</span>
         </div>
 
         <div class="ds-card-box flush">
-          <div class="live-block-head" style="border-radius: 12px 12px 0 0;">
-            <span>Demonstração ao vivo</span>
-            <span class="file">index.html → .footer-media / .footer-overlay</span>
+          <div class="live-block-head">
+            <span>Demonstração ao vivo do Grid de Clientes</span>
+            <span class="file">index.html → section#clientes</span>
           </div>
-          <div class="footer" style="margin:0; min-height: 260px;">
-            <div class="footer-media" aria-hidden="true">
-              <img src="assets/prefooter-stage.gif" alt="" class="footer-media-img" loading="lazy" decoding="async">
-            </div>
-            <div class="footer-overlay" aria-hidden="true"></div>
-            <div class="footer-container" style="padding-top: clamp(40px, 5vw, 64px);">
-              <p class="t3" style="color: rgba(255,255,255,.72); letter-spacing: .2em; text-transform: uppercase;">amazônia em outro olhar</p>
-            </div>
-          </div>
-        </div>
 
-        <table class="ds-table">
-          <thead>
-            <tr><th>Elemento</th><th>Especificação</th></tr>
-          </thead>
-          <tbody>
-            <tr><td><code>.footer</code></td><td class="spec-meta">position relative · isolation isolate · overflow hidden · bg #000000 · o GIF vive <strong>dentro</strong> do rodapé (pré-footer unificado)</td></tr>
-            <tr><td><code>.footer-media</code></td><td class="spec-meta">absolute inset 0 · z-index 0 · bg #000 · ::after aplica fade 180deg da base → preto puro</td></tr>
-            <tr><td><code>.footer-media-img</code></td><td class="spec-meta">cover · object-position 68% center · Ken Burns footerSlowPan 32s ease-in-out alternate · will-change transform · reduced-motion: none</td></tr>
-            <tr><td><code>.footer-overlay</code></td><td class="spec-meta">gradiente mais escuro à esquerda/topo (leitura do texto) dissolvendo para preto na base · z-index 1 · pointer-events none</td></tr>
-            <tr><td>Breakpoints</td><td class="spec-meta">≤768px: .footer-media passa a <code>inset 0 0 auto 0</code> com altura clamp(300px, 78vw, 460px) — cena só no topo do rodapé</td></tr>
-          </tbody>
-        </table>
+          <section class="section section-clients" style="margin: 0; padding: 40px 20px;">
+            <div class="clients-container">
+              <header class="clients-header">
+                <h2 class="clients-title">COM QUEM JÁ TRABALHAMOS</h2>
+              </header>
+
+              <div class="clients-grid">
+                <div class="client-logo-item"><img src="assets/logos-zion/01-11-11-arte.png" alt="11:11 Arte" loading="lazy"></div>
+                <div class="client-logo-item"><img src="assets/logos-zion/02-andes.png" alt="ANDES" loading="lazy"></div>
+                <div class="client-logo-item"><img src="assets/logos-zion/03-banco-do-brasil.png" alt="Banco do Brasil" loading="lazy"></div>
+                <div class="client-logo-item"><img src="assets/logos-zion/04-climate-live.png" alt="Climate Live" loading="lazy"></div>
+                <div class="client-logo-item"><img src="assets/logos-zion/05-fridays-for-future.png" alt="Fridays For Future" loading="lazy"></div>
+                <div class="client-logo-item"><img src="assets/logos-zion/06-friedrich-ebert-stiftung.png" alt="Friedrich Ebert" loading="lazy"></div>
+                <div class="client-logo-item"><img src="assets/logos-zion/07-fundacao-perseu-abramo.png" alt="Fundação Perseu Abramo" loading="lazy"></div>
+                <div class="client-logo-item"><img src="assets/logos-zion/08-giulia-be.png" alt="Giulia Be" loading="lazy"></div>
+                <div class="client-logo-item"><img src="assets/logos-zion/09-global-citizen.png" alt="Global Citizen" loading="lazy"></div>
+                <div class="client-logo-item"><img src="assets/logos-zion/10-tokyo.png" alt="Tokyo" loading="lazy"></div>
+                <div class="client-logo-item"><img src="assets/logos-zion/11-mgiora.png" alt="MGIORA" loading="lazy"></div>
+                <div class="client-logo-item"><img src="assets/logos-zion/12-multishow.png" alt="Multishow" loading="lazy"></div>
+                <div class="client-logo-item"><img src="assets/logos-zion/13-oei.png" alt="OEI" loading="lazy"></div>
+                <div class="client-logo-item"><img src="assets/logos-zion/14-pacto-global.png" alt="Pacto Global" loading="lazy"></div>
+                <div class="client-logo-item"><img src="assets/logos-zion/15-pedro-sampaio.png" alt="Pedro Sampaio" loading="lazy"></div>
+                <div class="client-logo-item"><img src="assets/logos-zion/16-sindicato-bancarios.png" alt="Sindicato dos Bancários" loading="lazy"></div>
+                <div class="client-logo-item"><img src="assets/logos-zion/17-terrua.png" alt="Terruá" loading="lazy"></div>
+                <div class="client-logo-item"><img src="assets/logos-zion/18-wmccann.png" alt="WMcCann" loading="lazy"></div>
+              </div>
+            </div>
+          </section>
+        </div>
       </section>
 
-      <!-- S10 RODAPÉ -->
+      <!-- S8 RODAPÉ CINEMATOGRÁFICO UNIFICADO -->
       <section class="ds-section" id="footer">
         <div class="ds-section-header">
-          <h2 class="ds-section-title"><i class="fa-solid fa-shoe-prints"></i> S10 · Rodapé</h2>
-          <span class="ds-section-badge">Marca topo-esquerda + 4 colunas + barra inferior</span>
+          <h2 class="ds-section-title"><i class="fa-solid fa-shoe-prints"></i> S8 · Rodapé Cinematográfico Oficial Unificado</h2>
+          <span class="ds-section-badge">5 Colunas + GIF de Palco + IDE Digital</span>
         </div>
 
         <div class="ds-card-box flush">
-          <div class="live-block-head" style="border-radius: 12px 12px 0 0;">
-            <span>Demonstração ao vivo</span>
-            <span class="file">index.html → footer</span>
+          <div class="live-block-head">
+            <span>Demonstração ao vivo do Rodapé</span>
+            <span class="file">index.html &amp; sobre.html → footer.footer</span>
           </div>
-          <footer class="footer" style="margin: 0;">
+
+          <footer class="footer" id="contato" style="margin: 0;">
             <div class="footer-media" aria-hidden="true">
-              <img src="assets/prefooter-stage.gif" alt="" class="footer-media-img" loading="lazy" decoding="async">
+              <img src="assets/prefooter-stage.gif" alt="" class="footer-media-img" loading="lazy">
             </div>
             <div class="footer-overlay" aria-hidden="true"></div>
+
             <div class="footer-container">
               <div class="footer-grid">
+                <!-- Coluna 1: Marca / Logo grande empilhado -->
                 <div class="footer-col footer-col--brand">
-                  <a href="javascript:void(0)" class="footer-logo-link" aria-label="LENSES">
-                    <img src="assets/logos/lenses-outlined-logo.png" alt="LENSES" class="footer-logo-img" loading="lazy" decoding="async">
+                  <a href="#inicio" class="footer-logo-link" aria-label="LENSES - Voltar ao início">
+                    <img src="assets/logos/lenses-outlined-logo.png" alt="LENSES" class="footer-logo-img" loading="lazy">
                   </a>
                 </div>
 
+                <!-- Coluna 2: Manifesto editorial -->
                 <div class="footer-col footer-col--manifesto">
                   <span class="footer-brand-rule" aria-hidden="true"></span>
                   <p class="footer-manifesto">Transformamos ideias em grandes histórias.</p>
                   <p class="footer-text">Filmes, coberturas e experiências audiovisuais que conectam marcas e pessoas através de narrativas reais e de alto impacto.</p>
                 </div>
 
+                <!-- Coluna 3: Contato -->
                 <div class="footer-col">
                   <h3 class="footer-col-title">Contato</h3>
                   <ul class="footer-list">
-                    <li><span class="footer-list-item"><svg class="footer-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg><span>+55 91 99200-0000</span></span></li>
-                    <li><span class="footer-list-item"><svg class="footer-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><span>contato@lenses.com.br</span></span></li>
-                    <li><span class="footer-list-item"><svg class="footer-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span>Belém, PA – Brasil</span></span></li>
+                    <li>
+                      <a href="https://wa.me/5591992000000" target="_blank" rel="noopener noreferrer" class="footer-list-item">
+                        <svg class="footer-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+                        <span>+55 91 99200-0000</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="mailto:contato@lenses.com.br" class="footer-list-item">
+                        <svg class="footer-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        <span>contato@lenses.com.br</span>
+                      </a>
+                    </li>
+                    <li>
+                      <span class="footer-list-item">
+                        <svg class="footer-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        <span>Belém, PA – Brasil</span>
+                      </span>
+                    </li>
                   </ul>
                 </div>
 
+                <!-- Coluna 4: Redes sociais -->
                 <div class="footer-col">
                   <h3 class="footer-col-title">Acompanhe</h3>
                   <ul class="footer-list">
-                    <li><span class="footer-list-item"><svg class="footer-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16.11 8z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg><span>@lensesagencia</span></span></li>
-                    <li><span class="footer-list-item"><svg class="footer-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="4"/><path d="M10 9l5 3-5 3z"/></svg><span>Lenses no YouTube</span></span></li>
-                    <li><span class="footer-list-item"><svg class="footer-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="4"/><path d="M7.2 10.5V17M7.2 7.4v.01M11.4 17v-3.6a2.4 2.4 0 0 1 4.8 0V17"/></svg><span>Lenses no LinkedIn</span></span></li>
+                    <li>
+                      <a href="https://instagram.com/lensesagencia" target="_blank" rel="noopener noreferrer" class="footer-list-item">
+                        <svg class="footer-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16.11 8z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                        <span>@lensesagencia</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="https://youtube.com/@lensesagencia" target="_blank" rel="noopener noreferrer" class="footer-list-item">
+                        <svg class="footer-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="4"/><path d="M10 9l5 3-5 3z"/></svg>
+                        <span>Lenses no YouTube</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="https://linkedin.com/company/lensesagencia" target="_blank" rel="noopener noreferrer" class="footer-list-item">
+                        <svg class="footer-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="4"/><path d="M7.2 10.5V17M7.2 7.4v.01M11.4 17v-3.6a2.4 2.4 0 0 1 4.8 0V17"/></svg>
+                        <span>Lenses no LinkedIn</span>
+                      </a>
+                    </li>
                   </ul>
                 </div>
 
+                <!-- Coluna 5: Ação -->
                 <div class="footer-col footer-col--cta">
                   <h3 class="footer-col-title">Vamos criar juntos?</h3>
                   <p class="footer-text">Fale com a nossa equipe e descubra como podemos dar vida ao seu próximo projeto.</p>
-                  <a href="javascript:void(0)" class="footer-cta">
+                  <a href="https://wa.me/5591992000000" target="_blank" rel="noopener noreferrer" class="footer-cta">
                     <span>Entrar em contato</span>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
                   </a>
                 </div>
               </div>
 
+              <!-- Barra Inferior Tripartite -->
               <div class="footer-bottom">
                 <p class="footer-copyright">Copyright © 2026 Lenses – All rights reserved</p>
                 <a href="#" class="footer-bottom-link">Termos &amp; Privacidade</a>
@@ -2537,125 +1948,267 @@
             </div>
           </footer>
         </div>
+      </section>
+
+      <!-- ====================================================================
+           04 PÁGINA SOBRE NÓS (sobre.html)
+           ==================================================================== -->
+
+      <!-- P1 HERO SHOWREEL CLEAN -->
+      <section class="ds-section" id="sobre-hero">
+        <div class="ds-section-header">
+          <h2 class="ds-section-title"><i class="fa-solid fa-clapperboard"></i> P1 · Hero Showreel Clean (Página Sobre)</h2>
+          <span class="ds-section-badge">sobre.html → section.about-hero-clean</span>
+        </div>
+        <div class="ds-card-box">
+          <p style="font-size: 0.95rem; color: #b5b7c6;">
+            A abertura de <code>sobre.html</code> utiliza a mesma pureza cinematográfica de 100vh com o vídeo de fundo <code>assets/hero/TOPO-VIDEO-AMAZONIA.mp4</code>, sem interferência de textos e com controles discretos de áudio e tela cheia. A seta inferior rola suavemente até os pilares institucionais.
+          </p>
+        </div>
+      </section>
+
+      <!-- P2 MISSÃO, VISÃO E VALORES -->
+      <section class="ds-section" id="sobre-mvv">
+        <div class="ds-section-header">
+          <h2 class="ds-section-title"><i class="fa-solid fa-bullseye"></i> P2 · Missão, Visão e Valores (Cards que Acendem no Hover)</h2>
+          <span class="ds-section-badge">Anexo 2 do Manual · Efeito Iluminação Real</span>
+        </div>
+
+        <div class="ds-card-box flush">
+          <div class="live-block-head">
+            <span>Demonstração ao vivo <span class="state-pill">passe o mouse nos cards para acender</span></span>
+            <span class="file">sobre.html → section.about-mvv-section</span>
+          </div>
+
+          <section class="about-mvv-section" style="margin: 0; padding: 48px 24px;">
+            <div class="about-container">
+              <div class="mvv-cards-grid">
+                <!-- Card 1: MISSÃO -->
+                <div class="mvv-card" tabindex="0">
+                  <img src="assets/pilares/card-missao.jpg" alt="Câmera de cinema Lenses" class="mvv-bg-img" loading="lazy">
+                  <div class="mvv-dark-filter" aria-hidden="true"></div>
+                  <div class="mvv-gradient-shadow" aria-hidden="true"></div>
+                  <div class="mvv-content">
+                    <div class="mvv-icon-wrap" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>
+                      </svg>
+                    </div>
+                    <h3 class="mvv-title">Missão</h3>
+                    <p class="mvv-desc">
+                      Damos asas à sua inspiração. Com um toque de arte e o rigor do cinema, transformamos vivências e propósitos em experiências audiovisuais impactantes, cultivando um legado que irradia luz, verdade e emoção.
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Card 2: VISÃO -->
+                <div class="mvv-card" tabindex="0">
+                  <img src="assets/pilares/card-visao.jpg" alt="Direção cinematográfica Lenses" class="mvv-bg-img" loading="lazy">
+                  <div class="mvv-dark-filter" aria-hidden="true"></div>
+                  <div class="mvv-gradient-shadow" aria-hidden="true"></div>
+                  <div class="mvv-content">
+                    <div class="mvv-icon-wrap" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3.5"/>
+                      </svg>
+                    </div>
+                    <h3 class="mvv-title">Visão</h3>
+                    <p class="mvv-desc">
+                      Ver cada história florescer, liberando o poder de sua narrativa para que ela inspire, emocione e se transforme em uma fonte inesgotável de sabedoria, arte e transformação para o mundo.
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Card 3: VALORES -->
+                <div class="mvv-card" tabindex="0">
+                  <img src="assets/pilares/card-valores.jpg" alt="Lentes prime de cinema Lenses" class="mvv-bg-img" loading="lazy">
+                  <div class="mvv-dark-filter" aria-hidden="true"></div>
+                  <div class="mvv-gradient-shadow" aria-hidden="true"></div>
+                  <div class="mvv-content">
+                    <div class="mvv-icon-wrap" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                      </svg>
+                    </div>
+                    <h3 class="mvv-title">Valores</h3>
+                    <ul class="mvv-list">
+                      <li>Excelência em cada detalhe</li>
+                      <li>Respeito à essência de cada história</li>
+                      <li>Qualidade com padrão elevado</li>
+                      <li>Organização em todo o processo</li>
+                      <li>Compromisso com legados que permanecem</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
 
         <div class="ds-card-box">
           <table class="spec-table">
-            <thead><tr><th>Elemento</th><th>Especificação</th></tr></thead>
+            <thead><tr><th>Comportamento</th><th>Especificação</th></tr></thead>
             <tbody>
-              <tr><td>.footer-container</td><td class="spec-meta">relative · z-index 3 · padding clamp(72px,8vw,132px) clamp(24px,5vw,96px) clamp(28px,3vw,48px)</td></tr>
-              <tr><td>.footer-logo-img</td><td class="spec-meta">logo empilhado <strong>até 320px</strong> de largura (PNG 541×575) · topo-esquerda + fio azul .footer-brand-rule</td></tr>
-              <tr><td>.footer-grid</td><td class="spec-meta">grid 5 colunas (marca integrada) · colunas separadas por fio vertical 1px rgba(255,255,255,.16) · manifesto ocupa coluna larga</td></tr>
-              <tr><td>.footer-cta</td><td class="spec-meta">botão contornado azul pill (--radius-pill) + seta ↗ · hover: preenchimento --color-electric-blue</td></tr>
-              <tr><td>.footer-bottom</td><td class="spec-meta">grid 3 colunas: Copyright à esquerda · Termos &amp; Privacidade ao centro · Desenvolvido por: + logo IDE Digital à direita</td></tr>
-              <tr><td>Conteúdo</td><td class="spec-meta">WhatsApp wa.me/5591992000000 · contato@lenses.com.br · Belém, PA – Brasil · IG/YT/LinkedIn @lensesagencia</td></tr>
-              <tr><td>Breakpoints</td><td class="spec-meta">≤1100px: 2 colunas (manifesto e CTA em full-width, fios viram linhas horizontais) · ≤768px: 1 coluna · padding 22px</td></tr>
+              <tr><td>Filtro Escuro em Repouso</td><td class="spec-meta">Opacidade <code>0.88</code> com fundo cinemático escurecido para legibilidade contínua</td></tr>
+              <tr><td>Efeito Iluminação ao Hover</td><td class="spec-meta">A opacidade do <code>.mvv-dark-filter</code> vai para <strong>0%</strong> (transição 0.55s), acendendo a fotografia vívida de set de cinema</td></tr>
             </tbody>
           </table>
         </div>
       </section>
 
+      <!-- P3 NOSSA EQUIPE -->
+      <section class="ds-section" id="sobre-equipe">
+        <div class="ds-section-header">
+          <h2 class="ds-section-title"><i class="fa-solid fa-users"></i> P3 · Nossa Equipe (Grid Editorial Clean)</h2>
+          <span class="ds-section-badge">Anexo 3 do Manual · Retratos de Estúdio</span>
+        </div>
+
+        <div class="ds-card-box flush">
+          <div class="live-block-head">
+            <span>Demonstração ao vivo sobre fundo claro</span>
+            <span class="file">sobre.html → section.about-team-section-clean</span>
+          </div>
+
+          <section class="about-team-section-clean" style="margin: 0; padding: 48px 24px;">
+            <div class="about-container">
+              <header class="team-header-clean">
+                <span class="team-kicker-clean">LENSES</span>
+                <h2 class="team-title-clean">Nossa Equipe</h2>
+                <span class="team-rule-clean" aria-hidden="true"></span>
+              </header>
+
+              <div class="team-grid-clean">
+                <div class="team-card-clean" tabindex="0">
+                  <div class="team-card-media-clean">
+                    <img src="assets/equipe/01-direcao-criativa.jpg" alt="Lucas Silveira" class="team-card-img-clean" loading="lazy">
+                  </div>
+                  <div class="team-card-info-clean">
+                    <h3 class="team-card-name-clean">Lucas Silveira</h3>
+                    <p class="team-card-role-clean">Diretor Geral &amp; Fundador (Direção De Cena E Estratégia Audiovisual)</p>
+                  </div>
+                </div>
+
+                <div class="team-card-clean" tabindex="0">
+                  <div class="team-card-media-clean">
+                    <img src="assets/equipe/02-direcao-fotografia.jpg" alt="Mariana Castro" class="team-card-img-clean" loading="lazy">
+                  </div>
+                  <div class="team-card-info-clean">
+                    <h3 class="team-card-name-clean">Mariana Castro</h3>
+                    <p class="team-card-role-clean">Diretora De Fotografia (Cinematografia &amp; Iluminação Cênica)</p>
+                  </div>
+                </div>
+
+                <div class="team-card-clean" tabindex="0">
+                  <div class="team-card-media-clean">
+                    <img src="assets/equipe/03-direcao-producao.jpg" alt="Camila Vasconcelos" class="team-card-img-clean" loading="lazy">
+                  </div>
+                  <div class="team-card-info-clean">
+                    <h3 class="team-card-name-clean">Camila Vasconcelos</h3>
+                    <p class="team-card-role-clean">Diretora De Produção (Coordenação Geral &amp; Gestão ISO 9001)</p>
+                  </div>
+                </div>
+
+                <div class="team-card-clean" tabindex="0">
+                  <div class="team-card-media-clean">
+                    <img src="assets/equipe/04-estrategia-narrativa.jpg" alt="Rodrigo Albuquerque" class="team-card-img-clean" loading="lazy">
+                  </div>
+                  <div class="team-card-info-clean">
+                    <h3 class="team-card-name-clean">Rodrigo Albuquerque</h3>
+                    <p class="team-card-role-clean">Head De Estratégia E Roteiro (Storytelling &amp; Narrativas De Impacto)</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <!-- P4 CTA FINAL SOBRE NÓS -->
+      <section class="ds-section" id="sobre-cta">
+        <div class="ds-section-header">
+          <h2 class="ds-section-title"><i class="fa-solid fa-paper-plane"></i> P4 · CTA Final Cinematográfico de Impacto</h2>
+          <span class="ds-section-badge">sobre.html → section#cta-final</span>
+        </div>
+
+        <div class="ds-card-box flush">
+          <div class="live-block-head">
+            <span>Demonstração com Fundo em Movimento e Marca d'Água Centralizada</span>
+            <span class="file">sobre.html → section.about-cta-section</span>
+          </div>
+
+          <section class="about-cta-section" style="margin: 0; min-height: 400px;">
+            <div class="about-cta-media" aria-hidden="true">
+              <img src="assets/prefooter-stage.gif" alt="" class="about-cta-media-img" loading="lazy">
+            </div>
+            <div class="about-cta-overlay" aria-hidden="true"></div>
+            <div class="brand-watermark brand-watermark-center" style="color: rgba(92, 108, 164, 0.05); font-size: clamp(6rem, 18vw, 20rem);" aria-hidden="true">LENSES</div>
+
+            <div class="about-container" style="position: relative; z-index: 2;">
+              <div class="about-cta-content">
+                <span class="about-cta-kicker">VAMOS CRIAR JUNTOS</span>
+                <h2 class="about-cta-title">TRANSFORMAR IDEIAS EM IMAGEM, HISTÓRIAS OU EXPERIÊNCIAS AUDIOVISUAIS.</h2>
+                <p class="about-cta-desc">
+                  Seja para um filme publicitário, grande cobertura institucional, documentário ou narrativa de impacto socioambiental, a LENSES está pronta para dar o próximo passo com a sua marca.
+                </p>
+
+                <a href="https://wa.me/5591992000000" target="_blank" rel="noopener noreferrer" class="btn btn-pill btn-cta-large">
+                  <svg class="ico-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+                  </svg>
+                  <span>FALE COM A NOSSA EQUIPE</span>
+                </a>
+              </div>
+            </div>
+          </section>
+        </div>
+      </section>
+
       <!-- ====================================================================
-           04 COMPONENTES ATÔMICOS
+           05 COMPONENTES ATÔMICOS
            ==================================================================== -->
 
       <!-- BOTÕES & AÇÕES -->
       <section class="ds-section" id="botoes">
         <div class="ds-section-header">
-          <h2 class="ds-section-title"><i class="fa-solid fa-toggle-on"></i> Botões, Pílulas &amp; Ações</h2>
-          <span class="ds-section-badge">Componentes Atômicos</span>
+          <h2 class="ds-section-title"><i class="fa-solid fa-toggle-on"></i> Botões &amp; Ações Pílula</h2>
+          <span class="ds-section-badge">Componentes Atômicos Ativos</span>
         </div>
         <div class="ds-card-box">
-          <div class="ds-card-box-header">
-            <h4 class="ds-card-box-title">Variações oficiais (passe o mouse)</h4>
-          </div>
-
           <div class="components-canvas dark-stage">
             <!-- Pílula azul primária -->
             <a href="javascript:void(0)" class="btn btn-pill">
               <svg class="ico-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 16px; height: 16px;">
                 <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
               </svg>
-              <span>Contate-nos</span>
+              <span>Contate-nos (.btn-pill)</span>
             </a>
 
-            <!-- Pílula branca de conversão (painel Contato) -->
+            <!-- Pílula branca de conversão -->
             <a href="javascript:void(0)" class="btn btn-contact-direct">
               <span>ENTRAR EM CONTATO</span>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 18px; height: 18px;"><path d="M7 7h10v10M7 17L17 7"/></svg>
             </a>
 
-            <!-- Voltar ao topo -->
-            <a href="javascript:void(0)" class="btn-top">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 18px; height: 18px;">
-                <path d="M18 15l-6-6-6 6"/>
-              </svg>
+            <!-- Botão com Degradê Oficial -->
+            <button class="btn btn-pill btn-gradient">
+              <i class="fa-solid fa-play"></i> Showreel (.btn-gradient)
+            </button>
+
+            <!-- Botão CTA Grande -->
+            <a href="javascript:void(0)" class="btn btn-pill btn-cta-large" style="padding: 10px 24px; font-size: 0.82rem;">
+              <span>FALE COM A NOSSA EQUIPE</span>
             </a>
 
-            <!-- Link utilitário -->
-            <a href="javascript:void(0)" class="lnk">Nossos Serviços</a>
-
-            <!-- Link editorial sublinhado -->
-            <a href="javascript:void(0)" class="lnk pub-link">
-              <span>Ver edições</span>
-              <svg class="ico-arrow-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 14px; height: 14px;"><path d="M7 7h10v10M7 17L17 7"/></svg>
+            <!-- Botão Circular CTA ISO 9001 -->
+            <a href="javascript:void(0)" class="certified-cta" aria-label="CTA ISO 9001">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
             </a>
 
-            <!-- Item de canal de contato -->
-            <a href="javascript:void(0)" class="lnk contact-channel-item" style="min-width: 240px;">
-              <svg class="ico-channel" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-              <span>@lensesagencia</span>
-            </a>
-
-            <!-- Controle de vídeo minimalista -->
-            <button type="button" class="hero-ctrl-btn" style="opacity: 1; pointer-events: auto;" aria-label="Tela cheia">
-              <svg class="ctrl-icon icon-fs-enter" style="display: block;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
-              </svg>
+            <!-- Botão de Carrossel -->
+            <button class="carousel-btn" type="button" aria-label="Navegação" style="position: static; transform: none;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 20px; height: 20px;"><path d="M9 18l6-6-6-6"/></svg>
             </button>
           </div>
-
-          <table class="spec-table" style="margin-top: 22px;">
-            <thead>
-              <tr><th>Componente</th><th>Spec</th><th>Estados</th></tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><code>.btn + .btn-pill</code></td>
-                <td class="spec-meta">pad 10px 22px · r 999px · 0.85rem/600 · bg var(--color-primary) (#5C6CA4) · shadow 0 4px 18px rgba(92,108,164,.35)</td>
-                <td class="spec-meta">hover: var(--color-primary-hover) (#4a588a) · translateY(-2px) · shadow 0 6px 24px rgba(92,108,164,.50)</td>
-              </tr>
-              <tr>
-                <td><code>.btn-contact-direct</code></td>
-                <td class="spec-meta">pad 14px 28px · r 999px · branco/azul · 700 · 0.08em · shadow 0 8px 24px rgba(0,0,0,.25)</td>
-                <td class="spec-meta">hover: bg #0a0a0c · texto branco · translateY(-2px) · seta move (3,-3)</td>
-              </tr>
-              <tr>
-                <td><code>.lnk</code></td>
-                <td class="spec-meta">0.82rem/600/0.12em uppercase · cor white-muted · gap 8px</td>
-                <td class="spec-meta">hover: branco pleno</td>
-              </tr>
-              <tr>
-                <td><code>.lnk.pub-link</code></td>
-                <td class="spec-meta">700 · branco · border-bottom 1px rgba(255,255,255,.4) · pb 4px</td>
-                <td class="spec-meta">herda hover do .lnk</td>
-              </tr>
-              <tr>
-                <td><code>.contact-channel-item</code></td>
-                <td class="spec-meta">1.05rem/500 · pad 10px 0 · border-bottom hairline · ícone 20px</td>
-                <td class="spec-meta">hover: azul (texto+ícone+borda) · translateX(4px)</td>
-              </tr>
-              <tr>
-                <td><code>.btn-top</code></td>
-                <td class="spec-meta">36×36 circle · border subtle-dark · ícone 18px</td>
-                <td class="spec-meta">hover: bg/border azul · branco · translateY(-3px)</td>
-              </tr>
-              <tr>
-                <td><code>.hero-ctrl-btn</code></td>
-                <td class="spec-meta">transparente · pad 8px · ícone 20px traço 1.3 · drop-shadow</td>
-                <td class="spec-meta">hover/focus: branco · scale 1.12</td>
-              </tr>
-            </tbody>
-          </table>
         </div>
       </section>
 
@@ -2663,97 +2216,53 @@
       <section class="ds-section" id="badges">
         <div class="ds-section-header">
           <h2 class="ds-section-title"><i class="fa-solid fa-tag"></i> Badges, Tags &amp; Boxes</h2>
-          <span class="ds-section-badge">Overlays editoriais</span>
+          <span class="ds-section-badge">Overlays Editoriais</span>
         </div>
 
         <div class="ds-card-box">
-          <div class="components-canvas" style="background: linear-gradient(135deg, #0a0a0d 0%, #050505 100%); align-items: flex-start;">
-
-            <!-- Tag de imagem (painel História) -->
-            <div style="position: relative; width: 240px; height: 150px; border-radius: 4px; overflow: hidden; background: #0b0b0e;">
+          <div class="components-canvas dark-stage" style="align-items: flex-start;">
+            <div style="position: relative; width: 220px; height: 140px; border-radius: 4px; overflow: hidden; background: #0b0b0e;">
               <img src="assets/about-back.png" alt="Estúdio LENSES" style="width: 100%; height: 100%; object-fit: cover;">
               <div class="story-img-tag" style="position: absolute;">LENSES</div>
             </div>
 
-            <!-- Info box do destaque -->
-            <div class="highlight-info-box" style="position: static; max-width: 340px; backdrop-filter: none;">
-              <p class="t2 highlight-title">FESTIVAL DO FUTURO<br>BRASÍLIA (DISTRITO FEDERAL)</p>
-              <p class="t3 highlight-desc">Festival de arte e cultura gratuito para público de 300 mil pessoas.</p>
-            </div>
-
-            <!-- Kicker -->
             <div style="display: flex; flex-direction: column; gap: 8px;">
               <span class="story-kicker">SOBRE A LENSES</span>
               <span class="contact-kicker" style="color: rgba(255,255,255,.75);">FALE COM A NOSSA EQUIPE</span>
               <span class="services-header-op1-kicker">NOSSAS FRENTES DE ATUAÇÃO</span>
-              <span class="pub-tag" style="color: var(--text-white-dim);">CONFIRA NOSSA</span>
+              <span class="certified-kicker" style="margin: 0;">QUALIDADE QUE<br>IMPULSIONA</span>
             </div>
 
-            <!-- Box de canais -->
-            <div class="contact-channels-col" style="width: 300px; background: rgba(0,0,0,.4);">
-              <div class="contact-channel-block">
-                <span class="contact-channel-type">WHATSAPP / TELEFONE</span>
-                <a href="javascript:void(0)" class="contact-channel-link">
-                  <svg class="ico-channel-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
-                  <span>+55 91 99200-0000</span>
-                </a>
-              </div>
-            </div>
-
-            <!-- KPI -->
             <div style="display: flex; flex-direction: column;">
               <span class="story-kpi-num">+150</span>
               <span class="story-kpi-lbl">PROJETOS REALIZADOS</span>
             </div>
-
           </div>
-
-          <table class="spec-table" style="margin-top: 22px;">
-            <thead><tr><th>Componente</th><th>Spec</th></tr></thead>
-            <tbody>
-              <tr><td><code>.story-img-tag</code></td><td class="spec-meta">bg rgba(0,0,0,.75) · blur 8px · 0.72rem/700/0.18em · pad 5px 12px · r 2px · posição 14px/14px</td></tr>
-              <tr><td><code>.highlight-info-box</code></td><td class="spec-meta">max-w 440px · rgba(0,0,0,.65) · blur 10px · pad 24px · border-left 2px azul</td></tr>
-              <tr><td><code>.contact-channels-col</code></td><td class="spec-meta">rgba(0,0,0,.18) · border rgba(255,255,255,.15) · r 8px · pad 28px 32px · gap 20px</td></tr>
-              <tr><td>Kickers</td><td class="spec-meta">0.8rem/700/0.22em uppercase — azul em fundo claro, branco 75% em fundo azul, azul na barra de serviços</td></tr>
-              <tr><td><code>.story-kpi-num / .story-kpi-lbl</code></td><td class="spec-meta">número clamp(2rem,2.8vw,3.2rem)/800 azul · rótulo 0.75rem/700/0.14em uppercase #4a4a55</td></tr>
-            </tbody>
-          </table>
         </div>
       </section>
 
       <!-- MODAL LIGHTBOX -->
       <section class="ds-section" id="modal">
         <div class="ds-section-header">
-          <h2 class="ds-section-title"><i class="fa-solid fa-clapperboard"></i> Modal Lightbox de Vídeo</h2>
-          <span class="ds-section-badge">Estrutural (sem botão gatilho hoje)</span>
+          <h2 class="ds-section-title"><i class="fa-solid fa-play"></i> Modal Lightbox de Vídeo</h2>
+          <span class="ds-section-badge">Acoplamento com Cases &amp; Showreel</span>
         </div>
         <div class="ds-card-box">
           <p style="font-size: 0.95rem; color: #a5a7b8;">
-            O modal existe no <code>index.html</code> e é controlado pelo <code>script.js</code> (classe <code>.active</code>,
-            Esc/fundo para fechar, iframe YouTube nocookie). <strong>Não há botão gatilho (#openShowreel) no HTML atual</strong> —
-            o componente está documentado como estrutura pronta para reativação.
+            O modal existe no <code>index.html</code> e é controlado pelo <code>assets/script.js</code> (classe <code>.active</code>, tecla Esc e clique no backdrop para fechar, iframe YouTube nocookie responsivo em 16:9).
           </p>
-          <table class="spec-table" style="margin-top: 16px;">
-            <thead><tr><th>Elemento</th><th>Especificação</th></tr></thead>
-            <tbody>
-              <tr><td><code>.video-modal</code></td><td class="spec-meta">fixed inset 0 · z 9999 · bg rgba(0,0,0,.88) · blur 12px · opacity 0 → .active 1 (.3s)</td></tr>
-              <tr><td><code>.video-modal-dialog</code></td><td class="spec-meta">max-width 960px · bg #000 · r 16px · border subtle-dark · shadow 0 20px 60px rgba(0,0,0,.8) · scale .95 → 1</td></tr>
-              <tr><td><code>.video-modal-close</code></td><td class="spec-meta">38px circle · bg rgba(255,255,255,.15) · 2rem · hover rgba(255,255,255,.3) + scale 1.05</td></tr>
-              <tr><td>Proporção</td><td class="spec-meta"><code>padding-bottom: 56.25%</code> (16:9)</td></tr>
-            </tbody>
-          </table>
         </div>
       </section>
 
       <!-- ====================================================================
-           05 VALIDAÇÃO & DIRETRIZES
+           06 VALIDAÇÃO & DIRETRIZES
            ==================================================================== -->
 
       <!-- COMPARATIVO SIDE BY SIDE -->
       <section class="ds-section" id="comparativo">
         <div class="ds-section-header">
           <h2 class="ds-section-title"><i class="fa-solid fa-code-compare"></i> Comparativo Canônico Side-by-Side</h2>
-          <span class="ds-section-badge">Referência vs Site real</span>
+          <span class="ds-section-badge">Referência vs Site Ativo</span>
         </div>
         <div class="preview-split">
           <div class="preview-col">
@@ -2768,11 +2277,11 @@
 
           <div class="preview-col">
             <div class="preview-col-head">
-              <span><i class="fa-solid fa-code"></i> Site Atual (fonte da verdade)</span>
+              <span><i class="fa-solid fa-code"></i> Site Ativo Oficial</span>
               <span style="font-size: 0.75rem; color: #5c84ff;">index.html</span>
             </div>
             <div class="preview-col-body" style="background: #050505;">
-              <iframe src="index.html" style="width: 100%; height: 600px; border: none; border-radius: 4px;"></iframe>
+              <iframe src="index.html" style="width: 100%; height: 500px; border: none; border-radius: 4px;"></iframe>
             </div>
           </div>
         </div>
@@ -2793,24 +2302,24 @@
               <li><i class="fa-solid fa-check"></i> Respeitar os pesos oficiais: <strong>Regular (400)</strong> para corpo/editorial e <strong>SemiBold (600)</strong> para ações/destaques.</li>
               <li><i class="fa-solid fa-check"></i> Manter o ritmo institucional: canvas dark, respiro claro com Branco Puro e Branco anti-flash <code>#EDECED</code>.</li>
               <li><i class="fa-solid fa-check"></i> Usar <strong>Azul Sabóia (<code>#5C6CA4</code>)</strong> para CTAs, kickers, ticker e links ativos, e <strong>Azul Espacial (<code>#202A44</code>)</strong> para nobreza e contraste.</li>
-              <li><i class="fa-solid fa-check"></i> Explorar o <strong>degradê oficial Azul Espacial (#202A44) → Azul Sabóia (#5C6CA4)</strong> e a técnica de <strong>Tom Sobre Tom (Tone-on-Tone)</strong> com marcas d'água monumentais translúcidas (conforme Anexos 2 e 3 do Manual).</li>
-              <li><i class="fa-solid fa-check"></i> Preservar a <strong>Proporção Áurea</strong> oficial do manual (X e X/1,618) e setas SVG inline (traço 2 / 2.35).</li>
-              <li><i class="fa-solid fa-check"></i> Manter <code>h1-h6, p, button, input</code> herdando automaticamente a tipografia e pesos de <code>assets/styles.css</code>.</li>
-              <li><i class="fa-solid fa-check"></i> Preservar os conteúdos obrigatórios: <strong>Revista Eletrônica</strong> e <strong>Informes trimestrais</strong>.</li>
+              <li><i class="fa-solid fa-check"></i> Explorar o <strong>degradê oficial Azul Espacial (#202A44) → Azul Sabóia (#5C6CA4)</strong> e a técnica de <strong>Tom Sobre Tom (Tone-on-Tone)</strong> com marcas d'água monumentais translúcidas.</li>
+              <li><i class="fa-solid fa-check"></i> Preservar a seção <strong>Certificação ISO 9001</strong> com seus 4 pilares operacionais e o grid de <strong>18 clientes oficiais Zion</strong>.</li>
+              <li><i class="fa-solid fa-check"></i> Manter os <strong>carrosséis de cases em destaque e secundários</strong> com navegação fluída e acoplamento contextual ao WhatsApp.</li>
+              <li><i class="fa-solid fa-check"></i> Preservar os cards de <strong>Missão, Visão e Valores</strong> na página Sobre com efeito hover que acende a fotografia de cinema.</li>
+              <li><i class="fa-solid fa-check"></i> Utilizar o <strong>Rodapé Cinematográfico Unificado</strong> de 5 colunas com o GIF de palco e a barra tripartite da IDE Digital.</li>
             </ul>
           </div>
 
           <div class="guideline-card guideline-dont">
             <h4 class="guideline-title"><i class="fa-solid fa-circle-xmark"></i> Práticas Proibidas (Don'ts)</h4>
             <ul class="guideline-list">
+              <li><i class="fa-solid fa-xmark"></i> NÃO reintroduzir seções descontinuadas (antigo rail marquee de marcas sob o hero, revista eletrônica, informes trimestrais ou banner duplicado de contato).</li>
               <li><i class="fa-solid fa-xmark"></i> NÃO utilizar as cores secundárias do manual (Vermelho Cardeal <code>#B23B3C</code>, Laranja Mascavo <code>#C06841</code>, Amarelo Real <code>#D9A440</code>) no site digital.</li>
               <li><i class="fa-solid fa-xmark"></i> NÃO introduzir fontes externas aleatórias (proibido Plus Jakarta Sans, Inter Tight, DM Serif Display, etc.).</li>
-              <li><i class="fa-solid fa-xmark"></i> NÃO usar o antigo azul elétrico <code>#003cfb</code> ou <code>#002ec4</code> fora do novo padrão.</li>
-              <li><i class="fa-solid fa-xmark"></i> NÃO criar degradês multicoloridos, arco-íris ou com tonalidades não autorizadas (proibido usar roxo, verde, amarelo ou azul elétrico saturado #003cfb).</li>
-              <li><i class="fa-solid fa-xmark"></i> NÃO adicionar texto/tipografia sobre o hero (hero = showreel puro, decisão de design).</li>
-              <li><i class="fa-solid fa-xmark"></i> NÃO alterar nomes dos tokens existentes em <code>:root</code> para manter total estabilidade de código.</li>
-              <li><i class="fa-solid fa-xmark"></i> NÃO criar estilos inline manuais de fontes ou cores espalhadas pelos arquivos.</li>
-              <li><i class="fa-solid fa-xmark"></i> NÃO descaracterizar as proporções ou áreas de segurança da marca estabelecidas no Manual (págs. 05-10, 15-16).</li>
+              <li><i class="fa-solid fa-xmark"></i> NÃO usar o antigo azul elétrico <code>#003cfb</code> ou <code>#002ec4</code> fora do novo padrão oficial.</li>
+              <li><i class="fa-solid fa-xmark"></i> NÃO criar degradês multicoloridos, arco-íris ou com tonalidades não autorizadas.</li>
+              <li><i class="fa-solid fa-xmark"></i> NÃO adicionar texto ou títulos sobre o hero principal (o hero é um showreel cinematográfico puro).</li>
+              <li><i class="fa-solid fa-xmark"></i> NÃO descaracterizar as proporções ou áreas de segurança da marca estabelecidas no Manual.</li>
             </ul>
           </div>
         </div>
@@ -2923,9 +2432,6 @@
   /* Dimensões do Header Dinâmico */
   --top-ticker-height: 28px;
 }</pre>
-          <div class="ds-note">
-            Esta é a cópia de referência para consulta sincronizada com o <strong>Manual de Identidade Visual 2025</strong>. <strong>Arquivo real:</strong> <code>assets/styles.css</code> → bloco <code>:root</code>.
-          </div>
         </div>
       </section>
 

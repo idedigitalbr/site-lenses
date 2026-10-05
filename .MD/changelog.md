@@ -2,6 +2,34 @@
 
 > Registro cronológico das atualizações do projeto (padrão Obsidian `.MD/`).
 
+## 2026-10-02 — refactor(design-system): atualização completa do Design System Oficial e eliminação de seções obsoletas
+
+### Alterações
+- **Eliminação de Seções Obsoletas e Descontinuadas:**
+  - Removido o antigo Rail Marquee de marcas sob o hero (`#rail-marcas`), que havia sido descontinuado do fluxo do site.
+  - Removido o bloco estático legado "Destaque Festival do Futuro", substituído pela documentação do motor de carrossel de cases.
+  - Removidos os blocos estáticos antigos "Duo Cards", substituídos pelo Carrossel Duo dinâmico de projetos.
+  - Removida a antiga seção "Publicações — Revista Eletrônica & Informes Trimestrais" (`#cards-editorial`), descontinuada do site ativo.
+  - Removido o antigo banner duplicado de contato "Vamos criar algo incrível juntos" (`assets/contact-bg.png`).
+  - Unificada a "Cena do Rodapé" e o "Rodapé" em uma única seção oficial de Rodapé Cinematográfico.
+- **Incorporação das Novas Seções Oficiais da One Page (Home):**
+  - **S4 · Carrossel Destaque de Cases:** Documentação visual do slide destacado com overlay, `.pc-card`, navegação, dots e ancoragem cruzada com `ALGUNS PROJETOS`.
+  - **S5 · Carrossel Duo de Projetos:** Amostra com 2 slides simultâneos (`PROJECTS.secondary`), cards com metadados e efeito hover zoom.
+  - **S6 · Certificação ISO 9001 (`#certificacao`):** Bloco institucional completo com card visual (`assets/iso9001-card.jpg`), 4 pilares/features operacionais de qualidade e botão CTA circular com fio azul.
+  - **S7 · Clientes & Parceiros ("Com quem já trabalhamos" `#clientes`):** Grid oficial com 18 logos de clientes Zion, repouso monocromático e iluminação ao hover.
+  - **S8 · Rodapé Cinematográfico Unificado (`#footer`):** Layout oficial de 5 colunas com GIF de fundo de palco (`assets/prefooter-stage.gif`), logotipo grande outlined (541×575) e barra tripartite com a IDE Digital.
+- **Incorporação das Seções Oficiais da Página Sobre (`sobre.html`):**
+  - **P1 · Hero Showreel Clean:** Hero cinemático puro em 100vh com vídeo e controles discretos.
+  - **P2 · Missão, Visão e Valores (`#sobre-mvv`):** 3 cards lado a lado com fotografias de cinema e filtro escuro que acende para opacidade 0% no hover.
+  - **P3 · Nossa Equipe (`#sobre-equipe`):** Grid editorial sobre fundo branco com 4 retratos de estúdio em alta definição e base escura.
+  - **P4 · CTA Final Cinematográfico (`#sobre-cta`):** Encerramento de impacto com vídeo/GIF de palco e marca d'água monumental translúcida "LENSES".
+- **Atualização das Diretrizes (Do's & Don'ts):**
+  - Atualizadas as regras normativas: proibição expressa de reintroduzir seções mortas (rail marquee, revista/informes, banner duplicado); inclusão da governança para ISO 9001, logos de clientes Zion e carrosséis.
+- **Sincronização da Navegação e Filtro de Busca:**
+  - Sidebar e busca JS atualizadas com 100% dos links e âncoras válidos e funcionais.
+
+---
+
 ## 2026-09-29 — refactor(footer): ampliação do logotipo, eliminação de vão e barra inferior padrão IDE Digital
 
 ### Alterações
