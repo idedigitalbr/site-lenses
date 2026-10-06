@@ -2,6 +2,32 @@
 
 > Registro cronológico das atualizações do projeto (padrão Obsidian `.MD/`).
 
+## 2026-10-06 — refactor(assets): reestruturação arquitetural completa das pastas de mídia por página e seções
+
+### Alterações
+- **Arquitetura de Diretórios de Ativos (`assets/`):**
+  - **`assets/imagens-diversas/`**:
+    - `logos/`: Identidade da LENSES (topo, rodapé e favicons).
+    - `logos-clientes/`: 12 marcas de clientes em PNG transparente + subpasta `_originais_/`.
+    - `documentos-pdf/`: Manual de Identidade Visual e Portfólio oficial.
+    - `legado/`: Mídias e mockups arquivados de seções descontinuadas.
+  - **`assets/paginas/`**:
+    - `home/`:
+      - `s1-topo-hero/`: Vídeo showreel cinematográfico.
+      - `s2-sobre/`: Imagem de textura de fundo.
+      - `s3-servicos/`: Vídeos, posters e fotografias dos 6 serviços.
+      - `s4-cases-destaque/`: Fotografia do Festival do Futuro.
+      - `s5-cases-duo/`: Cards simultâneos da Amazônia e Histórias.
+      - `s6-certificacao/`: Imagem oficial da Certificação ISO 9001.
+      - `s7-footer/`: GIF cinematográfico de palco.
+    - `sobre/`:
+      - `p2-missao-visao-valores/`: 3 cards institucionais de cinema.
+      - `p3-equipe/`: 4 retratos de estúdio em alta definição.
+- **Sincronização Total de Código:**
+  - Atualizadas todas as referências em `index.html`, `sobre.html`, `sobre-nos.html`, `design-system-preview.html` e `assets/script.js`.
+
+---
+
 ## 2026-10-05 — feat(clients): integração dos 12 logos oficiais de clientes LENSES e remoção do acervo legado Zion
 
 ### Alterações

@@ -420,7 +420,7 @@ document.addEventListener('DOMContentLoaded', () => {
       {
         title: 'Manifesto All Amazônia',
         description: 'Performance audiovisual na Times Square durante a Assembleia Geral da ONU.',
-        image: 'assets/festival-futuro.png',
+        image: 'assets/paginas/home/s4-cases-destaque/festival-futuro.png',
         category: 'Eventos',
         location: 'Nova York',
         year: '2023',
@@ -431,7 +431,7 @@ document.addEventListener('DOMContentLoaded', () => {
       {
         title: 'Echoes',
         description: 'Produção de filme institucional em estúdio, com equipe e equipamento próprio.',
-        image: 'assets/about-back.png',
+        image: 'assets/paginas/home/s2-sobre/about-back.png',
         category: 'Filme',
         location: 'Brasil',
         year: '2024',
@@ -440,7 +440,7 @@ document.addEventListener('DOMContentLoaded', () => {
       {
         title: 'Estúdio LENSES',
         description: 'Captação multicâmera e finalização em 4K no estúdio próprio da LENSES.',
-        image: 'assets/contact-bg.png',
+        image: 'assets/paginas/home/s7-footer/contact-bg.png',
         category: 'Audiovisual',
         location: 'Brasil',
         year: '2025',
@@ -451,7 +451,7 @@ document.addEventListener('DOMContentLoaded', () => {
       {
         title: 'Conversas que Inspiram',
         description: 'Cobertura de evento com podcast e transmissão ao vivo.',
-        image: 'assets/servicos/serv-cobertura-eventos-poster.jpg',
+        image: 'assets/paginas/home/s3-servicos/serv-cobertura-eventos-poster.jpg',
         category: 'Eventos',
         year: '2025',
         url: 'https://wa.me/5591992000000?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20cobertura%20de%20eventos%20e%20podcasts.'
@@ -459,7 +459,7 @@ document.addEventListener('DOMContentLoaded', () => {
       {
         title: 'Estrada Seca',
         description: 'Filme publicitário com direção de arte e captação em locação.',
-        image: 'assets/servicos/serv-filmes-publicitarios.jpg',
+        image: 'assets/paginas/home/s3-servicos/serv-filmes-publicitarios.jpg',
         category: 'Publicidade',
         year: '2024',
         url: 'https://wa.me/5591992000000?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20filmes%20publicit%C3%A1rios.'
@@ -467,7 +467,7 @@ document.addEventListener('DOMContentLoaded', () => {
       {
         title: 'War Room de Marca',
         description: 'Planejamento estratégico com time multidisciplinar.',
-        image: 'assets/servicos/serv-planejamento-estrategico.jpg',
+        image: 'assets/paginas/home/s3-servicos/serv-planejamento-estrategico.jpg',
         category: 'Estratégia',
         year: '2024',
         url: 'https://wa.me/5591992000000?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20planejamento%20estrat%C3%A9gico%20de%20comunica%C3%A7%C3%A3o.'
@@ -475,7 +475,7 @@ document.addEventListener('DOMContentLoaded', () => {
       {
         title: 'Painel de Cenários',
         description: 'Mapeamento de cenários e leitura de dados para comunicação.',
-        image: 'assets/servicos/serv-mapeamento-cenarios.jpg',
+        image: 'assets/paginas/home/s3-servicos/serv-mapeamento-cenarios.jpg',
         category: 'Estratégia',
         year: '2023',
         url: 'https://wa.me/5591992000000?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20mapeamento%20de%20cen%C3%A1rios.'
@@ -483,7 +483,7 @@ document.addEventListener('DOMContentLoaded', () => {
       {
         title: 'ESG em Movimento',
         description: 'Campanha publicitária com abordagem documental.',
-        image: 'assets/servicos/serv-propaganda-esg-poster.jpg',
+        image: 'assets/paginas/home/s3-servicos/serv-propaganda-esg-poster.jpg',
         category: 'Publicidade',
         year: '2025',
         url: 'https://wa.me/5591992000000?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20campanhas%20de%20Propaganda%20e%20ESG.'
@@ -491,7 +491,7 @@ document.addEventListener('DOMContentLoaded', () => {
       {
         title: 'Câmera em Movimento',
         description: 'Produção audiovisual autoral, do conceito à finalização.',
-        image: 'assets/servicos/serv-producao-audiovisual-poster.jpg',
+        image: 'assets/paginas/home/s3-servicos/serv-producao-audiovisual-poster.jpg',
         category: 'Audiovisual',
         year: '2024',
         url: 'https://wa.me/5591992000000?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20produ%C3%A7%C3%A3o%20audiovisual.'
