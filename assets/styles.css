@@ -906,7 +906,7 @@ section[id] {
 /* Cores dos Painéis */
 .split-panel-story {
   background-color: var(--bg-surface-light);
-  color: var(--text-dark);
+  color: var(--color-electric-blue);
 }
 
 .split-panel-contact {
@@ -1007,8 +1007,33 @@ section[id] {
   text-transform: uppercase;
   margin: 0;
   line-height: 1.08;
+  color: currentColor;
   transition: color 0.35s var(--ease-split),
               opacity 0.35s var(--ease-split);
+}
+
+.split-panel-story .split-heading {
+  color: var(--color-electric-blue);
+}
+
+.split-panel-contact .split-heading {
+  color: var(--text-white);
+}
+
+.split-panel-story .compressed-text {
+  color: var(--color-electric-blue);
+}
+
+.split-panel-contact .compressed-text {
+  color: var(--text-white);
+}
+
+.split-panel-story .panel-indicator svg {
+  color: var(--color-electric-blue);
+}
+
+.split-panel-contact .panel-indicator svg {
+  color: var(--text-white);
 }
 
 /* Indicador de Ação (↗ vs ✕) */

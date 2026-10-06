@@ -2,6 +2,18 @@
 
 > Registro cronológico das atualizações do projeto (padrão Obsidian `.MD/`).
 
+## 2026-10-06 — fix(cta-split): aplicação do azul oficial da marca (Azul Sabóia) no título e seta de SOBRE A LENSES
+
+### Alterações
+- **Identidade e Contraste no Split Interativo:**
+  - Corrigido o título `<h2 class="h2 split-heading">SOBRE A LENSES</h2>` e o indicador de ação (`.panel-indicator svg`) no estado padrão para o azul oficial da LENSES (`var(--color-electric-blue)` / `#5C6CA4` - Azul Sabóia).
+  - Mantida a simetria perfeita do sistema visual do Split:
+    - **Painel Sobre a Lenses:** Fundo Branco + Título e Seta em Azul Sabóia.
+    - **Painel Contato:** Fundo Azul Espacial/Sabóia + Título e Seta em Branco Puro.
+    - **No Hover:** Inversão cromática dinâmica e sincronizada entre ambos os painéis.
+
+---
+
 ## 2026-10-06 — style(clients): calibração de peso visual e alinhamento óptico uniforme de altura para as 12 logos
 
 ### Alterações
