@@ -2,6 +2,17 @@
 
 > Registro cronológico das atualizações do projeto (padrão Obsidian `.MD/`).
 
+## 2026-10-06 — style(clients): calibração de peso visual e alinhamento óptico uniforme de altura para as 12 logos
+
+### Alterações
+- **Equalização de Altura Óptica:**
+  - Padronização da altura visual entre 40px e 44px para todas as 12 marcas no grid de clientes.
+  - Correção de disparidades: logos quadradas/verticais (Hydro e Ativo) que estavam com 60px foram calibradas, e marcas horizontais longas (EuroChem, MoveInfra, Hidrovias) que ficavam comprimidas em 27px-33px ganharam espaço e peso visual equivalente.
+  - Normalização dos assets em canvas transparente de alta densidade (3x retina).
+  - Atualização no `assets/styles.css` com altura fixa e responsiva para desktop, tablet e mobile.
+
+---
+
 ## 2026-10-06 — refactor(assets): reestruturação arquitetural completa das pastas de mídia por página e seções
 
 ### Alterações
