@@ -21,8 +21,8 @@
       - `s6-certificacao/`: Imagem oficial da Certificação ISO 9001.
       - `s7-footer/`: GIF cinematográfico de palco.
     - `sobre/`:
-      - `p2-missao-visao-valores/`: 3 cards institucionais de cinema.
-      - `p3-equipe/`: 4 retratos de estúdio em alta definição.
+      - `s2-missao-visao-valores/`: 3 cards institucionais de cinema.
+      - `s3-equipe/`: 4 retratos de estúdio em alta definição.
 - **Sincronização Total de Código:**
   - Atualizadas todas as referências em `index.html`, `sobre.html`, `sobre-nos.html`, `design-system-preview.html` e `assets/script.js`.
 
