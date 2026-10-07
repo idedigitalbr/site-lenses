@@ -2,6 +2,35 @@
 
 > Registro cronológico das atualizações do projeto (padrão Obsidian `.MD/`).
 
+## 2026-10-07 — feat(sobre-nos): aprimoramento cinematográfico completo da página institucional Sobre Nós
+
+### Alterações
+- **Hero Cinematográfico Imersivo (`#topo`):**
+  - Implementado overlay editorial sobre o vídeo showreel com badge de kicker (*"PRODUTORA CINEMATOGRÁFICA & AUDIOVISUAL DE IMPACTO"*), tipografia monumental em `clamp()`, degradê de texto suave e botões de ação com navegação suave (*"CONHECER NOSSA HISTÓRIA"* e *"FALAR COM A DIREÇÃO"*).
+- **Ativação dos Contadores Dinâmicos de KPIs (`#sobre`):**
+  - Conectados os atributos `data-target` nos elementos `.counter-val` (+150 projetos, +80 marcas, +8 anos, 100% conformidade), ativando a animação com interpolação `easeOutExpo` do `IntersectionObserver` já presente em `assets/script.js`.
+- **Cabeçalho Institucional de Missão, Visão e Valores (`#pilares`):**
+  - Adicionado `.about-section-header` com kicker estilizado, título em caixa alta com divisor visual (`about-section-rule`) e subtítulo de apoio.
+- **Nova Seção: Infraestrutura Técnica & Diferenciais Cinema (`#diferenciais`):**
+  - Seção inédita em fundo grafite escuro (`var(--color-bg-dark)`) com 4 cards técnicos de diferenciais da LENSES:
+    1. *Câmeras de Cinema 8K & Ópticas Prime* (sensores full frame RED e ARRI);
+    2. *Certificação ISO 9001:2015* (gestão de qualidade, compliance e segurança);
+    3. *Operação Aérea & FPV Homologada* (pilotos certificados ANAC/DECEA);
+    4. *Pós-Produção & Color Grading DaVinci Resolve Studio* (calibração DCI-P3/Rec.709).
+- **Modal Interativo de Biografia da Equipe (`#teamModal`):**
+  - Inserido modal acessível (`dialog` com backdrop blur, fechamento por `Esc`, clique fora ou botão `X`) conectado aos 4 líderes criativos da LENSES:
+    - Lucas Silveira (Diretor Geral & Fundador)
+    - Mariana Castro (Diretora de Fotografia)
+    - Camila Vasconcelos (Diretora de Produção)
+    - Rodrigo Albuquerque (Head de Estratégia e Roteiro)
+  - Cards enriquecidos com badge interativo *"Conhecer Trajetória"* e transições de elevação no hover.
+- **Correção Visual no CTA Final (`#cta-final`):**
+  - Substituído o GIF repetido (`prefooter-stage.gif`) pela imagem de estúdio em alta resolução `contact-bg.png`, mantendo contraste e acabamento premium.
+- **Paridade Rigorosa Multi-Páginas:**
+  - Conteúdo sincronizado com hash SHA256 idêntico entre `sobre.html` e `sobre-nos.html`.
+
+---
+
 ## 2026-10-06 — fix(cta-split): aplicação do azul oficial da marca (Azul Sabóia) no título e seta de SOBRE A LENSES
 
 ### Alterações
