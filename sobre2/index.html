@@ -30,7 +30,7 @@
   
   <!-- Estilos Oficiais -->
   <link rel="stylesheet" href="../assets/styles.css?v=raiz-direita-20261013-b">
-  <link rel="stylesheet" href="../assets/lenses-convergence.css?v=2">
+  <link rel="stylesheet" href="../assets/lenses-convergence.css?v=3">
 </head>
 <body class="about2-institutional">
 
@@ -320,6 +320,12 @@
                 <stop offset="0%" stop-color="#5C6CA4" stop-opacity=".05"/>
                 <stop offset="100%" stop-color="#5C6CA4" stop-opacity=".22"/>
               </linearGradient>
+              <!-- Tom-sobre-tom, preenchimento radial sem brilho de bolhas. -->
+              <radialGradient id="lcs-fill-reveal" gradientUnits="userSpaceOnUse" cx="430" cy="367" r="410">
+                <stop offset="0%" stop-color="#5C6CA4" stop-opacity=".40"/>
+                <stop offset="55%" stop-color="#5C6CA4" stop-opacity=".29"/>
+                <stop offset="100%" stop-color="#5C6CA4" stop-opacity=".17"/>
+              </radialGradient>
               <radialGradient id="lcs-overlap-deep">
                 <stop offset="0%" stop-color="#5C6CA4" stop-opacity=".57"/>
                 <stop offset="100%" stop-color="#5C6CA4" stop-opacity=".13"/>
@@ -397,6 +403,17 @@
               <g clip-path="url(#lcs-circle-consistency)">
                 <circle class="lcs-overlap lcs-overlap--triple" cx="560" cy="432" r="188"/>
               </g>
+            </g>
+
+            <!-- Preenchimento interativo: nasce no centro e se expande por cada círculo. -->
+            <g class="lcs-reveal lcs-reveal--purpose" clip-path="url(#lcs-circle-purpose)" aria-hidden="true">
+              <circle class="lcs-reveal-disc" cx="430" cy="367" r="405"/>
+            </g>
+            <g class="lcs-reveal lcs-reveal--consistency" clip-path="url(#lcs-circle-consistency)" aria-hidden="true">
+              <circle class="lcs-reveal-disc" cx="430" cy="367" r="405"/>
+            </g>
+            <g class="lcs-reveal lcs-reveal--result" clip-path="url(#lcs-circle-result)" aria-hidden="true">
+              <circle class="lcs-reveal-disc" cx="430" cy="367" r="405"/>
             </g>
 
             <!-- Contornos completos e duas famílias de arcos de precisão -->
@@ -695,7 +712,7 @@
   <!-- Scripts -->
   <script src="../assets/about-split.js?v=split-shared-20261013"></script>
   <script src="../assets/script.js"></script>
-  <script src="../assets/lenses-convergence.js?v=2" defer></script>
+  <script src="../assets/lenses-convergence.js?v=3" defer></script>
 
 </body>
 </html>
