@@ -1133,9 +1133,9 @@
   position: absolute;
   z-index: 2;
   /* Reposicionado à direita, conforme a composição aprovada no Paint. */
-  right: calc(clamp(28px, 7vw, 110px) - clamp(0px, calc(63vw - 660px), 190px));
+  right: 0;
   bottom: clamp(28px, 5svh, 64px);
-  width: min(40vw, 440px);
+  width: min(36vw, 360px);
   display: grid;
   grid-template-columns: max-content minmax(0, 1fr);
   align-items: start;
@@ -1191,7 +1191,7 @@
 
 @media (max-width: 1060px) and (min-width: 769px) {
   .about2-origin-hero__roots {
-    right: clamp(12px, 3vw, 36px);
+    right: 12px;
     width: min(42vw, 400px);
     gap: 8px;
     bottom: 30px;

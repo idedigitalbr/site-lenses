@@ -8,7 +8,7 @@ const pages = ['index.html', 'sobre2/index.html'];
 const html = Object.fromEntries(pages.map(p => [p, read(p)]));
 const cssFiles = ['assets/tokens.css', 'assets/base.css', 'assets/components.css', 'assets/pages.css'];
 const entry = read('assets/styles.css');
-check(cssFiles.every(x => entry.includes('@import url("./' + path.basename(x) + '");')), 'CSS sem todos os imports');
+check(cssFiles.every(x => entry.includes('@import url("./' + path.basename(x) + '");') || entry.includes('@import url("./' + path.basename(x) + '?v=')), 'CSS sem todos os imports');
 const css = cssFiles.map(read).join('\n').replace(/\/\*[\s\S]*?\*\//g,'');
 const defined = new Set(Array.from(css.matchAll(/(--[\w-]+)\s*:/g), m => m[1]));
 const used = new Set(Array.from(css.matchAll(/var\(\s*(--[\w-]+)/g), m => m[1]));
