@@ -435,3 +435,47 @@
   }
 }
 
+
+
+/* V6 · microgeometria óptica minimalista exclusiva do preenchimento no hover. */
+.lcs .lcs-decor {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 500ms cubic-bezier(.2,.7,.2,1) 0ms;
+}
+.lcs .lcs-reveal.is-active .lcs-decor {
+  opacity: 1;
+  transition-delay: 180ms;
+}
+.lcs .lcs-decor-ring {
+  fill: none;
+  stroke: #fff;
+  stroke-width: .95;
+  stroke-opacity: .16;
+}
+.lcs .lcs-decor-ring--outer { stroke-opacity: .11; stroke-width: .85; }
+.lcs .lcs-decor-sweep {
+  fill: none;
+  stroke: #fff;
+  stroke-width: 1.3;
+  stroke-linecap: round;
+  stroke-opacity: .26;
+}
+.lcs .lcs-decor-sweep--dashed {
+  stroke-width: 1;
+  stroke-opacity: .33;
+  stroke-dasharray: 2 8;
+  animation: lcs-decor-drift 16s linear infinite;
+}
+.lcs .lcs-decor-dot { fill: #fff; opacity: .55; }
+.lcs .lcs-decor-dot--2 {opacity: .72;}
+@keyframes lcs-decor-drift {
+  to { stroke-dashoffset: -96; }
+}
+.lcs:not(.lcs-visible) .lcs-decor-sweep--dashed {
+  animation-play-state: paused;
+}
+@media (prefers-reduced-motion: reduce) {
+  .lcs .lcs-decor { transition: none !important; }
+  .lcs .lcs-decor-sweep--dashed { animation: none !important; }
+}
