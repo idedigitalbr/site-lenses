@@ -1608,3 +1608,28 @@
     transform: none;
   }
 }
+
+/* Sobre 2 — só o controle X fecha os painéis; área clicável de 44px. */
+.about2-reference-split .panel-indicator.about2-close-control {
+  appearance: none;
+  -webkit-appearance: none;
+  box-sizing: border-box;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  min-width: 44px;
+  min-height: 44px;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about2-reference-split .panel-indicator.about2-close-control:focus-visible {
+  outline: 2px solid var(--color-brand-saboia);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
