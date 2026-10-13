@@ -1128,58 +1128,59 @@
 }
 
 
-/* Assinatura editorial à direita: mesma composição "Raiz & Futuro" do layout original. */
+/* Raiz & Futuro — escala e alinhamento compactos da referência original. */
 .about2-origin-hero__roots {
   position: absolute;
   z-index: 2;
-  right: clamp(24px, 3.2vw, 52px);
-  bottom: clamp(36px, 7svh, 84px);
-  width: min(48%, 540px);
+  right: clamp(28px, 7vw, 110px);
+  bottom: clamp(28px, 5svh, 64px);
+  width: min(40vw, 440px);
   display: grid;
-  grid-template-columns: minmax(0, .85fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, .66fr) minmax(0, 1fr);
   align-items: start;
-  gap: clamp(14px, 2vw, 32px);
+  gap: clamp(12px, 1.5vw, 20px);
   color: var(--text-white);
-  text-shadow: 0 2px 14px rgba(0, 0, 0, .55);
+  text-shadow: 0 2px 12px rgba(0, 0, 0, .55);
 }
 
 .about2-origin-hero__signature {
   display: flex;
   align-items: center;
   min-width: 0;
+  white-space: nowrap;
 }
 
 .about2-origin-hero__ampersand {
   flex: 0 0 auto;
   font-family: var(--font-heading);
-  font-size: clamp(4.4rem, 6vw, 6.5rem);
-  font-weight: var(--fw-bold);
-  letter-spacing: -.14em;
-  line-height: .77;
   color: var(--color-brand-saboia);
+  font-weight: var(--fw-bold);
+  font-size: clamp(3.3rem, 4.5vw, 4.4rem);
+  line-height: .78;
+  letter-spacing: -.13em;
 }
 
 .about2-origin-hero__signature-lines {
-  display: flex;
-  flex-direction: column;
-  margin-left: .02em;
+  display: grid;
+  margin-left: -3px;
   font-family: var(--font-heading);
-  font-size: clamp(1.75rem, 2.6vw, 2.8rem);
+  font-size: clamp(1.35rem, 1.85vw, 1.8rem);
   font-weight: var(--fw-bold);
-  letter-spacing: -.06em;
-  line-height: .91;
+  line-height: .88;
+  letter-spacing: -.055em;
+  color: var(--text-white);
 }
 
 .about2-origin-hero__roots-copy {
-  padding-left: 14px;
-  border-left: 1px solid rgba(237, 236, 237, .5);
+  padding: 0;
+  border: 0;
 }
 
 .about2-origin-hero__roots-copy p {
   margin: 0;
-  font-size: clamp(.78rem, 1vw, .94rem);
+  font-size: clamp(.75rem, .95vw, .9rem);
   font-weight: var(--fw-regular);
-  line-height: 1.4;
+  line-height: 1.37;
   color: var(--text-white);
 }
 
@@ -1189,25 +1190,22 @@
 
 @media (max-width: 1060px) and (min-width: 769px) {
   .about2-origin-hero__roots {
-    width: min(49%, 470px);
+    right: clamp(28px, 5vw, 75px);
+    width: min(42vw, 400px);
     gap: 12px;
-    bottom: 32px;
+    bottom: 30px;
   }
 
   .about2-origin-hero__ampersand {
-    font-size: clamp(3.7rem, 5.7vw, 5.5rem);
+    font-size: clamp(3.1rem, 4.5vw, 4rem);
   }
 
   .about2-origin-hero__signature-lines {
-    font-size: clamp(1.45rem, 2.35vw, 2.3rem);
-  }
-
-  .about2-origin-hero__roots-copy {
-    padding-left: 10px;
+    font-size: clamp(1.3rem, 1.9vw, 1.7rem);
   }
 
   .about2-origin-hero__roots-copy p {
-    font-size: .75rem;
+    font-size: .76rem;
   }
 }
 
@@ -1248,21 +1246,21 @@
     position: relative;
     inset: auto;
     align-self: flex-end;
-    width: min(100%, 520px);
-    grid-template-columns: minmax(0, .82fr) minmax(0, 1fr);
-    gap: 16px;
+    width: min(100%, 490px);
+    grid-template-columns: minmax(0, .66fr) minmax(0, 1fr);
+    gap: 12px;
   }
 
   .about2-origin-hero__roots-copy p {
-    font-size: clamp(.77rem, 2.5vw, .91rem);
+    font-size: clamp(.73rem, 2.15vw, .87rem);
   }
 
   .about2-origin-hero__ampersand {
-    font-size: clamp(3.6rem, 9vw, 5.6rem);
+    font-size: clamp(3.2rem, 8vw, 4.4rem);
   }
 
   .about2-origin-hero__signature-lines {
-    font-size: clamp(1.65rem, 4.9vw, 2.5rem);
+    font-size: clamp(1.3rem, 4.1vw, 1.9rem);
   }
 
   .about2-origin-hero__eyebrow {
@@ -1295,17 +1293,13 @@
   }
 
   .about2-origin-hero__roots {
-    gap: 10px;
-    grid-template-columns: minmax(0, .8fr) minmax(0, 1fr);
-  }
-
-  .about2-origin-hero__roots-copy {
-    padding-left: 10px;
+    gap: 9px;
+    grid-template-columns: minmax(0, .64fr) minmax(0, 1fr);
   }
 
   .about2-origin-hero__roots-copy p {
-    font-size: .73rem;
-    line-height: 1.38;
+    font-size: .72rem;
+    line-height: 1.35;
   }
 
   .about2-origin-hero__roots-copy p + p {
