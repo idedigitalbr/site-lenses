@@ -1315,3 +1315,296 @@
     transition: none;
   }
 }
+
+
+/* ==========================================================================
+   SOBRE 2 — COMPOSIÇÃO EDITORIAL REFERÊNCIA (SEÇÃO 2)
+   Reaproveita o accordion split e seus KPIs sem afetar as páginas originais.
+   ========================================================================== */
+.about2-reference-split .split-interactive-wrapper[data-state="story"] {
+  height: clamp(510px, 38.12vw, 620px);
+  min-height: clamp(510px, 38.12vw, 620px);
+}
+
+.about2-reference-split .split-interactive-wrapper[data-state="story"] .split-panel-story {
+  background: var(--bg-surface-light);
+}
+
+/* A imagem ocupa o fundo até a coluna branca dos indicadores. */
+.about2-reference-split .story-content-grid {
+  position: relative;
+  grid-template-columns: minmax(0, 80fr) minmax(0, 20fr);
+  grid-template-areas: "media kpis";
+  gap: 0;
+}
+
+.about2-reference-split .story-media-col,
+.about2-reference-split .story-img-card {
+  height: 100%;
+  min-height: 0;
+}
+
+.about2-reference-split .story-img-card::after,
+.about2-reference-split .story-img-tag,
+.about2-reference-split .story-img-caption {
+  display: none;
+}
+
+.about2-reference-split .story-img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: 50% 50%;
+  transition: transform .6s var(--ease-cinematic);
+}
+
+.about2-reference-split .story-media-col {
+  overflow: hidden;
+}
+
+/* Cartela translúcida na porção direita da fotografia. */
+.about2-reference-split .story-text-col {
+  position: absolute;
+  z-index: 3;
+  grid-area: auto;
+  top: 20px;
+  bottom: 20px;
+  right: calc(20% + 20px);
+  width: clamp(280px, 23.1vw, 313px);
+  min-width: 0;
+  height: auto;
+  padding: clamp(20px, 1.9vw, 28px) clamp(20px, 2vw, 28px);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  background: rgba(247, 247, 248, .96);
+  color: var(--color-brand-space-blue);
+  overflow: auto;
+  scrollbar-width: thin;
+}
+
+.about2-reference-split .story-kicker {
+  display: none;
+}
+
+.about2-reference-split .story-title {
+  margin: 0 0 clamp(17px, 2.3vw, 27px);
+  font-family: var(--font-heading);
+  font-size: clamp(40px, 3.92vw, 55px);
+  font-weight: var(--fw-bold);
+  letter-spacing: -.055em;
+  line-height: 1.035;
+  color: var(--color-brand-space-blue);
+  text-transform: none;
+}
+
+.about2-reference-split .story-title-accent {
+  color: var(--color-brand-saboia);
+}
+
+.about2-reference-split .story-manifesto {
+  max-width: none;
+  margin: 0;
+  font-size: clamp(12px, .96vw, 14px);
+  line-height: 1.42;
+  font-weight: var(--fw-regular);
+  letter-spacing: -.006em;
+  color: var(--color-brand-space-blue);
+  text-align: left;
+  text-wrap: pretty;
+}
+
+.about2-reference-split .story-signature,
+.about2-reference-split .story-text-col > .btn {
+  display: none;
+}
+
+/* Faixa de KPIs branca, preservando os valores e o contador existente. */
+.about2-reference-split .story-kpis-col {
+  background: var(--bg-surface-light);
+  border-left: 0;
+  padding: 138px clamp(10px, 1.1vw, 19px) 22px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: clamp(24px, 3.0vw, 40px);
+}
+
+.about2-reference-split .story-kpi-num {
+  font-family: var(--font-heading);
+  font-size: clamp(35px, 3.55vw, 52px);
+  line-height: 1;
+  font-weight: var(--fw-bold);
+  letter-spacing: -.055em;
+  color: var(--color-brand-saboia);
+}
+
+.about2-reference-split .story-kpi-lbl {
+  margin-top: 8px;
+  font-size: clamp(8px, .72vw, 10px);
+  font-weight: var(--fw-bold);
+  letter-spacing: .19em;
+  line-height: 1.35;
+  color: var(--color-brand-space-blue);
+}
+
+.about2-reference-split .split-interactive-wrapper[data-state="story"] .split-panel-story .panel-header {
+  top: 0;
+  right: 0;
+  padding: 16px clamp(19px, 2.6vw, 36px);
+}
+
+.about2-reference-split .split-interactive-wrapper[data-state="story"] .split-panel-story .panel-indicator svg {
+  width: 26px;
+  height: 26px;
+  color: var(--color-brand-saboia);
+}
+
+/* Contato vertical continua interativo, com azul institucional original. */
+.about2-reference-split .split-panel-contact {
+  background: var(--gradient-brand-angle);
+}
+
+@media (min-width: 769px) and (max-width: 1100px) {
+  .about2-reference-split .story-content-grid {
+    grid-template-columns: minmax(0, 75fr) minmax(0, 25fr);
+  }
+
+  .about2-reference-split .story-text-col {
+    right: calc(25% + 14px);
+    width: clamp(243px, 27vw, 294px);
+    top: 14px;
+    bottom: 14px;
+    padding: 22px 18px;
+  }
+
+  .about2-reference-split .story-title {
+    font-size: clamp(36px, 4.25vw, 46px);
+  }
+
+  .about2-reference-split .story-kpis-col {
+    padding-top: 122px;
+  }
+
+  .about2-reference-split .story-kpi-lbl {
+    font-size: 8px;
+    letter-spacing: .10em;
+  }
+}
+
+/* No mobile, foto, cartela sobreposta e KPIs empilham com leitura confortável. */
+@media (max-width: 768px) {
+  .about2-reference-split .split-interactive-wrapper[data-state="story"] {
+    height: auto !important;
+    min-height: auto !important;
+  }
+
+  .about2-reference-split .split-interactive-wrapper[data-state="story"] .split-panel-story {
+    padding: 0 !important;
+    position: relative;
+  }
+
+  .about2-reference-split .split-interactive-wrapper[data-state="story"] .split-panel-story .panel-header {
+    position: absolute !important;
+    z-index: 10;
+    top: 10px;
+    right: 10px;
+    width: auto !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .about2-reference-split .story-content-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "media" "text" "kpis";
+    gap: 0;
+    height: auto !important;
+  }
+
+  .about2-reference-split .story-media-col {
+    height: clamp(250px, 73vw, 420px) !important;
+  }
+
+  .about2-reference-split .story-img-card {
+    height: 100%;
+  }
+
+  .about2-reference-split .story-img {
+    object-position: 32% center;
+  }
+
+  .about2-reference-split .story-text-col {
+    position: relative;
+    inset: auto;
+    grid-area: text;
+    justify-content: flex-start;
+    width: min(87%, 440px);
+    max-width: 440px;
+    height: auto;
+    min-height: 0;
+    margin: -70px 16px 0 auto;
+    padding: 27px 24px 32px;
+    overflow: visible;
+    background: var(--color-brand-antiflash);
+  }
+
+  .about2-reference-split .story-title {
+    font-size: clamp(39px, 9.2vw, 54px);
+    line-height: 1.02;
+    margin-bottom: 21px;
+  }
+
+  .about2-reference-split .story-manifesto {
+    font-size: 14px;
+    line-height: 1.58;
+  }
+
+  .about2-reference-split .story-kpis-col {
+    grid-area: kpis;
+    width: 100%;
+    padding: 34px 24px 38px;
+    border: 0;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .about2-reference-split .story-kpi-num {
+    font-size: clamp(29px, 7vw, 45px);
+  }
+
+  .about2-reference-split .story-kpi-lbl {
+    font-size: 8px;
+    letter-spacing: .07em;
+  }
+}
+
+@media (max-width: 390px) {
+  .about2-reference-split .story-text-col {
+    width: calc(100% - 32px);
+    margin-left: 16px;
+    margin-right: 16px;
+    padding: 24px 20px 28px;
+  }
+
+  .about2-reference-split .story-title {
+    font-size: clamp(35px, 10.5vw, 41px);
+  }
+
+  .about2-reference-split .story-kpis-col {
+    gap: 8px;
+    padding-inline: 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about2-reference-split .story-img {
+    transition: none;
+    transform: none;
+  }
+}
