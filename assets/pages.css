@@ -1010,8 +1010,8 @@
 .about2-origin-hero {
   position: relative;
   isolation: isolate;
-  height: 75vh;
-  height: 75svh;
+  height: 80vh;
+  height: 80svh;
   min-height: 500px;
   display: flex;
   overflow: hidden;
@@ -1126,7 +1126,7 @@
 @media (max-width: 768px) {
   .about2-origin-hero {
     height: auto;
-    min-height: 75svh;
+    min-height: 80svh;
   }
 
   .about2-origin-hero__media {
@@ -1148,7 +1148,7 @@
 
   .about2-origin-hero__layout {
     height: auto;
-    min-height: 75svh;
+    min-height: 80svh;
     padding: 95px 26px 60px;
   }
 
@@ -1172,7 +1172,7 @@
 
 @media (max-width: 480px) {
   .about2-origin-hero {
-    min-height: 75svh;
+    min-height: 80svh;
   }
 
   .about2-origin-hero__layout {
