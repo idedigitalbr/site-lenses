@@ -2,6 +2,18 @@
 
 > Registro cronológico das atualizações do projeto (padrão Obsidian `.MD/`).
 
+
+## 2026-10-13 — refactor: design system modular e governança
+
+- Tokens consolidados em assets/tokens.css e correção de 3 variáveis CSS ausentes.
+- CSS de produção separado em base.css, components.css e pages.css sem reordenar regras.
+- Preview sincronizado com tokens.css, incluindo documentação da variante Sobre 2.
+- Sobre2.html atualizado para redirecionar à versão canônica /sobre2/.
+- Criados README, docs/DESIGN.md, docs/COMPONENTS.md e QA automatizado por GitHub Actions.
+- Sem mudanças editoriais ou de layout nas páginas originais.
+
+---
+
 ## 2026-10-07 — feat(sobre-nos): aprimoramento cinematográfico completo da página institucional Sobre Nós
 
 ### Alterações

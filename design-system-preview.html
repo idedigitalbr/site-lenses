@@ -26,9 +26,9 @@
       --ds-header-h: 70px;
       --ds-bg-sidebar: #070709;
       --ds-border-ui: rgba(255, 255, 255, 0.09);
-      --ds-accent-blue: #5C6CA4;
-      --ds-space-blue: #202A44;
-      --ds-accent-hover: #4a588a;
+      --ds-accent-blue: var(--color-brand-saboia);
+      --ds-space-blue: var(--color-brand-space-blue);
+      --ds-accent-hover: var(--color-primary-hover);
     }
 
     body {
@@ -668,6 +668,7 @@
             <li><a href="#sobre-mvv" class="ds-nav-link"><i class="fa-solid fa-bullseye"></i> S2 · Missão, Visão e Valores</a></li>
             <li><a href="#sobre-equipe" class="ds-nav-link"><i class="fa-solid fa-users"></i> S3 · Nossa Equipe Editorial</a></li>
             <li><a href="#sobre-cta" class="ds-nav-link"><i class="fa-solid fa-paper-plane"></i> S4 · CTA Final de Impacto</a></li>
+            <li><a href="#sobre2-variante" class="ds-nav-link"><i class="fa-solid fa-layer-group"></i> Sobre 2 · Variante</a></li>
           </ul>
         </div>
 
@@ -1322,6 +1323,7 @@
                 <nav class="nav-actions nav-actions-left" aria-label="Menu Principal Esquerdo">
                   <a href="javascript:void(0)" class="lnk">Início</a>
                   <a href="sobre.html" class="lnk">Sobre</a>
+                  <a href="sobre2/" class="lnk">Sobre 2</a>
                   <a href="javascript:void(0)" class="lnk">Portfólio / Cases</a>
                 </nav>
 
@@ -2319,113 +2321,26 @@
         </div>
       </section>
 
+      <section class="ds-section" id="sobre2-variante">
+        <div class="ds-section-header">
+          <h2 class="ds-section-title"><i class="fa-solid fa-layer-group"></i> Sobre 2 · Variante editorial</h2>
+          <span class="ds-section-badge">URL oficial: /sobre2/</span>
+        </div>
+        <div class="ds-card-box">
+          <p>A Sobre 2 segue os mesmos tokens, componentes, menu e rodapé da LENSES. A retirada do hero cinematográfico, da infraestrutura técnica e do CTA final é uma decisão editorial da variante, não uma divergência de identidade visual.</p>
+          <p><strong>Seções restantes:</strong> Sobre a Lenses, Missão / Visão / Valores e Nossa Equipe. Editar apenas <code>sobre2/index.html</code>. <code>sobre2.html</code> e <code>Sobre2.html</code> são redirecionamentos.</p>
+          <p><a class="ds-btn-live" href="sobre2/"><i class="fa-solid fa-arrow-up-right-from-square"></i> Abrir página Sobre 2</a></p>
+        </div>
+      </section>
+
       <!-- TABELA DE TOKENS CSS -->
       <section class="ds-section" id="tabela-tokens">
         <div class="ds-section-header">
           <h2 class="ds-section-title"><i class="fa-solid fa-code"></i> Tabela Canônica de Tokens CSS</h2>
-          <span class="ds-section-badge">assets/styles.css → :root (Tokens Oficiais 2025)</span>
+          <span class="ds-section-badge">assets/tokens.css → :root (fonte única)</span>
         </div>
         <div class="ds-card-box">
-<pre class="token-pre">:root {
-  /* ==========================================================================
-     DESIGN SYSTEM LENSES — TOKENS OFICIAIS (MANUAL DA MARCA 2025)
-     ========================================================================== */
-
-  /* Cores Institucionais Primárias (Manual da Marca pág. 13) */
-  --color-brand-space-blue: #202A44;   /* Azul Espacial (Dark) — RGB: 32, 42, 68 | CMYK: 53, 38, 0, 73 */
-  --color-brand-saboia: #5C6CA4;       /* Azul Sabóia (Light / Principal) — RGB: 92, 108, 164 | CMYK: 44, 34, 0, 36 */
-
-  /* Cores Institucionais Auxiliares (Manual da Marca pág. 13) */
-  --color-brand-antiflash: #EDECED;    /* Branco anti-flash — RGB: 237, 236, 237 | CMYK: 0, 0, 0, 7 */
-  --color-brand-white: #ffffff;        /* Branco Puro — RGB: 255, 255, 255 | CMYK: 0, 0, 0, 0 */
-
-  /* Tokens Semânticos de Cor do Sistema Digital */
-  --color-primary: #5C6CA4;            /* Cor primária de destaque e conversão (Azul Sabóia) */
-  --color-primary-dark: #202A44;       /* Cor institucional escura profunda (Azul Espacial) */
-  --color-primary-hover: #4a588a;      /* Hover acessível para o Azul Sabóia */
-  --color-primary-active: #3e4b78;     /* Estado ativo para o Azul Sabóia */
-  --color-primary-light: #7886bc;      /* Variação clara de apoio para o Azul Sabóia */
-  --color-primary-glow: rgba(92, 108, 164, 0.35); /* Brilho suave da identidade */
-  --color-primary-subtle: rgba(92, 108, 164, 0.12); /* Fundo translúcido sutil */
-
-  /* Gradientes Oficiais da Marca (Manual da Marca pág. 13 + Anexos 2 e 3) */
-  --gradient-brand-primary: linear-gradient(90deg, #202A44 0%, #5C6CA4 100%);
-  --gradient-brand-angle: linear-gradient(135deg, #202A44 0%, #5C6CA4 100%);
-  --gradient-brand-reverse: linear-gradient(135deg, #5C6CA4 0%, #202A44 100%);
-  --gradient-brand-radial: radial-gradient(circle at 50% 50%, rgba(92, 108, 164, 0.35) 0%, rgba(32, 42, 68, 0.60) 70%, #050505 100%);
-  --gradient-brand-glow: radial-gradient(circle at 50% 50%, rgba(92, 108, 164, 0.28) 0%, transparent 75%);
-  --gradient-brand-surface: linear-gradient(180deg, rgba(32, 42, 68, 0.5) 0%, rgba(11, 11, 14, 0.95) 100%);
-  --gradient-brand-card: linear-gradient(145deg, rgba(32, 42, 68, 0.45) 0%, rgba(17, 17, 21, 0.85) 100%);
-
-  /* Tom Sobre Tom (Tone-on-Tone — Anexos 2 e 3 do Manual) */
-  --tone-saboia-bg: #5C6CA4;
-  --tone-saboia-watermark: rgba(32, 42, 68, 0.22);
-  --tone-saboia-watermark-light: rgba(255, 255, 255, 0.12);
-  --tone-space-bg: #202A44;
-  --tone-space-watermark: rgba(92, 108, 164, 0.24);
-  --tone-space-watermark-subtle: rgba(255, 255, 255, 0.05);
-
-  /* Aliases para Retrocompatibilidade dos Componentes Existentes */
-  --color-electric-blue: var(--color-primary);
-  --color-blue-hover: var(--color-primary-hover);
-  --color-blue-light: var(--color-primary-light);
-
-  /* Superfícies & Backgrounds */
-  --bg-body: #050505;
-  --bg-surface-dark: #0b0b0e;
-  --bg-card-dark: #111115;
-  --bg-surface-light: var(--color-brand-white);
-  --bg-surface-muted: #f6f7f9;
-  --bg-surface-gray: var(--color-brand-antiflash);
-  --bg-nav: rgba(5, 5, 5, 0.95);
-  --bg-rail: #030304;
-
-  /* Cores de Texto & Contraste */
-  --text-white: #ffffff;
-  --text-white-muted: rgba(255, 255, 255, 0.78);
-  --text-white-dim: rgba(255, 255, 255, 0.50);
-  --text-dark: #0a0a0c;
-  --text-dark-muted: #5e5e68;
-  --text-dark-dim: #8b8b98;
-
-  /* Bordas e Delimitadores */
-  --border-subtle-dark: rgba(255, 255, 255, 0.14);
-  --border-hairline: rgba(255, 255, 255, 0.08);
-  --border-light: rgba(0, 0, 0, 0.08);
-  --border-primary: rgba(92, 108, 164, 0.30);
-
-  /* Tipografia Oficial da Marca (Manual da Marca pág. 12 — Família Inter) */
-  --font-main: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-  --font-nav: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-  --font-heading: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-
-  /* Pesos Canônicos Inter */
-  --fw-thin: 100;
-  --fw-extralight: 200;
-  --fw-light: 300;
-  --fw-regular: 400;      /* Destaque no manual */
-  --fw-medium: 500;
-  --fw-semibold: 600;    /* Destaque no manual */
-  --fw-bold: 700;
-  --fw-extrabold: 800;
-  --fw-black: 900;
-
-  /* Transições e Efeitos */
-  --transition-smooth: all 0.3s var(--ease-cinematic);
-  --transition-fast: all 0.2s ease;
-  --shadow-card: 0 12px 36px rgba(0, 0, 0, 0.35);
-  --shadow-blue-glow: 0 0 35px var(--color-primary-glow);
-
-  /* Curvas de Easing */
-  --ease-cinematic: cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-split: cubic-bezier(0.22, 1, 0.36, 1);
-
-  /* Formas */
-  --radius-pill: 999px;
-
-  /* Dimensões do Header Dinâmico */
-  --top-ticker-height: 28px;
-}</pre>
+<pre class="token-pre" id="canonicalTokens" aria-live="polite">Carregando tokens oficiais…</pre>
         </div>
       </section>
 
@@ -2439,6 +2354,15 @@
   </div>
 
   <script>
+    // Catálogo obtém a fonte de tokens da mesma URL usada pelo site.
+    const canonicalTokens = document.getElementById('canonicalTokens');
+    if (canonicalTokens) {
+      fetch('assets/tokens.css')
+        .then(response => { if (!response.ok) throw new Error('Carregamento falhou'); return response.text(); })
+        .then(source => { canonicalTokens.textContent = source.trim(); })
+        .catch(() => { canonicalTokens.textContent = 'Consulte assets/tokens.css no GitHub.'; });
+    }
+
     function copyToken(varName, hexVal) {
       navigator.clipboard.writeText(varName);
       const toast = document.getElementById('dsToast');

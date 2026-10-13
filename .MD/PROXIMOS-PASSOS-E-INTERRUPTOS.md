@@ -1,8 +1,17 @@
 # LENSES — Próximos Passos e Itens Interrompidos
 
 > **Projeto:** site-lenses (landing page e institucional LENSES)
-> **Última atualização:** 29/09/2026
+> **Última atualização:** 13/10/2026
 > **Repositório:** https://github.com/idedigitalbr/site-lenses.git (branch `main`)
+
+---
+
+## Atualização de arquitetura em 13/10/2026
+
+- Fonte única de tokens, modularização CSS e preview sincronizado.
+- Documentos atuais: docs/DESIGN.md e docs/COMPONENTS.md.
+- QA automático no GitHub Actions; revisão visual manual ainda recomendada.
+- URL principal da Sobre 2: /sobre2/, com redirecionamento das URLs legadas.
 
 ---
 
