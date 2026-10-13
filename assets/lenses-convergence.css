@@ -167,6 +167,113 @@
 .lcs:not(.lcs-visible) .lcs-core-halo,
 .lcs:not(.lcs-visible) .lcs-orbit,
 .lcs:not(.lcs-visible) .lcs-trace {animation-play-state:paused;}
+
+/* Revisão visual v2: replicar o desenho geométrico da referência, sem números */
+.lcs {
+  background:#fdfdff;
+}
+.lcs::before { opacity:.42; }
+.lcs-title { color:var(--lcs-blue); font-weight:400; }
+.lcs-title strong { color:var(--lcs-blue);font-weight:750; }
+.lcs-description { color:#64729b; }
+.lcs-kicker::after { width:0;opacity:0; }
+.lcs-art {
+  background:none;
+  isolation:isolate;
+}
+.lcs-blueprint { pointer-events:none; }
+.lcs-outer {stroke-opacity:.42;stroke-width:1.2;}
+.lcs-outer--dotted {stroke-dasharray:1 6;stroke-opacity:.5;}
+.lcs-construction {stroke-opacity:.28;stroke-width:1;}
+.lcs-construction--dash {stroke-dasharray:2.5 6;stroke-opacity:.47;}
+.lcs-measure {
+  fill:none;
+  stroke:var(--lcs-blue);
+  stroke-opacity:.39;
+  stroke-width:1;
+  stroke-dasharray:3 5;
+}
+.lcs-angle {
+  fill:none;
+  stroke:var(--lcs-blue);
+  stroke-width:1.2;
+  stroke-opacity:.58;
+  stroke-linecap:round;
+}
+.lcs-guide-square {fill:var(--lcs-blue);opacity:.65;}
+.lcs-orbit {transform-origin:430px 347px;}
+.lcs-orbit-stroke {stroke-width:2.2;stroke-opacity:.57;}
+.lcs-disc-fill {
+  fill:url(#lcs-pillar-fill);
+  fill-opacity:1;
+  opacity:1;
+  transition:opacity .8s ease,fill .8s ease,fill-opacity .8s ease;
+}
+.lcs-disc-edge {
+  stroke:var(--lcs-blue);
+  stroke-opacity:.9;
+  stroke-width:1.85;
+}
+.lcs-overlap {
+  fill:url(#lcs-overlap-fill);
+  opacity:.84;
+  transition:opacity .9s ease;
+}
+.lcs-overlap--triple {
+  fill:url(#lcs-overlap-deep);
+  opacity:1;
+}
+.lcs-intersections {pointer-events:none;}
+.lcs-connector {
+  fill:none;
+  stroke:var(--lcs-blue);
+  stroke-width:1;
+  stroke-opacity:.4;
+}
+.lcs-node {opacity:.78;}
+.lcs-node--solid {opacity:.93;}
+.lcs-guide-dot {opacity:.74;}
+.lcs-core-halo {
+  opacity:.16;
+  animation:lcs-breathe 8s ease-in-out infinite;
+}
+.lcs-core-rim {stroke-opacity:.36;stroke-width:1.2;}
+.lcs-core-rim--outer {stroke-opacity:.23;stroke-dasharray:2 5;}
+.lcs-core-solid {filter:url(#lcs-core-shadow);}
+.lcs-core-detail {
+  fill:none;
+  stroke:white;
+  stroke-opacity:.31;
+  stroke-width:1;
+}
+.lcs-core-detail--dashed {stroke-opacity:.48;stroke-dasharray:2 5;}
+.lcs-core-letter {font-weight:760;font-size:23px;letter-spacing:.03em;}
+.lcs-trace {stroke-width:2.5;stroke-dasharray:54 1150;opacity:.62;}
+.lcs-pillar {
+  color:var(--lcs-blue);
+  letter-spacing:.10em;
+  background:transparent!important;
+  box-shadow:none!important;
+  border-radius:0;
+}
+.lcs-pillar:hover,.lcs-pillar:focus-visible {color:var(--lcs-blue-deep);}
+.lcs-pillar::after {background:var(--lcs-blue);opacity:.76;}
+.lcs[data-focus="purpose"] .lcs-disc-fill--purpose,
+.lcs[data-focus="consistency"] .lcs-disc-fill--consistency,
+.lcs[data-focus="result"] .lcs-disc-fill--result {
+  fill:var(--lcs-blue);
+  fill-opacity:.08;
+}
+.lcs[data-focus="purpose"] .lcs-overlap--purpose,
+.lcs[data-focus="consistency"] .lcs-overlap--consistency,
+.lcs[data-focus="result"] .lcs-overlap--result {opacity:1;}
+.lcs[data-focus="purpose"] .lcs-overlap--triple,
+.lcs[data-focus="consistency"] .lcs-overlap--triple,
+.lcs[data-focus="result"] .lcs-overlap--triple {opacity:1;}
+@media(prefers-reduced-motion:reduce) {
+  .lcs .lcs-core-halo,.lcs .lcs-orbit,.lcs .lcs-trace {animation:none;}
+}
+
 @media(max-width:1050px) {
   .lcs-layout {width:min(100% - 7vw, 960px);grid-template-columns:minmax(0,.93fr) minmax(0,1.07fr); gap:0;}
   .lcs-title {font-size:clamp(2.05rem,3.95vw,3.65rem);}
