@@ -30,7 +30,7 @@
   
   <!-- Estilos Oficiais -->
   <link rel="stylesheet" href="../assets/styles.css?v=raiz-direita-20261013-b">
-  <link rel="stylesheet" href="../assets/lenses-convergence.css?v=1">
+  <link rel="stylesheet" href="../assets/lenses-convergence.css?v=2">
 </head>
 <body class="about2-institutional">
 
@@ -306,92 +306,138 @@
         </div>
         <div class="lcs-art" aria-label="Diagrama de interseção entre propósito, consistência e resultado, com a LENSES no encontro dos três pilares">
           <svg class="lcs-svg" viewBox="0 0 860 740" role="img" aria-labelledby="lcs-diagram-title lcs-diagram-desc" xmlns="http://www.w3.org/2000/svg">
-            <title id="lcs-diagram-title">LENSES: o encontro de três pilares</title>
-            <desc id="lcs-diagram-desc">Três círculos sobrepostos representam propósito, consistência e resultado; a área central de interseção destaca a LENSES.</desc>
+            <title id="lcs-diagram-title">LENSES: interseção de propósito, consistência e resultado</title>
+            <desc id="lcs-diagram-desc">Diagrama técnico de três círculos que se cruzam, com núcleo preenchido da LENSES. Linhas de construção sem números, pontos de interseção e movimentos sutis.</desc>
             <defs>
-              <clipPath id="lcs-circle-purpose"><circle cx="430" cy="243" r="225"/></clipPath>
-              <clipPath id="lcs-circle-consistency"><circle cx="290" cy="440" r="225"/></clipPath>
-              <clipPath id="lcs-circle-result"><circle cx="570" cy="440" r="225"/></clipPath>
-              <linearGradient id="lcs-core-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#8491bd"/>
-                <stop offset="56%" stop-color="#5C6CA4"/>
-                <stop offset="100%" stop-color="#3c497a"/>
+              <clipPath id="lcs-circle-purpose"><circle cx="430" cy="238" r="184"/></clipPath>
+              <clipPath id="lcs-circle-consistency"><circle cx="300" cy="432" r="188"/></clipPath>
+              <clipPath id="lcs-circle-result"><circle cx="560" cy="432" r="188"/></clipPath>
+              <radialGradient id="lcs-pillar-fill">
+                <stop offset="0%" stop-color="#5C6CA4" stop-opacity=".11"/>
+                <stop offset="70%" stop-color="#5C6CA4" stop-opacity=".035"/>
+                <stop offset="100%" stop-color="#5C6CA4" stop-opacity="0"/>
+              </radialGradient>
+              <linearGradient id="lcs-overlap-fill" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#5C6CA4" stop-opacity=".05"/>
+                <stop offset="100%" stop-color="#5C6CA4" stop-opacity=".22"/>
               </linearGradient>
-              <filter id="lcs-core-shadow" x="-70%" y="-70%" width="240%" height="240%">
-                <feDropShadow dx="0" dy="9" stdDeviation="17" flood-color="#5C6CA4" flood-opacity=".20"/>
+              <radialGradient id="lcs-overlap-deep">
+                <stop offset="0%" stop-color="#5C6CA4" stop-opacity=".57"/>
+                <stop offset="100%" stop-color="#5C6CA4" stop-opacity=".13"/>
+              </radialGradient>
+              <radialGradient id="lcs-core-gradient" cx="34%" cy="24%" r="90%">
+                <stop offset="0%" stop-color="#8492bb"/>
+                <stop offset="58%" stop-color="#5C6CA4"/>
+                <stop offset="100%" stop-color="#43517f"/>
+              </radialGradient>
+              <filter id="lcs-core-shadow" x="-90%" y="-90%" width="280%" height="280%">
+                <feDropShadow dx="0" dy="7" stdDeviation="10" flood-color="#5C6CA4" flood-opacity=".22"/>
               </filter>
+              <marker id="lcs-guide-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="3.5" markerHeight="3.5" orient="auto">
+                <path d="M0 0L10 5L0 10Z" fill="#5C6CA4" fill-opacity=".6"/>
+              </marker>
             </defs>
 
-            <!-- Guias arquitetônicas sutis: sem medidas numéricas -->
-            <g aria-hidden="true">
-              <circle class="lcs-outer" cx="430" cy="353" r="328"/>
-              <circle class="lcs-outer lcs-outer--dotted" cx="430" cy="353" r="347"/>
-              <path class="lcs-construction lcs-construction--dash" d="M430 0V740M70 353H790"/>
-              <path class="lcs-construction lcs-construction--dash" d="M142 105L718 601M718 105L142 601"/>
-              <path class="lcs-construction" d="M430 70V110M430 596V638M151 353H191M669 353H709"/>
+            <!-- Construção geométrica: guias, cotas sem números e arcos -->
+            <g aria-hidden="true" class="lcs-blueprint">
+              <circle class="lcs-outer lcs-outer--dotted" cx="430" cy="347" r="315"/>
+              <circle class="lcs-outer lcs-outer--dotted" cx="430" cy="347" r="277"/>
+              <circle class="lcs-outer" cx="430" cy="347" r="297"/>
+              <path class="lcs-construction lcs-construction--dash" d="M430 6V731M73 347H787"/>
+              <path class="lcs-construction lcs-construction--dash" d="M105 76L755 647M755 76L105 647"/>
+              <path class="lcs-construction lcs-construction--dash" d="M166 87L694 625M694 87L166 625"/>
+              <!-- Cotas gráficas horizontais e verticais, sem medições inventadas -->
+              <path class="lcs-measure" d="M290 30H570M290 24V56M570 24V56M290 30V110M570 30V110"/>
+              <path class="lcs-measure" d="M290 676H570M290 660V683M570 660V683"/>
+              <path class="lcs-measure" d="M62 239V627M54 239H82M54 627H82M798 239V627M789 239H808M789 627H808"/>
+              <path class="lcs-construction" d="M430 13V75M430 627V720M79 347H188M672 347H781"/>
+              <path class="lcs-angle" d="M167 196A304 304 0 0 1 237 104" marker-end="url(#lcs-guide-arrow)"/>
+              <path class="lcs-angle" d="M623 104A304 304 0 0 1 693 196" marker-end="url(#lcs-guide-arrow)"/>
+              <path class="lcs-angle" d="M149 526A304 304 0 0 0 232 609" marker-end="url(#lcs-guide-arrow)"/>
+              <path class="lcs-angle" d="M711 526A304 304 0 0 1 628 609" marker-end="url(#lcs-guide-arrow)"/>
               <g class="lcs-orbit">
-                <circle class="lcs-outer lcs-outer--dotted" cx="430" cy="353" r="313"/>
-                <path class="lcs-outer" stroke-width="2.6" d="M187 158A313 313 0 0 1 303 67M558 639A313 313 0 0 1 675 548M696 187A313 313 0 0 1 736 288"/>
-                <circle class="lcs-guide-dot" cx="430" cy="40" r="3.5"/>
-                <circle class="lcs-guide-dot" cx="117" cy="353" r="3"/>
-                <circle class="lcs-guide-dot" cx="743" cy="353" r="3"/>
+                <path class="lcs-outer lcs-orbit-stroke" d="M220 125A297 297 0 0 1 313 73M547 621A297 297 0 0 1 637 552M679 194A297 297 0 0 1 709 251"/>
+                <circle class="lcs-guide-dot" cx="430" cy="50" r="3"/>
+                <circle class="lcs-guide-dot" cx="133" cy="347" r="2.6"/>
+                <circle class="lcs-guide-dot" cx="727" cy="347" r="2.6"/>
               </g>
               <g class="lcs-orbit lcs-orbit--reverse">
-                <path class="lcs-construction" d="M170 158A328 328 0 0 1 263 70M597 635A328 328 0 0 1 682 557"/>
+                <circle class="lcs-outer lcs-outer--dotted" cx="430" cy="347" r="260"/>
+              </g>
+              <g class="lcs-guide-nodes">
+                <circle class="lcs-node" cx="430" cy="30" r="3.7"/>
+                <circle class="lcs-node" cx="430" cy="676" r="3.7"/>
+                <circle class="lcs-node" cx="62" cy="347" r="3.2"/>
+                <circle class="lcs-node" cx="798" cy="347" r="3.2"/>
+                <rect class="lcs-guide-square" x="286.5" y="26.5" width="7" height="7"/>
+                <rect class="lcs-guide-square" x="566.5" y="26.5" width="7" height="7"/>
+                <rect class="lcs-guide-square" x="286.5" y="672.5" width="7" height="7"/>
+                <rect class="lcs-guide-square" x="566.5" y="672.5" width="7" height="7"/>
+                <rect class="lcs-guide-square" x="58.5" y="235.5" width="7" height="7"/>
+                <rect class="lcs-guide-square" x="794.5" y="235.5" width="7" height="7"/>
               </g>
             </g>
 
-            <!-- Áreas de cada pilar; preenchimentos permanecem visíveis -->
-            <circle class="lcs-disc-fill lcs-disc-fill--purpose" cx="430" cy="243" r="225"/>
-            <circle class="lcs-disc-fill lcs-disc-fill--consistency" cx="290" cy="440" r="225"/>
-            <circle class="lcs-disc-fill lcs-disc-fill--result" cx="570" cy="440" r="225"/>
+            <!-- Três círculos com proporções próximas ao desenho de referência -->
+            <circle class="lcs-disc-fill lcs-disc-fill--purpose" cx="430" cy="238" r="184"/>
+            <circle class="lcs-disc-fill lcs-disc-fill--consistency" cx="300" cy="432" r="188"/>
+            <circle class="lcs-disc-fill lcs-disc-fill--result" cx="560" cy="432" r="188"/>
 
-            <!-- Interseções duplas e tripla recortadas matematicamente -->
+            <!-- A interseção entre áreas fica realmente preenchida o tempo todo -->
             <g clip-path="url(#lcs-circle-purpose)">
-              <circle class="lcs-overlap lcs-overlap--purpose" cx="290" cy="440" r="225"/>
-              <circle class="lcs-overlap lcs-overlap--purpose" cx="570" cy="440" r="225"/>
-              <g clip-path="url(#lcs-circle-consistency)">
-                <circle class="lcs-overlap lcs-overlap--triple" cx="570" cy="440" r="225"/>
-              </g>
+              <circle class="lcs-overlap lcs-overlap--purpose" cx="300" cy="432" r="188"/>
+              <circle class="lcs-overlap lcs-overlap--purpose" cx="560" cy="432" r="188"/>
             </g>
             <g clip-path="url(#lcs-circle-consistency)">
-              <circle class="lcs-overlap lcs-overlap--consistency" cx="570" cy="440" r="225"/>
+              <circle class="lcs-overlap lcs-overlap--consistency" cx="560" cy="432" r="188"/>
             </g>
             <g clip-path="url(#lcs-circle-result)">
-              <circle class="lcs-overlap lcs-overlap--result" cx="430" cy="243" r="225"/>
+              <circle class="lcs-overlap lcs-overlap--result" cx="430" cy="238" r="184"/>
+            </g>
+            <g clip-path="url(#lcs-circle-purpose)">
+              <g clip-path="url(#lcs-circle-consistency)">
+                <circle class="lcs-overlap lcs-overlap--triple" cx="560" cy="432" r="188"/>
+              </g>
             </g>
 
-            <!-- Contornos precisos dos três círculos -->
-            <circle class="lcs-disc-edge lcs-disc-edge--purpose" cx="430" cy="243" r="225"/>
-            <circle class="lcs-disc-edge lcs-disc-edge--consistency" cx="290" cy="440" r="225"/>
-            <circle class="lcs-disc-edge lcs-disc-edge--result" cx="570" cy="440" r="225"/>
+            <!-- Contornos completos e duas famílias de arcos de precisão -->
+            <circle class="lcs-disc-edge lcs-disc-edge--purpose" cx="430" cy="238" r="184"/>
+            <circle class="lcs-disc-edge lcs-disc-edge--consistency" cx="300" cy="432" r="188"/>
+            <circle class="lcs-disc-edge lcs-disc-edge--result" cx="560" cy="432" r="188"/>
+            <circle class="lcs-trace" cx="430" cy="238" r="184" transform="rotate(-90 430 238)"/>
+            <circle class="lcs-trace lcs-trace--second" cx="300" cy="432" r="188" transform="rotate(-90 300 432)"/>
+            <circle class="lcs-trace lcs-trace--third" cx="560" cy="432" r="188" transform="rotate(-90 560 432)"/>
 
-            <!-- Rastro sutil de movimento sobre os contornos -->
-            <circle class="lcs-trace" cx="430" cy="243" r="225" transform="rotate(-90 430 243)"/>
-            <circle class="lcs-trace lcs-trace--second" cx="290" cy="440" r="225" transform="rotate(-90 290 440)"/>
-            <circle class="lcs-trace lcs-trace--third" cx="570" cy="440" r="225" transform="rotate(-90 570 440)"/>
-
-            <!-- Marcas de interseção, discretas e legíveis -->
-            <g aria-hidden="true">
-              <circle class="lcs-node" cx="291" cy="214" r="4"/>
-              <circle class="lcs-node" cx="569" cy="214" r="4"/>
-              <circle class="lcs-node" cx="430" cy="662" r="4"/>
-              <path class="lcs-construction" d="M430 304V338M430 493V536"/>
-              <circle class="lcs-guide-dot" cx="430" cy="353" r="3"/>
+            <!-- Nós geométricos e linhas que apontam para o encontro -->
+            <g aria-hidden="true" class="lcs-intersections">
+              <path class="lcs-connector" d="M300 297L383 359M560 297L477 359M430 569V436"/>
+              <path class="lcs-construction" d="M430 265V305M430 448V503M366 358H493"/>
+              <path class="lcs-construction lcs-construction--dash" d="M216 346H644"/>
+              <circle class="lcs-node lcs-node--solid" cx="247" cy="252" r="5"/>
+              <circle class="lcs-node lcs-node--solid" cx="613" cy="252" r="5"/>
+              <circle class="lcs-node lcs-node--solid" cx="430" cy="568" r="5"/>
+              <circle class="lcs-node" cx="430" cy="296" r="3.2"/>
+              <circle class="lcs-node" cx="373" cy="413" r="4.1"/>
+              <circle class="lcs-node" cx="487" cy="413" r="4.1"/>
+              <circle class="lcs-node" cx="300" cy="432" r="2.3"/>
+              <circle class="lcs-node" cx="560" cy="432" r="2.3"/>
+              <circle class="lcs-node" cx="430" cy="238" r="2.3"/>
             </g>
 
-            <!-- Núcleo já preenchido no repouso; ilumina nos destaques -->
-            <circle class="lcs-core-halo" cx="430" cy="414" r="82"/>
-            <circle class="lcs-core-rim" cx="430" cy="414" r="73"/>
-            <circle class="lcs-core-solid" cx="430" cy="414" r="60"/>
-            <circle cx="430" cy="414" r="50" fill="none" stroke="#ffffff" stroke-opacity=".24" stroke-width="1.1"/>
-            <text class="lcs-core-letter" x="430" y="411">LEN</text>
-            <text class="lcs-core-letter" x="430" y="435">SES</text>
+            <!-- Centro em azul sólido, já destacado, com a interseção por trás -->
+            <circle class="lcs-core-halo" cx="430" cy="367" r="87"/>
+            <circle class="lcs-core-rim lcs-core-rim--outer" cx="430" cy="367" r="82"/>
+            <circle class="lcs-core-rim" cx="430" cy="367" r="70"/>
+            <circle class="lcs-core-solid" cx="430" cy="367" r="60"/>
+            <circle class="lcs-core-detail" cx="430" cy="367" r="52"/>
+            <circle class="lcs-core-detail lcs-core-detail--dashed" cx="430" cy="367" r="46"/>
+            <text class="lcs-core-letter" x="430" y="362">LEN</text>
+            <text class="lcs-core-letter" x="430" y="386">SES</text>
           </svg>
           <div class="lcs-labels" aria-label="Explore os três pilares da LENSES">
-            <button class="lcs-pillar lcs-pillar--purpose" type="button" style="--x:50%;--y:25%" data-lcs-pillar="purpose" aria-label="Destacar propósito">Propósito</button>
-            <button class="lcs-pillar lcs-pillar--consistency" type="button" style="--x:31%;--y:77%" data-lcs-pillar="consistency" aria-label="Destacar consistência">Consistência</button>
-            <button class="lcs-pillar lcs-pillar--result" type="button" style="--x:69%;--y:77%" data-lcs-pillar="result" aria-label="Destacar resultado">Resultado</button>
+            <button class="lcs-pillar lcs-pillar--purpose" type="button" style="--x:50%;--y:24%" data-lcs-pillar="purpose" aria-label="Destacar propósito">Propósito</button>
+            <button class="lcs-pillar lcs-pillar--consistency" type="button" style="--x:28%;--y:65%" data-lcs-pillar="consistency" aria-label="Destacar consistência">Consistência</button>
+            <button class="lcs-pillar lcs-pillar--result" type="button" style="--x:72%;--y:65%" data-lcs-pillar="result" aria-label="Destacar resultado">Resultado</button>
           </div>
         </div>
       </div>
@@ -650,7 +696,7 @@
   <!-- Scripts -->
   <script src="../assets/about-split.js?v=split-shared-20261013"></script>
   <script src="../assets/script.js"></script>
-  <script src="../assets/lenses-convergence.js?v=1" defer></script>
+  <script src="../assets/lenses-convergence.js?v=2" defer></script>
 
 </body>
 </html>
