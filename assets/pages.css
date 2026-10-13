@@ -1010,8 +1010,8 @@
 .about2-origin-hero {
   position: relative;
   isolation: isolate;
-  height: 90vh;
-  height: 90svh;
+  height: 92vh;
+  height: 92svh;
   min-height: 500px;
   display: flex;
   overflow: hidden;
@@ -1095,6 +1095,10 @@
   letter-spacing: .25em;
   line-height: 1.2;
   color: #a8bcf3;
+  /* Aproxima visualmente do lettering: o WebP tem respiro interno. */
+  transform: translateY(18px);
+  position: relative;
+  z-index: 1;
 }
 
 .about2-origin-hero__headline {
@@ -1126,7 +1130,7 @@
 @media (max-width: 768px) {
   .about2-origin-hero {
     height: auto;
-    min-height: 90svh;
+    min-height: 92svh;
   }
 
   .about2-origin-hero__media {
@@ -1148,7 +1152,7 @@
 
   .about2-origin-hero__layout {
     height: auto;
-    min-height: 90svh;
+    min-height: 92svh;
     padding: 95px 26px 60px;
   }
 
@@ -1156,6 +1160,7 @@
     font-size: clamp(.72rem, 2.2vw, .88rem);
     letter-spacing: .25em;
     margin-bottom: -5px;
+    transform: translateY(12px);
   }
 
   .about2-origin-hero__headline {
@@ -1172,7 +1177,7 @@
 
 @media (max-width: 480px) {
   .about2-origin-hero {
-    min-height: 90svh;
+    min-height: 92svh;
   }
 
   .about2-origin-hero__layout {
