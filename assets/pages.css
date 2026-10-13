@@ -1136,9 +1136,9 @@
   bottom: clamp(28px, 5svh, 64px);
   width: min(40vw, 440px);
   display: grid;
-  grid-template-columns: minmax(0, .66fr) minmax(0, 1fr);
+  grid-template-columns: max-content minmax(0, 1fr);
   align-items: start;
-  gap: clamp(12px, 1.5vw, 20px);
+  gap: clamp(6px, .65vw, 10px);
   color: var(--text-white);
   text-shadow: 0 2px 12px rgba(0, 0, 0, .55);
 }
@@ -1192,7 +1192,7 @@
   .about2-origin-hero__roots {
     right: clamp(28px, 5vw, 75px);
     width: min(42vw, 400px);
-    gap: 12px;
+    gap: 8px;
     bottom: 30px;
   }
 
@@ -1247,8 +1247,8 @@
     inset: auto;
     align-self: flex-end;
     width: min(100%, 490px);
-    grid-template-columns: minmax(0, .66fr) minmax(0, 1fr);
-    gap: 12px;
+    grid-template-columns: max-content minmax(0, 1fr);
+    gap: 8px;
   }
 
   .about2-origin-hero__roots-copy p {
@@ -1293,8 +1293,8 @@
   }
 
   .about2-origin-hero__roots {
-    gap: 9px;
-    grid-template-columns: minmax(0, .64fr) minmax(0, 1fr);
+    gap: 6px;
+    grid-template-columns: max-content minmax(0, 1fr);
   }
 
   .about2-origin-hero__roots-copy p {
