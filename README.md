@@ -4,7 +4,6 @@ Site institucional estático publicado no GitHub Pages a partir de main.
 
 **Links**
 - https://idedigitalbr.github.io/site-lenses/
-- https://idedigitalbr.github.io/site-lenses/sobre.html
 - https://idedigitalbr.github.io/site-lenses/sobre2/
 - https://idedigitalbr.github.io/site-lenses/design-system-preview.html
 
@@ -21,4 +20,4 @@ Rodar antes de publicar:
 
     node scripts/check-design-system.mjs
 
-As páginas sobre.html e sobre-nos.html devem ser idênticas. A variante principal é sobre2/index.html, acessível em /sobre2/. Os aliases sobre2.html e Sobre2.html apenas redirecionam.
+A única página Sobre oficial é `sobre2/index.html`, acessível em `/sobre2/` e chamada apenas de **Sobre** no menu. As URLs antigas `sobre.html` e `sobre-nos.html` não têm mais conteúdo próprio: redirecionam para `/sobre2/`, preservando links externos. Os aliases `sobre2.html` e `Sobre2.html` também redirecionam.

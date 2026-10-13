@@ -1,3 +1,12 @@
+## 2026-10-13 — Página Sobre oficial única
+
+- /sobre2/ passa a ser a única página Sobre oficial, exibida apenas como "Sobre" na navegação desktop e mobile.
+- A antiga /sobre.html e /sobre-nos.html deixaram de conter a página duplicada e agora redirecionam para /sobre2/, evitando erros em links históricos.
+- Links da Home, CTA interno de história, documentação, prévia e verificador de design atualizados para a rota canônica.
+- Nenhuma alteração no visual ou conteúdo da página Sobre oficial.
+
+---
+
 # Changelog — LENSES
 
 > Registro cronológico das atualizações do projeto (padrão Obsidian `.MD/`).

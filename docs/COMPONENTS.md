@@ -20,11 +20,11 @@ A divisão conserva todas as regras e a ordem de cascata originais.
 | Rodapé | .footer, .footer-grid, .footer-col | Cinco colunas responsivas |
 
 ## HTML estático
-Header/footer estão replicados em index.html, sobre.html, sobre-nos.html e sobre2/index.html. O verificador automático compara navegação e rodapé para impedir divergências, sem injetar HTML por JavaScript em tempo de execução.
+Header/footer estão replicados nas duas páginas de produção: index.html e sobre2/index.html. sobre.html e sobre-nos.html redirecionam sem conteúdo próprio. O verificador automático compara navegação e rodapé para impedir divergências, sem injetar HTML por JavaScript em tempo de execução.
 
-Menu padrão: Início, Sobre, Sobre 2, Portfólio / Cases, Nossos Serviços e Contate-nos. Alterações devem ser sincronizadas nas quatro páginas.
+Menu padrão: Início, Sobre, Portfólio / Cases, Nossos Serviços e Contato (o CTA depende da página). Alterações devem ser sincronizadas na Home e na Sobre oficial.
 
-Caminhos na raiz: assets/... e sobre2/. Caminhos da pasta sobre2/: ../assets/... e ../sobre2/. Evitar duplicar páginas apenas para URL legada.
+Caminhos na raiz: assets/... e sobre2/. Caminhos da pasta sobre2/: ../assets/... e ../sobre2/. Não recriar as antigas páginas Sobre; manter somente redirecionamentos.
 
 ## Alteração segura
 Preservar hooks de JS e ARIA, não modificar outras páginas ao editar uma variante, utilizar tokens e classes existentes, testar âncoras e botões e executar node scripts/check-design-system.mjs. Remoção de seção deve eliminar links quebrados e rever dependências de scripts.

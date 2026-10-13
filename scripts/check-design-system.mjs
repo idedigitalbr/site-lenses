@@ -4,7 +4,7 @@ import path from 'node:path';
 const errors = [];
 const read = name => fs.readFileSync(path.join(process.cwd(), name), 'utf8');
 const check = (valid, message) => { if (!valid) errors.push(message); };
-const pages = ['index.html', 'sobre.html', 'sobre-nos.html', 'sobre2/index.html'];
+const pages = ['index.html', 'sobre2/index.html'];
 const html = Object.fromEntries(pages.map(p => [p, read(p)]));
 const cssFiles = ['assets/tokens.css', 'assets/base.css', 'assets/components.css', 'assets/pages.css'];
 const entry = read('assets/styles.css');
@@ -30,11 +30,11 @@ for (const [name, source] of Object.entries(html)) {
   check(Boolean(desktop && mobile), name + ': menu ausente');
   if (desktop && mobile) {
     const labels = text => Array.from(text.matchAll(/<a\b[^>]*>([\s\S]*?)<\/a>/g), m => m[1].replace(/<[^>]+>/g,'').replace(/\s+/g,' ').trim());
-    const expected = ['Início','Sobre','Sobre 2','Portfólio / Cases'];
+    const expected = ['Início','Sobre','Portfólio / Cases'];
     check(expected.every((x,i) => labels(desktop[1])[i] === x), name + ': menu desktop não padronizado');
     check(expected.concat('Nossos Serviços').every((x,i) => labels(mobile[1])[i] === x), name + ': menu mobile não padronizado');
     const target = name.includes('/') ? '../sobre2/' : 'sobre2/';
-    check(desktop[1].includes('href="' + target + '"') && mobile[1].includes('href="' + target + '"'), name + ': Sobre 2 com rota incorreta');
+    check(desktop[1].includes('href="' + target + '"') && mobile[1].includes('href="' + target + '"'), name + ': Sobre com rota incorreta');
   }
   const ids = Array.from(source.matchAll(/\bid\s*=\s*["']([^"']+)["']/gi), m => m[1]);
   check(ids.length === new Set(ids).size, name + ': IDs repetidos');
@@ -54,7 +54,14 @@ for (const [name, source] of Object.entries(html)) {
     check(fs.existsSync(asset), name + ': arquivo inexistente: ' + local);
   }
 }
-check(html['sobre.html'] === html['sobre-nos.html'], 'Páginas Sobre e Sobre Nós divergentes');
+for (const alias of ['sobre.html','sobre-nos.html']) {
+  const stub = read(alias);
+  check(stub.includes('url=sobre2/') && stub.includes('rel="canonical"') && !stub.includes('class="section'), alias + ': versão antiga não redireciona à página Sobre oficial');
+}
+for (const [name, source] of Object.entries(html)) {
+  check(!/href=["'][^"']*(?:sobre\.html|sobre-nos\.html)["']/.test(source), name + ': contém link para a página Sobre desativada');
+  check(!/>Sobre 2<\/a>/.test(source), name + ': mostra Sobre 2 no menu em vez da página Sobre oficial');
+}
 for (const section of ['about-hero-clean','about-tech-section','about-cta-section']) check(!html['sobre2/index.html'].includes('class="' + section + '"'), 'Sobre 2 reintroduziu ' + section);
 for (const section of ['id="sobre"','id="pilares"','id="equipe"']) check(html['sobre2/index.html'].includes(section), 'Sobre 2 perdeu ' + section);
 for (const alias of ['sobre2.html','Sobre2.html']) check(read(alias).includes('url=sobre2/'), alias + ' não redireciona');
