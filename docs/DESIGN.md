@@ -38,3 +38,6 @@ Assegurar contraste adequado: referência WCAG AA 4,5:1 para texto normal e 3:1 
 
 ## Fluxo
 Antes de publicar: executar node scripts/check-design-system.mjs, revisar desktop/mobile e acessibilidade, validar links, consultar preview, conferir GitHub Pages e registrar a mudança em .MD/changelog.md. Testes estáticos não substituem revisão visual real.
+
+
+Hero Sobre 2: assets/paginas/sobre2/hero-topo-sobre2.webp (imagem WebP otimizada, 1916 x 821 px).

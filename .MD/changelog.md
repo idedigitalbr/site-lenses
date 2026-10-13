@@ -3,6 +3,13 @@
 > Registro cronológico das atualizações do projeto (padrão Obsidian `.MD/`).
 
 
+## 2026-10-13 — fix(sobre2): imagem otimizada no hero editorial
+
+- Adicionada a fotografia panorâmica criada para o topo da página em `assets/paginas/sobre2/hero-topo-sobre2.webp` (WebP, 1916×821).
+- Fundo da seção `about2-origin-hero` passa a apontar para o arquivo local de alta qualidade, preservando overlay, textos e responsividade.
+
+---
+
 ## 2026-10-13 — feat(sobre2): hero editorial Raiz & Futuro
 
 - Adicionada a primeira seção da variante `/sobre2/`, seguindo a referência "Onde estratégia encontra propósito".
