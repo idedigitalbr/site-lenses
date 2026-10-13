@@ -1088,7 +1088,7 @@
 
 .about2-origin-hero__eyebrow {
   display: block;
-  margin-bottom: clamp(5px, .75vw, 12px);
+  margin-bottom: -8px;
   font-family: var(--font-heading);
   font-weight: 500;
   font-size: clamp(.72rem, .9vw, .94rem);
@@ -1155,7 +1155,7 @@
   .about2-origin-hero__eyebrow {
     font-size: clamp(.72rem, 2.2vw, .88rem);
     letter-spacing: .25em;
-    margin-bottom: 6px;
+    margin-bottom: -5px;
   }
 
   .about2-origin-hero__headline {
@@ -1180,7 +1180,7 @@
   }
 
   .about2-origin-hero__eyebrow {
-    margin-bottom: 5px;
+    margin-bottom: -4px;
   }
 
   .about2-origin-hero__headline {
