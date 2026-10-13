@@ -208,7 +208,7 @@
 }
 .lf-motion-ready .lf-step {
   transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1);
-  transition-delay:var(--step-delay);
+  transition-delay:var(--step-delay), 0ms;
 }
 .lf-motion-ready.is-in-view .lf-step {opacity:1;}
 .lf-motion-ready:not(.is-in-view) .lf-track-progress {transform:translateY(-50%) scaleX(0);}
@@ -217,7 +217,7 @@
   transition-delay:.14s;
 }
 .lf-motion-ready:not(.is-in-view) .lf-track-node {opacity:0;transform:translate(-50%,-50%) scale(.5);}
-.lf-motion-ready .lf-track-node {transition:opacity .6s ease,transform .6s ease,background .4s,box-shadow .4s;transition-delay:var(--node-delay);}
+.lf-motion-ready .lf-track-node {transition:opacity .6s ease,transform .6s ease,background .4s,box-shadow .4s;transition-delay:var(--node-delay), 0ms, 0ms, 0ms;}
 .lf-motion-ready.is-in-view .lf-track-node {opacity:1;}
 .lf-motion-ready:not(.is-in-view) .lf-track-flow {opacity:0;}
 @keyframes lf-flow {0%{left:-10%;opacity:0;}9%{opacity:.65;}87%{opacity:.62;}100%{left:96%;opacity:0;}}
