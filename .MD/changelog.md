@@ -1,3 +1,12 @@
+
+## 2026-10-13 — Componente Sobre unificado
+
+- Transformados os painéis Sobre / Contato da Home e da Sobre em um único componente renderizado por `assets/about-split.js`.
+- A Home começa fechada (`idle`), a Sobre começa aberta (`story`). Somente essa configuração varia.
+- Visual, texto, foto e indicadores da Sobre passam a valer também para a Home; sem CTA extra.
+- Estilos e comportamento compartilhados, X como controle de fechamento e verificação automática contra duplicação.
+
+---
 ## 2026-10-13 — Página Sobre oficial única
 
 - /sobre2/ passa a ser a única página Sobre oficial, exibida apenas como "Sobre" na navegação desktop e mobile.

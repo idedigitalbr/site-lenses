@@ -28,3 +28,6 @@ Caminhos na raiz: assets/... e sobre2/. Caminhos da pasta sobre2/: ../assets/...
 
 ## Alteração segura
 Preservar hooks de JS e ARIA, não modificar outras páginas ao editar uma variante, utilizar tokens e classes existentes, testar âncoras e botões e executar node scripts/check-design-system.mjs. Remoção de seção deve eliminar links quebrados e rever dependências de scripts.
+
+## Componente compartilhado Sobre / Contato
+O painel de Sobre e Contato vem de `assets/about-split.js` (fonte única de HTML e conteúdo). A Home insere `<section data-lenses-about-split data-initial-state="idle">` e `/sobre2/` usa `data-initial-state="story"`. Ambos recebem as mesmas classes `about2-reference-split`, estilo em `assets/pages.css` e interações em `assets/script.js`. O script do componente deve ser carregado antes de `assets/script.js`. Para editar fotografia, headline, manifesto, KPIs ou links, editar só `assets/about-split.js`. Não duplicar marcação nas páginas.

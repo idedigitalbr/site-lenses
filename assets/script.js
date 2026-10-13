@@ -342,9 +342,10 @@ document.addEventListener('DOMContentLoaded', () => {
   if (splitWrapper && panelStory && panelContact) {
     const initialState = splitWrapper.getAttribute('data-state') || 'idle';
     let currentState = initialState;
-    const isSobre2Split = Boolean(splitWrapper.closest('.about2-reference-split'));
-    const storyCloseControl = isSobre2Split ? panelStory.querySelector('.about2-close-control') : null;
-    const contactCloseControl = isSobre2Split ? panelContact.querySelector('.about2-close-control') : null;
+    const isSharedAboutSplit = Boolean(splitWrapper.closest('.about2-reference-split'));
+    // Nas duas páginas, o mesmo componente usa apenas o estado inicial diferente.
+    const storyCloseControl = isSharedAboutSplit ? panelStory.querySelector('.about2-close-control') : null;
+    const contactCloseControl = isSharedAboutSplit ? panelContact.querySelector('.about2-close-control') : null;
 
     function applyState(state) {
       currentState = state;
@@ -368,8 +369,8 @@ document.addEventListener('DOMContentLoaded', () => {
         panelContact.setAttribute('aria-expanded', 'false');
       }
 
-      // Somente na Sobre 2: os indicadores são botões acessíveis de abrir/fechar.
-      if (isSobre2Split) {
+      // Nos dois painéis compartilhados, os indicadores são botões acessíveis de abrir/fechar.
+      if (isSharedAboutSplit) {
         storyCloseControl?.setAttribute('aria-label', state === 'story' ? 'Fechar Sobre a Lenses' : 'Abrir Sobre a Lenses');
         contactCloseControl?.setAttribute('aria-label', state === 'contact' ? 'Fechar Contato' : 'Abrir Contato');
         storyCloseControl?.setAttribute('aria-expanded', String(state === 'story'));
@@ -381,9 +382,9 @@ document.addEventListener('DOMContentLoaded', () => {
       applyState(initialState);
     }
 
-    // Na variante Sobre 2, fechar exige clicar no X. Cliques na área aberta
+    // No painel compartilhado, fechar exige clicar no X. Cliques na área aberta
     // não encerram o painel; o outro painel continua podendo ser aberto.
-    if (isSobre2Split) {
+    if (isSharedAboutSplit) {
       [[storyCloseControl, 'story'], [contactCloseControl, 'contact']].forEach(([control, panelState]) => {
         if (!control) return;
         control.addEventListener('click', (event) => {
@@ -408,9 +409,9 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       if (currentState === targetPanelName) {
-        // Sobre 2: não fechar ao clicar no conteúdo, na foto ou nos indicadores.
+        // Painel compartilhado: não fechar ao clicar no conteúdo, na foto ou nos indicadores.
         // O único controle de fechamento é o X, tratado no listener acima.
-        if (isSobre2Split) return;
+        if (isSharedAboutSplit) return;
         // Demais páginas preservam o comportamento original.
         applyState('idle');
       } else {
@@ -425,7 +426,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Acessibilidade via Teclado (Enter, Space, Escape)
     function handleKeydown(panelName, event) {
       // Não interceptar Enter/Espaço nos botões X ou outros filhos interativos.
-      if (isSobre2Split && event.target !== event.currentTarget) return;
+      if (isSharedAboutSplit && event.target !== event.currentTarget) return;
       if (event.key === 'Enter' || event.key === ' ') {
         event.preventDefault();
         handlePanelClick(panelName, event);
