@@ -1002,3 +1002,316 @@
 }
 
 
+
+/* ==========================================================================
+   SOBRE 2 — HERO EDITORIAL "ONDE ESTRATÉGIA ENCONTRA PROPÓSITO"
+   Escopo exclusivo da variante /sobre2/. Tokens oficiais em assets/tokens.css.
+   ========================================================================== */
+.about2-origin-hero {
+  position: relative;
+  isolation: isolate;
+  min-height: clamp(600px, 86svh, 870px);
+  display: grid;
+  overflow: hidden;
+  background: var(--color-brand-space-blue);
+  color: var(--text-white);
+}
+
+.about2-origin-hero__media,
+.about2-origin-hero__shade,
+.about2-origin-hero__contours {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.about2-origin-hero__media {
+  z-index: -3;
+  background-image: url("paginas/home/s5-cases-duo/duo-amazonia.png");
+  background-position: center 45%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  transform: scale(1.025);
+}
+
+.about2-origin-hero__shade {
+  z-index: -2;
+  background:
+    linear-gradient(90deg,
+      rgba(12, 22, 44, .97) 0%,
+      rgba(20, 31, 55, .91) 22%,
+      rgba(26, 38, 63, .55) 43%,
+      rgba(25, 34, 49, .09) 70%,
+      rgba(14, 25, 45, .18) 100%),
+    linear-gradient(0deg,
+      rgba(7, 15, 30, .75) 0%,
+      rgba(7, 15, 30, .10) 47%,
+      rgba(7, 15, 30, .13) 100%);
+}
+
+.about2-origin-hero__contours {
+  z-index: -1;
+  width: 47%;
+  opacity: .17;
+  background: repeating-radial-gradient(
+    ellipse 73% 61% at 4% 47%,
+    transparent 0,
+    transparent 18px,
+    rgba(200, 213, 255, .43) 19px,
+    transparent 20px,
+    transparent 34px
+  );
+  -webkit-mask-image: linear-gradient(90deg, #000 7%, transparent 100%);
+  mask-image: linear-gradient(90deg, #000 7%, transparent 100%);
+}
+
+.about2-origin-hero__layout {
+  position: relative;
+  width: min(100%, 1600px);
+  min-height: inherit;
+  margin-inline: auto;
+  padding: clamp(142px, 15vh, 200px) clamp(28px, 6.25vw, 108px) clamp(58px, 9vh, 105px);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+  align-items: end;
+  gap: clamp(28px, 5vw, 90px);
+}
+
+.about2-origin-hero__intro {
+  align-self: center;
+  max-width: 590px;
+}
+
+.about2-origin-hero__headline {
+  margin: 0 0 26px;
+  font-family: var(--font-heading);
+  font-size: clamp(3.15rem, 5.7vw, 6.2rem);
+  font-weight: var(--fw-bold);
+  line-height: .99;
+  letter-spacing: -.055em;
+  color: var(--text-white);
+}
+
+.about2-origin-hero__headline span {
+  color: #9cafea;
+}
+
+.about2-origin-hero__lead {
+  max-width: 440px;
+  margin: 0 0 25px;
+  font-size: clamp(.94rem, 1.14vw, 1.12rem);
+  line-height: 1.55;
+  font-weight: var(--fw-regular);
+  color: var(--text-white);
+  text-wrap: pretty;
+}
+
+.about2-origin-hero__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  min-width: 168px;
+  padding: 12px 19px;
+  background: var(--gradient-brand-angle);
+  color: var(--text-white);
+  font-size: .84rem;
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0;
+  text-transform: none;
+  border: 1px solid rgba(255, 255, 255, .22);
+  box-shadow: 0 12px 34px rgba(13, 29, 63, .34);
+  transition: transform .25s var(--ease-cinematic), filter .25s ease;
+}
+
+.about2-origin-hero__button:hover {
+  color: var(--text-white);
+  filter: brightness(1.15);
+  transform: translateY(-2px);
+}
+
+.about2-origin-hero__button:focus-visible {
+  outline: 3px solid var(--color-brand-antiflash);
+  outline-offset: 4px;
+}
+
+.about2-origin-hero__button svg {
+  flex: 0 0 auto;
+  transition: transform .2s ease;
+}
+
+.about2-origin-hero__button:hover svg {
+  transform: translateX(4px);
+}
+
+.about2-origin-hero__roots {
+  display: grid;
+  grid-template-columns: minmax(0, .8fr) minmax(0, 1fr);
+  align-items: start;
+  gap: clamp(18px, 2vw, 34px);
+  padding-bottom: 10px;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, .45);
+}
+
+.about2-origin-hero__signature {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+}
+
+.about2-origin-hero__ampersand {
+  font-family: var(--font-heading);
+  color: var(--color-brand-saboia);
+  font-weight: var(--fw-bold);
+  font-size: clamp(4rem, 7.6vw, 8.5rem);
+  line-height: .76;
+  letter-spacing: -.12em;
+}
+
+.about2-origin-hero__signature-lines {
+  display: grid;
+  margin-left: 1px;
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 3.5vw, 4.3rem);
+  font-weight: var(--fw-bold);
+  line-height: .86;
+  letter-spacing: -.055em;
+  color: var(--text-white);
+}
+
+.about2-origin-hero__roots-copy {
+  border-left: 1px solid rgba(237, 236, 237, .5);
+  padding-left: clamp(14px, 1.65vw, 26px);
+}
+
+.about2-origin-hero__roots-copy p {
+  font-size: clamp(.82rem, 1vw, 1rem);
+  font-weight: var(--fw-regular);
+  line-height: 1.45;
+  color: var(--text-white);
+}
+
+.about2-origin-hero__roots-copy p + p {
+  margin-top: 17px;
+}
+
+@media (max-width: 1100px) {
+  .about2-origin-hero__layout {
+    grid-template-columns: minmax(0, 1fr) minmax(0, .9fr);
+    gap: 28px;
+    padding-inline: 38px;
+  }
+
+  .about2-origin-hero__roots {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .about2-origin-hero__roots-copy {
+    max-width: 340px;
+  }
+}
+
+@media (max-width: 768px) {
+  .about2-origin-hero {
+    min-height: 0;
+  }
+
+  .about2-origin-hero__media {
+    background-position: 58% center;
+  }
+
+  .about2-origin-hero__shade {
+    background: linear-gradient(180deg,
+      rgba(16, 27, 51, .94) 0%,
+      rgba(20, 30, 53, .83) 39%,
+      rgba(16, 27, 51, .40) 67%,
+      rgba(12, 22, 42, .86) 100%);
+  }
+
+  .about2-origin-hero__contours {
+    width: 100%;
+    opacity: .12;
+  }
+
+  .about2-origin-hero__layout {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: clamp(55px, 13vw, 95px);
+    padding: 128px 24px 54px;
+  }
+
+  .about2-origin-hero__intro {
+    align-self: stretch;
+  }
+
+  .about2-origin-hero__headline {
+    font-size: clamp(3.1rem, 10.5vw, 4.7rem);
+    line-height: 1;
+    margin-bottom: 24px;
+  }
+
+  .about2-origin-hero__lead {
+    max-width: 400px;
+    font-size: 1rem;
+  }
+
+  .about2-origin-hero__roots {
+    grid-template-columns: minmax(0, .72fr) minmax(0, 1fr);
+    align-items: center;
+    gap: 16px;
+  }
+
+  .about2-origin-hero__signature-lines {
+    font-size: clamp(1.75rem, 6.4vw, 2.5rem);
+  }
+
+  .about2-origin-hero__ampersand {
+    font-size: clamp(3.65rem, 12vw, 5.4rem);
+  }
+
+  .about2-origin-hero__roots-copy {
+    max-width: none;
+  }
+
+  .about2-origin-hero__roots-copy p {
+    font-size: .82rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .about2-origin-hero__layout {
+    padding: 122px 20px 44px;
+  }
+
+  .about2-origin-hero__headline {
+    font-size: clamp(2.75rem, 11.2vw, 3.8rem);
+  }
+
+  .about2-origin-hero__roots {
+    align-items: start;
+    gap: 11px;
+  }
+
+  .about2-origin-hero__roots-copy {
+    padding-left: 12px;
+  }
+
+  .about2-origin-hero__roots-copy p {
+    font-size: .76rem;
+  }
+
+  .about2-origin-hero__roots-copy p + p {
+    margin-top: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about2-origin-hero__media,
+  .about2-origin-hero__button,
+  .about2-origin-hero__button svg {
+    transform: none;
+    transition: none;
+  }
+}

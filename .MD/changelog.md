@@ -3,6 +3,15 @@
 > Registro cronológico das atualizações do projeto (padrão Obsidian `.MD/`).
 
 
+## 2026-10-13 — feat(sobre2): hero editorial Raiz & Futuro
+
+- Adicionada a primeira seção da variante `/sobre2/`, seguindo a referência "Onde estratégia encontra propósito".
+- Tipografia Inter, composição editorial com grid, azul institucional, texturas topográficas, chamada Nossa história e mensagem territorial.
+- Reutilizado asset amazônico existente e incluídas regras responsivas e de redução de movimento em `assets/pages.css`.
+- Nenhuma alteração em `sobre.html` ou `sobre-nos.html`.
+
+---
+
 ## 2026-10-13 — refactor: design system modular e governança
 
 - Tokens consolidados em assets/tokens.css e correção de 3 variáveis CSS ausentes.

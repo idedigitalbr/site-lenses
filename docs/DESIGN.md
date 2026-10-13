@@ -33,7 +33,7 @@ Assegurar contraste adequado: referência WCAG AA 4,5:1 para texto normal e 3:1 
 
 ## Páginas
 - sobre.html e sobre-nos.html: versão institucional original e alias idêntico.
-- sobre2/index.html: variante editorial; sem hero, cards técnicos ou CTA final. Diferenças intencionais, tokens compartilhados.
+- sobre2/index.html: variante editorial com novo hero institucional próprio "Onde estratégia encontra propósito", sem o antigo hero em vídeo, cards técnicos ou CTA final. Tokens e componentes compartilhados.
 - sobre2.html e Sobre2.html: aliases redirecionados para /sobre2/.
 
 ## Fluxo
