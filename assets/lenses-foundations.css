@@ -346,3 +346,234 @@
   .lf-motion-ready:not(.is-in-view) .lf-track-node{opacity:1;transform:translate(-50%,-50%);}
   .lf-motion-ready:not(.is-in-view) .lf-grid::after{transform:scaleY(1);}
 }
+
+
+/* ==========================================================================
+   Lenses Foundations • Motion v4
+   Coreografia: 3 checkpoints -> linha progressiva -> foco por hover/toque.
+   Preserva o layout claro institucional e todo o conteúdo existente.
+   ========================================================================== */
+.lf-section {
+  --lf-motion: cubic-bezier(.22, 1, .36, 1);
+  --lf-progress: 1;
+  --lf-beacon-left: 100%;
+}
+.lf-step {
+  isolation: isolate;
+  overflow: hidden;
+  cursor: pointer;
+  transform-origin: 50% 80%;
+  background: rgba(255,255,255,.82);
+  box-shadow: 0 9px 32px rgba(32,42,68,.035);
+  transition: opacity .68s ease,
+              transform .8s var(--lf-motion),
+              box-shadow .55s ease,
+              border-color .55s ease;
+}
+.lf-step > * {position: relative; z-index: 1;}
+.lf-step::before {z-index: 2;}
+/* Preenchimento real do card: a tinta azul sobe da base sem deslocar texto. */
+.lf-step::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  inset: -1px;
+  border-radius: inherit;
+  background:
+    radial-gradient(ellipse 90% 85% at var(--lf-spot-x,75%) var(--lf-spot-y,15%),
+      rgba(255,255,255,.16) 0%, transparent 72%),
+    linear-gradient(140deg, #4a588a 0%, #5C6CA4 53%, #7886bc 100%);
+  transform: scaleY(0);
+  transform-origin: bottom center;
+  opacity: .99;
+  transition: transform .7s cubic-bezier(.16,1,.3,1);
+  pointer-events: none;
+}
+.lf-step:is(:hover,:focus-visible,.is-active)::after {
+  transform: scaleY(1);
+}
+.lf-step:is(:hover,:focus-visible,.is-active) {
+  border-color: rgba(74,88,138,.76);
+  box-shadow:
+    0 24px 58px rgba(53,67,110,.23),
+    0 7px 22px rgba(92,108,164,.10);
+}
+.lf-step:is(:hover,:focus-visible,.is-active)::before {
+  background: rgba(255,255,255,.85);
+  opacity: 1;
+  width: 86px;
+}
+.lf-step:is(:hover,:focus-visible,.is-active) .lf-step-title {
+  color: #fff;
+}
+.lf-step:is(:hover,:focus-visible,.is-active) .lf-step-copy {
+  color: rgba(255,255,255,.91);
+}
+.lf-step .lf-step-title,
+.lf-step .lf-step-copy {
+  transition: color .38s ease;
+}
+.lf-step:is(:hover,:focus-visible,.is-active) .lf-symbol {
+  background: radial-gradient(circle at 30% 25%,rgba(255,255,255,.23),rgba(255,255,255,.09));
+  color: #fff;
+  border-color: rgba(255,255,255,.56);
+  box-shadow:
+    inset 0 0 0 7px rgba(255,255,255,.10),
+    0 12px 32px rgba(25,38,77,.18);
+}
+.lf-step:is(:hover,:focus-visible,.is-active) .lf-symbol::before {
+  border-color: rgba(255,255,255,.75);
+}
+.lf-step:is(:hover,:focus-visible,.is-active) .lf-symbol::after {
+  border-color: rgba(255,255,255,.4);
+}
+.lf-step:is(:hover,:focus-visible,.is-active) .lf-symbol svg {
+  stroke: #fff;
+  filter: drop-shadow(0 2px 10px rgba(21,35,69,.12));
+}
+/* Anéis preenchem primeiro; ícone acompanha suavemente o estado do card. */
+.lf-symbol {
+  transition: background .55s, color .45s, box-shadow .6s,
+              border-color .48s, transform .7s var(--lf-motion);
+}
+.lf-step.is-revealed .lf-symbol {animation-play-state: running;}
+.lf-track {
+  --lf-progress: 1;
+}
+.lf-track-progress {
+  transform: translateY(-50%) scaleX(var(--lf-progress));
+  transition: transform .82s cubic-bezier(.3,.04,.15,1);
+  box-shadow: 0 0 12px rgba(92,108,164,.26);
+}
+.lf-track-progress::after {
+  width: 9px;
+  height: 9px;
+  background: #7886bc;
+  box-shadow: 0 0 0 4px rgba(92,108,164,.12), 0 0 17px rgba(92,108,164,.4);
+}
+.lf-track-flow {
+  width: 78px;
+  height: 4px;
+  top: calc(50% - 2px);
+  left: var(--lf-beacon-left);
+  transform: translateX(-50%);
+  opacity: 0;
+  border-radius: 99px;
+  background: radial-gradient(ellipse at center,rgba(245,248,255,1),rgba(120,134,188,.75) 46%,transparent 78%);
+  box-shadow: 0 0 15px rgba(92,108,164,.38);
+  animation: none;
+  transition: left .82s cubic-bezier(.3,.04,.15,1), opacity .35s ease;
+  z-index: 2;
+}
+.lf-section.is-traveling .lf-track-flow {opacity: 1;}
+.lf-track-node {
+  transition: opacity .36s ease, transform .58s var(--lf-motion),
+              background-color .4s, box-shadow .48s, scale .48s;
+}
+.lf-track-node.is-reached {
+  background: #5C6CA4;
+  box-shadow: 0 0 0 4px rgba(92,108,164,.10), 0 0 18px rgba(92,108,164,.20);
+}
+.lf-track-node.is-active {
+  scale: 1.27;
+  background: #7886bc;
+  box-shadow: 0 0 0 7px rgba(92,108,164,.16), 0 0 24px rgba(92,108,164,.28);
+}
+.lf-track-node.is-active::after {
+  opacity: 1;
+  animation: lf-node-pulse 1.45s ease-out infinite;
+}
+@keyframes lf-node-pulse {
+  0% {transform:scale(.68);opacity:.7;}
+  75%,100% {transform:scale(1.8);opacity:0;}
+}
+/* Quando JS assume a timeline, ele decide cada checkpoint. */
+.lf-motion-ready .lf-track,
+.lf-motion-ready .lf-grid {--lf-progress: inherit;}
+.lf-motion-ready .lf-track-progress {
+  transition: transform .82s cubic-bezier(.3,.04,.15,1);
+  transition-delay: 0s;
+}
+.lf-motion-ready:not(.is-in-view) .lf-track-progress {
+  transform: translateY(-50%) scaleX(0);
+}
+.lf-motion-ready.is-in-view .lf-track-progress {
+  transform: translateY(-50%) scaleX(var(--lf-progress));
+}
+.lf-motion-ready .lf-track-node {
+  transition-delay: 0s;
+}
+.lf-motion-ready:not(.is-in-view) .lf-track-node,
+.lf-motion-ready.is-in-view .lf-track-node:not(.is-revealed) {
+  opacity: 0;
+  transform: translate(-50%,-50%) scale(.45);
+}
+.lf-motion-ready.is-in-view .lf-track-node.is-revealed {
+  opacity: 1;
+  transform: translate(-50%,-50%) scale(1);
+}
+.lf-motion-ready .lf-step {
+  transition-delay: 0s;
+}
+.lf-motion-ready:not(.is-in-view) .lf-step,
+.lf-motion-ready.is-in-view .lf-step:not(.is-revealed) {
+  opacity: 0;
+  transform: translate3d(0,38px,0) scale(.965);
+  pointer-events: none;
+}
+.lf-motion-ready.is-in-view .lf-step.is-revealed {
+  opacity: 1;
+  transform: translate3d(0,0,0) scale(1);
+}
+.lf-motion-ready:not(.is-settled) .lf-step {
+  pointer-events: none;
+}
+.lf-motion-ready.is-settled .lf-step:is(:hover,:focus-visible,.is-active) {
+  transform: translate3d(0,-11px,0) scale(1.025);
+}
+.lf-motion-ready.is-in-view:not(.is-settled) .lf-step.is-active.is-revealed {
+  transform: translate3d(0,-6px,0) scale(1.013);
+}
+.lf-motion-ready:not(.is-settled) .lf-track-flow {
+  animation: none;
+}
+.lf-motion-ready:not(.is-settled) .lf-symbol {
+  animation-play-state: paused;
+}
+.lf-motion-ready .lf-step.is-active .lf-symbol {
+  animation-play-state: paused;
+}
+/* Linha vertical no mobile participa da mesma animação de progresso. */
+@media(max-width:620px) {
+  .lf-motion-ready.is-in-view .lf-grid::after {
+    transform:scaleY(var(--lf-progress));
+    transition:transform .82s cubic-bezier(.3,.04,.15,1);
+    transition-delay:0s;
+  }
+  .lf-motion-ready:not(.is-in-view) .lf-grid::after {transform:scaleY(0);}
+  .lf-step:is(:hover,:focus-visible,.is-active)::before {
+    width:14px;
+    height:14px;
+    background:#7886bc;
+    border-color:#fcfcfe;
+    box-shadow:0 0 0 5px rgba(92,108,164,.2);
+  }
+  .lf-motion-ready.is-settled .lf-step:is(:hover,:focus-visible,.is-active) {
+    transform:translate3d(0,-5px,0) scale(1.012);
+  }
+  .lf-motion-ready.is-in-view:not(.is-settled) .lf-step.is-active.is-revealed {
+    transform:translate3d(0,-4px,0) scale(1.005);
+  }
+}
+@media(prefers-reduced-motion:reduce) {
+  .lf-step::after {transition:none;}
+  .lf-track-progress,.lf-track-flow,.lf-motion-ready.is-in-view .lf-grid::after {transition:none;}
+  .lf-motion-ready:not(.is-in-view) .lf-step,
+  .lf-motion-ready.is-in-view .lf-step:not(.is-revealed) {
+    opacity:1;transform:none;pointer-events:auto;
+  }
+  .lf-motion-ready:not(.is-in-view) .lf-track-node,
+  .lf-motion-ready.is-in-view .lf-track-node:not(.is-revealed) {
+    opacity:1;transform:translate(-50%,-50%) scale(1);
+  }
+}
