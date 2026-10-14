@@ -52,6 +52,13 @@
     if (panel) {
       panel.removeAttribute('hidden');
       panel.style.maxHeight = panel.scrollHeight + 'px';
+      const onEnd = (e) => {
+        if (e.target === panel && item.classList.contains('is-open')) {
+          panel.style.maxHeight = 'none';
+          panel.removeEventListener('transitionend', onEnd);
+        }
+      };
+      panel.addEventListener('transitionend', onEnd);
     }
   }
 
@@ -59,12 +66,16 @@
     item.classList.remove('is-open');
     trigger.setAttribute('aria-expanded', 'false');
     if (panel) {
+      if (panel.style.maxHeight === 'none') {
+        panel.style.maxHeight = panel.scrollHeight + 'px';
+        void panel.offsetHeight;
+      }
       panel.style.maxHeight = '0px';
       setTimeout(() => {
         if (!item.classList.contains('is-open')) {
           panel.setAttribute('hidden', '');
         }
-      }, 350);
+      }, 400);
     }
   }
 

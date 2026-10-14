@@ -2717,58 +2717,40 @@
 
 /* ==========================================================================
    14. PÁGINA DE SERVIÇOS — DESIGN EDITORIAL ORGÂNICO (AZUL SABÓIA PROTAGONISTA)
+   Totalmente alinhado à vibe luminosa, refinada e editorial de /sobre2/
    ========================================================================== */
 
 .services-page {
-  background-color: var(--bg-body);
-  color: var(--text-white);
+  background-color: #fcfcfe;
+  color: var(--color-brand-space-blue);
   font-family: var(--font-main);
   overflow-x: hidden;
 }
 
-/* 14.1 HERO EDITORIAL ORGÂNICO */
-.srv-hero {
-  position: relative;
-  min-height: 85vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: calc(var(--top-ticker-height) + 110px) 0 80px;
-  background-color: var(--bg-body);
-  overflow: hidden;
-  border-bottom: 1px solid rgba(92, 108, 164, 0.16);
-}
-
-.srv-hero__glow {
-  position: absolute;
+.services-page .bg-ambient-layer {
+  position: fixed;
   inset: 0;
   pointer-events: none;
   background:
-    radial-gradient(ellipse 60% 45% at 50% 15%, rgba(92, 108, 164, 0.35) 0%, transparent 70%),
-    radial-gradient(circle at 85% 65%, rgba(92, 108, 164, 0.22) 0%, transparent 60%);
-  z-index: 1;
+    radial-gradient(ellipse 55% 45% at 10% 8%, rgba(92, 108, 164, 0.08), transparent 70%),
+    radial-gradient(ellipse 50% 50% at 92% 35%, rgba(92, 108, 164, 0.05), transparent 75%),
+    radial-gradient(ellipse 45% 45% at 15% 75%, rgba(92, 108, 164, 0.06), transparent 75%);
+  z-index: 0;
 }
 
-.srv-hero__watermark {
-  position: absolute;
-  top: 15%;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: clamp(80px, 16vw, 240px);
-  font-weight: 900;
-  color: rgba(92, 108, 164, 0.05);
-  letter-spacing: -0.05em;
-  user-select: none;
-  pointer-events: none;
-  z-index: 1;
-  white-space: nowrap;
+/* 14.1 HERO EDITORIAL REFINADO & PROPORCIONAL */
+.srv-hero {
+  position: relative;
+  padding: calc(var(--top-ticker-height) + 84px) 0 clamp(44px, 5.5vw, 72px);
+  background: transparent;
+  border-bottom: 1px solid rgba(92, 108, 164, 0.14);
 }
 
 .srv-hero__container {
   position: relative;
   z-index: 2;
   width: 100%;
-  max-width: 1320px;
+  max-width: 1280px;
   margin: 0 auto;
   padding: 0 36px;
 }
@@ -2777,30 +2759,30 @@
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  font-size: 11px;
+  font-size: 0.74rem;
   font-weight: 700;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.28em;
   text-transform: uppercase;
   color: var(--color-brand-saboia);
-  margin-bottom: 24px;
+  margin-bottom: 18px;
 }
 
 .srv-hero__eyebrow::before {
   content: '';
-  width: 24px;
+  width: 22px;
   height: 2px;
   background-color: var(--color-brand-saboia);
   border-radius: 2px;
 }
 
 .srv-hero__title {
-  font-size: clamp(38px, 6.2vw, 84px);
-  font-weight: 800;
-  line-height: 1.05;
-  letter-spacing: -0.035em;
-  color: var(--color-brand-white);
-  margin-bottom: 28px;
-  max-width: 1100px;
+  font-size: clamp(28px, 3.5vw, 46px);
+  font-weight: 750;
+  line-height: 1.18;
+  letter-spacing: -0.025em;
+  color: var(--color-brand-space-blue);
+  margin-bottom: 22px;
+  max-width: 940px;
 }
 
 .srv-hero__title span.saboia {
@@ -2808,27 +2790,27 @@
 }
 
 .srv-hero__lead {
-  font-size: clamp(17px, 1.8vw, 22px);
+  font-size: clamp(15px, 1.2vw, 18px);
   font-weight: 400;
-  line-height: 1.65;
-  color: var(--text-white-muted);
-  max-width: 860px;
-  margin-bottom: 48px;
+  line-height: 1.68;
+  color: #556075;
+  max-width: 820px;
+  margin-bottom: 34px;
 }
 
 .srv-hero__nav-strip {
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 20px;
   flex-wrap: wrap;
-  padding-top: 24px;
-  border-top: 1px solid rgba(92, 108, 164, 0.2);
+  padding-top: 22px;
+  border-top: 1px solid rgba(92, 108, 164, 0.14);
 }
 
 .srv-hero__nav-label {
-  font-size: 11px;
+  font-size: 0.72rem;
   font-weight: 700;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--color-brand-saboia);
 }
@@ -2836,7 +2818,7 @@
 .srv-hero__nav-links {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 12px;
   flex-wrap: wrap;
 }
 
@@ -2845,13 +2827,14 @@
   align-items: center;
   gap: 8px;
   font-size: 13px;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.85);
+  font-weight: 550;
+  color: var(--color-brand-space-blue);
   text-decoration: none;
-  padding: 8px 16px;
+  padding: 8px 18px;
   border-radius: var(--radius-pill);
-  background: rgba(92, 108, 164, 0.08);
-  border: 1px solid rgba(92, 108, 164, 0.25);
+  background: #ffffff;
+  border: 1px solid rgba(92, 108, 164, 0.22);
+  box-shadow: 0 2px 10px rgba(32, 42, 68, 0.03);
   transition: var(--transition-fast);
 }
 
@@ -2860,7 +2843,7 @@
   border-color: var(--color-brand-saboia);
   color: var(--color-brand-white);
   transform: translateY(-2px);
-  box-shadow: 0 4px 16px rgba(92, 108, 164, 0.4);
+  box-shadow: 0 6px 20px rgba(92, 108, 164, 0.28);
 }
 
 .srv-hero__nav-link .num {
@@ -2873,74 +2856,88 @@
   color: var(--color-brand-white);
 }
 
-/* 14.2 FRENTE EDITORIAL: LAYOUT SPLIT ASSIMÉTRICO & ORGÂNICO */
+/* 14.2 FRENTES DE ATUAÇÃO (SPLIT ASSIMÉTRICO LUMINOSO) */
 .srv-pillar {
   position: relative;
-  padding: clamp(90px, 9vw, 150px) 0;
-  transition: opacity 0.3s ease;
+  padding: clamp(70px, 7vw, 110px) 0;
+  border-bottom: 1px solid rgba(92, 108, 164, 0.14);
+}
+
+.srv-pillar:nth-of-type(odd) {
+  background-color: #fcfcfe;
+}
+
+.srv-pillar:nth-of-type(even) {
+  background-color: #ffffff;
 }
 
 .srv-pillar__container {
-  max-width: 1320px;
+  max-width: 1280px;
   margin: 0 auto;
   padding: 0 36px;
 }
 
 .srv-split {
   display: grid;
-  grid-template-columns: minmax(320px, 460px) 1fr;
-  gap: clamp(48px, 6vw, 96px);
+  grid-template-columns: minmax(320px, 440px) 1fr;
+  gap: clamp(48px, 5.5vw, 84px);
   align-items: start;
 }
 
-/* Coluna da Esquerda (Identidade da Frente) */
+/* Coluna Esquerda: Contexto, Identidade & Mídia Real */
 .srv-split__sticky {
   position: sticky;
   top: 110px;
   display: flex;
   flex-direction: column;
-  gap: 28px;
+  gap: 24px;
+  z-index: 5;
 }
 
 .srv-pillar-badge {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  font-size: 11px;
+  font-size: 0.72rem;
   font-weight: 700;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
+  color: var(--color-brand-saboia);
 }
 
 .srv-pillar-num {
-  font-size: clamp(48px, 5vw, 76px);
+  font-size: clamp(44px, 4.5vw, 64px);
   font-weight: 800;
   line-height: 1;
   font-variant-numeric: tabular-nums;
   letter-spacing: -0.04em;
+  color: var(--color-brand-saboia);
 }
 
 .srv-pillar-title {
-  font-size: clamp(28px, 3.2vw, 44px);
-  font-weight: 800;
-  line-height: 1.12;
+  font-size: clamp(24px, 2.6vw, 36px);
+  font-weight: 750;
+  line-height: 1.15;
   letter-spacing: -0.025em;
+  color: var(--color-brand-space-blue);
   margin: 0;
 }
 
 .srv-pillar-manifesto {
-  font-size: 16px;
+  font-size: 15px;
   line-height: 1.65;
+  color: #556075;
   margin: 0;
 }
 
-/* Mídia Editorial Integrada com Legenda Sutil */
+/* Card de Mídia Real de Produção */
 .srv-media-box {
   position: relative;
-  border-radius: 14px;
+  border-radius: 18px;
   overflow: hidden;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25);
-  background-color: #000;
+  background-color: #f0f2f8;
+  border: 1px solid rgba(92, 108, 164, 0.18);
+  box-shadow: 0 12px 32px rgba(32, 42, 68, 0.06);
 }
 
 .srv-media-box video,
@@ -2953,13 +2950,16 @@
 }
 
 .srv-media-caption {
-  padding: 14px 18px;
+  padding: 12px 18px;
   font-size: 12px;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0.04em;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  background-color: #ffffff;
+  color: var(--color-brand-space-blue);
+  border-top: 1px solid rgba(92, 108, 164, 0.12);
 }
 
 .srv-media-caption::before {
@@ -2968,7 +2968,7 @@
   height: 6px;
   border-radius: var(--radius-full);
   background-color: var(--color-brand-saboia);
-  box-shadow: 0 0 8px var(--color-brand-saboia);
+  box-shadow: 0 0 6px var(--color-brand-saboia);
 }
 
 .srv-sticky-cta {
@@ -2977,9 +2977,14 @@
   gap: 10px;
   font-size: 13px;
   font-weight: 600;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.03em;
   text-decoration: none;
   width: fit-content;
+  color: var(--color-brand-saboia);
+  background: rgba(92, 108, 164, 0.08);
+  border: 1px solid rgba(92, 108, 164, 0.22);
+  padding: 11px 22px;
+  border-radius: var(--radius-pill);
   transition: var(--transition-fast);
 }
 
@@ -2989,23 +2994,31 @@
   transition: transform 0.2s ease;
 }
 
+.srv-sticky-cta:hover {
+  background-color: var(--color-brand-saboia);
+  color: var(--color-brand-white);
+  border-color: var(--color-brand-saboia);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(92, 108, 164, 0.3);
+}
+
 .srv-sticky-cta:hover svg {
   transform: translate(3px, -3px);
 }
 
-/* Coluna da Direita (Lista de Serviços Fluida) */
+/* Coluna Direita: Lista Fluida de Serviços */
 .srv-list {
   display: flex;
   flex-direction: column;
 }
 
 .srv-item {
-  border-top: 1px solid rgba(92, 108, 164, 0.2);
+  border-top: 1px solid rgba(92, 108, 164, 0.15);
   transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
 .srv-item:last-child {
-  border-bottom: 1px solid rgba(92, 108, 164, 0.2);
+  border-bottom: 1px solid rgba(92, 108, 164, 0.15);
 }
 
 .srv-item__trigger {
@@ -3014,7 +3027,7 @@
   background: transparent;
   border: none;
   text-align: left;
-  padding: 28px 0;
+  padding: 24px 0;
   cursor: pointer;
   display: flex;
   align-items: baseline;
@@ -3027,7 +3040,7 @@
 .srv-item__meta {
   display: flex;
   align-items: baseline;
-  gap: 20px;
+  gap: 18px;
   flex: 1;
 }
 
@@ -3036,27 +3049,36 @@
   font-weight: 700;
   color: var(--color-brand-saboia);
   font-variant-numeric: tabular-nums;
-  min-width: 34px;
+  min-width: 36px;
 }
 
 .srv-item__title {
-  font-size: clamp(20px, 2vw, 26px);
-  font-weight: 700;
+  font-size: clamp(18px, 1.7vw, 23px);
+  font-weight: 650;
   line-height: 1.25;
   letter-spacing: -0.015em;
+  color: var(--color-brand-space-blue);
   margin: 0;
   transition: color 0.2s ease;
 }
 
+.srv-item:hover .srv-item__title,
+.srv-item.is-open .srv-item__title {
+  color: var(--color-brand-saboia);
+}
+
 .srv-item__arrow {
-  width: 28px;
-  height: 28px;
+  width: 32px;
+  height: 32px;
   border-radius: var(--radius-full);
+  background-color: rgba(92, 108, 164, 0.08);
+  color: var(--color-brand-saboia);
+  border: 1px solid rgba(92, 108, 164, 0.18);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  transition: transform 0.3s var(--ease-cinematic), background-color 0.2s ease, color 0.2s ease;
+  transition: transform 0.35s var(--ease-cinematic), background-color 0.2s ease, color 0.2s ease;
 }
 
 .srv-item__arrow svg {
@@ -3065,6 +3087,9 @@
 }
 
 .srv-item.is-open .srv-item__arrow {
+  background-color: var(--color-brand-saboia);
+  color: var(--color-brand-white);
+  border-color: var(--color-brand-saboia);
   transform: rotate(45deg);
 }
 
@@ -3076,23 +3101,25 @@
 }
 
 .srv-item__content {
-  padding: 0 0 36px 54px;
+  padding: 0 0 32px 54px;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 20px;
 }
 
 .srv-item__prose {
-  font-size: 16px;
-  line-height: 1.75;
-  max-width: 780px;
+  font-size: 15px;
+  line-height: 1.7;
+  color: #556075;
+  max-width: 760px;
+  margin: 0;
 }
 
 .srv-item__deliverables {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  padding-top: 8px;
+  padding-top: 4px;
 }
 
 .srv-pill-tag {
@@ -3102,11 +3129,14 @@
   font-weight: 500;
   padding: 6px 14px;
   border-radius: var(--radius-pill);
+  background: rgba(92, 108, 164, 0.06);
+  color: var(--color-brand-space-blue);
+  border: 1px solid rgba(92, 108, 164, 0.18);
   letter-spacing: 0.02em;
 }
 
 .srv-item__action {
-  padding-top: 12px;
+  padding-top: 6px;
 }
 
 .srv-action-link {
@@ -3115,12 +3145,13 @@
   gap: 8px;
   font-size: 13px;
   font-weight: 600;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.03em;
   text-decoration: none;
   cursor: pointer;
   background: none;
   border: none;
   padding: 0;
+  color: var(--color-brand-saboia);
   font-family: inherit;
   transition: var(--transition-fast);
 }
@@ -3131,329 +3162,20 @@
   transition: transform 0.2s ease;
 }
 
+.srv-action-link:hover {
+  color: #44517f;
+}
+
 .srv-action-link:hover svg {
   transform: translate(3px, -3px);
 }
 
-/* 14.3 VARIAÇÕES CROMÁTICAS DAS SUPERFÍCIES (COM AZUL SABÓIA COMO CENTRO) */
-
-/* VARIAÇÃO 1: CINEMA DARK COM ILUMINAÇÃO SABÓIA (Frente 01 - Audiovisual) */
-.srv-pillar--dark {
-  background-color: var(--bg-body);
-  color: var(--text-white);
-  border-bottom: 1px solid rgba(92, 108, 164, 0.16);
-}
-
-.srv-pillar--dark .srv-pillar-badge {
-  color: var(--color-brand-saboia);
-}
-
-.srv-pillar--dark .srv-pillar-num {
-  color: var(--color-brand-saboia);
-  opacity: 0.9;
-}
-
-.srv-pillar--dark .srv-pillar-title {
-  color: var(--color-brand-white);
-}
-
-.srv-pillar--dark .srv-pillar-manifesto {
-  color: var(--text-white-muted);
-}
-
-.srv-pillar--dark .srv-media-box {
-  border: 1px solid rgba(92, 108, 164, 0.25);
-}
-
-.srv-pillar--dark .srv-media-caption {
-  background-color: rgba(9, 12, 20, 0.95);
-  color: var(--color-brand-antiflash);
-  border-top: 1px solid rgba(92, 108, 164, 0.2);
-}
-
-.srv-pillar--dark .srv-sticky-cta {
-  color: var(--color-brand-saboia);
-}
-
-.srv-pillar--dark .srv-item__title {
-  color: var(--color-brand-white);
-}
-
-.srv-pillar--dark .srv-item:hover .srv-item__title,
-.srv-pillar--dark .srv-item.is-open .srv-item__title {
-  color: var(--color-brand-saboia);
-}
-
-.srv-pillar--dark .srv-item__arrow {
-  background-color: rgba(92, 108, 164, 0.12);
-  color: var(--color-brand-saboia);
-}
-
-.srv-pillar--dark .srv-item.is-open .srv-item__arrow {
-  background-color: var(--color-brand-saboia);
-  color: var(--color-brand-white);
-}
-
-.srv-pillar--dark .srv-item__prose {
-  color: var(--text-white-muted);
-}
-
-.srv-pillar--dark .srv-pill-tag {
-  background: rgba(92, 108, 164, 0.12);
-  color: var(--color-brand-antiflash);
-  border: 1px solid rgba(92, 108, 164, 0.3);
-}
-
-.srv-pillar--dark .srv-action-link {
-  color: var(--color-brand-saboia);
-}
-
-/* VARIAÇÃO 2: CLARO EDITORIAL COM TÍTULOS SABÓIA (Frente 02 - Branding) */
-.srv-pillar--light {
-  background-color: #fcfcfe;
-  background-image: radial-gradient(ellipse 50% 60% at 90% 10%, rgba(92, 108, 164, 0.08), transparent 70%);
-  color: var(--color-brand-space-blue);
-  border-bottom: 1px solid rgba(92, 108, 164, 0.18);
-}
-
-.srv-pillar--light .srv-pillar-badge {
-  color: var(--color-brand-saboia);
-}
-
-.srv-pillar--light .srv-pillar-num {
-  color: var(--color-brand-saboia);
-}
-
-.srv-pillar--light .srv-pillar-title {
-  color: var(--color-brand-space-blue);
-}
-
-.srv-pillar--light .srv-pillar-manifesto {
-  color: #4a5468;
-}
-
-.srv-pillar--light .srv-media-box {
-  border: 1px solid rgba(92, 108, 164, 0.2);
-}
-
-.srv-pillar--light .srv-media-caption {
-  background-color: #ffffff;
-  color: var(--color-brand-space-blue);
-  border-top: 1px solid rgba(92, 108, 164, 0.15);
-}
-
-.srv-pillar--light .srv-sticky-cta {
-  color: var(--color-brand-saboia);
-}
-
-.srv-pillar--light .srv-item {
-  border-color: rgba(92, 108, 164, 0.2);
-}
-
-.srv-pillar--light .srv-item__title {
-  color: var(--color-brand-space-blue);
-}
-
-.srv-pillar--light .srv-item:hover .srv-item__title,
-.srv-pillar--light .srv-item.is-open .srv-item__title {
-  color: var(--color-brand-saboia);
-}
-
-.srv-pillar--light .srv-item__arrow {
-  background-color: rgba(92, 108, 164, 0.1);
-  color: var(--color-brand-saboia);
-}
-
-.srv-pillar--light .srv-item.is-open .srv-item__arrow {
-  background-color: var(--color-brand-saboia);
-  color: var(--color-brand-white);
-}
-
-.srv-pillar--light .srv-item__prose {
-  color: #4a5468;
-}
-
-.srv-pillar--light .srv-pill-tag {
-  background: rgba(92, 108, 164, 0.08);
-  color: var(--color-brand-space-blue);
-  border: 1px solid rgba(92, 108, 164, 0.22);
-}
-
-.srv-pillar--light .srv-action-link {
-  color: var(--color-brand-saboia);
-}
-
-/* VARIAÇÃO 3: AZUL SABÓIA PURO INSTITUCIONAL (Frente 03 - Propaganda & ESG) */
-.srv-pillar--saboia-pure {
-  background-color: var(--color-brand-saboia);
-  color: var(--color-brand-white);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-  overflow: hidden;
-}
-
-.srv-pillar--saboia-pure .srv-pillar-watermark {
-  position: absolute;
-  right: -5%;
-  bottom: 5%;
-  font-size: clamp(80px, 14vw, 200px);
-  font-weight: 900;
-  color: rgba(32, 42, 68, 0.16);
-  pointer-events: none;
-  user-select: none;
-  white-space: nowrap;
-}
-
-.srv-pillar--saboia-pure .srv-pillar-badge {
-  color: var(--color-brand-antiflash);
-  opacity: 0.9;
-}
-
-.srv-pillar--saboia-pure .srv-pillar-num {
-  color: var(--color-brand-white);
-}
-
-.srv-pillar--saboia-pure .srv-pillar-title {
-  color: var(--color-brand-white);
-}
-
-.srv-pillar--saboia-pure .srv-pillar-manifesto {
-  color: rgba(255, 255, 255, 0.9);
-}
-
-.srv-pillar--saboia-pure .srv-media-box {
-  border: 1px solid rgba(255, 255, 255, 0.25);
-}
-
-.srv-pillar--saboia-pure .srv-media-caption {
-  background-color: rgba(32, 42, 68, 0.85);
-  color: var(--color-brand-white);
-  border-top: 1px solid rgba(255, 255, 255, 0.15);
-}
-
-.srv-pillar--saboia-pure .srv-sticky-cta {
-  color: var(--color-brand-white);
-}
-
-.srv-pillar--saboia-pure .srv-item {
-  border-color: rgba(255, 255, 255, 0.25);
-}
-
-.srv-pillar--saboia-pure .srv-item__index {
-  color: var(--color-brand-white);
-  opacity: 0.85;
-}
-
-.srv-pillar--saboia-pure .srv-item__title {
-  color: var(--color-brand-white);
-}
-
-.srv-pillar--saboia-pure .srv-item__arrow {
-  background-color: rgba(255, 255, 255, 0.2);
-  color: var(--color-brand-white);
-}
-
-.srv-pillar--saboia-pure .srv-item.is-open .srv-item__arrow {
-  background-color: var(--color-brand-white);
-  color: var(--color-brand-saboia);
-}
-
-.srv-pillar--saboia-pure .srv-item__prose {
-  color: rgba(255, 255, 255, 0.92);
-}
-
-.srv-pillar--saboia-pure .srv-pill-tag {
-  background: rgba(255, 255, 255, 0.16);
-  color: var(--color-brand-white);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-.srv-pillar--saboia-pure .srv-action-link {
-  color: var(--color-brand-white);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
-  padding-bottom: 2px;
-}
-
-/* VARIAÇÃO 4: EDITORIAL SUAVE COM DETALHES SABÓIA (Frente 04 - Design) */
-.srv-pillar--pure-white {
-  background-color: #f7f8fc;
-  background-image: radial-gradient(ellipse 45% 55% at 10% 90%, rgba(92, 108, 164, 0.08), transparent 70%);
-  color: var(--color-brand-space-blue);
-  border-bottom: 1px solid rgba(92, 108, 164, 0.18);
-}
-
-.srv-pillar--pure-white .srv-pillar-badge {
-  color: var(--color-brand-saboia);
-}
-
-.srv-pillar--pure-white .srv-pillar-num {
-  color: var(--color-brand-saboia);
-}
-
-.srv-pillar--pure-white .srv-pillar-title {
-  color: var(--color-brand-space-blue);
-}
-
-.srv-pillar--pure-white .srv-pillar-manifesto {
-  color: #4a5468;
-}
-
-.srv-pillar--pure-white .srv-media-box {
-  border: 1px solid rgba(92, 108, 164, 0.2);
-}
-
-.srv-pillar--pure-white .srv-media-caption {
-  background-color: #ffffff;
-  color: var(--color-brand-space-blue);
-  border-top: 1px solid rgba(92, 108, 164, 0.15);
-}
-
-.srv-pillar--pure-white .srv-sticky-cta {
-  color: var(--color-brand-saboia);
-}
-
-.srv-pillar--pure-white .srv-item {
-  border-color: rgba(92, 108, 164, 0.2);
-}
-
-.srv-pillar--pure-white .srv-item__title {
-  color: var(--color-brand-space-blue);
-}
-
-.srv-pillar--pure-white .srv-item:hover .srv-item__title,
-.srv-pillar--pure-white .srv-item.is-open .srv-item__title {
-  color: var(--color-brand-saboia);
-}
-
-.srv-pillar--pure-white .srv-item__arrow {
-  background-color: rgba(92, 108, 164, 0.1);
-  color: var(--color-brand-saboia);
-}
-
-.srv-pillar--pure-white .srv-item.is-open .srv-item__arrow {
-  background-color: var(--color-brand-saboia);
-  color: var(--color-brand-white);
-}
-
-.srv-pillar--pure-white .srv-item__prose {
-  color: #4a5468;
-}
-
-.srv-pillar--pure-white .srv-pill-tag {
-  background: rgba(92, 108, 164, 0.08);
-  color: var(--color-brand-space-blue);
-  border: 1px solid rgba(92, 108, 164, 0.22);
-}
-
-.srv-pillar--pure-white .srv-action-link {
-  color: var(--color-brand-saboia);
-}
-
-/* 14.4 METODOLOGIA ORGÂNICA (LINHA DO TEMPO CONECTADA COM NÓS SABÓIA) */
+/* 14.3 METODOLOGIA ORGÂNICA (ESTILO LENSES FOUNDATIONS) */
 .srv-method {
   background-color: #fcfcfe;
   color: var(--color-brand-space-blue);
-  padding: clamp(90px, 9vw, 140px) 0;
-  border-bottom: 1px solid rgba(92, 108, 164, 0.18);
+  padding: clamp(80px, 8vw, 130px) 0;
+  border-bottom: 1px solid rgba(92, 108, 164, 0.14);
   position: relative;
   overflow: hidden;
 }
@@ -3461,25 +3183,25 @@
 .srv-method__header {
   text-align: center;
   max-width: 820px;
-  margin: 0 auto 60px;
+  margin: 0 auto 52px;
   padding: 0 36px;
 }
 
 .srv-method__eyebrow {
   display: block;
-  font-size: 11px;
+  font-size: 0.72rem;
   font-weight: 700;
-  letter-spacing: 0.24em;
+  letter-spacing: 0.26em;
   text-transform: uppercase;
   color: var(--color-brand-saboia);
-  margin-bottom: 14px;
+  margin-bottom: 12px;
 }
 
 .srv-method__title {
-  font-size: clamp(30px, 4vw, 52px);
-  font-weight: 800;
+  font-size: clamp(28px, 3.4vw, 46px);
+  font-weight: 750;
   color: var(--color-brand-space-blue);
-  letter-spacing: -0.03em;
+  letter-spacing: -0.025em;
   margin: 0 0 16px;
 }
 
@@ -3488,19 +3210,18 @@
 }
 
 .srv-method__lead {
-  font-size: 16px;
+  font-size: 15px;
   line-height: 1.65;
-  color: #4a5468;
+  color: #556075;
   margin: 0;
 }
 
-/* Linha de Conexão Estilo Lenses Foundations */
 .srv-method__track {
   position: relative;
   width: min(1080px, calc(100% - 72px));
   height: 2px;
-  background: rgba(92, 108, 164, 0.2);
-  margin: 0 auto 50px;
+  background: rgba(92, 108, 164, 0.16);
+  margin: 0 auto 46px;
 }
 
 .srv-method__progress {
@@ -3512,8 +3233,8 @@
 .srv-method__grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 32px;
-  max-width: 1320px;
+  gap: 24px;
+  max-width: 1280px;
   margin: 0 auto;
   padding: 0 36px;
 }
@@ -3521,7 +3242,19 @@
 .srv-method__step {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 12px;
+  padding: 28px 24px;
+  background: #ffffff;
+  border-radius: 20px;
+  border: 1px solid rgba(92, 108, 164, 0.12);
+  box-shadow: 0 8px 24px rgba(32, 42, 68, 0.03);
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.srv-method__step:hover {
+  transform: translateY(-4px);
+  border-color: rgba(92, 108, 164, 0.28);
+  box-shadow: 0 14px 32px rgba(32, 42, 68, 0.06);
 }
 
 .srv-method__step-num {
@@ -3534,7 +3267,7 @@
 }
 
 .srv-method__step-title {
-  font-size: 18px;
+  font-size: 17px;
   font-weight: 700;
   color: var(--color-brand-space-blue);
   margin: 0;
@@ -3542,38 +3275,38 @@
 
 .srv-method__step-text {
   font-size: 14px;
-  line-height: 1.65;
+  line-height: 1.62;
   color: #556075;
   margin: 0;
 }
 
-/* 14.5 CLIENTES: GRADE MINIMALISTA & LIMPA */
+/* 14.4 CLIENTES: GRADE MINIMALISTA & EQUALIZADA */
 .srv-clients {
-  background-color: #f7f8fc;
-  padding: clamp(80px, 8vw, 120px) 0;
-  border-bottom: 1px solid rgba(92, 108, 164, 0.16);
+  background-color: #ffffff;
+  padding: clamp(70px, 7vw, 110px) 0;
+  border-bottom: 1px solid rgba(92, 108, 164, 0.14);
 }
 
 .srv-clients__header {
   text-align: center;
   max-width: 760px;
-  margin: 0 auto 48px;
+  margin: 0 auto 44px;
   padding: 0 36px;
 }
 
 .srv-clients__eyebrow {
-  font-size: 11px;
+  font-size: 0.72rem;
   font-weight: 700;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.24em;
   text-transform: uppercase;
   color: var(--color-brand-saboia);
-  margin-bottom: 12px;
+  margin-bottom: 10px;
   display: block;
 }
 
 .srv-clients__title {
-  font-size: clamp(26px, 3.4vw, 42px);
-  font-weight: 800;
+  font-size: clamp(24px, 3vw, 38px);
+  font-weight: 750;
   color: var(--color-brand-space-blue);
   letter-spacing: -0.025em;
   margin: 0;
@@ -3582,10 +3315,10 @@
 .srv-clients__grid {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  gap: 32px 24px;
+  gap: 28px 20px;
   align-items: center;
   justify-items: center;
-  max-width: 1240px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 0 36px;
 }
@@ -3606,71 +3339,64 @@
 }
 
 .srv-client-logo img {
-  max-height: 40px;
-  max-width: 120px;
+  max-height: 38px;
+  max-width: 110px;
   object-fit: contain;
 }
 
-/* 14.6 CTA FINAL MANIFESTO (AZUL SABÓIA COMO FUNDO DOMINANTE) */
+/* 14.5 CTA FINAL MANIFESTO (CARD EDITORIAL AZUL SABÓIA) */
 .srv-cta {
-  background-color: var(--color-brand-saboia);
-  background-image:
-    radial-gradient(circle at 15% 30%, rgba(255, 255, 255, 0.15) 0%, transparent 60%),
-    radial-gradient(circle at 85% 80%, rgba(32, 42, 68, 0.35) 0%, transparent 70%);
-  color: var(--color-brand-white);
-  padding: clamp(100px, 10vw, 160px) 0;
+  background-color: #fcfcfe;
+  padding: clamp(70px, 8vw, 120px) 0;
   position: relative;
-  overflow: hidden;
-}
-
-.srv-cta__watermark {
-  position: absolute;
-  bottom: -20px;
-  right: -20px;
-  font-size: clamp(90px, 16vw, 240px);
-  font-weight: 900;
-  color: rgba(32, 42, 68, 0.15);
-  pointer-events: none;
-  user-select: none;
 }
 
 .srv-cta__container {
-  max-width: 980px;
+  max-width: 1080px;
   margin: 0 auto;
   padding: 0 36px;
+}
+
+.srv-cta__card {
+  background: linear-gradient(135deg, #5C6CA4 0%, #46558c 100%);
+  border-radius: 28px;
+  padding: clamp(48px, 6vw, 76px) clamp(24px, 5vw, 60px);
+  color: var(--color-brand-white);
   text-align: center;
   position: relative;
-  z-index: 2;
+  overflow: hidden;
+  box-shadow: 0 16px 48px rgba(92, 108, 164, 0.22);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .srv-cta__eyebrow {
   display: inline-block;
-  font-size: 11px;
+  font-size: 0.72rem;
   font-weight: 700;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.24em;
   text-transform: uppercase;
   color: var(--color-brand-white);
-  background: rgba(255, 255, 255, 0.18);
-  padding: 8px 20px;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 7px 18px;
   border-radius: var(--radius-pill);
-  margin-bottom: 28px;
+  margin-bottom: 22px;
 }
 
 .srv-cta__headline {
-  font-size: clamp(34px, 5.2vw, 68px);
-  font-weight: 800;
-  line-height: 1.08;
-  letter-spacing: -0.03em;
+  font-size: clamp(28px, 4vw, 50px);
+  font-weight: 750;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
   color: var(--color-brand-white);
-  margin: 0 0 24px;
+  margin: 0 0 18px;
 }
 
 .srv-cta__sub {
-  font-size: clamp(16px, 1.8vw, 20px);
+  font-size: clamp(15px, 1.3vw, 18px);
   line-height: 1.65;
   color: rgba(255, 255, 255, 0.92);
-  max-width: 720px;
-  margin: 0 auto 44px;
+  max-width: 680px;
+  margin: 0 auto 36px;
 }
 
 .srv-cta__actions {
@@ -3685,8 +3411,8 @@
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  padding: 16px 36px;
-  font-size: 14px;
+  padding: 15px 34px;
+  font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -3695,42 +3421,42 @@
   border-radius: var(--radius-pill);
   text-decoration: none;
   transition: var(--transition-fast);
-  box-shadow: 0 8px 24px rgba(32, 42, 68, 0.25);
+  box-shadow: 0 8px 24px rgba(32, 42, 68, 0.2);
 }
 
 .srv-cta__btn-main:hover {
   background-color: var(--color-brand-antiflash);
   transform: translateY(-2px);
-  box-shadow: 0 12px 32px rgba(32, 42, 68, 0.35);
+  box-shadow: 0 12px 32px rgba(32, 42, 68, 0.3);
 }
 
 .srv-cta__btn-alt {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  padding: 16px 32px;
-  font-size: 14px;
+  padding: 15px 30px;
+  font-size: 13px;
   font-weight: 600;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   background-color: transparent;
   color: var(--color-brand-white);
-  border: 1px solid rgba(255, 255, 255, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.45);
   border-radius: var(--radius-pill);
   text-decoration: none;
   transition: var(--transition-fast);
 }
 
 .srv-cta__btn-alt:hover {
-  background-color: rgba(255, 255, 255, 0.14);
+  background-color: rgba(255, 255, 255, 0.16);
   border-color: var(--color-brand-white);
 }
 
-/* 14.7 RESPONSIVIDADE ORGÂNICA */
+/* 14.6 RESPONSIVIDADE ORGÂNICA */
 @media (max-width: 1080px) {
   .srv-split {
     grid-template-columns: 1fr;
-    gap: 48px;
+    gap: 40px;
   }
 
   .srv-split__sticky {
@@ -3752,7 +3478,7 @@
 
 @media (max-width: 768px) {
   .srv-hero {
-    padding: calc(var(--top-ticker-height) + 80px) 0 60px;
+    padding: calc(var(--top-ticker-height) + 70px) 0 48px;
   }
 
   .srv-hero__container,
@@ -3765,7 +3491,7 @@
   }
 
   .srv-item__trigger {
-    padding: 22px 0;
+    padding: 20px 0;
   }
 
   .srv-item__content {
@@ -3778,7 +3504,7 @@
 
   .srv-clients__grid {
     grid-template-columns: repeat(3, 1fr);
-    gap: 20px 14px;
+    gap: 18px 12px;
   }
 }
 
