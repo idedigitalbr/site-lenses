@@ -474,3 +474,31 @@
   .lcs .lcs-decor { transition: none !important; }
   .lcs .lcs-decor-sweep--dashed { animation: none !important; }
 }
+
+
+/* V8 · Redução de ruído visual aprovada: interseção em primeiro plano. */
+.lcs::before {display:none;}
+.lcs-minimal-intersections circle {
+  fill:#5C6CA4;
+  opacity:.63;
+  transition:opacity .35s ease;
+}
+.lcs.lcs-has-focus .lcs-minimal-intersections circle{opacity:.82;}
+.lcs .lcs-disc-edge{
+  stroke-width:1.65;
+  stroke-opacity:.77;
+}
+.lcs .lcs-disc-edge.is-active {stroke-width:2.15;stroke-opacity:1;}
+.lcs .lcs-trace{
+  stroke-width:1.6;
+  stroke-dasharray:42 1150;
+  opacity:.24;
+}
+.lcs .lcs-overlap{opacity:.60;}
+.lcs .lcs-overlap--triple{opacity:.86;}
+.lcs .lcs-core-halo{opacity:.09;}
+.lcs .lcs-core-rim{stroke-width:1;stroke-opacity:.3;}
+.lcs .lcs-decor-ring{stroke-opacity:.11;stroke-width:.85;}
+.lcs .lcs-decor-sweep{stroke-opacity:.16;stroke-width:1;}
+.lcs .lcs-decor-dot{opacity:.38;}
+.lcs .lcs-decor-dot--2{opacity:.53;}
