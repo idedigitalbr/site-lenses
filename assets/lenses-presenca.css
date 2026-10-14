@@ -49,8 +49,9 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: grayscale(1) sepia(.12) hue-rotate(188deg) saturate(1.35) contrast(1.05);
-  transform: scale(1.07);
+  /* Base fotográfica neutra para receber a camada azul em multiply. */
+  filter: grayscale(.9) contrast(1.035) brightness(1.08);
+  transform: scale(1.10);
   transition: transform 1.65s cubic-bezier(.17,.67,.22,1), filter 1.2s ease;
   will-change: transform;
 }
@@ -59,17 +60,21 @@
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: linear-gradient(160deg, rgba(56,75,139,.23), rgba(16,31,64,.40));
+  /* Camada azul sobre as fotos como na referência, sem deixar preto e branco. */
+  background: linear-gradient(155deg, #a4b5e8 0%, #8098d0 48%, #5c6ca4 100%);
   mix-blend-mode: multiply;
+  opacity: .88;
   transition: opacity .8s ease;
 }
 .lap-photo--event img { object-position: 45% center; }
-.lap-photo--camera img { object-position: 50% 45%; }
+.lap-photo--camera img { object-position: 35% 45%; transform: scale(1.17); }
 .lap-photo--people img { object-position: center 44%; }
-.lap-section.is-visible .lap-photo img { transform: scale(1); }
+.lap-section.is-visible .lap-photo img { transform: scale(1.07); }
+.lap-section.is-visible .lap-photo--camera img { transform: scale(1.14); }
 @media (hover: hover) {
-  .lap-photo:hover img { transform: scale(1.045); filter: grayscale(.78) sepia(.1) hue-rotate(188deg) saturate(1.4) contrast(1.06); }
-  .lap-photo:hover::after { opacity: .45; }
+  .lap-photo:hover img { transform: scale(1.11); filter: grayscale(.8) contrast(1.06) brightness(1.10); }
+  .lap-photo--camera:hover img { transform: scale(1.19); }
+  .lap-photo:hover::after { opacity: .77; }
 }
 .lap-gallery-top .lap-photo:first-child { transition-delay: .08s; }
 .lap-gallery-top .lap-photo:last-child { transition-delay: .19s; }
@@ -344,7 +349,7 @@
 }
 @media (max-width: 520px) {
   .lap-gallery { height: 400px; min-height: 400px; }
-  .lap-photo--camera img { object-position: 45% center; }
+  .lap-photo--camera img { object-position: 35% center; }
   .lap-panel { min-height: 0; padding: 44px 22px 52px; }
   .lap-overline { margin-bottom: 30px; font-size: .8rem; }
   .lap-heading { margin-bottom: 32px; }
