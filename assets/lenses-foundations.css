@@ -382,7 +382,7 @@
   background:
     radial-gradient(ellipse 90% 85% at var(--lf-spot-x,75%) var(--lf-spot-y,15%),
       rgba(255,255,255,.16) 0%, transparent 72%),
-    linear-gradient(140deg, #4a588a 0%, #5C6CA4 53%, #7886bc 100%);
+    linear-gradient(140deg, #7886bc 0%, #5C6CA4 38%, #4a588a 100%);
   transform: scaleY(0);
   transform-origin: bottom center;
   opacity: .99;
@@ -437,9 +437,6 @@
               border-color .48s, transform .7s var(--lf-motion);
 }
 .lf-step.is-revealed .lf-symbol {animation-play-state: running;}
-.lf-track {
-  --lf-progress: 1;
-}
 .lf-track-progress {
   transform: translateY(-50%) scaleX(var(--lf-progress));
   transition: transform .82s cubic-bezier(.3,.04,.15,1);
