@@ -22,7 +22,7 @@ A divisão conserva todas as regras e a ordem de cascata originais.
 | Rodapé | .footer, .footer-grid, .footer-col | Cinco colunas responsivas |
 
 ## HTML estático
-Header/footer estão padronizados e sincronizados nas páginas de produção: index.html, sobre2/index.html e servicos/index.html. sobre.html, sobre-nos.html e servicos.html redirecionam sem conteúdo próprio. O verificador automático compara navegação e rodapé para impedir divergências, sem injetar HTML por JavaScript em tempo de execução.
+Header/footer estão padronizados e sincronizados nas páginas de produção: index.html e sobre2/index.html. sobre.html e sobre-nos.html redirecionam sem conteúdo próprio. O verificador automático compara navegação e rodapé para impedir divergências, sem injetar HTML por JavaScript em tempo de execução.
 
 Menu padrão: Início, Sobre, Portfólio / Cases, Nossos Serviços e Contato (o CTA depende da página). Alterações devem ser sincronizadas na Home e na Sobre oficial.
 

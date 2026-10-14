@@ -35,8 +35,6 @@ Assegurar contraste adequado: referência WCAG AA 4,5:1 para texto normal e 3:1 
 - sobre.html e sobre-nos.html: **redirecionamentos legados**, sem página institucional própria.
 - sobre2/index.html: **única página Sobre oficial** (`/sobre2/`), com hero de marca LENSES e fotografia amazônica, seções Sobre, Missão / Visão / Valores e Nossa Equipe, tokens e componentes compartilhados.
 - sobre2.html e Sobre2.html: aliases redirecionados para /sobre2/.
-- servicos/index.html: **página oficial de Serviços** (`/servicos/`), arquitetada em 4 grandes frentes estratégicas (Audiovisual 8K, Branding, Propaganda & ESG no Território, e Design Estratégico), com alternância intencional de superfícies claras/escuras, accordions acessíveis WAI-ARIA, filtros dinâmicos, entregáveis detalhados, metodologia em 4 fases e selos ISO 9001.
-- servicos.html: alias redirecionado para /servicos/.
 
 ## Fluxo
 Antes de publicar: executar node scripts/check-design-system.mjs, revisar desktop/mobile e acessibilidade, validar links, consultar preview, conferir GitHub Pages e registrar a mudança em .MD/changelog.md. Testes estáticos não substituem revisão visual real.
