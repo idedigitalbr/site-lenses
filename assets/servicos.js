@@ -1,7 +1,7 @@
 /**
- * LENSES — Interações da Página de Serviços
- * Controla: Accordions acessíveis, Filtros por Frente Estratégica,
- * Expansão em massa e Gerador de Proposta personalizada via WhatsApp.
+ * LENSES — Interações Orgânicas da Página de Serviços
+ * Controla: Accordions editoriais fluidos, vídeos cinematográficos
+ * e canal direto de atendimento via WhatsApp oficial.
  */
 
 (function () {
@@ -10,22 +10,20 @@
   document.addEventListener('DOMContentLoaded', initServicesPage);
 
   function initServicesPage() {
-    initAccordions();
-    initFilterTabs();
-    initMassToggle();
-    initServiceQuoteButtons();
-    initVideoPlayers();
+    initEditorialAccordions();
+    initWhatsAppDirectLinks();
+    initCinematicVideos();
   }
 
   /**
-   * 1. ACCORDIONS ACESSÍVEIS (WAI-ARIA)
+   * 1. ACCORDIONS FLUIDOS E EDITORIAIS (WAI-ARIA)
    */
-  function initAccordions() {
-    const triggers = document.querySelectorAll('[data-service-trigger]');
+  function initEditorialAccordions() {
+    const triggers = document.querySelectorAll('[data-srv-trigger]');
 
     triggers.forEach(trigger => {
       trigger.addEventListener('click', () => {
-        const item = trigger.closest('.service-accordion-item');
+        const item = trigger.closest('.srv-item');
         if (!item) return;
 
         const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
@@ -38,7 +36,7 @@
         }
       });
 
-      // Suporte para teclas de navegação
+      // Suporte para teclas de acessibilidade (Espaço e Enter)
       trigger.addEventListener('keydown', (e) => {
         if (e.key === ' ' || e.key === 'Enter') {
           e.preventDefault();
@@ -66,98 +64,23 @@
         if (!item.classList.contains('is-open')) {
           panel.setAttribute('hidden', '');
         }
-      }, 300);
+      }, 350);
     }
   }
 
   /**
-   * 2. TABS & FILTRO POR FRENTE ESTRATÉGICA
+   * 2. LINKS DIRETOS PARA CONVERSA DE PROPOSTA NO WHATSAPP
    */
-  function initFilterTabs() {
-    const filterButtons = document.querySelectorAll('[data-service-filter]');
-    const pillars = document.querySelectorAll('.service-pillar-section');
-
-    if (!filterButtons.length || !pillars.length) return;
-
-    filterButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const filter = btn.getAttribute('data-service-filter');
-
-        // Atualizar estado ativo dos botões
-        filterButtons.forEach(b => {
-          b.classList.toggle('is-active', b === btn);
-          b.setAttribute('aria-pressed', b === btn ? 'true' : 'false');
-        });
-
-        // Filtrar visualização das seções
-        if (filter === 'all') {
-          pillars.forEach(p => {
-            p.classList.remove('is-hidden');
-            p.style.display = '';
-          });
-        } else {
-          pillars.forEach(p => {
-            const matches = p.getAttribute('data-pillar') === filter;
-            p.classList.toggle('is-hidden', !matches);
-            p.style.display = matches ? '' : 'none';
-          });
-
-          // Scroll suave até a frente selecionada se for específica
-          const targetPillar = document.querySelector(`.service-pillar-section[data-pillar="${filter}"]`);
-          if (targetPillar) {
-            targetPillar.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          }
-        }
-      });
-    });
-  }
-
-  /**
-   * 3. BOTÃO EXPANDIR / RECOLHER TODOS OS SERVIÇOS
-   */
-  function initMassToggle() {
-    const toggleAllBtn = document.getElementById('toggleAllServices');
-    if (!toggleAllBtn) return;
-
-    let allExpanded = false;
-
-    toggleAllBtn.addEventListener('click', () => {
-      allExpanded = !allExpanded;
-      const visibleItems = document.querySelectorAll('.service-pillar-section:not(.is-hidden) .service-accordion-item');
-
-      visibleItems.forEach(item => {
-        const trigger = item.querySelector('[data-service-trigger]');
-        if (!trigger) return;
-        const panel = document.getElementById(trigger.getAttribute('aria-controls'));
-
-        if (allExpanded) {
-          expandItem(item, trigger, panel);
-        } else {
-          collapseItem(item, trigger, panel);
-        }
-      });
-
-      const labelEl = toggleAllBtn.querySelector('.toggle-label');
-      if (labelEl) {
-        labelEl.textContent = allExpanded ? 'Recolher todos os detalhes' : 'Expandir todos os detalhes';
-      }
-      toggleAllBtn.classList.toggle('is-expanded', allExpanded);
-    });
-  }
-
-  /**
-   * 4. BOTÃO DINÂMICO PARA SOLICITAR PROPOSTA VIA WHATSAPP
-   */
-  function initServiceQuoteButtons() {
-    const quoteButtons = document.querySelectorAll('[data-service-quote]');
+  function initWhatsAppDirectLinks() {
+    const quoteButtons = document.querySelectorAll('[data-srv-quote]');
 
     quoteButtons.forEach(btn => {
       btn.addEventListener('click', (e) => {
-        const serviceName = btn.getAttribute('data-service-quote') || 'Serviços LENSES';
-        const pillarName = btn.getAttribute('data-pillar-name') || 'Comunicação e Audiovisual';
+        e.preventDefault();
+        const serviceName = btn.getAttribute('data-srv-quote') || 'Serviços LENSES';
         const phone = '5591992000000';
         const text = encodeURIComponent(
-          `Olá! Gostaria de conversar com a equipe da LENSES sobre o serviço de "${serviceName}" (Frente: ${pillarName}). Poderiam me apresentar uma proposta e disponibilidade?`
+          `Olá! Gostaria de conversar com a equipe da LENSES sobre "${serviceName}". Poderiam me apresentar mais detalhes e disponibilidade?`
         );
         window.open(`https://wa.me/${phone}?text=${text}`, '_blank', 'noopener,noreferrer');
       });
@@ -165,24 +88,19 @@
   }
 
   /**
-   * 5. PLAYER DE VÍDEO DOS CARDS DE AUDIOVISUAL
+   * 3. CONTROLE DE VÍDEOS CINEMATOGRÁFICOS EM LOOP
    */
-  function initVideoPlayers() {
-    const videoElements = document.querySelectorAll('.service-card-video');
+  function initCinematicVideos() {
+    const videos = document.querySelectorAll('.srv-video-element');
 
-    videoElements.forEach(video => {
-      // Tentar autoplay com mudo garantido
+    videos.forEach(video => {
       video.muted = true;
       video.play().catch(() => {
-        // Fallback para toque / interação caso o navegador bloqueie
-        const container = video.closest('.service-video-container');
-        if (container) {
-          container.addEventListener('mouseenter', () => video.play().catch(() => {}));
-          container.addEventListener('click', () => {
-            if (video.paused) video.play();
-            else video.pause();
-          });
-        }
+        // Fallback para toque caso autoplay seja bloqueado
+        video.parentElement?.addEventListener('click', () => {
+          if (video.paused) video.play();
+          else video.pause();
+        });
       });
     });
   }

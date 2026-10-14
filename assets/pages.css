@@ -1653,583 +1653,776 @@
 }
 
 /* ==========================================================================
-   14. ESTILOS EXCLUSIVOS DE CASES E PROJETOS (DESIGN SYSTEM LENSES)
+   14. ESTILOS EXCLUSIVOS DE CASES E PROJETOS (LENSES EDITORIAL & AZUL SABÓIA)
    ========================================================================== */
 
 .case-page {
   background-color: var(--bg-body);
-  color: var(--text-white);
-  min-height: 100vh;
+  color: var(--color-brand-white);
+  font-family: var(--font-main);
+  overflow-x: hidden;
+  position: relative;
 }
 
 .case-container {
-  width: 100%;
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 0 32px;
+  width: min(100% - 7vw, 1340px);
+  margin-inline: auto;
+  position: relative;
+  z-index: 2;
 }
 
 .case-container-narrow {
-  width: 100%;
-  max-width: 1040px;
-  margin: 0 auto;
-  padding: 0 32px;
+  width: min(100% - 7vw, 980px);
+  margin-inline: auto;
+  position: relative;
+  z-index: 2;
 }
 
-/* 14.1 Top Breadcrumbs & Header */
-.case-breadcrumbs {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 10px;
-  font-family: var(--font-nav);
-  font-size: 0.76rem;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--text-white-dim);
-  margin-bottom: 28px;
+/* Utilitários Tipográficos em Azul Sabóia */
+.text-saboia {
+  color: var(--color-brand-saboia) !important;
 }
 
-.case-breadcrumbs a {
-  color: var(--text-white-muted);
-  transition: var(--transition-fast);
-}
-
-.case-breadcrumbs a:hover {
+.highlight-saboia {
   color: var(--color-brand-saboia);
+  font-weight: 700;
 }
 
-.case-breadcrumbs-sep {
-  opacity: 0.4;
-  font-size: 0.68rem;
-}
-
-.case-breadcrumbs-current {
-  color: var(--color-primary-light);
-  font-weight: var(--fw-semibold);
-}
-
-/* 14.2 Case Hero Section */
+/* --------------------------------------------------------------------------
+   14.1 HERO EDITORIAL DO CASE (CINEMATOGRÁFICO & ORGÂNICO)
+   -------------------------------------------------------------------------- */
 .case-hero {
   position: relative;
-  padding-top: calc(var(--top-ticker-height) + 110px);
-  padding-bottom: 80px;
-  background: 
-    radial-gradient(circle at 50% 0%, rgba(92, 108, 164, 0.22) 0%, transparent 60%),
-    linear-gradient(180deg, rgba(32, 42, 68, 0.4) 0%, #050505 100%);
+  padding: calc(var(--top-ticker-height) + 100px) 0 80px;
+  background-color: var(--bg-body);
   overflow: hidden;
 }
 
-.case-hero-header {
-  margin-bottom: 44px;
+/* Aura atmosférica e blueprint territorial em Azul Sabóia */
+.case-hero__ambient {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 65% 55% at 50% 12%, rgba(92, 108, 164, 0.28) 0%, transparent 72%),
+    radial-gradient(circle at 85% 60%, rgba(92, 108, 164, 0.12) 0%, transparent 55%),
+    linear-gradient(180deg, #050505 0%, #08090d 100%);
+  z-index: 1;
 }
 
-.case-kicker-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 6px 16px;
-  border-radius: var(--radius-pill);
-  background: rgba(92, 108, 164, 0.15);
-  border: 1px solid var(--border-primary);
-  font-family: var(--font-nav);
-  font-size: 0.72rem;
-  font-weight: var(--fw-bold);
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--color-primary-light);
-  margin-bottom: 22px;
-}
-
-.case-kicker-dot {
-  width: 7px;
-  height: 7px;
+.case-hero__contour {
+  position: absolute;
+  width: min(75vw, 1080px);
+  aspect-ratio: 1;
+  top: -20%;
+  right: -15%;
+  border: 1px solid rgba(92, 108, 164, 0.09);
   border-radius: var(--radius-full);
-  background: var(--color-primary);
-  box-shadow: 0 0 8px var(--color-primary);
+  pointer-events: none;
+  z-index: 1;
 }
 
-.case-hero-title {
-  font-size: clamp(2.6rem, 5.5vw, 4.8rem);
-  font-weight: var(--fw-black);
-  letter-spacing: -0.025em;
-  line-height: 1.05;
-  color: var(--color-brand-white);
-  margin-bottom: 20px;
+.case-hero__contour::after {
+  content: "";
+  position: absolute;
+  inset: 80px;
+  border: 1px dashed rgba(92, 108, 164, 0.06);
+  border-radius: var(--radius-full);
 }
 
-.case-hero-subtitle {
-  font-size: clamp(1.15rem, 2vw, 1.45rem);
-  font-weight: var(--fw-regular);
-  color: var(--text-white-muted);
-  max-width: 860px;
-  line-height: 1.55;
-  margin-bottom: 36px;
+.case-hero__nav {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-nav);
+  font-size: 0.73rem;
+  letter-spacing: 0.20em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+  margin-bottom: 32px;
 }
 
-/* 14.3 Case Metadata Grid */
-.case-meta-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
-  margin-bottom: 48px;
-}
-
-.case-meta-card {
-  padding: 20px 24px;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid var(--border-subtle);
-  border-radius: 12px;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+.case-hero__nav a {
+  color: rgba(255, 255, 255, 0.65);
   transition: var(--transition-fast);
 }
 
-.case-meta-card:hover {
-  border-color: var(--border-primary);
-  background: rgba(92, 108, 164, 0.08);
+.case-hero__nav a:hover {
+  color: var(--color-brand-saboia);
 }
 
-.case-meta-label {
-  display: block;
+.case-hero__nav-sep {
+  color: var(--color-brand-saboia);
+  opacity: 0.6;
+}
+
+.case-hero__nav-current {
+  color: var(--color-brand-saboia);
+  font-weight: 600;
+}
+
+.case-hero__kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+  font-family: var(--font-nav);
+  font-size: clamp(0.70rem, 0.85vw, 0.82rem);
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--color-brand-saboia);
+}
+
+.case-hero__kicker::after {
+  content: "";
+  display: inline-block;
+  width: clamp(32px, 5vw, 64px);
+  height: 1px;
+  background: linear-gradient(90deg, var(--color-brand-saboia) 0%, transparent 100%);
+}
+
+.case-hero__title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.8rem, 5.8vw, 5.4rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1.04;
+  color: var(--color-brand-white);
+  margin: 0 0 24px;
+  max-width: 1180px;
+}
+
+.case-hero__title-sep {
+  color: var(--color-brand-saboia);
+  font-weight: 300;
+  display: inline-block;
+  margin: 0 4px;
+}
+
+.case-hero__subtitle {
+  font-size: clamp(1.15rem, 1.8vw, 1.45rem);
+  font-weight: 350;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.78);
+  max-width: 890px;
+  margin: 0 0 44px;
+  letter-spacing: -0.015em;
+}
+
+/* Régua contínua e elegante de Metadados (sem caixas artificiais) */
+.case-hero__meta-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(16px, 3.5vw, 48px);
+  padding: 24px 0;
+  margin-bottom: 48px;
+  border-top: 1px solid rgba(92, 108, 164, 0.22);
+  border-bottom: 1px solid rgba(92, 108, 164, 0.14);
+}
+
+.case-hero__meta-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.case-hero__meta-item:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  right: calc(-1 * clamp(8px, 1.75vw, 24px));
+  top: 15%;
+  height: 70%;
+  width: 1px;
+  background: rgba(92, 108, 164, 0.22);
+}
+
+.case-hero__meta-kicker {
   font-family: var(--font-nav);
   font-size: 0.68rem;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--color-primary-light);
-  margin-bottom: 8px;
-  font-weight: var(--fw-bold);
+  color: var(--color-brand-saboia);
+  font-weight: 700;
 }
 
-.case-meta-value {
-  font-size: 0.95rem;
-  font-weight: var(--fw-semibold);
-  color: var(--text-white);
-  line-height: 1.4;
+.case-hero__meta-name {
+  font-size: clamp(0.95rem, 1.1vw, 1.1rem);
+  font-weight: 600;
+  color: var(--color-brand-white);
+  line-height: 1.35;
 }
 
-/* 14.4 Media Showcases */
-.case-media-frame {
+/* Moldura Cinematográfica da Vitrine Hero */
+.case-hero__stage {
   position: relative;
   width: 100%;
   border-radius: 16px;
   overflow: hidden;
-  border: 1px solid var(--border-subtle);
-  background-color: var(--bg-card-dark);
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6);
+  box-shadow:
+    0 24px 80px rgba(0, 0, 0, 0.8),
+    0 0 50px rgba(92, 108, 164, 0.22);
+  border: 1px solid rgba(92, 108, 164, 0.25);
+  background-color: #0b0c10;
 }
 
-.case-media-frame img {
+.case-hero__stage img {
   width: 100%;
   height: auto;
   display: block;
   object-fit: cover;
-  transition: transform 0.6s var(--ease-cinematic);
+  transition: transform 0.8s var(--ease-cinematic);
 }
 
-.case-media-frame:hover img {
-  transform: scale(1.015);
+.case-hero__stage:hover img {
+  transform: scale(1.018);
 }
 
-.case-media-caption {
-  position: absolute;
-  bottom: 0;
-  inset-inline: 0;
-  padding: 24px 28px;
-  background: linear-gradient(180deg, transparent 0%, rgba(5, 5, 5, 0.88) 100%);
+.case-hero__stage-caption {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 16px 24px;
+  background: rgba(8, 9, 13, 0.95);
+  border-top: 1px solid rgba(92, 108, 164, 0.18);
   font-size: 0.82rem;
-  color: var(--text-white-muted);
+  color: rgba(255, 255, 255, 0.65);
 }
 
-/* 14.5 Editorial Acts (Alternância Intencional de Superfícies) */
-.case-act {
+.case-hero__stage-caption strong {
+  color: var(--color-brand-saboia);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+}
+
+/* --------------------------------------------------------------------------
+   14.2 ATO 01 — O PROJETO (SUPERFÍCIE EDITORIAL CLARA COM ALMA AZUL SABÓIA)
+   -------------------------------------------------------------------------- */
+.case-act-editorial-light {
   position: relative;
-  padding: 100px 0;
+  padding: clamp(90px, 9vw, 140px) 0;
+  background-color: #fcfcfe;
+  background-image:
+    radial-gradient(ellipse 45% 50% at -10% -15%, rgba(92, 108, 164, 0.10), transparent 75%),
+    radial-gradient(ellipse 40% 50% at 110% 10%, rgba(92, 108, 164, 0.08), transparent 75%);
+  color: #1a2234;
   overflow: hidden;
 }
 
-.case-act-header {
-  margin-bottom: 48px;
-}
-
-.case-act-eyebrow {
-  display: inline-block;
+.case-act-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
   font-family: var(--font-nav);
-  font-size: 0.72rem;
-  letter-spacing: 0.24em;
+  font-size: clamp(0.68rem, 0.8vw, 0.80rem);
+  font-weight: 700;
+  letter-spacing: 0.28em;
   text-transform: uppercase;
-  font-weight: var(--fw-bold);
-  margin-bottom: 14px;
-}
-
-.case-act-title {
-  font-size: clamp(2.2rem, 4vw, 3.4rem);
-  font-weight: var(--fw-bold);
-  letter-spacing: -0.02em;
-  line-height: 1.12;
-}
-
-/* Superfície 1: Editorial Claro (Anti-flash) */
-.case-act-light {
-  background-color: var(--color-brand-antiflash);
-  color: var(--text-dark);
-}
-
-.case-act-light .case-act-eyebrow {
-  color: var(--color-brand-space-blue);
-}
-
-.case-act-light .case-act-title {
-  color: var(--text-dark);
-}
-
-.case-act-light p {
-  color: var(--text-dark-muted);
-}
-
-.case-act-light .case-lead-text {
-  font-size: clamp(1.15rem, 1.8vw, 1.45rem);
-  line-height: 1.6;
-  font-weight: var(--fw-medium);
-  color: var(--text-dark);
+  color: var(--color-brand-saboia);
   margin-bottom: 24px;
 }
 
-/* Superfície 2: Azul Espacial */
-.case-act-space {
-  background-color: var(--color-brand-space-blue);
-  color: var(--text-white);
+.case-act-kicker::after {
+  content: "";
+  display: inline-block;
+  width: 48px;
+  height: 1px;
+  background: var(--color-brand-saboia);
+  opacity: 0.45;
 }
 
-.case-act-space .case-act-eyebrow {
+.case-act-editorial-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.3rem, 4vw, 3.8rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1.10;
+  color: #141c2c;
+  margin: 0 0 54px;
+  max-width: 1080px;
+}
+
+.case-act-editorial-title span {
   color: var(--color-brand-saboia);
 }
 
-.case-act-space .case-act-title {
-  color: var(--color-brand-white);
-}
-
-.case-act-space p {
-  color: var(--text-white-muted);
-}
-
-/* Superfície 3: Cinema Dark */
-.case-act-dark {
-  background-color: var(--bg-body);
-  color: var(--text-white);
-}
-
-.case-act-dark .case-act-eyebrow {
-  color: var(--color-primary-light);
-}
-
-.case-act-dark .case-act-title {
-  color: var(--color-brand-white);
-}
-
-/* Layout 2 Colunas */
-.case-grid-two-col {
+.case-split-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 56px;
-  align-items: center;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+  gap: clamp(32px, 5vw, 72px);
+  align-items: start;
 }
 
-.case-grid-two-col.is-reversed {
-  direction: rtl;
+.case-pullquote-organic {
+  position: relative;
+  padding-left: 28px;
+  border-left: 2px solid var(--color-brand-saboia);
+  margin-bottom: 32px;
 }
 
-.case-grid-two-col.is-reversed > * {
-  direction: ltr;
-}
-
-.case-quote-box {
-  padding: 32px 36px;
-  border-radius: 12px;
-  border-left: 4px solid var(--color-primary);
-  background: rgba(255, 255, 255, 0.05);
-  margin: 32px 0;
-}
-
-.case-act-light .case-quote-box {
-  background: rgba(32, 42, 68, 0.06);
-  border-left-color: var(--color-brand-space-blue);
-}
-
-.case-quote-text {
-  font-size: 1.15rem;
-  line-height: 1.6;
+.case-pullquote-text {
+  font-size: clamp(1.18rem, 1.6vw, 1.45rem);
   font-style: italic;
-  font-weight: var(--fw-medium);
-  margin-bottom: 12px;
+  font-weight: 400;
+  line-height: 1.55;
+  color: #242f45;
+  margin-bottom: 16px;
 }
 
-.case-quote-author {
+.case-pullquote-author {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
   font-family: var(--font-nav);
   font-size: 0.74rem;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.20em;
   text-transform: uppercase;
-  font-weight: var(--fw-bold);
-  opacity: 0.75;
+  color: var(--color-brand-saboia);
+  font-weight: 700;
 }
 
-/* Destaques / Métricas no Projeto */
-.case-metrics-bar {
+.case-prose-light p {
+  font-size: clamp(1.02rem, 1.12vw, 1.15rem);
+  line-height: 1.75;
+  color: #4b566e;
+  margin-bottom: 22px;
+}
+
+.case-prose-light strong {
+  color: #141c2c;
+  font-weight: 600;
+}
+
+/* Indicadores Orgânicos em Azul Sabóia */
+.case-kpis-strip {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
   margin-top: 48px;
-  padding-top: 40px;
-  border-top: 1px solid var(--border-light);
+  padding-top: 36px;
+  border-top: 1px solid rgba(92, 108, 164, 0.20);
 }
 
-.case-act-light .case-metrics-bar {
-  border-top-color: rgba(0, 0, 0, 0.12);
-}
-
-.case-act-space .case-metrics-bar,
-.case-act-dark .case-metrics-bar {
-  border-top-color: var(--border-hairline);
-}
-
-.case-metric-number {
-  font-family: var(--font-heading);
-  font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: var(--fw-black);
-  line-height: 1;
-  color: var(--color-primary);
-  margin-bottom: 8px;
-}
-
-.case-act-light .case-metric-number {
-  color: var(--color-brand-space-blue);
-}
-
-.case-metric-label {
-  font-size: 0.85rem;
-  line-height: 1.45;
-  color: inherit;
-  opacity: 0.85;
-}
-
-/* 14.6 Galeria de Entregáveis / Resultados */
-.case-gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 28px;
-  margin-top: 48px;
-}
-
-.case-gallery-card {
-  position: relative;
-  border-radius: 14px;
-  overflow: hidden;
-  background-color: var(--bg-card-dark);
-  border: 1px solid var(--border-subtle);
-  transition: var(--transition-smooth);
-}
-
-.case-gallery-card:hover {
-  transform: translateY(-4px);
-  border-color: var(--border-primary);
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
-}
-
-.case-gallery-thumb {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  overflow: hidden;
-  background-color: #0d0d12;
-}
-
-.case-gallery-thumb img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.6s var(--ease-cinematic);
-}
-
-.case-gallery-card:hover .case-gallery-thumb img {
-  transform: scale(1.04);
-}
-
-.case-gallery-info {
-  padding: 20px 24px;
-  background-color: var(--bg-surface-elevated);
-}
-
-.case-act-light .case-gallery-info {
-  background-color: var(--color-brand-white);
-  color: var(--text-dark);
-}
-
-.case-gallery-tag {
-  display: inline-block;
-  font-family: var(--font-nav);
-  font-size: 0.68rem;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--color-brand-saboia);
-  font-weight: var(--fw-bold);
-  margin-bottom: 6px;
-}
-
-.case-gallery-name {
-  font-size: 1.05rem;
-  font-weight: var(--fw-semibold);
-  margin-bottom: 6px;
-}
-
-.case-gallery-desc {
-  font-size: 0.86rem;
-  line-height: 1.5;
-  color: var(--text-white-muted);
-}
-
-.case-act-light .case-gallery-desc {
-  color: var(--text-dark-muted);
-}
-
-/* 14.7 Seção Outros Projetos / Related Cases */
-.case-related-section {
-  padding: 100px 0;
-  background-color: var(--bg-body);
-  border-top: 1px solid var(--border-hairline);
-}
-
-.case-related-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 28px;
-  margin-top: 48px;
-}
-
-.case-related-card {
-  position: relative;
-  border-radius: 14px;
-  overflow: hidden;
-  background-color: var(--bg-card-dark);
-  border: 1px solid var(--border-subtle);
-  transition: var(--transition-smooth);
+.case-kpi-item {
   display: flex;
   flex-direction: column;
 }
 
-.case-related-card:hover {
-  transform: translateY(-6px);
-  border-color: var(--border-primary);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
+.case-kpi-val {
+  font-family: var(--font-heading);
+  font-size: clamp(2.4rem, 4.2vw, 3.6rem);
+  font-weight: 850;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: var(--color-brand-saboia);
+  margin-bottom: 8px;
 }
 
-.case-related-thumb {
+.case-kpi-desc {
+  font-size: 0.88rem;
+  line-height: 1.45;
+  color: #5d677f;
+}
+
+/* --------------------------------------------------------------------------
+   14.3 ATO 02 — O DESAFIO (ATMOSFERA AZUL ESPACIAL & SABÓIA)
+   -------------------------------------------------------------------------- */
+.case-act-space-saboia {
+  position: relative;
+  padding: clamp(90px, 9vw, 140px) 0;
+  background-color: var(--color-brand-space-blue);
+  background-image:
+    radial-gradient(ellipse 60% 60% at 90% 20%, rgba(92, 108, 164, 0.35) 0%, transparent 70%),
+    radial-gradient(circle at 10% 80%, rgba(92, 108, 164, 0.20) 0%, transparent 60%);
+  color: var(--color-brand-white);
+  overflow: hidden;
+}
+
+.case-act-space-saboia .case-act-editorial-title {
+  color: var(--color-brand-white);
+}
+
+.case-act-space-saboia .case-act-editorial-title strong {
+  color: #92a0d1;
+  font-weight: 700;
+}
+
+.case-prose-space p {
+  font-size: clamp(1.05rem, 1.15vw, 1.20rem);
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.82);
+  margin-bottom: 24px;
+}
+
+.case-gallery-frame-floating {
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow:
+    0 24px 60px rgba(0, 0, 0, 0.55),
+    0 0 30px rgba(92, 108, 164, 0.25);
+  border: 1px solid rgba(92, 108, 164, 0.35);
+  background-color: #0b0f1a;
+}
+
+.case-gallery-frame-floating img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.7s var(--ease-cinematic);
+}
+
+.case-gallery-frame-floating:hover img {
+  transform: scale(1.025);
+}
+
+.case-floating-caption {
+  position: absolute;
+  bottom: 0;
+  inset-inline: 0;
+  padding: 18px 24px;
+  background: linear-gradient(180deg, transparent 0%, rgba(10, 14, 25, 0.92) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.80rem;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.case-floating-caption strong {
+  color: var(--color-brand-saboia);
+  text-transform: uppercase;
+  font-size: 0.70rem;
+  letter-spacing: 0.16em;
+}
+
+/* --------------------------------------------------------------------------
+   14.4 ATO 03 — A SOLUÇÃO (CINEMA DARK & CARTAZ MONUMENTAL)
+   -------------------------------------------------------------------------- */
+.case-act-cinema-solution {
+  position: relative;
+  padding: clamp(90px, 9vw, 140px) 0;
+  background-color: var(--bg-body);
+  background-image: radial-gradient(ellipse 65% 45% at 50% 50%, rgba(92, 108, 164, 0.18) 0%, transparent 75%);
+  overflow: hidden;
+}
+
+.case-act-cinema-solution .case-act-editorial-title {
+  color: var(--color-brand-white);
+}
+
+.case-act-cinema-solution .case-act-editorial-title span {
+  color: var(--color-brand-saboia);
+}
+
+.case-prose-dark p {
+  font-size: clamp(1.05rem, 1.15vw, 1.20rem);
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.78);
+  margin-bottom: 24px;
+}
+
+.case-poster-monument {
   position: relative;
   width: 100%;
-  aspect-ratio: 16 / 10;
+  border-radius: 16px;
   overflow: hidden;
-  background-color: #0b0b0f;
+  border: 1px solid rgba(92, 108, 164, 0.28);
+  background-color: #08090d;
+  box-shadow:
+    0 30px 90px rgba(0, 0, 0, 0.75),
+    0 0 60px rgba(92, 108, 164, 0.25);
+  margin-top: 48px;
 }
 
-.case-related-thumb img {
+.case-poster-monument img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.8s var(--ease-cinematic);
+}
+
+.case-poster-monument:hover img {
+  transform: scale(1.015);
+}
+
+.case-poster-caption-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 30px;
+  background: rgba(10, 11, 16, 0.96);
+  border-top: 1px solid rgba(92, 108, 164, 0.20);
+  font-size: 0.84rem;
+  color: rgba(255, 255, 255, 0.70);
+}
+
+.case-poster-caption-bar span.pill-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-nav);
+  font-size: 0.70rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-brand-saboia);
+  font-weight: 700;
+}
+
+/* --------------------------------------------------------------------------
+   14.5 ATO 04 — RESULTADOS (CATÁLOGO MONOGRÁFICO DE ARTEFATOS)
+   -------------------------------------------------------------------------- */
+.case-act-monograph {
+  position: relative;
+  padding: clamp(90px, 9vw, 140px) 0;
+  background-color: #f7f8fc;
+  background-image:
+    radial-gradient(ellipse 50% 50% at 100% 0%, rgba(92, 108, 164, 0.10), transparent 70%),
+    radial-gradient(ellipse 50% 50% at 0% 100%, rgba(92, 108, 164, 0.08), transparent 70%);
+  color: #141c2c;
+  overflow: hidden;
+}
+
+.case-act-monograph .case-act-editorial-title {
+  color: #141c2c;
+}
+
+.case-act-monograph .case-act-editorial-title strong {
+  color: var(--color-brand-saboia);
+}
+
+/* Grid Monográfico Assimétrico com Ritmo Visual */
+.case-monograph-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(24px, 3.5vw, 48px);
+  margin-top: 56px;
+}
+
+.case-monograph-item {
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.4s var(--ease-cinematic);
+}
+
+.case-monograph-item:hover {
+  transform: translateY(-6px);
+}
+
+.case-monograph-media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: 14px;
+  overflow: hidden;
+  background-color: #0b0c10;
+  border: 1px solid rgba(92, 108, 164, 0.18);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+}
+
+.case-monograph-media img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform 0.6s var(--ease-cinematic);
+  transition: transform 0.7s var(--ease-cinematic);
 }
 
-.case-related-card:hover .case-related-thumb img {
+.case-monograph-item:hover .case-monograph-media img {
+  transform: scale(1.04);
+}
+
+.case-monograph-meta {
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.case-monograph-badge {
+  display: inline-block;
+  font-family: var(--font-nav);
+  font-size: 0.68rem;
+  letter-spacing: 0.20em;
+  text-transform: uppercase;
+  color: var(--color-brand-saboia);
+  font-weight: 700;
+}
+
+.case-monograph-name {
+  font-family: var(--font-heading);
+  font-size: clamp(1.15rem, 1.4vw, 1.35rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #141c2c;
+  line-height: 1.3;
+}
+
+.case-monograph-desc {
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: #5a657e;
+}
+
+/* --------------------------------------------------------------------------
+   14.6 OUTROS CASES & CTA (CINEMA DARK & AZUL SABÓIA GLOW)
+   -------------------------------------------------------------------------- */
+.case-related-editorial {
+  position: relative;
+  padding: clamp(90px, 9vw, 130px) 0;
+  background-color: var(--bg-body);
+  border-top: 1px solid rgba(92, 108, 164, 0.18);
+}
+
+.case-related-grid-editorial {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(20px, 2.5vw, 36px);
+  margin-top: 48px;
+}
+
+.case-card-editorial {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border-radius: 14px;
+  overflow: hidden;
+  background: rgba(14, 16, 22, 0.85);
+  border: 1px solid rgba(92, 108, 164, 0.20);
+  transition: transform 0.4s var(--ease-cinematic), border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.case-card-editorial:hover {
+  transform: translateY(-8px);
+  border-color: var(--color-brand-saboia);
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.6),
+    0 0 35px rgba(92, 108, 164, 0.28);
+}
+
+.case-card-editorial__media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background-color: #050507;
+}
+
+.case-card-editorial__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.7s var(--ease-cinematic);
+}
+
+.case-card-editorial:hover .case-card-editorial__media img {
   transform: scale(1.05);
 }
 
-.case-related-body {
+.case-card-editorial__body {
   padding: 24px;
   display: flex;
   flex-direction: column;
   flex: 1;
 }
 
-.case-related-tag {
+.case-card-editorial__kicker {
   font-family: var(--font-nav);
   font-size: 0.68rem;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--color-primary-light);
-  font-weight: var(--fw-bold);
+  color: var(--color-brand-saboia);
+  font-weight: 700;
   margin-bottom: 8px;
 }
 
-.case-related-title {
+.case-card-editorial__title {
+  font-family: var(--font-heading);
   font-size: 1.25rem;
-  font-weight: var(--fw-bold);
+  font-weight: 700;
+  letter-spacing: -0.02em;
   color: var(--color-brand-white);
   line-height: 1.3;
   margin-bottom: 10px;
 }
 
-.case-related-desc {
+.case-card-editorial__desc {
   font-size: 0.88rem;
-  line-height: 1.55;
-  color: var(--text-white-muted);
-  margin-bottom: 20px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.68);
+  margin-bottom: 22px;
   flex: 1;
 }
 
-.case-related-link {
+.case-card-editorial__link {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   font-family: var(--font-nav);
-  font-size: 0.78rem;
-  font-weight: var(--fw-bold);
-  letter-spacing: 0.14em;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--color-brand-saboia);
-  transition: var(--transition-fast);
+  transition: gap 0.3s ease, color 0.3s ease;
 }
 
-.case-related-card:hover .case-related-link {
+.case-card-editorial:hover .case-card-editorial__link {
+  gap: 14px;
   color: var(--color-brand-white);
-  gap: 12px;
 }
 
-/* 14.8 Seção CTA Final */
-.case-cta-section {
+/* CTA Final Orgânico com Aura Azul Sabóia */
+.case-cta-organic {
   position: relative;
-  padding: 100px 0;
-  background: var(--gradient-brand-angle);
-  color: var(--color-brand-white);
-  overflow: hidden;
+  padding: clamp(90px, 9vw, 130px) 0;
+  background: radial-gradient(circle at 50% 50%, rgba(92, 108, 164, 0.32) 0%, rgba(32, 42, 68, 0.55) 50%, #050505 100%);
   text-align: center;
+  overflow: hidden;
+  border-top: 1px solid rgba(92, 108, 164, 0.25);
 }
 
-.case-cta-wrap {
+.case-cta-organic__wrap {
   position: relative;
   z-index: 2;
   max-width: 820px;
   margin: 0 auto;
 }
 
-.case-cta-title {
-  font-size: clamp(2.2rem, 4vw, 3.6rem);
-  font-weight: var(--fw-black);
-  letter-spacing: -0.02em;
-  line-height: 1.15;
+.case-cta-organic__kicker {
+  font-family: var(--font-nav);
+  font-size: 0.72rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--color-brand-saboia);
+  font-weight: 700;
+  margin-bottom: 16px;
+  display: block;
+}
+
+.case-cta-organic__title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.2rem, 4.2vw, 3.8rem);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1.12;
+  color: var(--color-brand-white);
   margin-bottom: 20px;
 }
 
-.case-cta-desc {
-  font-size: clamp(1.05rem, 1.8vw, 1.25rem);
-  color: rgba(255, 255, 255, 0.88);
-  line-height: 1.6;
-  margin-bottom: 36px;
+.case-cta-organic__desc {
+  font-size: clamp(1.05rem, 1.4vw, 1.25rem);
+  color: rgba(255, 255, 255, 0.82);
+  line-height: 1.65;
+  margin-bottom: 38px;
 }
 
-.case-cta-actions {
+.case-cta-organic__actions {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2237,115 +2430,115 @@
   gap: 16px;
 }
 
-.case-cta-actions .btn-pill {
-  background-color: var(--color-brand-white);
-  color: var(--color-brand-space-blue);
-  font-weight: var(--fw-bold);
-  padding: 14px 32px;
-  font-size: 0.95rem;
-}
-
-.case-cta-actions .btn-pill:hover {
-  background-color: var(--color-brand-antiflash);
-  color: var(--color-brand-space-blue);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
-}
-
-.case-cta-actions .btn-outline {
+.case-cta-btn-primary {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 14px 32px;
-  font-size: 0.95rem;
-  font-weight: var(--fw-bold);
+  gap: 10px;
+  padding: 14px 34px;
   border-radius: var(--radius-pill);
-  border: 1px solid rgba(255, 255, 255, 0.35);
-  background: rgba(255, 255, 255, 0.08);
+  background-color: var(--color-brand-saboia);
   color: var(--color-brand-white);
-  transition: var(--transition-smooth);
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  box-shadow: 0 8px 30px rgba(92, 108, 164, 0.45);
+  transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.case-cta-actions .btn-outline:hover {
-  background: rgba(255, 255, 255, 0.18);
-  border-color: var(--color-brand-white);
+.case-cta-btn-primary:hover {
+  background-color: #6d7db5;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 36px rgba(92, 108, 164, 0.65);
+}
+
+.case-cta-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 34px;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(92, 108, 164, 0.5);
+  background: rgba(92, 108, 164, 0.12);
+  color: var(--color-brand-white);
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: transform 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.case-cta-btn-secondary:hover {
+  background: rgba(92, 108, 164, 0.24);
+  border-color: var(--color-brand-saboia);
   transform: translateY(-2px);
 }
 
-/* 14.9 Responsividade do Case Study */
+/* --------------------------------------------------------------------------
+   14.7 RESPONSIVIDADE EDITORIAL
+   -------------------------------------------------------------------------- */
 @media (max-width: 1080px) {
-  .case-meta-grid {
+  .case-hero__meta-strip {
     grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
   }
 
-  .case-grid-two-col {
+  .case-hero__meta-item:nth-child(2)::after {
+    display: none;
+  }
+
+  .case-split-grid {
     grid-template-columns: 1fr;
     gap: 40px;
   }
 
-  .case-related-grid {
+  .case-related-grid-editorial {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 768px) {
-  .case-container,
-  .case-container-narrow {
-    padding: 0 20px;
-  }
-
   .case-hero {
-    padding-top: calc(var(--top-ticker-height) + 80px);
-    padding-bottom: 60px;
+    padding-top: calc(var(--top-ticker-height) + 70px);
+    padding-bottom: 50px;
   }
 
-  .case-meta-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .case-gallery-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .case-related-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .case-metrics-bar {
+  .case-hero__meta-strip {
     grid-template-columns: 1fr;
     gap: 20px;
   }
 
-  .case-act {
-    padding: 64px 0;
+  .case-hero__meta-item::after {
+    display: none !important;
   }
 
-  .case-cta-actions {
+  .case-monograph-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .case-related-grid-editorial {
+    grid-template-columns: 1fr;
+  }
+
+  .case-kpis-strip {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .case-cta-organic__actions {
     flex-direction: column;
     width: 100%;
   }
 
-  .case-cta-actions .btn-pill,
-  .case-cta-actions .btn-outline {
+  .case-cta-btn-primary,
+  .case-cta-btn-secondary {
     width: 100%;
-  }
-}
-
-@media (max-width: 480px) {
-  .case-hero-title {
-    font-size: 2.2rem;
-  }
-
-  .case-quote-box {
-    padding: 24px 20px;
+    justify-content: center;
   }
 }
 
 
 
 /* ==========================================================================
-   14. ESTILOS EXCLUSIVOS DA PÁGINA DE SERVIÇOS (LENSES SERVICES DESIGN SYSTEM)
+   14. PÁGINA DE SERVIÇOS — DESIGN EDITORIAL ORGÂNICO (AZUL SABÓIA PROTAGONISTA)
    ========================================================================== */
 
 .services-page {
@@ -2355,64 +2548,244 @@
   overflow-x: hidden;
 }
 
-/* 14.1 HERO EDITORIAL DE SERVIÇOS */
-.services-hero {
+/* 14.1 HERO EDITORIAL ORGÂNICO */
+.srv-hero {
   position: relative;
-  min-height: 82vh;
+  min-height: 85vh;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding: calc(var(--top-ticker-height) + 120px) 0 80px;
+  padding: calc(var(--top-ticker-height) + 110px) 0 80px;
   background-color: var(--bg-body);
   overflow: hidden;
-  border-bottom: 1px solid var(--border-hairline);
+  border-bottom: 1px solid rgba(92, 108, 164, 0.16);
 }
 
-.services-hero__ambient {
+.srv-hero__glow {
   position: absolute;
   inset: 0;
   pointer-events: none;
   background:
-    radial-gradient(ellipse 70% 50% at 50% 20%, rgba(92, 108, 164, 0.28) 0%, transparent 70%),
-    radial-gradient(circle at 85% 70%, rgba(32, 42, 68, 0.45) 0%, transparent 60%);
+    radial-gradient(ellipse 60% 45% at 50% 15%, rgba(92, 108, 164, 0.35) 0%, transparent 70%),
+    radial-gradient(circle at 85% 65%, rgba(92, 108, 164, 0.22) 0%, transparent 60%);
   z-index: 1;
 }
 
-.services-hero__pattern {
+.srv-hero__watermark {
   position: absolute;
-  inset: 0;
-  opacity: 0.04;
-  background-image: linear-gradient(var(--border-subtle) 1px, transparent 1px), linear-gradient(90deg, var(--border-subtle) 1px, transparent 1px);
-  background-size: 40px 40px;
+  top: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: clamp(80px, 16vw, 240px);
+  font-weight: 900;
+  color: rgba(92, 108, 164, 0.05);
+  letter-spacing: -0.05em;
+  user-select: none;
+  pointer-events: none;
   z-index: 1;
+  white-space: nowrap;
 }
 
-.services-hero__container {
+.srv-hero__container {
   position: relative;
   z-index: 2;
   width: 100%;
-  max-width: 1360px;
+  max-width: 1320px;
   margin: 0 auto;
   padding: 0 36px;
 }
 
-.services-hero__eyebrow {
+.srv-hero__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-brand-saboia);
+  margin-bottom: 24px;
+}
+
+.srv-hero__eyebrow::before {
+  content: '';
+  width: 24px;
+  height: 2px;
+  background-color: var(--color-brand-saboia);
+  border-radius: 2px;
+}
+
+.srv-hero__title {
+  font-size: clamp(38px, 6.2vw, 84px);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+  color: var(--color-brand-white);
+  margin-bottom: 28px;
+  max-width: 1100px;
+}
+
+.srv-hero__title span.saboia {
+  color: var(--color-brand-saboia);
+}
+
+.srv-hero__lead {
+  font-size: clamp(17px, 1.8vw, 22px);
+  font-weight: 400;
+  line-height: 1.65;
+  color: var(--text-white-muted);
+  max-width: 860px;
+  margin-bottom: 48px;
+}
+
+.srv-hero__nav-strip {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  padding-top: 24px;
+  border-top: 1px solid rgba(92, 108, 164, 0.2);
+}
+
+.srv-hero__nav-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-brand-saboia);
+}
+
+.srv-hero__nav-links {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.srv-hero__nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: var(--radius-pill);
+  background: rgba(92, 108, 164, 0.08);
+  border: 1px solid rgba(92, 108, 164, 0.25);
+  transition: var(--transition-fast);
+}
+
+.srv-hero__nav-link:hover {
+  background: var(--color-brand-saboia);
+  border-color: var(--color-brand-saboia);
+  color: var(--color-brand-white);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(92, 108, 164, 0.4);
+}
+
+.srv-hero__nav-link .num {
+  color: var(--color-brand-saboia);
+  font-weight: 700;
+  font-size: 11px;
+}
+
+.srv-hero__nav-link:hover .num {
+  color: var(--color-brand-white);
+}
+
+/* 14.2 FRENTE EDITORIAL: LAYOUT SPLIT ASSIMÉTRICO & ORGÂNICO */
+.srv-pillar {
+  position: relative;
+  padding: clamp(90px, 9vw, 150px) 0;
+  transition: opacity 0.3s ease;
+}
+
+.srv-pillar__container {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 36px;
+}
+
+.srv-split {
+  display: grid;
+  grid-template-columns: minmax(320px, 460px) 1fr;
+  gap: clamp(48px, 6vw, 96px);
+  align-items: start;
+}
+
+/* Coluna da Esquerda (Identidade da Frente) */
+.srv-split__sticky {
+  position: sticky;
+  top: 110px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.srv-pillar-badge {
   display: inline-flex;
   align-items: center;
   gap: 10px;
   font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.16em;
+  font-weight: 700;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--color-brand-saboia);
-  background: rgba(92, 108, 164, 0.12);
-  padding: 8px 18px;
-  border-radius: var(--radius-pill);
-  border: 1px solid rgba(92, 108, 164, 0.3);
-  margin-bottom: 28px;
 }
 
-.services-hero__eyebrow-dot {
+.srv-pillar-num {
+  font-size: clamp(48px, 5vw, 76px);
+  font-weight: 800;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.04em;
+}
+
+.srv-pillar-title {
+  font-size: clamp(28px, 3.2vw, 44px);
+  font-weight: 800;
+  line-height: 1.12;
+  letter-spacing: -0.025em;
+  margin: 0;
+}
+
+.srv-pillar-manifesto {
+  font-size: 16px;
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* Mídia Editorial Integrada com Legenda Sutil */
+.srv-media-box {
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25);
+  background-color: #000;
+}
+
+.srv-media-box video,
+.srv-media-box img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  display: block;
+}
+
+.srv-media-caption {
+  padding: 14px 18px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.srv-media-caption::before {
+  content: '';
   width: 6px;
   height: 6px;
   border-radius: var(--radius-full);
@@ -2420,958 +2793,671 @@
   box-shadow: 0 0 8px var(--color-brand-saboia);
 }
 
-.services-hero__headline {
-  font-size: clamp(38px, 6.2vw, 84px);
-  font-weight: 800;
-  line-height: 1.02;
-  letter-spacing: -0.035em;
-  color: var(--color-brand-white);
-  margin-bottom: 28px;
-  max-width: 1120px;
-}
-
-.services-hero__headline span.highlight {
-  background: var(--gradient-brand-primary);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.services-hero__manifesto {
-  font-size: clamp(17px, 1.8vw, 22px);
-  font-weight: 400;
-  line-height: 1.6;
-  color: var(--text-white-muted);
-  max-width: 880px;
-  margin-bottom: 44px;
-}
-
-/* Atalhos rápidos para as 4 frentes no Hero */
-.services-hero__quick-nav {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 10px;
-}
-
-.services-hero__quick-pill {
+.srv-sticky-cta {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  padding: 12px 22px;
   font-size: 13px;
-  font-weight: 500;
-  color: var(--text-white);
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-pill);
-  text-decoration: none;
-  transition: var(--transition-fast);
-}
-
-.services-hero__quick-pill:hover {
-  background: rgba(92, 108, 164, 0.22);
-  border-color: var(--color-brand-saboia);
-  color: var(--color-brand-white);
-  transform: translateY(-2px);
-}
-
-.services-hero__quick-pill .pill-num {
-  font-size: 11px;
-  font-weight: 700;
-  color: var(--color-brand-saboia);
-  font-variant-numeric: tabular-nums;
-}
-
-/* 14.2 FAIXA DE INDICADORES / CREDENCIAIS (AZUL ESPACIAL) */
-.services-stats-strip {
-  background-color: var(--color-brand-space-blue);
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  padding: 44px 0;
-}
-
-.services-stats-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 32px;
-  max-width: 1360px;
-  margin: 0 auto;
-  padding: 0 36px;
-}
-
-.services-stat-item {
-  border-left: 2px solid var(--color-brand-saboia);
-  padding-left: 20px;
-}
-
-.services-stat-val {
-  font-size: clamp(32px, 3.4vw, 48px);
-  font-weight: 800;
-  color: var(--color-brand-white);
-  line-height: 1;
-  margin-bottom: 8px;
-  letter-spacing: -0.02em;
-}
-
-.services-stat-label {
-  font-size: 13px;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.75);
-  line-height: 1.4;
-}
-
-/* 14.3 BARRA DE FILTROS E CONTROLE STICKY */
-.services-filter-bar {
-  position: sticky;
-  top: 76px;
-  z-index: 90;
-  background-color: rgba(5, 5, 5, 0.92);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid var(--border-subtle);
-  padding: 16px 0;
-  transition: var(--transition-fast);
-}
-
-.services-filter-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  max-width: 1360px;
-  margin: 0 auto;
-  padding: 0 36px;
-}
-
-.services-filter-group {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  overflow-x: auto;
-  padding-bottom: 4px;
-  scrollbar-width: none;
-}
-
-.services-filter-group::-webkit-scrollbar {
-  display: none;
-}
-
-.services-filter-btn {
-  appearance: none;
-  background: transparent;
-  border: 1px solid var(--border-subtle);
-  color: var(--text-white-muted);
-  font-family: var(--font-main);
-  font-size: 13px;
-  font-weight: 500;
-  padding: 9px 18px;
-  border-radius: var(--radius-pill);
-  cursor: pointer;
-  white-space: nowrap;
-  transition: var(--transition-fast);
-}
-
-.services-filter-btn:hover {
-  color: var(--text-white);
-  border-color: rgba(255, 255, 255, 0.3);
-  background: rgba(255, 255, 255, 0.05);
-}
-
-.services-filter-btn.is-active {
-  background: var(--color-brand-saboia);
-  border-color: var(--color-brand-saboia);
-  color: var(--color-brand-white);
   font-weight: 600;
-  box-shadow: 0 0 16px var(--color-primary-glow);
-}
-
-.services-mass-toggle {
-  appearance: none;
-  background: transparent;
-  border: none;
-  color: var(--text-white-dim);
-  font-family: var(--font-main);
-  font-size: 13px;
-  font-weight: 500;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  cursor: pointer;
-  padding: 8px 12px;
-  border-radius: 6px;
-  transition: var(--transition-fast);
-  white-space: nowrap;
-}
-
-.services-mass-toggle:hover {
-  color: var(--color-brand-saboia);
-}
-
-.services-mass-toggle svg {
-  width: 16px;
-  height: 16px;
-  transition: transform 0.3s var(--ease-cinematic);
-}
-
-.services-mass-toggle.is-expanded svg {
-  transform: rotate(180deg);
-}
-
-/* 14.4 PILARES ESTRATÉGICOS (ALTERNÂNCIA DE SUPERFÍCIES DO DESIGN SYSTEM) */
-.service-pillar-section {
-  position: relative;
-  padding: 100px 0;
-  transition: opacity 0.3s ease;
-}
-
-.service-pillar-section.is-hidden {
-  display: none !important;
-}
-
-.service-pillar-container {
-  max-width: 1360px;
-  margin: 0 auto;
-  padding: 0 36px;
-}
-
-/* FRENTE 01: CINEMA / DARK SURFACE */
-.service-pillar--dark {
-  background-color: var(--bg-body);
-  color: var(--text-white);
-  border-bottom: 1px solid var(--border-hairline);
-}
-
-/* FRENTE 02: BRANDING / ANTI-FLASH WHITE SURFACE (REGRA DE ALTERNÂNCIA DS) */
-.service-pillar--light {
-  background-color: var(--color-brand-antiflash);
-  color: var(--text-dark);
-}
-
-.service-pillar--light .pillar-eyebrow {
-  color: var(--color-brand-space-blue);
-  background: rgba(32, 42, 68, 0.08);
-  border-color: rgba(32, 42, 68, 0.16);
-}
-
-.service-pillar--light .pillar-title {
-  color: var(--color-brand-space-blue);
-}
-
-.service-pillar--light .pillar-desc {
-  color: var(--text-dark-muted);
-}
-
-/* FRENTE 03: ESG / SPACE BLUE SURFACE */
-.service-pillar--space {
-  background-color: var(--color-brand-space-blue);
-  color: var(--text-white);
-}
-
-.service-pillar--space .pillar-eyebrow {
-  color: var(--color-brand-antiflash);
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.2);
-}
-
-.service-pillar--space .pillar-title {
-  color: var(--color-brand-white);
-}
-
-.service-pillar--space .pillar-desc {
-  color: rgba(255, 255, 255, 0.85);
-}
-
-/* FRENTE 04: DESIGN / PURE WHITE SURFACE */
-.service-pillar--pure-white {
-  background-color: var(--color-brand-white);
-  color: var(--text-dark);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-}
-
-.service-pillar--pure-white .pillar-eyebrow {
-  color: var(--color-brand-space-blue);
-  background: rgba(92, 108, 164, 0.08);
-  border-color: rgba(92, 108, 164, 0.2);
-}
-
-.service-pillar--pure-white .pillar-title {
-  color: var(--color-brand-space-blue);
-}
-
-.service-pillar--pure-white .pillar-desc {
-  color: var(--text-dark-muted);
-}
-
-/* CABEÇALHO DO PILAR */
-.pillar-header {
-  display: grid;
-  grid-template-columns: 80px 1fr;
-  gap: 28px;
-  align-items: start;
-  margin-bottom: 56px;
-}
-
-.pillar-number {
-  font-size: clamp(36px, 4vw, 56px);
-  font-weight: 800;
-  color: var(--color-brand-saboia);
-  line-height: 1;
-  font-variant-numeric: tabular-nums;
-  opacity: 0.9;
-}
-
-.pillar-header-content {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.pillar-eyebrow {
-  display: inline-flex;
-  align-items: center;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  padding: 6px 14px;
-  border-radius: var(--radius-pill);
-  border: 1px solid transparent;
-  width: fit-content;
-}
-
-.pillar-title {
-  font-size: clamp(28px, 3.8vw, 48px);
-  font-weight: 800;
-  line-height: 1.1;
-  letter-spacing: -0.025em;
-}
-
-.pillar-desc {
-  font-size: clamp(16px, 1.4vw, 19px);
-  line-height: 1.6;
-  max-width: 820px;
-}
-
-/* DESTAQUE DE MÍDIA DO PILAR (VÍDEO / FOTOGRAFIA EDITORIAL) */
-.pillar-media-highlight {
-  position: relative;
-  border-radius: 16px;
-  overflow: hidden;
-  margin-bottom: 48px;
-  box-shadow: var(--shadow-card);
-  max-height: 380px;
-}
-
-.pillar-media-highlight video,
-.pillar-media-highlight img {
-  width: 100%;
-  height: 100%;
-  max-height: 380px;
-  object-fit: cover;
-  display: block;
-}
-
-.pillar-media-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, transparent 40%, rgba(5, 5, 5, 0.85) 100%);
-  display: flex;
-  align-items: flex-end;
-  padding: 32px;
-  color: var(--color-brand-white);
-}
-
-.pillar-media-caption {
-  font-size: 14px;
-  font-weight: 500;
   letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: var(--color-brand-antiflash);
-  display: flex;
-  align-items: center;
-  gap: 10px;
+  text-decoration: none;
+  width: fit-content;
+  transition: var(--transition-fast);
 }
 
-.pillar-media-caption::before {
-  content: '';
-  width: 8px;
-  height: 8px;
-  border-radius: var(--radius-full);
-  background-color: var(--color-brand-saboia);
-  box-shadow: 0 0 10px var(--color-brand-saboia);
+.srv-sticky-cta svg {
+  width: 14px;
+  height: 14px;
+  transition: transform 0.2s ease;
 }
 
-/* 14.5 LISTA DE ACCORDIONS DOS SERVIÇOS */
-.service-accordion-list {
+.srv-sticky-cta:hover svg {
+  transform: translate(3px, -3px);
+}
+
+/* Coluna da Direita (Lista de Serviços Fluida) */
+.srv-list {
   display: flex;
   flex-direction: column;
-  gap: 16px;
 }
 
-.service-accordion-item {
-  border-radius: 14px;
-  transition: all 0.25s var(--ease-cinematic);
-  overflow: hidden;
+.srv-item {
+  border-top: 1px solid rgba(92, 108, 164, 0.2);
+  transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
-/* Variação em fundo Dark */
-.service-pillar--dark .service-accordion-item {
-  background-color: var(--bg-card-dark);
-  border: 1px solid var(--border-subtle);
+.srv-item:last-child {
+  border-bottom: 1px solid rgba(92, 108, 164, 0.2);
 }
 
-.service-pillar--dark .service-accordion-item:hover,
-.service-pillar--dark .service-accordion-item.is-open {
-  border-color: rgba(92, 108, 164, 0.45);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
-}
-
-/* Variação em fundo Light */
-.service-pillar--light .service-accordion-item,
-.service-pillar--pure-white .service-accordion-item {
-  background-color: var(--color-brand-white);
-  border: 1px solid rgba(0, 0, 0, 0.08);
-}
-
-.service-pillar--light .service-accordion-item:hover,
-.service-pillar--light .service-accordion-item.is-open,
-.service-pillar--pure-white .service-accordion-item:hover,
-.service-pillar--pure-white .service-accordion-item.is-open {
-  border-color: rgba(92, 108, 164, 0.5);
-  box-shadow: 0 10px 32px rgba(32, 42, 68, 0.08);
-}
-
-/* Variação em fundo Space Blue */
-.service-pillar--space .service-accordion-item {
-  background-color: rgba(11, 15, 26, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-}
-
-.service-pillar--space .service-accordion-item:hover,
-.service-pillar--space .service-accordion-item.is-open {
-  border-color: rgba(92, 108, 164, 0.6);
-  background-color: rgba(11, 15, 26, 0.85);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-}
-
-/* TRIGGER DO ACCORDION (BOTÃO ACESSÍVEL) */
-.service-accordion-trigger {
+.srv-item__trigger {
   width: 100%;
   appearance: none;
   background: transparent;
   border: none;
   text-align: left;
-  padding: 24px 28px;
+  padding: 28px 0;
   cursor: pointer;
   display: flex;
-  align-items: center;
+  align-items: baseline;
   justify-content: space-between;
   gap: 20px;
   font-family: var(--font-main);
+  transition: var(--transition-fast);
 }
 
-.service-trigger-main {
+.srv-item__meta {
   display: flex;
-  align-items: center;
+  align-items: baseline;
   gap: 20px;
   flex: 1;
 }
 
-.service-item-index {
+.srv-item__index {
   font-size: 13px;
   font-weight: 700;
   color: var(--color-brand-saboia);
   font-variant-numeric: tabular-nums;
-  min-width: 38px;
+  min-width: 34px;
 }
 
-.service-item-title {
-  font-size: clamp(18px, 1.8vw, 24px);
+.srv-item__title {
+  font-size: clamp(20px, 2vw, 26px);
   font-weight: 700;
   line-height: 1.25;
   letter-spacing: -0.015em;
   margin: 0;
+  transition: color 0.2s ease;
 }
 
-.service-pillar--light .service-item-title,
-.service-pillar--pure-white .service-item-title {
-  color: var(--color-brand-space-blue);
-}
-
-.service-pillar--dark .service-item-title,
-.service-pillar--space .service-item-title {
-  color: var(--color-brand-white);
-}
-
-.service-trigger-badges {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-
-.service-badge {
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  padding: 4px 10px;
-  border-radius: 4px;
-  white-space: nowrap;
-}
-
-.service-pillar--dark .service-badge {
-  background: rgba(255, 255, 255, 0.06);
-  color: rgba(255, 255, 255, 0.7);
-  border: 1px solid var(--border-hairline);
-}
-
-.service-pillar--light .service-badge,
-.service-pillar--pure-white .service-badge {
-  background: rgba(32, 42, 68, 0.05);
-  color: var(--color-brand-space-blue);
-  border: 1px solid rgba(32, 42, 68, 0.1);
-}
-
-.service-pillar--space .service-badge {
-  background: rgba(255, 255, 255, 0.1);
-  color: rgba(255, 255, 255, 0.9);
-  border: 1px solid rgba(255, 255, 255, 0.16);
-}
-
-.service-accordion-icon {
-  width: 36px;
-  height: 36px;
+.srv-item__arrow {
+  width: 28px;
+  height: 28px;
   border-radius: var(--radius-full);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  transition: transform 0.3s var(--ease-cinematic), background-color 0.2s ease;
+  transition: transform 0.3s var(--ease-cinematic), background-color 0.2s ease, color 0.2s ease;
 }
 
-.service-pillar--dark .service-accordion-icon,
-.service-pillar--space .service-accordion-icon {
-  background: rgba(255, 255, 255, 0.06);
-  color: var(--color-brand-white);
-}
-
-.service-pillar--light .service-accordion-icon,
-.service-pillar--pure-white .service-accordion-icon {
-  background: rgba(32, 42, 68, 0.06);
-  color: var(--color-brand-space-blue);
-}
-
-.service-accordion-item.is-open .service-accordion-icon {
-  transform: rotate(45deg);
-  background: var(--color-brand-saboia);
-  color: var(--color-brand-white);
-}
-
-.service-accordion-icon svg {
-  width: 16px;
-  height: 16px;
-}
-
-/* PAINEL EXPANSÍVEL DO ACCORDION */
-.service-accordion-panel {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.35s var(--ease-cinematic);
-}
-
-.service-panel-inner {
-  padding: 0 28px 28px 86px;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
-
-.service-description-full {
-  font-size: 15px;
-  line-height: 1.65;
-}
-
-.service-pillar--dark .service-description-full {
-  color: var(--text-white-muted);
-}
-
-.service-pillar--light .service-description-full,
-.service-pillar--pure-white .service-description-full {
-  color: var(--text-dark-muted);
-}
-
-.service-pillar--space .service-description-full {
-  color: rgba(255, 255, 255, 0.85);
-}
-
-/* GRADE DE ENTREGÁVEIS E PÚBLICO */
-.service-details-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
-  padding: 20px 24px;
-  border-radius: 10px;
-}
-
-.service-pillar--dark .service-details-grid {
-  background: rgba(5, 5, 5, 0.6);
-  border: 1px solid var(--border-hairline);
-}
-
-.service-pillar--light .service-details-grid,
-.service-pillar--pure-white .service-details-grid {
-  background: var(--color-brand-antiflash);
-  border: 1px solid rgba(0, 0, 0, 0.06);
-}
-
-.service-pillar--space .service-details-grid {
-  background: rgba(5, 8, 16, 0.7);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.service-detail-col-title {
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  margin-bottom: 12px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.service-pillar--dark .service-detail-col-title,
-.service-pillar--space .service-detail-col-title {
-  color: var(--color-brand-saboia);
-}
-
-.service-pillar--light .service-detail-col-title,
-.service-pillar--pure-white .service-detail-col-title {
-  color: var(--color-brand-space-blue);
-}
-
-.service-checklist {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.service-checklist li {
-  font-size: 13px;
-  line-height: 1.45;
-  display: flex;
-  align-items: flex-start;
-  gap: 8px;
-}
-
-.service-pillar--dark .service-checklist li,
-.service-pillar--space .service-checklist li {
-  color: rgba(255, 255, 255, 0.8);
-}
-
-.service-pillar--light .service-checklist li,
-.service-pillar--pure-white .service-checklist li {
-  color: var(--text-dark);
-}
-
-.service-checklist li svg {
+.srv-item__arrow svg {
   width: 14px;
   height: 14px;
-  color: var(--color-brand-saboia);
-  flex-shrink: 0;
-  margin-top: 2px;
 }
 
-/* BARRA DE AÇÃO DA LINHA */
-.service-action-row {
+.srv-item.is-open .srv-item__arrow {
+  transform: rotate(45deg);
+}
+
+/* Painel de Conteúdo Revelado do Serviço */
+.srv-item__panel {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s var(--ease-cinematic);
+}
+
+.srv-item__content {
+  padding: 0 0 36px 54px;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.srv-item__prose {
+  font-size: 16px;
+  line-height: 1.75;
+  max-width: 780px;
+}
+
+.srv-item__deliverables {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
   padding-top: 8px;
 }
 
-.service-tagline-micro {
+.srv-pill-tag {
+  display: inline-flex;
+  align-items: center;
   font-size: 12px;
-  font-style: italic;
-  opacity: 0.7;
+  font-weight: 500;
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  letter-spacing: 0.02em;
 }
 
-.service-quote-btn {
+.srv-item__action {
+  padding-top: 12px;
+}
+
+.srv-action-link {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 10px 20px;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 600;
   letter-spacing: 0.04em;
-  text-transform: uppercase;
-  border-radius: var(--radius-pill);
-  cursor: pointer;
-  border: 1px solid transparent;
-  transition: var(--transition-fast);
   text-decoration: none;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: inherit;
+  transition: var(--transition-fast);
 }
 
-.service-pillar--dark .service-quote-btn,
-.service-pillar--space .service-quote-btn {
-  background: var(--color-brand-saboia);
-  color: var(--color-brand-white);
+.srv-action-link svg {
+  width: 14px;
+  height: 14px;
+  transition: transform 0.2s ease;
 }
 
-.service-pillar--dark .service-quote-btn:hover,
-.service-pillar--space .service-quote-btn:hover {
-  background: var(--color-primary-hover);
-  box-shadow: 0 0 16px var(--color-primary-glow);
-  transform: translateY(-2px);
+.srv-action-link:hover svg {
+  transform: translate(3px, -3px);
 }
 
-.service-pillar--light .service-quote-btn,
-.service-pillar--pure-white .service-quote-btn {
-  background: var(--color-brand-space-blue);
-  color: var(--color-brand-white);
+/* 14.3 VARIAÇÕES CROMÁTICAS DAS SUPERFÍCIES (COM AZUL SABÓIA COMO CENTRO) */
+
+/* VARIAÇÃO 1: CINEMA DARK COM ILUMINAÇÃO SABÓIA (Frente 01 - Audiovisual) */
+.srv-pillar--dark {
+  background-color: var(--bg-body);
+  color: var(--text-white);
+  border-bottom: 1px solid rgba(92, 108, 164, 0.16);
 }
 
-.service-pillar--light .service-quote-btn:hover,
-.service-pillar--pure-white .service-quote-btn:hover {
-  background: var(--color-brand-saboia);
-  box-shadow: 0 6px 20px rgba(32, 42, 68, 0.25);
-  transform: translateY(-2px);
-}
-
-.service-quote-btn svg {
-  width: 12px;
-  height: 12px;
-}
-
-/* 14.6 METODOLOGIA LENSES (4 ETAPAS) */
-.services-methodology-section {
-  background-color: var(--bg-surface-elevated);
-  padding: 110px 0;
-  border-top: 1px solid var(--border-hairline);
-  border-bottom: 1px solid var(--border-hairline);
-}
-
-.methodology-header {
-  text-align: center;
-  max-width: 760px;
-  margin: 0 auto 64px;
-}
-
-.methodology-header .section-eyebrow {
+.srv-pillar--dark .srv-pillar-badge {
   color: var(--color-brand-saboia);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  margin-bottom: 12px;
-  display: block;
 }
 
-.methodology-header .section-title {
-  font-size: clamp(30px, 4vw, 48px);
-  font-weight: 800;
+.srv-pillar--dark .srv-pillar-num {
+  color: var(--color-brand-saboia);
+  opacity: 0.9;
+}
+
+.srv-pillar--dark .srv-pillar-title {
   color: var(--color-brand-white);
-  line-height: 1.1;
-  margin-bottom: 16px;
-  letter-spacing: -0.02em;
 }
 
-.methodology-header .section-lead {
-  font-size: 16px;
-  line-height: 1.6;
+.srv-pillar--dark .srv-pillar-manifesto {
   color: var(--text-white-muted);
 }
 
-.methodology-grid {
+.srv-pillar--dark .srv-media-box {
+  border: 1px solid rgba(92, 108, 164, 0.25);
+}
+
+.srv-pillar--dark .srv-media-caption {
+  background-color: rgba(9, 12, 20, 0.95);
+  color: var(--color-brand-antiflash);
+  border-top: 1px solid rgba(92, 108, 164, 0.2);
+}
+
+.srv-pillar--dark .srv-sticky-cta {
+  color: var(--color-brand-saboia);
+}
+
+.srv-pillar--dark .srv-item__title {
+  color: var(--color-brand-white);
+}
+
+.srv-pillar--dark .srv-item:hover .srv-item__title,
+.srv-pillar--dark .srv-item.is-open .srv-item__title {
+  color: var(--color-brand-saboia);
+}
+
+.srv-pillar--dark .srv-item__arrow {
+  background-color: rgba(92, 108, 164, 0.12);
+  color: var(--color-brand-saboia);
+}
+
+.srv-pillar--dark .srv-item.is-open .srv-item__arrow {
+  background-color: var(--color-brand-saboia);
+  color: var(--color-brand-white);
+}
+
+.srv-pillar--dark .srv-item__prose {
+  color: var(--text-white-muted);
+}
+
+.srv-pillar--dark .srv-pill-tag {
+  background: rgba(92, 108, 164, 0.12);
+  color: var(--color-brand-antiflash);
+  border: 1px solid rgba(92, 108, 164, 0.3);
+}
+
+.srv-pillar--dark .srv-action-link {
+  color: var(--color-brand-saboia);
+}
+
+/* VARIAÇÃO 2: CLARO EDITORIAL COM TÍTULOS SABÓIA (Frente 02 - Branding) */
+.srv-pillar--light {
+  background-color: #fcfcfe;
+  background-image: radial-gradient(ellipse 50% 60% at 90% 10%, rgba(92, 108, 164, 0.08), transparent 70%);
+  color: var(--color-brand-space-blue);
+  border-bottom: 1px solid rgba(92, 108, 164, 0.18);
+}
+
+.srv-pillar--light .srv-pillar-badge {
+  color: var(--color-brand-saboia);
+}
+
+.srv-pillar--light .srv-pillar-num {
+  color: var(--color-brand-saboia);
+}
+
+.srv-pillar--light .srv-pillar-title {
+  color: var(--color-brand-space-blue);
+}
+
+.srv-pillar--light .srv-pillar-manifesto {
+  color: #4a5468;
+}
+
+.srv-pillar--light .srv-media-box {
+  border: 1px solid rgba(92, 108, 164, 0.2);
+}
+
+.srv-pillar--light .srv-media-caption {
+  background-color: #ffffff;
+  color: var(--color-brand-space-blue);
+  border-top: 1px solid rgba(92, 108, 164, 0.15);
+}
+
+.srv-pillar--light .srv-sticky-cta {
+  color: var(--color-brand-saboia);
+}
+
+.srv-pillar--light .srv-item {
+  border-color: rgba(92, 108, 164, 0.2);
+}
+
+.srv-pillar--light .srv-item__title {
+  color: var(--color-brand-space-blue);
+}
+
+.srv-pillar--light .srv-item:hover .srv-item__title,
+.srv-pillar--light .srv-item.is-open .srv-item__title {
+  color: var(--color-brand-saboia);
+}
+
+.srv-pillar--light .srv-item__arrow {
+  background-color: rgba(92, 108, 164, 0.1);
+  color: var(--color-brand-saboia);
+}
+
+.srv-pillar--light .srv-item.is-open .srv-item__arrow {
+  background-color: var(--color-brand-saboia);
+  color: var(--color-brand-white);
+}
+
+.srv-pillar--light .srv-item__prose {
+  color: #4a5468;
+}
+
+.srv-pillar--light .srv-pill-tag {
+  background: rgba(92, 108, 164, 0.08);
+  color: var(--color-brand-space-blue);
+  border: 1px solid rgba(92, 108, 164, 0.22);
+}
+
+.srv-pillar--light .srv-action-link {
+  color: var(--color-brand-saboia);
+}
+
+/* VARIAÇÃO 3: AZUL SABÓIA PURO INSTITUCIONAL (Frente 03 - Propaganda & ESG) */
+.srv-pillar--saboia-pure {
+  background-color: var(--color-brand-saboia);
+  color: var(--color-brand-white);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  overflow: hidden;
+}
+
+.srv-pillar--saboia-pure .srv-pillar-watermark {
+  position: absolute;
+  right: -5%;
+  bottom: 5%;
+  font-size: clamp(80px, 14vw, 200px);
+  font-weight: 900;
+  color: rgba(32, 42, 68, 0.16);
+  pointer-events: none;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.srv-pillar--saboia-pure .srv-pillar-badge {
+  color: var(--color-brand-antiflash);
+  opacity: 0.9;
+}
+
+.srv-pillar--saboia-pure .srv-pillar-num {
+  color: var(--color-brand-white);
+}
+
+.srv-pillar--saboia-pure .srv-pillar-title {
+  color: var(--color-brand-white);
+}
+
+.srv-pillar--saboia-pure .srv-pillar-manifesto {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.srv-pillar--saboia-pure .srv-media-box {
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.srv-pillar--saboia-pure .srv-media-caption {
+  background-color: rgba(32, 42, 68, 0.85);
+  color: var(--color-brand-white);
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.srv-pillar--saboia-pure .srv-sticky-cta {
+  color: var(--color-brand-white);
+}
+
+.srv-pillar--saboia-pure .srv-item {
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.srv-pillar--saboia-pure .srv-item__index {
+  color: var(--color-brand-white);
+  opacity: 0.85;
+}
+
+.srv-pillar--saboia-pure .srv-item__title {
+  color: var(--color-brand-white);
+}
+
+.srv-pillar--saboia-pure .srv-item__arrow {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: var(--color-brand-white);
+}
+
+.srv-pillar--saboia-pure .srv-item.is-open .srv-item__arrow {
+  background-color: var(--color-brand-white);
+  color: var(--color-brand-saboia);
+}
+
+.srv-pillar--saboia-pure .srv-item__prose {
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.srv-pillar--saboia-pure .srv-pill-tag {
+  background: rgba(255, 255, 255, 0.16);
+  color: var(--color-brand-white);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.srv-pillar--saboia-pure .srv-action-link {
+  color: var(--color-brand-white);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+  padding-bottom: 2px;
+}
+
+/* VARIAÇÃO 4: EDITORIAL SUAVE COM DETALHES SABÓIA (Frente 04 - Design) */
+.srv-pillar--pure-white {
+  background-color: #f7f8fc;
+  background-image: radial-gradient(ellipse 45% 55% at 10% 90%, rgba(92, 108, 164, 0.08), transparent 70%);
+  color: var(--color-brand-space-blue);
+  border-bottom: 1px solid rgba(92, 108, 164, 0.18);
+}
+
+.srv-pillar--pure-white .srv-pillar-badge {
+  color: var(--color-brand-saboia);
+}
+
+.srv-pillar--pure-white .srv-pillar-num {
+  color: var(--color-brand-saboia);
+}
+
+.srv-pillar--pure-white .srv-pillar-title {
+  color: var(--color-brand-space-blue);
+}
+
+.srv-pillar--pure-white .srv-pillar-manifesto {
+  color: #4a5468;
+}
+
+.srv-pillar--pure-white .srv-media-box {
+  border: 1px solid rgba(92, 108, 164, 0.2);
+}
+
+.srv-pillar--pure-white .srv-media-caption {
+  background-color: #ffffff;
+  color: var(--color-brand-space-blue);
+  border-top: 1px solid rgba(92, 108, 164, 0.15);
+}
+
+.srv-pillar--pure-white .srv-sticky-cta {
+  color: var(--color-brand-saboia);
+}
+
+.srv-pillar--pure-white .srv-item {
+  border-color: rgba(92, 108, 164, 0.2);
+}
+
+.srv-pillar--pure-white .srv-item__title {
+  color: var(--color-brand-space-blue);
+}
+
+.srv-pillar--pure-white .srv-item:hover .srv-item__title,
+.srv-pillar--pure-white .srv-item.is-open .srv-item__title {
+  color: var(--color-brand-saboia);
+}
+
+.srv-pillar--pure-white .srv-item__arrow {
+  background-color: rgba(92, 108, 164, 0.1);
+  color: var(--color-brand-saboia);
+}
+
+.srv-pillar--pure-white .srv-item.is-open .srv-item__arrow {
+  background-color: var(--color-brand-saboia);
+  color: var(--color-brand-white);
+}
+
+.srv-pillar--pure-white .srv-item__prose {
+  color: #4a5468;
+}
+
+.srv-pillar--pure-white .srv-pill-tag {
+  background: rgba(92, 108, 164, 0.08);
+  color: var(--color-brand-space-blue);
+  border: 1px solid rgba(92, 108, 164, 0.22);
+}
+
+.srv-pillar--pure-white .srv-action-link {
+  color: var(--color-brand-saboia);
+}
+
+/* 14.4 METODOLOGIA ORGÂNICA (LINHA DO TEMPO CONECTADA COM NÓS SABÓIA) */
+.srv-method {
+  background-color: #fcfcfe;
+  color: var(--color-brand-space-blue);
+  padding: clamp(90px, 9vw, 140px) 0;
+  border-bottom: 1px solid rgba(92, 108, 164, 0.18);
+  position: relative;
+  overflow: hidden;
+}
+
+.srv-method__header {
+  text-align: center;
+  max-width: 820px;
+  margin: 0 auto 60px;
+  padding: 0 36px;
+}
+
+.srv-method__eyebrow {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--color-brand-saboia);
+  margin-bottom: 14px;
+}
+
+.srv-method__title {
+  font-size: clamp(30px, 4vw, 52px);
+  font-weight: 800;
+  color: var(--color-brand-space-blue);
+  letter-spacing: -0.03em;
+  margin: 0 0 16px;
+}
+
+.srv-method__title span.saboia {
+  color: var(--color-brand-saboia);
+}
+
+.srv-method__lead {
+  font-size: 16px;
+  line-height: 1.65;
+  color: #4a5468;
+  margin: 0;
+}
+
+/* Linha de Conexão Estilo Lenses Foundations */
+.srv-method__track {
+  position: relative;
+  width: min(1080px, calc(100% - 72px));
+  height: 2px;
+  background: rgba(92, 108, 164, 0.2);
+  margin: 0 auto 50px;
+}
+
+.srv-method__progress {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, #5C6CA4 0%, #7886bc 50%, #5C6CA4 100%);
+}
+
+.srv-method__grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
-  max-width: 1360px;
+  gap: 32px;
+  max-width: 1320px;
   margin: 0 auto;
   padding: 0 36px;
 }
 
-.method-card {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid var(--border-subtle);
-  border-radius: 14px;
-  padding: 32px 24px;
+.srv-method__step {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  position: relative;
-  transition: var(--transition-fast);
+  gap: 14px;
 }
 
-.method-card:hover {
-  background: rgba(92, 108, 164, 0.08);
-  border-color: var(--color-brand-saboia);
-  transform: translateY(-4px);
-}
-
-.method-step-num {
-  font-size: 40px;
+.srv-method__step-num {
+  font-size: 32px;
   font-weight: 800;
   color: var(--color-brand-saboia);
   line-height: 1;
   font-variant-numeric: tabular-nums;
-  opacity: 0.8;
+  letter-spacing: -0.02em;
 }
 
-.method-card-title {
+.srv-method__step-title {
   font-size: 18px;
   font-weight: 700;
-  color: var(--color-brand-white);
-  line-height: 1.3;
+  color: var(--color-brand-space-blue);
+  margin: 0;
 }
 
-.method-card-desc {
+.srv-method__step-text {
   font-size: 14px;
-  line-height: 1.6;
-  color: var(--text-white-muted);
+  line-height: 1.65;
+  color: #556075;
+  margin: 0;
 }
 
-/* 14.7 SELOS DE INFRAESTRUTURA & EXCELÊNCIA TÉCNICA */
-.services-tech-section {
-  background-color: var(--bg-body);
-  padding: 90px 0;
-  border-bottom: 1px solid var(--border-hairline);
+/* 14.5 CLIENTES: GRADE MINIMALISTA & LIMPA */
+.srv-clients {
+  background-color: #f7f8fc;
+  padding: clamp(80px, 8vw, 120px) 0;
+  border-bottom: 1px solid rgba(92, 108, 164, 0.16);
 }
 
-.tech-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-  max-width: 1360px;
-  margin: 0 auto;
-  padding: 0 36px;
-}
-
-.tech-card {
-  background: var(--bg-card-dark);
-  border: 1px solid var(--border-subtle);
-  border-radius: 12px;
-  padding: 24px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.tech-card-icon {
-  width: 40px;
-  height: 40px;
-  border-radius: 8px;
-  background: rgba(92, 108, 164, 0.15);
-  color: var(--color-brand-saboia);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.tech-card-icon svg {
-  width: 20px;
-  height: 20px;
-}
-
-.tech-card-title {
-  font-size: 15px;
-  font-weight: 700;
-  color: var(--color-brand-white);
-}
-
-.tech-card-desc {
-  font-size: 13px;
-  line-height: 1.5;
-  color: var(--text-white-dim);
-}
-
-/* 14.8 CLIENTES & MARCAS QUE CONFIAM (EQUALIZADOS CONFORME CHANGELOG) */
-.services-clients-section {
-  background-color: var(--color-brand-antiflash);
-  padding: 100px 0;
-  color: var(--text-dark);
-}
-
-.clients-header {
+.srv-clients__header {
   text-align: center;
   max-width: 760px;
-  margin: 0 auto 52px;
+  margin: 0 auto 48px;
   padding: 0 36px;
 }
 
-.clients-eyebrow {
+.srv-clients__eyebrow {
   font-size: 11px;
   font-weight: 700;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--color-brand-space-blue);
+  color: var(--color-brand-saboia);
   margin-bottom: 12px;
   display: block;
 }
 
-.clients-title {
-  font-size: clamp(26px, 3.5vw, 42px);
+.srv-clients__title {
+  font-size: clamp(26px, 3.4vw, 42px);
   font-weight: 800;
   color: var(--color-brand-space-blue);
-  margin-bottom: 14px;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.025em;
+  margin: 0;
 }
 
-.clients-desc {
-  font-size: 15px;
-  line-height: 1.6;
-  color: var(--text-dark-muted);
-}
-
-.clients-grid-equalized {
+.srv-clients__grid {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   gap: 32px 24px;
   align-items: center;
   justify-items: center;
-  max-width: 1280px;
+  max-width: 1240px;
   margin: 0 auto;
   padding: 0 36px;
 }
 
-.client-logo-item {
+.srv-client-logo {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 52px;
+  height: 48px;
   width: 100%;
-  padding: 4px;
-  transition: transform 0.2s ease, filter 0.2s ease;
-  filter: grayscale(100%) contrast(120%) opacity(0.7);
+  filter: grayscale(100%) opacity(0.65);
+  transition: filter 0.25s ease, transform 0.25s ease;
 }
 
-.client-logo-item:hover {
-  filter: grayscale(0%) contrast(100%) opacity(1);
-  transform: scale(1.05);
+.srv-client-logo:hover {
+  filter: grayscale(0%) opacity(1);
+  transform: translateY(-2px);
 }
 
-.client-logo-item img {
-  max-height: 42px;
-  max-width: 130px;
+.srv-client-logo img {
+  max-height: 40px;
+  max-width: 120px;
   object-fit: contain;
 }
 
-/* 14.9 CTA BANNER DE IMPACTO */
-.services-cta-banner {
-  background: var(--gradient-brand-angle);
-  padding: 110px 0;
+/* 14.6 CTA FINAL MANIFESTO (AZUL SABÓIA COMO FUNDO DOMINANTE) */
+.srv-cta {
+  background-color: var(--color-brand-saboia);
+  background-image:
+    radial-gradient(circle at 15% 30%, rgba(255, 255, 255, 0.15) 0%, transparent 60%),
+    radial-gradient(circle at 85% 80%, rgba(32, 42, 68, 0.35) 0%, transparent 70%);
+  color: var(--color-brand-white);
+  padding: clamp(100px, 10vw, 160px) 0;
   position: relative;
   overflow: hidden;
-  color: var(--color-brand-white);
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
 }
 
-.services-cta-container {
-  max-width: 1100px;
+.srv-cta__watermark {
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  font-size: clamp(90px, 16vw, 240px);
+  font-weight: 900;
+  color: rgba(32, 42, 68, 0.15);
+  pointer-events: none;
+  user-select: none;
+}
+
+.srv-cta__container {
+  max-width: 980px;
   margin: 0 auto;
   padding: 0 36px;
   text-align: center;
@@ -3379,37 +3465,37 @@
   z-index: 2;
 }
 
-.services-cta-eyebrow {
+.srv-cta__eyebrow {
   display: inline-block;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 700;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--color-brand-antiflash);
-  background: rgba(255, 255, 255, 0.12);
-  padding: 8px 18px;
+  color: var(--color-brand-white);
+  background: rgba(255, 255, 255, 0.18);
+  padding: 8px 20px;
   border-radius: var(--radius-pill);
-  margin-bottom: 24px;
+  margin-bottom: 28px;
 }
 
-.services-cta-headline {
-  font-size: clamp(32px, 5vw, 62px);
+.srv-cta__headline {
+  font-size: clamp(34px, 5.2vw, 68px);
   font-weight: 800;
   line-height: 1.08;
-  letter-spacing: -0.025em;
+  letter-spacing: -0.03em;
   color: var(--color-brand-white);
-  margin-bottom: 24px;
+  margin: 0 0 24px;
 }
 
-.services-cta-sub {
+.srv-cta__sub {
   font-size: clamp(16px, 1.8vw, 20px);
-  line-height: 1.6;
-  color: rgba(255, 255, 255, 0.9);
-  max-width: 780px;
-  margin: 0 auto 40px;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.92);
+  max-width: 720px;
+  margin: 0 auto 44px;
 }
 
-.services-cta-actions {
+.srv-cta__actions {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -3417,30 +3503,30 @@
   flex-wrap: wrap;
 }
 
-.services-cta-btn-primary {
+.srv-cta__btn-main {
   display: inline-flex;
   align-items: center;
   gap: 10px;
   padding: 16px 36px;
   font-size: 14px;
   font-weight: 700;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
   background-color: var(--color-brand-white);
-  color: var(--color-brand-space-blue);
+  color: var(--color-brand-saboia);
   border-radius: var(--radius-pill);
   text-decoration: none;
   transition: var(--transition-fast);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 8px 24px rgba(32, 42, 68, 0.25);
 }
 
-.services-cta-btn-primary:hover {
+.srv-cta__btn-main:hover {
   background-color: var(--color-brand-antiflash);
   transform: translateY(-2px);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 12px 32px rgba(32, 42, 68, 0.35);
 }
 
-.services-cta-btn-secondary {
+.srv-cta__btn-alt {
   display: inline-flex;
   align-items: center;
   gap: 10px;
@@ -3451,141 +3537,110 @@
   text-transform: uppercase;
   background-color: transparent;
   color: var(--color-brand-white);
-  border: 1px solid rgba(255, 255, 255, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.4);
   border-radius: var(--radius-pill);
   text-decoration: none;
   transition: var(--transition-fast);
 }
 
-.services-cta-btn-secondary:hover {
-  background-color: rgba(255, 255, 255, 0.1);
+.srv-cta__btn-alt:hover {
+  background-color: rgba(255, 255, 255, 0.14);
   border-color: var(--color-brand-white);
 }
 
-/* 14.10 RESPONSIVIDADE DOS COMPONENTES DE SERVIÇOS */
+/* 14.7 RESPONSIVIDADE ORGÂNICA */
 @media (max-width: 1080px) {
-  .services-stats-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 28px;
+  .srv-split {
+    grid-template-columns: 1fr;
+    gap: 48px;
   }
 
-  .methodology-grid {
+  .srv-split__sticky {
+    position: static;
+  }
+
+  .srv-method__grid {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .tech-grid {
-    grid-template-columns: repeat(2, 1fr);
+  .srv-method__track {
+    display: none;
   }
 
-  .clients-grid-equalized {
+  .srv-clients__grid {
     grid-template-columns: repeat(4, 1fr);
   }
 }
 
-@media (max-width: 860px) {
-  .pillar-header {
-    grid-template-columns: 1fr;
-    gap: 16px;
-    margin-bottom: 40px;
-  }
-
-  .service-trigger-main {
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-
-  .service-panel-inner {
-    padding: 0 20px 24px 20px;
-  }
-
-  .service-details-grid {
-    grid-template-columns: 1fr;
-    gap: 18px;
-  }
-
-  .service-action-row {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-}
-
 @media (max-width: 768px) {
-  .services-hero {
-    padding: calc(var(--top-ticker-height) + 90px) 0 60px;
+  .srv-hero {
+    padding: calc(var(--top-ticker-height) + 80px) 0 60px;
   }
 
-  .services-hero__container,
-  .service-pillar-container,
-  .services-filter-container,
-  .methodology-grid,
-  .tech-grid,
-  .clients-grid-equalized,
-  .services-cta-container {
+  .srv-hero__container,
+  .srv-pillar__container,
+  .srv-method__grid,
+  .srv-clients__grid,
+  .srv-cta__container {
     padding-left: 20px;
     padding-right: 20px;
   }
 
-  .services-stats-grid {
-    grid-template-columns: 1fr;
-    padding-left: 20px;
-    padding-right: 20px;
+  .srv-item__trigger {
+    padding: 22px 0;
   }
 
-  .services-filter-bar {
-    top: 60px;
+  .srv-item__content {
+    padding-left: 0;
   }
 
-  .methodology-grid {
+  .srv-method__grid {
     grid-template-columns: 1fr;
   }
 
-  .tech-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .clients-grid-equalized {
+  .srv-clients__grid {
     grid-template-columns: repeat(3, 1fr);
-    gap: 24px 16px;
-  }
-
-  .service-accordion-trigger {
-    padding: 20px 16px;
-  }
-
-  .service-accordion-icon {
-    width: 30px;
-    height: 30px;
+    gap: 20px 14px;
   }
 }
 
 @media (max-width: 480px) {
-  .clients-grid-equalized {
+  .srv-hero__nav-links {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .srv-hero__nav-link {
+    width: 100%;
+  }
+
+  .srv-clients__grid {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .services-cta-actions {
+  .srv-cta__actions {
     flex-direction: column;
     width: 100%;
   }
 
-  .services-cta-btn-primary,
-  .services-cta-btn-secondary {
+  .srv-cta__btn-main,
+  .srv-cta__btn-alt {
     width: 100%;
     justify-content: center;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .services-hero__quick-pill,
-  .services-filter-btn,
-  .service-accordion-item,
-  .service-accordion-icon,
-  .service-accordion-panel,
-  .method-card,
-  .client-logo-item,
-  .services-cta-btn-primary,
-  .services-cta-btn-secondary {
+  .srv-hero__nav-link,
+  .srv-sticky-cta,
+  .srv-item__arrow,
+  .srv-item__panel,
+  .srv-client-logo,
+  .srv-cta__btn-main,
+  .srv-cta__btn-alt {
     transition: none !important;
     transform: none !important;
   }
 }
+
