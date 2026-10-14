@@ -32,6 +32,8 @@ const server = http.createServer((req, res) => {
   
   if (fs.existsSync(fullPath) && fs.statSync(fullPath).isDirectory()) {
     fullPath = path.join(fullPath, 'index.html');
+  } else if (!fs.existsSync(fullPath) && fs.existsSync(fullPath + '.html')) {
+    fullPath = fullPath + '.html';
   }
 
   if (!fs.existsSync(fullPath)) {

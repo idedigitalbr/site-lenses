@@ -1,4 +1,25 @@
 document.addEventListener('DOMContentLoaded', () => {
+  // 0. Suporte à navegação offline direta via protocolo file:// (evita listagem de diretório do Chrome)
+  if (window.location.protocol === 'file:') {
+    const resolveOfflineLinks = () => {
+      document.querySelectorAll('a[href]').forEach(link => {
+        const href = link.getAttribute('href');
+        if (href && href.endsWith('/') && !href.startsWith('http://') && !href.startsWith('https://') && !href.startsWith('//') && !href.startsWith('#')) {
+          link.setAttribute('href', href + 'index.html');
+        }
+      });
+    };
+    resolveOfflineLinks();
+    document.addEventListener('click', (e) => {
+      const link = e.target.closest('a[href]');
+      if (!link) return;
+      const href = link.getAttribute('href');
+      if (href && href.endsWith('/') && !href.startsWith('http://') && !href.startsWith('https://') && !href.startsWith('//') && !href.startsWith('#')) {
+        link.setAttribute('href', href + 'index.html');
+      }
+    }, true);
+  }
+
   // 1. Mobile Menu Drawer Toggle
   const menuToggle = document.getElementById('menuToggle');
   const mobileNav = document.getElementById('mobileNav');

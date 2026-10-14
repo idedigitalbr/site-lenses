@@ -1,3 +1,50 @@
+## 2026-10-14 — refactor(estrutura): unificação profissional da página Sobre na raiz e eliminação de pastas redundantes
+
+- **Unificação da página Sobre na raiz:** promovido o conteúdo canônico da página Sobre diretamente para `sobre.html` (43 KB) na raiz do repositório, ao lado de `index.html`.
+- **Eliminação de stubs e pastas duplicadas:** removidos em definitivo os arquivos de atalho obsoletos (`sobre-nos.html`, `sobre2.html`, `Sobre2.html`), a pasta `sobre2/` e a pasta órfã `assets/paginas/sobre2/`.
+- **Rotas e links profissionais:** menus desktop e mobile de `index.html` e `cases/bda-premio-brasileiro-de-design/index.html` atualizados para apontar diretamente para `sobre.html` (e `../../sobre.html`), funcionando de forma transparente e imediata tanto offline via duplo clique no Windows Explorer (`file:///`) quanto em ambiente web.
+- **Preview e testes sincronizados:** catálogo do Design System (`design-system-preview.html`), documentações (`docs/COMPONENTS.md`, `docs/DESIGN.md`) e script de integridade (`scripts/check-design-system.mjs`) atualizados para validar o contrato oficial de `index.html` e `sobre.html`.
+- **Servidor local inteligente:** `scripts/serve.mjs` aprimorado para suportar clean URLs (resolvendo `/sobre` diretamente para `sobre.html`).
+- 100% validado pelo script de QA oficial do repositório (`node scripts/check-design-system.mjs`).
+
+---
+
+## 2026-10-14 — feat(brand): aplicação da logo LENSES vertical oficial no Sobre e na Home
+
+- **Logo oficial LENSES vertical:** padronizado e vetorizado o ativo oficial `assets/imagens-diversas/logos/logo-lenses-vertical.svg` com os 6 glifos originais da marca (`L-E-N` / `S-E-S`), tipografia exclusiva (diagonal estilizada do `N`, curvas do `S`) e suporte nativo a `currentColor`.
+- **Diagrama "Como Conectamos" (Sobre / Anexo 2):** substituído o texto cru em fonte genérica pelo logotipo vertical oficial em branco puro (`#f8f7f8`) perfeitamente centralizado no núcleo de convergência (`sobre2/index.html`), mantendo dimensões harmônicas (56×47px) e margem de respiro dentro do círculo pontilhado interno.
+- **Marca d'água da Seção de Clientes (Home / Anexo 1):** substituído o texto em CSS font-family pelo SVG da logo vertical oficial atrás do grid de clientes (`index.html` e `design-system-preview.html`), aplicando a cor escura institucional tom sobre tom (`--tone-saboia-watermark` / `rgba(32, 42, 68, 0.22)`) sobre o fundo Azul Sabóia (`#5C6CA4`).
+- **Ajustes de responsividade e estilo:** adicionadas regras em `assets/components.css` e `assets/lenses-convergence.css` para dimensionamento fluido (`clamp`) e preservação do alinhamento óptico em desktop, tablet e mobile.
+- 100% validado pelo script de QA oficial (`node scripts/check-design-system.mjs`).
+
+---
+
+## 2026-10-14 — fix(offline): suporte a navegação local offline (file:///) e resolução de páginas de 1 KB
+
+- **Resolução de stubs de 1 KB:** os arquivos de redirecionamento histórico (`sobre.html`, `sobre-nos.html`, `sobre2.html`, `case-bda.html`, `cases/bda/index.html` e `project/bda-premio-brasileiro-de-design/index.html`) foram atualizados para apontar explicitamente para o arquivo canônico com `/index.html` no final.
+- **Eliminação da tela de diretório no Chrome:** ao abrir offline no Windows (duplo clique no arquivo via `file:///`), o navegador Chrome não mais exibe a tela de listagem de diretório (*"Índice de D:\..."*), abrindo imediatamente a página oficial completa de 43 KB em `sobre2/index.html`.
+- **Compatibilidade dinâmica em navegação:** injetado handler em `assets/script.js` que detecta o protocolo `file:` e resolve links relativos terminados em `/` para `/index.html`, permitindo transição sem falhas entre Home, Sobre e Cases em ambiente 100% desconectado.
+- 100% validado pelo script de QA oficial do repositório (`node scripts/check-design-system.mjs`).
+
+---
+
+## 2026-10-14 — fix(home): otimização de performance e resposta imediata de hover no diagrama "Como Conectamos"
+
+- **Eliminação de latência no hover:** removidos os atrasos forçados (`transition-delay: 220ms` e `150ms`) na troca de cor da tipografia dos pilares (*Propósito*, *Consistência*, *Resultado*).
+- **Aceleração da expansão do disco:** reduzida a transição de preenchimento (`.lcs-reveal-solid` e `.lcs-reveal-disc`) de 850ms/1150ms para 320ms snappy com curva suave `cubic-bezier(.16, 1, .3, 1)`.
+- **Contraste nítido e remoção de artefato embaçado:** retirado o `text-shadow` branco difuso do estado em repouso (`rgba(255,255,255,.48)`) que causava borrão ao expandir o fundo azul, aplicando agora transição direta e limpa para branco puro (`#ffffff`) com sombra de precisão sutil.
+- **Sincronização imediata:** traço indicador e microgeometrias com transição instantânea sincronizada no hover e foco de teclado.
+- 100% validado pelo script de QA do Design System (`node scripts/check-design-system.mjs`).
+
+---
+
+## 2026-10-14 — fix(logos): atualização da logo da ALBRAS com ativo oficial em alta definição
+
+- Atualizada a logo da **ALBRAS** para a versão oficial em alta resolução (`assets/imagens-diversas/logos-clientes/albras-seeklogo.png` e espelhada em `albras.png`), com resolução de 2000×1073px e canal alfa transparente.
+- Atualizadas as referências na Home (`index.html`), na página de Serviços (`servicos/index.html`) e no catálogo do Design System (`design-system-preview.html`).
+- Validação completa de integridade executada via `node scripts/check-design-system.mjs`.
+
+---
 
 ## 2026-10-14 — feat(home): nova seção editorial de Portfólio / Clientes em Azul Sabóia
 

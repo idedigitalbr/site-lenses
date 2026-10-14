@@ -4,7 +4,7 @@ import path from 'node:path';
 const errors = [];
 const read = name => fs.readFileSync(path.join(process.cwd(), name), 'utf8');
 const check = (valid, message) => { if (!valid) errors.push(message); };
-const pages = ['index.html', 'sobre2/index.html'];
+const pages = ['index.html', 'sobre.html'];
 const html = Object.fromEntries(pages.map(p => [p, read(p)]));
 const cssFiles = ['assets/tokens.css', 'assets/base.css', 'assets/components.css', 'assets/pages.css'];
 const entry = read('assets/styles.css');
@@ -33,7 +33,7 @@ for (const [name, source] of Object.entries(html)) {
     const expected = ['Início','Sobre','Portfólio / Cases'];
     check(expected.every((x,i) => labels(desktop[1])[i] === x), name + ': menu desktop não padronizado');
     check(expected.concat('Nossos Serviços').every((x,i) => labels(mobile[1])[i] === x), name + ': menu mobile não padronizado');
-    const target = name.includes('/') ? '../sobre2/' : 'sobre2/';
+    const target = 'sobre.html';
     check(desktop[1].includes('href="' + target + '"') && mobile[1].includes('href="' + target + '"'), name + ': Sobre com rota incorreta');
   }
   const ids = Array.from(source.matchAll(/\bid\s*=\s*["']([^"']+)["']/gi), m => m[1]);
@@ -54,29 +54,24 @@ for (const [name, source] of Object.entries(html)) {
     check(fs.existsSync(asset), name + ': arquivo inexistente: ' + local);
   }
 }
-for (const alias of ['sobre.html','sobre-nos.html']) {
-  const stub = read(alias);
-  check(stub.includes('url=sobre2/') && stub.includes('rel="canonical"') && !stub.includes('class="section'), alias + ': versão antiga não redireciona à página Sobre oficial');
-}
 for (const [name, source] of Object.entries(html)) {
-  check(!/href=["'][^"']*(?:sobre\.html|sobre-nos\.html)["']/.test(source), name + ': contém link para a página Sobre desativada');
+  check(!/href=["'][^"']*(?:sobre2|sobre-nos\.html)["']/.test(source), name + ': contém link para rota antiga desativada');
   check(!/>Sobre 2<\/a>/.test(source), name + ': mostra Sobre 2 no menu em vez da página Sobre oficial');
 }
 // O split é um componente único: o conteúdo vem somente de assets/about-split.js.
 // As duas páginas diferem unicamente no estado inicial (Home fechada, Sobre aberta).
 const splitSource = read('assets/about-split.js');
 check(splitSource.includes('colaboracao-lenses.webp') && splitSource.includes('Onde</span>') && splitSource.includes('150') && splitSource.includes('about2-close-control'), 'Componente Sobre compartilhado incompleto');
-for (const [name, initial] of [['index.html', 'idle'], ['sobre2/index.html', 'story']]) {
+for (const [name, initial] of [['index.html', 'idle'], ['sobre.html', 'story']]) {
   const source = html[name];
   check(source.includes('data-lenses-about-split data-initial-state="' + initial + '"'), name + ': estado inicial do painel incorreto');
   check(source.includes('about2-reference-split'), name + ': estilo compartilhado não aplicado');
   check(!source.includes('class="story-content-grid"'), name + ': markup duplicado do componente Sobre');
-  const scriptPath = name.includes('/') ? '../assets/about-split.js?v=' : 'assets/about-split.js?v=';
+  const scriptPath = 'assets/about-split.js?v=';
   check(source.includes('src="' + scriptPath), name + ': componente único não carregado');
   check(source.indexOf('about-split.js?v=') < source.indexOf('script.js"></script>'), name + ': componente deve carregar antes do script principal');
 }
-for (const section of ['about-hero-clean','about-tech-section','about-cta-section']) check(!html['sobre2/index.html'].includes('class="' + section + '"'), 'Sobre 2 reintroduziu ' + section);
-for (const section of ['id="sobre"','id="fundamentos"','id="equipe"']) check(html['sobre2/index.html'].includes(section), 'Sobre 2 perdeu ' + section);
-for (const alias of ['sobre2.html','Sobre2.html']) check(read(alias).includes('url=sobre2/'), alias + ' não redireciona');
+for (const section of ['about-hero-clean','about-tech-section','about-cta-section']) check(!html['sobre.html'].includes('class="' + section + '"'), 'Sobre reintroduziu ' + section);
+for (const section of ['id="sobre"','id="fundamentos"','id="equipe"']) check(html['sobre.html'].includes(section), 'Sobre perdeu ' + section);
 if (errors.length) { console.error('QA Lenses reprovado:\n- ' + errors.join('\n- ')); process.exit(1); }
 console.log('QA Lenses aprovado: tokens, CSS, preview, menus, rodapés, anchors, URLs e páginas.');

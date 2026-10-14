@@ -1959,26 +1959,28 @@ a.pc-card:focus-visible {
   box-sizing: border-box;
 }
 
-/* Marca d'água institucional tom sobre tom (LEN / SES) */
+/* Marca d'água institucional tom sobre tom (Logo LENSES Vertical) */
 .clients-watermark {
   position: absolute;
   top: 50%;
-  right: clamp(-20px, 3vw, 40px);
+  right: clamp(-10px, 3.5vw, 50px);
   transform: translateY(-50%);
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-family: var(--font-heading);
-  font-size: clamp(140px, 20vw, 300px);
-  font-weight: 900;
-  line-height: 0.82;
-  letter-spacing: -0.04em;
+  width: clamp(260px, 36vw, 540px);
+  max-width: 90%;
   color: var(--tone-saboia-watermark);
   user-select: none;
   pointer-events: none;
   z-index: 1;
-  text-transform: uppercase;
+}
+
+.clients-watermark-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  fill: currentColor;
 }
 
 .clients-watermark-line {
@@ -2151,8 +2153,8 @@ a.pc-card:focus-visible {
   }
   .clients-watermark {
     opacity: 0.6;
-    right: 5%;
-    font-size: clamp(120px, 22vw, 220px);
+    right: 3%;
+    width: clamp(220px, 45vw, 420px);
   }
 }
 
@@ -2189,8 +2191,10 @@ a.pc-card:focus-visible {
     max-height: 32px;
   }
   .clients-watermark {
-    font-size: clamp(90px, 24vw, 150px);
-    opacity: 0.45;
+    width: clamp(180px, 60vw, 320px);
+    opacity: 0.38;
+    right: 50%;
+    transform: translate(50%, -50%);
   }
 }
 

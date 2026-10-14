@@ -22,14 +22,14 @@ A divisão conserva todas as regras e a ordem de cascata originais.
 | Rodapé | .footer, .footer-grid, .footer-col | Cinco colunas responsivas |
 
 ## HTML estático
-Header/footer estão padronizados e sincronizados nas páginas de produção: index.html e sobre2/index.html. sobre.html e sobre-nos.html redirecionam sem conteúdo próprio. O verificador automático compara navegação e rodapé para impedir divergências, sem injetar HTML por JavaScript em tempo de execução.
+Header/footer estão padronizados e sincronizados nas páginas de produção: index.html e sobre.html. O verificador automático compara navegação e rodapé para impedir divergências, sem injetar HTML por JavaScript em tempo de execução.
 
 Menu padrão: Início, Sobre, Portfólio / Cases, Nossos Serviços e Contato (o CTA depende da página). Alterações devem ser sincronizadas na Home e na Sobre oficial.
 
-Caminhos na raiz: assets/... e sobre2/. Caminhos da pasta sobre2/: ../assets/... e ../sobre2/. Não recriar as antigas páginas Sobre; manter somente redirecionamentos.
+Caminhos na raiz: assets/... e sobre.html. Todas as páginas principais residem na raiz com links diretos e limpos.
 
 ## Alteração segura
 Preservar hooks de JS e ARIA, não modificar outras páginas ao editar uma variante, utilizar tokens e classes existentes, testar âncoras e botões e executar node scripts/check-design-system.mjs. Remoção de seção deve eliminar links quebrados e rever dependências de scripts.
 
 ## Componente compartilhado Sobre / Contato
-O painel de Sobre e Contato vem de `assets/about-split.js` (fonte única de HTML e conteúdo). A Home insere `<section data-lenses-about-split data-initial-state="idle">` e `/sobre2/` usa `data-initial-state="story"`. Ambos recebem as mesmas classes `about2-reference-split`, estilo em `assets/pages.css` e interações em `assets/script.js`. O script do componente deve ser carregado antes de `assets/script.js`. Para editar fotografia, headline, manifesto, KPIs ou links, editar só `assets/about-split.js`. Não duplicar marcação nas páginas.
+O painel de Sobre e Contato vem de `assets/about-split.js` (fonte única de HTML e conteúdo). A Home insere `<section data-lenses-about-split data-initial-state="idle">` e `sobre.html` usa `data-initial-state="story"`. Ambos recebem as mesmas classes `about2-reference-split`, estilo em `assets/pages.css` e interações em `assets/script.js`. O script do componente deve ser carregado antes de `assets/script.js`. Para editar fotografia, headline, manifesto, KPIs ou links, editar só `assets/about-split.js`. Não duplicar marcação nas páginas.
