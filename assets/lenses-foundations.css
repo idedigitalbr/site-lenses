@@ -631,7 +631,7 @@
 
 /* A chegada de cada card carrega o medalhão em tons de azul; o traço se desenha. */
 .lf-motion-ready.is-in-view .lf-step.is-revealed .lf-symbol {
-  animation: lf-blue-charge .84s cubic-bezier(.16,1,.3,1) both,
+  animation: lf-blue-charge .84s cubic-bezier(.16,1,.3,1) 1,
              lf-breathe 7s ease-in-out .84s infinite;
   animation-play-state: running;
 }
