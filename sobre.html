@@ -31,7 +31,7 @@
   <!-- Estilos Oficiais -->
   <link rel="stylesheet" href="assets/styles.css?v=raiz-direita-20261013-b">
   <link rel="stylesheet" href="assets/lenses-presenca.css?v=1">
-  <link rel="stylesheet" href="assets/lenses-convergence.css?v=7">
+  <link rel="stylesheet" href="assets/lenses-convergence.css?v=8">
   <link rel="stylesheet" href="assets/lenses-foundations.css?v=4">
 </head>
 <body class="about2-institutional">
@@ -337,7 +337,7 @@
         </div>
         <div class="lcs-art" aria-label="Diagrama de interseção entre propósito, consistência e resultado, com a LENSES no encontro dos três pilares">
           <svg class="lcs-svg" viewBox="0 0 860 740" role="img" aria-label="Diagrama de interseção dos três pilares da LENSES" aria-describedby="lcs-diagram-desc" xmlns="http://www.w3.org/2000/svg">
-            <desc id="lcs-diagram-desc">Diagrama técnico de três círculos que se cruzam, com núcleo preenchido da LENSES. Linhas de construção sem números, pontos de interseção e movimentos sutis.</desc>
+            <desc id="lcs-diagram-desc">Três círculos sobrepostos representam propósito, consistência e resultado. A LENSES ocupa o centro onde os três se encontram.</desc>
             <defs>
               <clipPath id="lcs-circle-purpose"><circle cx="430" cy="238" r="184"/></clipPath>
               <clipPath id="lcs-circle-consistency"><circle cx="300" cy="432" r="188"/></clipPath>
@@ -369,50 +369,11 @@
               <filter id="lcs-core-shadow" x="-90%" y="-90%" width="280%" height="280%">
                 <feDropShadow dx="0" dy="7" stdDeviation="10" flood-color="#5C6CA4" flood-opacity=".22"/>
               </filter>
-              <marker id="lcs-guide-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="3.5" markerHeight="3.5" orient="auto">
-                <path d="M0 0L10 5L0 10Z" fill="#5C6CA4" fill-opacity=".6"/>
-              </marker>
+
             </defs>
 
-            <!-- Construção geométrica: guias, cotas sem números e arcos -->
-            <g aria-hidden="true" class="lcs-blueprint">
-              <circle class="lcs-outer lcs-outer--dotted" cx="430" cy="347" r="315"/>
-              <circle class="lcs-outer lcs-outer--dotted" cx="430" cy="347" r="277"/>
-              <circle class="lcs-outer" cx="430" cy="347" r="297"/>
-              <path class="lcs-construction lcs-construction--dash" d="M430 6V731M73 347H787"/>
-              <path class="lcs-construction lcs-construction--dash" d="M105 76L755 647M755 76L105 647"/>
-              <path class="lcs-construction lcs-construction--dash" d="M166 87L694 625M694 87L166 625"/>
-              <!-- Cotas gráficas horizontais e verticais, sem medições inventadas -->
-              <path class="lcs-measure" d="M290 30H570M290 24V56M570 24V56M290 30V110M570 30V110"/>
-              <path class="lcs-measure" d="M290 676H570M290 660V683M570 660V683"/>
-              <path class="lcs-measure" d="M62 239V627M54 239H82M54 627H82M798 239V627M789 239H808M789 627H808"/>
-              <path class="lcs-construction" d="M430 13V75M430 627V720M79 347H188M672 347H781"/>
-              <path class="lcs-angle" d="M167 196A304 304 0 0 1 237 104" marker-end="url(#lcs-guide-arrow)"/>
-              <path class="lcs-angle" d="M623 104A304 304 0 0 1 693 196" marker-end="url(#lcs-guide-arrow)"/>
-              <path class="lcs-angle" d="M149 526A304 304 0 0 0 232 609" marker-end="url(#lcs-guide-arrow)"/>
-              <path class="lcs-angle" d="M711 526A304 304 0 0 1 628 609" marker-end="url(#lcs-guide-arrow)"/>
-              <g class="lcs-orbit">
-                <path class="lcs-outer lcs-orbit-stroke" d="M220 125A297 297 0 0 1 313 73M547 621A297 297 0 0 1 637 552M679 194A297 297 0 0 1 709 251"/>
-                <circle class="lcs-guide-dot" cx="430" cy="50" r="3"/>
-                <circle class="lcs-guide-dot" cx="133" cy="347" r="2.6"/>
-                <circle class="lcs-guide-dot" cx="727" cy="347" r="2.6"/>
-              </g>
-              <g class="lcs-orbit lcs-orbit--reverse">
-                <circle class="lcs-outer lcs-outer--dotted" cx="430" cy="347" r="260"/>
-              </g>
-              <g class="lcs-guide-nodes">
-                <circle class="lcs-node" cx="430" cy="30" r="3.7"/>
-                <circle class="lcs-node" cx="430" cy="676" r="3.7"/>
-                <circle class="lcs-node" cx="62" cy="347" r="3.2"/>
-                <circle class="lcs-node" cx="798" cy="347" r="3.2"/>
-                <rect class="lcs-guide-square" x="286.5" y="26.5" width="7" height="7"/>
-                <rect class="lcs-guide-square" x="566.5" y="26.5" width="7" height="7"/>
-                <rect class="lcs-guide-square" x="286.5" y="672.5" width="7" height="7"/>
-                <rect class="lcs-guide-square" x="566.5" y="672.5" width="7" height="7"/>
-                <rect class="lcs-guide-square" x="58.5" y="235.5" width="7" height="7"/>
-                <rect class="lcs-guide-square" x="794.5" y="235.5" width="7" height="7"/>
-              </g>
-            </g>
+            <!-- Composição limpa: os três círculos já expressam o encontro.
+                 Sem cotas, retículas, eixos ou anéis adicionais. -->
 
             <!-- Três círculos com proporções próximas ao desenho de referência -->
             <circle class="lcs-disc-fill lcs-disc-fill--purpose" cx="430" cy="238" r="184"/>
@@ -442,15 +403,12 @@
               <!-- Camada sólida cresce lentamente até 100% enquanto o hover permanecer. -->
               <circle class="lcs-reveal-solid" cx="430" cy="367" r="405"/>
 
-              <!-- Microgeometria do hover: anéis e arcos discretos, contidos no pilar. -->
+              <!-- Microgeometria mínima, visível apenas no hover -->
               <g class="lcs-decor lcs-decor--purpose">
                 <circle class="lcs-decor-ring" cx="430" cy="238" r="127"/>
-                <circle class="lcs-decor-ring lcs-decor-ring--outer" cx="430" cy="238" r="158"/>
                 <path class="lcs-decor-sweep" d="M288.5 197.43 A147.20000000000002 147.20000000000002 0 0 1 546 147.37"/>
-                <path class="lcs-decor-sweep lcs-decor-sweep--dashed" d="M596.26 285.67 A172.95999999999998 172.95999999999998 0 0 1 388.16 405.82"/>
                 <circle class="lcs-decor-dot lcs-decor-dot--1" cx="304.2" cy="120.7" r="1.9"/>
                 <circle class="lcs-decor-dot lcs-decor-dot--2" cx="558.4" cy="338.4" r="2.6"/>
-                <circle class="lcs-decor-dot lcs-decor-dot--3" cx="282.6" cy="326.6" r="1.9"/>
               </g>
             </g>
             <g class="lcs-reveal lcs-reveal--consistency" clip-path="url(#lcs-circle-consistency)" aria-hidden="true">
@@ -458,15 +416,12 @@
               <!-- Camada sólida cresce lentamente até 100% enquanto o hover permanecer. -->
               <circle class="lcs-reveal-solid" cx="430" cy="367" r="405"/>
 
-              <!-- Microgeometria do hover: anéis e arcos discretos, contidos no pilar. -->
+              <!-- Microgeometria mínima, visível apenas no hover -->
               <g class="lcs-decor lcs-decor--consistency">
                 <circle class="lcs-decor-ring" cx="300" cy="432" r="130"/>
-                <circle class="lcs-decor-ring lcs-decor-ring--outer" cx="300" cy="432" r="162"/>
                 <path class="lcs-decor-sweep" d="M158.67 380.56 A150.4 150.4 0 0 1 411.77 331.36"/>
-                <path class="lcs-decor-sweep lcs-decor-sweep--dashed" d="M472.86 468.74 A176.72 176.72 0 0 1 251.29 601.87"/>
                 <circle class="lcs-decor-dot lcs-decor-dot--1" cx="196.5" cy="289.6" r="1.9"/>
                 <circle class="lcs-decor-dot lcs-decor-dot--2" cx="446.1" cy="513.0" r="2.6"/>
-                <circle class="lcs-decor-dot lcs-decor-dot--3" cx="133.6" cy="489.3" r="1.9"/>
               </g>
             </g>
             <g class="lcs-reveal lcs-reveal--result" clip-path="url(#lcs-circle-result)" aria-hidden="true">
@@ -474,15 +429,12 @@
               <!-- Camada sólida cresce lentamente até 100% enquanto o hover permanecer. -->
               <circle class="lcs-reveal-solid" cx="430" cy="367" r="405"/>
 
-              <!-- Microgeometria do hover: anéis e arcos discretos, contidos no pilar. -->
+              <!-- Microgeometria mínima, visível apenas no hover -->
               <g class="lcs-decor lcs-decor--result">
                 <circle class="lcs-decor-ring" cx="560" cy="432" r="130"/>
-                <circle class="lcs-decor-ring lcs-decor-ring--outer" cx="560" cy="432" r="162"/>
                 <path class="lcs-decor-sweep" d="M427.2 361.39 A150.4 150.4 0 0 1 687.55 352.3"/>
-                <path class="lcs-decor-sweep lcs-decor-sweep--dashed" d="M727.09 489.53 A176.72 176.72 0 0 1 482.53 590.83"/>
                 <circle class="lcs-decor-dot lcs-decor-dot--1" cx="414.1" cy="333.6" r="1.9"/>
                 <circle class="lcs-decor-dot lcs-decor-dot--2" cx="660.5" cy="565.4" r="2.6"/>
-                <circle class="lcs-decor-dot lcs-decor-dot--3" cx="392.6" cy="486.4" r="1.9"/>
               </g>
             </g>
 
@@ -494,29 +446,17 @@
             <circle class="lcs-trace lcs-trace--second" cx="300" cy="432" r="188" transform="rotate(-90 300 432)"/>
             <circle class="lcs-trace lcs-trace--third" cx="560" cy="432" r="188" transform="rotate(-90 560 432)"/>
 
-            <!-- Nós geométricos e linhas que apontam para o encontro -->
-            <g aria-hidden="true" class="lcs-intersections">
-              <path class="lcs-connector" d="M300 297L383 359M560 297L477 359M430 569V436"/>
-              <path class="lcs-construction" d="M430 265V305M430 448V503M366 358H493"/>
-              <path class="lcs-construction lcs-construction--dash" d="M216 346H644"/>
-              <circle class="lcs-node lcs-node--solid" cx="247" cy="252" r="5"/>
-              <circle class="lcs-node lcs-node--solid" cx="613" cy="252" r="5"/>
-              <circle class="lcs-node lcs-node--solid" cx="430" cy="568" r="5"/>
-              <circle class="lcs-node" cx="430" cy="296" r="3.2"/>
-              <circle class="lcs-node" cx="373" cy="413" r="4.1"/>
-              <circle class="lcs-node" cx="487" cy="413" r="4.1"/>
-              <circle class="lcs-node" cx="300" cy="432" r="2.3"/>
-              <circle class="lcs-node" cx="560" cy="432" r="2.3"/>
-              <circle class="lcs-node" cx="430" cy="238" r="2.3"/>
+            <!-- Somente três pontos reais de encontro entre os círculos -->
+            <g class="lcs-minimal-intersections" aria-hidden="true">
+              <circle cx="247" cy="252" r="4"/>
+              <circle cx="613" cy="252" r="4"/>
+              <circle cx="430" cy="568" r="4"/>
             </g>
 
             <!-- Centro em azul sólido, já destacado, com a interseção por trás -->
-            <circle class="lcs-core-halo" cx="430" cy="367" r="87"/>
-            <circle class="lcs-core-rim lcs-core-rim--outer" cx="430" cy="367" r="82"/>
-            <circle class="lcs-core-rim" cx="430" cy="367" r="70"/>
+            <circle class="lcs-core-halo" cx="430" cy="367" r="77"/>
+            <circle class="lcs-core-rim" cx="430" cy="367" r="69"/>
             <circle class="lcs-core-solid" cx="430" cy="367" r="60"/>
-            <circle class="lcs-core-detail" cx="430" cy="367" r="52"/>
-            <circle class="lcs-core-detail lcs-core-detail--dashed" cx="430" cy="367" r="46"/>
             <image class="lcs-core-logo" href="assets/imagens-diversas/logos/logo-lenses-vertical.svg" xlink:href="assets/imagens-diversas/logos/logo-lenses-vertical.svg" x="402" y="343.5" width="56" height="47" preserveAspectRatio="xMidYMid meet" aria-label="LENSES" />
           </svg>
           <div class="lcs-labels" aria-label="Explore os três pilares da LENSES">
