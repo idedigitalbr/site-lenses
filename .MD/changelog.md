@@ -1,5 +1,19 @@
 
+## 2026-10-14 — feat(home): nova seção editorial de Portfólio / Clientes em Azul Sabóia
+
+- Implementada a nova seção de Portfólio / Clientes antes do rodapé na Home (`index.html`), seguindo rigorosamente a referência editorial do slide da LENSES com o Azul Sabóia (`--color-brand-saboia` / `#5C6CA4`) como superfície protagonista.
+- **Marca d'água monumental tom sobre tom:** `LEN / SES` em tipografia Inter bold no fundo com contraste institucional (`--tone-saboia-watermark`).
+- **Metadados editoriais nos cantos:** tags `PORTFÓLIO` (superior esquerda), `LENSES` (superior direita) e `2026` (inferior esquerda).
+- **Composição em Split Editorial:**
+  - Coluna esquerda: manchete com peso diferenciado (*"Grandes empresas confiam na nossa atuação estratégica em ambientes complexos e de alta responsabilidade"*) e texto de apoio institucional.
+  - Coluna direita: grid de 13 marcas oficiais monocromáticas em branco puro em 4 linhas (Hydro, ALBRAS, Hidrovias do Brasil | Gás do Pará, Ativo Construções, Fontaim Serviços, Unitapajós | Rochamar, EuroChem, Solar Coca-Cola | NewFortress Energy, Mitsubishi Power, Consag Engenharia).
+- **Ativos locais de alta resolução:** extração e tratamento dos 3 novos logos ausentes (`fontaim-servicos.png`, `rochamar.png`, `solar-coca-cola.png`) padronizados com altura canônica de 180px e transparência com canal alfa.
+- **Responsividade & Acessibilidade:** adaptação suave para tablet e mobile (grid de 2 colunas legíveis em telas menores), suporte a `prefers-reduced-motion` e 100% aprovado no script de testes `scripts/check-design-system.mjs`.
+
+---
+
 ## 2026-10-14 — refactor(servicos): redesign editorial orgânico com protagonismo do Azul Sabóia
+
 
 - Refatoração completa da página de Serviços (`servicos/index.html` e `assets/pages.css`) eliminando o aspecto de "AI slop" (caixas duras, checklists robóticos e dashboards repetitivos) em favor de um layout editorial fluido, humano e natural, idêntico ao padrão da Home e da página Sobre Nós.
 - **Azul Sabóia (`#5C6CA4`) como protagonista absoluto da identidade visual:** aplicação dominante em títulos, radiais luminosos, marca d'água institucional `LENSES / TERRITÓRIO`, nós da linha do tempo, tags e superfície inteira da Frente de ESG & Território.
@@ -7,6 +21,32 @@
 - Textos humanizados e narrativos para cada um dos 16 serviços, focando no propósito, no método e no resultado real, sem tabelas genéricas de bullet points.
 - Metodologia LENSES em 4 fases conectadas por linha contínua com nós animados em Azul Sabóia (`.srv-method__track`), grade minimalista dos 12 clientes e grande manifesto final de conversão.
 - Totalmente validado pelo script automatizado de integridade `scripts/check-design-system.mjs`.
+
+---
+
+## 2026-10-14 — refactor(cases): redesign editorial do case BDA espelhado 1:1 na identidade da Sobre 2 e protagonismo Azul Sabóia
+
+- Redesign completo da página de case BDA – Prêmio Brasileiro de Design (`cases/bda-premio-brasileiro-de-design/index.html` e `assets/pages.css`), eliminando qualquer aspecto de "AI slop" e espelhando com fidelidade absoluta a linguagem visual, orgânica, arquitetural e natural de `https://idedigitalbr.github.io/site-lenses/sobre2/`.
+- **Azul Sabóia (`#5C6CA4` / `--color-brand-saboia`) como protagonista absoluto da página:**
+  - Aplicação como cor mestra em todos os títulos, destaques, linhas divisórias, nós de progresso, cantoneiras arquiteturais, botões e na superfície total do banner de conversão.
+- **Hero Arquitetural & Topográfico (`.case-hero`):**
+  - Incorporação das curvas topográficas territoriais (`ellipse 73% 61%`) e radiais luminosos em Azul Sabóia.
+  - Hierarquia de display tipográfico em Inter com peso refinado (`font-weight: 350` no subtítulo com keywords em Sabóia bold).
+  - Régua arquitetural de especificação técnica (Abedesign, 2025, Identidade Visual & Motion, Colaborar & Transformar) com divisores translúcidos.
+  - Vitrine cenográfica do palco de LED com moldura nobre e cantoneiras de precisão.
+  - **Assinatura territorial idêntica ao "Raiz & Futuro" da Sobre 2:** ampersand `&` monumental em Azul Sabóia, tipografia empilhada "Colaborar & Transformar" e descritivo conceitual.
+- **Ato 01 — O Projeto (`.lf-section`):**
+  - Reutilização direta dos componentes de fundações de `assets/lenses-foundations.css` com cantoneiras de anéis concêntricos (`.lf-corner`), trilho dinâmico com nós pulsantes em Azul Sabóia (`.lf-track`), citação editorial com filete vertical Sabóia e 3 KPIs de impacto.
+- **Ato 02 — O Desafio (`.case-act-space-saboia`):**
+  - Canvas profundo em Azul Espacial e Azul Sabóia com pílulas de fluxo metodológico da imersão (Nuvem Semântica &rarr; Mapeamento de Biomas &rarr; Metáfora dos Pássaros) e instalação flutuante da bandeira têxtil.
+- **Ato 03 — A Solução (`.case-act-cinema-solution`):**
+  - Superfície clara de catálogo com cantoneiras sutis, narrativa da tipografia Plau com geometria dos pássaros e exibição monumental do cartaz oficial do BDA 2025 com tag de chancela.
+- **Ato 04 — Resultados & Artefatos (`.case-act-monograph`):**
+  - Padrão idêntico à seção Nossa Equipe da Sobre 2 (`.about-team-section-clean`): cabeçalho elegante com filete Sabóia (`.team-rule-clean`), 4 cards com cantos arredondados de 24px, base escura em Azul Espacial profundo, badge em Azul Sabóia e pílula interativa "Explorar Peça" com seta diagonal.
+- **CTA Final & Rodapé Canônico:**
+  - Banner manifesto em gradiente e aura profunda de Azul Sabóia com botão pílula em branco puro e rodapé oficial de 5 colunas com GIF de fundo.
+- **Validação Automatizada:**
+  - 100% de conformidade validada pelo script `node scripts/check-design-system.mjs`.
 
 ---
 

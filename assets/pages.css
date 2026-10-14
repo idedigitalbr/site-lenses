@@ -1689,45 +1689,72 @@
 }
 
 /* --------------------------------------------------------------------------
-   14.1 HERO EDITORIAL DO CASE (CINEMATOGRÁFICO & ORGÂNICO)
+   14. CASE STUDY — DESIGN EDITORIAL INSTITUCIONAL (AZUL SABÓIA PROTAGONISTA)
+   Aesthetic Benchmark: /sobre2/ (Fundamentos, Blueprint Architectural & Galeria)
+   -------------------------------------------------------------------------- */
+
+.case-page {
+  background-color: var(--bg-body);
+  color: var(--text-white);
+  font-family: var(--font-main);
+  overflow-x: hidden;
+}
+
+.case-container {
+  width: min(1200px, calc(100% - 48px));
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.case-container-narrow {
+  width: min(880px, calc(100% - 48px));
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+/* --------------------------------------------------------------------------
+   14.1 HERO EDITORIAL DO CASE (ARQUITETURAL, TOPOGRÁFICO & SABÓIA)
    -------------------------------------------------------------------------- */
 .case-hero {
   position: relative;
-  padding: calc(var(--top-ticker-height) + 100px) 0 80px;
-  background-color: var(--bg-body);
+  padding: calc(var(--top-ticker-height) + 84px) 0 clamp(80px, 8vw, 120px);
+  background: var(--color-brand-space-blue);
+  color: var(--text-white);
   overflow: hidden;
+  isolation: isolate;
 }
 
-/* Aura atmosférica e blueprint territorial em Azul Sabóia */
+/* Camada atmosférica & curvas topográficas idênticas a about2-origin-hero */
 .case-hero__ambient {
   position: absolute;
   inset: 0;
   pointer-events: none;
+  z-index: -2;
   background:
-    radial-gradient(ellipse 65% 55% at 50% 12%, rgba(92, 108, 164, 0.28) 0%, transparent 72%),
-    radial-gradient(circle at 85% 60%, rgba(92, 108, 164, 0.12) 0%, transparent 55%),
-    linear-gradient(180deg, #050505 0%, #08090d 100%);
-  z-index: 1;
+    radial-gradient(ellipse 65% 55% at 50% 10%, rgba(92, 108, 164, 0.35) 0%, transparent 72%),
+    radial-gradient(circle at 85% 60%, rgba(92, 108, 164, 0.16) 0%, transparent 55%),
+    linear-gradient(180deg, rgba(12, 22, 44, 0.98) 0%, rgba(7, 12, 22, 0.96) 100%);
 }
 
 .case-hero__contour {
   position: absolute;
-  width: min(75vw, 1080px);
-  aspect-ratio: 1;
-  top: -20%;
-  right: -15%;
-  border: 1px solid rgba(92, 108, 164, 0.09);
-  border-radius: var(--radius-full);
+  inset: 0;
+  width: 75%;
+  opacity: 0.20;
   pointer-events: none;
-  z-index: 1;
-}
-
-.case-hero__contour::after {
-  content: "";
-  position: absolute;
-  inset: 80px;
-  border: 1px dashed rgba(92, 108, 164, 0.06);
-  border-radius: var(--radius-full);
+  z-index: -1;
+  background: repeating-radial-gradient(
+    ellipse 73% 61% at 4% 47%,
+    transparent 0,
+    transparent 18px,
+    rgba(200, 213, 255, 0.43) 19px,
+    transparent 20px,
+    transparent 34px
+  );
+  -webkit-mask-image: linear-gradient(90deg, #000 10%, transparent 100%);
+  mask-image: linear-gradient(90deg, #000 10%, transparent 100%);
 }
 
 .case-hero__nav {
@@ -1735,15 +1762,16 @@
   align-items: center;
   gap: 12px;
   font-family: var(--font-nav);
-  font-size: 0.73rem;
-  letter-spacing: 0.20em;
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.45);
-  margin-bottom: 32px;
+  color: rgba(255, 255, 255, 0.50);
+  margin-bottom: 28px;
 }
 
 .case-hero__nav a {
-  color: rgba(255, 255, 255, 0.65);
+  color: rgba(255, 255, 255, 0.70);
+  text-decoration: none;
   transition: var(--transition-fast);
 }
 
@@ -1753,72 +1781,82 @@
 
 .case-hero__nav-sep {
   color: var(--color-brand-saboia);
-  opacity: 0.6;
+  opacity: 0.75;
 }
 
 .case-hero__nav-current {
   color: var(--color-brand-saboia);
-  font-weight: 600;
+  font-weight: 700;
 }
 
-.case-hero__kicker {
+.case-hero__header {
+  max-width: 1040px;
+  margin-bottom: 40px;
+}
+
+.case-hero__eyebrow {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
-  margin-bottom: 24px;
+  gap: 14px;
+  margin-bottom: 20px;
   font-family: var(--font-nav);
   font-size: clamp(0.70rem, 0.85vw, 0.82rem);
   font-weight: 700;
-  letter-spacing: 0.28em;
+  letter-spacing: 0.30em;
   text-transform: uppercase;
   color: var(--color-brand-saboia);
 }
 
-.case-hero__kicker::after {
+.case-hero__eyebrow::after {
   content: "";
   display: inline-block;
-  width: clamp(32px, 5vw, 64px);
-  height: 1px;
+  width: clamp(36px, 5vw, 64px);
+  height: 1.5px;
   background: linear-gradient(90deg, var(--color-brand-saboia) 0%, transparent 100%);
 }
 
 .case-hero__title {
   font-family: var(--font-heading);
-  font-size: clamp(2.8rem, 5.8vw, 5.4rem);
+  font-size: clamp(2.8rem, 5.5vw, 5.2rem);
   font-weight: 800;
   letter-spacing: -0.04em;
-  line-height: 1.04;
+  line-height: 1.05;
   color: var(--color-brand-white);
   margin: 0 0 24px;
-  max-width: 1180px;
 }
 
 .case-hero__title-sep {
   color: var(--color-brand-saboia);
   font-weight: 300;
   display: inline-block;
-  margin: 0 4px;
+  margin: 0 6px;
 }
 
 .case-hero__subtitle {
-  font-size: clamp(1.15rem, 1.8vw, 1.45rem);
+  font-size: clamp(1.15rem, 1.7vw, 1.40rem);
   font-weight: 350;
-  line-height: 1.6;
-  color: rgba(255, 255, 255, 0.78);
-  max-width: 890px;
+  line-height: 1.62;
+  color: rgba(255, 255, 255, 0.85);
+  max-width: 900px;
   margin: 0 0 44px;
   letter-spacing: -0.015em;
 }
 
-/* Régua contínua e elegante de Metadados (sem caixas artificiais) */
+.text-saboia,
+.case-saboia-highlight {
+  color: var(--color-brand-saboia);
+  font-weight: 700;
+}
+
+/* Régua Arquitetural de Especificação Técnica (Ficha do Projeto) */
 .case-hero__meta-strip {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: clamp(16px, 3.5vw, 48px);
+  gap: clamp(16px, 3.2vw, 44px);
   padding: 24px 0;
   margin-bottom: 48px;
-  border-top: 1px solid rgba(92, 108, 164, 0.22);
-  border-bottom: 1px solid rgba(92, 108, 164, 0.14);
+  border-top: 1px solid rgba(92, 108, 164, 0.28);
+  border-bottom: 1px solid rgba(92, 108, 164, 0.16);
 }
 
 .case-hero__meta-item {
@@ -1831,40 +1869,40 @@
 .case-hero__meta-item:not(:last-child)::after {
   content: "";
   position: absolute;
-  right: calc(-1 * clamp(8px, 1.75vw, 24px));
+  right: calc(-1 * clamp(8px, 1.6vw, 22px));
   top: 15%;
   height: 70%;
   width: 1px;
-  background: rgba(92, 108, 164, 0.22);
+  background: rgba(92, 108, 164, 0.24);
 }
 
 .case-hero__meta-kicker {
   font-family: var(--font-nav);
   font-size: 0.68rem;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.24em;
   text-transform: uppercase;
   color: var(--color-brand-saboia);
   font-weight: 700;
 }
 
 .case-hero__meta-name {
-  font-size: clamp(0.95rem, 1.1vw, 1.1rem);
+  font-size: clamp(0.95rem, 1.1vw, 1.12rem);
   font-weight: 600;
   color: var(--color-brand-white);
   line-height: 1.35;
 }
 
-/* Moldura Cinematográfica da Vitrine Hero */
+/* Moldura Arquitetural de Exposição do Palco LED com Cantos Técnicos */
 .case-hero__stage {
   position: relative;
   width: 100%;
-  border-radius: 16px;
+  border-radius: 20px;
   overflow: hidden;
   box-shadow:
-    0 24px 80px rgba(0, 0, 0, 0.8),
-    0 0 50px rgba(92, 108, 164, 0.22);
-  border: 1px solid rgba(92, 108, 164, 0.25);
-  background-color: #0b0c10;
+    0 30px 90px rgba(0, 0, 0, 0.85),
+    0 0 60px rgba(92, 108, 164, 0.25);
+  border: 1px solid rgba(92, 108, 164, 0.32);
+  background-color: #0b0d14;
 }
 
 .case-hero__stage img {
@@ -1883,32 +1921,83 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 16px 24px;
-  background: rgba(8, 9, 13, 0.95);
-  border-top: 1px solid rgba(92, 108, 164, 0.18);
-  font-size: 0.82rem;
-  color: rgba(255, 255, 255, 0.65);
+  padding: 18px 28px;
+  background: rgba(11, 14, 22, 0.96);
+  border-top: 1px solid rgba(92, 108, 164, 0.22);
+  font-size: 0.84rem;
+  color: rgba(255, 255, 255, 0.70);
 }
 
 .case-hero__stage-caption strong {
   color: var(--color-brand-saboia);
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  font-size: 0.72rem;
+  font-size: 0.74rem;
+  font-weight: 700;
+}
+
+/* Assinatura Conceitual Territorial (Raiz & Futuro / Colaborar & Transformar) */
+.case-hero__roots {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(12px, 1.8vw, 24px);
+  margin-top: 40px;
+  padding: 22px 28px;
+  border-radius: 18px;
+  background: rgba(92, 108, 164, 0.08);
+  border: 1px solid rgba(92, 108, 164, 0.22);
+}
+
+.case-hero__signature {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  white-space: nowrap;
+}
+
+.case-hero__ampersand {
+  flex: 0 0 auto;
+  font-family: var(--font-heading);
+  color: var(--color-brand-saboia);
+  font-weight: var(--fw-bold);
+  font-size: clamp(3rem, 4.2vw, 4.2rem);
+  line-height: 0.78;
+  letter-spacing: -0.12em;
+}
+
+.case-hero__signature-lines {
+  display: grid;
+  margin-left: -2px;
+  font-family: var(--font-heading);
+  font-size: clamp(1.2rem, 1.6vw, 1.6rem);
+  font-weight: var(--fw-bold);
+  line-height: 0.90;
+  letter-spacing: -0.05em;
+  color: var(--color-brand-white);
+}
+
+.case-hero__roots-copy p {
+  margin: 0;
+  font-size: clamp(0.85rem, 0.98vw, 0.95rem);
+  font-weight: var(--fw-regular);
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.85);
 }
 
 /* --------------------------------------------------------------------------
-   14.2 ATO 01 — O PROJETO (SUPERFÍCIE EDITORIAL CLARA COM ALMA AZUL SABÓIA)
+   14.2 ATO 01 — O PROJETO (SUPERFÍCIE EDITORIAL CLARA, CORNER BRACKETS & SABÓIA)
    -------------------------------------------------------------------------- */
 .case-act-editorial-light {
   position: relative;
-  padding: clamp(90px, 9vw, 140px) 0;
+  padding: clamp(96px, 9vw, 145px) 0;
   background-color: #fcfcfe;
   background-image:
-    radial-gradient(ellipse 45% 50% at -10% -15%, rgba(92, 108, 164, 0.10), transparent 75%),
-    radial-gradient(ellipse 40% 50% at 110% 10%, rgba(92, 108, 164, 0.08), transparent 75%);
-  color: #1a2234;
+    radial-gradient(ellipse 40% 48% at -14% -18%, rgba(92, 108, 164, 0.09), transparent 76%),
+    radial-gradient(ellipse 40% 52% at 112% 7%, rgba(92, 108, 164, 0.065), transparent 80%);
+  color: var(--color-brand-space-blue);
   overflow: hidden;
+  isolation: isolate;
 }
 
 .case-act-kicker {
@@ -1916,12 +2005,12 @@
   align-items: center;
   gap: 16px;
   font-family: var(--font-nav);
-  font-size: clamp(0.68rem, 0.8vw, 0.80rem);
+  font-size: clamp(0.68rem, 0.80vw, 0.80rem);
   font-weight: 700;
-  letter-spacing: 0.28em;
+  letter-spacing: 0.30em;
   text-transform: uppercase;
   color: var(--color-brand-saboia);
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 }
 
 .case-act-kicker::after {
@@ -1930,45 +2019,47 @@
   width: 48px;
   height: 1px;
   background: var(--color-brand-saboia);
-  opacity: 0.45;
+  opacity: 0.5;
 }
 
 .case-act-editorial-title {
   font-family: var(--font-heading);
-  font-size: clamp(2.3rem, 4vw, 3.8rem);
+  font-size: clamp(2.3rem, 3.8vw, 3.7rem);
   font-weight: 700;
   letter-spacing: -0.04em;
   line-height: 1.10;
-  color: #141c2c;
-  margin: 0 0 54px;
-  max-width: 1080px;
+  color: #1a2238;
+  margin: 0 0 52px;
+  max-width: 1040px;
 }
 
-.case-act-editorial-title span {
+.case-act-editorial-title span,
+.case-act-editorial-title strong {
   color: var(--color-brand-saboia);
 }
 
 .case-split-grid {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
-  gap: clamp(32px, 5vw, 72px);
+  gap: clamp(36px, 5vw, 76px);
   align-items: start;
 }
 
+/* Citação orgânica editorial com filete Sabóia */
 .case-pullquote-organic {
   position: relative;
   padding-left: 28px;
-  border-left: 2px solid var(--color-brand-saboia);
+  border-left: 3px solid var(--color-brand-saboia);
   margin-bottom: 32px;
 }
 
 .case-pullquote-text {
-  font-size: clamp(1.18rem, 1.6vw, 1.45rem);
+  font-size: clamp(1.22rem, 1.65vw, 1.48rem);
   font-style: italic;
   font-weight: 400;
-  line-height: 1.55;
-  color: #242f45;
-  margin-bottom: 16px;
+  line-height: 1.58;
+  color: #202a44;
+  margin-bottom: 18px;
 }
 
 .case-pullquote-author {
@@ -1977,7 +2068,7 @@
   gap: 10px;
   font-family: var(--font-nav);
   font-size: 0.74rem;
-  letter-spacing: 0.20em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--color-brand-saboia);
   font-weight: 700;
@@ -1985,17 +2076,17 @@
 
 .case-prose-light p {
   font-size: clamp(1.02rem, 1.12vw, 1.15rem);
-  line-height: 1.75;
+  line-height: 1.76;
   color: #4b566e;
   margin-bottom: 22px;
 }
 
 .case-prose-light strong {
-  color: #141c2c;
+  color: #1a2238;
   font-weight: 600;
 }
 
-/* Indicadores Orgânicos em Azul Sabóia */
+/* Indicadores de Impacto (KPIs) com Numerais em Azul Sabóia */
 .case-kpis-strip {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -2014,7 +2105,7 @@
   font-family: var(--font-heading);
   font-size: clamp(2.4rem, 4.2vw, 3.6rem);
   font-weight: 850;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.035em;
   line-height: 1;
   color: var(--color-brand-saboia);
   margin-bottom: 8px;
@@ -2023,21 +2114,22 @@
 .case-kpi-desc {
   font-size: 0.88rem;
   line-height: 1.45;
-  color: #5d677f;
+  color: #556075;
 }
 
 /* --------------------------------------------------------------------------
-   14.3 ATO 02 — O DESAFIO (ATMOSFERA AZUL ESPACIAL & SABÓIA)
+   14.3 ATO 02 — O DESAFIO (BLUEPRINT GEOMÉTRICO, AZUL ESPACIAL & SABÓIA)
    -------------------------------------------------------------------------- */
 .case-act-space-saboia {
   position: relative;
-  padding: clamp(90px, 9vw, 140px) 0;
+  padding: clamp(96px, 9vw, 145px) 0;
   background-color: var(--color-brand-space-blue);
   background-image:
     radial-gradient(ellipse 60% 60% at 90% 20%, rgba(92, 108, 164, 0.35) 0%, transparent 70%),
     radial-gradient(circle at 10% 80%, rgba(92, 108, 164, 0.20) 0%, transparent 60%);
   color: var(--color-brand-white);
   overflow: hidden;
+  isolation: isolate;
 }
 
 .case-act-space-saboia .case-act-editorial-title {
@@ -2045,24 +2137,51 @@
 }
 
 .case-act-space-saboia .case-act-editorial-title strong {
-  color: #92a0d1;
+  color: #a3b2e2;
   font-weight: 700;
 }
 
 .case-prose-space p {
   font-size: clamp(1.05rem, 1.15vw, 1.20rem);
   line-height: 1.8;
-  color: rgba(255, 255, 255, 0.82);
+  color: rgba(255, 255, 255, 0.85);
   margin-bottom: 24px;
 }
 
+/* Pílulas de fluxo metodológico (Fórum Criativo) */
+.case-method-steps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 32px;
+}
+
+.case-method-step-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  border-radius: var(--radius-pill);
+  background: rgba(92, 108, 164, 0.16);
+  border: 1px solid rgba(92, 108, 164, 0.32);
+  font-size: 0.80rem;
+  font-weight: 600;
+  color: var(--color-brand-white);
+}
+
+.case-method-step-pill span.num {
+  color: var(--color-brand-saboia);
+  font-weight: 700;
+}
+
+/* Moldura Arquitetural Flutuante da Bandeira / Sinalização */
 .case-gallery-frame-floating {
   position: relative;
-  border-radius: 14px;
+  border-radius: 18px;
   overflow: hidden;
   box-shadow:
-    0 24px 60px rgba(0, 0, 0, 0.55),
-    0 0 30px rgba(92, 108, 164, 0.25);
+    0 24px 70px rgba(0, 0, 0, 0.65),
+    0 0 35px rgba(92, 108, 164, 0.28);
   border: 1px solid rgba(92, 108, 164, 0.35);
   background-color: #0b0f1a;
 }
@@ -2084,57 +2203,67 @@
   bottom: 0;
   inset-inline: 0;
   padding: 18px 24px;
-  background: linear-gradient(180deg, transparent 0%, rgba(10, 14, 25, 0.92) 100%);
+  background: linear-gradient(180deg, transparent 0%, rgba(10, 14, 25, 0.94) 100%);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: 0.80rem;
-  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.80);
 }
 
 .case-floating-caption strong {
   color: var(--color-brand-saboia);
   text-transform: uppercase;
-  font-size: 0.70rem;
-  letter-spacing: 0.16em;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  font-weight: 700;
 }
 
 /* --------------------------------------------------------------------------
-   14.4 ATO 03 — A SOLUÇÃO (CINEMA DARK & CARTAZ MONUMENTAL)
+   14.4 ATO 03 — A SOLUÇÃO (SUPERFÍCIE DE ARTE, PÁSSAROS & PLAU)
    -------------------------------------------------------------------------- */
 .case-act-cinema-solution {
   position: relative;
-  padding: clamp(90px, 9vw, 140px) 0;
-  background-color: var(--bg-body);
-  background-image: radial-gradient(ellipse 65% 45% at 50% 50%, rgba(92, 108, 164, 0.18) 0%, transparent 75%);
+  padding: clamp(96px, 9vw, 145px) 0;
+  background-color: #fcfcfe;
+  background-image:
+    radial-gradient(ellipse 50% 50% at 50% 0%, rgba(92, 108, 164, 0.08), transparent 75%),
+    radial-gradient(circle at 85% 90%, rgba(92, 108, 164, 0.06), transparent 60%);
+  color: var(--color-brand-space-blue);
   overflow: hidden;
+  isolation: isolate;
 }
 
 .case-act-cinema-solution .case-act-editorial-title {
-  color: var(--color-brand-white);
+  color: #1a2238;
 }
 
 .case-act-cinema-solution .case-act-editorial-title span {
   color: var(--color-brand-saboia);
 }
 
-.case-prose-dark p {
+.case-prose-solution p {
   font-size: clamp(1.05rem, 1.15vw, 1.20rem);
   line-height: 1.8;
-  color: rgba(255, 255, 255, 0.78);
+  color: #4b566e;
   margin-bottom: 24px;
 }
 
+.case-prose-solution strong {
+  color: #1a2238;
+}
+
+/* Estágio do Cartaz Monumental */
 .case-poster-monument {
   position: relative;
   width: 100%;
-  border-radius: 16px;
+  border-radius: 20px;
   overflow: hidden;
-  border: 1px solid rgba(92, 108, 164, 0.28);
-  background-color: #08090d;
+  border: 1px solid rgba(92, 108, 164, 0.25);
+  background-color: #0b0d14;
   box-shadow:
-    0 30px 90px rgba(0, 0, 0, 0.75),
-    0 0 60px rgba(92, 108, 164, 0.25);
+    0 30px 90px rgba(32, 42, 68, 0.14),
+    0 0 50px rgba(92, 108, 164, 0.18);
   margin-top: 48px;
 }
 
@@ -2155,10 +2284,10 @@
   align-items: center;
   justify-content: space-between;
   padding: 20px 30px;
-  background: rgba(10, 11, 16, 0.96);
-  border-top: 1px solid rgba(92, 108, 164, 0.20);
-  font-size: 0.84rem;
-  color: rgba(255, 255, 255, 0.70);
+  background: #ffffff;
+  border-top: 1px solid rgba(92, 108, 164, 0.16);
+  font-size: 0.86rem;
+  color: #4b566e;
 }
 
 .case-poster-caption-bar span.pill-tag {
@@ -2166,62 +2295,69 @@
   align-items: center;
   gap: 8px;
   font-family: var(--font-nav);
-  font-size: 0.70rem;
-  letter-spacing: 0.18em;
+  font-size: 0.72rem;
+  letter-spacing: 0.20em;
   text-transform: uppercase;
   color: var(--color-brand-saboia);
   font-weight: 700;
 }
 
 /* --------------------------------------------------------------------------
-   14.5 ATO 04 — RESULTADOS (CATÁLOGO MONOGRÁFICO DE ARTEFATOS)
+   14.5 ATO 04 — RESULTADOS & ARTEFATOS (GALERIA MONOGRÁFICA IDÊNTICA À EQUIPE)
    -------------------------------------------------------------------------- */
 .case-act-monograph {
   position: relative;
-  padding: clamp(90px, 9vw, 140px) 0;
+  padding: clamp(96px, 9vw, 145px) 0;
   background-color: #f7f8fc;
   background-image:
     radial-gradient(ellipse 50% 50% at 100% 0%, rgba(92, 108, 164, 0.10), transparent 70%),
     radial-gradient(ellipse 50% 50% at 0% 100%, rgba(92, 108, 164, 0.08), transparent 70%);
-  color: #141c2c;
+  color: var(--color-brand-space-blue);
   overflow: hidden;
 }
 
 .case-act-monograph .case-act-editorial-title {
-  color: #141c2c;
+  color: #1a2238;
 }
 
 .case-act-monograph .case-act-editorial-title strong {
   color: var(--color-brand-saboia);
 }
 
-/* Grid Monográfico Assimétrico com Ritmo Visual */
+/* Grade de 4 Peças com Estilo Idêntico a .team-card-clean da Sobre 2 */
 .case-monograph-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: clamp(24px, 3.5vw, 48px);
+  gap: clamp(28px, 3.8vw, 48px);
   margin-top: 56px;
 }
 
 .case-monograph-item {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  background-color: #101626;
+  border: 1px solid rgba(92, 108, 164, 0.22);
+  box-shadow: 0 16px 40px rgba(32, 42, 68, 0.08);
   display: flex;
   flex-direction: column;
-  transition: transform 0.4s var(--ease-cinematic);
+  transition: transform 0.45s var(--ease-cinematic), box-shadow 0.45s ease, border-color 0.4s ease;
 }
 
 .case-monograph-item:hover {
-  transform: translateY(-6px);
+  transform: translateY(-8px);
+  border-color: var(--color-brand-saboia);
+  box-shadow:
+    0 24px 50px rgba(32, 42, 68, 0.16),
+    0 0 35px rgba(92, 108, 164, 0.22);
 }
 
 .case-monograph-media {
   position: relative;
   width: 100%;
   aspect-ratio: 4 / 3;
-  border-radius: 14px;
   overflow: hidden;
-  background-color: #0b0c10;
-  border: 1px solid rgba(92, 108, 164, 0.18);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+  background-color: #0b0d14;
 }
 
 .case-monograph-media img {
@@ -2237,17 +2373,19 @@
 }
 
 .case-monograph-meta {
-  padding-top: 20px;
+  padding: 24px 28px 28px;
+  background-color: #101626;
+  border-top: 1px solid rgba(92, 108, 164, 0.18);
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 8px;
 }
 
 .case-monograph-badge {
   display: inline-block;
   font-family: var(--font-nav);
-  font-size: 0.68rem;
-  letter-spacing: 0.20em;
+  font-size: 0.70rem;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--color-brand-saboia);
   font-weight: 700;
@@ -2255,27 +2393,47 @@
 
 .case-monograph-name {
   font-family: var(--font-heading);
-  font-size: clamp(1.15rem, 1.4vw, 1.35rem);
+  font-size: clamp(1.20rem, 1.45vw, 1.40rem);
   font-weight: 700;
-  letter-spacing: -0.02em;
-  color: #141c2c;
+  letter-spacing: -0.025em;
+  color: var(--color-brand-white);
   line-height: 1.3;
+  margin: 0;
 }
 
 .case-monograph-desc {
   font-size: 0.92rem;
-  line-height: 1.6;
-  color: #5a657e;
+  line-height: 1.62;
+  color: rgba(255, 255, 255, 0.75);
+  margin: 0 0 16px;
+}
+
+.case-monograph-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-nav);
+  font-size: 0.74rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-brand-saboia);
+  font-weight: 700;
+  transition: gap 0.3s ease, color 0.3s ease;
+}
+
+.case-monograph-item:hover .case-monograph-action {
+  gap: 12px;
+  color: var(--color-brand-white);
 }
 
 /* --------------------------------------------------------------------------
-   14.6 OUTROS CASES & CTA (CINEMA DARK & AZUL SABÓIA GLOW)
+   14.6 OUTROS CASES & CTA (CINEMA DARK & AURA AZUL SABÓIA PROTAGONISTA)
    -------------------------------------------------------------------------- */
 .case-related-editorial {
   position: relative;
-  padding: clamp(90px, 9vw, 130px) 0;
-  background-color: var(--bg-body);
-  border-top: 1px solid rgba(92, 108, 164, 0.18);
+  padding: clamp(96px, 9vw, 140px) 0;
+  background-color: #07090f;
+  border-top: 1px solid rgba(92, 108, 164, 0.22);
 }
 
 .case-related-grid-editorial {
@@ -2289,10 +2447,10 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  border-radius: 14px;
+  border-radius: 18px;
   overflow: hidden;
-  background: rgba(14, 16, 22, 0.85);
-  border: 1px solid rgba(92, 108, 164, 0.20);
+  background: rgba(14, 18, 28, 0.85);
+  border: 1px solid rgba(92, 108, 164, 0.22);
   transition: transform 0.4s var(--ease-cinematic), border-color 0.4s ease, box-shadow 0.4s ease;
 }
 
@@ -2300,8 +2458,8 @@
   transform: translateY(-8px);
   border-color: var(--color-brand-saboia);
   box-shadow:
-    0 20px 50px rgba(0, 0, 0, 0.6),
-    0 0 35px rgba(92, 108, 164, 0.28);
+    0 20px 50px rgba(0, 0, 0, 0.7),
+    0 0 35px rgba(92, 108, 164, 0.32);
 }
 
 .case-card-editorial__media {
@@ -2325,7 +2483,7 @@
 }
 
 .case-card-editorial__body {
-  padding: 24px;
+  padding: 26px;
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -2334,7 +2492,7 @@
 .case-card-editorial__kicker {
   font-family: var(--font-nav);
   font-size: 0.68rem;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.20em;
   text-transform: uppercase;
   color: var(--color-brand-saboia);
   font-weight: 700;
@@ -2353,8 +2511,8 @@
 
 .case-card-editorial__desc {
   font-size: 0.88rem;
-  line-height: 1.6;
-  color: rgba(255, 255, 255, 0.68);
+  line-height: 1.62;
+  color: rgba(255, 255, 255, 0.72);
   margin-bottom: 22px;
   flex: 1;
 }
@@ -2366,9 +2524,10 @@
   font-family: var(--font-nav);
   font-size: 0.76rem;
   font-weight: 700;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--color-brand-saboia);
+  text-decoration: none;
   transition: gap 0.3s ease, color 0.3s ease;
 }
 
@@ -2377,49 +2536,58 @@
   color: var(--color-brand-white);
 }
 
-/* CTA Final Orgânico com Aura Azul Sabóia */
+/* CTA Final Orgânico: Azul Sabóia como Fundo Dominante e Vibrante */
 .case-cta-organic {
   position: relative;
-  padding: clamp(90px, 9vw, 130px) 0;
-  background: radial-gradient(circle at 50% 50%, rgba(92, 108, 164, 0.32) 0%, rgba(32, 42, 68, 0.55) 50%, #050505 100%);
+  padding: clamp(100px, 10vw, 150px) 0;
+  background-color: var(--color-brand-saboia);
+  background-image:
+    radial-gradient(circle at 15% 30%, rgba(255, 255, 255, 0.18) 0%, transparent 60%),
+    radial-gradient(circle at 85% 80%, rgba(32, 42, 68, 0.40) 0%, transparent 70%);
+  color: var(--color-brand-white);
   text-align: center;
   overflow: hidden;
-  border-top: 1px solid rgba(92, 108, 164, 0.25);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .case-cta-organic__wrap {
   position: relative;
   z-index: 2;
-  max-width: 820px;
+  max-width: 860px;
   margin: 0 auto;
 }
 
 .case-cta-organic__kicker {
+  display: inline-block;
   font-family: var(--font-nav);
   font-size: 0.72rem;
   letter-spacing: 0.28em;
   text-transform: uppercase;
-  color: var(--color-brand-saboia);
+  color: var(--color-brand-white);
+  background: rgba(255, 255, 255, 0.18);
+  padding: 8px 22px;
+  border-radius: var(--radius-pill);
   font-weight: 700;
-  margin-bottom: 16px;
-  display: block;
+  margin-bottom: 24px;
 }
 
 .case-cta-organic__title {
   font-family: var(--font-heading);
-  font-size: clamp(2.2rem, 4.2vw, 3.8rem);
+  font-size: clamp(2.4rem, 4.5vw, 4.2rem);
   font-weight: 800;
   letter-spacing: -0.035em;
-  line-height: 1.12;
+  line-height: 1.10;
   color: var(--color-brand-white);
-  margin-bottom: 20px;
+  margin-bottom: 22px;
 }
 
 .case-cta-organic__desc {
   font-size: clamp(1.05rem, 1.4vw, 1.25rem);
-  color: rgba(255, 255, 255, 0.82);
-  line-height: 1.65;
-  margin-bottom: 38px;
+  color: rgba(255, 255, 255, 0.92);
+  line-height: 1.68;
+  margin-bottom: 42px;
+  max-width: 720px;
+  margin-inline: auto;
 }
 
 .case-cta-organic__actions {
@@ -2434,40 +2602,45 @@
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  padding: 14px 34px;
+  padding: 16px 36px;
   border-radius: var(--radius-pill);
-  background-color: var(--color-brand-saboia);
-  color: var(--color-brand-white);
+  background-color: var(--color-brand-white);
+  color: var(--color-brand-saboia);
   font-weight: 700;
   font-size: 0.95rem;
   letter-spacing: 0.04em;
-  box-shadow: 0 8px 30px rgba(92, 108, 164, 0.45);
+  text-transform: uppercase;
+  text-decoration: none;
+  box-shadow: 0 10px 30px rgba(32, 42, 68, 0.28);
   transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .case-cta-btn-primary:hover {
-  background-color: #6d7db5;
+  background-color: var(--color-brand-antiflash);
   transform: translateY(-2px);
-  box-shadow: 0 12px 36px rgba(92, 108, 164, 0.65);
+  box-shadow: 0 14px 38px rgba(32, 42, 68, 0.38);
 }
 
 .case-cta-btn-secondary {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  padding: 14px 34px;
+  padding: 16px 32px;
   border-radius: var(--radius-pill);
-  border: 1px solid rgba(92, 108, 164, 0.5);
-  background: rgba(92, 108, 164, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  background: transparent;
   color: var(--color-brand-white);
   font-weight: 600;
   font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-decoration: none;
   transition: transform 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
 }
 
 .case-cta-btn-secondary:hover {
-  background: rgba(92, 108, 164, 0.24);
-  border-color: var(--color-brand-saboia);
+  background: rgba(255, 255, 255, 0.16);
+  border-color: var(--color-brand-white);
   transform: translateY(-2px);
 }
 
@@ -2521,6 +2694,11 @@
   .case-kpis-strip {
     grid-template-columns: 1fr;
     gap: 24px;
+  }
+
+  .case-hero__roots {
+    grid-template-columns: 1fr;
+    gap: 16px;
   }
 
   .case-cta-organic__actions {
