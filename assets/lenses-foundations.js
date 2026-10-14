@@ -35,7 +35,9 @@
   const show = index => {
     steps[index].classList.add('is-revealed');
     nodes[index].classList.add('is-revealed', 'is-reached');
-    highlight(index);
+    // Durante a entrada, acender somente o ponto da timeline.
+    // O card mantém sua superfície branca e o ícone azul até o hover.
+    nodes.forEach((node, i) => node.classList.toggle('is-active', i === index));
     section.classList.remove('is-traveling');
   };
 
