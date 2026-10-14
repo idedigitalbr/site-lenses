@@ -1,5 +1,5 @@
 /* LENSES - módulos extraídos na ordem original. Tokens somente em tokens.css. */
 @import url("./tokens.css");
 @import url("./base.css");
-@import url("./components.css");
-@import url("./pages.css?v=raiz-direita-20261013-b");
+@import url("./components.css?v=20261014-vertical-logo");
+@import url("./pages.css?v=20261014-vertical-logo");

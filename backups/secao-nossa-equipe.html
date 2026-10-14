@@ -1,0 +1,160 @@
+<!-- ==========================================================================
+     BACKUP: SEÇÃO "NOSSA EQUIPE" + MODAL DE BIOGRAFIA (LENSES)
+     Data do arquivamento: 14/10/2026
+     Origem: sobre.html (Seção 5, logo antes do <footer> e antes dos <script>)
+     
+     INSTRUÇÕES PARA RESTAURAÇÃO:
+     1. Inserir a <section class="about-team-section-clean"> logo antes de:
+        <footer class="footer" id="contato"> em sobre.html.
+     2. Inserir a <div class="team-modal" id="teamModal"> logo antes dos:
+        <!-- Scripts --> em sobre.html.
+     3. Os estilos CSS já estão preservados em assets/pages.css (.about-team-section-clean e .team-modal).
+     4. A lógica JS já está preservada em assets/script.js (8.2 Modal Interativo).
+     5. As imagens continuam preservadas em: assets/paginas/sobre/s3-equipe/
+     ========================================================================== -->
+
+<!-- 1. SEÇÃO PRINCIPAL (FUNDO CLARO, GRID DE 4 CARDS) -->
+<section class="about-team-section-clean" id="equipe" aria-label="Nossa Equipe">
+  <div class="about-container">
+    
+    <!-- Cabeçalho Elegante idêntico à Leggacy (Anexo 3) -->
+    <header class="team-header-clean reveal-on-scroll">
+      <span class="team-kicker-clean">LENSES</span>
+      <h2 class="team-title-clean">Nossa Equipe</h2>
+      <span class="team-rule-clean" aria-hidden="true"></span>
+    </header>
+
+    <!-- Grid de 4 Cards com Cantos Arredondados e Base Escura -->
+    <div class="team-grid-clean reveal-on-scroll">
+      
+      <!-- Card 1: Lucas Silveira -->
+      <div class="team-card team-card-clean" tabindex="0" role="button" aria-haspopup="dialog"
+        data-team-name="Lucas Silveira"
+        data-team-role="Diretor Geral &amp; Fundador"
+        data-team-img="assets/paginas/sobre/s3-equipe/01-direcao-criativa.jpg"
+        data-team-bio="&lt;p&gt;Cineasta e produtor executivo com mais de 10 anos de experiência à frente de projetos de ficção, documentários e publicidade de grande porte na Amazônia.&lt;/p&gt;&lt;p&gt;Lidera a direção artística e o posicionamento criativo da LENSES, unindo sensibilidade estética a narrativas com forte identidade cultural e projeção nacional.&lt;/p&gt;">
+        <div class="team-card-media-clean">
+          <img 
+            src="assets/paginas/sobre/s3-equipe/01-direcao-criativa.jpg" 
+            alt="Lucas Silveira" 
+            class="team-card-img-clean" 
+            loading="lazy" 
+            decoding="async">
+        </div>
+        <div class="team-card-info-clean">
+          <h3 class="team-card-name-clean">Lucas Silveira</h3>
+          <p class="team-card-role-clean">Diretor Geral &amp; Fundador (Direção De Cena E Estratégia Audiovisual)</p>
+          <div class="team-card-bio-badge">
+            <span>Conhecer Trajetória</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7h10v10M7 17L17 7"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2: Mariana Castro -->
+      <div class="team-card team-card-clean" tabindex="0" role="button" aria-haspopup="dialog"
+        data-team-name="Mariana Castro"
+        data-team-role="Diretora De Fotografia"
+        data-team-img="assets/paginas/sobre/s3-equipe/02-direcao-fotografia.jpg"
+        data-team-bio="&lt;p&gt;Especialista em iluminação natural e atmosferas amazônicas, Mariana assina a cinematografia de campanhas premiadas, documentários e grandes coberturas de festivais.&lt;/p&gt;&lt;p&gt;Domina a operação de câmeras de cinema de grande formato (RED e ARRI), traduzindo texturas, cores e emoções em imagens de rara força plástica.&lt;/p&gt;">
+        <div class="team-card-media-clean">
+          <img 
+            src="assets/paginas/sobre/s3-equipe/02-direcao-fotografia.jpg" 
+            alt="Mariana Castro" 
+            class="team-card-img-clean" 
+            loading="lazy" 
+            decoding="async">
+        </div>
+        <div class="team-card-info-clean">
+          <h3 class="team-card-name-clean">Mariana Castro</h3>
+          <p class="team-card-role-clean">Diretora De Fotografia (Cinematografia &amp; Iluminação Cênica)</p>
+          <div class="team-card-bio-badge">
+            <span>Conhecer Trajetória</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7h10v10M7 17L17 7"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3: Camila Vasconcelos -->
+      <div class="team-card team-card-clean" tabindex="0" role="button" aria-haspopup="dialog"
+        data-team-name="Camila Vasconcelos"
+        data-team-role="Diretora De Produção"
+        data-team-img="assets/paginas/sobre/s3-equipe/03-direcao-producao.jpg"
+        data-team-bio="&lt;p&gt;Com sólida bagagem em logística complexa em solo amazônico, coordena equipes multidisciplinares e gerencia toda a esteira de pré, pro e pós-produção.&lt;/p&gt;&lt;p&gt;Lidera a gestão da certificação ISO 9001 da LENSES, assegurando conformidade de compliance, segurança operacional e pontualidade rigorosa.&lt;/p&gt;">
+        <div class="team-card-media-clean">
+          <img 
+            src="assets/paginas/sobre/s3-equipe/03-direcao-producao.jpg" 
+            alt="Camila Vasconcelos" 
+            class="team-card-img-clean" 
+            loading="lazy" 
+            decoding="async">
+        </div>
+        <div class="team-card-info-clean">
+          <h3 class="team-card-name-clean">Camila Vasconcelos</h3>
+          <p class="team-card-role-clean">Diretora De Produção (Coordenação Geral &amp; Gestão ISO 9001)</p>
+          <div class="team-card-bio-badge">
+            <span>Conhecer Trajetória</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7h10v10M7 17L17 7"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4: Rodrigo Albuquerque -->
+      <div class="team-card team-card-clean" tabindex="0" role="button" aria-haspopup="dialog"
+        data-team-name="Rodrigo Albuquerque"
+        data-team-role="Head De Estratégia E Roteiro"
+        data-team-img="assets/paginas/sobre/s3-equipe/04-estrategia-narrativa.jpg"
+        data-team-bio="&lt;p&gt;Roteirista e estrategista de conteúdo, desenvolve narrativas institucionais, roteiros publicitários e projetos de impacto socioambiental para marcas de relevância global.&lt;/p&gt;&lt;p&gt;Transforma desafios complexos de comunicação em argumentos envolventes, cinematográficos e memoráveis que geram conexão genuína.&lt;/p&gt;">
+        <div class="team-card-media-clean">
+          <img 
+            src="assets/paginas/sobre/s3-equipe/04-estrategia-narrativa.jpg" 
+            alt="Rodrigo Albuquerque" 
+            class="team-card-img-clean" 
+            loading="lazy" 
+            decoding="async">
+        </div>
+        <div class="team-card-info-clean">
+          <h3 class="team-card-name-clean">Rodrigo Albuquerque</h3>
+          <p class="team-card-role-clean">Head De Estratégia E Roteiro (Storytelling &amp; Narrativas De Impacto)</p>
+          <div class="team-card-bio-badge">
+            <span>Conhecer Trajetória</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7h10v10M7 17L17 7"/></svg>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- 2. MODAL INTERATIVO DE BIOGRAFIA DA EQUIPE -->
+<div class="team-modal" id="teamModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="teamModalName">
+  <div class="team-modal-backdrop" id="teamModalBackdrop"></div>
+  <div class="team-modal-dialog">
+    <button type="button" class="team-modal-close" id="teamModalClose" aria-label="Fechar modal">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+    <div class="team-modal-content">
+      <div class="team-modal-media">
+        <img src="" alt="" id="teamModalAvatar" class="team-modal-avatar">
+        <div class="team-modal-badge">LENSES TEAM</div>
+      </div>
+      <div class="team-modal-body">
+        <span class="team-modal-kicker">LIDERANÇA &amp; TALENTO</span>
+        <h3 class="team-modal-name" id="teamModalName"></h3>
+        <p class="team-modal-role" id="teamModalRole"></p>
+        <div class="team-modal-bio-text" id="teamModalBio"></div>
+        <div class="team-modal-action">
+          <a href="https://wa.me/5591992000000" target="_blank" rel="noopener noreferrer" class="btn btn-pill team-modal-btn">
+            <span>CONVERSAR COM A EQUIPE</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 14px; height: 14px;"><path d="M7 7h10v10M7 17L17 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

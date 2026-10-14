@@ -96,7 +96,8 @@
 .lcs-core-rim {fill: none; stroke: var(--lcs-blue); stroke-width: 1.4; stroke-opacity: .65;}
 .lcs-core-solid {fill: url(#lcs-core-gradient); filter: url(#lcs-core-shadow);}
 .lcs-core-letter {fill: #fff; font-family: 'Inter', sans-serif; font-weight: 300; letter-spacing: .02em; font-size: 23px; text-anchor: middle;}
-.lcs-core-logo {pointer-events: none; transform-origin: center;}
+.lcs-core-logo {pointer-events: none; transform-origin: center; fill: #ffffff; color: #ffffff;}
+.lcs-core-logo path {fill: #ffffff;}
 .lcs-core-tick {stroke: #fff; stroke-opacity: .4; stroke-width: .8;}
 .lcs-orbit {
   transform-origin: 430px 353px;

@@ -1952,39 +1952,11 @@ a.pc-card:focus-visible {
 .section-clients {
   background-color: var(--color-brand-saboia);
   color: #ffffff;
-  padding: clamp(48px, 6vw, 84px) clamp(24px, 5vw, 64px);
+  padding: clamp(64px, 7vw, 100px) clamp(24px, 5vw, 64px);
   position: relative;
   width: 100%;
   overflow: hidden;
   box-sizing: border-box;
-}
-
-/* Marca d'água institucional tom sobre tom (Logo LENSES Vertical) */
-.clients-watermark {
-  position: absolute;
-  top: 50%;
-  right: clamp(-10px, 3.5vw, 50px);
-  transform: translateY(-50%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: clamp(260px, 36vw, 540px);
-  max-width: 90%;
-  color: var(--tone-saboia-watermark);
-  user-select: none;
-  pointer-events: none;
-  z-index: 1;
-}
-
-.clients-watermark-svg {
-  width: 100%;
-  height: auto;
-  display: block;
-  fill: currentColor;
-}
-
-.clients-watermark-line {
-  display: block;
 }
 
 .clients-container {
@@ -1994,47 +1966,6 @@ a.pc-card:focus-visible {
   z-index: 2;
   display: flex;
   flex-direction: column;
-}
-
-/* Topo e rodapé com metadados editoriais (PORTFÓLIO / LENSES / 2026) */
-.clients-topbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  margin-bottom: clamp(36px, 5vw, 60px);
-}
-
-.clients-tag-portfolio {
-  font-family: var(--font-main);
-  font-size: clamp(0.75rem, 0.9vw, 0.875rem);
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.85);
-}
-
-.clients-tag-brand {
-  font-family: var(--font-main);
-  font-size: clamp(0.8125rem, 1vw, 0.9375rem);
-  font-weight: 800;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: #ffffff;
-}
-
-.clients-bottombar {
-  margin-top: clamp(36px, 5vw, 60px);
-  display: flex;
-  align-items: center;
-}
-
-.clients-tag-year {
-  font-family: var(--font-main);
-  font-size: clamp(0.8125rem, 1vw, 0.9375rem);
-  font-weight: 800;
-  letter-spacing: 0.05em;
-  color: #ffffff;
 }
 
 /* Layout em duas colunas: editorial à esquerda, logos à direita */
@@ -2054,43 +1985,74 @@ a.pc-card:focus-visible {
 
 .clients-headline {
   font-family: var(--font-heading);
-  font-size: clamp(1.85rem, 3.1vw, 2.75rem);
-  line-height: 1.18;
-  letter-spacing: -0.025em;
+  font-size: clamp(1.9rem, 2.9vw, 2.75rem);
+  line-height: 1.16;
+  letter-spacing: -0.02em;
   color: #ffffff;
-  margin: 0 0 clamp(20px, 2.5vw, 32px);
-  max-width: 520px;
+  margin: 0 0 clamp(24px, 2.8vw, 36px);
+  max-width: 500px;
 }
 
 .clients-headline-bold {
-  font-weight: 800;
+  font-weight: 700;
   display: inline;
 }
 
 .clients-headline-light {
   font-weight: 300;
   display: inline;
-  opacity: 0.96;
+  opacity: 0.95;
 }
 
 .clients-desc {
   font-family: var(--font-main);
-  font-size: clamp(0.95rem, 1.15vw, 1.0625rem);
-  line-height: 1.55;
-  color: rgba(255, 255, 255, 0.88);
+  font-size: clamp(0.96rem, 1.1vw, 1.08rem);
+  line-height: 1.52;
+  color: rgba(255, 255, 255, 0.90);
   max-width: 440px;
   margin: 0;
 }
 
-/* Coluna de marcas */
+/* Coluna de marcas (com marca d'água LENSES centralizada exatamente ao fundo) */
 .clients-showcase {
+  position: relative;
   display: flex;
   flex-direction: column;
-  gap: clamp(24px, 3.2vw, 42px);
+  gap: clamp(28px, 3.4vw, 42px);
   width: 100%;
 }
 
+/* Marca d'água institucional tom sobre tom (Logo LENSES Vertical) */
+.clients-watermark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(380px, 50vw, 680px);
+  max-width: 98%;
+  color: rgba(22, 32, 58, 0.15);
+  user-select: none;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.clients-watermark-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  fill: currentColor;
+}
+
+.clients-watermark-line {
+  display: block;
+}
+
 .clients-row {
+  position: relative;
+  z-index: 1;
   display: grid;
   align-items: center;
   justify-items: center;
@@ -2112,13 +2074,13 @@ a.pc-card:focus-visible {
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: clamp(48px, 6vw, 72px);
+  height: clamp(52px, 5.5vw, 68px);
   padding: 4px;
   box-sizing: border-box;
 }
 
 .client-logo-item img {
-  max-height: clamp(34px, 4.2vw, 50px);
+  max-height: clamp(26px, 3vw, 36px);
   max-width: 100%;
   width: auto;
   height: auto;
@@ -2136,8 +2098,94 @@ a.pc-card:focus-visible {
 /* Hover de marca: leve elevação e brilho suave */
 .client-logo-item:hover img {
   opacity: 1;
-  transform: translateY(-2px) scale(1.06);
+  transform: translateY(-2px) scale(1.05);
   filter: brightness(0) invert(1) drop-shadow(0 6px 16px rgba(0, 0, 0, 0.24));
+}
+
+/* ==========================================================================
+   EQUALIZAÇÃO E CALIBRAÇÃO ÓPTICA DAS MARCAS (DESIGN SYSTEM)
+   Fiel à proporção e ao peso visual da referência oficial
+   ========================================================================== */
+
+/* --- MARCAS VERTICAIS / EMPILHADAS --- */
+.client-logo-item--hydro img,
+.client-logo-item img[src*="hydro"] {
+  max-height: clamp(44px, 4.6vw, 54px);
+  max-width: 66px;
+}
+
+.client-logo-item--albras img,
+.client-logo-item img[src*="albras"] {
+  max-height: clamp(44px, 4.6vw, 54px);
+  max-width: 92px;
+}
+
+.client-logo-item--ativo img,
+.client-logo-item img[src*="ativo"] {
+  max-height: clamp(42px, 4.4vw, 50px);
+  max-width: 76px;
+}
+
+.client-logo-item--fontaim img,
+.client-logo-item img[src*="fontaim"] {
+  max-height: clamp(42px, 4.4vw, 50px);
+  max-width: 68px;
+}
+
+/* --- MARCAS DE PROPORÇÃO MÉDIA / MISTA --- */
+.client-logo-item--gas-do-para img,
+.client-logo-item img[src*="gas-do-para"] {
+  max-height: clamp(36px, 3.8vw, 44px);
+  max-width: clamp(108px, 11.5vw, 138px);
+}
+
+.client-logo-item--unitapajos img,
+.client-logo-item img[src*="unitapajos"] {
+  max-height: clamp(30px, 3.2vw, 38px);
+  max-width: clamp(112px, 11.8vw, 140px);
+}
+
+.client-logo-item--solar img,
+.client-logo-item img[src*="solar"] {
+  max-height: clamp(38px, 4.1vw, 48px);
+  max-width: clamp(104px, 11vw, 130px);
+}
+
+.client-logo-item--consag img,
+.client-logo-item img[src*="consag"] {
+  max-height: clamp(32px, 3.4vw, 40px);
+  max-width: clamp(108px, 11.5vw, 136px);
+}
+
+/* --- MARCAS HORIZONTAIS LONGAS --- */
+.client-logo-item--rochamar img,
+.client-logo-item img[src*="rochamar"] {
+  max-height: clamp(20px, 2.2vw, 26px);
+  max-width: clamp(138px, 14.5vw, 172px);
+}
+
+.client-logo-item--eurochem img,
+.client-logo-item img[src*="eurochem"] {
+  max-height: clamp(28px, 3vw, 36px);
+  max-width: clamp(128px, 13.5vw, 160px);
+}
+
+.client-logo-item--hidrovias img,
+.client-logo-item img[src*="hidrovias"] {
+  max-height: clamp(34px, 3.6vw, 42px);
+  max-width: clamp(175px, 18.5vw, 230px);
+}
+
+.client-logo-item--newfortress img,
+.client-logo-item img[src*="newfortress"] {
+  max-height: clamp(32px, 3.4vw, 40px);
+  max-width: clamp(132px, 14vw, 165px);
+}
+
+.client-logo-item--mitsubishi img,
+.client-logo-item img[src*="mitsubishi"] {
+  max-height: clamp(30px, 3.2vw, 38px);
+  max-width: clamp(128px, 13.5vw, 158px);
 }
 
 /* ==========================================================================
@@ -2152,21 +2200,14 @@ a.pc-card:focus-visible {
     max-width: 680px;
   }
   .clients-watermark {
-    opacity: 0.6;
-    right: 3%;
-    width: clamp(220px, 45vw, 420px);
+    width: clamp(260px, 50vw, 480px);
+    color: rgba(22, 32, 58, 0.12);
   }
 }
 
 @media (max-width: 768px) {
   .section-clients {
     padding: 48px 20px 56px;
-  }
-  .clients-topbar {
-    margin-bottom: 32px;
-  }
-  .clients-bottombar {
-    margin-top: 36px;
   }
   .clients-headline {
     font-size: clamp(1.5rem, 6vw, 2rem);
@@ -2176,25 +2217,58 @@ a.pc-card:focus-visible {
     font-size: 0.9375rem;
   }
   .clients-showcase {
-    gap: 20px;
+    gap: 22px;
   }
   /* No mobile, reorganiza para grid de 2 colunas legíveis */
   .clients-row--3,
   .clients-row--4 {
     grid-template-columns: repeat(2, 1fr);
-    gap: 16px 12px;
+    gap: 18px 14px;
   }
   .client-logo-item {
-    height: 48px;
+    height: 44px;
   }
   .client-logo-item img {
+    max-height: 22px;
+  }
+  .client-logo-item--hydro img,
+  .client-logo-item img[src*="hydro"] {
     max-height: 32px;
+    max-width: 44px;
+  }
+  .client-logo-item--albras img,
+  .client-logo-item img[src*="albras"] {
+    max-height: 32px;
+    max-width: 70px;
+  }
+  .client-logo-item--ativo img,
+  .client-logo-item img[src*="ativo"] {
+    max-height: 30px;
+    max-width: 52px;
+  }
+  .client-logo-item--fontaim img,
+  .client-logo-item img[src*="fontaim"] {
+    max-height: 30px;
+    max-width: 46px;
+  }
+  .client-logo-item--rochamar img,
+  .client-logo-item img[src*="rochamar"] {
+    max-height: 15px;
+    max-width: 110px;
+  }
+  .client-logo-item--eurochem img,
+  .client-logo-item img[src*="eurochem"] {
+    max-height: 18px;
+    max-width: 85px;
+  }
+  .client-logo-item--hidrovias img,
+  .client-logo-item img[src*="hidrovias"] {
+    max-height: 20px;
+    max-width: 125px;
   }
   .clients-watermark {
-    width: clamp(180px, 60vw, 320px);
-    opacity: 0.38;
-    right: 50%;
-    transform: translate(50%, -50%);
+    width: clamp(220px, 68vw, 360px);
+    color: rgba(22, 32, 58, 0.10);
   }
 }
 

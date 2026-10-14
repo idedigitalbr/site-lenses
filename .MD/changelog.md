@@ -1,3 +1,68 @@
+## 2026-10-14 — fix(brand): aplicacao oficial da logo vetorial vertical LENSES na Home e no diagrama Sobre
+
+- **Diagrama de Convergencia (Sobre — `#como-conectamos`):**
+  - Substituido o texto generico `<text class="lcs-core-letter">` pelo SVG vetorial oficial inlinado (`<svg class="lcs-core-logo">`) com os 6 caminhos curvos da marca (`L-E-N` / `S-E-S`) extraidos diretamente de `assets/imagens-diversas/logos/logo-lenses-vertical.svg`.
+  - Dimensao e proporcao calibradas (`width="56" height="47"`, centralizado em `x="402" y="343.5"`) com preenchimento branco puro (`#ffffff`) e sem dependencia de requisicoes externas para evitar atrasos ou bloqueios de CORS/cache.
+  - Atualizado cache buster em `sobre.html` (`assets/lenses-convergence.css?v=8`).
+- **Marca d'agua de Clientes (Home — `#clientes`):**
+  - Aplicacao dos mesmos 6 caminhos vetoriais da logo oficial no container `.clients-watermark`, renderizado em tom sobre tom escuro (`rgba(32, 42, 68, 0.22)` resultando em `#4F5E8F` sobre `#5C6CA4`, 100% identico ao Anexo 1).
+  - Atualizado versionamento de CSS (`v=20261014-vertical-logo`) em `assets/styles.css` e `index.html`.
+- **Validacao de QA e integridade:**
+  - 100% validado pelo script oficial (`node scripts/check-design-system.mjs`).
+
+---
+
+## 2026-10-14 — refactor(clients): alinhamento fiel à referência visual oficial (marca d'água centralizada, tipografia editorial calibrada e equalização harmônica das marcas)
+
+- **Marca d'água LENSES perfeitamente centralizada e sutil:**
+  - Reposicionado o SVG oficial vertical da LENSES (`LEN / SES`) para o interior de `.clients-showcase`, centralizado com precisão matemática (`top: 50%; left: 50%; transform: translate(-50%, -50%);`) exatamente atrás do bloco de marcas parceiras.
+  - Dimensão ampliada para cobrir harmoniosamente toda a extensão do grid (`clamp(380px, 50vw, 680px)`).
+  - Tonalidade suavizada para tom sobre tom sutil (`rgba(22, 32, 58, 0.15)`), criando o autêntico efeito de marca d'água institucional sem competir com a legibilidade das marcas de clientes.
+- **Formatação editorial à esquerda fiel à referência gráfica:**
+  - Quebras de linha rigorosas (`<br>`) aplicadas tanto no título principal quanto no parágrafo descritivo.
+  - Peso tipográfico da primeira metade do headline calibrado para `bold` (`font-weight: 700`, eliminando o antigo extra-bold 800) em *"Grandes empresas<br>confiam na nossa<br>atuação estratégica"*.
+  - Segunda metade em `light` (`font-weight: 300`) com *"em ambientes<br>complexos e de alta<br>responsabilidade."*.
+  - Parágrafo descritivo distribuído com 4 quebras exatas e entrelinha refinada.
+- **Calibração óptica harmoniosa das 13 marcas:**
+  - Equalização equilibrada entre marcas verticais/empilhadas (Hydro, ALBRAS, Ativo, Fontaim) e marcas horizontais (Rochamar vetorial SVG, EuroChem, Hidrovias do Brasil, NewFortress, Mitsubishi Power, Gás do Pará, Unitapajós, Solar Coca-Cola, Consag).
+  - Remoção das barras antigas de metadados (`PORTFÓLIO` / `LENSES` / `2026`).
+  - Sincronização 100% idêntica entre [index.html](file:///d:/.GITHUB/site-lenses/index.html) e [design-system-preview.html](file:///d:/.GITHUB/site-lenses/design-system-preview.html).
+- **Validação de QA e integridade:**
+  - 100% validado pelo script oficial (`node scripts/check-design-system.mjs`).
+
+---
+
+## 2026-10-14 — chore(sobre): arquivamento preventivo da seção Nossa Equipe em backup dedicado
+
+- **Criação de backup seguro:** extraída a seção completa `Nossa Equipe` (grid de 4 cards com fotos de estúdio, dados dos profissionais e pílulas de ação) junto com o modal interativo `teamModal` e salva em arquivo independente [secao-nossa-equipe.html](file:///d:/.GITHUB/site-lenses/backups/secao-nossa-equipe.html) com instruções detalhadas para restauração imediata quando necessário.
+- **Remoção da página pública:** removida a `<section class="about-team-section-clean" id="equipe">` e a `<div class="team-modal" id="teamModal">` de [sobre.html](file:///d:/.GITHUB/site-lenses/sobre.html), preservando os estilos CSS e lógica JS intactos.
+- **Atualização de QA:** ajustado [scripts/check-design-system.mjs](file:///d:/.GITHUB/site-lenses/scripts/check-design-system.mjs) para refletir a nova estrutura da página Sobre sem interrupção de validação no CI/CD.
+- 100% validado pelo script de integridade (`node scripts/check-design-system.mjs`).
+
+---
+
+## 2026-10-14 — fix(sobre): restauração da fotografia panorâmica de fundo do hero institucional
+
+- **Restauração da imagem do hero:** restaurada a fotografia panorâmica de alta resolução em WebP (`assets/paginas/sobre/hero-topo-sobre.webp` e espelhada em `assets/paginas/sobre2/hero-topo-sobre2.webp` para compatibilidade retroativa).
+- **Correção de caminho e cache buster:** atualizado `assets/pages.css` para apontar diretamente para `paginas/sobre/hero-topo-sobre.webp`, e incrementado o versionamento de cache em `assets/styles.css` e `sobre.html` (`v=20261014-hero-restaurado`), eliminando o fundo azul liso e reestabelecendo a atmosfera visual do topo.
+- 100% validado pelo script de integridade (`node scripts/check-design-system.mjs`).
+
+---
+
+## 2026-10-14 — style(clients): escala compacta, discreta e padronizada das 13 marcas e remoção de metadados
+
+- **Atualização da logo Rochamar:** aplicação do novo ativo oficial vetorial SVG em alta precisão (`assets/imagens-diversas/logos-clientes/rochamar_logo_vetorial.svg`), substituindo o PNG bitmap anterior tanto na Home (`index.html`) quanto no catálogo do Design System (`design-system-preview.html`).
+- **Remoção de elementos redundantes:** eliminadas as barras superior (`PORTFÓLIO` / `LENSES`) e inferior (`2026`) da seção de clientes na Home e no catálogo do Design System, proporcionando um layout mais limpo, fluido e focado exclusivamente no conteúdo editorial e nas marcas parceiras.
+- **Redução de escala compacta e refinada:**
+  - Redução proporcional de ~40% na escala global das logos para um padrão discreto, elegante e corporativo.
+  - Alturas máximas calibradas entre `11px` e `20px` para marcas horizontais (Rochamar, EuroChem, Hidrovias, NewFortress, Mitsubishi, Solar, Consag, Unitapajós, Gás do Pará) e entre `30px` e `40px` para marcas empilhadas/verticais (Hydro, Albras, Ativo, Fontaim).
+  - Altura do container de cada logo reduzida para `clamp(42px, 4.8vw, 60px)`, proporcionando ampla respiração e leveza estética.
+  - Opacidade de repouso suavizada para `0.88` para integração harmoniosa com a superfície Azul Sabóia.
+- **Invalidação imediata de cache:** adicionado parâmetro de versão `?v=20261014-compact` no import de `assets/styles.css` e no link em `index.html`.
+- 100% validado pelo script de integridade (`node scripts/check-design-system.mjs`).
+
+---
+
 ## 2026-10-14 — refactor(estrutura): unificação profissional da página Sobre na raiz e eliminação de pastas redundantes
 
 - **Unificação da página Sobre na raiz:** promovido o conteúdo canônico da página Sobre diretamente para `sobre.html` (43 KB) na raiz do repositório, ao lado de `index.html`.

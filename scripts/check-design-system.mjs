@@ -72,6 +72,6 @@ for (const [name, initial] of [['index.html', 'idle'], ['sobre.html', 'story']])
   check(source.indexOf('about-split.js?v=') < source.indexOf('script.js"></script>'), name + ': componente deve carregar antes do script principal');
 }
 for (const section of ['about-hero-clean','about-tech-section','about-cta-section']) check(!html['sobre.html'].includes('class="' + section + '"'), 'Sobre reintroduziu ' + section);
-for (const section of ['id="sobre"','id="fundamentos"','id="equipe"']) check(html['sobre.html'].includes(section), 'Sobre perdeu ' + section);
+for (const section of ['id="sobre"','id="fundamentos"']) check(html['sobre.html'].includes(section), 'Sobre perdeu ' + section);
 if (errors.length) { console.error('QA Lenses reprovado:\n- ' + errors.join('\n- ')); process.exit(1); }
 console.log('QA Lenses aprovado: tokens, CSS, preview, menus, rodapés, anchors, URLs e páginas.');
