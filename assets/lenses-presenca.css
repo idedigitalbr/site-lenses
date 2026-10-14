@@ -7,8 +7,9 @@
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   width: 100%;
-  min-height: 790px;
-  min-height: max(790px, 92svh);
+  height: 97vh;
+  height: 97svh;
+  min-height: 0;
   overflow: clip;
   position: relative;
   isolation: isolate;
@@ -321,7 +322,7 @@
 
 /* Tablets: mantém o mosaico, dá fôlego à tipografia e à timeline. */
 @media (max-width: 1170px) {
-  .lap-section { min-height: 720px; }
+  .lap-section { min-height: 0; }
   .lap-panel { padding: 52px clamp(28px, 4.5vw, 56px); }
   .lap-heading h2 { font-size: clamp(2rem, 3.65vw, 3.2rem); }
   .lap-milestone { grid-template-columns: 58px minmax(0,1fr); gap: 14px; }
@@ -332,7 +333,7 @@
   .lap-outro p { font-size: .87rem; }
 }
 @media (max-width: 900px) {
-  .lap-section { grid-template-columns: minmax(0,1fr); min-height: 0; }
+  .lap-section { grid-template-columns: minmax(0,1fr); height: auto; min-height: 0; }
   .lap-gallery { min-height: 540px; height: 60svh; }
   .lap-panel { min-height: 730px; padding: 54px max(28px, 7vw) 65px; }
   .lap-panel-inner { max-width: 650px; }
@@ -368,4 +369,8 @@
   }
   .lap-section:not(.is-visible) .lap-heading,
   .lap-section:not(.is-visible) .lap-milestone { opacity: 1; }
+}
+
+@media (min-width: 901px) and (max-height: 760px) {
+  .lap-section { height: auto; min-height: 97svh; }
 }
