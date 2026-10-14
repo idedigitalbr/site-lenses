@@ -4,7 +4,7 @@ import path from 'node:path';
 const errors = [];
 const read = name => fs.readFileSync(path.join(process.cwd(), name), 'utf8');
 const check = (valid, message) => { if (!valid) errors.push(message); };
-const pages = ['index.html', 'sobre2/index.html'];
+const pages = ['index.html', 'sobre2/index.html', 'servicos/index.html'];
 const html = Object.fromEntries(pages.map(p => [p, read(p)]));
 const cssFiles = ['assets/tokens.css', 'assets/base.css', 'assets/components.css', 'assets/pages.css'];
 const entry = read('assets/styles.css');
@@ -76,7 +76,8 @@ for (const [name, initial] of [['index.html', 'idle'], ['sobre2/index.html', 'st
   check(source.indexOf('about-split.js?v=') < source.indexOf('script.js"></script>'), name + ': componente deve carregar antes do script principal');
 }
 for (const section of ['about-hero-clean','about-tech-section','about-cta-section']) check(!html['sobre2/index.html'].includes('class="' + section + '"'), 'Sobre 2 reintroduziu ' + section);
-for (const section of ['id="sobre"','id="pilares"','id="equipe"']) check(html['sobre2/index.html'].includes(section), 'Sobre 2 perdeu ' + section);
+for (const section of ['id="sobre"','id="fundamentos"','id="equipe"']) check(html['sobre2/index.html'].includes(section), 'Sobre 2 perdeu ' + section);
 for (const alias of ['sobre2.html','Sobre2.html']) check(read(alias).includes('url=sobre2/'), alias + ' não redireciona');
+check(read('servicos.html').includes('url=servicos/'), 'servicos.html não redireciona');
 if (errors.length) { console.error('QA Lenses reprovado:\n- ' + errors.join('\n- ')); process.exit(1); }
 console.log('QA Lenses aprovado: tokens, CSS, preview, menus, rodapés, anchors, URLs e páginas.');

@@ -49,5 +49,4 @@
 | # | Item | Dependência / Bloqueio |
 |---|------|------------------------|
 | 1 | **SEO: `og:image` e `<link rel="canonical">`** | Aguardando **domínio definitivo** para preencher as URLs absolutas. |
-| 2 | **Deploy VPS + Sincronização Notion (DB_IDE)** | Rodar quando as alterações visuais forem homologadas pelo cliente. |
-| 3 | **Testes em dispositivo físico real (iOS Safari)** | Validação touch manual de swipe dos carrosséis e reprodução de vídeos nos cards de serviços. |
+| 2 | **Testes em dispositivo físico real (iOS Safari)** | Validação touch manual de swipe dos carrosséis e reprodução de vídeos nos cards de serviços. |

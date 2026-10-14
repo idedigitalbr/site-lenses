@@ -447,6 +447,15 @@ document.addEventListener('DOMContentLoaded', () => {
   const PROJECTS = {
     featured: [
       {
+        title: 'BDA – Prêmio Brasileiro de Design',
+        description: 'Construção da identidade visual e narrativa para a 15ª edição do Oscar do design brasileiro.',
+        image: 'assets/paginas/cases/bda/hero-screen-led-bda.png',
+        category: 'Branding & Design',
+        location: 'Brasil',
+        year: '2025',
+        url: 'cases/bda-premio-brasileiro-de-design/'
+      },
+      {
         title: 'Manifesto All Amazônia',
         description: 'Performance audiovisual na Times Square durante a Assembleia Geral da ONU.',
         image: 'assets/paginas/home/s4-cases-destaque/festival-futuro.png',

@@ -4,7 +4,7 @@
 - tokens.css: fundamentos visuais canônicos.
 - base.css: reset, tipografia, elementos globais.
 - components.css: header, ticker, botões, Home, split, serviços, carrosséis, clientes, rodapé e responsividade.
-- pages.css: componentes específicos de Sobre (.about-*).
+- pages.css: componentes específicos de Sobre (.about-*) e de Serviços (.services-*, .service-pillar-*, .service-accordion-*).
 - styles.css: apenas ponto de entrada, imports em ordem.
 
 A divisão conserva todas as regras e a ordem de cascata originais.
@@ -17,10 +17,12 @@ A divisão conserva todas as regras e a ordem de cascata originais.
 | Painel Sobre | #splitInteractive, #panelStory, #panelContact | JS e acessibilidade |
 | Equipe | .about-team-section-clean, #teamModal | Modal e atributos da equipe |
 | Carrossel | [data-carousel], .carousel-*, .pc-card, .duo-slide | Swipe, teclado e motion |
+| Accordion Serviços | .service-accordion-item, [data-service-trigger], .service-accordion-panel | WAI-ARIA, teclado, expansão fluida |
+| Filtro de Frentes | [data-service-filter], .services-filter-btn, .service-pillar-section | Tablist, estado ativo e scroll suave |
 | Rodapé | .footer, .footer-grid, .footer-col | Cinco colunas responsivas |
 
 ## HTML estático
-Header/footer estão replicados nas duas páginas de produção: index.html e sobre2/index.html. sobre.html e sobre-nos.html redirecionam sem conteúdo próprio. O verificador automático compara navegação e rodapé para impedir divergências, sem injetar HTML por JavaScript em tempo de execução.
+Header/footer estão padronizados e sincronizados nas páginas de produção: index.html, sobre2/index.html e servicos/index.html. sobre.html, sobre-nos.html e servicos.html redirecionam sem conteúdo próprio. O verificador automático compara navegação e rodapé para impedir divergências, sem injetar HTML por JavaScript em tempo de execução.
 
 Menu padrão: Início, Sobre, Portfólio / Cases, Nossos Serviços e Contato (o CTA depende da página). Alterações devem ser sincronizadas na Home e na Sobre oficial.
 

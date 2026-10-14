@@ -1,4 +1,31 @@
 
+## 2026-10-14 — feat(servicos): criação da página canônica de serviços da LENSES inspirada na Libra
+
+- Criada a nova página oficial de Serviços em `servicos/index.html` e alias redirecionador `servicos.html`, adaptando a profundidade estrutural da referência (`libra.ag/servicos/`) à linguagem cinematográfica e editorial do Design System da LENSES.
+- Estruturação em 4 grandes frentes estratégicas com 16 serviços detalhados (descrição profunda, "Para quem é indicado", "Entregáveis Oficiais" e CTA personalizado via WhatsApp):
+  1. *Produção Audiovisual & Cinema*: Filmes Comerciais, Séries/Documentários, Cobertura de Festivais, Pós-Produção & Color Grading DaVinci Resolve.
+  2. *Comunicação Estratégica & Branding*: Posicionamento & Identidade Visual, Naming & Arquitetura, Planejamento 360°, Gestão Contínua de Marca.
+  3. *Propaganda, ESG & Território*: Comunicação ESG Antigreenwashing, Mapeamento de Cenários & Licença Social, Jornadas Co-Criativas, Relatórios GRI.
+  4. *Design Estratégico & Experiência Visual*: Embalagens de Bioeconomia, Sinalização & Wayfinding, Projetos Editoriais de Luxo, Pitch Decks Executivos.
+- Respeito absoluto às regras de ouro do Design System: alternância intencional de superfícies (Cinema Dark `#050505`, Branco Anti-flash `#EDECED`, Azul Espacial `#202A44` e Branco Puro `#FFFFFF`), tipografia Inter com escala editorial e contrastes WCAG AA.
+- Novo controlador interativo `assets/servicos.js`: accordions acessíveis (WAI-ARIA e teclado), controle de expansão/recolhimento em massa, filtro dinâmico por frentes com scroll suave e geração de links de proposta customizados.
+- Seções de suporte adicionadas: Faixa de Indicadores de Confiabilidade, Metodologia LENSES em 4 etapas, Selos Técnicos (ISO 9001, Câmeras 8K, Drones Homologados), Grid dos 12 clientes calibrados e Banner de Ação de Alto Impacto.
+- Integração da navegação na Home (`index.html`), na página Sobre (`sobre2/index.html`) e no script automatizado de integridade `scripts/check-design-system.mjs`.
+
+---
+
+## 2026-10-14 — feat(cases): criação da página de case BDA – Prêmio Brasileiro de Design
+
+- Criada a nova página de case study em `cases/bda-premio-brasileiro-de-design/index.html`, adaptando a estrutura e narrativa de referência (`libra.ag/project/bda-premio-brasileiro-de-design/`) à identidade visual e design system canônico da LENSES.
+- Alternância intencional de superfícies conforme diretrizes do manual: Cinema Dark (#050505), Editorial Claro Anti-Flash (#EDECED), Azul Espacial (#202A44) e Off-White (#FFFFFF).
+- Estruturação em 4 atos narrativos: O Projeto (Contexto & Propósito), O Desafio (Estratégia & Fórum Criativo), A Solução (Pássaros Migratórios & Tipografia Plau) e Os Resultados (Troféus, Medalhas e Entregáveis).
+- Download e armazenamento local de todas as imagens em alta resolução em `assets/paginas/cases/bda/` (screen LED, flag, poster, caixa kit, troféu, medalha, grafismos).
+- Componentes e utilitários de case study adicionados a `assets/pages.css` (`.case-*`), reutilizando 100% dos tokens institucionais e mantendo compatibilidade com `scripts/check-design-system.mjs`.
+- Inclusão do case no carrossel de destaques da Home em `assets/script.js` (`PROJECTS.featured`).
+- Criadas rotas e aliases amigáveis: `cases/bda/`, `project/bda-premio-brasileiro-de-design/` e `case-bda.html`.
+
+---
+
 ## 2026-10-13 — Componente Sobre unificado
 
 - Transformados os painéis Sobre / Contato da Home e da Sobre em um único componente renderizado por `assets/about-split.js`.
