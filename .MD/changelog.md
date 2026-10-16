@@ -1,3 +1,14 @@
+## 2026-10-16 — feat(typography): contrato tipográfico global de 48px
+
+- **Design system:** tokens canônicos em `assets/tokens.css` (`--type-heading-desktop:48px`, `--type-heading-size`, weight/line-height/letter-spacing, apoio/legendas) e breakpoints tablet/mobile.
+- **Aplicação:** nova camada compartilhada `assets/typography.css`, importada por `assets/styles.css` e carregada após estilos específicos nas páginas `sobre.html` e `casev2/bellamazon/index.html`; estilos base `h1/h2` agora consomem tokens.
+- **Páginas cobertas:** Home, Sobre e Bellamazon V2. Logo editorial como imagem, H3 de cards e demais destaques deliberados preservados.
+- **Bellamazon:** título “Identidade, natureza e oportunidades.” sem `<br>` manual, em linha única no desktop (>= 1200px) e quebra responsiva no mobile. Textos de apoio ajustados.
+- **Documentação:** `docs/DESIGN.md` com tabela de padrões e exceções. Contrato central, sem mexer em cores, mídias, conteúdo editorial, animações ou estrutura.
+- **Verificação:** conferência estática das importações, dos seletores ativos, da hierarquia e do CI de Design System; conferir também em navegador desktop/tablet/mobile após o deploy.
+
+---
+
 ## 2026-10-14 — fix(brand): aplicacao oficial da logo vetorial vertical LENSES na Home e no diagrama Sobre
 
 - **Diagrama de Convergencia (Sobre — `#como-conectamos`):**
