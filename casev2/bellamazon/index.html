@@ -1568,15 +1568,15 @@
       <p>Para a Bellamazon, a Lenses desenvolveu um projeto de marca inspirado na identidade amazônica e na tradição do açaí. O desafio foi traduzir essa origem em uma linguagem visual própria, capaz de dar unidade ao posicionamento, às embalagens e à comunicação dos produtos.</p>
     </div>
     <div class="bell-s2-player bella-reuse-video__player">
-      <img src="https://libra.ag/wp-content/uploads/2024/11/Opera-Instantaneo_2024-11-13_123605_www.facebook.com_.png" alt="Prévia visual do projeto Bellamazon com açaí" loading="lazy" decoding="async">
+      <img src="https://i.ytimg.com/vi/WL7-6C7ZyZE/hqdefault.jpg" alt="Capa do vídeo institucional da Bellamazon" loading="lazy" decoding="async">
       <span class="bella-reuse-video__player-shade" aria-hidden="true"></span>
-      <span class="bella-reuse-video__player-brand" aria-hidden="true"><b>AMAZÔNIA</b><small>REFERÊNCIA AUDIOVISUAL</small></span>
-      <button class="bella-reuse-video__play" type="button" data-bella-video-trigger aria-label="Reproduzir vídeo sobre a colheita do açaí na Amazônia"><span aria-hidden="true">▶</span></button>
-      <span class="bella-reuse-video__caption">VÍDEO EXTERNO DE REFERÊNCIA · YOUTUBE</span>
+      <span class="bella-reuse-video__player-brand" aria-hidden="true"><b>BELLAMAZON</b><small>PRODUÇÃO AUDIOVISUAL · LENSES</small></span>
+      <button class="bella-reuse-video__play" type="button" data-bella-video-trigger aria-label="Reproduzir vídeo institucional da Bellamazon produzido pela Lenses"><span aria-hidden="true">▶</span></button>
+      <span class="bella-reuse-video__caption">VÍDEO INSTITUCIONAL DA BELLAMAZON · LENSES</span>
     </div>
     <div class="bella-reuse-video__followup">
       <p>O trabalho reuniu estratégia e posicionamento, criação da identidade visual, desenvolvimento de elementos gráficos e aplicações em rótulos e embalagens. A direção de conteúdo complementou esse sistema, conectando o conceito da marca às suas diferentes formas de apresentação.</p>
-      <p class="bella-reuse-video__source">Vídeo ilustrativo sobre o universo do açaí, de fonte externa. Não representa uma produção audiovisual da Lenses para este case.</p>
+      <p class="bella-reuse-video__source">VÍDEO INSTITUCIONAL BELLAMAZON | CAPTAÇÃO E EDIÇÃO: LENSES</p>
     </div>
   </div>
 </section>
@@ -1938,15 +1938,15 @@
   (() => {
     const init = () => {
       // Carrega o YouTube apenas após o clique. Evita peso e trackers na entrada da página.
-      // Vídeo externo de referência sobre a colheita do açaí, não é produção da Bellamazon.
+      // Vídeo institucional Bellamazon: captação e edição Lenses.
       document.querySelectorAll("[data-bella-video-trigger]").forEach(button=>{
         button.addEventListener("click",()=>{
           const player=button.closest(".bella-reuse-video__player");
           if(!player || player.classList.contains("is-playing"))return;
           const iframe=document.createElement("iframe");
           iframe.className="bella-reuse-video__iframe";
-          iframe.src="https://www.youtube-nocookie.com/embed/qApLtXQgWho?autoplay=1&rel=0&playsinline=1";
-          iframe.title="Colheita do açaí na Amazônia — O Verdadeiro Amazonas (YouTube)";
+          iframe.src="https://www.youtube-nocookie.com/embed/WL7-6C7ZyZE?autoplay=1&rel=0&playsinline=1";
+          iframe.title="Vídeo institucional Bellamazon — captação e edição Lenses (YouTube)";
           iframe.allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
           iframe.referrerPolicy="strict-origin-when-cross-origin";
           iframe.allowFullscreen=true;
