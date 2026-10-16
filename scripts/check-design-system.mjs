@@ -105,6 +105,13 @@ check(mosaicJS.includes('userPaused') && mosaicJS.includes('aria-pressed'), 'Bel
 const homeHTML = read('index.html');
 check(homeHTML.includes('class="hero-accessible-title"'), 'Home: H1 acessível ausente');
 check(homeHTML.includes('preload="none"') && homeHTML.includes('heroVideo'), 'Home: vídeo com preload antecipado');
+check(!homeHTML.includes('class="services-container reveal-on-scroll" style='),
+      'Home: altura inline impede responsividade dos serviços');
+const componentCSS = read('assets/components.css');
+check(componentCSS.includes('height: clamp(260px, 78vw, 360px)'),
+      'Home: altura compacta dos cards de serviços no mobile ausente');
+check(componentCSS.includes('GIF animado não obedece'),
+      'Footer: fallback estático para movimento reduzido ausente');
 const mainScript = read('assets/script.js');
 check(mainScript.includes('heroInView') && mainScript.includes('serviceVideos'), 'Home: controle de mídia por visibilidade ausente');
 
