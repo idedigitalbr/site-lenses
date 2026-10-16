@@ -73,6 +73,18 @@
   --font-nav: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   --font-heading: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 
+  /* Contrato Tipográfico Lenses · Headlines editoriais (2026-10-16)
+     48px é o tamanho oficial desktop para H1/H2 de seções;
+     H1 com logo-imagem, H3 de cards e wordmarks mantêm escala própria. */ 
+  --type-heading-desktop: 48px;
+  --type-heading-size: var(--type-heading-desktop);
+  --type-heading-weight: 700;
+  --type-heading-line-height: 1.12;
+  --type-heading-letter-spacing: -0.055em;
+  --type-body-support: 16px;
+  --type-body-line-height: 1.6;
+  --type-caption-support: 14px;
+
   /* Pesos Canônicos Inter */
   --fw-thin: 100;
   --fw-extralight: 200;
@@ -100,4 +112,19 @@
 
   /* Dimensões do Header Dinâmico */
   --top-ticker-height: 28px;
+}
+
+/* Escala responsiva. Mesmas variáveis em todas as páginas. */
+@media (min-width:769px) and (max-width:1199px) {
+  :root{
+    --type-heading-size:clamp(36px,3.8vw,44px);
+    --type-body-support:15px;
+  }
+}
+@media (max-width:768px) {
+  :root{
+    --type-heading-size:clamp(30px,7.6vw,38px);
+    --type-body-support:14px;
+    --type-caption-support:13px;
+  }
 }
