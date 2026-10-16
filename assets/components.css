@@ -3779,3 +3779,20 @@ a.footer-list-item:hover .footer-ico {
     flex: 1 1 0;
   }
 }
+
+
+/* Footer: GIF animado não obedece a animation:none.
+   Para reduced-motion, trocar a mídia pela foto estática já existente. */
+@media (prefers-reduced-motion: reduce) {
+  .footer-media {
+    background-image: url("./paginas/home/s7-footer/contact-bg.png");
+    background-position: center 32%;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  .footer-media-img {
+    display: none !important;
+    animation: none !important;
+    will-change: auto;
+  }
+}
