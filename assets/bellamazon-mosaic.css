@@ -101,6 +101,19 @@
 }
 .bella-mosaic-caption span{font:600 10px/1.5 Inter,sans-serif;letter-spacing:.16em;color:#e5ecff}
 .bella-mosaic-caption p{margin:0;color:#e5ecffcf!important;font:400 11px/1.45 Inter,sans-serif;letter-spacing:.025em;text-align:right}
+.bella-mosaic-caption-controls{display:flex;align-items:center;justify-content:flex-end;gap:14px}
+.bella-mosaic-toggle{
+  width:34px;height:34px;flex:none;display:grid;place-items:center;
+  border:1px solid #e7eeff80;border-radius:50%;padding:0;
+  background:#ffffff12;color:#fff;cursor:pointer;
+  transition:background-color .25s ease,border-color .25s ease;
+}
+.bella-mosaic-toggle:hover,.bella-mosaic-toggle:focus-visible{
+  background:#ffffff35;border-color:#fff;
+}
+.bella-mosaic-toggle:focus-visible{outline:2px solid #fff;outline-offset:3px}
+.bella-mosaic-toggle svg{width:16px;height:16px;display:block;fill:none}
+
 .bella-mosaic-viewport.is-native{
   overflow-x:auto;overscroll-behavior-inline:contain;
   -webkit-overflow-scrolling:touch;scrollbar-width:none;
@@ -138,6 +151,7 @@
   .bella-mosaic-side,.bella-mosaic-upper,.bella-mosaic-lower,.bella-mosaic-stack{gap:7px}
   .bella-mosaic-caption{padding:0 19px;display:block}
   .bella-mosaic-caption p{text-align:left;margin-top:4px}
+  .bella-mosaic-caption-controls{justify-content:space-between;gap:10px}
 }
 @media(prefers-reduced-motion:reduce){
   .bella-mosaic-panel img,.bella-mosaic-arrow{transition:none!important}
