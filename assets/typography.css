@@ -1,0 +1,118 @@
+/* ==========================================================================
+   LENSES · TYPOGRAPHY CONTRACT — 16/10/2026
+   Single source of truth for headline sizes: assets/tokens.css.
+   Loaded after visual components so existing backgrounds/animation/layout stay.
+   48px section titles on desktop, responsive token on tablet/mobile.
+   ========================================================================== */
+
+/* Headline editorial de seções. Exceções de logo/wordmark e card h3 não se aplicam. */
+:is(
+  .services-header-op1-title,
+  .section-display-title,
+  .certified-title,
+  .clients-headline,
+  .split-heading,
+  .lf-title,
+  .lap-heading h2,
+  .lcs-title,
+  .bella-case .bell-s1 .bell-s1-copy h1,
+  .bella-case .bell-s2 .bella-reuse-video__intro h2,
+  .bella-case .bell-s3-copy h2,
+  .bella-case .bell-s4-copy h2,
+  .bella-case .bell-s5-heading h2,
+  .bella-case .bella-reuse-presence__panel h3,
+  .bella-case .bella-reuse-results__showcase-heading h3,
+  .bella-case .bell-results-heading h2,
+  .bella-case .cta h2
+) {
+  font-family:var(--font-heading) !important;
+  font-size:var(--type-heading-size) !important;
+  font-weight:var(--type-heading-weight) !important;
+  line-height:var(--type-heading-line-height) !important;
+  letter-spacing:var(--type-heading-letter-spacing) !important;
+}
+
+/* Preserva ênfase editorial e a alternância entre light/bold onde faz sentido. */
+.lap-heading h2 strong,
+.lcs-title strong,
+.certified-title strong,
+.clients-headline-bold,
+.bella-reuse-presence__panel h3 strong {
+  font-weight:var(--fw-bold);
+}
+.clients-headline-light{font-weight:var(--fw-light)}
+
+/* Textos de apoio: escala menor, leitura confortável. Não interfere nos ícones,
+   métricas, botões, labels ou textos do footer. */
+:is(
+  .services-header-op1-desc,
+  .certified-lead,
+  .clients-desc,
+  .about2-origin-hero__lead,
+  .lcs-description,
+  .bella-case .bell-s1-subtitle,
+  .bella-case .bella-reuse-video__intro > p:not(.bella-reuse-eyebrow),
+  .bella-case .bell-s3-copy > p,
+  .bella-case .bell-s4-copy > p,
+  .bella-case .bell-s5-heading > p,
+  .bella-case .bella-reuse-presence__steps p
+) {
+  font-family:var(--font-main);
+  font-size:var(--type-body-support) !important;
+  font-weight:var(--fw-regular);
+  line-height:var(--type-body-line-height) !important;
+  letter-spacing:-.012em;
+}
+.bella-case .bell-results-heading > p,
+.bella-case .bell-results-heading p{font-size:var(--type-caption-support)!important;line-height:1.55!important}
+
+/* Conteúdo do vídeo da Bellamazon: texto em linha única de 1200px para cima.
+   Remove somente a quebra de linha visual; texto e ordem DOM são preservados. */
+@media(min-width:1200px){
+  .bella-case .bell-s2.bella-reuse-video .bella-reuse-video__intro{
+    width:100%;
+    max-width:1120px;
+  }
+  .bella-case .bell-s2.bella-reuse-video .bella-reuse-video__intro h2{
+    max-width:none;
+    width:100%;
+    white-space:nowrap;
+    text-wrap:nowrap;
+  }
+  .bella-case .bell-s2.bella-reuse-video .bella-reuse-video__intro h2 br{
+    display:none;
+  }
+}
+
+/* Tablet: nenhuma headline cresce além do espaço horizontal disponível. */
+@media(min-width:769px) and (max-width:1199px){
+  .bella-case .bell-s2.bella-reuse-video .bella-reuse-video__intro h2{
+    white-space:normal;
+    text-wrap:balance;
+  }
+  .bella-case .bell-s2.bella-reuse-video .bella-reuse-video__intro h2 br{display:none}
+}
+@media(max-width:768px){
+  :is(
+    .services-header-op1-title,
+    .section-display-title,
+    .certified-title,
+    .clients-headline,
+    .lf-title,
+    .lap-heading h2,
+    .lcs-title,
+    .bella-case .bell-s2 .bella-reuse-video__intro h2,
+    .bella-case .bell-s5-heading h2
+  ) {
+    max-width:100%;
+    overflow-wrap:normal;
+    text-wrap:balance;
+  }
+  .bella-case .bell-s2.bella-reuse-video .bella-reuse-video__intro h2{
+    white-space:normal;
+  }
+  .bella-case .bell-s2.bella-reuse-video .bella-reuse-video__intro h2 br{display:none}
+  .bella-case .bell-s3-copy h2,
+  .bella-case .bell-s4-copy h2,
+  .bella-case .bella-reuse-presence__panel h3{overflow-wrap:break-word}
+}
