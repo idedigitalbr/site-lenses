@@ -11,6 +11,7 @@
     const panel=track?.querySelector(".bella-mosaic-panel");
     const previous=section.querySelector('[data-mosaic-direction="prev"]');
     const next=section.querySelector('[data-mosaic-direction="next"]');
+    const toggle=section.querySelector("[data-mosaic-toggle]");
     if(!viewport||!track||!panel||!previous||!next)return;
     // Duas repetições idênticas mantêm a continuidade nos extremos do ciclo.
     for(let n=0;n<2;n++){
@@ -22,6 +23,7 @@
     const motionOff=matchMedia("(prefers-reduced-motion: reduce)").matches;
     const gsap=window.gsap, ST=window.ScrollTrigger;
     if(!gsap||motionOff){
+      if(toggle)toggle.hidden=true; // Não há autoplay para pausar neste modo.
       viewport.classList.add("is-native");
       const move=direction=>viewport.scrollBy({
         left:direction*Math.max(220,viewport.clientWidth*.72),
@@ -37,8 +39,8 @@
     const setX=gsap.quickSetter(track,"x","px");
     const render=()=>setX(-gsap.utils.wrap(0,width,state.auto+state.scroll+state.manual));
     let autoplay=null,resumeDelay=null;
-    let visible=false,pinned=false,hovering=false,focusing=false,interacting=false;
-    const canPlay=()=>visible&&!pinned&&!hovering&&!focusing&&!interacting&&!document.hidden;
+    let visible=false,pinned=false,hovering=false,focusing=false,interacting=false,userPaused=false;
+    const canPlay=()=>visible&&!pinned&&!hovering&&!focusing&&!interacting&&!userPaused&&!document.hidden;
     const sync=()=>{if(autoplay)canPlay()?autoplay.resume():autoplay.pause();};
     const createAutoplay=()=>{
       const progress=autoplay?autoplay.progress():0;
@@ -69,6 +71,18 @@
     }
     previous.addEventListener("click",()=>shift(-1));
     next.addEventListener("click",()=>shift(1));
+    if(toggle){
+      toggle.addEventListener("click",()=>{
+        userPaused=!userPaused;
+        toggle.setAttribute("aria-pressed",String(userPaused));
+        toggle.setAttribute("aria-label",userPaused?"Retomar movimento automático":"Pausar movimento automático");
+        toggle.title=userPaused?"Retomar movimento":"Pausar movimento";
+        toggle.innerHTML=userPaused
+          ? '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 5 11 7-11 7z" fill="currentColor" stroke="none"/></svg>'
+          : '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5v14M15 5v14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
+        sync();
+      });
+    }
     section.addEventListener("mouseenter",()=>{hovering=true;sync();});
     section.addEventListener("mouseleave",()=>{hovering=false;sync();});
     section.addEventListener("focusin",()=>{focusing=true;sync();});
