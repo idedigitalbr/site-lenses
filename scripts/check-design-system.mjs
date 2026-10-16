@@ -6,7 +6,7 @@ const read = name => fs.readFileSync(path.join(process.cwd(), name), 'utf8');
 const check = (valid, message) => { if (!valid) errors.push(message); };
 const pages = ['index.html', 'sobre.html'];
 const html = Object.fromEntries(pages.map(p => [p, read(p)]));
-const cssFiles = ['assets/tokens.css', 'assets/base.css', 'assets/components.css', 'assets/pages.css'];
+const cssFiles = ['assets/tokens.css', 'assets/base.css', 'assets/components.css', 'assets/pages.css', 'assets/typography.css'];
 const entry = read('assets/styles.css');
 check(cssFiles.every(x => entry.includes('@import url("./' + path.basename(x) + '");') || entry.includes('@import url("./' + path.basename(x) + '?v=')), 'CSS sem todos os imports');
 const css = cssFiles.map(read).join('\n').replace(/\/\*[\s\S]*?\*\//g,'');
@@ -73,5 +73,40 @@ for (const [name, initial] of [['index.html', 'idle'], ['sobre.html', 'story']])
 }
 for (const section of ['about-hero-clean','about-tech-section','about-cta-section']) check(!html['sobre.html'].includes('class="' + section + '"'), 'Sobre reintroduziu ' + section);
 for (const section of ['id="sobre"','id="fundamentos"']) check(html['sobre.html'].includes(section), 'Sobre perdeu ' + section);
+// QA específico do case V2 e da experiência editorial publicada.
+const bell = read('casev2/bellamazon/index.html');
+const bellIDs = Array.from(bell.matchAll(/\\bid\\s*=\\s*["']([^"']+)["']/gi), m=>m[1]);
+check(bellIDs.length === new Set(bellIDs).size, 'Bellamazon: IDs duplicados');
+for (const id of ['bellamazon-hero','video-projeto','desafio','solucoes','resultados']) {
+  check(bellIDs.includes(id), 'Bellamazon: seção ausente #' + id);
+}
+for (const local of ['assets/bellamazon-mosaic.css','assets/bellamazon-mosaic.js']) {
+  check(fs.existsSync(path.join(process.cwd(), local)), 'Bellamazon: asset ausente ' + local);
+  check(bell.includes(path.basename(local)), 'Bellamazon: asset não importado ' + local);
+}
+check(bell.includes('bella-infinite-gallery') && bell.includes('bella-mosaic-track'), 'Bellamazon: mosaico infinito não encontrado');
+check(bell.includes('data-mosaic-direction="prev"') && bell.includes('data-mosaic-direction="next"'), 'Bellamazon: setas ausentes');
+check(bell.includes('data-mosaic-toggle'), 'Bellamazon: falta controle de pausa');
+check(bell.includes('VÍDEO INSTITUCIONAL BELLAMAZON'), 'Bellamazon: crédito de vídeo oficial ausente');
+check(bell.includes('embed/WL7-6C7ZyZE'), 'Bellamazon: vídeo incorreto');
+check(bell.includes('Exemplo visual · sem dados reais'), 'Bellamazon: painel ilustrativo sem aviso');
+check(!bell.includes('COMO O TRABALHO GANHA FORMA'), 'Bellamazon: seção antiga não foi removida');
+for (const href of Array.from(bell.matchAll(/\\b(?:href|src|poster)\\s*=\\s*["']([^"']+)["']/gi), m=>m[1])) {
+  if (/^(#|https?:|mailto:|tel:|data:)/i.test(href)) continue;
+  const cleaned = href.split(/[?#]/)[0];
+  if (!cleaned) continue;
+  check(fs.existsSync(path.resolve('casev2/bellamazon', decodeURIComponent(cleaned))),
+        'Bellamazon: arquivo local inexistente ' + cleaned);
+}
+const mosaicJS = read('assets/bellamazon-mosaic.js');
+check(mosaicJS.includes('pinSpacing:true') && mosaicJS.includes('prefers-reduced-motion: reduce'),
+      'Bellamazon: pin ou reduced-motion ausentes');
+check(mosaicJS.includes('userPaused') && mosaicJS.includes('aria-pressed'), 'Bellamazon: controle de pausa incompleto');
+const homeHTML = read('index.html');
+check(homeHTML.includes('class="hero-accessible-title"'), 'Home: H1 acessível ausente');
+check(homeHTML.includes('preload="none"') && homeHTML.includes('heroVideo'), 'Home: vídeo com preload antecipado');
+const mainScript = read('assets/script.js');
+check(mainScript.includes('heroInView') && mainScript.includes('serviceVideos'), 'Home: controle de mídia por visibilidade ausente');
+
 if (errors.length) { console.error('QA Lenses reprovado:\n- ' + errors.join('\n- ')); process.exit(1); }
 console.log('QA Lenses aprovado: tokens, CSS, preview, menus, rodapés, anchors, URLs e páginas.');
