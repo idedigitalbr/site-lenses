@@ -75,7 +75,7 @@ for (const section of ['about-hero-clean','about-tech-section','about-cta-sectio
 for (const section of ['id="sobre"','id="fundamentos"']) check(html['sobre.html'].includes(section), 'Sobre perdeu ' + section);
 // QA específico do case V2 e da experiência editorial publicada.
 const bell = read('casev2/bellamazon/index.html');
-const bellIDs = Array.from(bell.matchAll(/\\bid\\s*=\\s*["']([^"']+)["']/gi), m=>m[1]);
+const bellIDs = Array.from(bell.matchAll(/\bid\s*=\s*["']([^"']+)["']/gi), m=>m[1]);
 check(bellIDs.length === new Set(bellIDs).size, 'Bellamazon: IDs duplicados');
 for (const id of ['bellamazon-hero','video-projeto','desafio','solucoes','resultados']) {
   check(bellIDs.includes(id), 'Bellamazon: seção ausente #' + id);
@@ -91,7 +91,7 @@ check(bell.includes('VÍDEO INSTITUCIONAL BELLAMAZON'), 'Bellamazon: crédito de
 check(bell.includes('embed/WL7-6C7ZyZE'), 'Bellamazon: vídeo incorreto');
 check(bell.includes('Exemplo visual · sem dados reais'), 'Bellamazon: painel ilustrativo sem aviso');
 check(!bell.includes('COMO O TRABALHO GANHA FORMA'), 'Bellamazon: seção antiga não foi removida');
-for (const href of Array.from(bell.matchAll(/\\b(?:href|src|poster)\\s*=\\s*["']([^"']+)["']/gi), m=>m[1])) {
+for (const href of Array.from(bell.matchAll(/\b(?:href|src|poster)\s*=\s*["']([^"']+)["']/gi), m=>m[1])) {
   if (/^(#|https?:|mailto:|tel:|data:)/i.test(href)) continue;
   const cleaned = href.split(/[?#]/)[0];
   if (!cleaned) continue;
