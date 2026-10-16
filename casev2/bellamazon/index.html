@@ -1189,6 +1189,188 @@
 .bella-case .bell-s5.bella-reuse-results::before{z-index:0;opacity:.18}
 .bella-case .bella-reuse-results .bell-s5-inner{position:relative;z-index:1}
 
+
+/* Bellamazon S2 | Versão editorial centralizada, em uma única coluna.
+   Altera somente o vídeo do projeto. Mantém S1, S3-S5 e demais componentes. */
+.bella-case .bell-s2.bella-reuse-video{
+  display:block;
+  min-height:0;
+  width:100%;
+  padding:0;
+}
+.bella-case .bell-s2.bella-reuse-video .bella-reuse-video__photo{
+  background-position:center 45%;
+}
+.bella-case .bell-s2.bella-reuse-video .bella-reuse-video__shade{
+  background:
+    linear-gradient(180deg,rgba(6,16,40,.86) 0%,rgba(8,23,51,.72) 47%,rgba(5,16,39,.88) 100%),
+    linear-gradient(90deg,rgba(5,14,35,.57),transparent 35%,rgba(5,14,35,.38));
+}
+.bella-case .bell-s2.bella-reuse-video .bella-reuse-video__contours{
+  width:100%;
+  opacity:.18;
+  -webkit-mask-image:linear-gradient(90deg,#000,transparent 42%,transparent 62%,#000);
+  mask-image:linear-gradient(90deg,#000,transparent 42%,transparent 62%,#000);
+}
+.bella-case .bell-s2.bella-reuse-video .bella-reuse-video__layout{
+  width:100%;
+  max-width:1240px;
+  min-height:0;
+  margin:0 auto;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:0;
+  padding:clamp(72px,7vw,118px) clamp(22px,4vw,64px) clamp(75px,7vw,114px);
+  text-align:center;
+}
+.bella-case .bell-s2.bella-reuse-video .bell-s2-copy.bella-reuse-video__intro{
+  order:0;
+  width:100%;
+  max-width:1050px;
+  margin:0 auto 41px;
+  padding:0;
+  text-align:center;
+}
+.bella-case .bell-s2.bella-reuse-video .bella-reuse-eyebrow{
+  justify-content:center;
+  gap:19px;
+  margin:0 auto 20px!important;
+  color:#bdcafa!important;
+  font-size:clamp(10px,.85vw,13px)!important;
+  letter-spacing:.29em!important;
+}
+.bella-case .bell-s2.bella-reuse-video .bella-reuse-eyebrow::before{
+  content:"";
+  flex:none;
+  display:block;
+  height:1px;
+  width:clamp(27px,4vw,66px);
+  background:rgba(193,213,252,.62);
+}
+.bella-case .bell-s2.bella-reuse-video .bella-reuse-eyebrow span{
+  flex:none;
+  width:clamp(27px,4vw,66px);
+  background:rgba(193,213,252,.62);
+}
+.bella-case .bell-s2.bella-reuse-video .bella-reuse-video__intro h2{
+  color:#fff;
+  font-size:clamp(40px,4.6vw,76px);
+  line-height:1.075;
+  font-weight:690;
+  letter-spacing:-.062em;
+  max-width:1020px;
+  margin:0 auto 24px!important;
+  text-wrap:balance;
+}
+.bella-case .bell-s2.bella-reuse-video .bella-reuse-video__intro h2 em{color:#c0cffa;}
+.bella-case .bell-s2.bella-reuse-video .bella-reuse-video__intro>p:not([hidden]):not(.bella-reuse-eyebrow){
+  max-width:730px;
+  margin:0 auto!important;
+  font-size:clamp(16px,1.16vw,20px);
+  line-height:1.65;
+  color:#dce5f8;
+  text-wrap:pretty;
+}
+.bella-case .bell-s2.bella-reuse-video .bell-s2-player.bella-reuse-video__player{
+  order:1;
+  width:100%;
+  max-width:1070px;
+  flex:none;
+  aspect-ratio:16/9;
+  margin:0 auto;
+  padding:12px;
+  border:1px solid rgba(236,244,255,.72);
+  border-radius:22px;
+  box-shadow:0 28px 70px rgba(1,8,23,.43),0 0 0 7px rgba(220,236,255,.055);
+}
+.bella-case .bell-s2.bella-reuse-video .bell-s2-player.bella-reuse-video__player::after,
+.bella-case .bell-s2.bella-reuse-video .bella-reuse-video__player-shade{inset:12px;}
+.bella-case .bell-s2.bella-reuse-video .bella-reuse-video__player-brand{
+  bottom:14%;
+  left:5.8%;
+  text-align:left;
+}
+.bella-case .bell-s2.bella-reuse-video .bella-reuse-video__caption{
+  bottom:5%;
+  left:5.8%;
+  text-align:left;
+}
+.bella-case .bell-s2.bella-reuse-video .bella-reuse-video__meta{
+  order:2;
+  margin:35px auto 0;
+  width:100%;
+  max-width:1070px;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  align-items:center;
+  gap:15px 0;
+}
+.bella-case .bell-s2.bella-reuse-video .bella-reuse-video__meta span{
+  border:0;
+  padding:0 clamp(12px,2.5vw,30px);
+  font-size:clamp(10px,.85vw,13px);
+  color:#dce7ff;
+  line-height:1.4;
+  letter-spacing:.18em;
+}
+.bella-case .bell-s2.bella-reuse-video .bella-reuse-video__meta span+span{
+  border-left:1px solid rgba(203,221,255,.38);
+}
+.bella-case .bell-s2.bella-reuse-video .bella-reuse-video__notice:not([hidden]){
+  margin:-45px auto 44px;
+  max-width:950px;
+  text-align:center;
+  padding:15px 22px;
+}
+@media(max-width:760px){
+  .bella-case .bell-s2.bella-reuse-video .bella-reuse-video__layout{
+    padding:60px 19px 73px;
+  }
+  .bella-case .bell-s2.bella-reuse-video .bell-s2-copy.bella-reuse-video__intro{
+    margin-bottom:30px;
+  }
+  .bella-case .bell-s2.bella-reuse-video .bella-reuse-video__intro h2{
+    font-size:clamp(37px,8vw,56px);
+    margin-bottom:17px!important;
+    line-height:1.12;
+  }
+  .bella-case .bell-s2.bella-reuse-video .bella-reuse-video__intro>p:not([hidden]):not(.bella-reuse-eyebrow){
+    font-size:14px;
+    line-height:1.6;
+  }
+  .bella-case .bell-s2.bella-reuse-video .bell-s2-player.bella-reuse-video__player{
+    aspect-ratio:16/10;
+    width:100%;
+    padding:8px;
+    border-radius:15px;
+  }
+  .bella-case .bell-s2.bella-reuse-video .bell-s2-player.bella-reuse-video__player::after,
+  .bella-case .bell-s2.bella-reuse-video .bella-reuse-video__player-shade{inset:8px;}
+  .bella-case .bell-s2.bella-reuse-video .bella-reuse-video__meta{
+    margin-top:25px;
+    gap:12px 0;
+  }
+  .bella-case .bell-s2.bella-reuse-video .bella-reuse-video__meta span{
+    padding:0 12px;
+    font-size:9px;
+    letter-spacing:.12em;
+  }
+}
+@media(max-width:390px){
+  .bella-case .bell-s2.bella-reuse-video .bella-reuse-video__intro h2{
+    font-size:clamp(33px,9.1vw,39px);
+  }
+  .bella-case .bell-s2.bella-reuse-video .bella-reuse-video__meta{
+    max-width:310px;
+  }
+  .bella-case .bell-s2.bella-reuse-video .bella-reuse-video__meta span:nth-child(3){
+    border-left:0;
+  }
+}
+
 </style>
 </head>
 <body class="bella-case">
@@ -1309,7 +1491,6 @@
       <p class="bella-reuse-eyebrow">VÍDEO DO PROJETO <span></span></p>
       <h2 id="bell-s2-title">Identidade, natureza<br>e <em>oportunidades.</em></h2>
       <p>Uma história que nasce da Amazônia e transforma origem, qualidade e tradição em uma marca pronta para dialogar com o mundo.</p>
-      <div class="bella-reuse-video__meta" aria-label="Áreas de atuação"><span>Branding</span><span>Embalagem</span><span>Conteúdo</span><span>Estratégia</span></div>
     </div>
     <div class="bell-s2-player bella-reuse-video__player">
       <img src="https://libra.ag/wp-content/uploads/2024/11/Opera-Instantaneo_2024-11-13_123605_www.facebook.com_.png" alt="Prévia visual do projeto Bellamazon com açaí" loading="lazy" decoding="async">
@@ -1318,6 +1499,7 @@
       <button class="bella-reuse-video__play" type="button" data-bella-video-trigger aria-label="Ver disponibilidade do vídeo do projeto"><span aria-hidden="true">▶</span></button>
       <span class="bella-reuse-video__caption">PRÉVIA VISUAL · VÍDEO OFICIAL EM BREVE</span>
     </div>
+    <div class="bella-reuse-video__meta" aria-label="Áreas de atuação"><span>Branding</span><span>Embalagem</span><span>Conteúdo</span><span>Estratégia</span></div>
   </div>
   <p id="videoNotice" class="bella-reuse-video__notice" role="status" hidden>O vídeo oficial do projeto ainda não foi disponibilizado. Esta é uma prévia visual.</p>
 </section>
@@ -1717,7 +1899,7 @@
       });
       if(window.matchMedia("(prefers-reduced-motion: reduce)").matches)return;
       const plans=[
-        {trigger:".bell-s2",items:".bell-s2-player, .bell-s2-copy",x:-50,y:35,stagger:.26,duration:1.35},
+        {trigger:".bell-s2",items:".bell-s2-copy, .bell-s2-player, .bella-reuse-video__meta",x:0,y:32,stagger:.22,duration:1.25},
         {trigger:".bell-s3",items:".bell-s3-copy, .bell-s3-visual",x:0,y:55,stagger:.25,duration:1.35},
         {trigger:".bell-s4",items:".bell-s4-visual, .bell-s4-copy, .bella-reuse-challenge__points > div",x:0,y:45,stagger:.21,duration:1.25},
         {trigger:".bell-s5",items:".bell-s5-heading, .bell-s5-card",x:0,y:45,stagger:.13,duration:1.12},
