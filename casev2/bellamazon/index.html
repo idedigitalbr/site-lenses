@@ -1171,6 +1171,24 @@
   .bella-reuse-video__play,.bella-reuse-presence__mosaic img,.bella-case .bell-s5-card{transition:none!important}
 }
 
+
+/* Ajustes finais de legibilidade e autoria do mosaico institucional */
+.bella-case .bell-s2-copy>.bella-reuse-eyebrow {
+  font-size:clamp(11px,.95vw,15px)!important;
+  line-height:1.5!important;
+  letter-spacing:.26em!important;
+  color:#bdcafa!important;
+}
+.bella-reuse-presence__mosaic{position:relative}
+.bella-reuse-presence__disclaimer{
+  position:absolute;bottom:16px;left:18px;z-index:3;
+  padding:9px 13px;border:1px solid #fff4;border-radius:50px;
+  background:#112752b8;color:#eef3ff;font-size:11px;letter-spacing:.035em;
+  backdrop-filter:blur(6px);pointer-events:none
+}
+.bella-case .bell-s5.bella-reuse-results::before{z-index:0;opacity:.18}
+.bella-case .bella-reuse-results .bell-s5-inner{position:relative;z-index:1}
+
 </style>
 </head>
 <body class="bella-case">
@@ -1361,6 +1379,7 @@
   </div>
   <div class="bella-reuse-presence">
     <div class="bella-reuse-presence__mosaic" aria-label="Fotografias da atuação da Lenses">
+      <div class="bella-reuse-presence__disclaimer">Registros institucionais da Lenses</div>
       <figure><img src="../../assets/imagens-diversas/fotografias-lenses/cases/hydro/evento-totem-painel-cara-do-para.webp" alt="Comunicação com o público durante evento" loading="lazy"></figure>
       <figure><img src="../../assets/imagens-diversas/fotografias-lenses/equipe-bastidores/bastidores-fotografo-em-campo.webp" alt="Fotógrafo em campo" loading="lazy"></figure>
       <figure><img src="../../assets/imagens-diversas/fotografias-lenses/cases/hydro/acao-pesquisa-publico-interno.webp" alt="Equipe em ação de comunicação" loading="lazy"></figure>
@@ -1700,9 +1719,11 @@
       const plans=[
         {trigger:".bell-s2",items:".bell-s2-player, .bell-s2-copy",x:-50,y:35,stagger:.26,duration:1.35},
         {trigger:".bell-s3",items:".bell-s3-copy, .bell-s3-visual",x:0,y:55,stagger:.25,duration:1.35},
-        {trigger:".bell-s4",items:".bell-s4-visual, .bell-s4-copy",x:0,y:55,stagger:.25,duration:1.35},
+        {trigger:".bell-s4",items:".bell-s4-visual, .bell-s4-copy, .bella-reuse-challenge__points > div",x:0,y:45,stagger:.21,duration:1.25},
         {trigger:".bell-s5",items:".bell-s5-heading, .bell-s5-card",x:0,y:45,stagger:.13,duration:1.12},
-        {trigger:".bell-s5-gallery",items:".bell-s5-gallery-main, .bell-s5-gallery-side",x:0,y:38,stagger:.22,duration:1.3}
+        {trigger:".bell-s5-gallery",items:".bell-s5-gallery-main, .bell-s5-gallery-side",x:0,y:38,stagger:.22,duration:1.3},
+        {trigger:".bella-reuse-presence",items:".bella-reuse-presence__mosaic, .bella-reuse-presence__panel h3, .bella-reuse-presence__steps > div",x:0,y:45,stagger:.14,duration:1.27},
+        {trigger:".bella-reuse-results__showcase",items:".bella-reuse-results__showcase-heading",x:0,y:32,stagger:.1,duration:1.12}
       ];
       if(window.gsap && window.ScrollTrigger){
         const gsap=window.gsap;
