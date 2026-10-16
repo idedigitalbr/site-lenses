@@ -68,7 +68,7 @@
 }
 .bell-s1 * { box-sizing: border-box; }
 .bell-s1-photo { position: absolute; inset: 0 0 0 50.8373%; z-index: 0;
-  background-image: url("../../assets/paginas/cases/bellamazon/s1-photo-reference.webp");
+  background-image: url("../../assets/paginas/cases/bellamazon/s1-photo-clean.webp");
   background-size: 100% 100%; background-position: center; filter: none;
 }
 .bell-s1-wash { position: absolute; inset: 0; z-index: 1;
@@ -148,6 +148,64 @@
   .bell-s1-next,.bell-s1-signature{display:none;}
 }
 
+
+/* Bellamazon S1: ornamentos reais e independentes da fotografia.
+   Fundo descontaminado em s1-photo-clean.webp. Não mexer nos estilos globais. */
+.bell-s1-rings {
+  position:absolute;
+  top:0;
+  right:0;
+  width:49.1627%;
+  height:100%;
+  z-index:3;
+  pointer-events:none;
+  overflow:hidden;
+}
+.bell-s1-rings svg{display:block;width:100%;height:100%}
+.bell-s1 .bell-s1-next {
+  opacity:1;
+  visibility:visible;
+  cursor:pointer;
+  width:64px;
+  height:58px;
+  right:2.25%;
+  top:26.8%;
+  color:#fff;
+  text-shadow:0 2px 6px rgba(0,0,0,.2);
+  transition:transform .28s ease,opacity .28s ease;
+}
+.bell-s1 .bell-s1-next svg{width:54px;height:44px;filter:drop-shadow(0 2px 5px rgba(0,0,0,.20))}
+.bell-s1 .bell-s1-next:hover{transform:translateX(5px)}
+.bell-s1 .bell-s1-signature{
+  display:block;
+  visibility:visible;
+  opacity:1;
+  right:2.35%;
+  bottom:11.3%;
+  color:#fff;
+  text-transform:uppercase;
+  font-size:clamp(12px,1.05vw,18px);
+  font-weight:450;
+  line-height:1.6;
+  letter-spacing:.28em;
+}
+.bell-s1 .bell-s1-signature span{width:28px;height:2px;background:#fff;margin-top:12px}
+@media(max-width:760px){
+  .bell-s1-rings{display:none}
+  .bell-s1 .bell-s1-next{
+    display:grid;top:43px;right:15px;
+    height:38px;width:45px;
+    color:#fff;opacity:1;
+  }
+  .bell-s1 .bell-s1-next svg{width:37px;height:32px}
+  .bell-s1 .bell-s1-signature{
+    display:block;visibility:visible;
+    position:absolute;top:124px;right:16px;bottom:auto;
+    font-size:10px;line-height:1.45;letter-spacing:.19em;
+    z-index:4;text-shadow:0 2px 6px rgba(0,0,0,.6);
+  }
+  .bell-s1 .bell-s1-signature span{width:24px;margin-top:7px}
+}
 </style>
 </head>
 <body class="bella-case">
@@ -228,6 +286,15 @@
     <section class="bell-s1" id="bellamazon-hero" aria-labelledby="bell-s1-title">
   <div class="bell-s1-photo" aria-hidden="true"></div>
   <div class="bell-s1-wash" aria-hidden="true"></div>
+  <div class="bell-s1-rings" aria-hidden="true">
+    <svg viewBox="0 0 822 778" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="851" cy="228" r="201" stroke="#FFFFFF" stroke-width="1.7" opacity=".9"/>
+      <circle cx="851" cy="228" r="263" stroke="#FFFFFF" stroke-width="1" stroke-dasharray="3 8" opacity=".3"/>
+      <circle cx="809" cy="698" r="224" stroke="#EAF5FF" stroke-width="1.6" opacity=".84"/>
+      <circle cx="809" cy="698" r="265" stroke="#A5C3E8" stroke-width=".8" opacity=".27"/>
+      <circle cx="851" cy="228" r="315" stroke="#9BC2EF" stroke-width=".75" opacity=".2"/>
+    </svg>
+  </div>
   <svg class="bell-s1-lines" viewBox="0 0 1672 778" preserveAspectRatio="none" fill="none" aria-hidden="true">
     <g stroke="#9fc6ed" stroke-width="1" opacity=".48"><circle cx="-86" cy="-83" r="262"/><circle cx="-86" cy="-83" r="238"/><circle cx="-86" cy="-83" r="212"/><circle cx="-86" cy="-83" r="187"/><circle cx="-86" cy="659" r="196"/><circle cx="-86" cy="659" r="221"/><circle cx="-86" cy="659" r="246"/><circle cx="-86" cy="659" r="271"/></g>
   </svg>
@@ -245,7 +312,7 @@
     <div class="bell-s1-service"><div class="bell-s1-service-icon"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.7" aria-hidden="true"><rect x="6" y="7" width="36" height="34" rx="2"/><path d="m21 17 10 7-10 7V17ZM12 12h2M12 36h2M34 12h2M34 36h2"/></svg></div><h2>Conteúdo</h2><p>Fotos e vídeos<br>institucionais</p></div>
     <div class="bell-s1-service"><div class="bell-s1-service-icon"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.7" aria-hidden="true"><path d="m10 20 26-12v23L10 27v-7ZM16 30l5 11h7l-6-12M37 15l5-3M37 25l5 4"/></svg></div><h2>Estratégia</h2><p>Direção criativa<br>e comunicação</p></div>
   </div>
-  <a class="bell-s1-next" href="#sobre" aria-label="Explorar o projeto"><svg viewBox="0 0 48 48" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 23h27m-11-13 13 13-13 13"/></svg></a>
+  <a class="bell-s1-next" href="#sobre" aria-label="Explorar o projeto"><svg viewBox="0 0 68 48" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 23h13M18 13v20M10 13h13M36 5l18 19-18 19"/></svg></a>
   <div class="bell-s1-signature">Da<br>Amazônia<br>para<br>o mundo<span></span></div>
 </section>
     <section class="video-band"><div class="shell video-inner"><div class="video-thumb"><img src="https://libra.ag/wp-content/uploads/2024/11/Opera-Instantaneo_2024-11-13_123605_www.facebook.com_.png" alt="Açaí em destaque na produção audiovisual Bellamazon"/><button class="play-round" type="button" title="Vídeo ilustrativo, arquivo original não incluído" onclick="document.getElementById('videoNotice').hidden=false">▶</button><div class="thumb-label">BELLAMAZON<small>NATIVE ISLANDS AÇAÍ</small></div></div><div class="video-content"><div class="eyebrow">Vídeo do projeto</div><h2>Identidade, natureza e oportunidades.</h2><p>Assista ao vídeo e conheça como traduzimos a essência da Amazônia em uma marca forte, autêntica e pronta para novos mercados.</p><button class="outline-link" onclick="document.getElementById('videoNotice').hidden=false" type="button"><span>▷</span> Assistir ao vídeo</button><p id="videoNotice" hidden style="font-size:11px;color:#d1dcf5">Prévia visual: substitua pelo vídeo oficial do projeto na integração.</p></div></div></section>
