@@ -1,0 +1,70 @@
+name: Preparar fundo limpo Bellamazon S1
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/bellamazon-s1-background-once.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  process-hero:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Instalar OpenCV
+        run: python -m pip install --quiet opencv-python-headless
+      - name: Retirar elementos embutidos na imagem
+        shell: bash
+        run: |
+          python - <<'PY'
+          import cv2
+          import numpy as np
+          from pathlib import Path
+
+          base = Path("assets/paginas/cases/bellamazon")
+          original = cv2.imread(str(base / "s1-photo-reference.webp"))
+          if original is None:
+              raise SystemExit("Foto de referencia nao encontrada")
+          h, w = original.shape[:2]
+          hsv = cv2.cvtColor(original, cv2.COLOR_BGR2HSV)
+          mask = np.zeros((h, w), np.uint8)
+
+          # Apagar somente as tintas brancas dos textos e da seta.
+          for x1, y1, x2, y2 in ((700,195,807,278), (620,544,802,716)):
+              selected = (hsv[y1:y2, x1:x2, 1] < 96) & (hsv[y1:y2,x1:x2,2] > 141)
+              mask[y1:y2,x1:x2] = np.uint8(selected)*255
+          bright = (hsv[:,:,1] < 88) & (hsv[:,:,2] > 160)
+          mask[:,600:] = np.maximum(mask[:,600:], np.uint8(bright[:,600:])*255)
+
+          # Proteger a floresta: eliminar manchas naturais de grandes componentes.
+          count, labels, stats, _ = cv2.connectedComponentsWithStats(mask,8)
+          ink = np.zeros_like(mask)
+          for component in range(1,count):
+              if stats[component,cv2.CC_STAT_AREA] <= 300:
+                  ink[labels==component] = 255
+          ink[:90,:] = 0
+          ink[:,:585] = 0
+          ink = cv2.dilate(ink,cv2.getStructuringElement(cv2.MORPH_ELLIPSE,(5,5)),iterations=1)
+
+          # Arcos originalmente impressos no JPG da referencia.
+          for cx,cy,radius,line in ((851,228,201,8),(809,698,224,7),(849,228,255,3),(809,698,265,3)):
+              cv2.circle(ink,(cx,cy),radius,255,line)
+          ink[:,:590] = 0
+          ink = cv2.dilate(ink,cv2.getStructuringElement(cv2.MORPH_ELLIPSE,(3,3)))
+          clean = cv2.inpaint(original,ink,5,cv2.INPAINT_TELEA)
+          dest = base / "s1-photo-clean.webp"
+          if not cv2.imwrite(str(dest),clean,[cv2.IMWRITE_WEBP_QUALITY,86]):
+              raise SystemExit("Falha ao gravar a imagem")
+          print("Saved:",dest,dest.stat().st_size,"bytes")
+          PY
+      - name: Publicar imagem limpa no main
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/paginas/cases/bellamazon/s1-photo-clean.webp
+          git diff --cached --quiet || git commit -m "asset(bellamazon): foto S1 sem texto e aros embutidos"
+          git push origin HEAD:main
