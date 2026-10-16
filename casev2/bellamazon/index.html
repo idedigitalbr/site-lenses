@@ -861,6 +861,316 @@
   .bella-case .bell-s2-play-symbol,.bella-case .bell-s2-watch{transition:none!important}
 }
 
+
+/* =============================================================
+   BELLAMAZON · PROPOSTA V2 (inspirada nos componentes oficiais Sobre)
+   Somente S2, S4 e S5. Header, footer, S1, S3 e dashboard intocados.
+   Sem scroll-jacking; transform/opacity nas interações.
+   ============================================================= */
+/* S2 · abertura com a linguagem do hero Barcarena da página Sobre */
+.bella-case .bell-s2.bella-reuse-video {
+  display:block; position:relative; isolation:isolate; min-height:clamp(680px,59vw,970px);
+  background:#07152d!important; color:#fff; overflow:hidden;
+}
+.bella-case .bell-s2.bella-reuse-video::before {display:none}
+.bella-reuse-video__photo,.bella-reuse-video__shade,.bella-reuse-video__contours {
+  position:absolute;inset:0;pointer-events:none
+}
+.bella-reuse-video__photo {
+  z-index:-3;
+  background:url("../../assets/paginas/sobre/hero-topo-sobre.webp") center 43%/cover no-repeat;
+  transform:scale(1.015);
+}
+.bella-reuse-video__shade {
+  z-index:-2;
+  background:linear-gradient(90deg,rgba(8,19,43,.96) 0%,rgba(9,21,47,.85) 37%,rgba(9,21,47,.51) 67%,rgba(9,21,47,.60) 100%),linear-gradient(0deg,rgba(1,9,24,.74),transparent 63%);
+}
+.bella-reuse-video__contours {
+  z-index:-1;opacity:.22;width:70%;
+  background:repeating-radial-gradient(ellipse 65% 72% at 0% 43%,transparent 0 28px,rgba(182,202,245,.45) 29px,transparent 30px,transparent 48px);
+  -webkit-mask-image:linear-gradient(90deg,#000,transparent 95%);mask-image:linear-gradient(90deg,#000,transparent 95%)
+}
+.bella-case .bella-reuse-video__layout{
+  min-height:clamp(680px,59vw,970px);max-width:1740px;margin:0 auto;position:relative;z-index:2;
+  display:grid;grid-template-columns:minmax(0, .87fr) minmax(0,1.13fr);
+  align-items:center;gap:clamp(34px,4.7vw,92px);
+  padding:clamp(85px,8vw,140px) clamp(26px,5.6vw,96px)
+}
+.bella-case .bell-s2-copy.bella-reuse-video__intro{padding:0;max-width:610px;color:white}
+.bella-reuse-eyebrow {display:flex;gap:18px;align-items:center;color:#bdcafa!important;letter-spacing:.26em;font-size:clamp(11px,.95vw,15px);font-weight:660}
+.bella-reuse-eyebrow span{display:block;width:72px;height:1px;background:#adc5f4a6}
+.bella-case .bella-reuse-video__intro h2 {
+  margin:24px 0 26px!important;color:#fff;font-size:clamp(49px,5vw,90px);
+  font-weight:680;line-height:1.02;letter-spacing:-.068em
+}
+.bella-case .bella-reuse-video__intro h2 em{font-style:normal;color:#bed0fa}
+.bella-case .bella-reuse-video__intro>p:not([hidden]):not(.bella-reuse-eyebrow){
+  font-size:clamp(16px,1.32vw,22px);line-height:1.58;max-width:510px;color:#e2e9f7
+}
+.bella-reuse-video__meta{display:flex;flex-wrap:wrap;gap:10px 15px;margin-top:37px}
+.bella-reuse-video__meta span{font-size:11px;letter-spacing:.16em;font-weight:630;text-transform:uppercase;color:#cdd9f6;padding:11px 0;border-top:1px solid #d1e0ff68}
+.bella-case .bell-s2-player.bella-reuse-video__player {
+  position:relative;z-index:2;width:100%;aspect-ratio:1.52;
+  min-height:0;padding:11px;border-radius:23px;border:1px solid #ffffffa6;background:#061228;
+  box-shadow:0 32px 95px #02081792,0 0 0 10px #d9e4ff0b
+}
+.bella-case .bell-s2-player.bella-reuse-video__player::after{
+  inset:11px;z-index:1;border-radius:13px;border:1px solid #ffffff38
+}
+.bella-case .bella-reuse-video__player img{border-radius:13px;filter:saturate(1.08);object-fit:cover}
+.bella-reuse-video__player-shade {
+  position:absolute;inset:11px;border-radius:13px;z-index:1;pointer-events:none;
+  background:linear-gradient(180deg,transparent 40%,rgba(2,8,22,.13) 62%,rgba(2,8,22,.92) 100%)
+}
+.bella-reuse-video__player-brand{position:absolute;bottom:14%;left:6.5%;z-index:2;display:flex;flex-direction:column;color:white}
+.bella-reuse-video__player-brand b{font-size:clamp(25px,2.45vw,42px);font-weight:690;letter-spacing:.09em;line-height:1.1}
+.bella-reuse-video__player-brand small{font-size:clamp(10px,.85vw,14px);letter-spacing:.22em;margin-top:8px}
+.bella-reuse-video__play{
+  display:grid;place-items:center;position:absolute;top:48%;left:50%;transform:translate(-50%,-50%);
+  z-index:4;width:clamp(78px,8vw,126px);height:clamp(78px,8vw,126px);border:1px solid #fff9;
+  border-radius:50%;color:#fff;background:#f8fbff45;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  box-shadow:0 12px 33px #05132b60;cursor:pointer;
+  transition:background .35s ease,transform .5s cubic-bezier(.22,1,.36,1)
+}
+.bella-reuse-video__play span{font-size:clamp(29px,3vw,50px);margin-left:7px}
+@media(hover:hover){.bella-reuse-video__play:hover{background:#f8fbff7d;transform:translate(-50%,-50%) scale(1.09)}}
+.bella-reuse-video__caption{position:absolute;bottom:5%;left:6.5%;z-index:2;color:#e2ecff;letter-spacing:.16em;font-size:clamp(9px,.73vw,12px)}
+.bella-case .bella-reuse-video__notice:not([hidden]) {
+  position:relative;z-index:4;max-width:1500px;margin:-55px auto 55px;
+  padding:16px 36px;font-size:14px;color:#e2edff
+}
+
+/* S4 · layout de três planos inspirado no split Sobre */
+.bella-case .bell-s4.bella-reuse-challenge{
+  display:block;min-height:0;padding:0;background:#f5f7fc;overflow:hidden;color:#1b2b50
+}
+.bella-case .bell-s4.bella-reuse-challenge::before{display:none}
+.bella-case .bell-s4-layout.bella-reuse-challenge__layout{
+  display:grid;grid-template-columns:46% 31% 23%;gap:0;align-items:stretch;
+  min-height:clamp(640px,51vw,810px);max-width:none;padding:0;margin:0
+}
+.bella-case .bell-s4-visual.bella-reuse-challenge__scene{
+  grid-column:1 / 3;grid-row:1;position:relative;height:auto;width:100%;min-height:600px;
+  border-radius:0;background:#10263a;overflow:hidden
+}
+.bella-case .bella-reuse-challenge__scene img{object-position:center 48%;filter:saturate(.89) brightness(.78)}
+.bella-reuse-challenge__scene::before{content:"";position:absolute;z-index:1;inset:0;pointer-events:none;background:linear-gradient(90deg,#0e20434a,transparent 55%,#061c3455)}
+.bella-case .bella-reuse-challenge__scene figcaption{
+  left:4.8%;right:auto;bottom:7%;font-size:clamp(10px,.82vw,15px);line-height:1.5;letter-spacing:.25em
+}
+.bella-case .bell-s4-copy.bella-reuse-challenge__panel{
+  grid-column:2;grid-row:1;z-index:3;position:relative;align-self:center;
+  padding:clamp(34px,3.5vw,68px) clamp(24px,2.6vw,52px);
+  margin:28px 0;min-height:82%;
+  display:flex;flex-direction:column;justify-content:center;
+  background:linear-gradient(180deg,#fffefdfa,#f7f8fcf7);
+  box-shadow:0 20px 40px #040f2620;border:1px solid #ffffffad
+}
+.bella-reuse-challenge__eyebrow{font-size:clamp(11px,.83vw,15px);font-weight:750;letter-spacing:.24em;color:#5c6ca4!important;line-height:1.2}
+.bella-case .bell-s4-copy.bella-reuse-challenge__panel h2{
+  color:#1b2949;font-weight:700;font-size:clamp(35px,3.35vw,67px);
+  line-height:1.06;letter-spacing:-.065em;margin:20px 0 25px!important
+}
+.bella-case .bell-s4-copy.bella-reuse-challenge__panel h2 span{color:#5c6ca4}
+.bella-case .bell-s4-copy.bella-reuse-challenge__panel p{
+  font-size:clamp(13px,1.06vw,19px);font-weight:400;line-height:1.58;letter-spacing:-.018em;
+  color:#435374;max-width:570px
+}
+.bella-case .bell-s4-copy.bella-reuse-challenge__panel p+p{margin-top:18px}
+.bella-reuse-challenge__points{
+  grid-column:3;grid-row:1;display:flex;flex-direction:column;justify-content:center;
+  gap:clamp(32px,4vw,65px);z-index:2;background:#fff;padding:65px clamp(15px,3vw,60px);
+}
+.bella-reuse-challenge__points>div{border-left:2px solid #d9e1f2;padding-left:clamp(14px,1.5vw,28px)}
+.bella-reuse-challenge__points strong{display:block;font-size:clamp(37px,3.8vw,69px);font-weight:680;line-height:1;color:#5c6ca4;letter-spacing:-.065em}
+.bella-reuse-challenge__points span{display:block;margin-top:6px;font-size:clamp(10px,.9vw,15px);font-weight:790;line-height:1.5;letter-spacing:.12em;color:#243653}
+.bella-reuse-challenge__points p{margin-top:6px;font-size:clamp(12px,.95vw,16px);line-height:1.5;color:#63718b}
+
+/* S5 · cards conectados, como a timeline Fundamentos da Lenses */
+.bella-case .bell-s5.bella-reuse-results{
+  padding:95px 0 0;background:linear-gradient(160deg,#f6f8fd,#edf2fb 75%,#f6f8fd);
+  color:#202a44;min-height:0;overflow:hidden
+}
+.bella-case .bell-s5.bella-reuse-results::before{
+  z-index:-1;opacity:.24
+}
+.bella-case .bella-reuse-results .bell-s5-inner{
+  max-width:1510px;padding:0 clamp(20px,5vw,90px);margin:auto
+}
+.bella-case .bell-s5-heading.bella-reuse-results__header{
+  margin:0 auto 54px;max-width:1150px;text-align:center
+}
+.bella-reuse-results__eyebrow{display:block;margin-bottom:19px;font-size:12px;font-weight:750;letter-spacing:.27em;color:#5c6ca4!important}
+.bella-case .bell-s5-heading.bella-reuse-results__header h2{
+  margin:0 auto 16px!important;white-space:normal;
+  font-size:clamp(38px,4.3vw,75px);font-weight:710;letter-spacing:-.064em;
+  line-height:1.08;color:#202a44
+}
+.bella-case .bella-reuse-results__header h2 span{color:#5c6ca4}
+.bella-case .bell-s5-heading.bella-reuse-results__header p{
+  max-width:760px;margin:0 auto!important;font-size:clamp(15px,1.23vw,20px);line-height:1.58;color:#697994
+}
+.bella-reuse-results__timeline{
+  position:relative;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:23px;
+  margin:0 0 41px;align-items:center
+}
+.bella-reuse-results__timeline::before{
+  content:"";position:absolute;left:12%;right:12%;height:2px;background:#7d8fbe;top:50%;transform:translateY(-50%)
+}
+.bella-reuse-results__timeline span{display:block;position:relative;z-index:1;margin:auto;
+  width:16px;height:16px;border-radius:50%;background:#5c6ca4;border:3px solid #eff3fa;
+  box-shadow:0 0 0 4px #d5deef,0 5px 16px #6278ad44
+}
+.bella-case .bell-s5-cards{
+  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px;margin:0 0 96px
+}
+.bella-case .bell-s5-card{
+  min-height:310px;padding:32px 24px 40px;
+  display:flex;flex-direction:column;align-items:center;gap:0;text-align:center;
+  background:#fff;border:1px solid #e1e7f2;border-radius:22px;
+  box-shadow:0 18px 43px #24365812;transition:transform .48s cubic-bezier(.22,1,.36,1),box-shadow .48s ease
+}
+.bella-case .bell-s5-card:hover{transform:translateY(-9px);box-shadow:0 22px 45px #24365826}
+.bella-case .bell-s5-icon{
+  height:97px;width:97px;display:grid;place-items:center;flex:none;
+  border:1px solid #dfe5f4;box-shadow:0 0 0 7px #f7f9fc,0 0 0 9px #e4eafa;
+  border-radius:50%;background:radial-gradient(circle at 40% 30%,#fff,#eaf0fb);color:#5c6ca4
+}
+.bella-case .bell-s5-icon svg{height:46px;width:46px}
+.bella-case .bell-s5-card h3{
+  margin:30px 0 15px!important;font-size:clamp(19px,1.65vw,27px);font-weight:720;color:#5c6ca4;letter-spacing:-.047em
+}
+.bella-case .bell-s5-card p{font-size:clamp(13px,1.02vw,16px);line-height:1.63;color:#65728c;max-width:245px;margin:0 auto!important}
+/* Presença: painel azul e colagem fotográfica, linguagem da seção Atuamos */
+.bella-reuse-presence{display:grid;grid-template-columns:1fr 1fr;min-height:clamp(650px,50vw,850px);background:#53679f;color:#fff}
+.bella-reuse-presence__mosaic{
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:1fr 1fr;
+  min-height:500px;overflow:hidden
+}
+.bella-reuse-presence__mosaic figure{margin:0;position:relative;overflow:hidden;background:#192c4b}
+.bella-reuse-presence__mosaic figure:nth-child(3){grid-column:1/-1}
+.bella-reuse-presence__mosaic img{width:100%;height:100%;display:block;object-fit:cover;filter:grayscale(1) sepia(.26) hue-rotate(175deg) saturate(1.5) contrast(1.05) brightness(.84);transition:transform .8s ease}
+.bella-reuse-presence__mosaic figure:hover img{transform:scale(1.04)}
+.bella-reuse-presence__panel{
+  position:relative;isolation:isolate;overflow:hidden;
+  background:linear-gradient(145deg,#5c6ca4,#4a588a);
+  padding:clamp(48px,5vw,98px) clamp(33px,6vw,108px);
+}
+.bella-reuse-presence__panel::before{
+  content:"";position:absolute;z-index:-1;right:-180px;top:-130px;width:440px;height:440px;
+  border:1px solid #ffffff4f;border-radius:50%;box-shadow:0 0 0 70px #ffffff0b,0 0 0 135px #ffffff09
+}
+.bella-reuse-presence__eyebrow{font-size:11px;letter-spacing:.25em;font-weight:740;color:#e2e9ff!important}
+.bella-reuse-presence__panel h3{
+  margin:24px 0 35px!important;font-size:clamp(34px,3vw,56px);line-height:1.08;
+  font-weight:420;letter-spacing:-.06em;color:#fff
+}
+.bella-reuse-presence__panel h3 strong{font-weight:750;color:#c6d1ff}
+.bella-reuse-presence__steps{position:relative;display:flex;flex-direction:column;gap:7px;padding-left:12px}
+.bella-reuse-presence__steps::before{content:"";position:absolute;left:24px;top:31px;bottom:35px;background:#e4ecff95;width:2px}
+.bella-reuse-presence__steps>div{display:grid;grid-template-columns:56px 1fr;align-items:start;gap:20px;padding:13px 0;position:relative}
+.bella-reuse-presence__steps>div>span{
+  width:48px;height:48px;display:grid;place-items:center;z-index:2;border-radius:50%;
+  border:1px solid #d4defb75;background:#ffffff26;color:#fff;font-size:13px;font-weight:750
+}
+.bella-reuse-presence__steps h4{margin:0 0 5px;color:#fff;font-size:clamp(19px,1.5vw,24px);font-weight:720;letter-spacing:-.04em}
+.bella-reuse-presence__steps p{margin:0!important;font-size:clamp(13px,1.04vw,17px);line-height:1.47;color:#e1e7fa}
+/* Galeria final inspirada no mosaico aprovado do case */
+.bella-reuse-results__showcase{padding:78px clamp(20px,4.8vw,85px) 88px;background:#f5f8fd}
+.bella-reuse-results__showcase-heading{max-width:1500px;margin:0 auto 29px}
+.bella-reuse-results__showcase-heading span{font-size:11px;letter-spacing:.25em;font-weight:750;color:#5c6ca4}
+.bella-reuse-results__showcase-heading h3{
+  color:#202a44;font-size:clamp(30px,2.6vw,49px);line-height:1.15;letter-spacing:-.06em;
+  max-width:850px;margin:11px 0 0!important
+}
+.bella-case .bella-reuse-results__showcase .bell-s5-gallery{
+  width:100%;max-width:1520px;margin:auto;gap:9px;height:clamp(385px,40vw,620px)
+}
+.bella-case .bella-reuse-results__showcase .bell-s5-gallery figure{border-radius:15px}
+/* Tablet + mobile: sem sobreposição, sem scroll horizontal. */
+@media(max-width:1100px){
+  .bella-case .bella-reuse-video__layout{gap:28px;padding:75px 34px}
+  .bella-case .bella-reuse-video__intro h2{font-size:clamp(43px,5vw,68px)}
+  .bella-case .bella-reuse-challenge__layout{grid-template-columns:42% 34% 24%}
+  .bella-case .bella-reuse-challenge__panel{padding:35px 25px}
+  .bella-case .bella-reuse-challenge__panel h2{font-size:clamp(33px,3.8vw,52px)}
+  .bella-reuse-challenge__points{padding:28px 17px}
+  .bella-case .bell-s5-cards{gap:14px}
+  .bella-case .bell-s5-card{min-height:305px;padding:28px 15px}
+  .bella-reuse-presence__panel{padding:50px 35px}
+}
+@media(max-width:800px){
+  .bella-case .bell-s2.bella-reuse-video{min-height:0}
+  .bella-case .bella-reuse-video__layout{
+    display:flex;flex-direction:column;align-items:stretch;min-height:0;
+    padding:82px 24px 68px;gap:34px
+  }
+  .bella-case .bella-reuse-video__intro h2{font-size:clamp(41px,8.2vw,68px)}
+  .bella-case .bella-reuse-video__player{aspect-ratio:1.6;max-width:640px;margin:auto}
+  .bella-case .bella-reuse-video__notice:not([hidden]){margin:0;padding:10px 24px 35px}
+  .bella-case .bell-s4-layout.bella-reuse-challenge__layout{display:flex;flex-direction:column;min-height:0;padding:0;gap:0}
+  .bella-case .bella-reuse-challenge__scene{min-height:0!important;height:clamp(260px,58vw,440px)!important;width:100%}
+  .bella-case .bella-reuse-challenge__panel{
+    align-self:stretch;margin:-35px 22px 0;min-height:0;padding:37px 27px 45px;max-width:none;
+    box-shadow:0 14px 35px #182a4c16
+  }
+  .bella-case .bella-reuse-challenge__panel h2{font-size:clamp(37px,8vw,60px)}
+  .bella-case .bella-reuse-challenge__panel p{font-size:15px}
+  .bella-reuse-challenge__points{
+    padding:36px 22px 45px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px
+  }
+  .bella-reuse-challenge__points>div{padding-left:12px}
+  .bella-reuse-challenge__points strong{font-size:36px}
+  .bella-reuse-challenge__points span{font-size:10px;letter-spacing:.07em}
+  .bella-reuse-challenge__points p{font-size:12px}
+  .bella-case .bell-s5.bella-reuse-results{padding-top:65px}
+  .bella-case .bella-reuse-results__header h2{font-size:clamp(34px,6vw,56px)}
+  .bella-case .bell-s5-cards{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-bottom:62px}
+  .bella-reuse-results__timeline{display:none}
+  .bella-case .bell-s5-card{min-height:265px;padding:26px 20px}
+  .bella-case .bell-s5-card h3{font-size:22px;margin-top:24px!important}
+  .bella-case .bell-s5-card p{font-size:14px}
+  .bella-reuse-presence{grid-template-columns:1fr}
+  .bella-reuse-presence__mosaic{height:clamp(300px,60vw,490px);min-height:0}
+  .bella-reuse-presence__panel{padding:54px 35px 62px}
+  .bella-reuse-results__showcase{padding:55px 20px 65px}
+  .bella-case .bella-reuse-results__showcase .bell-s5-gallery{height:auto}
+}
+@media(max-width:520px){
+  .bella-case .bella-reuse-video__layout{padding:66px 19px 48px}
+  .bella-case .bella-reuse-video__intro h2{font-size:clamp(37px,10.1vw,55px)}
+  .bella-reuse-video__meta{gap:8px 11px;margin-top:22px}
+  .bella-reuse-video__meta span{font-size:9px}
+  .bella-case .bella-reuse-video__player{aspect-ratio:1.38;padding:7px;border-radius:15px}
+  .bella-case .bella-reuse-video__player img{border-radius:9px}
+  .bella-reuse-video__player-brand b{font-size:22px}
+  .bella-reuse-video__player-brand small{font-size:9px}
+  .bella-reuse-video__caption{font-size:8px}
+  .bella-reuse-video__play{width:72px;height:72px}
+  .bella-case .bella-reuse-challenge__panel{margin:-24px 13px 0;padding:33px 23px 38px}
+  .bella-reuse-challenge__points{grid-template-columns:1fr;gap:20px;padding:32px 26px 44px}
+  .bella-reuse-challenge__points>div{display:grid;grid-template-columns:57px minmax(0,1fr);gap:3px 13px;padding-left:14px}
+  .bella-reuse-challenge__points strong{grid-row:span 2;font-size:36px}
+  .bella-reuse-challenge__points span{margin:0}
+  .bella-reuse-challenge__points p{margin:2px 0 0;font-size:12px}
+  .bella-case .bella-reuse-results .bell-s5-inner{padding:0 18px}
+  .bella-case .bell-s5-cards{grid-template-columns:1fr;gap:13px;margin-bottom:58px}
+  .bella-case .bell-s5-card{display:grid;grid-template-columns:73px minmax(0,1fr);gap:5px 16px;text-align:left;align-items:start;min-height:0;padding:22px}
+  .bella-case .bell-s5-icon{grid-row:1/3;width:62px;height:62px;box-shadow:0 0 0 4px #f3f6fc,0 0 0 5px #e4eafa}
+  .bella-case .bell-s5-icon svg{width:33px;height:33px}
+  .bella-case .bell-s5-card h3{font-size:20px;margin:2px 0 5px!important}
+  .bella-case .bell-s5-card p{font-size:13px;margin:0!important}
+  .bella-reuse-presence__mosaic{height:320px}
+  .bella-reuse-presence__panel{padding:46px 23px 51px}
+  .bella-reuse-presence__panel h3{font-size:37px}
+  .bella-reuse-presence__steps>div{gap:12px;grid-template-columns:50px 1fr}
+  .bella-reuse-results__showcase{padding:40px 13px 48px}
+  .bella-case .bella-reuse-results__showcase .bell-s5-gallery figure{border-radius:9px}
+}
+@media(prefers-reduced-motion:reduce){
+  .bella-reuse-video__play,.bella-reuse-presence__mosaic img,.bella-case .bell-s5-card{transition:none!important}
+}
+
 </style>
 </head>
 <body class="bella-case">
