@@ -34,7 +34,7 @@
 
     if (home) {
       // A Home começa pelo showreel: não interromper o vídeo nem seus controles.
-      add("#inicio", ".hero-scroll-indicator", { distance:24, duration:1.4, start:"top 100%" });
+      // Hero já usa vídeo e seta com animação CSS; não disputar o transform da seta.
       add("#servicos", ".services-track .service-item", { distance:64, duration:1.34, stagger:.16, start:"top 76%" });
       add("#projetos", ".highlight-action-title", { axis:"x", distance:-44, duration:1.42, start:"top 70%" });
       // Apenas o viewport; nunca animar a track cujo translate é controlado pelo carrossel.
@@ -88,9 +88,10 @@
       const observer = new IntersectionObserver(entries => {
         for (const entry of entries) {
           if (!entry.isIntersecting) continue;
+          if (document.hidden) continue;
           observer.unobserve(entry.target);
           const plan = plans.find(p => p.trigger === entry.target);
-          if (!plan || document.hidden) continue;
+          if (!plan) continue;
           plan.elements.forEach((element, index) => {
             const horizontal = plan.axis === "x";
             const x = horizontal ? plan.distance : 0;
@@ -109,6 +110,18 @@
         }
       }, { threshold:.10, rootMargin:"0px 0px -8% 0px" });
       plans.forEach(plan => observer.observe(plan.trigger));
+      // A aba pode abrir em background; retomar somente quando estiver visível.
+      document.addEventListener("visibilitychange", () => {
+        if (document.hidden) return;
+        plans.forEach(plan => {
+          const rect = plan.trigger.getBoundingClientRect();
+          if (rect.top < innerHeight * .88 && rect.bottom > 0) {
+            // Deixa o observer cuidar do disparo, sem duplicar entradas.
+            observer.unobserve(plan.trigger);
+            observer.observe(plan.trigger);
+          }
+        });
+      });
     };
 
     const gsap = window.gsap;
@@ -166,7 +179,7 @@
         });
       }
       if (home) {
-        const watermark = document.querySelector("#clientes .clients-watermark");
+        const watermark = document.querySelector("#clientes .clients-watermark-svg");
         if (watermark) gsap.fromTo(watermark, { y:18 }, {
           y:-18,
           ease:"none",
