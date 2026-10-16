@@ -1,5 +1,5 @@
 /* LENSES · Motion editorial v1
-   Home, Sobre e case BDA. JS progressivo, sem esconder conteúdo na falta de JS.
+   Home e Sobre. JS progressivo, sem esconder conteúdo na falta de JS.
    GSAP + ScrollTrigger quando disponíveis; Web Animations + IntersectionObserver como fallback.
    Mantém carrosséis, modais, header, split e diagramas sob controle dos scripts originais. */
 (() => {
@@ -11,8 +11,7 @@
 
     const home = !!document.getElementById("servicos");
     const about = !!document.getElementById("inicio-sobre2");
-    const bda = !!document.getElementById("topo-case");
-    if (!home && !about && !bda) return;
+    if (!home && !about) return;
 
     const plans = [];
     const add = (section, selector, options = {}) => {
@@ -62,24 +61,6 @@
       });
       add("#como-conectamos", ".lcs-kicker, .lcs-title, .lcs-description", {
         distance:44, duration:1.34, stagger:.19, start:"top 75%"
-      });
-    }
-
-    if (bda) {
-      add("#topo-case", ".case-hero__eyebrow, .case-hero__title, .case-hero__subtitle, .case-hero__meta-strip", {
-        distance:44, duration:1.4, stagger:.19, start:"top 100%"
-      });
-      add("#o-desafio", ".case-act-kicker, .case-act-editorial-title, .case-method-step-pill", {
-        distance:40, duration:1.22, stagger:.14, start:"top 77%"
-      });
-      add("#a-solucao", ".case-act-kicker, .case-act-editorial-title, .case-poster-monument", {
-        distance:47, duration:1.38, stagger:.20, start:"top 78%"
-      });
-      add("#os-resultados", ".team-header-clean, .case-monograph-item", {
-        distance:44, duration:1.2, stagger:.13, start:"top 78%"
-      });
-      add("#outros-projetos", ".case-act-editorial-title, .case-card-editorial", {
-        distance:36, duration:1.2, stagger:.16, start:"top 80%"
       });
     }
 
