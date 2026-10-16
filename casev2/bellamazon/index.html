@@ -1325,5 +1325,81 @@
   })();
   </script>
 
+
+  <!-- GSAP + ScrollTrigger exclusivos das novas seções. O site segue funcional sem CDN. -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js" defer></script>
+  <script>
+  /* Bellamazon V2 S2-S5 Motion · transform/opacity, sem scroll-jacking. */
+  (() => {
+    const init = () => {
+      const videoNote=document.getElementById("videoNotice");
+      document.querySelectorAll("[data-bella-video-trigger]").forEach(button=>{
+        button.addEventListener("click",()=>{
+          if(!videoNote)return;
+          videoNote.hidden=false;
+          videoNote.scrollIntoView({block:"nearest",behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"});
+        });
+      });
+      const imageFallbacks=[
+        [".bell-s2-player img","https://cdn.shopify.com/s/files/1/0877/6604/0851/files/tupan-acai-coffee-acai-harvest-hands-amazon.jpg?v=1757787191"],
+        [".bell-s3-picture img","https://www.embrapa.br/documents/1354300/0/m%C3%A3os%2Bcheia%2Bde%2Ba%C3%A7ai%2Bfoto%2BRonaldo%2BRosa%2Bok.jpg/6d9ee427-309f-8b93-8527-6887e33925dd?t=1715876802341"],
+        [".bell-s5-gallery-main img","https://bellamazonacai.com.br/content/baker3/images/baker3-slider-pic1.png"],
+        [".bell-s5-gallery-top figure:last-child img","https://www.bellamazonacai.com.br/content/baker3/images/embalagens.png"]
+      ];
+      imageFallbacks.forEach(([selector,url])=>{
+        const img=document.querySelector(selector);
+        if(!img)return;
+        img.addEventListener("error",()=>{
+          if(img.dataset.fallbackUsed)return;
+          img.dataset.fallbackUsed="1";
+          img.src=url;
+        },{once:true});
+      });
+      if(window.matchMedia("(prefers-reduced-motion: reduce)").matches)return;
+      const plans=[
+        {trigger:".bell-s2",items:".bell-s2-player, .bell-s2-copy",x:-50,y:35,stagger:.26,duration:1.35},
+        {trigger:".bell-s3",items:".bell-s3-copy, .bell-s3-visual",x:0,y:55,stagger:.25,duration:1.35},
+        {trigger:".bell-s4",items:".bell-s4-visual, .bell-s4-copy",x:0,y:55,stagger:.25,duration:1.35},
+        {trigger:".bell-s5",items:".bell-s5-heading, .bell-s5-card",x:0,y:45,stagger:.13,duration:1.12},
+        {trigger:".bell-s5-gallery",items:".bell-s5-gallery-main, .bell-s5-gallery-side",x:0,y:38,stagger:.22,duration:1.3}
+      ];
+      if(window.gsap && window.ScrollTrigger){
+        const gsap=window.gsap;
+        gsap.registerPlugin(window.ScrollTrigger);
+        plans.forEach(plan=>{
+          const host=document.querySelector(plan.trigger);
+          if(!host)return;
+          const items=Array.from(host.querySelectorAll(plan.items));
+          if(!items.length)return;
+          gsap.fromTo(items,{autoAlpha:0,x:plan.x,y:plan.y},{
+            autoAlpha:1,x:0,y:0,duration:plan.duration,stagger:plan.stagger,
+            ease:"power3.out",overwrite:"auto",clearProps:"opacity,visibility,transform",
+            scrollTrigger:{trigger:host,start:"top 80%",once:true,invalidateOnRefresh:true}
+          });
+        });
+      }else if("IntersectionObserver" in window && Element.prototype.animate){
+        const observer=new IntersectionObserver(entries=>{
+          for(const entry of entries){
+            if(!entry.isIntersecting)continue;
+            observer.unobserve(entry.target);
+            const plan=plans.find(p=>document.querySelector(p.trigger)===entry.target);
+            if(!plan)return;
+            entry.target.querySelectorAll(plan.items).forEach((el,i)=>{
+              const animation=el.animate([
+                {opacity:0,transform:"translate3d(0,"+plan.y+"px,0)"},
+                {opacity:1,transform:"translate3d(0,0,0)"}
+              ],{duration:plan.duration*1000,delay:i*plan.stagger*1000,easing:"cubic-bezier(.22,1,.36,1)",fill:"both"});
+              animation.addEventListener("finish",()=>animation.cancel(),{once:true});
+            });
+          }
+        },{threshold:.10,rootMargin:"0px 0px -4% 0px"});
+        plans.forEach(plan=>{const el=document.querySelector(plan.trigger);if(el)observer.observe(el);});
+      }
+    };
+    if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",init,{once:true});
+    else init();
+  })();
+  </script>
 </body>
 </html>
