@@ -387,6 +387,55 @@
     padding:0 4px;
   }
 }
+
+/* Separação visual editorial: identificação dos serviços da agência,
+   independente da assinatura do cliente que aparece acima. */
+.bella-case .bell-s1 .bell-s1-services-kicker {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:14px;
+  grid-column:1 / -1;
+  margin:0;
+  width:100%;
+  text-align:center;
+  white-space:nowrap;
+  font-family:var(--font-main,Inter,sans-serif);
+  font-size:clamp(10px,.76vw,12px);
+  font-weight:600;
+  line-height:1.4;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--color-brand-saboia,#5C6CA4)!important;
+}
+.bella-case .bell-s1 .bell-s1-services-kicker::before,
+.bella-case .bell-s1 .bell-s1-services-kicker::after {
+  content:"";
+  display:block;
+  height:1px;
+  min-width:10px;
+  flex:1 1 0;
+  background:rgba(92,108,164,.26);
+}
+@media(min-width:761px){
+  .bella-case .bell-s1 .bell-s1-services{
+    top:52%;
+    row-gap:20px;
+  }
+}
+@media(max-width:760px){
+  .bella-case .bell-s1 .bell-s1-services{
+    padding-top:24px;
+    row-gap:19px;
+  }
+  .bella-case .bell-s1 .bell-s1-services-kicker{
+    font-size:10px;
+    letter-spacing:.17em;
+    padding:0 3px;
+    gap:12px;
+  }
+}
+
 </style>
 </head>
 <body class="bella-case">
@@ -488,7 +537,7 @@
     </div>
   </div>
   <div class="bell-s1-services" aria-label="Serviços realizados no projeto">
-    <p class="bell-s1-services-kicker">Soluções que entregamos</p>
+    <p class="bell-s1-services-kicker">Soluções da Lenses</p>
     <div class="bell-s1-service"><div class="bell-s1-service-icon"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.7" aria-hidden="true"><rect x="9" y="11" width="30" height="29" rx="6"/><path d="M19 17V9a5 5 0 0 1 10 0v8M20 23h8M17 31l3 3 4-5"/></svg></div><h2>Criação de marca</h2><p>Identidade visual<br>e posicionamento</p></div>
     <div class="bell-s1-service"><div class="bell-s1-service-icon"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.7" aria-hidden="true"><path d="m24 4 17 9.5v21L24 44 7 34.5v-21L24 4Z"/><path d="m7 13.5 17 10 17-10M24 23.5V44"/></svg></div><h2>Embalagem</h2><p>Design de rótulos<br>e linha de produtos</p></div>
     <div class="bell-s1-service"><div class="bell-s1-service-icon"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.7" aria-hidden="true"><rect x="6" y="7" width="36" height="34" rx="2"/><path d="m21 17 10 7-10 7V17ZM12 12h2M12 36h2M34 12h2M34 36h2"/></svg></div><h2>Conteúdo</h2><p>Fotos e vídeos<br>institucionais</p></div>
