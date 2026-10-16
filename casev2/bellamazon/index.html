@@ -731,67 +731,123 @@
   </div>
   <script src="../../assets/script.js"></script>
 
-  <!-- Motion exclusivo da S1: sem bibliotecas externas, sem loops, com reduced-motion. -->
+  <!-- S1 Bellamazon: entrada cinematográfica em três atos, com timings deliberados.
+       Somente esta seção; layout, hovers, header e footer permanecem intactos. -->
   <script>
   (() => {
     "use strict";
-    const bootBellS1Motion = () => {
+    const startS1 = () => {
       const hero = document.getElementById("bellamazon-hero");
-      if (!hero || !("IntersectionObserver" in window) || !Element.prototype.animate) return;
+      if (!hero || typeof Element.prototype.animate !== "function") return;
       if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-      const timing = { duration: 720, easing: "cubic-bezier(.22,1,.36,1)", fill: "both" };
-      const reveal = (element, delay = 0, distance = 12, duration = timing.duration) => {
-        if (!element) return;
-        const animation = element.animate([
-          { opacity: 0, transform: "translate3d(0," + distance + "px,0)" },
-          { opacity: 1, transform: "translate3d(0,0,0)" }
-        ], { ...timing, duration, delay });
-        animation.addEventListener("finish", () => animation.cancel(), { once: true });
+
+      const ease = "cubic-bezier(.19,1,.22,1)";
+      const animate = (selector, keyframes, delay, duration) => {
+        const node = hero.querySelector(selector);
+        if (!node) return;
+        const animation = node.animate(keyframes, {
+          duration, delay, easing: ease, fill: "both"
+        });
+        animation.addEventListener("finish", () => animation.cancel(), { once:true });
       };
-      const fade = (element, delay = 0, from = 0) => {
-        if (!element) return;
-        const animation = element.animate(
-          [{ opacity: from }, { opacity: 1 }],
-          { ...timing, duration: 850, delay }
-        );
-        animation.addEventListener("finish", () => animation.cancel(), { once: true });
+      const rise = (selector, delay, duration = 1150, distance = 35) => {
+        animate(selector, [
+          { opacity:0, transform:"translate3d(0," + distance + "px,0)" },
+          { opacity:1, transform:"translate3d(0,0,0)" }
+        ], delay, duration);
       };
-      const intro = hero.querySelector(".bell-s1-identity");
-      const services = hero.querySelector(".bell-s1-services");
-      const photo = hero.querySelector(".bell-s1-photo");
-      const groups = new Map([
-        [photo, () => {
-          fade(photo, 0, .86);
-          fade(hero.querySelector(".bell-s1-rings"), 230, .04);
-          fade(hero.querySelector(".bell-s1-signature"), 400, 0);
-        }],
-        [intro, () => {
-          reveal(hero.querySelector(".bell-s1-logo"), 50, 12, 760);
-          reveal(hero.querySelector(".bell-s1-eyebrow"), 125, 9, 560);
-          reveal(hero.querySelector(".bell-s1-copy h1"), 185, 13, 720);
-          reveal(hero.querySelector(".bell-s1-subtitle"), 300, 9, 700);
-        }],
-        [services, () => {
-          reveal(hero.querySelector(".bell-s1-services-kicker"), 25, 7, 610);
-          hero.querySelectorAll(".bell-s1-service").forEach((card, i) => {
-            reveal(card, 120 + i * 75, 13, 650);
+      const fade = (selector, delay, duration = 1400) => {
+        animate(selector, [
+          { opacity:0 },
+          { opacity:1 }
+        ], delay, duration);
+      };
+      const seen = new Set();
+      const photo = () => {
+        if (seen.has("photo")) return;
+        seen.add("photo");
+        animate(".bell-s1-photo", [
+          { opacity:.48, transform:"scale(1.065)" },
+          { opacity:1, transform:"scale(1)" }
+        ], 0, 2000);
+        fade(".bell-s1-rings", 500, 1450);
+        fade(".bell-s1-signature", 760, 1250);
+      };
+      const identity = () => {
+        if (seen.has("identity")) return;
+        seen.add("identity");
+        animate(".bell-s1-logo", [
+          { opacity:0, transform:"translate3d(-30px,18px,0) scale(.92)" },
+          { opacity:1, transform:"translate3d(0,0,0) scale(1)" }
+        ], 200, 1320);
+        rise(".bell-s1-eyebrow", 550, 900, 18);
+        rise(".bell-s1-copy h1", 770, 1230, 40);
+        rise(".bell-s1-subtitle", 1120, 1120, 26);
+      };
+      const services = (onMobile) => {
+        if (seen.has("services")) return;
+        seen.add("services");
+        const lead = onMobile ? 180 : 1550;
+        rise(".bell-s1-services-kicker", lead, 950, 19);
+        hero.querySelectorAll(".bell-s1-service").forEach((card, index) => {
+          const animation = card.animate([
+            { opacity:0, transform:"translate3d(0,32px,0) scale(.955)" },
+            { opacity:1, transform:"translate3d(0,0,0) scale(1)" }
+          ], {
+            duration:1130,
+            delay:lead + 280 + index * 190,
+            easing:ease,
+            fill:"both"
           });
-        }]
-      ]);
-      const observer = new IntersectionObserver(entries => {
-        for (const entry of entries) {
-          if (!entry.isIntersecting) continue;
-          const play = groups.get(entry.target);
-          if (play) play();
-          observer.unobserve(entry.target);
+          animation.addEventListener("finish", () => animation.cancel(), { once:true });
+        });
+      };
+      const isMobile = window.matchMedia("(max-width: 760px)").matches;
+      const intro = hero.querySelector(".bell-s1-identity");
+      const grid = hero.querySelector(".bell-s1-services");
+      // Desktop: uma timeline coerente e intencionalmente visível (~3.6 s).
+      // Mobile: cada bloco entra ao chegar à tela, sem animar fora da viewport.
+      const groups = isMobile ? [
+        { element:hero.querySelector(".bell-s1-photo"), play:photo },
+        { element:intro, play:identity },
+        { element:grid, play:() => services(true) }
+      ] : [
+        { element:hero, play:() => { photo(); identity(); services(false); } }
+      ];
+      const runVisible = () => {
+        if (document.hidden) return;
+        for (const group of groups) {
+          if (!group.element || seen.has(group.element === hero ? "services" :
+              group.element === grid ? "services" :
+              group.element === intro ? "identity" : "photo")) continue;
+          const r = group.element.getBoundingClientRect();
+          if (r.top < window.innerHeight * .93 && r.bottom > window.innerHeight * .08) {
+            group.play();
+          }
         }
-      }, { threshold: .12, rootMargin: "0px 0px -28px 0px" });
-      for (const element of groups.keys()) if (element) observer.observe(element);
+      };
+      if ("IntersectionObserver" in window) {
+        const observer = new IntersectionObserver(entries => {
+          if (document.hidden) return;
+          for (const entry of entries) {
+            if (!entry.isIntersecting) continue;
+            const group = groups.find(item => item.element === entry.target);
+            if (group) group.play();
+            observer.unobserve(entry.target);
+          }
+        }, { threshold:0.10, rootMargin:"0px 0px -22px 0px" });
+        groups.forEach(group => { if (group.element) observer.observe(group.element); });
+      }
+      // Abas abertas em segundo plano só começam a animar quando ficam visíveis.
+      document.addEventListener("visibilitychange", runVisible);
+      window.requestAnimationFrame(() => {
+        window.requestAnimationFrame(runVisible);
+      });
     };
     if (document.readyState === "loading") {
-      document.addEventListener("DOMContentLoaded", bootBellS1Motion, { once: true });
+      document.addEventListener("DOMContentLoaded", startS1, { once:true });
     } else {
-      bootBellS1Motion();
+      startS1();
     }
   })();
   </script>
