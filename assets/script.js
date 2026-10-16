@@ -468,13 +468,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const PROJECTS = {
     featured: [
       {
-        title: 'BDA – Prêmio Brasileiro de Design',
-        description: 'Construção da identidade visual e narrativa para a 15ª edição do Oscar do design brasileiro.',
-        image: 'assets/paginas/cases/bda/hero-screen-led-bda.png',
-        category: 'Branding & Design',
-        location: 'Brasil',
-        year: '2025',
-        url: 'cases/bda-premio-brasileiro-de-design/'
+        title: 'Bellamazon',
+        description: 'Identidade visual, embalagens, fotografia, vídeo e estratégia para uma marca de açaí com raízes amazônicas.',
+        image: 'assets/paginas/cases/bellamazon/s1-photo-clean.webp',
+        category: 'Branding & Conteúdo',
+        location: 'Amazônia',
+        url: 'casev2/bellamazon/'
       },
       {
         title: 'Manifesto All Amazônia',
