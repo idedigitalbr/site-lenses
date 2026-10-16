@@ -1444,6 +1444,76 @@
   .bella-case .bell-s2.bella-reuse-video .bella-reuse-video__followup .bella-reuse-video__source{font-size:11px;margin-top:21px}
 }
 
+
+/* Case Bellamazon · resultados com fundo institucional azul-escuro Lenses.
+   Fundo e contrastes externos apenas. Cards/gráficos conservam base branca. */
+.bella-case .dash-wrap.bell-results{
+  background:
+    radial-gradient(ellipse 62% 70% at 103% 0%,rgba(120,134,188,.16),transparent 70%),
+    radial-gradient(ellipse 75% 85% at -12% 110%,rgba(92,108,164,.16),transparent 76%),
+    var(--color-brand-space-blue,#202A44)!important;
+  padding:clamp(58px,6vw,90px) 0 clamp(64px,7vw,110px)!important;
+  color:#f6f8ff;
+  isolation:isolate;
+}
+.bella-case .bell-results::before{
+  z-index:-1;
+  opacity:1;
+  border:1px solid rgba(220,232,255,.15);
+  box-shadow:0 0 0 80px rgba(220,232,255,.04),0 0 0 160px rgba(220,232,255,.025);
+}
+.bella-case .bell-results>.shell{
+  position:relative;
+  z-index:1;
+}
+.bella-case .bell-results .bell-results-heading h2{
+  color:#f7f9ff!important;
+}
+.bella-case .bell-results .bell-results-heading>p{
+  color:#c3cee8!important;
+  font-size:var(--type-body-support,16px)!important;
+  line-height:1.6!important;
+}
+.bella-case .bell-results .bell-accent-line{
+  background:#9fb3e8;
+}
+.bella-case .bell-results .bell-topline,
+.bella-case .bell-results .bell-topline-text{
+  color:#e1e9fb;
+}
+.bella-case .bell-results .bell-slash{
+  color:#aebfe4;
+}
+.bella-case .bell-results .bell-live-dot{
+  background:#9cb8ff;
+}
+.bella-case .bell-results .bell-demo-flag{
+  background:rgba(255,255,255,.10);
+  border-color:rgba(235,243,255,.28);
+  color:#e1eaff;
+}
+.bella-case .bell-results .bell-data-note,
+.bella-case .bell-results .bell-data-note strong{
+  color:#bdcbea;
+}
+/* Garantir que os componentes de dados continuem claros, como no layout aprovado. */
+.bella-case .bell-results .bell-stat,
+.bella-case .bell-results .bell-chart{
+  background:#fff;
+  color:#202A44;
+}
+@media(max-width:760px){
+  .bella-case .bell-results .bell-results-heading h2{color:#f7f9ff!important}
+  .bella-case .bell-results .bell-results-heading>p{
+    font-size:14px!important;
+    margin-top:15px;
+  }
+  .bella-case .bell-results .bell-topline{
+    flex-wrap:wrap;
+    gap:10px;
+  }
+}
+
 </style>
   <!-- Contrato tipográfico canônico após CSS legado do case -->
   <link rel="stylesheet" href="../../assets/typography.css?v=20261016-type48">
@@ -1602,8 +1672,8 @@
 <section class="bell-s5 bella-reuse-results" id="solucoes" aria-labelledby="bell-s5-title">
   <div class="bell-s5-inner">
     <div class="bell-s5-heading bella-reuse-results__header">
-      <span class="bella-reuse-results__eyebrow">03 / O QUE A LENSES ENTREGOU</span>
-      <h2 id="bell-s5-title"><span>O que</span> desenvolvemos</h2>
+      <span class="bella-reuse-results__eyebrow">03 / O QUE DESENVOLVEMOS</span>
+      <h2 id="bell-s5-title"><span>Soluções</span> que entregamos</h2>
       <p>Quatro frentes conectadas em um mesmo projeto: estratégia de marca, identidade visual, design de embalagens e produção de conteúdo.</p>
     </div>
     <div class="bella-reuse-results__timeline" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
