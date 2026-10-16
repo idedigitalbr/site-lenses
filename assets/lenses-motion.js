@@ -71,22 +71,24 @@
           if (!entry.isIntersecting) continue;
           if (document.hidden) continue;
           observer.unobserve(entry.target);
-          const plan = plans.find(p => p.trigger === entry.target);
-          if (!plan) continue;
-          plan.elements.forEach((element, index) => {
-            const horizontal = plan.axis === "x";
-            const x = horizontal ? plan.distance : 0;
-            const y = horizontal ? 0 : plan.distance;
-            const animation = element.animate([
-              { opacity:0, transform:"translate3d(" + x + "px," + y + "px,0) scale(" + plan.scale + ")" },
-              { opacity:1, transform:"translate3d(0,0,0) scale(1)" }
-            ], {
-              duration:Math.round(plan.duration * 1000),
-              delay:index * Math.round(plan.stagger * 1000),
-              easing:"cubic-bezier(.19,1,.22,1)",
-              fill:"both"
+          // Um mesmo trigger pode conter mais de um grupo de revelação.
+          // No fallback nativo, executar TODOS os planos correspondentes.
+          plans.filter(p => p.trigger === entry.target).forEach(plan => {
+            plan.elements.forEach((element, index) => {
+              const horizontal = plan.axis === "x";
+              const x = horizontal ? plan.distance : 0;
+              const y = horizontal ? 0 : plan.distance;
+              const animation = element.animate([
+                { opacity:0, transform:"translate3d(" + x + "px," + y + "px,0) scale(" + plan.scale + ")" },
+                { opacity:1, transform:"translate3d(0,0,0) scale(1)" }
+              ], {
+                duration:Math.round(plan.duration * 1000),
+                delay:index * Math.round(plan.stagger * 1000),
+                easing:"cubic-bezier(.19,1,.22,1)",
+                fill:"both"
+              });
+              animation.addEventListener("finish", () => animation.cancel(), { once:true });
             });
-            animation.addEventListener("finish", () => animation.cancel(), { once:true });
           });
         }
       }, { threshold:.10, rootMargin:"0px 0px -8% 0px" });
