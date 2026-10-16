@@ -436,6 +436,35 @@
   }
 }
 
+
+/* BELLAMAZON S1 MOTION: hover progressivo sem alteração de layout */
+@media(hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){
+  .bella-case .bell-s1 .bell-s1-service-icon {
+    transition:transform .42s cubic-bezier(.22,1,.36,1), background-color .35s ease, box-shadow .4s ease;
+    transform:translate3d(0,0,0);
+    box-shadow:0 0 0 1px rgba(92,108,164,0);
+  }
+  .bella-case .bell-s1 .bell-s1-service-icon svg {
+    transition:transform .4s cubic-bezier(.22,1,.36,1);
+    transform-origin:center;
+  }
+  .bella-case .bell-s1 .bell-s1-service:hover .bell-s1-service-icon {
+    transform:translate3d(0,-4px,0) scale(1.045);
+    background-color:#d9e7fc;
+    box-shadow:0 10px 24px rgba(37,68,138,.14),0 0 0 1px rgba(92,108,164,.12);
+  }
+  .bella-case .bell-s1 .bell-s1-service:hover .bell-s1-service-icon svg {
+    transform:translate3d(0,-1px,0) rotate(-3deg);
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  .bella-case .bell-s1 .bell-s1-service-icon,
+  .bella-case .bell-s1 .bell-s1-service-icon svg {
+    transition:none!important;
+    animation:none!important;
+  }
+}
+
 </style>
 </head>
 <body class="bella-case">
@@ -701,5 +730,71 @@
   </script>
   </div>
   <script src="../../assets/script.js"></script>
+
+  <!-- Motion exclusivo da S1: sem bibliotecas externas, sem loops, com reduced-motion. -->
+  <script>
+  (() => {
+    "use strict";
+    const bootBellS1Motion = () => {
+      const hero = document.getElementById("bellamazon-hero");
+      if (!hero || !("IntersectionObserver" in window) || !Element.prototype.animate) return;
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      const timing = { duration: 720, easing: "cubic-bezier(.22,1,.36,1)", fill: "both" };
+      const reveal = (element, delay = 0, distance = 12, duration = timing.duration) => {
+        if (!element) return;
+        const animation = element.animate([
+          { opacity: 0, transform: "translate3d(0," + distance + "px,0)" },
+          { opacity: 1, transform: "translate3d(0,0,0)" }
+        ], { ...timing, duration, delay });
+        animation.addEventListener("finish", () => animation.cancel(), { once: true });
+      };
+      const fade = (element, delay = 0, from = 0) => {
+        if (!element) return;
+        const animation = element.animate(
+          [{ opacity: from }, { opacity: 1 }],
+          { ...timing, duration: 850, delay }
+        );
+        animation.addEventListener("finish", () => animation.cancel(), { once: true });
+      };
+      const intro = hero.querySelector(".bell-s1-identity");
+      const services = hero.querySelector(".bell-s1-services");
+      const photo = hero.querySelector(".bell-s1-photo");
+      const groups = new Map([
+        [photo, () => {
+          fade(photo, 0, .86);
+          fade(hero.querySelector(".bell-s1-rings"), 230, .04);
+          fade(hero.querySelector(".bell-s1-signature"), 400, 0);
+        }],
+        [intro, () => {
+          reveal(hero.querySelector(".bell-s1-logo"), 50, 12, 760);
+          reveal(hero.querySelector(".bell-s1-eyebrow"), 125, 9, 560);
+          reveal(hero.querySelector(".bell-s1-copy h1"), 185, 13, 720);
+          reveal(hero.querySelector(".bell-s1-subtitle"), 300, 9, 700);
+        }],
+        [services, () => {
+          reveal(hero.querySelector(".bell-s1-services-kicker"), 25, 7, 610);
+          hero.querySelectorAll(".bell-s1-service").forEach((card, i) => {
+            reveal(card, 120 + i * 75, 13, 650);
+          });
+        }]
+      ]);
+      const observer = new IntersectionObserver(entries => {
+        for (const entry of entries) {
+          if (!entry.isIntersecting) continue;
+          const play = groups.get(entry.target);
+          if (play) play();
+          observer.unobserve(entry.target);
+        }
+      }, { threshold: .12, rootMargin: "0px 0px -28px 0px" });
+      for (const element of groups.keys()) if (element) observer.observe(element);
+    };
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", bootBellS1Motion, { once: true });
+    } else {
+      bootBellS1Motion();
+    }
+  })();
+  </script>
+
 </body>
 </html>
