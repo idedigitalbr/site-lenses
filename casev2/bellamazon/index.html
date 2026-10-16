@@ -242,6 +242,87 @@
   }
   .bell-s1 .bell-s1-signature span{width:24px;margin-top:7px}
 }
+
+/* S1 — Composição compacta. Ajuste isolado para desktop,
+   tomando o layout editorial compacto do anexo de comparação como referência.
+   Componentes oficiais do header/footer permanecem inalterados. */
+@media (min-width:761px) {
+  .bella-case .bell-s1 .bell-s1-identity {
+    top:17.3%;
+    left:6.7%;
+    width:53%;
+    gap:4.6vw;
+    align-items:flex-start;
+  }
+  .bella-case .bell-s1 .bell-s1-logo {
+    width:11.7vw;
+    height:11.8vw;
+    min-width:120px;
+    min-height:120px;
+    max-width:200px;
+    max-height:200px;
+  }
+  .bella-case .bell-s1 .bell-s1-copy { padding-top:.25vw; }
+  .bella-case .bell-s1 .bell-s1-eyebrow {
+    font-size:clamp(11px,.91vw,15px);
+    letter-spacing:.27em;
+  }
+  .bella-case .bell-s1 .bell-s1-copy h1 {
+    font-size:clamp(46px,4vw,69px);
+    margin:.82vw 0 .65vw;
+    line-height:1.06;
+  }
+  .bella-case .bell-s1 .bell-s1-subtitle {
+    font-size:clamp(15px,1.35vw,23px);
+    line-height:1.45;
+  }
+  .bella-case .bell-s1 .bell-s1-services {
+    left:4.2%;
+    width:46.9%;
+    top:48.6%;
+    bottom:auto;
+    align-items:start;
+  }
+  .bella-case .bell-s1 .bell-s1-service { padding:0 5px; }
+  .bella-case .bell-s1 .bell-s1-service + .bell-s1-service::before {
+    top:11px;height:155px;
+  }
+  .bella-case .bell-s1 .bell-s1-service-icon {
+    width:5vw;
+    height:5vw;
+    min-width:60px;
+    min-height:60px;
+    max-width:78px;
+    max-height:78px;
+    margin-bottom:9px;
+  }
+  .bella-case .bell-s1 .bell-s1-service h2 {
+    font-size:clamp(12px,1.04vw,17px);
+    margin:0 0 9px;
+  }
+  .bella-case .bell-s1 .bell-s1-service p {
+    font-size:clamp(10px,.94vw,15px);
+    line-height:1.46;
+  }
+  .bella-case .bell-s1 .bell-s1-photo {
+    inset:0 0 0 41%;
+    background-size:cover;
+    background-position:center center;
+  }
+  .bella-case .bell-s1 .bell-s1-wash {
+    background:
+      radial-gradient(ellipse 30% 63% at 53% 65%,rgba(245,250,255,.45),transparent 84%),
+      linear-gradient(90deg,
+        #f4faff 0%,#f5faff 38%,
+        rgba(245,250,255,.99) 44%,
+        rgba(245,250,255,.95) 48%,
+        rgba(245,250,255,.83) 53%,
+        rgba(245,250,255,.61) 58%,
+        rgba(245,250,255,.36) 64%,
+        rgba(245,250,255,.12) 71%,
+        rgba(245,250,255,0) 79%);
+  }
+}
 </style>
 </head>
 <body class="bella-case">
