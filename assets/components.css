@@ -1783,7 +1783,7 @@ a.pc-card:focus-visible {
   display: flex;
   background-color: var(--border-hairline);
   gap: 2px;
-  height: clamp(680px, 80vh, 880px);
+  height: clamp(600px, 75vh, 800px);
 }
 
 .services-header-op1 {
@@ -1883,7 +1883,7 @@ a.pc-card:focus-visible {
   cursor: pointer;
   transition: flex 0.65s var(--ease-split),
               opacity 0.45s ease;
-  will-change: flex;
+  /* Flex só é animado no hover; evitar reservar camadas permanentemente. */
 }
 
 .services-track:hover .service-item:not(:hover) {
@@ -3491,7 +3491,8 @@ a.footer-list-item:hover .footer-ico {
     grid-template-columns: 1fr;
   }
   .service-item {
-    height: 480px;
+    height: clamp(260px, 78vw, 360px);
+    padding: 24px 20px;
   }
   .cta-contact-inner {
     flex-direction: column;
@@ -3758,3 +3759,23 @@ a.footer-list-item:hover .footer-ico {
   }
 }
 
+
+
+/* Serviços: respeito a reduced-motion e neutralização do hover em touch.
+   As fotos e títulos permanecem com a identidade visual original. */
+@media (prefers-reduced-motion: reduce) {
+  .service-item, .service-name, .service-media-asset {
+    transition: none !important;
+    animation: none !important;
+  }
+  .service-item:hover .service-media-asset {
+    transform: none !important;
+  }
+}
+@media (hover: none) {
+  .services-track:hover .service-item:not(:hover),
+  .services-track .service-item:hover {
+    opacity: 1;
+    flex: 1 1 0;
+  }
+}
