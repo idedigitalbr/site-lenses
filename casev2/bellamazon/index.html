@@ -1371,6 +1371,27 @@
   }
 }
 
+
+/* S2: YouTube real, carregado sob demanda (performance + UX).
+   Player mantém o poster original até o usuário pedir reprodução. */
+.bella-case .bell-s2.bella-reuse-video .bella-reuse-video__player.is-playing::after{display:none}
+.bella-case .bell-s2.bella-reuse-video .bella-reuse-video__player.is-playing > img,
+.bella-case .bell-s2.bella-reuse-video .bella-reuse-video__player.is-playing > .bella-reuse-video__player-shade,
+.bella-case .bell-s2.bella-reuse-video .bella-reuse-video__player.is-playing > .bella-reuse-video__player-brand,
+.bella-case .bell-s2.bella-reuse-video .bella-reuse-video__player.is-playing > .bella-reuse-video__play,
+.bella-case .bell-s2.bella-reuse-video .bella-reuse-video__player.is-playing > .bella-reuse-video__caption{display:none!important}
+.bella-case .bell-s2.bella-reuse-video .bella-reuse-video__iframe{
+  position:absolute;z-index:6;
+  inset:12px;width:calc(100% - 24px);height:calc(100% - 24px);
+  border:0;border-radius:12px;background:#020611;
+}
+@media(max-width:760px){
+  .bella-case .bell-s2.bella-reuse-video .bella-reuse-video__iframe{
+    inset:8px;width:calc(100% - 16px);height:calc(100% - 16px);
+    border-radius:8px;
+  }
+}
+
 </style>
 </head>
 <body class="bella-case">
@@ -1488,7 +1509,7 @@
   <div class="bella-reuse-video__contours" aria-hidden="true"></div>
   <div class="bella-reuse-video__layout">
     <div class="bell-s2-copy bella-reuse-video__intro">
-      <p class="bella-reuse-eyebrow">VÍDEO DO PROJETO <span></span></p>
+      <p class="bella-reuse-eyebrow">VÍDEO SOBRE O AÇAÍ <span></span></p>
       <h2 id="bell-s2-title">Identidade, natureza<br>e <em>oportunidades.</em></h2>
       <p>Uma história que nasce da Amazônia e transforma origem, qualidade e tradição em uma marca pronta para dialogar com o mundo.</p>
     </div>
@@ -1496,12 +1517,11 @@
       <img src="https://libra.ag/wp-content/uploads/2024/11/Opera-Instantaneo_2024-11-13_123605_www.facebook.com_.png" alt="Prévia visual do projeto Bellamazon com açaí" loading="lazy" decoding="async">
       <span class="bella-reuse-video__player-shade" aria-hidden="true"></span>
       <span class="bella-reuse-video__player-brand" aria-hidden="true"><b>BELLAMAZON</b><small>NATIVE ISLANDS AÇAÍ</small></span>
-      <button class="bella-reuse-video__play" type="button" data-bella-video-trigger aria-label="Ver disponibilidade do vídeo do projeto"><span aria-hidden="true">▶</span></button>
-      <span class="bella-reuse-video__caption">PRÉVIA VISUAL · VÍDEO OFICIAL EM BREVE</span>
+      <button class="bella-reuse-video__play" type="button" data-bella-video-trigger aria-label="Reproduzir vídeo sobre a colheita do açaí na Amazônia"><span aria-hidden="true">▶</span></button>
+      <span class="bella-reuse-video__caption">COLHEITA DO AÇAÍ NA AMAZÔNIA · YOUTUBE</span>
     </div>
     <div class="bella-reuse-video__meta" aria-label="Áreas de atuação"><span>Branding</span><span>Embalagem</span><span>Conteúdo</span><span>Estratégia</span></div>
   </div>
-  <p id="videoNotice" class="bella-reuse-video__notice" role="status" hidden>O vídeo oficial do projeto ainda não foi disponibilizado. Esta é uma prévia visual.</p>
 </section>
 <section class="bell-s3" id="sobre" aria-labelledby="bell-s3-title">
   <div class="bell-s3-layout">
@@ -1874,13 +1894,22 @@
   /* Bellamazon V2 S2-S5 Motion · transform/opacity, sem scroll-jacking. */
   (() => {
     const init = () => {
-      const videoNote=document.getElementById("videoNotice");
+      // Carrega o YouTube apenas após o clique. Evita peso e trackers na entrada da página.
+      // Vídeo externo de referência sobre a colheita do açaí, não é produção da Bellamazon.
       document.querySelectorAll("[data-bella-video-trigger]").forEach(button=>{
         button.addEventListener("click",()=>{
-          if(!videoNote)return;
-          videoNote.hidden=false;
-          videoNote.scrollIntoView({block:"nearest",behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"});
-        });
+          const player=button.closest(".bella-reuse-video__player");
+          if(!player || player.classList.contains("is-playing"))return;
+          const iframe=document.createElement("iframe");
+          iframe.className="bella-reuse-video__iframe";
+          iframe.src="https://www.youtube-nocookie.com/embed/qApLtXQgWho?autoplay=1&rel=0&playsinline=1";
+          iframe.title="Colheita do açaí na Amazônia — O Verdadeiro Amazonas (YouTube)";
+          iframe.allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+          iframe.referrerPolicy="strict-origin-when-cross-origin";
+          iframe.allowFullscreen=true;
+          player.classList.add("is-playing");
+          player.appendChild(iframe);
+        },{once:true});
       });
       const imageFallbacks=[
         [".bell-s2-player img","https://cdn.shopify.com/s/files/1/0877/6604/0851/files/tupan-acai-coffee-acai-harvest-hands-amazon.jpg?v=1757787191"],
