@@ -67,13 +67,12 @@
   font-family: var(--font-main, Inter, sans-serif);
 }
 .bell-s1 * { box-sizing: border-box; }
-.bell-s1-photo { position: absolute; inset: 0 0 0 44.6%; z-index: 0;
-  background-image: url("https://images.unsplash.com/photo-1763688506555-c73c1b944080?auto=format&fit=crop&w=2000&q=86");
-  background-size: cover; background-position: 48% center;
-  filter: saturate(1.15) contrast(1.05) brightness(.90);
+.bell-s1-photo { position: absolute; inset: 0 0 0 50.8373%; z-index: 0;
+  background-image: url("../../assets/paginas/cases/bellamazon/s1-photo-reference.webp");
+  background-size: 100% 100%; background-position: center; filter: none;
 }
 .bell-s1-wash { position: absolute; inset: 0; z-index: 1;
-  background: linear-gradient(90deg,#f4faff 0%,#f5faff 34%,rgba(246,250,255,.99) 44%,rgba(246,250,255,.88) 51%,rgba(246,250,255,.37) 58%,rgba(246,250,255,0) 67%),
+  background: linear-gradient(90deg,#f4faff 0%,#f5faff 40%,rgba(246,250,255,.99) 48%,rgba(246,250,255,.92) 52%,rgba(246,250,255,.48) 56%,rgba(246,250,255,0) 61%),
     linear-gradient(0deg,rgba(247,250,255,.02),transparent 45%);
   pointer-events: none;
 }
@@ -82,7 +81,7 @@
   display:flex; align-items:flex-start; gap:3.05vw; }
 .bell-s1-logo { width: 14.5vw; height: 14.6vw; max-width: 250px; max-height: 250px; min-width: 178px; min-height: 178px;
   flex: none;
-  background: url("https://libra.ag/wp-content/uploads/2024/11/5-1.png") 50% 93%/215% auto no-repeat;
+  background: url("../../assets/paginas/cases/bellamazon/s1-logo-reference.png") center/contain no-repeat;
 }
 .bell-s1-copy { padding-top: .65vw; min-width:0; }
 .bell-s1-eyebrow { margin: 0; font-size: clamp(13px,1.12vw,19px);
@@ -110,13 +109,14 @@
   font-size:clamp(12px,1.08vw,18px); line-height:1.48; letter-spacing:-.018em; }
 .bell-s1-next { position:absolute; z-index:4; right:2.65%; top:28.1%;
   display:grid; place-items:center; height:45px; width:55px;
-  color:white; transition:transform .2s; }
+  color:white; opacity:0; transition:transform .2s; }
+.bell-s1-next:focus-visible { opacity: 1; }
 .bell-s1-next:hover { transform:translateX(5px); }
 .bell-s1-next svg { width:39px;height:39px; }
 .bell-s1-signature { position:absolute; z-index:3; right:2.35%; bottom:11.3%;
   text-transform:uppercase; font-size:clamp(12px,1.05vw,18px);
   color:white; letter-spacing:.28em; line-height:1.6; font-weight:450;
-  text-shadow:0 1px 10px #1023489c; }
+  text-shadow:0 1px 10px #1023489c; visibility:hidden; }
 .bell-s1-signature span { display:block; width:28px; height:2px; background:#fff; margin-top:12px; }
 @media (max-width:1150px) and (min-width:761px) {
   .bella-case .bell-s1 { min-height:600px; height:58vw; }
@@ -129,11 +129,11 @@
 }
 @media (max-width:760px) {
   .bella-case .bell-s1{height:auto;min-height:0;display:flex;flex-direction:column;padding-bottom:43px;}
-  .bell-s1-photo{inset:0 0 auto 0;height:270px;background-position:50% 44%;}
+  .bell-s1-photo{inset:0 0 auto 0;height:270px;background-image:url('../../assets/paginas/cases/bellamazon/s1-photo-mobile.webp');background-position:center;background-size:cover;}
   .bell-s1-wash{background:linear-gradient(0deg,#f5faff 1%,rgba(245,250,255,.97) 20%,rgba(245,250,255,0) 75%);height:390px;}
   .bell-s1-lines{opacity:.38;}
   .bell-s1-identity{position:relative;top:auto;left:auto;order:1;margin:205px 21px 32px;width:calc(100% - 42px);align-items:center;gap:16px;}
-  .bell-s1-logo{width:94px;height:100px;min-width:94px;min-height:100px;background-size:230% auto;}
+  .bell-s1-logo{width:94px;height:100px;min-width:94px;min-height:100px;background-size:contain;}
   .bell-s1-copy{padding:0;}
   .bell-s1-eyebrow{font-size:10px;letter-spacing:.23em}
   .bell-s1-copy h1{font-size:clamp(38px,9vw,60px);margin:6px 0 9px;letter-spacing:-.06em}
@@ -230,7 +230,6 @@
   <div class="bell-s1-wash" aria-hidden="true"></div>
   <svg class="bell-s1-lines" viewBox="0 0 1672 778" preserveAspectRatio="none" fill="none" aria-hidden="true">
     <g stroke="#9fc6ed" stroke-width="1" opacity=".48"><circle cx="-86" cy="-83" r="262"/><circle cx="-86" cy="-83" r="238"/><circle cx="-86" cy="-83" r="212"/><circle cx="-86" cy="-83" r="187"/><circle cx="-86" cy="659" r="196"/><circle cx="-86" cy="659" r="221"/><circle cx="-86" cy="659" r="246"/><circle cx="-86" cy="659" r="271"/></g>
-    <g stroke="#fff" stroke-width="1.2" opacity=".55"><circle cx="1700" cy="207" r="204"/><circle cx="1700" cy="207" r="174"/><circle cx="1700" cy="207" r="148"/><circle cx="1725" cy="709" r="231"/><circle cx="1725" cy="709" r="205"/></g>
   </svg>
   <div class="bell-s1-identity">
     <div class="bell-s1-logo" role="img" aria-label="Bellamazon Native Islands Açaí"></div>
