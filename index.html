@@ -31,6 +31,15 @@
   
   <!-- Estilos Oficiais -->
   <link rel="stylesheet" href="assets/styles.css?v=20261016-type48">
+<style>
+/* Título semântico da Home: sem alteração no desenho aprovado do hero. */
+.hero-accessible-title{
+  position:absolute!important;width:1px!important;height:1px!important;
+  padding:0!important;margin:-1px!important;overflow:hidden!important;
+  clip:rect(0,0,0,0)!important;clip-path:inset(50%)!important;
+  white-space:nowrap!important;border:0!important;
+}
+</style>
 </head>
 <body>
 
@@ -114,17 +123,18 @@
 
     <!-- 2. HERO SECTION COM BACKGROUND VÍDEO CINEMATOGRÁFICO -->
     <section class="hero hero-main" id="inicio" aria-label="Showreel da Lenses">
+      <h1 class="hero-accessible-title">Lenses: agência de comunicação e direção estratégica</h1>
       <div class="hero-bg-media">
         <!-- Background Vídeo Nativo Autoplay Mudo Loop em Proporção Cinematográfica -->
         <div class="hero-video-wrapper">
           <video 
             id="heroVideo"
             class="hero-video-element"
-            autoplay 
-            muted 
-            loop 
-            playsinline 
-            preload="auto">
+            muted
+            loop
+            playsinline
+            preload="none"
+            poster="assets/paginas/sobre/hero-topo-sobre.webp">
             <source src="assets/paginas/home/s1-topo-hero/290926-dia-da-amazonia-lenses-v2.mp4" type="video/mp4">
           </video>
         </div>
