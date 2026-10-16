@@ -92,30 +92,47 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 3. Autoplay Resiliente exclusivo para o Vídeo de Background (Hero)
+  // 3. Vídeo do hero: iniciar só quando visível, economizar dados e recursos.
+  // O poster da agência permanece visível até a primeira reprodução.
   const heroVideo = document.getElementById('heroVideo') || document.querySelector('.hero-video-wrapper video');
   if (heroVideo) {
     heroVideo.muted = true;
-    const playPromise = heroVideo.play();
-    if (playPromise !== undefined) {
-      playPromise.catch(() => {
-        heroVideo.muted = true;
-        heroVideo.play().catch(() => {});
-      });
-    }
+    const prefersStill = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const saveData = !!(navigator.connection && navigator.connection.saveData);
+    let heroInView = false;
+    let explicitlyStarted = false;
 
-    const onFirstUserGesture = () => {
-      if (heroVideo.paused) {
-        heroVideo.muted = true;
-        heroVideo.play().catch(() => {});
+    const playHeroIfAllowed = () => {
+      if (!heroInView || document.hidden || (prefersStill.matches && !explicitlyStarted) ||
+          (saveData && !explicitlyStarted)) {
+        heroVideo.pause();
+        return;
       }
-      window.removeEventListener('click', onFirstUserGesture);
-      window.removeEventListener('scroll', onFirstUserGesture);
-      window.removeEventListener('touchstart', onFirstUserGesture);
+      const attempt = heroVideo.play();
+      if (attempt && typeof attempt.catch === 'function') attempt.catch(() => {});
     };
-    window.addEventListener('click', onFirstUserGesture, { once: true });
-    window.addEventListener('scroll', onFirstUserGesture, { once: true });
-    window.addEventListener('touchstart', onFirstUserGesture, { once: true });
+    const heroSectionForVideo = document.getElementById('inicio');
+    if (heroSectionForVideo && 'IntersectionObserver' in window) {
+      new IntersectionObserver(entries => {
+        heroInView = entries.some(entry => entry.isIntersecting);
+        playHeroIfAllowed();
+      }, { threshold: .04 }).observe(heroSectionForVideo);
+    } else {
+      heroInView = true;
+      playHeroIfAllowed();
+    }
+    document.addEventListener('visibilitychange', playHeroIfAllowed);
+    const onReducedChange = () => playHeroIfAllowed();
+    if (prefersStill.addEventListener) prefersStill.addEventListener('change', onReducedChange);
+
+    // O gesto do usuário pode permitir a reprodução mesmo com economia de dados;
+    // nunca iniciar vídeo fora da tela ao receber scroll/clique em outras seções.
+    const firstGesture = () => {
+      if (!heroInView || document.hidden) return;
+      if ((saveData || prefersStill.matches) && !explicitlyStarted) return;
+      playHeroIfAllowed();
+    };
+    window.addEventListener('pointerdown', firstGesture, { once:true, passive:true });
   }
 
   // 3.01. Controles Minimalistas do Vídeo do Hero (Mute/Unmute e Fullscreen)
@@ -219,38 +236,41 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // 3.1 Controle Interativo de Vídeos nos Cards de Serviços (Play no Hover)
+  // 3.1 Vídeos nos serviços: reproduzir na intenção do usuário,
+  // pausar ao sair do card, da viewport ou ao ocultar a aba.
   const serviceCards = document.querySelectorAll('.service-item');
+  const serviceVideos = [];
   serviceCards.forEach(card => {
     const video = card.querySelector('video');
-    if (video) {
-      video.muted = true;
-      video.pause();
-
-      card.addEventListener('mouseenter', () => {
-        const playPromise = video.play();
-        if (playPromise !== undefined) {
-          playPromise.catch(() => {});
-        }
-      });
-
-      card.addEventListener('mouseleave', () => {
+    if (!video) return;
+    video.muted = true;
+    video.pause();
+    video.preload = 'none';
+    serviceVideos.push(video);
+    let inView = false;
+    let wantsPlay = false;
+    const update = () => {
+      if (!inView || document.hidden || !wantsPlay) {
         video.pause();
-      });
-
-      // Suporte a toque em mobile e tablets
-      card.addEventListener('touchstart', () => {
-        serviceCards.forEach(otherCard => {
-          const otherVid = otherCard.querySelector('video');
-          if (otherVid && otherVid !== video) {
-            otherVid.pause();
-          }
-        });
-        if (video.paused) {
-          video.play().catch(() => {});
-        }
-      }, { passive: true });
-    }
+        return;
+      }
+      const play = video.play();
+      if (play && typeof play.catch === 'function') play.catch(() => {});
+    };
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(entries => {
+        inView = entries.some(entry => entry.isIntersecting);
+        update();
+      }, { threshold:.08 }).observe(card);
+    } else inView = true;
+    card.addEventListener('mouseenter', () => { wantsPlay = true; update(); });
+    card.addEventListener('mouseleave', () => { wantsPlay = false; update(); });
+    card.addEventListener('touchstart', () => {
+      serviceVideos.forEach(other => { if (other !== video) other.pause(); });
+      wantsPlay = true;
+      update();
+    }, { passive:true });
+    document.addEventListener('visibilitychange', update);
   });
 
   // 4. Header Menu Dinâmico com Detecção de Direção de Scroll (Padrão Zion)
