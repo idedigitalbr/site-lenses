@@ -240,6 +240,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // pausar ao sair do card, da viewport ou ao ocultar a aba.
   const serviceCards = document.querySelectorAll('.service-item');
   const serviceVideos = [];
+  const prefersNoAutoVideo = window.matchMedia('(prefers-reduced-motion: reduce)');
   serviceCards.forEach(card => {
     const video = card.querySelector('video');
     if (!video) return;
@@ -263,7 +264,7 @@ document.addEventListener('DOMContentLoaded', () => {
         update();
       }, { threshold:.08 }).observe(card);
     } else inView = true;
-    card.addEventListener('mouseenter', () => { wantsPlay = true; update(); });
+    card.addEventListener('mouseenter', () => { if (!prefersNoAutoVideo.matches) { wantsPlay = true; update(); } });
     card.addEventListener('mouseleave', () => { wantsPlay = false; update(); });
     card.addEventListener('touchstart', () => {
       serviceVideos.forEach(other => { if (other !== video) other.pause(); });
@@ -343,7 +344,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const scrollToSobre = (e) => {
     e.preventDefault();
-    if (sobreSection) sobreSection.scrollIntoView({ behavior: 'smooth' });
+    if (sobreSection) sobreSection.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
   };
 
   if (scrollDownBtn && sobreSection) {
