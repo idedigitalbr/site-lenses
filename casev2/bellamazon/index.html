@@ -355,6 +355,38 @@
  .bella-case .bell-s1 .bell-s1-services{padding-inline:12px;column-gap:8px}
 }
 
+
+/* S1 Bellamazon: microtítulo editorial antes do grid de serviços. */
+.bella-case .bell-s1 .bell-s1-services-kicker{
+  grid-column:1 / -1;
+  text-align:left;
+  align-self:end;
+  margin:0;
+  font-family:var(--font-main,Inter,sans-serif);
+  font-size:clamp(10px,.78vw,13px);
+  font-weight:700;
+  line-height:1.35;
+  letter-spacing:.20em;
+  text-transform:uppercase;
+  color:var(--color-brand-space-blue,#202A44)!important;
+}
+@media (min-width:761px){
+  .bella-case .bell-s1 .bell-s1-services{
+    top:44.8%;
+    row-gap:12px;
+  }
+}
+@media (max-width:760px){
+  .bella-case .bell-s1 .bell-s1-services{
+    row-gap:18px;
+    padding-top:6px;
+  }
+  .bella-case .bell-s1 .bell-s1-services-kicker{
+    font-size:11px;
+    letter-spacing:.17em;
+    padding:0 4px;
+  }
+}
 </style>
 </head>
 <body class="bella-case">
@@ -456,6 +488,7 @@
     </div>
   </div>
   <div class="bell-s1-services" aria-label="Serviços realizados no projeto">
+    <p class="bell-s1-services-kicker">Soluções que entregamos</p>
     <div class="bell-s1-service"><div class="bell-s1-service-icon"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.7" aria-hidden="true"><rect x="9" y="11" width="30" height="29" rx="6"/><path d="M19 17V9a5 5 0 0 1 10 0v8M20 23h8M17 31l3 3 4-5"/></svg></div><h2>Criação de marca</h2><p>Identidade visual<br>e posicionamento</p></div>
     <div class="bell-s1-service"><div class="bell-s1-service-icon"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.7" aria-hidden="true"><path d="m24 4 17 9.5v21L24 44 7 34.5v-21L24 4Z"/><path d="m7 13.5 17 10 17-10M24 23.5V44"/></svg></div><h2>Embalagem</h2><p>Design de rótulos<br>e linha de produtos</p></div>
     <div class="bell-s1-service"><div class="bell-s1-service-icon"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.7" aria-hidden="true"><rect x="6" y="7" width="36" height="34" rx="2"/><path d="m21 17 10 7-10 7V17ZM12 12h2M12 36h2M34 12h2M34 36h2"/></svg></div><h2>Conteúdo</h2><p>Fotos e vídeos<br>institucionais</p></div>
