@@ -1,0 +1,144 @@
+/* LENSES / Bellamazon: mosaico editorial horizontal infinito.
+   Usa exatamente o azul e os círculos da antiga seção "Como o trabalho ganha forma".
+   Não altera a tipografia global, a S1 ou o dashboard. */
+.bella-case .bell-s5.bella-reuse-results{overflow:visible!important}
+.bella-case .bella-reuse-presence.bella-infinite-gallery{
+  position:relative;
+  isolation:isolate;
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
+  justify-content:center;
+  width:100%;
+  height:100svh;
+  min-height:0;
+  padding:clamp(24px,3.5vh,42px) 0 clamp(32px,5vh,60px);
+  overflow:hidden;
+  background:linear-gradient(145deg,#5c6ca4,#4a588a);
+  color:#fff;
+}
+.bella-infinite-gallery::before{
+  content:"";pointer-events:none;position:absolute;z-index:-1;
+  right:-220px;top:-190px;width:560px;height:560px;border-radius:50%;
+  border:1px solid #ffffff4f;
+  box-shadow:0 0 0 75px #ffffff0b,0 0 0 148px #ffffff09;
+}
+.bella-infinite-gallery::after{
+  content:"";pointer-events:none;position:absolute;z-index:-1;
+  bottom:-260px;left:-200px;width:530px;height:530px;border-radius:50%;
+  border:1px solid #ffffff2e;
+  box-shadow:0 0 0 70px #ffffff07,0 0 0 140px #ffffff05;
+}
+.bella-mosaic-head{
+  position:relative;z-index:3;
+  max-width:1570px;width:100%;margin:0 auto clamp(17px,2.6vh,28px);
+  padding:0 clamp(20px,4.9vw,86px);
+  display:flex;align-items:end;justify-content:space-between;gap:24px;
+}
+.bella-mosaic-eyebrow{
+  color:#dae3ff!important;font:700 clamp(10px,.83vw,12px)/1.4 Inter,sans-serif;
+  letter-spacing:.25em;text-transform:uppercase;
+}
+.bella-case .bella-mosaic-head h3{
+  margin:10px 0 0!important;
+  color:#fff!important;
+  font-family:var(--font-heading,Inter,sans-serif);
+  font-size:var(--type-heading-size,48px)!important;
+  font-weight:var(--type-heading-weight,700)!important;
+  line-height:var(--type-heading-line-height,1.12)!important;
+  letter-spacing:var(--type-heading-letter-spacing,-.055em)!important;
+  text-wrap:balance;
+}
+.bella-mosaic-arrows{display:flex;align-items:center;gap:9px;flex:none}
+.bella-mosaic-arrow{
+  width:clamp(40px,4vw,53px);height:clamp(40px,4vw,53px);
+  padding:0;display:grid;place-items:center;
+  border:1px solid #ffffff75;border-radius:50%;background:#ffffff18;
+  color:#fff;cursor:pointer;
+  transition:background .32s ease,border-color .32s ease,transform .4s cubic-bezier(.22,1,.36,1);
+}
+.bella-mosaic-arrow svg{width:20px;height:20px;stroke:currentColor;stroke-width:1.8;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.bella-mosaic-arrow:hover{background:#ffffff43;border-color:#fff;transform:scale(1.065)}
+.bella-mosaic-arrow:active{transform:scale(.96)}
+.bella-mosaic-arrow:focus-visible{outline:3px solid #fff;outline-offset:4px}
+.bella-mosaic-viewport{
+  width:100%;position:relative;z-index:2;overflow:hidden;touch-action:pan-y;
+}
+.bella-mosaic-track{
+  display:flex;align-items:stretch;width:max-content;
+  transform:translate3d(0,0,0);
+}
+.bella-mosaic-panel{
+  flex:0 0 max(100vw,1180px);width:max(100vw,1180px);
+  height:clamp(290px,55svh,605px);
+  padding:0 clamp(6px,.66vw,12px);
+  display:grid;grid-template-columns:1.12fr 1fr;gap:9px;
+  box-sizing:border-box;
+}
+.bella-mosaic-panel figure{
+  margin:0;position:relative;min-height:0;min-width:0;
+  overflow:hidden;background:#24325a;border-radius:clamp(9px,.8vw,14px);
+}
+.bella-mosaic-panel img{
+  display:block;width:100%;height:100%;object-fit:cover;
+  transform:scale(1);
+  transition:transform .85s cubic-bezier(.22,1,.36,1);
+}
+@media(hover:hover) and (prefers-reduced-motion:no-preference){
+  .bella-mosaic-panel figure:hover img{transform:scale(1.055)}
+}
+.bella-mosaic-primary,.bella-mosaic-side{height:100%;min-width:0;min-height:0}
+.bella-mosaic-primary img{object-position:center}
+.bella-mosaic-side{display:grid;grid-template-rows:46% minmax(0,1fr);gap:9px}
+.bella-mosaic-upper,.bella-mosaic-lower{display:grid;min-height:0;gap:9px}
+.bella-mosaic-upper{grid-template-columns:1fr 1fr}
+.bella-mosaic-lower{grid-template-columns:1.07fr .93fr}
+.bella-mosaic-stack{display:grid;grid-template-rows:1fr 1fr;gap:9px;min-height:0}
+.bella-mosaic-caption{
+  position:relative;z-index:2;max-width:1570px;margin:clamp(15px,2vh,24px) auto 0;
+  width:100%;padding:0 clamp(20px,4.9vw,86px);
+  display:flex;align-items:center;justify-content:space-between;gap:18px;
+}
+.bella-mosaic-caption span{font:600 10px/1.5 Inter,sans-serif;letter-spacing:.16em;color:#e5ecff}
+.bella-mosaic-caption p{margin:0;color:#e5ecffcf!important;font:400 11px/1.45 Inter,sans-serif;letter-spacing:.025em;text-align:right}
+.bella-mosaic-viewport.is-native{
+  overflow-x:auto;overscroll-behavior-inline:contain;
+  -webkit-overflow-scrolling:touch;scrollbar-width:none;
+  touch-action:pan-x pan-y;
+}
+.bella-mosaic-viewport.is-native::-webkit-scrollbar{display:none}
+@media(max-width:1023px){
+  .bella-case .bella-reuse-presence.bella-infinite-gallery{
+    height:auto;min-height:0;padding:58px 0 47px;
+  }
+  .bella-mosaic-head{align-items:center;gap:14px;margin-bottom:23px}
+  .bella-mosaic-panel{
+    flex-basis:max(1060px,133vw);width:max(1060px,133vw);
+    height:clamp(345px,58vw,530px);
+  }
+  .bella-mosaic-viewport{touch-action:pan-y}
+}
+@media(max-width:600px){
+  .bella-case .bella-reuse-presence.bella-infinite-gallery{
+    padding:48px 0 36px;
+  }
+  .bella-mosaic-head{align-items:end;gap:10px;padding:0 18px}
+  .bella-case .bella-mosaic-head h3{
+    font-size:var(--type-heading-size,32px)!important;
+    max-width:245px;
+  }
+  .bella-mosaic-eyebrow{font-size:9px;letter-spacing:.18em}
+  .bella-mosaic-arrows{gap:7px;margin-bottom:3px}
+  .bella-mosaic-arrow{width:39px;height:39px}
+  .bella-mosaic-arrow svg{width:18px;height:18px}
+  .bella-mosaic-panel{
+    flex-basis:max(800px,210vw);width:max(800px,210vw);
+    height:clamp(300px,96vw,460px);gap:7px;padding:0 5px;
+  }
+  .bella-mosaic-side,.bella-mosaic-upper,.bella-mosaic-lower,.bella-mosaic-stack{gap:7px}
+  .bella-mosaic-caption{padding:0 19px;display:block}
+  .bella-mosaic-caption p{text-align:left;margin-top:4px}
+}
+@media(prefers-reduced-motion:reduce){
+  .bella-mosaic-panel img,.bella-mosaic-arrow{transition:none!important}
+}
