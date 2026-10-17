@@ -1,0 +1,102 @@
+---
+import SectionHeading from './SectionHeading.astro';
+import StatCard from './StatCard.astro';
+import ActionLink from './ActionLink.astro';
+
+interface Service { title: string; description: string }
+interface Solution { title: string; short?: string; lead?: string; description: string }
+interface Stat { label: string; value: string; description?: string }
+interface CaseData {
+  name:string;
+  hero:{subtitle:string;signature?:string;services:Service[]};
+  project:{summary:string;details:string;video?:{youtubeId?:string;poster?:string}};
+  challenge:{title:string;description:string;details?:string};
+  solutions:Solution[];
+  kpis:Stat[];
+  metricsVerified?:boolean;
+}
+interface Props { caseData:CaseData; demo?:boolean }
+const {caseData:caseInfo,demo=false}=Astro.props;
+const base=import.meta.env.BASE_URL.replace(/\/?$/,'/');
+const youtubeId=caseInfo.project.video?.youtubeId;
+const hasVideo=typeof youtubeId==='string'&&/^[A-Za-z0-9_-]{11}$/.test(youtubeId);
+---
+<article class="poc-case">
+  {demo && <div class="poc-shell"><p class="poc-notice">DEMONSTRAÇÃO DO COMPONENTE: os textos e números abaixo são fictícios, não resultados de um cliente. Este layout é uma prova estrutural, não uma reprodução pixel a pixel da página Bellamazon.</p></div>}
+
+  <section class="poc-case-hero" aria-label="Abertura do projeto">
+    <div class="poc-shell">
+      <span class="poc-case-hero__eyebrow">Case LENSES · Arquitetura compartilhada</span>
+      <h1>{caseInfo.name}</h1>
+      <p>{caseInfo.hero.subtitle}</p>
+      <span class="poc-case-hero__eyebrow">{caseInfo.hero.signature}</span>
+    </div>
+  </section>
+
+  <section class="poc-section poc-section--surface" id="o-projeto">
+    <div class="poc-shell">
+      <SectionHeading eyebrow="01 · O projeto" title="Uma história para contar" lead={caseInfo.project.summary}/>
+      <div class="poc-two-col">
+        <div>
+          <p>{caseInfo.project.details}</p>
+          <div class="poc-service-grid">
+            {caseInfo.hero.services.map((service)=>
+              <article class="poc-service">
+                <strong>{service.title}</strong><p>{service.description}</p>
+              </article>
+            )}
+          </div>
+        </div>
+        {hasVideo?
+          <a class="poc-image-placeholder" target="_blank" rel="noopener noreferrer" href={'https://www.youtube.com/watch?v='+youtubeId} aria-label="Abrir vídeo institucional em nova aba">Assistir vídeo institucional ↗</a>:
+          <div class="poc-image-placeholder">Capa ou vídeo institucional do cliente<br/>após curadoria e autorização de publicação</div>
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="poc-section" id="desafio">
+    <div class="poc-shell">
+      <SectionHeading eyebrow="02 · O desafio" title={caseInfo.challenge.title}/>
+      <div class="poc-two-col">
+        <div class="poc-image-placeholder">Imagem editorial de contexto · proporção preservada</div>
+        <div>
+          <p>{caseInfo.challenge.description}</p>
+          {caseInfo.challenge.details && <p>{caseInfo.challenge.details}</p>}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="poc-section poc-section--surface" id="solucoes">
+    <div class="poc-shell">
+      <SectionHeading eyebrow="03 · O que desenvolvemos" title="Soluções que entregamos" lead="Cards extraídos de dados e componentes compartilhados. O mosaico GSAP aprovado será migrado somente após testes de fidelidade."/>
+      <div class="poc-demo-grid">
+        {caseInfo.solutions.map((solution,i)=>
+          <article class="poc-demo-card">
+            <span class="poc-tag">{String(i+1).padStart(2,'0')} / LENSES</span>
+            <h3>{solution.title}</h3>
+            <p>{solution.description}</p>
+          </article>
+        )}
+      </div>
+    </div>
+  </section>
+
+  <section class="poc-section" id="resultados">
+    <div class="poc-shell">
+      <SectionHeading eyebrow="04 · Indicadores" title="Dados do projeto" lead="Mesmo componente StatCard na página e no preview do design system."/>
+      <div class="poc-grid">
+        {caseInfo.kpis.map(stat=><StatCard label={stat.label} value={stat.value} description={stat.description}/>)}
+      </div>
+      {!caseInfo.metricsVerified && <p class="poc-notice">Números informados ainda aguardam validação e não podem ser publicados como resultados comprovados.</p>}
+    </div>
+  </section>
+
+  <section class="poc-case-cta" id="contato">
+    <div class="poc-shell poc-case-cta__inner">
+      <h2>Vamos contar<br/>sua história?</h2>
+      <ActionLink href={base} label="Conheça a LENSES" theme="light"/>
+    </div>
+  </section>
+</article>
