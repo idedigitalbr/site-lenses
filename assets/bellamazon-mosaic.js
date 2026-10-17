@@ -7,6 +7,7 @@
 const boot = () => {
   const section = document.querySelector(".bella-infinite-gallery");
   if (!section || section.dataset.mosaicInit) return;
+  const scrollSpace = section.closest(".bella-mosaic-scroll-space");
   const viewport = section.querySelector(".bella-mosaic-viewport");
   const track = section.querySelector(".bella-mosaic-track");
   const previous = section.querySelector('[data-mosaic-direction="prev"]');
@@ -25,7 +26,7 @@ const boot = () => {
 
   const gsap = window.gsap, ScrollTrigger = window.ScrollTrigger;
   const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const desktop = !!gsap && !!ScrollTrigger && !reduced &&
+  const desktop = !!gsap && !!ScrollTrigger && !!scrollSpace && !reduced &&
     matchMedia("(min-width: 1024px)").matches;
   const targets = ["#e9effb","#7886bc","#5c6ca4","#4a588a"];
   const weights = [1.24,1,1,1.34];
@@ -356,12 +357,16 @@ const boot = () => {
   }
   if(ScrollTrigger)gsap.registerPlugin(ScrollTrigger);
   if(desktop){
-    // Progresso real (sem interpolação atrasada): frame inicial e final são
-    // exatamente Estratégia x=0 e Conteúdo x=3*largura.
+    // CSS sticky cria um percurso real no documento. GSAP observa esse
+    // percurso, SEM pin, pinSpacer ou compensações na posição do scroll.
+    // Do início até o fim, os capítulos anteriores permanecem na ordem.
+    scrollSpace.classList.add("is-scroll-ready");
     trigger=ScrollTrigger.create({
-      id:"bellamazon-mosaico-horizontal",trigger:section,pin:section,
-      pinSpacing:true,start:"top top",anticipatePin:1,invalidateOnRefresh:true,
-      end:()=>"+="+Math.round(mode==="all" ? Math.min(9000,Math.max(4400,innerHeight*7.8)) : Math.min(3100,Math.max(1250,innerHeight*2.2))),
+      id:"bellamazon-mosaico-horizontal",
+      trigger:scrollSpace,
+      start:"top top",
+      end:"bottom bottom",
+      invalidateOnRefresh:true,
       onEnter:self=>{pinned=true;renderScroll(self.progress);},
       onEnterBack:self=>{pinned=true;renderScroll(self.progress);},
       onLeave:self=>{pinned=false;renderScroll(1);},
