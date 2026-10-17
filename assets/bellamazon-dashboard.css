@@ -1,0 +1,163 @@
+/* Dashboard Bellamazon | ritmo de entrada, foco em resultados e leitura.
+   Não atribui números de exemplo ao cliente como dados verificados. */
+.bella-case .bell-results .bell-results-heading{
+  display:flex!important;flex-direction:column!important;align-items:center!important;
+  justify-content:center!important;gap:0!important;
+  width:100%;max-width:910px;margin:0 auto clamp(34px,4.6vw,64px)!important;
+  text-align:center;
+}
+.bella-case .bell-results .bell-results-heading>div{
+  width:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:16px;
+}
+.bella-case .bell-results .bell-results-heading .bell-accent-line{
+  width:51px;height:3px;border-radius:20px;margin:0 auto;
+  background:#a8bbec;
+}
+.bella-case .bell-results .bell-results-heading h2{
+  width:100%;max-width:900px;margin:0 auto!important;
+  color:#fff!important;
+  font-family:var(--font-heading,Inter,sans-serif);
+  font-size:var(--type-heading-size,48px)!important;
+  font-weight:var(--type-heading-weight,700)!important;
+  line-height:1.12!important;
+  letter-spacing:-.055em!important;
+  text-align:center;
+}
+.bella-case .bell-results .bell-results-heading>p{
+  max-width:690px!important;
+  width:100%;margin:17px auto 0!important;
+  color:#cad5ed!important;
+  font-size:clamp(14px,1.2vw,17px)!important;
+  line-height:1.65!important;text-align:center;
+}
+.bella-case .bell-results .bell-topline{
+  margin:0 0 18px;padding:2px 1px 0;
+  align-items:center;justify-content:flex-start;
+  font-size:12px;color:#e5ecff;letter-spacing:.04em;
+}
+.bella-case .bell-results .bell-topline-text{
+  color:#e7edff!important;font-weight:700;
+}
+.bella-case .bell-results .bell-stat,
+.bella-case .bell-results .bell-chart{
+  position:relative;overflow:hidden;
+  border:1px solid #e1e8f5;
+  border-radius:clamp(14px,1.25vw,20px);
+  box-shadow:0 6px 18px #091b3b12,0 1px 0 #fff inset;
+  transition:transform .48s cubic-bezier(.22,1,.36,1),
+             box-shadow .48s cubic-bezier(.22,1,.36,1),
+             border-color .32s ease;
+}
+@media(hover:hover){
+  .bella-case .bell-results .bell-stat:hover,
+  .bella-case .bell-results .bell-chart:hover{
+    transform:translateY(-6px);
+    border-color:#b3c5e8;
+    box-shadow:0 22px 45px #091b3b28,0 1px 0 #fff inset;
+  }
+}
+.bella-case .bell-results .bell-stat{
+  min-height:163px;
+  padding:clamp(19px,1.7vw,26px);
+}
+.bella-case .bell-results .bell-stat-head{gap:13px}
+.bella-case .bell-results .bell-stat-icon{
+  transition:transform .42s cubic-bezier(.22,1,.36,1),background-color .3s ease;
+}
+@media(hover:hover){
+  .bella-case .bell-results .bell-stat:hover .bell-stat-icon{
+    transform:scale(1.1) rotate(-6deg);background:#e5edff;
+  }
+}
+.bella-case .bell-results .bell-stat b{
+  font-variant-numeric:tabular-nums;
+  font-size:clamp(30px,2.5vw,40px);
+  letter-spacing:-.065em;color:#385ea7;
+}
+.bella-case .bell-results .bell-chart{
+  padding:clamp(18px,2.1vw,30px);
+  min-height:260px;
+}
+.bella-case .bell-results .bell-chart-number{
+  font-variant-numeric:tabular-nums;
+  font-size:clamp(30px,2.7vw,42px);color:#385ea7;
+}
+.bella-case .bell-results .bell-bar-unit{
+  cursor:crosshair;
+}
+.bella-case .bell-results .bell-bar{
+  height:var(--bar-height);
+  transform-origin:50% 100%;
+  will-change:auto;
+  background:linear-gradient(180deg,#718bd1 0%,#abc0ea 100%);
+  border-radius:6px 6px 0 0;
+  transition:filter .27s ease,box-shadow .27s ease,background .27s ease;
+}
+.bella-case .bell-results .bell-bar-unit:hover .bell-bar,
+.bella-case .bell-results .bell-bar-unit:focus-within .bell-bar{
+  filter:saturate(1.35);box-shadow:0 0 0 3px #7f9bce30;
+  background:linear-gradient(180deg,#466ebf,#86a2dc);
+}
+.bella-case .bell-results .bell-bar-tooltip{
+  z-index:2;opacity:0;visibility:hidden;
+  transition:opacity .28s ease,visibility .28s ease,transform .28s ease;
+  transform:translate(-50%,5px);
+}
+.bella-case .bell-results .bell-bar-unit:hover .bell-bar-tooltip,
+.bella-case .bell-results .bell-bar-unit:focus-within .bell-bar-tooltip{
+  opacity:1;visibility:visible;transform:translate(-50%,0);
+}
+.bella-case .bell-results .bell-line-chart svg{
+  overflow:visible;
+}
+.bella-case .bell-results .bell-line-chart svg .bell-chart-path{
+  vector-effect:non-scaling-stroke;
+}
+.bella-case .bell-results .bell-floating-gain{
+  box-shadow:0 10px 24px #395b9f3c;
+  transition:transform .35s cubic-bezier(.22,1,.36,1),box-shadow .35s ease;
+}
+@media(hover:hover){
+  .bella-case .bell-results .bell-chart-engagement:hover .bell-floating-gain{
+    transform:translateY(-4px);box-shadow:0 17px 30px #395b9f4a;
+  }
+}
+.bella-case .bell-results .bell-donut{
+  transform:translateZ(0);
+  transition:filter .35s ease;
+  --bell-donut-reveal:100%;
+  -webkit-mask-image:conic-gradient(#000 0 var(--bell-donut-reveal),transparent var(--bell-donut-reveal) 100%);
+  mask-image:conic-gradient(#000 0 var(--bell-donut-reveal),transparent var(--bell-donut-reveal) 100%);
+}
+@media(hover:hover){
+  .bella-case .bell-results .bell-chart-mix:hover .bell-donut{filter:drop-shadow(0 6px 13px #6885c244)}
+}
+.bella-case .bell-results .bell-world circle{
+  transform-box:fill-box;transform-origin:center;
+  transition:filter .3s ease,transform .35s cubic-bezier(.22,1,.36,1);
+}
+@media(hover:hover){
+  .bella-case .bell-results .bell-world circle:hover{
+    transform:scale(1.3);filter:drop-shadow(0 2px 6px #5c6ca466);
+  }
+}
+.bella-case .bell-results .bell-data-note{
+  text-align:center;max-width:860px;margin:22px auto 0!important;
+  font-size:11px;line-height:1.65;color:#b5c4e1!important;
+}
+.bella-case .bell-results .bell-data-note strong{color:#dbe6fb!important;font-weight:600}
+@media(max-width:768px){
+  .bella-case .bell-results .bell-results-heading{padding:0 18px;margin-bottom:28px!important}
+  .bella-case .bell-results .bell-results-heading h2{font-size:var(--type-heading-size,34px)!important}
+  .bella-case .bell-results .bell-results-heading>p{font-size:14px!important;line-height:1.6!important}
+  .bella-case .bell-results .bell-chart{padding:20px 16px;min-height:240px}
+  .bella-case .bell-results .bell-data-note{padding:0 20px}
+}
+@media(prefers-reduced-motion:reduce){
+  .bella-case .bell-results .bell-stat,
+  .bella-case .bell-results .bell-chart,
+  .bella-case .bell-results .bell-stat-icon,
+  .bella-case .bell-results .bell-floating-gain,
+  .bella-case .bell-results .bell-world circle{transition:none!important}
+  .bella-case .bell-results .bell-bar{transition:none!important}
+}
