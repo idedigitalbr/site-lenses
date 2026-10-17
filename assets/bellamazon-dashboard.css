@@ -199,3 +199,58 @@
     --bell-donut-reveal:100%!important;
   }
 }
+
+
+/* V3 · curva de engajamento em proporção natural, sem achatamento.
+   A arte original foi criada em viewBox 500x194 e não deve forçar height:130px. */
+.bella-case .bell-results .bell-chart-engagement .bell-line-chart{
+  position:relative;
+  width:100%;
+  height:auto;
+  aspect-ratio:500/194;
+  min-height:0;
+  margin:clamp(14px,1.6vw,24px) auto 0;
+}
+.bella-case .bell-results .bell-chart-engagement .bell-line-chart svg{
+  display:block;
+  width:100%;height:100%;
+  overflow:visible;
+}
+.bella-case .bell-results .bell-chart-engagement .bell-floating-gain{
+  right:6%;top:17%;
+  padding:7px 11px;
+  font-size:clamp(10px,.9vw,12px);
+  box-shadow:0 9px 22px #395b9f2b;
+}
+.bella-case .bell-results .bell-chart-engagement .bell-chart-months{
+  padding:8px 1px 0;
+}
+.bella-case .bell-results .bell-chart-engagement .bell-bottom-trend{
+  margin-top:clamp(14px,1.8vw,24px);
+}
+.bella-case .bell-results .bell-chart-reach .bell-bars{
+  height:clamp(140px,12.8vw,190px);
+  margin-top:clamp(14px,1.6vw,25px);
+}
+.bella-case .bell-results .bell-analytics-grid .bell-chart{
+  min-height:0;
+  padding:clamp(20px,2.1vw,31px);
+}
+.bella-case .bell-results .bell-chart-reach,
+.bella-case .bell-results .bell-chart-engagement{
+  display:flex;flex-direction:column;
+  justify-content:space-between;
+  min-height:clamp(320px,26vw,390px);
+}
+@media(max-width:700px){
+  .bella-case .bell-results .bell-chart-engagement .bell-line-chart{
+    width:100%;aspect-ratio:500/194;
+    margin-top:18px;
+  }
+  .bella-case .bell-results .bell-chart-engagement .bell-floating-gain{
+    padding:6px 9px;right:5%;top:14%;
+  }
+  .bella-case .bell-results .bell-chart-reach,
+  .bella-case .bell-results .bell-chart-engagement{min-height:290px}
+  .bella-case .bell-results .bell-chart-reach .bell-bars{height:160px}
+}
