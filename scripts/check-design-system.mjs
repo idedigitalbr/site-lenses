@@ -108,8 +108,9 @@ const galleryStart = bell.indexOf('<section class="bella-reuse-presence bella-in
 const galleryEnd = bell.indexOf('</section>', galleryStart);
 const dashboardStart = bell.indexOf('<section class="dash-wrap bell-results"');
 check(sectionOfSolutions >= 0 && galleryStart > solutionsEnd &&
-      galleryEnd > galleryStart && dashboardStart > galleryEnd,
-      'Bellamazon: mosaico deve ser seção irmã dos filtros para o pin não sobrepor os cards');
+      galleryEnd > galleryStart && dashboardStart > galleryEnd &&
+      bell.includes('class="bella-mosaic-scroll-space"'),
+      'Bellamazon: filtros, wrapper sticky, galeria e dashboard fora de ordem');
 
 check((bell.match(/class="bella-mosaic-step/g)||[]).length === 4 &&
       bell.includes('class="bella-mosaic-progress"'),
@@ -128,8 +129,11 @@ for (const href of Array.from(bell.matchAll(/\b(?:href|src|poster)\s*=\s*["']([^
         'Bellamazon: arquivo local inexistente ' + cleaned);
 }
 const mosaicJS = read('assets/bellamazon-mosaic.js');
-check(mosaicJS.includes('pinSpacing:true') && mosaicJS.includes('prefers-reduced-motion: reduce'),
-      'Bellamazon: pin ou reduced-motion ausentes');
+check(mosaicJS.includes('trigger:scrollSpace') &&
+      mosaicJS.includes('end:"bottom bottom"') &&
+      !mosaicJS.includes('pin:section') && !mosaicJS.includes('pinSpacing:true') &&
+      mosaicJS.includes('prefers-reduced-motion: reduce'),
+      'Bellamazon: o mosaico deve usar sticky + scroll nativo, nunca GSAP pin');
 check(mosaicJS.includes('paused=!paused') && mosaicJS.includes('aria-pressed'),
       'Bellamazon: controle de pausa incompleto');
 check(mosaicJS.includes('renderScroll(self.progress)') &&
@@ -139,6 +143,10 @@ check(mosaicJS.includes('bella-mosaic-type-ghost') &&
       mosaicJS.includes('write(parts.detail'),
       'Bellamazon: texto progressivo do scroll ausente');
 const mosaicCSS = read('assets/bellamazon-mosaic.css');
+check(mosaicCSS.includes('.bella-mosaic-scroll-space.is-scroll-ready') &&
+      mosaicCSS.includes('position:sticky!important') &&
+      mosaicCSS.includes('overflow-x:clip!important'),
+      'Bellamazon: faltam regras sticky ou overflow clip para navegação estável');
 check(mosaicCSS.includes('bella-mosaic-past-wash') &&
       bell.includes('class="bella-mosaic-past-wash"'),
       'Bellamazon: tratamento monocromático de passagem ausente');
