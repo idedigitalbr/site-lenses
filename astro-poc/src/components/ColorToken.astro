@@ -1,0 +1,17 @@
+---
+interface Props { title:string; token:string; value:string }
+const {title,token,value}=Astro.props;
+const allowed=new Set([
+ '--color-brand-saboia','--color-brand-space-blue','--color-primary-hover',
+ '--color-primary-light','--color-brand-antiflash','--color-brand-white'
+]);
+if(!allowed.has(token))throw new Error('Token de cor não registrado: '+token);
+---
+<div class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+  <div class="h-28 w-full" style={`background-color:var(${token})`} role="img" aria-label={title}></div>
+  <div class="p-4">
+    <strong class="block text-sm font-semibold text-lenses-space">{title}</strong>
+    <code class="mt-2 block text-xs text-slate-600">{token}</code>
+    <span class="mt-1 block text-xs text-slate-500">{value}</span>
+  </div>
+</div>
