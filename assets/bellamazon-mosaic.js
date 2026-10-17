@@ -41,6 +41,9 @@
     drone:'<path d="M8 8 5 5m11 3 3-3M8 16l-3 3m11-3 3 3"/><rect x="8" y="8" width="8" height="8" rx="2"/>',
     story:'<rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 19h2"/>'
   };
+  // Cases gerados usam exclusivamente as mídias declaradas no JSON.
+  // Não injetar imagens demonstrativas herdadas do exemplo Bellamazon.
+  if (section.dataset.caseMedia !== "provided") {
   panels.forEach((panel,index)=>{
     for(const entry of demoCatalogue[keys[index]].split("|")){
       const [label,id,type]=entry.split("~");
@@ -79,6 +82,7 @@
       panel.append(tile);
     }
   });
+  }
   // Rótulos discretos no toque (sem poluir a fotografia no celular).
   let tapStart=null;
   track.addEventListener("pointerdown",event=>{
