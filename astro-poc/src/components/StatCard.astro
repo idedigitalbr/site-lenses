@@ -1,0 +1,10 @@
+---
+interface Props { label: string; value: string; description?: string }
+const {label,value,description=''} = Astro.props;
+---
+<article class="poc-stat">
+  <span class="poc-stat__icon" aria-hidden="true">◉</span>
+  <p class="poc-stat__label">{label}</p>
+  <strong class="poc-stat__value">{value}</strong>
+  {description && <p class="poc-stat__description">{description}</p>}
+</article>
