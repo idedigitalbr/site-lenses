@@ -215,6 +215,7 @@ function build(d){
   s=replaceNode(s,ident(s,"section","resultados"),dashboard(d));
   const css=[
     ".bella-case .bell-s1-photo{background-image:"+(d.hero.image?'url("'+safeURL(d.hero.image)+'")':'none')+"!important}",
+    ".bella-case .bell-s2{background:linear-gradient(130deg,#192746,#4a588a)!important}",
     ".bella-case .bell-s1-logo{"+(d.hero.logo?'background-image:url("'+safeURL(d.hero.logo)+'")!important':'display:none!important')+"}",
     ".bella-case .bella-reuse-video__photo{background-image:"+(d.project.background?'url("'+safeURL(d.project.background)+'")':'none')+"!important}",
     ".bella-case .case-video-pending{display:grid;place-items:center;min-height:260px;width:100%;height:100%;padding:30px;background:linear-gradient(130deg,#202a44,#5c6ca4);color:white;text-align:center;font:600 16px Inter,sans-serif}",
