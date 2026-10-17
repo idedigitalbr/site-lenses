@@ -251,9 +251,12 @@
         write(txt.foot,portion(t,.61,.73));
       }
       const detail=info.querySelector(".bella-mosaic-info__detail");
-      if(detail)detail.style.maxHeight=Math.round(split*340)+"px";
+      if(detail)detail.style.maxHeight=Math.round(ease(portion(t,.40,.66))*340)+"px";
       const foot=info.querySelector(".bella-mosaic-info__foot");
-      if(foot)foot.style.maxHeight=Math.round(split*50)+"px";
+      if(foot){
+        foot.style.maxHeight=Math.round(ease(portion(t,.59,.73))*50)+"px";
+        foot.style.marginTop=Math.round(ease(portion(t,.59,.73))*19)+"px";
+      }
       const eyebrow=info.querySelector(".bella-mosaic-info__eyebrow");
       if(eyebrow)eyebrow.style.opacity=String(.35+.45*grown);
       const rule=info.querySelector(".bella-mosaic-info__rule");
@@ -307,11 +310,11 @@
     progressBar(idx, t);
   };
 
-  const choose=index=>{
+  const choose=(index,phase="gallery")=>{
     const i=Math.max(0,Math.min(3,index));
     if(desktop&&trigger){
       const before=weights.slice(0,i).reduce((a,b)=>a+b,0);
-      const target=trigger.start+((before+weights[i]*.57)/total)*(trigger.end-trigger.start);
+      const target=trigger.start+((before+weights[i]*(phase==="intro"?.08:.57))/total)*(trigger.end-trigger.start);
       window.scrollTo({top:target,behavior:"smooth"});
     }else if(gsap&&!reduced){
       const dest=i*panelWidth,current=wrap(mobile.auto+mobile.manual,panelWidth*4);
@@ -328,7 +331,7 @@
       section.scrollIntoView({block:"start",behavior:reduced?"auto":"smooth"});
     }
   };
-  cards.forEach((card,i)=>card.addEventListener("click",()=>choose(i)));
+  cards.forEach((card,i)=>card.addEventListener("click",()=>choose(i,"intro")));
   steps.forEach((step,i)=>step.addEventListener("click",()=>choose(i)));
   prev.addEventListener("click",()=>choose(desktop?Math.max(0,decode(currentProgress).idx-1):
     Math.max(0,Math.floor(wrap(mobile.auto+mobile.manual,panelWidth*4)/panelWidth)-1)));
@@ -427,6 +430,7 @@
 
   if(desktop){
     if(toggle)toggle.hidden=true;
+    panelInfo.forEach(info=>info.setAttribute("aria-hidden","true"));
     gsap.registerPlugin(ST);
     space.classList.add("is-story-ready");
     // Nem pin, nem pinSpacing: a área sticky ocupa espaço real no documento.
