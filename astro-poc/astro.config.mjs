@@ -8,6 +8,8 @@ export default defineConfig({
   base: '/site-lenses',
   trailingSlash: 'always',
   output: 'static',
+  // Importantíssimo: não comprimir os espaços do markup migrado.
+  compressHTML: false,
   build: { format: 'directory' },
   vite: { plugins: [tailwindcss()] },
 });
