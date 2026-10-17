@@ -158,6 +158,17 @@ const boot = () => {
   const renderScroll=raw=>{
     if(!desktop)return;
     scrollRatio=clamp(raw);
+    // Os filtros isolados mostram só um painel; jamais deslocar o track
+    // para outros capítulos que não foram montados no DOM.
+    if(mode!=="all"){
+      const index=categories.indexOf(mode);
+      const local=scrollRatio;
+      setX(0);
+      originals.forEach((panel,i)=>colors(panel,i===index?clamp(local/.62):0,i));
+      if(pastWash)pastWash.style.opacity="0";
+      updateProgress(Math.max(0,index),local);
+      return;
+    }
     const {index,local}=decode(scrollRatio);
     const movement=index===3?0:ease((local-.78)/.22);
     const pixel=(index+movement)*panelWidth;
@@ -348,7 +359,7 @@ const boot = () => {
     trigger=ScrollTrigger.create({
       id:"bellamazon-mosaico-horizontal",trigger:section,pin:section,
       pinSpacing:true,start:"top top",anticipatePin:1,invalidateOnRefresh:true,
-      end:()=>"+="+Math.round(Math.min(9000,Math.max(4400,innerHeight*7.8))),
+      end:()=>"+="+Math.round(mode==="all" ? Math.min(9000,Math.max(4400,innerHeight*7.8)) : Math.min(3100,Math.max(1250,innerHeight*2.2))),
       onEnter:self=>{pinned=true;renderScroll(self.progress);},
       onEnterBack:self=>{pinned=true;renderScroll(self.progress);},
       onLeave:self=>{pinned=false;renderScroll(1);},
