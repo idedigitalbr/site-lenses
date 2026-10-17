@@ -1,0 +1,202 @@
+/* LENSES | Solução Digital · página institucional
+   Todas as cores de marca referenciam assets/tokens.css.
+   Não redefine header, navbar, footer ou animações globais. */
+body.digital-page{background:#edf2fa;color:var(--color-brand-space-blue);font-family:var(--font-main)}
+.digital-page .d-container{width:min(1320px,calc(100% - 112px));margin-inline:auto}
+.digital-page .d-kicker{display:inline-flex;align-items:center;gap:12px;color:var(--color-primary);font:700 10px/1.5 var(--font-main);letter-spacing:.23em;text-transform:uppercase}
+.digital-page .d-kicker:before{content:"";width:19px;height:1px;background:currentColor;opacity:.75}
+.digital-page h1,.digital-page h2,.digital-page h3,.digital-page p{margin-top:0}
+.digital-page .d-h2{font-size:clamp(35px,4vw,62px);line-height:1.08;letter-spacing:-.055em;font-weight:560}
+.digital-page .d-h2 strong{font-weight:710;color:var(--color-primary)}
+.digital-page .d-copy{color:#5d6b88;font-size:clamp(14px,1.14vw,17px);line-height:1.7;font-weight:410}
+.digital-page .d-button{display:inline-flex;justify-content:center;align-items:center;gap:20px;border:1px solid transparent;text-decoration:none;background:var(--color-brand-saboia);color:white;padding:16px 24px;border-radius:999px;font-size:11px;font-weight:700;letter-spacing:.10em;text-transform:uppercase;transition:background .25s,transform .25s}
+.digital-page .d-button:hover{background:var(--color-primary-hover);transform:translateY(-2px)}
+.digital-page .d-button:focus-visible{outline:2px solid var(--color-brand-saboia);outline-offset:4px}
+.digital-page .d-button--white{background:#fff;color:var(--color-primary-dark)}
+.digital-page .d-button--white:hover{background:#edf1fb}
+.digital-page .d-arrow{font-size:18px;font-weight:400;line-height:1}
+.digital-page .d-pattern{background-image:repeating-radial-gradient(circle at 0 50%,transparent 0 28px,rgba(92,108,164,.052) 29px 30px,transparent 31px 54px)}
+
+/* 01 HERO cinematográfico, foto do próprio repositório LENSES */
+.digital-page .d-hero{height:min(790px,90svh);min-height:580px;position:relative;display:flex;align-items:center;overflow:hidden;background:var(--color-primary-dark);isolation:isolate}
+.digital-page .d-hero__image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% 45%;filter:saturate(.76) brightness(.72)}
+.digital-page .d-hero:before{position:absolute;inset:0;content:"";z-index:1;background:linear-gradient(90deg,rgba(12,27,54,.98) 0%,rgba(16,32,63,.96) 25%,rgba(21,39,73,.78) 44%,rgba(24,38,62,.16) 80%),linear-gradient(0deg,rgba(9,18,38,.55),transparent 32%)}
+.digital-page .d-hero:after{content:"";position:absolute;z-index:2;width:630px;aspect-ratio:1;left:-440px;top:16%;border:1px solid rgba(160,179,229,.22);border-radius:50%;box-shadow:0 0 0 52px rgba(155,177,225,.025),0 0 0 110px rgba(155,177,225,.023),0 0 0 170px rgba(155,177,225,.02),0 0 0 240px rgba(155,177,225,.015)}
+.digital-page .d-hero__inner{position:relative;z-index:3;padding:105px 0 45px;color:#fff}
+.digital-page .d-hero .d-kicker{color:#b5c6fb}
+.digital-page .d-hero h1{font-size:clamp(84px,12.9vw,190px);line-height:.85;letter-spacing:-.075em;font-weight:650;margin:25px 0 22px}
+.digital-page .d-hero__lead{font-size:clamp(18px,1.75vw,25px);max-width:550px;line-height:1.31;font-weight:620;letter-spacing:-.025em;color:#f1f4fb;margin-bottom:23px}
+.digital-page .d-hero__desc{font-size:15px;line-height:1.63;max-width:390px;color:#d9e1f0}
+.digital-page .d-hero__scroll{position:absolute;bottom:42px;left:max(56px,calc((100vw - 1320px)/2));z-index:4;display:flex;gap:12px;align-items:center;text-decoration:none;color:#fff;font-size:9px;letter-spacing:.16em;text-transform:uppercase;font-weight:720}
+.digital-page .d-hero__scroll span{width:32px;height:32px;border:1px solid rgba(255,255,255,.65);display:grid;place-items:center;border-radius:50%;font-size:16px;transition:background .2s}
+.digital-page .d-hero__scroll:hover span{background:#ffffff33}
+
+/* 02 Editorial split */
+.digital-page .d-intro{display:grid;grid-template-columns:47% 34% 19%;min-height:540px;background:#f3f6fb}
+.digital-page .d-intro__image{position:relative;overflow:hidden;background:#202a44}
+.digital-page .d-intro__image img{width:100%;height:100%;object-fit:cover;object-position:center;filter:saturate(.73) brightness(.80);display:block}
+.digital-page .d-intro__copy{padding:clamp(42px,5.9vw,92px) clamp(34px,3.7vw,62px);background:linear-gradient(125deg,#ecf1f9,#f9fbfd);display:flex;flex-direction:column;justify-content:center}
+.digital-page .d-intro__copy h2{font-size:clamp(34px,3.5vw,57px);font-weight:575;line-height:1.065;letter-spacing:-.06em;margin:25px 0}
+.digital-page .d-intro__copy h2 strong{color:var(--color-primary);font-weight:710}
+.digital-page .d-intro__copy .d-copy{max-width:470px}
+.digital-page .d-intro__stats{display:flex;flex-direction:column;background:white;justify-content:center;padding:30px clamp(26px,2.4vw,50px);gap:36px}
+.digital-page .d-intro__stat{padding-bottom:29px;border-bottom:1px solid #e8edf5}
+.digital-page .d-intro__stat:last-child{border:0;padding-bottom:0}
+.digital-page .d-intro__stat strong{display:block;font-size:clamp(42px,4.2vw,75px);line-height:1;color:var(--color-primary);font-weight:660;letter-spacing:-.07em}
+.digital-page .d-intro__stat span{display:block;color:var(--color-primary-dark);font-size:10px;line-height:1.4;text-transform:uppercase;letter-spacing:.11em;font-weight:800;margin-top:12px}
+
+/* 03 grade de serviços */
+.digital-page .d-services{padding:112px 0 118px;background:#eff4fb;position:relative;overflow:hidden}
+.digital-page .d-services:after{content:"";position:absolute;right:-165px;bottom:-310px;width:620px;height:620px;border:1px solid #c4d1e645;border-radius:50%;box-shadow:0 0 0 62px #c4d1e61c,0 0 0 130px #c4d1e61a;pointer-events:none}
+.digital-page .d-services__heading{text-align:center;max-width:920px;margin:0 auto 64px}
+.digital-page .d-services__heading .d-kicker:before{display:none}
+.digital-page .d-services__heading .d-h2{max-width:860px;margin:24px auto 0;color:var(--color-primary);font-size:clamp(33px,3.4vw,52px)}
+.digital-page .d-services__rule{height:1px;background:linear-gradient(90deg,transparent,#c7d3e9,transparent);width:75%;margin:44px auto 0}
+.digital-page .d-services__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));row-gap:62px;max-width:1100px;margin:auto;position:relative;z-index:1}
+.digital-page .d-service{text-align:center;padding:0 34px;position:relative}
+.digital-page .d-service:not(:nth-child(3n)):after{content:"";position:absolute;right:0;top:16%;height:78%;width:1px;background:linear-gradient(transparent,#dbe3f1,transparent)}
+.digital-page .d-service__icon{width:76px;height:76px;display:grid;place-items:center;background:#dfe8f8;color:var(--color-primary);border-radius:50%;margin:0 auto 22px;transition:background .25s,color .25s,transform .25s}
+.digital-page .d-service:hover .d-service__icon{background:var(--color-primary);color:white;transform:translateY(-5px)}
+.digital-page .d-service__icon svg{width:36px;height:36px;stroke:currentColor;fill:none;stroke-width:1.65;stroke-linecap:round;stroke-linejoin:round}
+.digital-page .d-service h3{font-size:clamp(17px,1.35vw,22px);font-weight:670;line-height:1.25;letter-spacing:-.035em;max-width:270px;margin:0 auto 16px;color:#2b3b5c}
+.digital-page .d-service p{color:#74819b;font-size:14px;line-height:1.55;max-width:260px;margin:auto}
+
+/* 04 visual process / collage */
+.digital-page .d-process{display:grid;grid-template-columns:49% 51%;min-height:700px;background:#26365b}
+.digital-page .d-process__photos{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;overflow:hidden}
+.digital-page .d-process__photos figure{position:relative;overflow:hidden;margin:0;min-height:260px}
+.digital-page .d-process__photos figure:first-child{grid-column:1/-1}
+.digital-page .d-process__photos img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .8s cubic-bezier(.2,.8,.2,1);filter:saturate(.75)}
+.digital-page .d-process__photos figure:hover img{transform:scale(1.05)}
+.digital-page .d-process__content{color:white;position:relative;padding:clamp(56px,6vw,115px) clamp(40px,6vw,105px);background:radial-gradient(circle at 105% 105%,#6b7bb8 0,transparent 48%),linear-gradient(127deg,#26375e,#47588f);overflow:hidden}
+.digital-page .d-process__content:before{content:"";position:absolute;border:1px solid rgba(255,255,255,.21);width:220px;height:220px;right:-80px;top:-70px;border-radius:50%;box-shadow:0 0 0 33px #ffffff06,0 0 0 70px #ffffff07}
+.digital-page .d-process__content .d-kicker{color:#c9d6fb}
+.digital-page .d-process__content h2{font-size:clamp(37px,3.6vw,58px);line-height:1.1;font-weight:560;letter-spacing:-.055em;margin:25px 0 38px}
+.digital-page .d-timeline{list-style:none;margin:0;padding:0 0 0 32px;border-left:1px solid rgba(220,229,255,.35)}
+.digital-page .d-timeline li{position:relative;display:flex;gap:21px;align-items:flex-start;margin:0 0 27px}
+.digital-page .d-timeline li:last-child{margin-bottom:0}
+.digital-page .d-timeline li:before{content:"";position:absolute;top:21px;left:-37px;width:9px;height:9px;border-radius:50%;background:#eff3ff;box-shadow:0 0 0 5px #d7e0f018}
+.digital-page .d-timeline__icon{flex:0 0 56px;width:56px;height:56px;border:1px solid #ffffff2f;border-radius:50%;display:grid;place-items:center;background:#ffffff14;color:#edf2ff}
+.digital-page .d-timeline__icon svg{width:26px;height:26px;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.digital-page .d-timeline h3{font-size:18px;font-weight:670;margin:2px 0 5px;color:white}
+.digital-page .d-timeline p{font-size:13px;color:#d9e2f7;line-height:1.48;max-width:360px;margin:0}
+
+/* 05 dashboard: no invented performance metrics */
+.digital-page .d-outcomes{background:#f2f6fc;padding:96px 0}
+.digital-page .d-outcomes__layout{display:grid;grid-template-columns:36% 64%;align-items:center;gap:15px}
+.digital-page .d-outcomes__intro{padding-right:50px}
+.digital-page .d-outcomes__intro h2{font-size:clamp(36px,3.6vw,58px);line-height:1.09;letter-spacing:-.055em;font-weight:575;margin:20px 0 26px}
+.digital-page .d-dashboard{display:grid;gap:13px;padding-right:15px}
+.digital-page .d-dashboard__top{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.digital-page .d-dash-stat,.digital-page .d-chart{background:white;border:1px solid #e6ecf6;border-radius:15px;box-shadow:0 7px 22px rgba(29,46,94,.055)}
+.digital-page .d-dash-stat{padding:22px 17px;min-height:125px}
+.digital-page .d-dash-stat strong{display:block;font-size:clamp(18px,2vw,27px);letter-spacing:-.04em;font-weight:690;color:var(--color-primary);line-height:1.15}
+.digital-page .d-dash-stat span{font-size:11px;color:#66758e;display:block;line-height:1.4;margin-top:12px}
+.digital-page .d-dashboard__charts{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.digital-page .d-chart{padding:24px 23px;min-height:225px}
+.digital-page .d-chart__label{font-size:12px;font-weight:700;color:#63728e}
+.digital-page .d-chart h3{color:var(--color-primary);font-size:22px;margin:6px 0 20px;font-weight:670;letter-spacing:-.035em}
+.digital-page .d-chart__bars{display:flex;align-items:flex-end;gap:18px;height:100px;padding:9px 12px 0}
+.digital-page .d-chart__bars span{flex:1;height:var(--height);border-radius:3px 3px 0 0;background:linear-gradient(0deg,#bdcbeb,#6077ba)}
+.digital-page .d-chart svg{width:100%;height:auto;max-height:110px;overflow:visible}
+.digital-page .d-chart__foot{font-size:10px;color:#8190aa;margin:10px 0 0}
+
+/* 06 Portfolio photo cards */
+.digital-page .d-portfolio{position:relative;overflow:hidden;padding:95px 0 105px;color:white;background:#0b101c}
+.digital-page .d-portfolio:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,11,19,.97),rgba(9,14,25,.83)),url("paginas/home/s3-servicos/serv-producao-audiovisual-poster.jpg") center/cover}
+.digital-page .d-portfolio__layout{position:relative;z-index:1;display:grid;grid-template-columns:27% 1fr;gap:42px;align-items:center}
+.digital-page .d-portfolio .d-kicker{color:#bac9ff}
+.digital-page .d-portfolio__intro h2{font-size:clamp(34px,3vw,50px);font-weight:560;line-height:1.08;letter-spacing:-.05em;margin:23px 0}
+.digital-page .d-portfolio__intro p{font-size:13px;color:#c7cddd;line-height:1.7;margin-bottom:27px}
+.digital-page .d-portfolio__cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px}
+.digital-page .d-case{position:relative;display:block;min-height:365px;overflow:hidden;border:1px solid #aabbe45c;border-radius:15px;text-decoration:none;color:white;background:#18263f;isolation:isolate;transition:transform .3s,border-color .3s}
+.digital-page .d-case:hover{transform:translateY(-7px);border-color:#ecf1ff}
+.digital-page .d-case img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;filter:saturate(.84);transition:transform .8s}
+.digital-page .d-case:hover img{transform:scale(1.06)}
+.digital-page .d-case:after{content:"";z-index:-1;position:absolute;inset:0;background:linear-gradient(180deg,transparent 15%,rgba(6,12,27,.24) 45%,rgba(5,10,22,.93))}
+.digital-page .d-case__content{position:absolute;bottom:25px;left:21px;right:17px}
+.digital-page .d-case__content span{font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:#d9e4fd}
+.digital-page .d-case__content h3{font-size:20px;line-height:1.18;letter-spacing:-.035em;font-weight:650;margin:10px 0}
+.digital-page .d-case__content p{font-size:12px;color:#e5ebfa;line-height:1.5}
+.digital-page .d-case__more{font-size:10px!important;font-weight:750;letter-spacing:.12em;margin-top:18px!important}
+
+/* 07 blue call to action */
+.digital-page .d-cta{position:relative;overflow:hidden;background:linear-gradient(105deg,#52639b,#7888c2);color:white;padding:84px 0}
+.digital-page .d-cta:before{content:"";position:absolute;width:410px;height:410px;border:1px solid #ffffff33;border-radius:50%;right:6%;top:-170px;box-shadow:0 0 0 57px #ffffff0c,0 0 0 124px #ffffff0c}
+.digital-page .d-cta__inner{position:relative;z-index:1;display:flex;justify-content:space-between;align-items:center;gap:45px}
+.digital-page .d-cta h2{font-size:clamp(36px,3.8vw,60px);font-weight:560;line-height:1.08;letter-spacing:-.055em;margin-bottom:18px}
+.digital-page .d-cta p{max-width:480px;color:#f1f4ff;font-size:14px;line-height:1.7;margin:0}
+
+/* Scroll reveal restrained, graceful fallback */
+.digital-page.js-motion .d-reveal{opacity:0;transform:translateY(25px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.2,1)}
+.digital-page.js-motion .d-reveal.is-visible{opacity:1;transform:none}
+
+@media(max-width:1150px){
+ .digital-page .d-container{width:min(100% - 72px,1320px)}
+ .digital-page .d-intro{grid-template-columns:42% 38% 20%}
+ .digital-page .d-intro__copy{padding:45px 34px}
+ .digital-page .d-intro__stats{padding:24px 22px}
+ .digital-page .d-process__content{padding:58px 42px}
+ .digital-page .d-portfolio__layout{grid-template-columns:1fr;gap:35px}
+ .digital-page .d-portfolio__intro{max-width:610px}
+ .digital-page .d-outcomes__layout{grid-template-columns:33% 67%}
+}
+@media(max-width:820px){
+ .digital-page .d-hero{min-height:600px;height:80svh}
+ .digital-page .d-hero__inner{padding:80px 0 70px}
+ .digital-page .d-intro{grid-template-columns:50% 50%}
+ .digital-page .d-intro__image{min-height:430px}
+ .digital-page .d-intro__stats{grid-column:1/-1;flex-direction:row;gap:25px;padding:28px 40px}
+ .digital-page .d-intro__stat{flex:1;border-bottom:0;border-right:1px solid #e8edf5;margin:0;padding:0 20px 0 0}
+ .digital-page .d-services__grid{grid-template-columns:repeat(2,1fr)}
+ .digital-page .d-service:nth-child(3n):after{content:"";position:absolute;right:0;top:16%;height:78%;width:1px;background:linear-gradient(transparent,#dbe3f1,transparent)}
+ .digital-page .d-service:nth-child(2n):after{display:none}
+ .digital-page .d-process{grid-template-columns:1fr}
+ .digital-page .d-process__photos{height:400px}
+ .digital-page .d-outcomes__layout{grid-template-columns:1fr}
+ .digital-page .d-outcomes__intro{padding:0 0 30px}
+ .digital-page .d-portfolio__cards{grid-template-columns:repeat(3,1fr)}
+}
+@media(max-width:600px){
+ .digital-page .d-container{width:calc(100% - 40px)}
+ .digital-page .d-hero{min-height:660px;height:90svh}
+ .digital-page .d-hero__image{object-position:65% center}
+ .digital-page .d-hero:before{background:linear-gradient(90deg,#0e1c38f5 0%,#0e1c38d9 45%,#0e1c3869 100%),linear-gradient(0deg,#0a163699,transparent)}
+ .digital-page .d-hero h1{font-size:clamp(74px,18vw,108px)}
+ .digital-page .d-hero__scroll{left:20px;bottom:34px}
+ .digital-page .d-hero__desc{max-width:310px}
+ .digital-page .d-intro{display:flex;flex-direction:column}
+ .digital-page .d-intro__image{height:300px;min-height:300px}
+ .digital-page .d-intro__copy{padding:50px 24px}
+ .digital-page .d-intro__copy h2{font-size:39px}
+ .digital-page .d-intro__stats{display:grid;grid-template-columns:repeat(3,1fr);padding:30px 20px;gap:6px}
+ .digital-page .d-intro__stat{padding:0 8px 0 0}
+ .digital-page .d-intro__stat strong{font-size:35px}
+ .digital-page .d-intro__stat span{font-size:8px}
+ .digital-page .d-services{padding:78px 0}
+ .digital-page .d-services__heading{margin-bottom:48px}
+ .digital-page .d-services__grid{grid-template-columns:1fr;row-gap:38px}
+ .digital-page .d-service{padding:0 20px 30px;border-bottom:1px solid #d9e2f1}
+ .digital-page .d-service:after{display:none!important}
+ .digital-page .d-service:last-child{border:0}
+ .digital-page .d-service__icon{width:67px;height:67px;margin-bottom:16px}
+ .digital-page .d-process__photos{height:290px}
+ .digital-page .d-process__content{padding:60px 26px 70px}
+ .digital-page .d-timeline{padding-left:22px}
+ .digital-page .d-timeline li{gap:12px}
+ .digital-page .d-timeline li:before{left:-27px}
+ .digital-page .d-timeline__icon{flex-basis:46px;height:46px}
+ .digital-page .d-outcomes{padding:73px 0}
+ .digital-page .d-dashboard__top{grid-template-columns:repeat(2,1fr)}
+ .digital-page .d-dashboard__charts{grid-template-columns:1fr}
+ .digital-page .d-dash-stat{min-height:105px}
+ .digital-page .d-portfolio{padding:75px 0}
+ .digital-page .d-portfolio__cards{grid-template-columns:1fr}
+ .digital-page .d-case{min-height:340px}
+ .digital-page .d-cta{padding:63px 0}
+ .digital-page .d-cta__inner{flex-direction:column;align-items:flex-start}
+}
+@media(prefers-reduced-motion:reduce){
+ .digital-page *, .digital-page *:before, .digital-page *:after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}
+ .digital-page.js-motion .d-reveal{opacity:1!important;transform:none!important}
+}
