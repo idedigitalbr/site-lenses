@@ -731,7 +731,7 @@ body.bella-case{overflow-x:clip!important}
 }
 .bella-case .bella-mosaic-story-morph.is-centered .bella-mosaic-info__detail,
 .bella-case .bella-mosaic-story-morph.is-centered .bella-mosaic-info__foot{
-  max-height:0!important;margin-top:0!important;overflow:hidden!important;
+  overflow:hidden!important;
 }
 .bella-case .bella-mosaic-story-morph .bella-mosaic-info__detail,
 .bella-case .bella-mosaic-story-morph .bella-mosaic-info__foot{overflow:hidden}
