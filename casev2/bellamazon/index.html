@@ -1517,7 +1517,7 @@
 </style>
   <!-- Contrato tipográfico canônico após CSS legado do case -->
   <link rel="stylesheet" href="../../assets/typography.css?v=20261016-type48">
-  <link rel="stylesheet" href="../../assets/bellamazon-mosaic.css?v=1">
+  <link rel="stylesheet" href="../../assets/bellamazon-mosaic.css?v=2">
 </head>
 <body class="bella-case">
   <div class="page-wrapper">
@@ -1677,48 +1677,57 @@
       <h2 id="bell-s5-title"><span>Soluções</span> que entregamos</h2>
       <p>Quatro frentes conectadas em um mesmo projeto: estratégia de marca, identidade visual, design de embalagens e produção de conteúdo.</p>
     </div>
+    <div class="bella-filter-toolbar" role="group" aria-label="Filtrar entregas visuais">
+      <button class="bella-filter-all is-active" type="button" data-bella-filter="all" aria-pressed="true" aria-controls="bella-mosaic-track">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        Todas as entregas
+      </button>
+    </div>
     <div class="bella-reuse-results__timeline" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
     <div class="bell-s5-cards">
-      <article class="bell-s5-card">
+      <button type="button" class="bell-s5-card" data-bella-filter="estrategia" aria-pressed="false" aria-controls="bella-mosaic-track">
         <span class="bell-s5-icon" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="23" cy="25" r="16"/><circle cx="23" cy="25" r="10"/><circle cx="23" cy="25" r="4"/><path d="m25 23 14-14M34 9l7-2-2 7"/></svg></span>
-        <div><h3>Estratégia</h3><p>Posicionamento, conceito e narrativa para orientar a comunicação da Bellamazon.</p></div></article>
-      <article class="bell-s5-card">
+        <div><h3>Estratégia</h3><p>Posicionamento, conceito e narrativa para orientar a comunicação da Bellamazon.</p></div></button>
+      <button type="button" class="bell-s5-card" data-bella-filter="branding" aria-pressed="false" aria-controls="bella-mosaic-track">
         <span class="bell-s5-icon" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="m9 37 4-11L34 5a5 5 0 0 1 7 7L20 33Z"/><path d="m13 26 9 9M30 9l9 9"/></svg></span>
-        <div><h3>Branding</h3><p>Construção da identidade visual e dos elementos gráficos de reconhecimento.</p></div></article>
-      <article class="bell-s5-card">
+        <div><h3>Branding</h3><p>Construção da identidade visual e dos elementos gráficos de reconhecimento.</p></div></button>
+      <button type="button" class="bell-s5-card" data-bella-filter="embalagem" aria-pressed="false" aria-controls="bella-mosaic-track">
         <span class="bell-s5-icon" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="m24 4 17 9.5v21L24 44 7 34.5v-21Z"/><path d="M7 13.5 24 23l17-9.5M24 23v21M16 9l17 10"/></svg></span>
-        <div><h3>Embalagem</h3><p>Design de rótulos e aplicação da identidade na apresentação dos produtos.</p></div></article>
-      <article class="bell-s5-card">
+        <div><h3>Embalagem</h3><p>Design de rótulos e aplicação da identidade na apresentação dos produtos.</p></div></button>
+      <button type="button" class="bell-s5-card" data-bella-filter="conteudo" aria-pressed="false" aria-controls="bella-mosaic-track">
         <span class="bell-s5-icon" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.3"><circle cx="24" cy="24" r="19"/><path d="m20 14 13 10-13 10Z" fill="currentColor" stroke="none"/></svg></span>
-        <div><h3>Conteúdo</h3><p>Direção visual e produção de imagens para apresentar a marca e seus produtos.</p></div></article>
+        <div><h3>Conteúdo</h3><p>Direção visual e produção de imagens para apresentar a marca e seus produtos.</p></div></button>
     </div>
   </div>
-  <div class="bella-reuse-presence bella-infinite-gallery" role="region" aria-labelledby="bella-mosaic-heading" aria-roledescription="Galeria de imagens horizontal">
+  <div class="bella-reuse-presence bella-infinite-gallery" role="region" aria-label="Galeria horizontal filtrável de soluções Bellamazon">
     <div class="bella-mosaic-head">
-      <div><span class="bella-mosaic-eyebrow">APLICAÇÕES E REFERÊNCIAS VISUAIS</span>
-        <h3 id="bella-mosaic-heading">Identidade e embalagens em foco.</h3></div>
+      <div class="bella-mosaic-selection">Exibindo: <strong data-mosaic-current>Todas as entregas</strong></div>
       <div class="bella-mosaic-arrows" aria-label="Navegação da galeria">
         <button type="button" class="bella-mosaic-arrow" data-mosaic-direction="prev" aria-label="Ver imagens anteriores"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 5 7.5 12l7 7M8 12h12"/></svg></button>
         <button type="button" class="bella-mosaic-arrow" data-mosaic-direction="next" aria-label="Ver próximas imagens"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9.5 5 7 7-7 7M16 12H4"/></svg></button>
       </div>
     </div>
-    <div class="bella-mosaic-viewport" aria-label="Mosaico horizontal de aplicações do projeto Bellamazon">
-      <div class="bella-mosaic-track">
+    <div class="bella-mosaic-viewport" aria-label="Imagens das soluções e estudos de composição visual">
+      <div class="bella-mosaic-track" id="bella-mosaic-track">
         <div class="bella-mosaic-panel">
-          <figure class="bella-mosaic-primary"><img src="https://libra.ag/wp-content/uploads/2024/11/4-1.png" alt="Linha de embalagens e produtos Bellamazon" loading="lazy" decoding="async"></figure>
-          <div class="bella-mosaic-side">
-            <div class="bella-mosaic-upper"><figure><img src="https://www.guiadasemana.com.br/contentFiles/image/opt_w1024h1024/2023/11/FEA/71450_onde-tomar-acai-sao-paulo-dona-vitamina.jpg" alt="Açaí na tigela com banana e granola" loading="lazy" decoding="async"></figure><figure><img src="https://libra.ag/wp-content/uploads/2024/11/1-1.png" alt="Produto Bellamazon" loading="lazy" decoding="async"></figure></div>
-            <div class="bella-mosaic-lower"><figure><img src="https://libra.ag/wp-content/uploads/2024/11/3-1.png" alt="Detalhe da identidade da Bellamazon" loading="lazy" decoding="async"></figure>
-              <div class="bella-mosaic-stack"><figure><img src="https://77snszqv.media.zestyio.com/DS-1-1600.jpg" alt="Produção de vídeo na floresta" loading="lazy" decoding="async"></figure><figure><img src="https://img.eloriente.com/pics/nocrop/1280x960/15486bb67f33f8e28b31c5750c30b467adcee5ac.jpg" alt="Rio amazônico ao pôr do sol" loading="lazy" decoding="async"></figure></div>
-            </div>
-          </div>
+          <figure class="bella-mosaic-tile" data-categories="branding embalagem"><img src="https://libra.ag/wp-content/uploads/2024/11/4-1.png" alt="Composição de produtos e embalagens Bellamazon" loading="lazy" decoding="async"></figure>
+          <figure class="bella-mosaic-tile" data-categories="estrategia conteudo"><img src="https://www.guiadasemana.com.br/contentFiles/image/opt_w1024h1024/2023/11/FEA/71450_onde-tomar-acai-sao-paulo-dona-vitamina.jpg" alt="Fotografia de açaí servido com frutas" loading="lazy" decoding="async"></figure>
+          <figure class="bella-mosaic-tile" data-categories="embalagem branding"><img src="https://libra.ag/wp-content/uploads/2024/11/1-1.png" alt="Embalagem Bellamazon em fotografia de produto" loading="lazy" decoding="async"></figure>
+          <figure class="bella-mosaic-tile bella-mosaic-art bella-mosaic-art--light" data-categories="estrategia branding" aria-label="Composição visual ilustrativa: Origem que ganha forma."><span class="bella-mosaic-art__eyebrow">Direção de marca</span><span class="bella-mosaic-art__title">Origem que<br>ganha forma.</span><span class="bella-mosaic-art__note">ESTUDO VISUAL ILUSTRATIVO</span></figure>
+          <figure class="bella-mosaic-tile" data-categories="embalagem conteudo"><img src="https://libra.ag/wp-content/uploads/2024/11/3-1.png" alt="Aplicação da identidade Bellamazon em embalagem" loading="lazy" decoding="async"></figure>
+          <figure class="bella-mosaic-tile" data-categories="conteudo estrategia"><img src="https://i.ytimg.com/vi/WL7-6C7ZyZE/hqdefault.jpg" alt="Fotograma de vídeo institucional Bellamazon" loading="lazy" decoding="async"></figure>
+          <figure class="bella-mosaic-tile" data-categories="estrategia conteudo"><img src="../../assets/paginas/cases/bellamazon/s1-photo-clean.webp" alt="Paisagem amazônica utilizada como referência territorial do case" loading="lazy" decoding="async"></figure>
+          <figure class="bella-mosaic-tile bella-mosaic-art bella-mosaic-art--logo" data-categories="branding estrategia"><img src="../../assets/paginas/cases/bellamazon/s1-logo-reference.png" alt="Identidade visual Bellamazon" loading="lazy" decoding="async"></figure>
+          <figure class="bella-mosaic-tile bella-mosaic-art bella-mosaic-art--purple" data-categories="branding embalagem" aria-label="Composição visual ilustrativa: Cores que conectam."><span class="bella-mosaic-art__eyebrow">Exploração gráfica</span><span class="bella-mosaic-art__title">Cores que<br>conectam.</span><span class="bella-mosaic-art__note">ESTUDO VISUAL ILUSTRATIVO</span></figure>
+          <figure class="bella-mosaic-tile" data-categories="conteudo embalagem"><img src="https://www.guiadasemana.com.br/contentFiles/image/opt_w1024h1024/2023/11/FEA/71450_onde-tomar-acai-sao-paulo-dona-vitamina.jpg" alt="Referência fotográfica de alimento com açaí" loading="lazy" decoding="async"></figure>
+          <figure class="bella-mosaic-tile" data-categories="branding embalagem conteudo"><img src="https://libra.ag/wp-content/uploads/2024/11/1-1.png" alt="Detalhe da embalagem e dos elementos visuais Bellamazon" loading="lazy" decoding="async"></figure>
         </div>
       </div>
     </div>
     <div class="bella-mosaic-caption">
-      <span>BELLAMAZON · BRANDING, EMBALAGENS E CONTEXTO VISUAL</span>
+      <span>BELLAMAZON · GALERIA DE ENTREGAS E REFERÊNCIAS</span>
       <div class="bella-mosaic-caption-controls">
-        <p>Arraste no celular ou use as setas para explorar a galeria.</p>
+        <p>Imagens do case e composições ilustrativas. Use os filtros para explorar.</p>
         <button type="button" class="bella-mosaic-toggle" data-mosaic-toggle aria-label="Pausar movimento automático" aria-pressed="false" title="Pausar movimento">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5v14M15 5v14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
         </button>
@@ -2002,7 +2011,7 @@
   <!-- GSAP + ScrollTrigger exclusivos das novas seções. O site segue funcional sem CDN. -->
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js" defer></script>
-  <script src="../../assets/bellamazon-mosaic.js?v=1" defer></script>
+  <script src="../../assets/bellamazon-mosaic.js?v=2" defer></script>
   <script>
   /* Bellamazon V2 S2-S5 Motion · transform/opacity, sem scroll-jacking. */
   (() => {
