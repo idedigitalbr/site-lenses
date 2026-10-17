@@ -1,0 +1,24 @@
+---
+import fs from "node:fs";
+import path from "node:path";
+
+/**
+ * FASE P0: compatibilidade 1:1 com as páginas aprovadas.
+ *
+ * O ASTRO compila e controla a rota, mas preserva temporariamente o
+ * markup/CSS/GSAP original sem qualquer reescrita que mude pixels.
+ *
+ * FASE P1: remover gradativamente esta camada após visual regression
+ * e conversão das seções em componentes reais Astro + Tailwind 4.
+ */
+interface Props { source: string }
+const {source}=Astro.props;
+const root=path.resolve(process.cwd(),"..");
+const absolute=path.resolve(root,source);
+if(!absolute.startsWith(root+path.sep)||!absolute.endsWith(".html"))
+  throw new Error("LegacyMirror: source must be a repository HTML file");
+const markup=fs.readFileSync(absolute,"utf8");
+if(!markup.toLowerCase().includes("<!doctype html>")||!/<body\b/i.test(markup))
+  throw new Error("LegacyMirror: invalid legacy document "+source);
+---
+<Fragment set:html={markup} />
