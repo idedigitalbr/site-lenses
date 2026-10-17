@@ -1,4 +1,7 @@
 node_modules/
 dist/
 .astro/
+public/assets/
+public/sobre.html
+public/design-system-preview.html
 *.log
