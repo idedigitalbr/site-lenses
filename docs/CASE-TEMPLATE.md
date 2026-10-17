@@ -97,7 +97,7 @@ Depois da geração, revisar:
 
 URL resultante: https://idedigitalbr.github.io/site-lenses/casev2/hydro/
 
-A automação de GitHub Actions regenera quando houver push em data/cases ou no template. Isso depende de Actions habilitado e permissão de escrita no repositório. Sem isso, execute o gerador e commite o HTML resultante manualmente.
+O fluxo oficial de geração, curadoria e publicação acontece localmente no Antigravity. GitHub Actions permanece como validação manual opcional, sem downloads nem autopush.
 
 ## Prompt de trabalho para qualquer IA
 
@@ -116,3 +116,44 @@ A automação de GitHub Actions regenera quando houver push em data/cases ou no 
     Status da autorização de publicação: ...
 
 **Resultado:** um novo case derivado do template, não uma página criada com estilo diferente.
+
+
+## Fluxo oficial Antigravity local: /novocase
+
+A partir de outubro de 2026, **o Antigravity no computador é o executor do pipeline**, usando a skill versionada em .agents/skills/novocase/SKILL.md. Digitar /novocase no chat do Antigravity com o repositório aberto deve iniciar uma conversa simples: explicar o processo e pedir somente a URL da pasta. O formato da skill é a versão atual de comandos de barra, não criar workflows legados.
+
+**Google Drive → inventário → documento → curadoria de thumbnails → vídeo web otimizado → JSON do case → prévia local → aprovação → commit/push.**
+
+Precondições no computador (instalar/configurar uma vez):
+- Node 20+; FFmpeg/ffprobe no PATH; rclone no PATH.
+- Configurar uma conexão OAuth do rclone para a conta Google autorizada ao Drive, nomeada lensesdrive: rodar rclone config; não salvar credenciais no repositório.
+- Verificar espaço livre em disco antes de baixar um vídeo pesado. 4,11 GB de origem exige margem para fonte, transcodificação e temporários.
+- Opcional: definir LENSES_RCLONE_REMOTE no ambiente se o remote possuir outro nome. Nunca incluir tokens em JSON versionado.
+
+Comandos disponíveis para o agente, que deve executá-los automaticamente após receber a URL:
+
+    node scripts/case-media.mjs scan hydro "https://drive.google.com/drive/folders/ID"
+    node scripts/case-media.mjs docs hydro "https://drive.google.com/drive/folders/ID"
+    node scripts/case-media.mjs previews hydro "https://drive.google.com/drive/folders/ID"
+
+scan lista metadados recursivamente e não baixa vídeos. docs baixa DOC/DOCX/PDF/TXT de tamanho limitado, não outros arquivos. previews processa lote inicial de até 12 vídeos, priorizando os pequenos (até 250 MB), extrai três frames WebP por vídeo e apaga originais temporários. Native Google Docs podem precisar de exportação adicional pelo conector/API.
+
+Os arquivos da curadoria ficam em .lenses-work/hydro/previews/; o inventário e candidatos ficam em .lenses-work/hydro/inventory.json e candidates.json. O agente revisa os quadros, escolhe os melhores e cria selections.json com nomes dos arquivos de previews escolhidos:
+
+    {"files":["arquivo-1.webp","arquivo-2.webp"]}
+
+Somente com aprovação da seleção, executar:
+
+    node scripts/case-media.mjs stage hydro --approved
+
+Esse comando apenas COPIA thumbnails selecionadas para assets/cases/hydro, sem fazer commit.
+
+Vídeo grande: selecionar o caminho EXATO dentro do inventory.json e confirmar espaço/permissão de download:
+
+    node scripts/case-media.mjs encode hydro "https://drive.google.com/drive/folders/ID" "PASTA/VIDEO_GERAL_FULL.mp4" --confirm-large
+
+A versão atual prepara MP4 H.264/AAC com faststart e um poster WebP, na pasta privada .lenses-work/hydro/optimized/. O Antigravity pode primeiro benchmarkar encoder por GPU e VP9/WebM separadamente, mas não precisa impor WebM. A versão otimizada NÃO é publicada ou hospedada automaticamente; não existe VPS. O agente solicita aprovação de um destino para o vídeo grande, como YouTube não listado ou outra hospedagem, antes de fazer upload.
+
+Depois o agente preenche data/cases/hydro.json em draft, gera HTML, executa QA e verifica a prévia local. Só passa a published e envia arquivos ao GitHub após aprovação expressa. GitHub Actions (build-cases.yml) é **somente QA manual opcional**, não baixa mídias e não faz mais commits automáticos.
+
+Importante: a ferramenta local é um primeiro utilitário operacional e precisa de um teste real na máquina (acesso rclone, FFmpeg, espaço e qualidade dos frames) antes de ser considerada pronta para produção em massa.
