@@ -661,3 +661,109 @@ body.bella-case{overflow-x:clip!important}
  .bella-case .bella-mosaic-story-teaser,
  .bella-case .bella-mosaic-tile--video .bella-video-play{transition:none!important}
 }
+
+/* V8 · catálogo editorial ampliado · 15 peças visuais por solução
+   Painéis largos permitem exploração real em vez de deslocamento de 7%. */
+.bella-case .bella-mosaic-panel{
+  box-sizing:border-box;
+  width:calc(clamp(300px,34vw,490px) + 2274px);
+  flex:0 0 calc(clamp(300px,34vw,490px) + 2274px);
+  grid-template-columns:clamp(300px,34vw,490px) repeat(16,minmax(0,132px));
+  grid-template-rows:repeat(4,minmax(0,1fr));
+  grid-auto-flow:row;
+  align-content:stretch;
+}
+.bella-case .bella-mosaic-panel[data-solution] .bella-mosaic-tile:nth-child(2){grid-column:2/6;grid-row:1/3;}
+.bella-case .bella-mosaic-panel[data-solution] .bella-mosaic-tile:nth-child(3){grid-column:6/9;grid-row:1;}
+.bella-case .bella-mosaic-panel[data-solution] .bella-mosaic-tile:nth-child(4){grid-column:9/12;grid-row:1/3;}
+.bella-case .bella-mosaic-panel[data-solution] .bella-mosaic-tile:nth-child(5){grid-column:12/15;grid-row:1;}
+.bella-case .bella-mosaic-panel[data-solution] .bella-mosaic-tile:nth-child(6){grid-column:15/18;grid-row:1;}
+.bella-case .bella-mosaic-panel[data-solution] .bella-mosaic-tile:nth-child(7){grid-column:6/9;grid-row:2;}
+.bella-case .bella-mosaic-panel[data-solution] .bella-mosaic-tile:nth-child(8){grid-column:12/15;grid-row:2;}
+.bella-case .bella-mosaic-panel[data-solution] .bella-mosaic-tile:nth-child(9){grid-column:15/18;grid-row:2;}
+.bella-case .bella-mosaic-panel[data-solution] .bella-mosaic-tile:nth-child(10){grid-column:2/5;grid-row:3/5;}
+.bella-case .bella-mosaic-panel[data-solution] .bella-mosaic-tile:nth-child(11){grid-column:5/9;grid-row:3;}
+.bella-case .bella-mosaic-panel[data-solution] .bella-mosaic-tile:nth-child(12){grid-column:9/12;grid-row:3/5;}
+.bella-case .bella-mosaic-panel[data-solution] .bella-mosaic-tile:nth-child(13){grid-column:12/15;grid-row:3;}
+.bella-case .bella-mosaic-panel[data-solution] .bella-mosaic-tile:nth-child(14){grid-column:15/18;grid-row:3;}
+.bella-case .bella-mosaic-panel[data-solution] .bella-mosaic-tile:nth-child(15){grid-column:5/9;grid-row:4;}
+.bella-case .bella-mosaic-panel[data-solution] .bella-mosaic-tile:nth-child(16){grid-column:12/18;grid-row:4;}
+
+.bella-case .bella-mosaic-panel .bella-mosaic-info{grid-column:1;grid-row:1/5;}
+/* Eyebrows: só aparecem quando há interação com a mídia. */
+.bella-case .bella-mosaic-tile .bella-media-label,
+.bella-case .bella-mosaic-tile .bella-media-note{
+  opacity:0;transform:translate3d(0,-7px,0);
+  transition:opacity .26s ease,transform .32s cubic-bezier(.22,1,.36,1);
+  pointer-events:none;
+}
+.bella-case .bella-mosaic-tile .bella-media-note{transform:translate3d(0,7px,0)}
+@media(hover:hover) and (pointer:fine){
+  .bella-case .bella-mosaic-tile:hover .bella-media-label,
+  .bella-case .bella-mosaic-tile:hover .bella-media-note{
+    opacity:1;transform:translate3d(0,0,0);
+  }
+}
+.bella-case .bella-mosaic-tile:focus-visible .bella-media-label,
+.bella-case .bella-mosaic-tile:focus-visible .bella-media-note,
+.bella-case .bella-mosaic-tile.is-tapped .bella-media-label,
+.bella-case .bella-mosaic-tile.is-tapped .bella-media-note{
+  opacity:1;transform:translate3d(0,0,0);
+}
+.bella-case .bella-mosaic-tile:focus-visible{outline:3px solid #5c6ca4;outline-offset:-3px;}
+.bella-case .bella-demo-tile{background:#e7eaf5;isolation:isolate}
+.bella-case .bella-demo-tile--video{background:#202a44}
+.bella-case .bella-demo-tile--story{background:#c7cfe3}
+.bella-case .bella-demo-tile img{width:100%;height:100%;object-fit:cover}
+.bella-case .bella-demo-tile--story img{object-position:center}
+.bella-case .bella-demo-tile.is-image-unavailable{
+  background:linear-gradient(140deg,#4a588a,#7886bc 55%,#d5deef);
+  color:#fff;display:flex;align-items:end;padding:18px;
+}
+.bella-case .bella-demo-fallback{
+  font:650 clamp(18px,1.7vw,30px)/1.15 Inter,sans-serif;
+  letter-spacing:-.045em;max-width:90%;position:relative;z-index:2;
+}
+.bella-case .bella-demo-tile .bella-video-play{opacity:.9}
+.bella-case .bella-mosaic-story-morph.is-centered .bella-mosaic-info__lead{
+  opacity:1!important;
+  width:100%;text-align:center!important;
+}
+.bella-case .bella-mosaic-story-morph.is-centered .bella-mosaic-info__detail,
+.bella-case .bella-mosaic-story-morph.is-centered .bella-mosaic-info__foot{
+  max-height:0!important;margin-top:0!important;overflow:hidden!important;
+}
+.bella-case .bella-mosaic-story-morph .bella-mosaic-info__detail,
+.bella-case .bella-mosaic-story-morph .bella-mosaic-info__foot{overflow:hidden}
+.bella-case .bella-mosaic-story-morph .bella-mosaic-info__eyebrow{
+  display:flex;align-items:center;justify-content:center;align-self:center;
+  width:100%;margin-inline:auto;text-align:center;
+}
+.bella-case .bella-mosaic-story-morph .bella-mosaic-info__icon{margin-left:auto!important;margin-right:auto!important;}
+.bella-case .bella-mosaic-progress .bella-mosaic-toggle[hidden]{display:none!important}
+@media (max-width:1023px){
+  .bella-case .bella-mosaic-panel{
+    width:1900px;flex:0 0 1900px;
+    grid-template-columns:300px repeat(16,minmax(0,92px));
+    grid-template-rows:repeat(4,minmax(0,1fr));
+  }
+  .bella-case .bella-mosaic-story-stage .bella-mosaic-tile{opacity:1;transform:none}
+}
+@media (max-width:700px){
+  .bella-case .bella-mosaic-panel{
+    width:1552px;flex:0 0 1552px;
+    grid-template-columns:260px repeat(16,minmax(0,74px));
+    grid-template-rows:repeat(4,minmax(0,1fr));
+  }
+  .bella-case .bella-mosaic-panel .bella-mosaic-info{padding:19px 15px;}
+  .bella-case .bella-mosaic-panel .bella-mosaic-info__eyebrow{font-size:9px}
+  .bella-case .bella-mosaic-panel .bella-mosaic-info__detail{font-size:11px}
+  .bella-case .bella-mosaic-panel .bella-mosaic-info__title{font-size:27px}
+  .bella-case .bella-mosaic-panel .bella-mosaic-info__icon{width:65px;height:65px}
+  .bella-case .bella-mosaic-tile .bella-media-label{max-width:calc(100% - 12px)}
+}
+@media(prefers-reduced-motion:reduce){
+  .bella-case .bella-mosaic-tile .bella-media-label,
+  .bella-case .bella-mosaic-tile .bella-media-note{transition:none!important;transform:none!important}
+  .bella-case .bella-mosaic-panel .bella-mosaic-tile{opacity:1!important;transform:none!important}
+}
