@@ -22,7 +22,7 @@
   const leftArrow=section.querySelector(".bella-mosaic-edge--prev");
   const rightArrow=section.querySelector(".bella-mosaic-edge--next");
   const keys=["estrategia","branding","embalagem","conteudo"];
-  const colors=["#7886bc","#7886bc","#5c6ca4","#4a588a"];
+  const colors=["#7886bc","#6576ad","#5c6ca4","#4a588a"];
   if(!space||!stage||!overview||!morph||!viewport||!track||!prev||!next||
     cards.length!==4||panels.length!==4||steps.length!==4 ||
     keys.some((key,i)=>cards[i].dataset.bellaFilter!==key||panels[i].dataset.solution!==key))return;
@@ -125,7 +125,7 @@
     const fadeOverview=cap(1-ease(portion(t,.18,.36))+ease(portion(t,.89,.985)));
     const fadeGallery=galleryIn*(1-close);
     const morphAlpha=ease(portion(t,.14,.20))*(1-ease(portion(t,.94,.99)));
-    const painted=idx>0 ? blue : "#7886bc";
+    const painted=blue;
     const fillAtLeft=ease(portion(reveal,.02,1));
     const largeColor=gsap.utils.interpolate(
       gsap.utils.interpolate(painted,"#ffffff",whiten),
@@ -173,7 +173,7 @@
       card.classList.toggle("is-story-past",old);
       card.classList.toggle("is-active",false);
       const active=i===idx && !old;
-      card.style.opacity=String(old?.34:1);
+      card.style.opacity=String(old ? .34 : 1);
       card.style.backgroundColor=active?
         gsap.utils.interpolate("#ffffff",blue,selected*(1-grown*.1)*(1-close)):
         "#ffffff";
