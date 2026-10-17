@@ -354,3 +354,141 @@ body.bella-case{overflow-x:clip!important}
     top:auto;
   }
 }
+
+
+/* ===============================================================
+   LENSES / Bellamazon: card-to-mosaic editorial scroll story v6.
+   Reutiliza a grade de soluções + galeria atual; sem pin do GSAP.
+   =============================================================== */
+@media(min-width:1024px) and (prefers-reduced-motion:no-preference){
+  .bella-case .bella-mosaic-scroll-space.is-story-ready{
+    height:calc(100svh + clamp(6500px,1160svh,11500px))!important;
+    overflow:visible!important;
+    position:relative;
+  }
+  .bella-case .bella-mosaic-scroll-space.is-story-ready > .bella-mosaic-story-stage{
+    position:sticky!important;top:0!important;
+    width:100%;height:100svh;min-height:600px;
+    overflow:hidden;isolation:isolate;background:#f7f9fd;
+  }
+  .bella-case .bella-mosaic-story-stage > .bell-s5.bella-reuse-results{
+    position:absolute!important;inset:0!important;
+    width:100%;height:100%;min-height:0!important;
+    margin:0!important;padding:clamp(22px,4vh,44px) 0!important;
+    display:flex;align-items:center;justify-content:center;
+    overflow:hidden!important;z-index:2;
+    opacity:1;background:linear-gradient(145deg,#f7f9fd,#eef2fa 80%)!important;
+    pointer-events:auto;
+    will-change:opacity;
+  }
+  .bella-case .bella-mosaic-story-stage > .bell-s5 .bell-s5-inner{
+    width:100%;max-width:1370px;
+    padding:0 clamp(24px,5vw,72px)!important;
+    margin:auto!important;
+  }
+  .bella-case .bella-mosaic-story-stage .bella-reuse-results__header{
+    margin:0 auto clamp(22px,3vh,34px)!important;
+  }
+  .bella-case .bella-mosaic-story-stage .bella-filter-toolbar{display:none!important}
+  .bella-case .bella-mosaic-story-stage .bella-reuse-results__timeline{
+    margin:0 0 clamp(28px,4vh,42px)!important;
+  }
+  .bella-case .bella-mosaic-story-stage .bell-s5-cards{
+    gap:clamp(11px,1.5vw,21px);
+    margin:0!important;
+  }
+  .bella-case .bella-mosaic-story-stage .bell-s5-card[data-bella-filter]{
+    min-height:clamp(220px,34vh,320px);
+    background:#fff;
+    border:1px solid #dbe4f2;
+    box-shadow:0 8px 25px #1d315212;
+    isolation:isolate;
+    will-change:background-color,opacity;
+  }
+  .bella-case .bella-mosaic-story-stage .bell-s5-card[data-bella-filter]::after{display:none}
+  .bella-case .bella-mosaic-story-stage .bell-s5-card[data-bella-filter].is-story-past{
+    filter:grayscale(1);
+  }
+  .bella-case .bella-mosaic-story-stage > .bella-infinite-gallery{
+    position:absolute!important;top:0!important;left:0!important;
+    right:0!important;width:100%;height:100svh!important;
+    min-height:600px;z-index:3;
+    opacity:0;pointer-events:none;
+    background:#fff!important;
+    clip-path:inset(0 0 0 0);
+    will-change:opacity;
+  }
+  .bella-case .bella-mosaic-story-stage .bella-mosaic-viewport{
+    opacity:1;
+    clip-path:inset(0 0 0 100%);
+    will-change:clip-path;
+  }
+  /* O cartão principal é o mesmo componente .bella-mosaic-info.
+     Sua cópia visual animada ocupa o centro e depois a coluna esquerda. */
+  .bella-case .bella-mosaic-story-stage .bella-mosaic-panel > .bella-mosaic-info{
+    opacity:0!important;pointer-events:none!important;
+  }
+  .bella-case .bella-mosaic-story-stage > .bella-mosaic-story-morph{
+    position:absolute;z-index:7;top:0;left:0;
+    display:none;width:0;height:0;opacity:0;pointer-events:none;
+    overflow:hidden;border-radius:18px;
+    transform:translateZ(0);
+    box-shadow:0 15px 35px #223c6114;
+    will-change:top,left,width,height,opacity;
+  }
+  .bella-case .bella-mosaic-story-morph > .bella-mosaic-info{
+    width:100%;height:100%;min-height:0;margin:0!important;
+    display:flex;flex-direction:column;align-items:stretch;justify-content:center;
+    border:1px solid #d8e2f1;
+    border-radius:inherit;
+    padding:clamp(18px,2.5vw,38px)!important;
+    color:#202a44;
+    background:#fff;
+    overflow:hidden;
+    box-sizing:border-box;
+  }
+  .bella-case .bella-mosaic-story-morph .bella-mosaic-info__icon{
+    width:clamp(65px,6vw,100px);height:clamp(65px,6vw,100px);
+    margin:clamp(16px,2vh,25px) auto clamp(12px,2vh,23px)!important;
+  }
+  .bella-case .bella-mosaic-story-morph .bella-mosaic-info__title{
+    font-size:clamp(30px,3vw,45px)!important;
+  }
+  .bella-case .bella-mosaic-story-morph .bella-mosaic-info__lead{
+    font-size:clamp(13px,1.17vw,17px);
+  }
+  .bella-case .bella-mosaic-story-morph .bella-mosaic-info__detail{
+    font-size:clamp(12px,1vw,15px);
+  }
+  .bella-case .bella-mosaic-story-morph .bella-mosaic-info__rule{
+    margin:clamp(13px,2vh,23px) auto!important;
+  }
+  .bella-case .bella-mosaic-story-morph .bella-mosaic-info__foot{
+    font-size:9px;
+    margin-top:clamp(14px,2vh,27px)!important;
+  }
+  .bella-case .bella-mosaic-story-morph .bella-mosaic-typed{position:absolute;inset:0}
+  .bella-case .bella-mosaic-story-morph .bella-mosaic-type-ghost{visibility:hidden}
+  .bella-case .bella-mosaic-story-morph .bella-mosaic-info__lead,
+  .bella-case .bella-mosaic-story-morph .bella-mosaic-info__detail,
+  .bella-case .bella-mosaic-story-morph .bella-mosaic-info__foot{position:relative}
+  .bella-case .bella-mosaic-story-stage .bella-mosaic-tile{
+    transform:translateY(22px) scale(.985);
+    opacity:.2;will-change:opacity,transform;
+  }
+  .bella-case .bella-mosaic-story-stage .bella-mosaic-tile img{
+    transform:scale(1.1);
+    will-change:transform;
+  }
+  .bella-case .bella-mosaic-story-stage .bella-mosaic-edge,
+  .bella-case .bella-mosaic-story-stage .bella-mosaic-progress{
+    transition:opacity .25s ease;
+  }
+  .bella-case .bella-mosaic-story-stage .bella-mosaic-past-wash{display:none!important}
+}
+@media(max-width:1023px),(prefers-reduced-motion:reduce){
+  .bella-case .bella-mosaic-story-stage{position:relative!important;height:auto!important}
+  .bella-case .bella-mosaic-story-stage > .bell-s5.bella-reuse-results{position:relative!important}
+  .bella-case .bella-mosaic-story-stage > .bella-infinite-gallery{position:relative!important}
+  .bella-case .bella-mosaic-story-morph{display:none!important}
+}
