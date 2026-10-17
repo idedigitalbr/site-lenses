@@ -20,6 +20,50 @@ document.addEventListener('DOMContentLoaded', () => {
     }, true);
   }
 
+  // LENSES | Navegação única de soluções para todas as páginas.
+  // Mantém o link legado "Nossos Serviços" dentro do submenu, sem duplicar headers.
+  (() => {
+    const script = [...document.scripts].find(node => /\/assets\/script\.js(?:\?|$)/.test(node.src));
+    if (!script) return;
+    const urlFor = pathname => new URL(pathname, script.src).href;
+    const digital = urlFor('../solucoes/digital/');
+    const services = urlFor('../index.html#servicos');
+    const isDigital = new URL(location.href).pathname.replace(/index\.html$/, '').endsWith('/solucoes/digital/');
+
+    const desktop = document.querySelector('.nav-actions-right');
+    const previous = desktop && [...desktop.querySelectorAll('a.lnk')].find(link =>
+      link.textContent.trim().toLowerCase() === 'nossos serviços');
+    if (previous && !desktop.querySelector('.lenses-solutions-nav')) {
+      const menu = document.createElement('details');
+      menu.className = 'lenses-solutions-nav';
+      if (isDigital) menu.classList.add('is-current');
+      menu.innerHTML = '<summary class="lnk">Soluções <span class="lenses-solutions-chevron" aria-hidden="true">⌄</span></summary>' +
+        '<div class="lenses-solutions-panel" role="group" aria-label="Páginas de soluções">' +
+        '<a href="' + digital + '"' + (isDigital ? ' aria-current="page"' : '') + '>Digital <span aria-hidden="true">↗</span></a>' +
+        '<a href="' + services + '">Todos os serviços <span aria-hidden="true">↗</span></a></div>';
+      previous.replaceWith(menu);
+      document.addEventListener('click', event => {
+        if (!menu.contains(event.target)) menu.open = false;
+      });
+      document.addEventListener('keydown', event => {
+        if (event.key === 'Escape' && menu.open) { menu.open = false; menu.querySelector('summary')?.focus(); }
+      });
+    }
+
+    const mobile = document.querySelector('.nav-mobile-links');
+    const previousMobile = mobile && [...mobile.querySelectorAll('a.mobile-lnk')].find(link =>
+      link.textContent.trim().toLowerCase() === 'nossos serviços');
+    if (previousMobile && !mobile.querySelector('.lenses-mobile-solutions')) {
+      const group = document.createElement('div');
+      group.className = 'lenses-mobile-solutions';
+      group.innerHTML = '<span class="lenses-mobile-solutions__title">Soluções</span>' +
+        '<a class="mobile-lnk lenses-mobile-solutions__link" href="' + digital + '"' +
+        (isDigital ? ' aria-current="page"' : '') + '>Digital</a>' +
+        '<a class="mobile-lnk lenses-mobile-solutions__link" href="' + services + '">Todos os serviços</a>';
+      previousMobile.replaceWith(group);
+    }
+  })();
+
   // 1. Mobile Menu Drawer Toggle
   const menuToggle = document.getElementById('menuToggle');
   const mobileNav = document.getElementById('mobileNav');
