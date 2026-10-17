@@ -1,25 +1,4 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import SectionHeading from '../components/SectionHeading.astro';
-import ActionLink from '../components/ActionLink.astro';
-const base=import.meta.env.BASE_URL.replace(/\/?$/,'/');
+import LegacyMirror from '../components/LegacyMirror.astro';
 ---
-<BaseLayout title="LENSES | Laboratório Astro" description="Prova de conceito técnica para a arquitetura de componentes da LENSES" noindex>
-  <section class="poc-case-hero">
-    <div class="poc-shell">
-      <span class="poc-case-hero__eyebrow">EXPERIMENTO ISOLADO · NÃO PUBLICADO</span>
-      <h1>LENSES<br/>em componentes.</h1>
-      <p>Testamos a arquitetura Astro preservando os tokens oficiais da LENSES. Esta é uma prova técnica, não uma substituição da Home atual.</p>
-      <ActionLink href={base+'design-system/'} label="Ver componentes reutilizáveis" theme="light"/>
-    </div>
-  </section>
-  <section class="poc-section poc-section--surface">
-    <div class="poc-shell">
-      <SectionHeading eyebrow="Avaliação" title="Mesmo design, uma única fonte" lead="Navbar, footer, títulos, botões, indicadores e shell de case são componentes. A vitrine do sistema importa esses mesmos componentes."/>
-      <div class="poc-demo-grid">
-        <article class="poc-demo-card"><h3>Vitrine de componentes</h3><p>Documentação viva do visual, sem duplicar marcação.</p><ActionLink href={base+'design-system/'} label="Abrir design system"/></article>
-        <article class="poc-demo-card"><h3>Case com dados JSON</h3><p>Uma mesma estrutura recebe conteúdos variáveis. Os números do teste são exemplos explicitamente identificados.</p><ActionLink href={base+'preview/'} label="Ver case de exemplo"/></article>
-      </div>
-    </div>
-  </section>
-</BaseLayout>
+<LegacyMirror source="index.html"/>
