@@ -33,7 +33,9 @@ O layout editorial Bellamazon é a referência aprovada para os próximos cases 
 - Fonte de conteúdo de cada cliente: data/cases/SLUG.json e assets/cases/SLUG/.
 - Gerador de HTML estático: scripts/build-case.mjs.
 - Verificação: scripts/check-generated-cases.mjs.
-- Geração via GitHub Actions: .github/workflows/build-cases.yml, se habilitada e com escrita autorizada.
+- Execução local pelo Antigravity: .agents/skills/novocase/SKILL.md (comando /novocase).
+- Pipeline local Drive / thumbnails / vídeo: scripts/case-media.mjs (rclone + FFmpeg).
+- GitHub Actions: .github/workflows/build-cases.yml, apenas validação manual opcional.
 
 Exemplo de preenchimento (fictício, não publicar): data/cases/_modelo.json.
 
@@ -45,3 +47,7 @@ Com Node 20+:
     node scripts/check-generated-cases.mjs
 
 A página final é casev2/hydro/index.html, acessível pela rota /site-lenses/casev2/hydro/. Nunca reutilize KPIs de outro cliente ou exiba arquivos privados do Drive diretamente; trabalhe com mídia aprovada e otimizada.
+
+### Ativar Antigravity
+
+Abra a pasta clonada do repositório como workspace no Antigravity e sincronize o main. Use **/novocase** no chat, envie o link do Google Drive e siga a produção assistida. Primeira execução requer Node 20+, rclone OAuth configurado com acesso ao Drive e FFmpeg no PATH. Nenhum vídeo grande deve ir ao Git, e a publicação requer aprovação. Veja docs/CASE-TEMPLATE.md.
