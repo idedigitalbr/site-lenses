@@ -1517,7 +1517,7 @@
 </style>
   <!-- Contrato tipográfico canônico após CSS legado do case -->
   <link rel="stylesheet" href="../../assets/typography.css?v=20261016-type48">
-  <link rel="stylesheet" href="../../assets/bellamazon-mosaic.css?v=5">
+  <link rel="stylesheet" href="../../assets/bellamazon-mosaic.css?v=6">
   <link rel="stylesheet" href="../../assets/bellamazon-dashboard.css?v=1">
 </head>
 <body class="bella-case">
@@ -1671,18 +1671,14 @@
     </aside>
   </div>
 </section>
+<div class="bella-mosaic-scroll-space" aria-label="Percurso interativo das soluções Lenses">
+<div class="bella-mosaic-story-stage">
 <section class="bell-s5 bella-reuse-results" id="solucoes" aria-labelledby="bell-s5-title">
   <div class="bell-s5-inner">
     <div class="bell-s5-heading bella-reuse-results__header">
       <span class="bella-reuse-results__eyebrow">03 / O QUE DESENVOLVEMOS</span>
       <h2 id="bell-s5-title"><span>Soluções</span> que entregamos</h2>
       <p>Quatro frentes conectadas em um mesmo projeto: estratégia de marca, identidade visual, design de embalagens e produção de conteúdo.</p>
-    </div>
-    <div class="bella-filter-toolbar" role="group" aria-label="Filtrar entregas visuais">
-      <button class="bella-filter-all is-active" type="button" data-bella-filter="all" aria-pressed="true" aria-controls="bella-mosaic-track">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
-        Todas as entregas
-      </button>
     </div>
     <div class="bella-reuse-results__timeline" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
     <div class="bell-s5-cards">
@@ -1701,8 +1697,6 @@
     </div>
   </div>
   </section>
-
-<div class="bella-mosaic-scroll-space" aria-label="Experiência visual horizontal das soluções">
 <section class="bella-reuse-presence bella-infinite-gallery" role="region" aria-label="Galeria horizontal das soluções Bellamazon">
   <div class="bella-mosaic-viewport" aria-label="Deslize para explorar Estratégia, Branding, Embalagem e Conteúdo">
     <div class="bella-mosaic-track" id="bella-mosaic-track">
@@ -1801,6 +1795,8 @@
     </button>
   </nav>
 </section>
+<div class="bella-mosaic-story-morph" aria-hidden="true"></div>
+</div>
 </div>
 
 <section class="dash-wrap bell-results" id="resultados" aria-labelledby="bell-results-title">
@@ -2079,7 +2075,7 @@
   <!-- GSAP + ScrollTrigger exclusivos das novas seções. O site segue funcional sem CDN. -->
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js" defer></script>
-  <script src="../../assets/bellamazon-mosaic.js?v=5" defer></script>
+  <script src="../../assets/bellamazon-mosaic.js?v=6" defer></script>
   <script src="../../assets/bellamazon-dashboard.js?v=1" defer></script>
   <script>
   /* Bellamazon V2 S2-S5 Motion · transform/opacity, sem scroll-jacking. */
