@@ -1,0 +1,14 @@
+---
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+---
+<header class="poc-nav">
+  <div class="poc-shell poc-nav__layout">
+    <a class="poc-brand" href={base} aria-label="LENSES · início">LENSES<span aria-hidden="true">◌</span></a>
+    <nav aria-label="Navegação da prova de conceito" class="poc-nav__links">
+      <a href={base}>Início</a>
+      <a href={base+'design-system/'}>Design system</a>
+      <a href={base+'preview/'}>Prévia do case</a>
+    </nav>
+    <span class="poc-nav__note">POC · NÃO PUBLICADO</span>
+  </div>
+</header>
