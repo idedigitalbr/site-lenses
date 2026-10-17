@@ -33,7 +33,7 @@ O layout editorial Bellamazon é a referência aprovada para os próximos cases 
 - Fonte de conteúdo de cada cliente: data/cases/SLUG.json e assets/cases/SLUG/.
 - Gerador de HTML estático: scripts/build-case.mjs.
 - Verificação: scripts/check-generated-cases.mjs.
-- Execução local pelo Antigravity: .agents/skills/novocase/SKILL.md (comando /novocase).
+- Execução local pelo Antigravity em duas etapas: .agents/skills/organizar-novo-case/SKILL.md e .agents/skills/postar-novo-case/SKILL.md. Alias de postagem: /publicar-novo-case.
 - Pipeline local Drive / thumbnails / vídeo: scripts/case-media.mjs (rclone + FFmpeg).
 - GitHub Actions: .github/workflows/build-cases.yml, apenas validação manual opcional.
 
@@ -50,4 +50,4 @@ A página final é casev2/hydro/index.html, acessível pela rota /site-lenses/ca
 
 ### Ativar Antigravity
 
-Abra a pasta clonada do repositório como workspace no Antigravity e sincronize o main. Use **/novocase** no chat, envie o link do Google Drive e siga a produção assistida. Primeira execução requer Node 20+, rclone OAuth configurado com acesso ao Drive e FFmpeg no PATH. Nenhum vídeo grande deve ir ao Git, e a publicação requer aprovação. Veja docs/CASE-TEMPLATE.md.
+Abra o repositório no Antigravity e sincronize o main. Use **/organizar-novo-case** e envie a pasta do Drive. A skill cria um pacote local privado em .lenses-work/SLUG/ com textos, inventário e mídias otimizadas, sem site ou commit. Depois use **/postar-novo-case SLUG** (ou **/publicar-novo-case SLUG**) para montar a página, revisar e publicar *somente após sua aprovação*. O arquivo de transição é .lenses-work/SLUG/handoff.json, que pode ser inspecionado com scripts/case-handoff.mjs. Aliases camelCase /organizarNovoCase, /postarNovoCase, /publicarNovoCase foram incluídos para compatibilidade, mas a forma canônica de skill usa minúsculas e hífens. Primeira execução requer Node 20+, rclone OAuth e FFmpeg no PATH. Nenhum vídeo grande deve ir ao Git. Consulte docs/CASE-TEMPLATE.md.
