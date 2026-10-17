@@ -1,0 +1,18 @@
+/* Tailwind CSS v4 real: Vite @tailwindcss/vite + tokens canônicos.
+   Não carregar Preflight: ele reseta imagens, body, margens e borders;
+   desativá-lo é uma exigência de paridade visual durante a migração. */
+@layer theme, base, components, utilities;
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+@source "../components";
+@source "../pages";
+
+@theme inline {
+  --color-lenses-saboia: var(--color-brand-saboia);
+  --color-lenses-space: var(--color-brand-space-blue);
+  --color-lenses-hover: var(--color-primary-hover);
+  --color-lenses-light: var(--color-primary-light);
+  --color-lenses-white: var(--color-brand-white);
+  --color-lenses-muted: var(--color-brand-antiflash);
+  --font-lenses: Inter, ui-sans-serif, system-ui, sans-serif;
+}
