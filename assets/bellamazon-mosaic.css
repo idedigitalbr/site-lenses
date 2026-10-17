@@ -317,3 +317,40 @@
   .bella-mosaic-info__rule{opacity:1;transform:none}
   .bella-mosaic-typed.is-typing::after{animation:none}
 }
+
+
+/* ============================================================
+   Corrige saltos do ScrollTrigger: scroll NATIVO + CSS sticky.
+   A seção anterior nunca é parte da área fixada, e nenhum
+   pin-spacer é inserido / recalculado pelo GSAP.
+   ============================================================ */
+html:has(body.bella-case){scroll-behavior:auto!important}
+body.bella-case{overflow-x:clip!important}
+.bella-case .bella-mosaic-scroll-space{
+  position:relative;
+  width:100%;
+  height:auto;
+  background:#fff;
+  overflow:visible;
+}
+@media(min-width:1024px) and (prefers-reduced-motion:no-preference){
+  .bella-case .bella-mosaic-scroll-space.is-scroll-ready{
+    height:calc(100svh + clamp(4400px,780svh,9000px));
+  }
+  .bella-case .bella-mosaic-scroll-space.is-scroll-ready > .bella-infinite-gallery{
+    position:sticky!important;
+    top:0;
+    left:0;
+    right:0;
+    z-index:1;
+  }
+}
+@media(max-width:1023px),(prefers-reduced-motion:reduce){
+  .bella-case .bella-mosaic-scroll-space{
+    height:auto!important;
+  }
+  .bella-case .bella-mosaic-scroll-space > .bella-infinite-gallery{
+    position:relative!important;
+    top:auto;
+  }
+}
