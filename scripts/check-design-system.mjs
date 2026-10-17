@@ -102,6 +102,15 @@ check(bell.includes('data-bella-filter="all"') &&
       'Bellamazon: filtros das soluções ausentes');
 check((bell.match(/class="bella-mosaic-panel"/g)||[]).length === 4,
       'Bellamazon: quatro capítulos da galeria não encontrados');
+const sectionOfSolutions = bell.indexOf('<section class="bell-s5 bella-reuse-results"');
+const solutionsEnd = bell.indexOf('</section>', sectionOfSolutions);
+const galleryStart = bell.indexOf('<section class="bella-reuse-presence bella-infinite-gallery"');
+const galleryEnd = bell.indexOf('</section>', galleryStart);
+const dashboardStart = bell.indexOf('<section class="dash-wrap bell-results"');
+check(sectionOfSolutions >= 0 && galleryStart > solutionsEnd &&
+      galleryEnd > galleryStart && dashboardStart > galleryEnd,
+      'Bellamazon: mosaico deve ser seção irmã dos filtros para o pin não sobrepor os cards');
+
 check((bell.match(/class="bella-mosaic-step/g)||[]).length === 4 &&
       bell.includes('class="bella-mosaic-progress"'),
       'Bellamazon: barra de progresso clicável incompleta');
