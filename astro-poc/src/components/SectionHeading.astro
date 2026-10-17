@@ -1,0 +1,14 @@
+---
+interface Props {
+  eyebrow?: string;
+  title: string;
+  lead?: string;
+  inverse?: boolean;
+}
+const {eyebrow, title, lead, inverse=false} = Astro.props;
+---
+<div class:list={['poc-section-heading',{'poc-section-heading--inverse':inverse}]}>
+  {eyebrow && <span class="poc-eyebrow">{eyebrow}</span>}
+  <h2>{title}</h2>
+  {lead && <p>{lead}</p>}
+</div>
