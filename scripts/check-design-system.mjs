@@ -121,7 +121,18 @@ for (const href of Array.from(bell.matchAll(/\b(?:href|src|poster)\s*=\s*["']([^
 const mosaicJS = read('assets/bellamazon-mosaic.js');
 check(mosaicJS.includes('pinSpacing:true') && mosaicJS.includes('prefers-reduced-motion: reduce'),
       'Bellamazon: pin ou reduced-motion ausentes');
-check(mosaicJS.includes('userPaused') && mosaicJS.includes('aria-pressed'), 'Bellamazon: controle de pausa incompleto');
+check(mosaicJS.includes('paused=!paused') && mosaicJS.includes('aria-pressed'),
+      'Bellamazon: controle de pausa incompleto');
+check(mosaicJS.includes('renderScroll(self.progress)') &&
+      mosaicJS.includes('weights = [1.24,1,1,1.34]'),
+      'Bellamazon: scroll não reversível ou sem pausas estendidas no início/fim');
+check(mosaicJS.includes('bella-mosaic-type-ghost') &&
+      mosaicJS.includes('write(parts.detail'),
+      'Bellamazon: texto progressivo do scroll ausente');
+const mosaicCSS = read('assets/bellamazon-mosaic.css');
+check(mosaicCSS.includes('bella-mosaic-past-wash') &&
+      bell.includes('class="bella-mosaic-past-wash"'),
+      'Bellamazon: tratamento monocromático de passagem ausente');
 const homeHTML = read('index.html');
 check(homeHTML.includes('class="hero-accessible-title"'), 'Home: H1 acessível ausente');
 check(homeHTML.includes('preload="none"') && homeHTML.includes('heroVideo'), 'Home: vídeo com preload antecipado');
