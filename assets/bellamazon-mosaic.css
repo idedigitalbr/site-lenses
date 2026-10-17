@@ -138,7 +138,7 @@
 }
 .bella-mosaic-edge--prev{left:0;background:linear-gradient(90deg,#fffffff2 0%,#ffffffa1 48%,#ffffff00 100%)}
 .bella-mosaic-edge--next{right:0;background:linear-gradient(270deg,#fffffff2 0%,#ffffffa1 48%,#ffffff00 100%)}
-.bella-mosaic-edge:hover,.bella-mosaic-edge:focus-within,
+.bella-mosaic-edge.is-near,.bella-mosaic-edge:hover,.bella-mosaic-edge:focus-within,
 .bella-infinite-gallery:has(.bella-mosaic-viewport:hover) .bella-mosaic-edge.is-near{
   opacity:1;pointer-events:auto;
 }
@@ -157,7 +157,7 @@
 /* Progresso navegável: cada trecho tem seu próprio azul, sem títulos extras. */
 .bella-mosaic-progress{
   position:relative;z-index:9;display:grid;grid-template-columns:repeat(4,1fr);
-  gap:clamp(6px,1vw,14px);height:34px;min-height:34px;
+  gap:clamp(6px,1vw,14px);grid-template-columns:repeat(4,minmax(0,1fr)) 34px;height:42px;min-height:42px;
   padding:11px clamp(16px,3.7vw,65px) 15px;background:#fff;
 }
 .bella-mosaic-step{
@@ -180,6 +180,14 @@
 .bella-mosaic-viewport.is-native{overflow-x:auto;touch-action:pan-x pan-y;scrollbar-width:none;-webkit-overflow-scrolling:touch}
 .bella-mosaic-viewport.is-native::-webkit-scrollbar{display:none}
 
+.bella-mosaic-progress .bella-mosaic-toggle{
+  width:28px;height:28px;min-width:28px;display:grid;place-items:center;
+  margin-top:-10px;border:1px solid #c8d2e7;border-radius:50%;
+  background:#fff;color:#60729b;cursor:pointer;align-self:center;
+}
+.bella-mosaic-progress .bella-mosaic-toggle svg{width:14px;height:14px;fill:none}
+.bella-mosaic-progress .bella-mosaic-toggle:hover{background:#eaf0fc}
+.bella-mosaic-progress .bella-mosaic-toggle:focus-visible{outline:3px solid #5c6ca4;outline-offset:4px}
 /* Tablets: card informativo mais compacto, ainda ao lado das fotografias. */
 @media(max-width:1100px){
  .bella-mosaic-panel{grid-template-columns:minmax(250px,40fr) repeat(8,minmax(0,7.5fr));gap:7px}
