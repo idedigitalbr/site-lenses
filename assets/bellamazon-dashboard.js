@@ -1,97 +1,200 @@
-/* Bellamazon · dashboard motion com GSAP/ScrollTrigger já carregados no case.
-   Animações decorativas, não aumentam os valores nem alteram o significado dos dados.
-   Sem GSAP ou sob movimento reduzido, o dashboard permanece imediatamente legível. */
+/* LENSES · Bellamazon | Dashboard motion v2
+   Coreografia vinculada ao scroll, por linha de KPIs e por gráfico.
+   O scroll permanece nativo. Os dados do painel continuam ilustrativos.
+   GSAP/ScrollTrigger são os que o case já carrega; sem bibliotecas novas. */
 (() => {
   "use strict";
-  const init=()=>{
-    const root=document.querySelector(".bell-results");
-    if(!root||root.dataset.dashboardMotionInit)return;
-    root.dataset.dashboardMotionInit="true";
-    const bars=[...root.querySelectorAll(".bell-bar")];
-    const months=[...root.querySelectorAll(".bell-bar-unit")];
-    months.forEach((unit,index)=>{
-      const name=unit.querySelector("span:last-child")?.textContent.trim()||"Mês";
-      const bar=unit.querySelector(".bell-bar");
-      if(!bar)return;
-      unit.tabIndex=0;
-      unit.setAttribute("aria-label",name+": valor representado no gráfico ilustrativo");
-      const tooltip=bar.querySelector(".bell-bar-tooltip")||document.createElement("span");
-      if(!tooltip.classList.contains("bell-bar-tooltip")){
-        tooltip.className="bell-bar-tooltip";
-        tooltip.textContent=name+" · exemplo";
+
+  const init = () => {
+    const root = document.querySelector(".bell-results");
+    if (!root || root.dataset.dashboardMotionInit) return;
+    root.dataset.dashboardMotionInit = "true";
+
+    // Os tooltips permanecem acessíveis por mouse e teclado.
+    root.querySelectorAll(".bell-bar-unit").forEach(unit => {
+      const month = unit.querySelector("span:last-child")?.textContent.trim() || "Mês";
+      const bar = unit.querySelector(".bell-bar");
+      if (!bar) return;
+      unit.tabIndex = 0;
+      unit.setAttribute("aria-label", month + ": valor ilustrativo do gráfico");
+      if (!bar.querySelector(".bell-bar-tooltip")) {
+        const tooltip = document.createElement("span");
+        tooltip.className = "bell-bar-tooltip";
+        tooltip.textContent = month + " · exemplo";
         bar.appendChild(tooltip);
       }
     });
-    const svg=root.querySelector(".bell-line-chart svg");
-    const paths=svg?[...svg.querySelectorAll("path")]:[];
-    const line=paths.find(path=>path.getAttribute("stroke")==="#5577c1");
-    const fill=paths.find(path=>(path.getAttribute("fill")||"").startsWith("url("));
-    if(line)line.classList.add("bell-chart-path");
-    const counters=[...root.querySelectorAll(".bell-stat > b, .bell-chart-number, .bell-donut b")];
-    const finalValues=counters.map(el=>el.textContent.trim());
-    const gsap=window.gsap,ST=window.ScrollTrigger;
-    if(!gsap||!ST||matchMedia("(prefers-reduced-motion: reduce)").matches)return;
+
+    const svg = root.querySelector(".bell-line-chart svg");
+    const svgPaths = svg ? [...svg.querySelectorAll("path")] : [];
+    const line = svgPaths.find(el => el.getAttribute("stroke") === "#5577c1");
+    const fill = svgPaths.find(el => (el.getAttribute("fill") || "").startsWith("url("));
+    if (line) line.classList.add("bell-chart-path");
+
+    const gsap = window.gsap, ST = window.ScrollTrigger;
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (!gsap || !ST || reduced) return;
     gsap.registerPlugin(ST);
-    let animated=false;
-    const run=()=>{
-      if(animated)return;
-      animated=true;
-      const stats=root.querySelectorAll(".bell-stat");
-      const charts=root.querySelectorAll(".bell-chart");
-      const dots=root.querySelectorAll(".bell-world circle");
-      const lineDots=root.querySelectorAll(".bell-line-chart circle");
-      const gain=root.querySelector(".bell-floating-gain");
-      const donut=root.querySelector(".bell-donut");
-      const tl=gsap.timeline({defaults:{ease:"power2.out"}});
-      tl.fromTo(stats,{opacity:0,y:38,scale:.97},{
-        opacity:1,y:0,scale:1,duration:1.05,stagger:.12,ease:"power3.out",clearProps:"transform,opacity"
-      },0);
-      tl.fromTo(charts,{opacity:0,y:50},{
-        opacity:1,y:0,duration:1.18,stagger:.18,ease:"power3.out",clearProps:"transform,opacity"
-      },.38);
-      tl.fromTo(bars,{scaleY:0,opacity:.5},{
-        scaleY:1,opacity:1,duration:1.85,stagger:.17,ease:"power3.out",
-        transformOrigin:"center bottom",clearProps:"transform,opacity"
-      },.8);
-      if(line){
-        const length=line.getTotalLength();
-        gsap.set(line,{strokeDasharray:length,strokeDashoffset:length});
-        tl.to(line,{strokeDashoffset:0,duration:2.45,ease:"power2.inOut",clearProps:"strokeDasharray,strokeDashoffset"},1.1);
-      }
-      if(fill)tl.fromTo(fill,{opacity:0},{opacity:1,duration:1.65},1.65);
-      if(lineDots.length)tl.fromTo(lineDots,{scale:0,transformOrigin:"center center"},
-        {scale:1,duration:.7,stagger:.13,ease:"back.out(1.8)",clearProps:"transform"},2.1);
-      if(gain)tl.fromTo(gain,{opacity:0,y:14,scale:.9},
-        {opacity:1,y:0,scale:1,duration:.8,ease:"back.out(1.5)",clearProps:"transform,opacity"},2.0);
-      if(donut){
-        tl.fromTo(donut,{"--bell-donut-reveal":"0%"},{"--bell-donut-reveal":"100%",duration:2.15,ease:"power2.inOut",
-          onComplete:()=>donut.style.removeProperty("--bell-donut-reveal")},.9);
-      }
-      if(dots.length)tl.fromTo(dots,{scale:0,transformOrigin:"center center",opacity:0},
-        {scale:1,opacity:1,duration:.65,stagger:.16,ease:"back.out(1.6)",clearProps:"transform,opacity"},1.15);
-      // Contadores tabulares em pt-BR. Valores finais são restaurados literalmente.
-      counters.forEach((el,i)=>{
-        const raw=finalValues[i],match=raw.match(/^([+\-]?)(\d[\d.,]*)(.*)$/);
-        if(!match)return;
-        const prefix=match[1],suffix=match[3],goal=Number(match[2].replace(/\./g,"").replace(",",".")); 
-        if(!Number.isFinite(goal))return;
-        const value={n:0};
-        tl.to(value,{
-          n:goal,duration:1.9,ease:"power2.out",
-          onUpdate:()=>{
-            const shown=Math.round(value.n);
-            el.textContent=prefix+shown.toLocaleString("pt-BR")+suffix;
-          },
-          onComplete:()=>{el.textContent=raw;}
-        },.55+i*.075);
+
+    const compact = window.matchMedia("(max-width: 760px)").matches;
+    const START = compact ? "top 92%" : "top 94%";
+    const END = compact ? "top 41%" : "top 36%";
+    const scrub = compact ? 0.6 : 0.85;
+    const active = [];
+    const $ = (host, selector) => [...host.querySelectorAll(selector)];
+    const has = (host, selector) => host.querySelector(selector);
+    const ease = "power2.out";
+
+    // Não usamos transform inline nos cards: CSS translate/scale preserva
+    // o hover original (transform:translateY(-6px)) sem conflito com GSAP.
+    function entrance(tl, node, at, duration = .62, startY = 55) {
+      if (!node) return;
+      tl.fromTo(node,
+        {opacity:0, "--bell-enter-y":startY + "px", "--bell-enter-scale":.975},
+        {opacity:1, "--bell-enter-y":"0px", "--bell-enter-scale":1,
+          duration, ease:"power2.out", immediateRender:true}, at);
+    }
+
+    const number = new Intl.NumberFormat("pt-BR");
+    function animateNumber(tl, element, at, duration = .68) {
+      if (!element) return;
+      const raw = element.textContent.trim();
+      const match = raw.match(/^([+\-]?)(\d[\d.,]*)(.*)$/);
+      if (!match) return;
+      const goal = Number(match[2].replace(/\./g,"").replace(",","."));
+      if (!Number.isFinite(goal)) return;
+      const decimals = match[2].includes(",") ? match[2].split(",")[1].length : 0;
+      const formatter = new Intl.NumberFormat("pt-BR",{
+        minimumFractionDigits:decimals,maximumFractionDigits:decimals
       });
-      // Evita manter transformações e áreas de GPU após a sequência.
-      tl.eventCallback("onComplete",()=>{
-        gsap.set(root.querySelectorAll(".bell-stat,.bell-chart,.bell-bar"),{clearProps:"willChange"});
+      const prefix = match[1], suffix = match[3];
+      const state = {value:0};
+      // Scroll reversível: ao rolar para cima a contagem retrocede.
+      tl.fromTo(state,{value:0},{value:goal,duration,ease,
+        immediateRender:true,
+        onUpdate:()=>{
+          const value = decimals ? state.value : Math.round(state.value);
+          element.textContent = prefix + formatter.format(value) + suffix;
+        }
+      },at);
+      // Valor originalmente rotulado continua intacto para leitores de tela.
+      element.setAttribute("aria-label",raw);
+      element.style.fontVariantNumeric = "tabular-nums";
+    }
+
+    function timeline(trigger, end = END) {
+      const t = gsap.timeline({paused:false,defaults:{ease}});
+      active.push(ST.create({
+        trigger,start:START,end,
+        animation:t,scrub,
+        invalidateOnRefresh:true,
+        fastScrollEnd:false
+      }));
+      return t;
+    }
+
+    // Título do dashboard aparece antes dos indicadores.
+    const heading = root.querySelector(".bell-results-heading");
+    if (heading) {
+      const t = timeline(heading,compact?"top 55%":"top 52%");
+      t.fromTo($(heading,".bell-accent-line,h2,p"),
+        {autoAlpha:0,y:30},
+        {autoAlpha:1,y:0,duration:.62,stagger:.13,ease:"power2.out"},0);
+    }
+
+    // Os quatro KPIs aparecem em cascata, e seus números crescem juntos.
+    const statRow = root.querySelector(".bell-stat-grid");
+    const stats = statRow ? $(statRow,".bell-stat") : [];
+    if (statRow && stats.length) {
+      const t = timeline(statRow,compact?"top 49%":"top 45%");
+      stats.forEach((card,i) => {
+        const begin = i*(compact?.105:.145);
+        entrance(t,card,begin,.59,compact?30:49);
+        const icon=has(card,".bell-stat-icon");
+        if (icon) t.fromTo(icon,{scale:.65,rotate:-12,opacity:.1},
+          {scale:1,rotate:0,opacity:1,duration:.45,ease:"back.out(1.6)"},begin+.15);
+        animateNumber(t,has(card,":scope > b"),begin+.20,.58);
       });
-    };
-    ST.create({trigger:root,start:"top 78%",once:true,onEnter:run});
+    }
+
+    // Cada gráfico possui sua própria zona de scroll, para não animar
+    // fora da viewport nem competir com o painel anterior.
+    const charts = $(root,".bell-chart");
+    charts.forEach(chart => {
+      const t = timeline(chart);
+      entrance(t,chart,0,.56,compact?36:55);
+      const header = $(chart,".bell-overline,.bell-chart-number,.bell-chart-heading p");
+      if (header.length) {
+        t.fromTo(header,{opacity:0,y:15},
+          {opacity:1,y:0,duration:.30,stagger:.055},.16);
+      }
+
+      if (chart.classList.contains("bell-chart-reach")) {
+        const bars = $(chart,".bell-bar");
+        // Da base para o topo, em sequência por mês.
+        t.fromTo(bars,{scaleY:0,opacity:.3,transformOrigin:"center bottom"},
+          {scaleY:1,opacity:1,duration:.55,stagger:.095,ease:"power2.out",
+            transformOrigin:"center bottom"},.35);
+        animateNumber(t,has(chart,".bell-chart-number"),.29,.78);
+        const trend = has(chart,".bell-bottom-trend");
+        if (trend) t.fromTo(trend,{opacity:0,y:12},
+          {opacity:1,y:0,duration:.29},.91);
+
+      } else if (chart.classList.contains("bell-chart-engagement")) {
+        animateNumber(t,has(chart,".bell-chart-number"),.29,.77);
+        if (line) {
+          // Desenha a curva real por strokeDashoffset.
+          const length = line.getTotalLength();
+          if (length > 0) t.fromTo(line,
+            {strokeDasharray:length,strokeDashoffset:length},
+            {strokeDasharray:length,strokeDashoffset:0,
+              duration:.78,ease:"power1.inOut"},.35);
+        }
+        if (fill) t.fromTo(fill,{opacity:0},{opacity:1,duration:.38},.68);
+        const dots=$(chart,".bell-line-chart circle");
+        if (dots.length) t.fromTo(dots,
+          {opacity:0,scale:0,transformOrigin:"center center"},
+          {opacity:1,scale:1,duration:.36,stagger:.10,ease:"back.out(1.5)"},.78);
+        const bubble=has(chart,".bell-floating-gain");
+        if (bubble) t.fromTo(bubble,{opacity:0,y:24,scale:.82},
+          {opacity:1,y:0,scale:1,duration:.43,ease:"back.out(1.4)",
+            clearProps:"transform"},.83);
+
+      } else if (chart.classList.contains("bell-chart-map")) {
+        const land=$(chart,".bell-world path");
+        if (land.length) t.fromTo(land,{opacity:.10,y:12},
+          {opacity:1,y:0,duration:.46,stagger:.12},.35);
+        const pins=$(chart,".bell-world circle");
+        if (pins.length) t.fromTo(pins,
+          {opacity:0,scale:0,transformOrigin:"center center"},
+          {opacity:1,scale:1,duration:.40,stagger:.15,ease:"back.out(1.8)"},.63);
+        const note=has(chart,".bell-chart-muted");
+        if (note) t.fromTo(note,{opacity:0,y:10},
+          {opacity:1,y:0,duration:.30},.88);
+
+      } else if (chart.classList.contains("bell-chart-mix")) {
+        const donut=has(chart,".bell-donut");
+        if (donut) t.fromTo(donut,
+          {"--bell-donut-reveal":"0%"},
+          {"--bell-donut-reveal":"100%",duration:.78,ease:"power1.inOut"},.35);
+        const legend=$(chart,".bell-mix-legend > div");
+        if (legend.length) t.fromTo(legend,
+          {opacity:0,x:18},
+          {opacity:1,x:0,duration:.43,stagger:.13},.46);
+        animateNumber(t,has(chart,".bell-donut b"),.45,.72);
+      }
+    });
+
+    // Ao abrir diretamente o hash da seção, o progresso reflete o scroll.
+    requestAnimationFrame(() => ST.refresh());
+    if (document.fonts?.ready) document.fonts.ready.then(() => ST.refresh());
+
+    // Desmontagem limpa ao navegar fora da página (sem triggers duplicados).
+    window.addEventListener("pagehide",()=>{
+      active.forEach(trigger => trigger.kill());
+    },{once:true});
   };
-  if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",init,{once:true});
+  if (document.readyState === "loading")
+    document.addEventListener("DOMContentLoaded",init,{once:true});
   else init();
 })();
