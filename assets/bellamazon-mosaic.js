@@ -81,7 +81,8 @@
         button.setAttribute("aria-pressed", String(active));
       });
       position.auto = 0; position.manual = 0; position.scroll = 0;
-      render();
+      // A função de desenho é declarada adiante; não acioná-la no primeiro boot.
+      updateProgress(0);
     };
     build("all");
 
