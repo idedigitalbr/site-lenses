@@ -1,0 +1,34 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
+import StatCard from '../../components/StatCard.astro';
+import ActionLink from '../../components/ActionLink.astro';
+import demo from '../../../../data/cases/_modelo.json';
+const base=import.meta.env.BASE_URL.replace(/\/?$/,'/');
+---
+<BaseLayout title="Design system vivo | LENSES" description="Vitrine dos componentes compartilhados LENSES usados no laboratório Astro." noindex>
+  <section class="poc-section poc-section--blue">
+    <div class="poc-shell">
+      <SectionHeading eyebrow="Identidade LENSES · fonte compartilhada" title="Design system vivo" lead="Os exemplos abaixo não são uma cópia do HTML das páginas: são exatamente os mesmos componentes renderizados pelo case." inverse/>
+      <ActionLink href={base+'preview/'} theme="light" label="Ver os componentes aplicados"/>
+    </div>
+  </section>
+  <section class="poc-section poc-section--surface">
+    <div class="poc-shell">
+      <SectionHeading eyebrow="Tipografia" title="Título editorial" lead="A fonte Inter, o espaçamento e as cores são definidos na camada de estilos única da experiência Astro. Os tokens são importados do repositório original."/>
+      <div class="poc-demo-card">
+        <span class="poc-overline">Padrão de botões</span>
+        <p><ActionLink href={base+'preview/'} label="Botão padrão"/></p>
+      </div>
+    </div>
+  </section>
+  <section class="poc-section">
+    <div class="poc-shell">
+      <SectionHeading eyebrow="Cards reais reutilizados" title="Indicadores" lead="StatCard é usado aqui e também na prévia de case. Alterações no componente refletem nos dois lugares."/>
+      <div class="poc-grid">
+        {demo.kpis.map(k=><StatCard label={k.label} value={k.value} description="Dado de demonstração, não verificado"/>)}
+      </div>
+      <p class="poc-notice">Todos os números deste protótipo são fictícios e usados apenas para validação de design.</p>
+    </div>
+  </section>
+</BaseLayout>
