@@ -76,6 +76,15 @@
     morph.replaceChildren();
     const copy=panelInfo[index].cloneNode(true);
     copy.setAttribute("aria-hidden","true");
+    const headline=copy.querySelector(".bella-mosaic-info__title");
+    const leadSource=copy.querySelector(".bella-mosaic-info__lead");
+    if(headline && leadSource){
+      const teaser=document.createElement("p");
+      teaser.className="bella-mosaic-story-teaser";
+      teaser.textContent=leadSource.textContent.trim();
+      teaser.setAttribute("aria-hidden","true");
+      headline.insertAdjacentElement("afterend",teaser);
+    }
     morph.appendChild(copy);
     const map={};
     [["lead",".bella-mosaic-info__lead"],
@@ -151,8 +160,18 @@
       width:Math.max(1,finalRect.w)+"px",height:Math.max(1,finalRect.h)+"px",
       opacity:String(morphAlpha)
     });
+    // O card expandido permanece editorial e centralizado até começar a
+    // deslocar para a esquerda; depois o texto assume a composição.
+    morph.classList.toggle("is-centered",split<.18);
     const info=morph.firstElementChild;
     if(info){
+      const teaser=info.querySelector(".bella-mosaic-story-teaser");
+      if(teaser){
+        const visibility=ease(portion(t,.22,.33))*(1-ease(portion(t,.52,.69)))*(1-close);
+        teaser.style.opacity=String(visibility);
+        teaser.style.maxHeight=((1-split)*85)+"px";
+        teaser.style.marginTop=((1-split)*22)+"px";
+      }
       info.style.backgroundColor=gsap.utils.interpolate(largeColor,"#ffffff",close);
       info.style.color=gsap.utils.interpolate(fg,"#202a44",close);
       const txt=texts.get(idx);
@@ -197,7 +216,7 @@
     panelWidth=Math.max(1,panels[0].getBoundingClientRect().width||viewport.clientWidth);
     // Deslocamento suave de até 7% da largura: mais fotografias entram
     // sem abandonar o capítulo durante a leitura.
-    const pan=ease(portion(reveal,.32,1))*panelWidth*.065;
+    const pan=ease(portion(reveal,.32,1))*panelWidth*.125;
     setX(-idx*panelWidth-pan);
     photoSet.forEach((set,i)=>{
       if(i!==idx)return;
