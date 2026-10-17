@@ -99,7 +99,9 @@ function validate(d){
   if(errors.length)throw Error("Briefing inválido:\n- "+errors.join("\n- "));
 }
 function dashboard(data){
-  const ds=data.deliverables,total=ds.reduce((s,x)=>s+Number(x.quantity),0);
+  const source=data.deliverables;
+  const ds=source.length>6?[...source.slice(0,5),{label:"Outros",short:"Outros",quantity:source.slice(5).reduce((n,x)=>n+Number(x.quantity),0)}]:source;
+  const total=ds.reduce((s,x)=>s+Number(x.quantity),0);
   const metrics=data.kpis.map(k=>'<article class="bell-stat"><div class="bell-stat-head">'+
     '<span class="bell-stat-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 7v10M7 12h10"/></svg></span>'+
     '<span class="bell-stat-label">'+esc(k.label)+'</span></div><b>'+esc(k.value)+'</b><p>'+esc(k.description||"")+'</p></article>').join("");
@@ -146,7 +148,15 @@ function build(d){
   let s=TEMPLATE;
   s=s.replace(/<title>[\s\S]*?<\/title>/,'<title>'+esc(d.name)+' | Case LENSES</title>');
   s=meta(s,"description",d.meta?.description||d.hero.subtitle);
+  s=s.replace("</head>",'<meta property="og:title" content="'+esc(d.name+" | Case LENSES")+
+    '"><meta property="og:description" content="'+esc(d.meta?.description||d.hero.subtitle)+
+    '"><meta property="og:type" content="article"></head>');
   s=s.replace('<body class="bella-case">','<body class="bella-case" data-case-template="v1">');
+  s=s.replaceAll("bellamazon-hero","lenses-case-hero");
+  s=s.replace('Galeria horizontal das soluções Bellamazon','Galeria horizontal das soluções '+esc(d.name));
+  s=s.replace('iframe.title="Vídeo institucional Bellamazon — captação e edição Lenses (YouTube)";',
+    'iframe.title='+JSON.stringify("Vídeo institucional de "+d.name+" · LENSES")+";");
+  s=s.replace(/const imageFallbacks=\[[\s\S]*?\];/, "const imageFallbacks=[];");
   if(d.status!=="published")s=s.replace("</head>",'<meta name="robots" content="noindex,nofollow"></head>');
   s=idx(s,"h1","bell-s1-title",d.name);
   s=txt(s,"p","bell-s1-subtitle",d.hero.subtitle);
@@ -220,7 +230,6 @@ function build(d){
   s=s.replace("</head>",'<style>'+css.join("\n")+'</style></head>');
   if(d.status!=="published")s=s.replace('<main id="topo">','<main id="topo"><div class="case-draft-banner">PRÉVIA · Conteúdo e mídias sujeitos à aprovação</div>');
   s=s.replaceAll('aria-label="Bellamazon Native Islands Açaí"','aria-label="'+esc(d.name)+'"');
-  s=s.replaceAll('class="bell-s1-signature"','class="bell-s1-signature"');
   return s;
 }
 function main(file){
