@@ -136,7 +136,10 @@
     const typed=document.createElement("span");
     typed.className="bella-mosaic-typed";
     typed.setAttribute("aria-hidden","true");
-    el.replaceChildren(ghost,typed);
+    const accessible=document.createElement("span");
+    accessible.className="bella-mosaic-type-readable";
+    accessible.textContent=text;
+    el.replaceChildren(ghost,typed,accessible);
     return {el,text,typed,count:-1};
   };
   const write=(obj,progress)=>{
@@ -233,6 +236,7 @@
     // O card expandido permanece editorial e centralizado até começar a
     // deslocar para a esquerda; depois o texto assume a composição.
     morph.classList.toggle("is-centered",split<.93);
+    morph.setAttribute("aria-hidden",String(morphAlpha<.12));
     const info=morph.firstElementChild;
     if(info){
       info.style.backgroundColor=gsap.utils.interpolate(largeColor,"#ffffff",close);
@@ -243,8 +247,8 @@
       const copy=ease(portion(t,.35,.9));
       if(txt){
         write(txt.lead,portion(t,.11,.43));
-        write(txt.detail,portion(t,.41,.86));
-        write(txt.foot,portion(t,.68,.91));
+        write(txt.detail,portion(t,.41,.69));
+        write(txt.foot,portion(t,.61,.73));
       }
       const detail=info.querySelector(".bella-mosaic-info__detail");
       if(detail)detail.style.maxHeight=Math.round(split*340)+"px";
