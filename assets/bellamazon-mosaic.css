@@ -131,7 +131,7 @@
 
 /* Setas só aparecem nas bordas por proximidade; fumaça branca no fundo. */
 .bella-mosaic-edge{
-  position:absolute;z-index:10;top:0;bottom:34px;width:clamp(73px,10vw,160px);
+  position:absolute;z-index:10;top:0;bottom:54px;width:clamp(73px,10vw,160px);
   display:flex;align-items:center;justify-content:center;
   opacity:0;transition:opacity .4s ease;
   pointer-events:none;
@@ -159,33 +159,37 @@
 
 /* Progresso navegável: cada trecho tem seu próprio azul, sem títulos extras. */
 .bella-mosaic-progress{
-  position:relative;z-index:9;display:grid;grid-template-columns:repeat(4,1fr);
-  gap:clamp(6px,1vw,14px);grid-template-columns:repeat(4,minmax(0,1fr)) 34px;height:42px;min-height:42px;
-  padding:11px clamp(16px,3.7vw,65px) 15px;background:#fff;
+  position:relative;z-index:9;display:grid;grid-template-columns:repeat(4,minmax(0,1fr)) 34px;
+  gap:clamp(6px,1vw,14px);height:54px;min-height:54px;
+  padding:11px clamp(16px,3.7vw,65px) 12px;background:#fff;
 }
 .bella-mosaic-step{
   --step-fill:0%;--step-color:#7886bc;
-  position:relative;display:block;width:100%;height:8px;border:0;
-  padding:0;overflow:visible;border-radius:50px;background:#dfe6f5;
-  cursor:pointer;transition:background-color .3s ease;
+  position:relative;display:block;width:100%;height:26px;border:0;
+  padding:0;overflow:visible;border-radius:50px;background:transparent;
+  cursor:pointer;
 }
 .bella-mosaic-step[data-solution="estrategia"]{--step-color:#7886bc}
 .bella-mosaic-step[data-solution="branding"]{--step-color:#6576ad}
 .bella-mosaic-step[data-solution="embalagem"]{--step-color:#5c6ca4}
 .bella-mosaic-step[data-solution="conteudo"]{--step-color:#4a588a}
-.bella-mosaic-step::before{
-  content:"";position:absolute;inset:0 auto 0 0;width:var(--step-fill);
-  border-radius:inherit;background:var(--step-color);
+.bella-mosaic-step::after{
+  content:"";position:absolute;left:0;right:0;top:9px;height:8px;
+  border-radius:50px;background:#dfe6f5;transition:background-color .2s;
 }
-.bella-mosaic-step.is-current{background:#cdd7eb}
-.bella-mosaic-step:hover{background:#bdc9e2}
+.bella-mosaic-step::before{
+  content:"";position:absolute;z-index:1;top:9px;left:0;height:8px;
+  width:var(--step-fill);border-radius:50px;background:var(--step-color);
+}
+.bella-mosaic-step.is-current::after{background:#cdd7eb}
+.bella-mosaic-step:hover::after{background:#bdc9e2}
 .bella-mosaic-step:focus-visible{outline:3px solid #5c6ca4;outline-offset:5px}
 .bella-mosaic-viewport.is-native{overflow-x:auto;touch-action:pan-x pan-y;scrollbar-width:none;-webkit-overflow-scrolling:touch}
 .bella-mosaic-viewport.is-native::-webkit-scrollbar{display:none}
 
 .bella-mosaic-progress .bella-mosaic-toggle{
   width:28px;height:28px;min-width:28px;display:grid;place-items:center;
-  margin-top:-10px;border:1px solid #c8d2e7;border-radius:50%;
+  margin-top:0;border:1px solid #c8d2e7;border-radius:50%;
   background:#fff;color:#60729b;cursor:pointer;align-self:center;
 }
 .bella-mosaic-progress .bella-mosaic-toggle svg{width:14px;height:14px;fill:none}
@@ -212,7 +216,7 @@
  .bella-mosaic-info__lead{font-size:13px}
  .bella-mosaic-info__detail{font-size:12px}
  .bella-mosaic-info__foot{font-size:9px}
- .bella-mosaic-edge{opacity:.9;pointer-events:auto;width:53px;bottom:34px}
+ .bella-mosaic-edge{opacity:.9;pointer-events:auto;width:53px;bottom:54px}
  .bella-mosaic-edge .bella-mosaic-arrow{pointer-events:auto}
  .bella-mosaic-edge--prev{background:linear-gradient(90deg,#ffffffbe,transparent)}
  .bella-mosaic-edge--next{background:linear-gradient(270deg,#ffffffbe,transparent)}
