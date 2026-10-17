@@ -14,5 +14,17 @@
   --color-lenses-light: var(--color-primary-light);
   --color-lenses-white: var(--color-brand-white);
   --color-lenses-muted: var(--color-brand-antiflash);
-  --font-lenses: Inter, ui-sans-serif, system-ui, sans-serif;
+  --color-lenses-active: var(--color-primary-active);
+  --color-lenses-subtle: var(--color-primary-subtle);
+  --color-lenses-surface: var(--bg-surface-light);
+  --color-lenses-surface-gray: var(--bg-surface-gray);
+  --font-lenses: var(--font-main);
+  --radius-lenses-pill: var(--radius-pill);
+  --shadow-lenses-glow: var(--shadow-blue-glow);
+  --text-lenses-heading: var(--type-heading-size);
+  --text-lenses-body: var(--type-body-support);
+  --text-lenses-caption: var(--type-caption-support);
+  --leading-lenses-body: var(--type-body-line-height);
+  --tracking-lenses-heading: var(--type-heading-letter-spacing);
+  --font-weight-lenses-heading: var(--type-heading-weight);
 }
