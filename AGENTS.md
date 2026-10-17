@@ -4,11 +4,11 @@ Este repositório contém o site institucional LENSES e um sistema de cases que 
 
 ## Duas tarefas separadas (obrigatório)
 
-**Organizar caso**: invocado via /organizar-novo-case, ou a grafia solicitada pelo usuário /organizarNovoCase. Leia .agents/skills/organizar-novo-case/SKILL.md. Só ler o Drive, preparar textos e mídias otimizadas em .lenses-work/SLUG, registrar handoff.json e pendências. Não gerar página nem publicar.
+**Organizar caso**: invocado via /organizar-novocase-lenses, ou a grafia solicitada pelo usuário /organizar-novocase-lenses. Leia .agents/skills/organizar-novocase-lenses/SKILL.md. Só ler o Drive, preparar textos e mídias otimizadas em .lenses-work/SLUG, registrar handoff.json e pendências. Não gerar página nem publicar.
 
-**Postar caso**: invocado via /postar-novo-case ou /publicar-novo-case, ou grafias do usuário /postarNovoCase e /publicarNovoCase. Leia .agents/skills/postar-novo-case/SKILL.md. Recuperar handoff privado, montar a página com o template, testar, mostrar prévia local e esperar aprovação expressa do usuário antes do commit/push.
+**Postar caso**: invocado via /postar-novocase-lenses ou /publicar-novocase-lenses, ou grafias do usuário /postar-novocase-lenses e /publicar-novocase-lenses. Leia .agents/skills/postar-novocase-lenses/SKILL.md. Recuperar handoff privado, montar a página com o template, testar, mostrar prévia local e esperar aprovação expressa do usuário antes do commit/push.
 
-O comando antigo /novocase apenas direciona para a tarefa apropriada.
+Os comandos antigos, sem o sufixo LENSES, foram aposentados para evitar conflitos com outros projetos.
 
 ## Invariantes
 
