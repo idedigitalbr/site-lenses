@@ -1,0 +1,5 @@
+---
+interface Props { href: string; label: string; theme?: 'light'|'dark' }
+const {href,label,theme='dark'}=Astro.props;
+---
+<a class:list={['poc-action',{'poc-action--light':theme==='light'}]} href={href}>{label}<span aria-hidden="true">↗</span></a>
