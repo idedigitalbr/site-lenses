@@ -20,5 +20,7 @@ jobs:
           node-version: '20'
       - name: Testar gerador
         run: node scripts/test-case-builder.mjs
+      - name: Testar handoff entre as duas skills
+        run: node scripts/test-case-handoff.mjs
       - name: Conferir cases gerados
         run: node scripts/check-generated-cases.mjs
