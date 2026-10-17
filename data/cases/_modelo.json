@@ -1,0 +1,177 @@
+{
+  "$comment": "Exemplo fictício, não publicado. Copie para data/cases/<slug>.json e substitua pelo briefing validado.",
+  "slug": "cliente-exemplo",
+  "status": "draft",
+  "name": "Cliente Exemplo",
+  "metricsVerified": false,
+  "mediaApproved": false,
+  "meta": {
+    "description": "Prévia demonstrativa de um case audiovisual e de comunicação da LENSES."
+  },
+  "hero": {
+    "subtitle": "Comunicação audiovisual, estratégia e produção para aproximar pessoas e marcas.",
+    "signature": "Histórias que conectam",
+    "image": "",
+    "logo": "",
+    "services": [
+      {
+        "title": "Audiovisual",
+        "description": "Vídeos e captação aérea"
+      },
+      {
+        "title": "Conteúdo digital",
+        "description": "Stories e formatos sociais"
+      },
+      {
+        "title": "Fotografia",
+        "description": "Registros corporativos"
+      },
+      {
+        "title": "Estratégia",
+        "description": "Planejamento de comunicação"
+      }
+    ]
+  },
+  "project": {
+    "summary": "Exemplo de projeto de comunicação, com produção audiovisual e organização de entregas para diferentes plataformas.",
+    "details": "O briefing orienta as necessidades, os formatos produzidos, o cronograma e os canais de comunicação. Este texto é ilustrativo e precisa ser substituído pela descrição real do cliente.",
+    "credit": "LENSES · DIREÇÃO E PRODUÇÃO",
+    "background": "",
+    "video": {
+      "youtubeId": "",
+      "poster": ""
+    }
+  },
+  "challenge": {
+    "title": "Como transformar informação em comunicação relevante?",
+    "description": "O desafio do projeto será descrito a partir das necessidades e objetivos confirmados pelo cliente.",
+    "details": "Este conteúdo é demonstrativo, sem alegações de resultados reais.",
+    "pillars": [
+      {
+        "title": "Planejamento",
+        "description": "Definição de objetivos e formatos."
+      },
+      {
+        "title": "Produção",
+        "description": "Captação e edição dos materiais."
+      },
+      {
+        "title": "Entrega",
+        "description": "Organização dos arquivos finais."
+      }
+    ],
+    "image": "",
+    "imageAlt": "",
+    "caption": "PROJETO LENSES"
+  },
+  "solutionsIntro": "Quatro frentes coordenadas, com formatos e objetivos complementares.",
+  "solutions": [
+    {
+      "title": "Estratégia",
+      "short": "Planejamento das ações",
+      "lead": "Uma direção clara para cada entrega.",
+      "description": "Planejamento de narrativa, formatos, públicos e canais de comunicação.",
+      "footer": "PESQUISA · PLANEJAMENTO · CONTEÚDO",
+      "media": [
+        {
+          "type": "conceito",
+          "label": "Plano de comunicação",
+          "title": "Definir objetivos."
+        }
+      ]
+    },
+    {
+      "title": "Audiovisual",
+      "short": "Filmes institucionais e drone",
+      "lead": "Ideias transformadas em movimento.",
+      "description": "Captação aérea, vídeos institucionais e registros audiovisuais.",
+      "footer": "FILMAGEM · DRONE · EDIÇÃO",
+      "media": [
+        {
+          "type": "conceito",
+          "label": "Filme institucional",
+          "title": "Narrativas audiovisuais."
+        }
+      ]
+    },
+    {
+      "title": "Fotografia",
+      "short": "Registros e cobertura",
+      "lead": "Imagens que preservam histórias.",
+      "description": "Fotografias de ambientes, equipes, ações e eventos.",
+      "footer": "CAPTAÇÃO · TRATAMENTO · ENTREGA",
+      "media": [
+        {
+          "type": "conceito",
+          "label": "Fotografia corporativa",
+          "title": "Um olhar próprio."
+        }
+      ]
+    },
+    {
+      "title": "Conteúdo",
+      "short": "Stories e peças digitais",
+      "lead": "Mensagens para diferentes formatos.",
+      "description": "Adaptação de conteúdo para stories, redes e canais internos.",
+      "footer": "STORIES · REELS · SOCIAL",
+      "media": [
+        {
+          "type": "conceito",
+          "label": "Conteúdo digital",
+          "title": "Comunicar com propósito."
+        }
+      ]
+    }
+  ],
+  "deliverables": [
+    {
+      "label": "Vídeos com drone",
+      "short": "Drone",
+      "quantity": 23
+    },
+    {
+      "label": "Stories",
+      "short": "Story",
+      "quantity": 15
+    },
+    {
+      "label": "Vídeos institucionais",
+      "short": "Instit.",
+      "quantity": 2
+    },
+    {
+      "label": "Fotos editadas",
+      "short": "Fotos",
+      "quantity": 50
+    }
+  ],
+  "kpis": [
+    {
+      "label": "Vídeos com drone",
+      "value": "23",
+      "description": "quantidade de exemplo"
+    },
+    {
+      "label": "Stories",
+      "value": "15",
+      "description": "quantidade de exemplo"
+    },
+    {
+      "label": "Vídeos institucionais",
+      "value": "2",
+      "description": "quantidade de exemplo"
+    },
+    {
+      "label": "Fotos editadas",
+      "value": "50",
+      "description": "quantidade de exemplo"
+    }
+  ],
+  "locations": [],
+  "dashboardIntro": "Indicadores apenas demonstrativos. Substituir pelos dados fornecidos e aprovados.",
+  "cta": {
+    "title": "",
+    "footerText": ""
+  },
+  "driveFolderUrl": ""
+}
