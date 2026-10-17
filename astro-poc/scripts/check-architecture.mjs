@@ -10,8 +10,8 @@ const read=p=>fs.readFileSync(path.join(proj,p),'utf8');
 const pkg=JSON.parse(read('package.json'));
 const originalTokens=fs.readFileSync(path.join(proj,'..','assets','tokens.css'),'utf8');
 const twTheme=read('src/styles/tailwind.css');
-const official=new Set([...originalTokens.matchAll(/(--[\\w-]+)\\s*:/g)].map(m=>m[1]));
-const bindings=[...twTheme.matchAll(/:\\s*var\\((--[\\w-]+)\\)/g)].map(m=>m[1]);
+const official=new Set([...originalTokens.matchAll(/(--[\w-]+)\s*:/g)].map(m=>m[1]));
+const bindings=[...twTheme.matchAll(/:\s*var\((--[\w-]+)\)/g)].map(m=>m[1]);
 const checks=[
  ['Todos os aliases Tailwind existem nos tokens oficiais',bindings.length>=15&&bindings.every(v=>official.has(v))],
  ['Astro 7',String(pkg.dependencies.astro).startsWith('^7.')],
