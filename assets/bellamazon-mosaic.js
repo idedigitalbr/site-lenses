@@ -1,4 +1,4 @@
-/* Bellamazon / LENSES — transição editorial scroll-driven v6
+/* Bellamazon / LENSES — transição editorial scroll-driven v8
    Reutiliza os quatro cards, painéis .bella-mosaic-info, galeria de fotos e
    timeline existentes. Sticky CSS nativo; GSAP ScrollTrigger só observa.
    Nunca utiliza pin, pin-spacer, captura do wheel ou novos assets. */
@@ -26,6 +26,80 @@
   if(!space||!stage||!overview||!morph||!viewport||!track||!prev||!next||
     cards.length!==4||panels.length!==4||steps.length!==4 ||
     keys.some((key,i)=>cards[i].dataset.bellaFilter!==key||panels[i].dataset.solution!==key))return;
+
+  // Catálogo ilustrativo temporário. Trocar pelas mídias finais da LENSES.
+  // A galeria original (sete peças por capítulo) permanece preservada.
+  const demoCatalogue={
+    estrategia:"Pesquisa de campo~3184291~photo|Território amazônico~2440061~drone|Documentação visual~3184430~photo|Entrevista · prévia~3182833~video|Bastidores de criação~3183183~story|Fotografia institucional~1181396~photo|Planejamento editorial~3184360~photo|Narrativa da marca~3184465~video",
+    branding:"Direção criativa~196644~photo|Design gráfico~326503~photo|Identidade em construção~1779487~video|Bastidores de estúdio~3183183~story|Universo cromático~4348404~photo|Aplicação editorial~3184339~photo|Fotografia de campanha~3379943~photo|Apresentação de marca~3184398~video",
+    embalagem:"Estudo de produto~4465124~photo|Fotografia de embalagem~5632381~photo|Detalhes e materiais~4226896~video|Story · lançamento~4465831~story|Texturas e acabamentos~461035~photo|Linha de produtos~6169056~photo|Direção de fotografia~3379943~photo|Apresentação em vídeo~4207892~video",
+    conteudo:"Vídeo institucional · prévia~3062541~video|Captação aérea · conceito~2440061~drone|Story de bastidores~2748716~story|Fotografia corporativa~3183197~photo|Captação de entrevista~3379943~video|Cobertura de evento~3183186~photo|Reels de bastidores~2510428~story|Produção audiovisual~320617~video"
+  };
+  const demoIcons={
+    photo:'<path d="M4 7h4l2-3h4l2 3h4v13H4z"/><circle cx="12" cy="13" r="4"/>',
+    video:'<rect x="3" y="5" width="13" height="14" rx="2"/><path d="m16 10 5-3v10l-5-3"/>',
+    drone:'<path d="M8 8 5 5m11 3 3-3M8 16l-3 3m11-3 3 3"/><rect x="8" y="8" width="8" height="8" rx="2"/>',
+    story:'<rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 19h2"/>'
+  };
+  panels.forEach((panel,index)=>{
+    for(const entry of demoCatalogue[keys[index]].split("|")){
+      const [label,id,type]=entry.split("~");
+      const tile=document.createElement("figure");
+      tile.className="bella-mosaic-tile bella-demo-tile bella-demo-tile--"+type;
+      tile.dataset.mediaType=type;
+      tile.dataset.demo="true";
+      tile.setAttribute("aria-label",label+" · referência visual ilustrativa");
+      const img=document.createElement("img");
+      img.src="https://images.pexels.com/photos/"+id+"/pexels-photo-"+id+".jpeg?auto=compress&cs=tinysrgb&w=960";
+      img.alt="Imagem demonstrativa de "+label.toLowerCase();
+      img.loading="lazy";img.decoding="async";
+      img.addEventListener("error",()=>{
+        img.remove();
+        tile.classList.add("is-image-unavailable");
+        const fallback=document.createElement("span");
+        fallback.className="bella-demo-fallback";
+        fallback.textContent=label;
+        tile.prepend(fallback);
+      },{once:true});
+      tile.append(img);
+      const badge=document.createElement("span");
+      badge.className="bella-media-label";
+      badge.setAttribute("aria-hidden","true");
+      badge.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true">'+demoIcons[type]+'</svg>'+label;
+      tile.append(badge);
+      const note=document.createElement("span");
+      note.className="bella-media-note";note.textContent="Imagem demonstrativa";
+      tile.append(note);
+      if(type==="video"){
+        const play=document.createElement("span");
+        play.className="bella-video-play";play.setAttribute("aria-hidden","true");
+        play.innerHTML='<svg viewBox="0 0 24 24"><path d="m8 5 12 7-12 7z"/></svg>';
+        tile.append(play);
+      }
+      panel.append(tile);
+    }
+  });
+  // Rótulos discretos no toque (sem poluir a fotografia no celular).
+  let tapStart=null;
+  track.addEventListener("pointerdown",event=>{
+    if(event.pointerType==="touch")tapStart={x:event.clientX,y:event.clientY};
+  },{passive:true});
+  track.addEventListener("pointerup",event=>{
+    if(event.pointerType!=="touch"||!tapStart)return;
+    const moved=Math.hypot(event.clientX-tapStart.x,event.clientY-tapStart.y)>9;
+    tapStart=null;if(moved)return;
+    const tile=event.target.closest(".bella-mosaic-tile");
+    track.querySelectorAll(".bella-mosaic-tile.is-tapped").forEach(el=>{
+      if(el!==tile)el.classList.remove("is-tapped");
+    });
+    tile?.classList.toggle("is-tapped");
+  },{passive:true});
+  track.querySelectorAll(".bella-mosaic-tile").forEach(tile=>{
+    if(!tile.hasAttribute("aria-label"))
+      tile.setAttribute("aria-label",tile.querySelector(".bella-media-label")?.textContent.trim()||"Material visual");
+    tile.tabIndex=0;
+  });
+
   section.dataset.mosaicInit="1";
   const gsap=window.gsap,ST=window.ScrollTrigger;
   const reduced=matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -34,7 +108,7 @@
   const portion=(x,a,b)=>cap((x-a)/(b-a));
   const ease=x=>{const p=cap(x);return p*p*(3-2*p);};
   const wrap=(x,length)=>((x%length)+length)%length;
-  const weights=[1.18,1,1,1.2];
+  const weights=[1,1,1,1];
   const total=weights.reduce((a,b)=>a+b,0);
   let trigger=null,chapter=-1,panelWidth=1,auto=null,manualTween=null,resume=null;
   let visible=false,focusInside=false,hovering=false,paused=false,interacting=false;
@@ -53,6 +127,7 @@
   };
   const panelInfo=panels.map(panel=>panel.querySelector(".bella-mosaic-info"));
   const texts=new Map();
+  const morphCache=new Map();
   const textMarkup=el=>{
     const text=el.textContent.trim();
     const ghost=document.createElement("span");
@@ -72,28 +147,23 @@
     obj.typed.textContent=obj.text.slice(0,count);
     obj.typed.classList.toggle("is-typing",count>0&&count<obj.text.length);
   };
+  // Instâncias de texto estáveis; nunca reiniciar ao avançar/voltar o scroll.
   const createMorph=index=>{
-    morph.replaceChildren();
-    const copy=panelInfo[index].cloneNode(true);
-    copy.setAttribute("aria-hidden","true");
-    const headline=copy.querySelector(".bella-mosaic-info__title");
-    const leadSource=copy.querySelector(".bella-mosaic-info__lead");
-    if(headline && leadSource){
-      const teaser=document.createElement("p");
-      teaser.className="bella-mosaic-story-teaser";
-      teaser.textContent=leadSource.textContent.trim();
-      teaser.setAttribute("aria-hidden","true");
-      headline.insertAdjacentElement("afterend",teaser);
+    let cached=morphCache.get(index);
+    if(!cached){
+      const copy=panelInfo[index].cloneNode(true);
+      copy.removeAttribute("aria-hidden");
+      const map={};
+      [["lead",".bella-mosaic-info__lead"],
+       ["detail",".bella-mosaic-info__detail"],
+       ["foot",".bella-mosaic-info__foot"]].forEach(([name,selector])=>{
+         const el=copy.querySelector(selector);
+         if(el)map[name]=textMarkup(el);
+       });
+      cached={copy,map};morphCache.set(index,cached);
     }
-    morph.appendChild(copy);
-    const map={};
-    [["lead",".bella-mosaic-info__lead"],
-     ["detail",".bella-mosaic-info__detail"],
-     ["foot",".bella-mosaic-info__foot"]].forEach(([name,selector])=>{
-       const el=copy.querySelector(selector);
-       if(el)map[name]=textMarkup(el);
-     });
-    texts.set(index,map);
+    if(morph.firstElementChild!==cached.copy)morph.replaceChildren(cached.copy);
+    texts.set(index,cached.map);
     chapter=index;
     morph.style.display="block";
   };
@@ -124,16 +194,16 @@
     // A ordem de animação é igual em todos os capítulos e reversível:
     // seleção -> expansão colorida -> branco central -> esquerda branca ->
     // galeria + escrita + preenchimento -> retorna à visão geral.
-    const selected=ease(portion(t,.015,.17));
-    const grown=ease(portion(t,.13,.34));
-    const whiten=ease(portion(t,.38,.50));
-    const split=ease(portion(t,.50,.67));
-    const galleryIn=ease(portion(t,.56,.72));
-    const reveal=ease(portion(t,.67,.89));
-    const close=ease(portion(t,.88,.985));
-    const fadeOverview=cap(1-ease(portion(t,.18,.36))+ease(portion(t,.89,.985)));
+    const selected=ease(portion(t,.01,.13));
+    const grown=ease(portion(t,.09,.29));
+    const whiten=ease(portion(t,.25,.38));
+    const split=ease(portion(t,.29,.44));
+    const galleryIn=ease(portion(t,.37,.49));
+    const reveal=ease(portion(t,.46,.93));
+    const close=ease(portion(t,.93,1));
+    const fadeOverview=cap(1-ease(portion(t,.13,.32))+ease(portion(t,.95,1)));
     const fadeGallery=galleryIn*(1-close);
-    const morphAlpha=ease(portion(t,.14,.20))*(1-ease(portion(t,.94,.99)));
+    const morphAlpha=ease(portion(t,.08,.15))*(1-ease(portion(t,.95,1)));
     const painted=blue;
     const fillAtLeft=ease(portion(reveal,.02,1));
     const largeColor=gsap.utils.interpolate(
@@ -162,26 +232,24 @@
     });
     // O card expandido permanece editorial e centralizado até começar a
     // deslocar para a esquerda; depois o texto assume a composição.
-    morph.classList.toggle("is-centered",split<.18);
+    morph.classList.toggle("is-centered",split<.93);
     const info=morph.firstElementChild;
     if(info){
-      const teaser=info.querySelector(".bella-mosaic-story-teaser");
-      if(teaser){
-        const visibility=ease(portion(t,.22,.33))*(1-ease(portion(t,.52,.69)))*(1-close);
-        teaser.style.opacity=String(visibility);
-        teaser.style.maxHeight=((1-split)*85)+"px";
-        teaser.style.marginTop=((1-split)*22)+"px";
-      }
       info.style.backgroundColor=gsap.utils.interpolate(largeColor,"#ffffff",close);
       info.style.color=gsap.utils.interpolate(fg,"#202a44",close);
       const txt=texts.get(idx);
-      // Centralizado: só ícone e título. Esquerda: o texto vai sendo escrito.
-      const copy=ease(portion(t,.65,.92));
+      // Digitação sincronizada ao progresso; o mesmo lead permanece
+      // visível no centro e na lateral, sem desaparecer/reiniciar.
+      const copy=ease(portion(t,.35,.9));
       if(txt){
-        write(txt.lead,portion(copy,0,.35));
-        write(txt.detail,portion(copy,.22,1));
-        write(txt.foot,portion(copy,.58,1));
+        write(txt.lead,portion(t,.11,.43));
+        write(txt.detail,portion(t,.41,.86));
+        write(txt.foot,portion(t,.68,.91));
       }
+      const detail=info.querySelector(".bella-mosaic-info__detail");
+      if(detail)detail.style.maxHeight=Math.round(split*340)+"px";
+      const foot=info.querySelector(".bella-mosaic-info__foot");
+      if(foot)foot.style.maxHeight=Math.round(split*50)+"px";
       const eyebrow=info.querySelector(".bella-mosaic-info__eyebrow");
       if(eyebrow)eyebrow.style.opacity=String(.35+.45*grown);
       const rule=info.querySelector(".bella-mosaic-info__rule");
@@ -214,14 +282,14 @@
     // Com o clone do card à frente, só as imagens são reveladas no mosaico.
     viewport.style.clipPath="inset(0 0 0 "+(100-100*galleryIn)+"%)";
     panelWidth=Math.max(1,panels[0].getBoundingClientRect().width||viewport.clientWidth);
-    // Deslocamento suave de até 7% da largura: mais fotografias entram
-    // sem abandonar o capítulo durante a leitura.
-    const pan=ease(portion(reveal,.32,1))*panelWidth*.125;
+    // Mídias percorrem toda a largura adicional do painel, sem trecho morto.
+    const travel=Math.max(0,panelWidth-viewport.clientWidth);
+    const pan=ease(portion(t,.43,.93))*travel;
     setX(-idx*panelWidth-pan);
     photoSet.forEach((set,i)=>{
       if(i!==idx)return;
       set.forEach((tile,j)=>{
-        const show=ease(portion(t,.57+j*.029,.78+j*.021));
+        const show=ease(portion(t,.35+j*.005,.54+j*.004));
         tile.style.opacity=String(show*(1-close));
         tile.style.transform="translateY("+((1-show)*22)+"px) scale("+(1+(1-show)*.015)+")";
         const img=tile.querySelector("img");
@@ -231,7 +299,7 @@
     const edges=section.querySelectorAll(".bella-mosaic-edge");
     edges.forEach(el=>{el.style.visibility=fadeGallery>.65?"visible":"hidden"});
     const bar=section.querySelector(".bella-mosaic-progress");
-    if(bar)bar.style.opacity=String(ease(portion(t,.56,.72))*(1-close));
+    if(bar)bar.style.opacity=String(ease(portion(t,.36,.48))*(1-close));
     progressBar(idx, t);
   };
 
@@ -239,7 +307,7 @@
     const i=Math.max(0,Math.min(3,index));
     if(desktop&&trigger){
       const before=weights.slice(0,i).reduce((a,b)=>a+b,0);
-      const target=trigger.start+((before+weights[i]*.065)/total)*(trigger.end-trigger.start);
+      const target=trigger.start+((before+weights[i]*.57)/total)*(trigger.end-trigger.start);
       window.scrollTo({top:target,behavior:"smooth"});
     }else if(gsap&&!reduced){
       const dest=i*panelWidth,current=wrap(mobile.auto+mobile.manual,panelWidth*4);
@@ -354,6 +422,7 @@
   });
 
   if(desktop){
+    if(toggle)toggle.hidden=true;
     gsap.registerPlugin(ST);
     space.classList.add("is-story-ready");
     // Nem pin, nem pinSpacing: a área sticky ocupa espaço real no documento.
