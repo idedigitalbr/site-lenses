@@ -120,7 +120,7 @@ O fluxo oficial de geração, curadoria e publicação acontece localmente no An
 
 ## Fluxo oficial Antigravity local: /novocase
 
-A partir de outubro de 2026, o Antigravity executa a produção no computador em duas skills independentes: /organizar-novo-case (Drive e preparação privada) e /postar-novo-case (página, prévia, revisão e aprovação para publicar).
+A partir de outubro de 2026, o Antigravity executa a produção no computador em duas skills independentes: /organizar-novocase-lenses (Drive e preparação privada) e /postar-novocase-lenses (página, prévia, revisão e aprovação para publicar).
 
 **Google Drive → inventário → documento → curadoria de thumbnails → vídeo web otimizado → JSON do case → prévia local → aprovação → commit/push.**
 
@@ -161,9 +161,9 @@ Importante: a ferramenta local é um primeiro utilitário operacional e precisa 
 
 ## Outubro 2026: operação em DUAS skills independentes (fluxo oficial)
 
-O antigo /novocase monolítico passou a ser apenas um seletor. A produção agora é deliberadamente dividida:
+O antigo /novocase monolítico foi aposentado. A produção agora é deliberadamente dividida:
 
-### Comando 1: /organizar-novo-case
+### Comando 1: /organizar-novocase-lenses
 
 Apenas lê a pasta do Google Drive, extrai o briefing de documentos, cataloga mídias, escolhe quadros, otimiza imagens WebP, prepara MP4 e WebM quando necessário e monta a pasta de trabalho privada do cliente.
 
@@ -180,7 +180,7 @@ Depois de preparar o conteúdo, preencha os campos do handoff e valide:
 
 Se o vídeo grande ainda não foi otimizado devido a falta de espaço ou download não autorizado, registrar pendência e terminar a organização honestamente. Não executar a segunda fase de forma automática.
 
-### Comando 2: /postar-novo-case
+### Comando 2: /postar-novocase-lenses
 
 Usa o handoff JÁ EXISTENTE, cria JSON do cliente, copia thumbs selecionadas para assets/cases/SLUG apenas localmente, constrói casev2/SLUG/index.html em draft, testa e mostra prévia no navegador. Itera ajustes e só pede autorização de publicar quando a página estiver pronta.
 
@@ -188,9 +188,9 @@ Usa o handoff JÁ EXISTENTE, cria JSON do cliente, copia thumbs selecionadas par
 
 ### Aliases e comandos seguros
 
-- Comandos CANÔNICOS e estáveis de Agent Skills: /organizar-novo-case, /postar-novo-case, /publicar-novo-case.
-- Compatibilidade com a escrita pedida pelo usuário: /organizarNovoCase, /postarNovoCase, /publicarNovoCase. Arquivos de alias foram adicionados. Algumas versões podem não indexar camelCase, pois o padrão recomenda nomes em minúsculas e hífens; se não aparecerem no menu, usar os canônicos.
-- /publicar-novo-case e /publicarNovoCase executam exatamente a fase /postar; nunca pulam revisão ou aprovação.
-- A skill antiga /novocase só pergunta qual fase ou delega a organização se receber um link do Drive.
+- Comandos exclusivos LENSES: /organizar-novocase-lenses, /postar-novocase-lenses e /publicar-novocase-lenses.
+- Utilizar somente os comandos canônicos com o sufixo -novocase-lenses para evitar conflitos entre projetos.
+- /publicar-novocase-lenses e /publicar-novocase-lenses executam exatamente a fase /postar; nunca pulam revisão ou aprovação.
+- A skill genérica /novocase foi removida para não misturar projetos.
 
-As definições oficiais estão em .agents/skills/organizar-novo-case/SKILL.md e .agents/skills/postar-novo-case/SKILL.md. A diretiva de publicação só é ativada na FASE 2. Nenhuma máquina GitHub Actions fará downloads ou conversões.
+As definições oficiais estão em .agents/skills/organizar-novocase-lenses/SKILL.md e .agents/skills/postar-novocase-lenses/SKILL.md. A diretiva de publicação só é ativada na FASE 2. Nenhuma máquina GitHub Actions fará downloads ou conversões.
