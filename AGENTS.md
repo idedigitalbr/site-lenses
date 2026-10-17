@@ -21,3 +21,10 @@ Os comandos antigos, sem o sufixo LENSES, foram aposentados para evitar conflito
 - Reutilizar template e identidade LENSES; não modificar Bellamazon sem solicitação específica.
 
 Veja docs/CASE-TEMPLATE.md para documentação, scripts de preparação e QA.
+
+
+## Migração experimental Astro + Tailwind (apenas nesta branch)
+
+A branch experiment/astro-lenses-poc contém astro-poc/, que implementa Astro 7 + Tailwind 4 e a base de testes de paridade do site atual. Ao atuar nesta branch, ler astro-poc/MIGRATION.md e astro-poc/AGENTS.md. Skill: .agents/skills/migrar-astro-lenses/SKILL.md, comando /migrar-astro-lenses.
+
+Objetivo: converter progressivamente o site para componentes Astro e Tailwind com tokens oficiais, mantendo visual e GSAP iguais ao main. Não instalar Lenis ou Swiper, não editar o main, não realizar deploy público e não confundir a ponte LegacyMirror com migração definitiva. Rodar build e testes de screenshots antes de retirar markup legado. Merges dependem de aprovação expressa.
