@@ -41,6 +41,7 @@
     const END = compact ? "top 41%" : "top 36%";
     const scrub = compact ? 0.6 : 0.85;
     const active = [];
+    const pendingTriggers = [];
     const $ = (host, selector) => [...host.querySelectorAll(selector)];
     const has = (host, selector) => host.querySelector(selector);
     const ease = "power2.out";
@@ -55,7 +56,6 @@
           duration, ease:"power2.out", immediateRender:true}, at);
     }
 
-    const number = new Intl.NumberFormat("pt-BR");
     function animateNumber(tl, element, at, duration = .68) {
       if (!element) return;
       const raw = element.textContent.trim();
@@ -83,13 +83,10 @@
     }
 
     function timeline(trigger, end = END) {
-      const t = gsap.timeline({paused:false,defaults:{ease}});
-      active.push(ST.create({
-        trigger,start:START,end,
-        animation:t,scrub,
-        invalidateOnRefresh:true,
-        fastScrollEnd:false
-      }));
+      const t = gsap.timeline({paused:true,defaults:{ease}});
+      // Cria o ScrollTrigger somente DEPOIS que os tweens existirem.
+      // Evita inicialização sobre timelines vazias e frames piscando.
+      pendingTriggers.push({trigger,end,animation:t});
       return t;
     }
 
@@ -185,14 +182,18 @@
       }
     });
 
+    pendingTriggers.forEach(({trigger,end,animation}) => {
+      active.push(ST.create({
+        trigger,start:START,end,animation,scrub,
+        invalidateOnRefresh:true,
+        fastScrollEnd:false
+      }));
+    });
+
     // Ao abrir diretamente o hash da seção, o progresso reflete o scroll.
     requestAnimationFrame(() => ST.refresh());
     if (document.fonts?.ready) document.fonts.ready.then(() => ST.refresh());
 
-    // Desmontagem limpa ao navegar fora da página (sem triggers duplicados).
-    window.addEventListener("pagehide",()=>{
-      active.forEach(trigger => trigger.kill());
-    },{once:true});
   };
   if (document.readyState === "loading")
     document.addEventListener("DOMContentLoaded",init,{once:true});
