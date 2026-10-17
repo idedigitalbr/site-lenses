@@ -120,7 +120,7 @@ O fluxo oficial de geração, curadoria e publicação acontece localmente no An
 
 ## Fluxo oficial Antigravity local: /novocase
 
-A partir de outubro de 2026, **o Antigravity no computador é o executor do pipeline**, usando a skill versionada em .agents/skills/novocase/SKILL.md. Digitar /novocase no chat do Antigravity com o repositório aberto deve iniciar uma conversa simples: explicar o processo e pedir somente a URL da pasta. O formato da skill é a versão atual de comandos de barra, não criar workflows legados.
+A partir de outubro de 2026, o Antigravity executa a produção no computador em duas skills independentes: /organizar-novo-case (Drive e preparação privada) e /postar-novo-case (página, prévia, revisão e aprovação para publicar).
 
 **Google Drive → inventário → documento → curadoria de thumbnails → vídeo web otimizado → JSON do case → prévia local → aprovação → commit/push.**
 
@@ -157,3 +157,40 @@ A versão atual prepara MP4 H.264/AAC com faststart e um poster WebP, na pasta p
 Depois o agente preenche data/cases/hydro.json em draft, gera HTML, executa QA e verifica a prévia local. Só passa a published e envia arquivos ao GitHub após aprovação expressa. GitHub Actions (build-cases.yml) é **somente QA manual opcional**, não baixa mídias e não faz mais commits automáticos.
 
 Importante: a ferramenta local é um primeiro utilitário operacional e precisa de um teste real na máquina (acesso rclone, FFmpeg, espaço e qualidade dos frames) antes de ser considerada pronta para produção em massa.
+
+
+## Outubro 2026: operação em DUAS skills independentes (fluxo oficial)
+
+O antigo /novocase monolítico passou a ser apenas um seletor. A produção agora é deliberadamente dividida:
+
+### Comando 1: /organizar-novo-case
+
+Apenas lê a pasta do Google Drive, extrai o briefing de documentos, cataloga mídias, escolhe quadros, otimiza imagens WebP, prepara MP4 e WebM quando necessário e monta a pasta de trabalho privada do cliente.
+
+**SAÍDA OBRIGATÓRIA:** .lenses-work/SLUG/handoff.json, além de inventory.json, documents/, previews/, optimized/ e README-ORGANIZACAO.md. O handoff registra sourceDrivePath, localPath, tipo, quantidade, textos, dúvidas e aprovações pendentes. Não criar data/cases/SLUG.json nem casev2/SLUG durante essa fase. Não fazer push nem upload público.
+
+Inicialize a estrutura local:
+
+    node scripts/case-handoff.mjs init SLUG "https://drive.google.com/drive/folders/ID"
+
+Depois de preparar o conteúdo, preencha os campos do handoff e valide:
+
+    node scripts/case-handoff.mjs status SLUG
+    node scripts/case-handoff.mjs validate SLUG
+
+Se o vídeo grande ainda não foi otimizado devido a falta de espaço ou download não autorizado, registrar pendência e terminar a organização honestamente. Não executar a segunda fase de forma automática.
+
+### Comando 2: /postar-novo-case
+
+Usa o handoff JÁ EXISTENTE, cria JSON do cliente, copia thumbs selecionadas para assets/cases/SLUG apenas localmente, constrói casev2/SLUG/index.html em draft, testa e mostra prévia no navegador. Itera ajustes e só pede autorização de publicar quando a página estiver pronta.
+
+**PONTO DE APROVAÇÃO:** "Posso publicar esse case da [CLIENTE] com essas fotos, textos e métricas?" Somente depois do "sim" explícito: confirmação de direitos, status published, QA final, commit seletivo, push e URL. Draft/noindex no GitHub Pages continua público: não fazer push de prévias com conteúdo sensível.
+
+### Aliases e comandos seguros
+
+- Comandos CANÔNICOS e estáveis de Agent Skills: /organizar-novo-case, /postar-novo-case, /publicar-novo-case.
+- Compatibilidade com a escrita pedida pelo usuário: /organizarNovoCase, /postarNovoCase, /publicarNovoCase. Arquivos de alias foram adicionados. Algumas versões podem não indexar camelCase, pois o padrão recomenda nomes em minúsculas e hífens; se não aparecerem no menu, usar os canônicos.
+- /publicar-novo-case e /publicarNovoCase executam exatamente a fase /postar; nunca pulam revisão ou aprovação.
+- A skill antiga /novocase só pergunta qual fase ou delega a organização se receber um link do Drive.
+
+As definições oficiais estão em .agents/skills/organizar-novo-case/SKILL.md e .agents/skills/postar-novo-case/SKILL.md. A diretiva de publicação só é ativada na FASE 2. Nenhuma máquina GitHub Actions fará downloads ou conversões.
