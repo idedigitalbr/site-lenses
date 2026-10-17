@@ -89,7 +89,18 @@ check(bell.includes('data-mosaic-direction="prev"') && bell.includes('data-mosai
 check(bell.includes('data-mosaic-toggle'), 'Bellamazon: falta controle de pausa');
 check(bell.includes('VÍDEO INSTITUCIONAL BELLAMAZON'), 'Bellamazon: crédito de vídeo oficial ausente');
 check(bell.includes('embed/WL7-6C7ZyZE'), 'Bellamazon: vídeo incorreto');
-check(bell.includes('Exemplo visual · sem dados reais'), 'Bellamazon: painel ilustrativo sem aviso');
+check(bell.includes('id="bell-results-title">Dados do Projeto'), 'Bellamazon: título do dashboard fora do padrão');
+check(!bell.includes('Exemplo visual · sem dados reais'), 'Bellamazon: selo antigo de exemplo voltou');
+check(bell.includes('Indicadores numéricos e distribuições visuais em validação'),
+      'Bellamazon: indicadores não confirmados perderam identificação');
+for(const asset of ['assets/bellamazon-dashboard.css','assets/bellamazon-dashboard.js']) {
+  check(fs.existsSync(path.join(process.cwd(),asset)), 'Bellamazon: arquivo de dashboard ausente '+asset);
+  check(bell.includes(path.basename(asset)), 'Bellamazon: dashboard não importa '+asset);
+}
+check(bell.includes('data-bella-filter="all"') &&
+      ['estrategia','branding','embalagem','conteudo'].every(tag=>bell.includes('data-bella-filter="'+tag+'"')),
+      'Bellamazon: filtros das soluções ausentes');
+check(bell.includes('bella-mosaic-panel') && bell.includes('data-mosaic-current'), 'Bellamazon: galeria filtrável incompleta');
 check(!bell.includes('COMO O TRABALHO GANHA FORMA'), 'Bellamazon: seção antiga não foi removida');
 for (const href of Array.from(bell.matchAll(/\b(?:href|src|poster)\s*=\s*["']([^"']+)["']/gi), m=>m[1])) {
   if (/^(#|https?:|mailto:|tel:|data:)/i.test(href)) continue;
