@@ -43,7 +43,7 @@ Quando a URL já vier junto, executar sem pedir de novo. Derivar nome/slug do do
 3. Preservar proporção 16:9, 9:16 ou original; otimizar fotos reais em WebP/AVIF e separar drone, vídeo, story, fotografia, bastidores, etc.
 4. Para vídeo grande, verificar disco e solicitar autorização antes de baixar (ex.: 4,11 GB). Executar encode somente com consentimento:
    node scripts/case-media.mjs encode SLUG "URL_DRIVE" "CAMINHO_EXATO" --confirm-large
-   Produzir MP4 H.264/AAC 1080p com faststart, poster WebP; opcional WebM VP9 após teste curto de tempo/tamanho/qualidade. Sem VPS, sem upload de vídeo pesado.
+   Produzir MP4 H.264/AAC 1080p com faststart e poster WebP. Se o case precisar de WebM, acrescentar --webm ao comando encode, preferencialmente após teste curto de VP9 para estimar tempo/tamanho/qualidade; o arquivo e o manifesto ficam em optimized/. Sem VPS, sem upload de vídeo pesado.
 5. Manter mídias finais selecionadas em .lenses-work/SLUG/, nunca nos arquivos públicos durante organização. Deletar originais temporários apenas se já existe versão otimizada íntegra.
 
 ## Etapa C. Criar o handoff
