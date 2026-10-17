@@ -11,7 +11,12 @@ import crypto from "node:crypto";
 import {spawnSync} from "node:child_process";
 import {fileURLToPath} from "node:url";
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),"..");
+if(process.argv.includes("--help")||process.argv.length===2){
+  console.log("LENSES case media CLI: scan SLUG URL | docs SLUG URL | previews SLUG URL | encode SLUG URL CAMINHO [--confirm-large] [--webm] | stage SLUG --approved");
+  process.exit(0);
+}
 const [mode,slug,url,video]=process.argv.slice(2),approved=process.argv.includes("--approved");
+const wantWebm=process.argv.includes("--webm");
 const allowLarge=process.argv.includes("--confirm-large");
 const remote=process.env.LENSES_RCLONE_REMOTE||"lensesdrive";
 const folder=url?.match(/^https:\/\/drive\.google\.com\/drive\/folders\/([A-Za-z0-9_-]+)(?:[/?#]|$)/)?.[1];
@@ -116,6 +121,20 @@ function encode(){
       "-c:v","libx264","-preset","medium","-crf","24","-pix_fmt","yuv420p",
       "-c:a","aac","-b:a","128k","-movflags","+faststart",path.join(optimized,name+".mp4")]);
     frame(tmp,path.join(optimized,name+"-poster.webp"),metadata.duration*.42);
+    if(wantWebm){
+      console.log("VP9/WebM solicitado: conversão pode ser bem mais demorada que H.264.");
+      run("ffmpeg",["-hide_banner","-loglevel","error","-y","-i",tmp,
+        "-map","0:v:0","-map","0:a:0?","-vf","scale=-2:1080:force_original_aspect_ratio=decrease,setsar=1",
+        "-c:v","libvpx-vp9","-b:v","0","-crf","35","-row-mt","1",
+        "-c:a","libopus","-b:a","96k",path.join(optimized,name+".webm")]);
+    }
+    json(path.join(optimized,name+"-manifest.json"),{
+      sourceDrivePath:item.path,seconds:metadata.duration,sourceBytes:item.bytes,
+      mp4:path.relative(root,path.join(optimized,name+".mp4")).replace(/\\/g,"/"),
+      webm:wantWebm?path.relative(root,path.join(optimized,name+".webm")).replace(/\\/g,"/"):null,
+      poster:path.relative(root,path.join(optimized,name+"-poster.webp")).replace(/\\/g,"/"),
+      generatedAt:new Date().toISOString(),published:false
+    });
     console.log("Arquivos convertidos em "+optimized+"; NÃO publicados.");
   }finally{if(fs.existsSync(tmp))fs.unlinkSync(tmp);}
 }
