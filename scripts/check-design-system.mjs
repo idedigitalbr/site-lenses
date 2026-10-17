@@ -110,7 +110,7 @@ check(bell.includes('bella-story-device') &&
       bell.includes('data-media-type="drone"') &&
       bell.includes('bella-mosaic-tile--concept'),
       'Bellamazon: tipos audiovisuais, stories ou conceitos da galeria ausentes');
-check(bell.includes('bellamazon-mosaic.css?v=7') && bell.includes('bellamazon-mosaic.js?v=7'),
+check(bell.includes('bellamazon-mosaic.css?v=8') && bell.includes('bellamazon-mosaic.js?v=8'),
       'Bellamazon: cache da galeria não atualizado');
 const sectionOfSolutions = bell.indexOf('<section class="bell-s5 bella-reuse-results"');
 const solutionsEnd = bell.indexOf('</section>', sectionOfSolutions);
@@ -149,9 +149,9 @@ check(mosaicJS.includes('trigger:space,start:"top top"') &&
 check(mosaicJS.includes('paused=!paused') && mosaicJS.includes('aria-pressed'),
       'Bellamazon: controle de pausa incompleto');
 check(mosaicJS.includes('renderDesktop(self.progress)') &&
-      mosaicJS.includes('const weights=[1.18,1,1,1.2]') &&
+      mosaicJS.includes('const weights=[1,1,1,1]') &&
       mosaicJS.includes('interpolateRect(target,center,grown)') &&
-      mosaicJS.includes('bella-mosaic-story-teaser') &&
+      mosaicJS.includes('morphCache') &&
       mosaicJS.includes('morph.classList.toggle("is-centered"'),
       'Bellamazon: card morph centralizado ou sua frase de apoio ausente');
 check(mosaicJS.includes('bella-mosaic-type-ghost') &&
@@ -168,6 +168,19 @@ check(mosaicCSS.includes('.bella-mosaic-scroll-space.is-story-ready') &&
 check(mosaicCSS.includes('bella-mosaic-past-wash') &&
       bell.includes('class="bella-mosaic-past-wash"'),
       'Bellamazon: tratamento monocromático de passagem ausente');
+// Case builder: fonte única de layout, CSS desacoplado e geração estática.
+const caseTemplate=read('templates/case-layout.html');
+check(caseTemplate.includes('case-template-layout.css') && !caseTemplate.includes('<style>'),
+      'Template de case não usa CSS compartilhado');
+check(fs.existsSync(path.join(process.cwd(),'assets/case-template-layout.css')),
+      'CSS compartilhado do template ausente');
+const caseBuilder=read('scripts/build-case.mjs');
+check(caseBuilder.includes('data-case-media') &&
+      caseBuilder.includes('status!=="published"') &&
+      caseBuilder.includes('metricsVerified'),
+      'Builder não contém regras de mídia ou publicação segura');
+check(fs.existsSync(path.join(process.cwd(),'scripts/check-generated-cases.mjs')),
+      'QA das páginas geradas ausente');
 const homeHTML = read('index.html');
 check(homeHTML.includes('class="hero-accessible-title"'), 'Home: H1 acessível ausente');
 check(homeHTML.includes('preload="none"') && homeHTML.includes('heroVideo'), 'Home: vídeo com preload antecipado');
