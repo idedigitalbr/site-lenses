@@ -1,48 +1,24 @@
-name: Gerar cases LENSES
+# Optional verification only: heavyweight media processing and publication
+# happen locally through Antigravity /novocase after user approval.
+name: Validar cases LENSES
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'data/cases/**'
-      - 'templates/case-layout.html'
-      - 'scripts/build-case.mjs'
-      - '.github/workflows/build-cases.yml'
   workflow_dispatch:
 
 permissions:
-  contents: write
-
-concurrency:
-  group: generate-lenses-cases
-  cancel-in-progress: false
+  contents: read
 
 jobs:
-  build:
+  validate:
     runs-on: ubuntu-latest
     steps:
-      - name: Obter repositório
+      - name: Checkout
         uses: actions/checkout@v4
-        with:
-          persist-credentials: true
-      - name: Configurar Node
+      - name: Node 20
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - name: Testar gerador sem publicar dados fictícios
+      - name: Testar gerador
         run: node scripts/test-case-builder.mjs
-      - name: Gerar páginas publicáveis e prévias
-        run: node scripts/build-case.mjs --all
-      - name: Validar HTML gerado
+      - name: Conferir cases gerados
         run: node scripts/check-generated-cases.mjs
-      - name: Publicar artefatos gerados na branch main
-        run: |
-          if [ -z "$(git status --porcelain casev2/)" ]; then
-            echo "Cases já atualizados."
-            exit 0
-          fi
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add casev2/
-          git commit -m "build(cases): atualizar páginas geradas [skip ci]"
-          git push
