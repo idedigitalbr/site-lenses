@@ -1,270 +1,382 @@
-/* Bellamazon · experiência editorial em 4 capítulos
- * GSAP 3.13 + ScrollTrigger, sem Lenis/Swiper. O eixo X é calculado em uma
- * única função, compartilhada entre autoplay, setas, filtros e scroll.
- * O pin é finito; no mobile o scroll vertical permanece nativo.
- */
+/* Bellamazon · narrativa horizontal guiada pelo scroll (v4)
+   GSAP + ScrollTrigger existentes. Desktop: sequência reversível de escrita,
+   preenchimento de cor, pausa de leitura e transição. Mobile: swipe e autoplay,
+   sem prender o scroll vertical. Não usa wheel preventDefault ou dependências. */
 (() => {
-  "use strict";
-  const boot = () => {
-    const section = document.querySelector(".bella-infinite-gallery");
-    if (!section || section.dataset.mosaicInit) return;
-    const viewport = section.querySelector(".bella-mosaic-viewport");
-    const track = section.querySelector(".bella-mosaic-track");
-    const prev = section.querySelector('[data-mosaic-direction="prev"]');
-    const next = section.querySelector('[data-mosaic-direction="next"]');
-    const edgePrev = section.querySelector(".bella-mosaic-edge--prev");
-    const edgeNext = section.querySelector(".bella-mosaic-edge--next");
-    const toggle = section.querySelector("[data-mosaic-toggle]");
-    const filters = [...document.querySelectorAll("[data-bella-filter]")];
-    const progress = [...section.querySelectorAll(".bella-mosaic-step")];
-    const originals = [...(track?.querySelectorAll(".bella-mosaic-panel") || [])];
-    const categories = ["estrategia", "branding", "embalagem", "conteudo"];
-    if (!viewport || !track || !prev || !next || originals.length !== 4 ||
-        progress.length !== 4 || filters.length !== 5 ||
-        categories.some((key, i) => originals[i].dataset.solution !== key)) return;
-    section.dataset.mosaicInit = "1";
-    const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const gsap = window.gsap, ST = window.ScrollTrigger;
-    let mode = "all", panelWidth = Math.max(1, originals[0].getBoundingClientRect().width);
-    let cycleWidth = panelWidth * 4, visible = false, pinned = false, interacting = false;
-    let userPaused = false, focusInside = false, resumeDelay = null, autoTween = null;
-    let manualTween = null, resizeFrame = 0, fromTouch = false, dragging = false;
-    let startX = 0, startY = 0, lastX = 0;
-    const position = { auto: 0, manual: 0, scroll: 0 };
-    const widthForPanels = () => {
-      const el = track.querySelector(".bella-mosaic-panel");
-      return Math.max(1, el?.getBoundingClientRect().width || viewport.clientWidth);
-    };
-    const mod = (value, length) => ((value % length) + length) % length;
+"use strict";
+const boot = () => {
+  const section = document.querySelector(".bella-infinite-gallery");
+  if (!section || section.dataset.mosaicInit) return;
+  const viewport = section.querySelector(".bella-mosaic-viewport");
+  const track = section.querySelector(".bella-mosaic-track");
+  const previous = section.querySelector('[data-mosaic-direction="prev"]');
+  const next = section.querySelector('[data-mosaic-direction="next"]');
+  const edgePrev = section.querySelector(".bella-mosaic-edge--prev");
+  const edgeNext = section.querySelector(".bella-mosaic-edge--next");
+  const progress = [...section.querySelectorAll(".bella-mosaic-step")];
+  const filters = [...document.querySelectorAll("[data-bella-filter]")];
+  const toggle = section.querySelector("[data-mosaic-toggle]");
+  const originals = [...(track?.querySelectorAll(".bella-mosaic-panel") || [])];
+  const categories = ["estrategia","branding","embalagem","conteudo"];
+  if (!viewport || !track || !previous || !next ||
+      originals.length !== 4 || progress.length !== 4 || filters.length !== 5 ||
+      categories.some((key,i)=>originals[i].dataset.solution !== key)) return;
+  section.dataset.mosaicInit="1";
 
-    const updateProgress = (pixel) => {
-      const fraction = pixel / panelWidth;
-      const current = mode === "all" ? Math.min(3, Math.floor(fraction)) : categories.indexOf(mode);
-      progress.forEach((button, i) => {
-        const fill = mode === "all" ? Math.max(0, Math.min(1, fraction - i)) :
-          (categories[i] === mode ? 1 : 0);
-        button.style.setProperty("--step-fill", (fill * 100).toFixed(2) + "%");
-        button.classList.toggle("is-current", i === current);
-        button.setAttribute("aria-current", i === current ? "step" : "false");
-      });
-    };
-    const output = (pixel) => {
-      if (gsap && !reduced) gsap.set(track, { x: -pixel });
-      updateProgress(pixel);
-    };
-    const render = () => output(mod(position.auto + position.manual + position.scroll, cycleWidth));
-    const canAuto = () => visible && !pinned && !interacting && !userPaused &&
-      !focusInside && !document.hidden;
-    const sync = () => {
-      if (autoTween) canAuto() ? autoTween.resume() : autoTween.pause();
-    };
-    const cloned = (source) => {
-      const clone = source.cloneNode(true);
-      clone.setAttribute("aria-hidden", "true");
-      clone.inert = true;
-      clone.querySelectorAll("img").forEach(img => {
-        img.alt = ""; img.loading = "lazy"; img.decoding = "async";
-      });
-      return clone;
-    };
-    const build = (key) => {
-      mode = key;
-      track.replaceChildren();
-      const chosen = key === "all" ? originals : originals.filter(p => p.dataset.solution === key);
-      chosen.forEach(item => track.appendChild(item));
-      chosen.forEach(item => track.appendChild(cloned(item)));
-      panelWidth = widthForPanels();
-      cycleWidth = panelWidth * chosen.length;
-      filters.forEach(button => {
-        const active = button.dataset.bellaFilter === key;
-        button.classList.toggle("is-active", active);
-        button.setAttribute("aria-pressed", String(active));
-      });
-      position.auto = 0; position.manual = 0; position.scroll = 0;
-      // A função de desenho é declarada adiante; não acioná-la no primeiro boot.
-      updateProgress(0);
-    };
-    build("all");
+  const gsap = window.gsap, ScrollTrigger = window.ScrollTrigger;
+  const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const desktop = !!gsap && !!ScrollTrigger && !reduced &&
+    matchMedia("(min-width: 1024px)").matches;
+  const targets = ["#e9effb","#7886bc","#5c6ca4","#4a588a"];
+  const weights = [1.24,1,1,1.34];
+  const totalWeight = weights.reduce((sum,n)=>sum+n,0);
+  const clamp = (v)=>Math.max(0,Math.min(1,v));
+  const ease = (v)=>{ const n=clamp(v);return n*n*(3-2*n); };
+  const mod = (n,d)=>((n%d)+d)%d;
+  const state = { auto:0,manual:0 };
+  let mode="all",currentPanels=[],panelWidth=1,cycleWidth=1;
+  let autoplay=null,manualTween=null,resumeDelay=null,resizeFrame=0,trigger=null;
+  let visible=false,pinned=false,interacting=false,paused=false,focusInside=false;
+  let startingX=0,startingY=0,lastX=0,touching=false,dragging=false;
+  let scrollRatio=0;
+  const setX = gsap && !reduced ? gsap.quickSetter(track,"x","px") :
+    (x)=>{track.style.transform="translate3d("+x+"px,0,0)";};
 
-    const step = (dir) => mode === "all" ? panelWidth * dir : panelWidth * dir * .72;
-    const native = !gsap || reduced;
-    if (native) {
-      viewport.classList.add("is-native");
-      if (toggle) toggle.hidden = true;
-      const move = dir => viewport.scrollBy({
-        left: step(dir), behavior: reduced ? "auto" : "smooth"
-      });
-      prev.addEventListener("click", () => move(-1));
-      next.addEventListener("click", () => move(1));
-      const nativeSelect = (key, jump) => {
-        if (mode !== key) build(key);
-        viewport.scrollTo({left:jump * panelWidth,behavior:reduced?"auto":"smooth"});
-      };
-      filters.forEach(button => button.addEventListener("click", () => {
-        const key = button.dataset.bellaFilter;
-        if (!["all", ...categories].includes(key)) return;
-        nativeSelect(key, 0);
-        section.scrollIntoView({behavior:reduced?"auto":"smooth",block:"start"});
-      }));
-      progress.forEach((button,i) => button.addEventListener("click",()=>{
-        nativeSelect("all",i);
-      }));
-      viewport.addEventListener("scroll",()=>{
-        updateProgress(mod(viewport.scrollLeft,cycleWidth));
-      },{passive:true});
-      return;
+  // Texto original permanece na árvore acessível. Reserva sua altura com
+  // um "ghost" invisível e desenha apenas a parcela digitada. Assim não há
+  // layout shifts durante o scroll, mesmo quando o texto ocupa várias linhas.
+  const fragments = new WeakMap();
+  const prepare = (panel) => {
+    if (!desktop || fragments.has(panel)) return;
+    const map={};
+    for (const [name,selector] of [
+      ["lead",".bella-mosaic-info__lead"],
+      ["detail",".bella-mosaic-info__detail"],
+      ["foot",".bella-mosaic-info__foot"]]) {
+      const el=panel.querySelector(selector);
+      if(!el)continue;
+      const text=el.textContent.trim();
+      const ghost=document.createElement("span");
+      ghost.className="bella-mosaic-type-ghost";
+      ghost.textContent=text;ghost.setAttribute("aria-hidden","true");
+      const typed=document.createElement("span");
+      typed.className="bella-mosaic-typed";
+      typed.setAttribute("aria-hidden","true");
+      el.setAttribute("aria-label",text);
+      el.replaceChildren(ghost,typed);
+      map[name]={el,text,typed,count:-1};
     }
-    if (ST) gsap.registerPlugin(ST);
-    const setX = gsap.quickSetter(track, "x", "px");
-    // Substitui gsap.set por setter eficiente em cada frame.
-    const draw = () => {
-      const pixel = mod(position.auto + position.manual + position.scroll, cycleWidth);
-      setX(-pixel); updateProgress(pixel);
-    };
-    const beginAutoplay = () => {
-      if (autoTween) autoTween.kill();
-      autoTween = gsap.fromTo(position,{auto:0},{
-        auto:cycleWidth,repeat:-1,duration:cycleWidth/19,
-        ease:"none",paused:true,onUpdate:draw
-      });
-      sync(); draw();
-    };
-    beginAutoplay();
-    const refresh = () => {if (ST) requestAnimationFrame(()=>ST.refresh());};
-    if ("IntersectionObserver" in window) {
-      new IntersectionObserver(entries => {
-        visible = entries.some(entry=>entry.isIntersecting);
-        sync();
-      },{threshold:0,rootMargin:"90px 0px"}).observe(section);
-    } else {visible=true;sync();}
-    const hold = (ms=1600) => {
-      interacting=true;sync();
-      if(resumeDelay)resumeDelay.kill();
-      resumeDelay=gsap.delayedCall(ms/1000,()=>{interacting=false;sync();});
-    };
-    const slide = (pixels,duration=1.1) => {
-      hold((duration+.48)*1000);
-      if (manualTween) manualTween.kill();
-      manualTween=gsap.to(position,{
-        manual:position.manual+pixels,
-        duration,ease:"power3.inOut",onUpdate:draw,overwrite:"auto"
-      });
-    };
-    prev.addEventListener("click",()=>slide(-step(1)));
-    next.addEventListener("click",()=>slide(step(1)));
-
-    const selectFilter = key => {
-      if (!["all",...categories].includes(key)) return;
-      if (mode !== key) {
-        if (manualTween) manualTween.kill();
-        if (autoTween) autoTween.kill();
-        build(key);beginAutoplay();refresh();
-      }
-      hold(1250);
-      section.scrollIntoView({behavior:"smooth",block:"start"});
-    };
-    filters.forEach(button=>button.addEventListener("click",()=>{
-      selectFilter(button.dataset.bellaFilter);
-    }));
-    progress.forEach((button,index) => button.addEventListener("click",()=>{
-      if (mode !== "all") {
-        // A barra é o atalho de navegação entre os quatro capítulos.
-        // Em modo filtrado, retorna à sequência completa no capítulo escolhido.
-        if (autoTween) autoTween.kill();
-        if (manualTween) manualTween.kill();
-        build("all");beginAutoplay();refresh();
-      }
-      const current=mod(position.auto+position.manual+position.scroll,cycleWidth);
-      const dest=index*panelWidth;
-      let diff=mod(dest-current,cycleWidth);
-      if (diff>cycleWidth/2) diff-=cycleWidth;
-      slide(diff,Math.min(1.5,.75+Math.abs(diff)/Math.max(panelWidth,1)*.27));
-    }));
-    if(toggle)toggle.addEventListener("click",()=>{
-      userPaused=!userPaused;
-      toggle.setAttribute("aria-pressed",String(userPaused));
-      toggle.setAttribute("aria-label",userPaused?"Retomar movimento automático":"Pausar movimento automático");
-      toggle.title=userPaused?"Retomar movimento":"Pausar movimento";
-      toggle.innerHTML=userPaused
-        ? '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 5 11 7-11 7z" fill="currentColor"/></svg>'
-        : '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5v14M15 5v14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
-      sync();
+    fragments.set(panel,map);
+  };
+  originals.forEach(prepare);
+  const write = (frag,amount) => {
+    if(!frag)return;
+    const count=Math.round(frag.text.length*clamp(amount));
+    if(count===frag.count)return;
+    frag.count=count;
+    frag.typed.textContent=frag.text.slice(0,count);
+    frag.typed.classList.toggle("is-typing",count>0&&count<frag.text.length);
+  };
+  const resetClone = clone => {
+    clone.setAttribute("aria-hidden","true");
+    clone.inert=true;
+    clone.querySelectorAll("img").forEach(img=>{
+      img.alt="";img.loading="lazy";img.decoding="async";
     });
-    section.addEventListener("focusin",()=>{focusInside=true;sync();});
-    section.addEventListener("focusout",()=>{
-      focusInside=section.contains(document.activeElement);sync();
+    // Cópias do loop não têm animações de escrita nem elementos acessíveis.
+    clone.querySelectorAll(".bella-mosaic-typed").forEach(typed=>{
+      typed.textContent=typed.parentElement?.getAttribute("aria-label") || "";
+      typed.classList.remove("is-typing");
     });
-    document.addEventListener("visibilitychange",sync);
-    // Controles surgem apenas quando o cursor alcança as bordas da galeria.
-    if(edgePrev&&edgeNext){
-      section.addEventListener("pointermove",event=>{
-        if(event.pointerType==="touch")return;
-        const bounds=section.getBoundingClientRect();
-        const offset=event.clientX-bounds.left;
-        edgePrev.classList.toggle("is-near",offset<Math.min(180,bounds.width*.17));
-        edgeNext.classList.toggle("is-near",offset>bounds.width-Math.min(180,bounds.width*.17));
-      },{passive:true});
-      section.addEventListener("pointerleave",()=>{
-        edgePrev.classList.remove("is-near");edgeNext.classList.remove("is-near");
-      });
-    }
-    viewport.addEventListener("touchstart",event=>{
-      if(event.touches.length!==1)return;
-      startX=lastX=event.touches[0].clientX;
-      startY=event.touches[0].clientY;
-      fromTouch=true;dragging=false;
-    },{passive:true});
-    viewport.addEventListener("touchmove",event=>{
-      if(!fromTouch||event.touches.length!==1)return;
-      const x=event.touches[0].clientX;
-      const dx=x-startX,dy=event.touches[0].clientY-startY;
-      if(!dragging&&Math.abs(dx)>9&&Math.abs(dx)>Math.abs(dy)*1.2)dragging=true;
-      if(dragging){hold(1700);position.manual+=lastX-x;draw();}
-      lastX=x;
-    },{passive:true});
-    const endTouch=()=>{if(dragging)hold(1600);dragging=false;fromTouch=false;};
-    viewport.addEventListener("touchend",endTouch,{passive:true});
-    viewport.addEventListener("touchcancel",endTouch,{passive:true});
+    return clone;
+  };
+  const applyFilters = key => {
+    filters.forEach(button=>{
+      const on=button.dataset.bellaFilter===key;
+      button.classList.toggle("is-active",on);
+      button.setAttribute("aria-pressed",String(on));
+    });
+  };
+  const build = key => {
+    mode=key;
+    currentPanels = key==="all" ? originals :
+      originals.filter(panel=>panel.dataset.solution===key);
+    track.replaceChildren();
+    currentPanels.forEach(p=>track.appendChild(p));
+    currentPanels.forEach(p=>track.appendChild(resetClone(p.cloneNode(true))));
+    panelWidth=Math.max(1,currentPanels[0]?.getBoundingClientRect().width || viewport.clientWidth);
+    cycleWidth=panelWidth*currentPanels.length;
+    state.auto=0;state.manual=0;
+    applyFilters(key);
+  };
+  build("all");
 
-    // Percurso horizontal limitado a cerca de três capítulos, em ambos sentidos.
-    if(ST){
-      const media=gsap.matchMedia();
-      media.add("(min-width: 1024px) and (prefers-reduced-motion: no-preference)",()=>{
-        const smooth=gsap.quickTo(position,"scroll",{
-          duration:.38,ease:"power2.out",onUpdate:draw
-        });
-        const trigger=ST.create({
-          id:"bellamazon-mosaico-horizontal",trigger:section,pin:section,pinSpacing:true,
-          start:"top top",anticipatePin:1,invalidateOnRefresh:true,
-          end:()=>"+="+Math.round(Math.min(3400,Math.max(1250,viewport.clientWidth*2.65))),
-          onEnter:()=>{pinned=true;sync();},
-          onEnterBack:()=>{pinned=true;sync();},
-          onLeave:()=>{pinned=false;sync();},
-          onLeaveBack:()=>{pinned=false;sync();},
-          onUpdate:self=>smooth(self.progress*panelWidth*(mode==="all"?3:1)),
-          onRefresh:self=>{
-            position.scroll=self.progress*panelWidth*(mode==="all"?3:1);draw();
-          }
-        });
-        return ()=>{trigger.kill();pinned=false;position.scroll=0;draw();sync();};
-      });
-      refresh();
+  const updateProgress = (index,local) => {
+    progress.forEach((button,i)=>{
+      const fill=mode==="all" ? (i<index?1:i===index?local:0) :
+        (categories[i]===mode?local:0);
+      button.style.setProperty("--step-fill",(clamp(fill)*100).toFixed(2)+"%");
+      const current = mode==="all" ? i===index : categories[i]===mode;
+      button.classList.toggle("is-current",current);
+      if(current)button.setAttribute("aria-current","step");
+      else button.removeAttribute("aria-current");
+    });
+  };
+
+  // Divisão temporal: capítulos 1 e 4 duram mais. Em cada capítulo:
+  // 00–62% a escrita acontece, 62–78% é pausa para leitura e
+  // 78–100% acontece a transição até o próximo card.
+  const decode = raw => {
+    let rest=clamp(raw)*totalWeight;
+    let index=0;
+    for (;index<3;index++){
+      if(rest < weights[index])break;
+      rest-=weights[index];
     }
-    if("ResizeObserver" in window){
-      const obs=new ResizeObserver(()=>{
-        cancelAnimationFrame(resizeFrame);
-        resizeFrame=requestAnimationFrame(()=>{
-          const size=widthForPanels();
-          if(Math.abs(size-panelWidth)<1)return;
-          const ratio=size/panelWidth;
-          position.manual*=ratio;position.scroll*=ratio;
-          panelWidth=size;cycleWidth=size*(mode==="all"?4:1);
-          beginAutoplay();refresh();
-        });
-      });
-      obs.observe(viewport);
+    return {index,local:clamp(rest/weights[index])};
+  };
+  const colors = (panel,amount,index) => {
+    const info=panel.querySelector(".bella-mosaic-info");
+    if(!info || !desktop)return;
+    const t=ease(amount);
+    info.style.backgroundColor=gsap.utils.interpolate("#ffffff",targets[index],t);
+    info.style.color=index===0?"#202a44":
+      gsap.utils.interpolate("#202a44","#ffffff",ease((amount-.25)/.75));
+    const parts=fragments.get(panel);
+    if(parts){
+      write(parts.lead,clamp((amount-.055)/.20));
+      write(parts.detail,clamp((amount-.19)/.36));
+      write(parts.foot,clamp((amount-.51)/.11));
+    }
+    const rule=info.querySelector(".bella-mosaic-info__rule");
+    if(rule){
+      rule.style.opacity=String(clamp((amount-.31)/.19));
+      rule.style.transform="scaleX("+ease((amount-.31)/.2)+")";
     }
   };
-  if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",boot,{once:true});
-  else boot();
+  const pastWash=section.querySelector(".bella-mosaic-past-wash");
+  const renderScroll=raw=>{
+    if(!desktop)return;
+    scrollRatio=clamp(raw);
+    const {index,local}=decode(scrollRatio);
+    const movement=index===3?0:ease((local-.78)/.22);
+    const pixel=(index+movement)*panelWidth;
+    setX(-pixel);
+    originals.forEach((panel,i)=>colors(panel,i<index?1:i>index?0:clamp(local/.62),i));
+    if(pastWash)pastWash.style.opacity=String(
+      index===3?0:Math.sin(Math.PI*movement)*.95);
+    updateProgress(index,local);
+  };
+  const renderMobile=()=>{
+    if(desktop)return;
+    const pixel=mod(state.auto+state.manual,cycleWidth);
+    setX(-pixel);
+    const index=mode==="all"?Math.min(3,Math.floor(pixel/panelWidth)):
+      categories.indexOf(mode);
+    const local=mode==="all"?pixel/panelWidth-index:1;
+    updateProgress(Math.max(0,index),local);
+  };
+
+  const isAutoplayAllowed=()=>!desktop&&visible&&!pinned&&!interacting&&
+    !paused&&!focusInside&&!document.hidden;
+  const syncAuto=()=>{
+    if(autoplay)isAutoplayAllowed()?autoplay.resume():autoplay.pause();
+  };
+  const startAutoplay=()=>{
+    if(!gsap || reduced || desktop)return;
+    if(autoplay)autoplay.kill();
+    autoplay=gsap.fromTo(state,{auto:0},{
+      auto:cycleWidth,duration:cycleWidth/21,repeat:-1,ease:"none",
+      paused:true,onUpdate:renderMobile
+    });
+    syncAuto();renderMobile();
+  };
+  startAutoplay();
+  if("IntersectionObserver" in window){
+    new IntersectionObserver(entries=>{
+      visible=entries.some(entry=>entry.isIntersecting);syncAuto();
+    },{rootMargin:"80px 0px",threshold:0}).observe(section);
+  }else{visible=true;syncAuto();}
+  const hold=ms=>{
+    interacting=true;syncAuto();
+    if(resumeDelay)resumeDelay.kill();
+    if(gsap)resumeDelay=gsap.delayedCall(ms/1000,()=>{
+      interacting=false;syncAuto();
+    });
+    else interacting=false;
+  };
+
+  // Visitas diretas por filtros, setas e barra alteram o próprio scroll quando
+  // há pin; NÃO criam uma segunda timeline competindo com ScrollTrigger.
+  const findSeek = index => {
+    let before=0;
+    for(let i=0;i<index;i++)before+=weights[i];
+    return (before+weights[index]*.60)/totalWeight;
+  };
+  const seek=idx=>{
+    const i=Math.max(0,Math.min(3,idx));
+    if(desktop && trigger){
+      const target=trigger.start+findSeek(i)*(trigger.end-trigger.start);
+      window.scrollTo({top:target,behavior:"smooth"});
+    }else if(gsap && !reduced){
+      const current=mod(state.auto+state.manual,cycleWidth);
+      const desired=mode==="all"?i*panelWidth:0;
+      let diff=mod(desired-current,cycleWidth);
+      if(diff>cycleWidth/2)diff-=cycleWidth;
+      hold(1700);
+      if(manualTween)manualTween.kill();
+      manualTween=gsap.to(state,{manual:state.manual+diff,duration:1.1,
+        ease:"power3.inOut",onUpdate:renderMobile});
+    }else viewport.scrollTo({left:(mode==="all"?i:0)*panelWidth,
+      behavior:reduced?"auto":"smooth"});
+  };
+  const selectFilter=(key)=>{
+    if(!["all",...categories].includes(key))return;
+    if(key!==mode){
+      if(autoplay)autoplay.kill();
+      if(manualTween)manualTween.kill();
+      build(key);
+      if(desktop){
+        const chosen=categories.indexOf(key);
+        // No filtro isolado o texto aparece completo; a transição é feita
+        // pelo próprio trecho de scroll, preservando o sentido reversível.
+        originals.forEach((panel,i)=>colors(panel,i===chosen||key==="all"?0:0,i));
+      }else startAutoplay();
+      if(ScrollTrigger)requestAnimationFrame(()=>ScrollTrigger.refresh());
+    }
+    if(desktop){
+      section.scrollIntoView({behavior:"smooth",block:"start"});
+    }else{
+      viewport.scrollLeft=0;renderMobile();
+      section.scrollIntoView({behavior:reduced?"auto":"smooth",block:"start"});
+    }
+  };
+  filters.forEach(btn=>btn.addEventListener("click",()=>selectFilter(btn.dataset.bellaFilter)));
+  progress.forEach((btn,i)=>btn.addEventListener("click",()=>{
+    if(mode!=="all"){
+      if(autoplay)autoplay.kill();
+      if(manualTween)manualTween.kill();
+      build("all");
+      startAutoplay();
+      if(ScrollTrigger)ScrollTrigger.refresh();
+    }
+    seek(i);
+  }));
+  const arrow=dir=>{
+    if(desktop){
+      const info=decode(scrollRatio);
+      let nextIndex=info.index+dir;
+      if(nextIndex<0)nextIndex=3;
+      if(nextIndex>3)nextIndex=0;
+      seek(nextIndex);
+    }else if(mode!=="all"){
+      const cur=categories.indexOf(mode);
+      selectFilter(categories[mod(cur+dir,4)]);
+    }else{
+      const pixel=mod(state.auto+state.manual,cycleWidth);
+      seek(mod(Math.floor(pixel/panelWidth)+dir,4));
+    }
+  };
+  previous.addEventListener("click",()=>arrow(-1));
+  next.addEventListener("click",()=>arrow(1));
+  if(toggle)toggle.addEventListener("click",()=>{
+    paused=!paused;
+    toggle.setAttribute("aria-pressed",String(paused));
+    toggle.setAttribute("aria-label",paused?"Retomar movimento automático":"Pausar movimento automático");
+    toggle.title=paused?"Retomar movimento":"Pausar movimento";
+    toggle.innerHTML=paused
+      ? '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 5 11 7-11 7z" fill="currentColor"/></svg>'
+      : '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5v14M15 5v14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
+    syncAuto();
+  });
+
+  section.addEventListener("focusin",()=>{focusInside=true;syncAuto();});
+  section.addEventListener("focusout",()=>{
+    focusInside=section.contains(document.activeElement);syncAuto();
+  });
+  document.addEventListener("visibilitychange",syncAuto);
+  if(edgePrev&&edgeNext){
+    section.addEventListener("pointermove",event=>{
+      if(event.pointerType==="touch")return;
+      const rect=section.getBoundingClientRect();
+      const x=event.clientX-rect.left;
+      const threshold=Math.min(190,rect.width*.17);
+      edgePrev.classList.toggle("is-near",x<threshold);
+      edgeNext.classList.toggle("is-near",x>rect.width-threshold);
+    },{passive:true});
+    section.addEventListener("pointerleave",()=>{
+      edgePrev.classList.remove("is-near");
+      edgeNext.classList.remove("is-near");
+    });
+  }
+  viewport.addEventListener("touchstart",e=>{
+    if(desktop||e.touches.length!==1)return;
+    startingX=lastX=e.touches[0].clientX;
+    startingY=e.touches[0].clientY;
+    touching=true;dragging=false;
+  },{passive:true});
+  viewport.addEventListener("touchmove",e=>{
+    if(desktop||!touching||e.touches.length!==1||reduced||!gsap)return;
+    const x=e.touches[0].clientX,dx=x-startingX,dy=e.touches[0].clientY-startingY;
+    if(!dragging&&Math.abs(dx)>9&&Math.abs(dx)>Math.abs(dy)*1.2)dragging=true;
+    if(dragging){hold(1700);state.manual+=lastX-x;renderMobile();}
+    lastX=x;
+  },{passive:true});
+  const touchEnd=()=>{if(dragging)hold(1600);dragging=false;touching=false;};
+  viewport.addEventListener("touchend",touchEnd,{passive:true});
+  viewport.addEventListener("touchcancel",touchEnd,{passive:true});
+
+  // Navegação nativa acessível quando não há GSAP ou movimento é reduzido.
+  if(!gsap || reduced){
+    viewport.classList.add("is-native");
+    if(toggle)toggle.hidden=true;
+    originals.forEach(panel=>{
+      const info=panel.querySelector(".bella-mosaic-info");
+      if(info){info.style.background="#fff";info.style.color="#202a44";}
+    });
+    viewport.addEventListener("scroll",()=>{
+      const pixel=mod(viewport.scrollLeft,cycleWidth);
+      const idx=mode==="all"?Math.min(3,Math.floor(pixel/panelWidth)):categories.indexOf(mode);
+      updateProgress(Math.max(0,idx),mode==="all"?pixel/panelWidth-idx:1);
+    },{passive:true});
+    return;
+  }
+  if(ScrollTrigger)gsap.registerPlugin(ScrollTrigger);
+  if(desktop){
+    // Progresso real (sem interpolação atrasada): frame inicial e final são
+    // exatamente Estratégia x=0 e Conteúdo x=3*largura.
+    trigger=ScrollTrigger.create({
+      id:"bellamazon-mosaico-horizontal",trigger:section,pin:section,
+      pinSpacing:true,start:"top top",anticipatePin:1,invalidateOnRefresh:true,
+      end:()=>"+="+Math.round(Math.min(9000,Math.max(4400,innerHeight*7.8))),
+      onEnter:self=>{pinned=true;renderScroll(self.progress);},
+      onEnterBack:self=>{pinned=true;renderScroll(self.progress);},
+      onLeave:self=>{pinned=false;renderScroll(1);},
+      onLeaveBack:self=>{pinned=false;renderScroll(0);},
+      onUpdate:self=>renderScroll(self.progress),
+      onRefresh:self=>{
+        panelWidth=Math.max(1,currentPanels[0]?.getBoundingClientRect().width||viewport.clientWidth);
+        cycleWidth=panelWidth*currentPanels.length;
+        renderScroll(self.progress);
+      }
+    });
+    renderScroll(trigger.progress);
+    requestAnimationFrame(()=>ScrollTrigger.refresh());
+  }
+  if("ResizeObserver" in window){
+    const obs=new ResizeObserver(()=>{
+      cancelAnimationFrame(resizeFrame);
+      resizeFrame=requestAnimationFrame(()=>{
+        const latest=Math.max(1,currentPanels[0]?.getBoundingClientRect().width||viewport.clientWidth);
+        if(Math.abs(latest-panelWidth)<1)return;
+        panelWidth=latest;cycleWidth=panelWidth*currentPanels.length;
+        if(desktop && trigger){trigger.refresh();renderScroll(trigger.progress);}
+        else{startAutoplay();renderMobile();}
+      });
+    });
+    obs.observe(viewport);
+  }
+};
+if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",boot,{once:true});
+else boot();
 })();
