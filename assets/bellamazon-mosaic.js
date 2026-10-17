@@ -269,6 +269,8 @@ const boot = () => {
       if(manualTween)manualTween.kill();
       build("all");
       startAutoplay();
+      // Recalcula o pin ANTES de converter a etapa em posição de scroll.
+      // Caso contrário o clique usa o end curto do filtro anterior.
       if(ScrollTrigger)ScrollTrigger.refresh();
     }
     seek(i);
