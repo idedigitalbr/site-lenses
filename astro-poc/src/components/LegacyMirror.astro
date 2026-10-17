@@ -11,13 +11,18 @@ import path from "node:path";
  * FASE P1: remover gradativamente esta camada após visual regression
  * e conversão das seções em componentes reais Astro + Tailwind 4.
  */
-interface Props { source: string }
-const {source}=Astro.props;
+interface Props { source: string; relativePrefix?: string }
+const {source,relativePrefix=""}=Astro.props;
 const root=path.resolve(process.cwd(),"..");
 const absolute=path.resolve(root,source);
 if(!absolute.startsWith(root+path.sep)||!absolute.endsWith(".html"))
   throw new Error("LegacyMirror: source must be a repository HTML file");
-const markup=fs.readFileSync(absolute,"utf8");
+let markup=fs.readFileSync(absolute,"utf8");
+// O Sobre legado está em /sobre.html. Na URL /sobre2/, ajustar SOMENTE
+// referências relativas de href/src/poster para manter os mesmos arquivos.
+// Ancoras # e URLs absolutas não podem ser modificadas.
+if(relativePrefix) markup=markup.replace(/(\b(?:href|src|poster)=[\x22\x27])([^\x22\x27]+)([\x22\x27])/gi,(whole,begin,value,end)=>
+  /^(?:https?:|\/|#|mailto:|tel:|data:|javascript:)/i.test(value)?whole:begin+relativePrefix+value+end);
 if(!markup.toLowerCase().includes("<!doctype html>")||!/<body\b/i.test(markup))
   throw new Error("LegacyMirror: invalid legacy document "+source);
 ---
