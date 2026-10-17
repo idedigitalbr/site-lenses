@@ -8,3 +8,11 @@ Thumbs.db
 
 # Design duplicates / raw dumps if not needed
 # (design-systems folder can be kept or excluded based on preference, standard git will track it)
+
+# LENSES case pipeline: private local working files and temporary video copies
+.lenses-work/
+assets/cases/**/originals/
+assets/cases/**/raw/
+.env
+.env.*
+rclone.conf
