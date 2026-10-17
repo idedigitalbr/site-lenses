@@ -227,3 +227,93 @@
 @media(prefers-reduced-motion:reduce){
  .bella-mosaic-tile img,.bella-mosaic-arrow,.bella-mosaic-edge,.bella-case .bell-s5-card[data-bella-filter]{transition:none!important}
 }
+
+/* ============================================================
+   Bellamazon · capitulo controlado pelo scroll (v4)
+   O card SEMPRE começa branco. Cada avanço revela a escrita e
+   interpola a cor; na volta a animação retrocede naturalmente.
+   ============================================================ */
+.bella-case .bella-infinite-gallery .bella-mosaic-info{
+  background:#fff;
+  color:#202a44;
+  transition:none!important;
+  contain:layout paint;
+}
+.bella-mosaic-info__lead,
+.bella-mosaic-info__detail,
+.bella-mosaic-info__foot{
+  position:relative;
+}
+.bella-mosaic-type-ghost{
+  visibility:hidden;
+  white-space:pre-wrap;
+  overflow-wrap:break-word;
+}
+.bella-mosaic-typed{
+  position:absolute;
+  inset:0;
+  white-space:pre-wrap;
+  overflow-wrap:break-word;
+}
+.bella-mosaic-typed.is-typing::after{
+  content:"";
+  display:inline-block;
+  width:1px;
+  height:.88em;
+  border-right:2px solid currentColor;
+  margin-left:2px;
+  vertical-align:-.08em;
+  animation:bella-type-caret .8s steps(1,end) infinite;
+}
+@keyframes bella-type-caret{50%{opacity:0}}
+.bella-mosaic-info__rule{
+  transform-origin:left center;
+}
+.bella-mosaic-past-wash{
+  position:absolute;
+  pointer-events:none;
+  z-index:7;
+  top:0;
+  bottom:54px;
+  left:0;
+  width:30%;
+  opacity:0;
+  background:linear-gradient(90deg,rgba(228,233,246,.12),rgba(228,233,246,.04) 65%,transparent);
+  -webkit-backdrop-filter:grayscale(1);
+  backdrop-filter:grayscale(1);
+  -webkit-mask-image:linear-gradient(90deg,#000 0%,#000 62%,transparent 100%);
+  mask-image:linear-gradient(90deg,#000 0%,#000 62%,transparent 100%);
+  will-change:opacity;
+}
+.bella-mosaic-panel .bella-mosaic-info__lead,
+.bella-mosaic-panel .bella-mosaic-info__detail,
+.bella-mosaic-panel .bella-mosaic-info__foot{
+  min-width:0;
+}
+@media(min-width:1024px){
+  .bella-mosaic-panel .bella-mosaic-info{
+    justify-content:center;
+    padding:clamp(18px,2.55vw,42px);
+  }
+  .bella-mosaic-info__icon{
+    width:clamp(68px,6.2vw,98px);
+    height:clamp(68px,6.2vw,98px);
+    margin:clamp(15px,2.4vh,27px) auto clamp(14px,2.3vh,26px);
+  }
+  .bella-mosaic-info__rule{margin:clamp(12px,2vh,24px) auto}
+  .bella-mosaic-info__foot{margin-top:clamp(14px,2.2vh,28px)}
+}
+@media(max-width:1023px){
+  .bella-mosaic-past-wash{display:none}
+  .bella-mosaic-type-ghost{visibility:visible}
+  .bella-mosaic-typed{display:none}
+  .bella-mosaic-panel .bella-mosaic-info{
+    background:#fff;color:#202a44;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  .bella-mosaic-type-ghost{visibility:visible}
+  .bella-mosaic-typed,.bella-mosaic-past-wash{display:none}
+  .bella-mosaic-info__rule{opacity:1;transform:none}
+  .bella-mosaic-typed.is-typing::after{animation:none}
+}
