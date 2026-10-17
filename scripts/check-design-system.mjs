@@ -97,9 +97,9 @@ for(const asset of ['assets/bellamazon-dashboard.css','assets/bellamazon-dashboa
   check(fs.existsSync(path.join(process.cwd(),asset)), 'Bellamazon: arquivo de dashboard ausente '+asset);
   check(bell.includes(path.basename(asset)), 'Bellamazon: dashboard não importa '+asset);
 }
-check(bell.includes('data-bella-filter="all"') &&
+check(!bell.includes('data-bella-filter="all"') &&
       ['estrategia','branding','embalagem','conteudo'].every(tag=>bell.includes('data-bella-filter="'+tag+'"')),
-      'Bellamazon: filtros das soluções ausentes');
+      'Bellamazon: cards de soluções ou remoção do botão extra incorretos');
 check((bell.match(/class="bella-mosaic-panel"/g)||[]).length === 4,
       'Bellamazon: quatro capítulos da galeria não encontrados');
 const sectionOfSolutions = bell.indexOf('<section class="bell-s5 bella-reuse-results"');
@@ -109,8 +109,10 @@ const galleryEnd = bell.indexOf('</section>', galleryStart);
 const dashboardStart = bell.indexOf('<section class="dash-wrap bell-results"');
 check(sectionOfSolutions >= 0 && galleryStart > solutionsEnd &&
       galleryEnd > galleryStart && dashboardStart > galleryEnd &&
-      bell.includes('class="bella-mosaic-scroll-space"'),
-      'Bellamazon: filtros, wrapper sticky, galeria e dashboard fora de ordem');
+      bell.includes('class="bella-mosaic-scroll-space"') &&
+      bell.includes('class="bella-mosaic-story-stage"') &&
+      bell.includes('class="bella-mosaic-story-morph"'),
+      'Bellamazon: ordem das seções ou transição sticky do mosaico incompleta');
 
 check((bell.match(/class="bella-mosaic-step/g)||[]).length === 4 &&
       bell.includes('class="bella-mosaic-progress"'),
@@ -129,24 +131,28 @@ for (const href of Array.from(bell.matchAll(/\b(?:href|src|poster)\s*=\s*["']([^
         'Bellamazon: arquivo local inexistente ' + cleaned);
 }
 const mosaicJS = read('assets/bellamazon-mosaic.js');
-check(mosaicJS.includes('trigger:scrollSpace') &&
+check(mosaicJS.includes('trigger:space,start:"top top"') &&
       mosaicJS.includes('end:"bottom bottom"') &&
       !mosaicJS.includes('pin:section') && !mosaicJS.includes('pinSpacing:true') &&
       mosaicJS.includes('prefers-reduced-motion: reduce'),
-      'Bellamazon: o mosaico deve usar sticky + scroll nativo, nunca GSAP pin');
+      'Bellamazon: a animação deve usar sticky e scroll nativo, nunca GSAP pin');
 check(mosaicJS.includes('paused=!paused') && mosaicJS.includes('aria-pressed'),
       'Bellamazon: controle de pausa incompleto');
-check(mosaicJS.includes('renderScroll(self.progress)') &&
-      mosaicJS.includes('weights = [1.24,1,1,1.34]'),
-      'Bellamazon: scroll não reversível ou sem pausas estendidas no início/fim');
+check(mosaicJS.includes('renderDesktop(self.progress)') &&
+      mosaicJS.includes('const weights=[1.18,1,1,1.2]') &&
+      mosaicJS.includes('interpolateRect(target,center,grown)'),
+      'Bellamazon: transformação scroll-driven com pausa no início/fim não encontrada');
 check(mosaicJS.includes('bella-mosaic-type-ghost') &&
-      mosaicJS.includes('write(parts.detail'),
-      'Bellamazon: texto progressivo do scroll ausente');
+      mosaicJS.includes('write(txt.detail') &&
+      mosaicJS.includes('const whitening') === false &&
+      mosaicJS.includes('const whiten='),
+      'Bellamazon: escrita progressiva ou retorno do card branco ausente');
 const mosaicCSS = read('assets/bellamazon-mosaic.css');
-check(mosaicCSS.includes('.bella-mosaic-scroll-space.is-scroll-ready') &&
+check(mosaicCSS.includes('.bella-mosaic-scroll-space.is-story-ready') &&
+      mosaicCSS.includes('.bella-mosaic-story-stage') &&
       mosaicCSS.includes('position:sticky!important') &&
       mosaicCSS.includes('overflow-x:clip!important'),
-      'Bellamazon: faltam regras sticky ou overflow clip para navegação estável');
+      'Bellamazon: faltam palco sticky e CSS do morph sem afetar o scroll nativo');
 check(mosaicCSS.includes('bella-mosaic-past-wash') &&
       bell.includes('class="bella-mosaic-past-wash"'),
       'Bellamazon: tratamento monocromático de passagem ausente');
