@@ -100,7 +100,16 @@ for(const asset of ['assets/bellamazon-dashboard.css','assets/bellamazon-dashboa
 check(bell.includes('data-bella-filter="all"') &&
       ['estrategia','branding','embalagem','conteudo'].every(tag=>bell.includes('data-bella-filter="'+tag+'"')),
       'Bellamazon: filtros das soluções ausentes');
-check(bell.includes('bella-mosaic-panel') && bell.includes('data-mosaic-current'), 'Bellamazon: galeria filtrável incompleta');
+check((bell.match(/class="bella-mosaic-panel"/g)||[]).length === 4,
+      'Bellamazon: quatro capítulos da galeria não encontrados');
+check((bell.match(/class="bella-mosaic-step/g)||[]).length === 4 &&
+      bell.includes('class="bella-mosaic-progress"'),
+      'Bellamazon: barra de progresso clicável incompleta');
+check(bell.includes('bella-mosaic-info__icon') &&
+      bell.includes('bella-mosaic-edge--prev') && bell.includes('bella-mosaic-edge--next'),
+      'Bellamazon: cartões editoriais ou setas nas bordas ausentes');
+check(!bell.includes('bella-mosaic-caption') && !bell.includes('bella-mosaic-head'),
+      'Bellamazon: títulos superior/inferior removidos regressaram');
 check(!bell.includes('COMO O TRABALHO GANHA FORMA'), 'Bellamazon: seção antiga não foi removida');
 for (const href of Array.from(bell.matchAll(/\b(?:href|src|poster)\s*=\s*["']([^"']+)["']/gi), m=>m[1])) {
   if (/^(#|https?:|mailto:|tel:|data:)/i.test(href)) continue;
