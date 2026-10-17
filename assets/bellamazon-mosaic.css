@@ -148,8 +148,11 @@
   background:#ffffffda;color:#4a588a;cursor:pointer;
   box-shadow:0 8px 24px #2232511f;
   transition:background .25s,transform .25s ease,box-shadow .25s;
-  pointer-events:auto;
+  pointer-events:none;
 }
+.bella-mosaic-edge.is-near .bella-mosaic-arrow,
+.bella-mosaic-edge:hover .bella-mosaic-arrow,
+.bella-mosaic-edge:focus-within .bella-mosaic-arrow{pointer-events:auto}
 .bella-mosaic-arrow svg{width:23px;height:23px;stroke:currentColor;stroke-width:1.8;fill:none;stroke-linecap:round;stroke-linejoin:round}
 .bella-mosaic-arrow:hover{background:#fff;transform:scale(1.08);box-shadow:0 11px 30px #26395c29}
 .bella-mosaic-arrow:focus-visible{outline:3px solid #4a588a;outline-offset:4px}
@@ -210,6 +213,7 @@
  .bella-mosaic-info__detail{font-size:12px}
  .bella-mosaic-info__foot{font-size:9px}
  .bella-mosaic-edge{opacity:.9;pointer-events:auto;width:53px;bottom:34px}
+ .bella-mosaic-edge .bella-mosaic-arrow{pointer-events:auto}
  .bella-mosaic-edge--prev{background:linear-gradient(90deg,#ffffffbe,transparent)}
  .bella-mosaic-edge--next{background:linear-gradient(270deg,#ffffffbe,transparent)}
  .bella-mosaic-arrow{width:34px;height:34px}
