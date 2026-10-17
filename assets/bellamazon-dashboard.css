@@ -161,3 +161,41 @@
   .bella-case .bell-results .bell-world circle{transition:none!important}
   .bella-case .bell-results .bell-bar{transition:none!important}
 }
+
+/* V2 · Dashboard scroll-story: movimento mais perceptível, sem scroll-jacking.
+   translate/scale individuais não anulam o hover transform dos cartões. */
+@media(prefers-reduced-motion:no-preference){
+  .bella-case .bell-results .bell-stat,
+  .bella-case .bell-results .bell-chart{
+    translate:0 var(--bell-enter-y,0px);
+    scale:var(--bell-enter-scale,1);
+  }
+  .bella-case .bell-results .bell-chart-heading,
+  .bella-case .bell-results .bell-stat-head{
+    position:relative;
+  }
+  .bella-case .bell-results .bell-chart-path{
+    stroke-linejoin:round;
+    stroke-linecap:round;
+  }
+  .bella-case .bell-results .bell-bar{
+    transform-origin:center bottom;
+    backface-visibility:hidden;
+  }
+  .bella-case .bell-results .bell-world circle{
+    /* Evita transição CSS disputar o transform atualizado pelo scroll. */
+    transition:filter .3s ease;
+  }
+  .bella-case .bell-results .bell-donut{
+    will-change:mask-image;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  .bella-case .bell-results .bell-stat,
+  .bella-case .bell-results .bell-chart{
+    translate:none!important;scale:none!important;opacity:1!important;
+  }
+  .bella-case .bell-results .bell-donut{
+    --bell-donut-reveal:100%!important;
+  }
+}
