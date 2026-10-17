@@ -1,10 +1,13 @@
-import { defineConfig } from 'astro/config';
+import {defineConfig} from 'astro/config';
+import tailwindcss from '@tailwindcss/vite';
 
-// Prova de conceito isolada. NÃO há deploy automático.
-// A base corresponde à URL atual do GitHub Pages.
+// Isolado na branch experiment/astro-lenses-poc: NUNCA publica no Pages.
+// Tailwind 4 via plugin Vite, sem @astrojs/tailwind legado.
 export default defineConfig({
   site: 'https://idedigitalbr.github.io',
   base: '/site-lenses',
   trailingSlash: 'always',
   output: 'static',
+  build: { format: 'directory' },
+  vite: { plugins: [tailwindcss()] },
 });
