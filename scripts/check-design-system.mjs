@@ -69,7 +69,8 @@ for (const [name, initial] of [['index.html', 'idle'], ['sobre.html', 'story']])
   check(!source.includes('class="story-content-grid"'), name + ': markup duplicado do componente Sobre');
   const scriptPath = 'assets/about-split.js?v=';
   check(source.includes('src="' + scriptPath), name + ': componente único não carregado');
-  check(source.indexOf('about-split.js?v=') < source.indexOf('script.js"></script>'), name + ': componente deve carregar antes do script principal');
+  const sharedScriptAt = source.search(/script\.js(?:\?[^"']*)?["']\s*><\/script>/);
+  check(sharedScriptAt >= 0 && source.indexOf('about-split.js?v=') < sharedScriptAt, name + ': componente deve carregar antes do script principal');
 }
 for (const section of ['about-hero-clean','about-tech-section','about-cta-section']) check(!html['sobre.html'].includes('class="' + section + '"'), 'Sobre reintroduziu ' + section);
 for (const section of ['id="sobre"','id="fundamentos"']) check(html['sobre.html'].includes(section), 'Sobre perdeu ' + section);
@@ -193,6 +194,32 @@ check(componentCSS.includes('GIF animado não obedece'),
       'Footer: fallback estático para movimento reduzido ausente');
 const mainScript = read('assets/script.js');
 check(mainScript.includes('heroInView') && mainScript.includes('serviceVideos'), 'Home: controle de mídia por visibilidade ausente');
+
+// Solução Digital: navegação global e página nova compartilhando o design system real.
+const digital = read('solucoes/digital/index.html');
+const digitalCss = read('assets/solucao-digital.css');
+const digitalJs = read('assets/solucao-digital.js');
+const digitalIds = [...digital.matchAll(/\bid="([^"]+)"/g)].map(m => m[1]);
+check(digitalIds.length === new Set(digitalIds).size, 'Digital: IDs duplicados');
+for(const id of ['digital','apresentacao','servicos','processo','resultados','portfolio','fale-conosco']){
+  check(digitalIds.includes(id),'Digital: seção obrigatória ausente #'+id);
+}
+check(digital.includes('class="site-header is-top"') && digital.includes('class="footer" id="contato"'),
+      'Digital: não reutiliza header/footer oficiais');
+check(digital.includes('../../assets/styles.css?v=') && digital.includes('../../assets/solucao-digital.css?v=') &&
+      digital.includes('../../assets/script.js?v='), 'Digital: CSS/JS da marca ausentes');
+for(const match of digital.matchAll(/\b(?:href|src|poster)=["']([^"']+)["']/g)){
+  const value=match[1].split(/[?#]/)[0];
+  if(!value||/^(https?:|#|mailto:|tel:|data:)/i.test(value))continue;
+  const targetPath=path.resolve(process.cwd(),'solucoes/digital',decodeURIComponent(value));
+  check(fs.existsSync(targetPath),'Digital: arquivo/rota inválido '+value);
+}
+check(mainScript.includes('lenses-solutions-nav') && mainScript.includes('lenses-mobile-solutions'),
+      'Navegação compartilhada: soluções desktop/mobile não instaladas');
+check(componentCSS.includes('.lenses-solutions-panel') && componentCSS.includes('.lenses-mobile-solutions'),
+      'Navegação compartilhada: estilos de soluções ausentes');
+check(digitalCss.includes('prefers-reduced-motion') && digitalJs.includes('IntersectionObserver'),
+      'Digital: animações sem fallback e acessibilidade');
 
 if (errors.length) { console.error('QA Lenses reprovado:\n- ' + errors.join('\n- ')); process.exit(1); }
 console.log('QA Lenses aprovado: tokens, CSS, preview, menus, rodapés, anchors, URLs e páginas.');
