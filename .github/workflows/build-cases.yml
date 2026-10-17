@@ -29,6 +29,8 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
+      - name: Testar gerador sem publicar dados fictícios
+        run: node scripts/test-case-builder.mjs
       - name: Gerar páginas publicáveis e prévias
         run: node scripts/build-case.mjs --all
       - name: Validar HTML gerado
