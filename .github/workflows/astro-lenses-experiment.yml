@@ -1,0 +1,54 @@
+name: Astro LENSES - teste isolado sem deploy
+
+on:
+  push:
+    branches:
+      - experiment/astro-lenses-poc
+    paths:
+      - 'astro-poc/**'
+      - '.github/workflows/astro-lenses-experiment.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: astro-lenses-test-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-and-compare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    defaults:
+      run:
+        working-directory: astro-poc
+    steps:
+      - name: Checkout da branch experimental
+        uses: actions/checkout@v4
+      - name: Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Instalar Astro 7 e Tailwind 4
+        run: npm install --no-audit --no-fund
+      - name: Compilar e conferir paridade estrutural
+        run: npm run build
+      - name: Instalar Chromium para comparação visual
+        run: npx playwright install --with-deps chromium
+      - name: Comparar pixels desktop e mobile
+        run: npm run test:visual
+      - name: Armazenar relatório de diferenças
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lenses-astro-pixel-diff
+          path: astro-poc/visual-output/
+          if-no-files-found: ignore
+      - name: Armazenar site gerado para revisão, sem publicar
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lenses-astro-preview-build
+          path: astro-poc/dist/
+          retention-days: 7
