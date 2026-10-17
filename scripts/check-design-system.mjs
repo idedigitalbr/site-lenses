@@ -102,6 +102,16 @@ check(!bell.includes('data-bella-filter="all"') &&
       'Bellamazon: cards de soluções ou remoção do botão extra incorretos');
 check((bell.match(/class="bella-mosaic-panel"/g)||[]).length === 4,
       'Bellamazon: quatro capítulos da galeria não encontrados');
+check((bell.match(/class="bella-mosaic-tile/g)||[]).length === 28 &&
+      (bell.match(/class="bella-media-label"/g)||[]).length === 28,
+      'Bellamazon: 28 mídias etiquetadas devem compor os quatro mosaicos');
+check(bell.includes('bella-story-device') &&
+      bell.includes('data-media-type="institucional"') &&
+      bell.includes('data-media-type="drone"') &&
+      bell.includes('bella-mosaic-tile--concept'),
+      'Bellamazon: tipos audiovisuais, stories ou conceitos da galeria ausentes');
+check(bell.includes('bellamazon-mosaic.css?v=7') && bell.includes('bellamazon-mosaic.js?v=7'),
+      'Bellamazon: cache da galeria não atualizado');
 const sectionOfSolutions = bell.indexOf('<section class="bell-s5 bella-reuse-results"');
 const solutionsEnd = bell.indexOf('</section>', sectionOfSolutions);
 const galleryStart = bell.indexOf('<section class="bella-reuse-presence bella-infinite-gallery"');
@@ -140,8 +150,10 @@ check(mosaicJS.includes('paused=!paused') && mosaicJS.includes('aria-pressed'),
       'Bellamazon: controle de pausa incompleto');
 check(mosaicJS.includes('renderDesktop(self.progress)') &&
       mosaicJS.includes('const weights=[1.18,1,1,1.2]') &&
-      mosaicJS.includes('interpolateRect(target,center,grown)'),
-      'Bellamazon: transformação scroll-driven com pausa no início/fim não encontrada');
+      mosaicJS.includes('interpolateRect(target,center,grown)') &&
+      mosaicJS.includes('bella-mosaic-story-teaser') &&
+      mosaicJS.includes('morph.classList.toggle("is-centered"'),
+      'Bellamazon: card morph centralizado ou sua frase de apoio ausente');
 check(mosaicJS.includes('bella-mosaic-type-ghost') &&
       mosaicJS.includes('write(txt.detail') &&
       mosaicJS.includes('const whitening') === false &&
