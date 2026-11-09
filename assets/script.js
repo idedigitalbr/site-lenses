@@ -143,7 +143,7 @@ document.addEventListener('DOMContentLoaded', () => {
     heroVideo.muted = true;
     const prefersStill = window.matchMedia('(prefers-reduced-motion: reduce)');
     const saveData = !!(navigator.connection && navigator.connection.saveData);
-    let heroInView = false;
+    let heroInView = true;
     let explicitlyStarted = false;
 
     const playHeroIfAllowed = () => {
@@ -171,12 +171,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // O gesto do usuário pode permitir a reprodução mesmo com economia de dados;
     // nunca iniciar vídeo fora da tela ao receber scroll/clique em outras seções.
-    const firstGesture = () => {
-      if (!heroInView || document.hidden) return;
-      if ((saveData || prefersStill.matches) && !explicitlyStarted) return;
+    // Quem ativar os controles do hero pode iniciar o vídeo mesmo em Data Saver.
+    const onHeroControl = () => {
+      explicitlyStarted = true;
+      if (heroVideo.readyState === 0) heroVideo.load();
       playHeroIfAllowed();
     };
-    window.addEventListener('pointerdown', firstGesture, { once:true, passive:true });
+    document.getElementById('heroMuteBtn')?.addEventListener('click', onHeroControl);
+    document.getElementById('heroFullscreenBtn')?.addEventListener('click', onHeroControl);
+    // Retry quando a mídia carrega e quando a aba volta ao primeiro plano.
+    heroVideo.addEventListener('canplay', playHeroIfAllowed);
   }
 
   // 3.01. Controles Minimalistas do Vídeo do Hero (Mute/Unmute e Fullscreen)
