@@ -1,0 +1,59 @@
+name: Verificar site Lenses publicado (temporário)
+on:
+  push:
+    branches: [test/lenses-live-pages-20261109]
+permissions:
+  contents: read
+jobs:
+  browser-live:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm install --no-save playwright@1.56.1
+      - name: Testar Home e Bellamazon no endereço real
+        run: |
+          node --input-type=module <<'JS'
+          import {chromium} from 'playwright';
+          const browser=await chromium.launch({headless:true,channel:'chrome',args:['--no-sandbox']});
+          const ctx=await browser.newContext({viewport:{width:1440,height:900},reducedMotion:'no-preference'});
+          const page=await ctx.newPage();const errors=[];
+          page.on('pageerror',e=>errors.push(e.message));
+          const base='https://idedigitalbr.github.io/site-lenses/';
+          const resp=await page.goto(base+'?livecheck=20261109',{waitUntil:'domcontentloaded',timeout:45000});
+          console.log('LIVE_HOME_STATUS',resp?.status());
+          const video=page.locator('#heroVideo');
+          await video.waitFor({timeout:12000});
+          let m={};
+          for(let i=0;i<12;i++){
+            await page.waitForTimeout(1000);
+            m=await video.evaluate(v=>({src:v.currentSrc||v.querySelector('source')?.src,paused:v.paused,time:v.currentTime,ready:v.readyState,error:v.error?.code||null}));
+            if(m.time>.25)break;
+          }
+          console.log('LIVE_HOME_VIDEO',JSON.stringify(m));
+          if(!m.src?.includes('lenses-hero-optimized.mp4')||m.time<=.25||m.error)throw Error('Home live: video new source not playing');
+          const mp4=await page.request.get(base+'assets/paginas/home/s1-topo-hero/lenses-hero-optimized.mp4',{headers:{Range:'bytes=0-1023'},timeout:30000});
+          console.log('LIVE_VIDEO_HTTP',JSON.stringify({status:mp4.status(),type:mp4.headers()['content-type'],length:mp4.headers()['content-length']}));
+          if(![200,206].includes(mp4.status()))throw Error('Home live: video URL not publicly served');
+          await page.goto(base+'casev2/bellamazon/?livecheck=20261109',{waitUntil:'domcontentloaded',timeout:45000});
+          await page.waitForTimeout(1800);
+          const meta=await page.evaluate(()=>{
+            const s=document.querySelector('.bella-mosaic-scroll-space');
+            const st=document.querySelector('.bella-mosaic-story-stage');
+            return {ready:s?.classList.contains('is-story-ready'),height:s?.offsetHeight,stage:st?.offsetHeight,top:s?.getBoundingClientRect().top+scrollY,driver:s?.dataset.scrollDriver};
+          });
+          console.log('LIVE_BELLAMAZON_META',JSON.stringify(meta));
+          if(!meta.ready||meta.driver!=='native'||meta.height>6500)throw Error('Bellamazon live: native scroll unavailable');
+          await page.evaluate(o=>scrollTo(0,o.top+(o.height-o.stage)*.15),meta);
+          await page.waitForTimeout(250);
+          const state=await page.evaluate(()=>({stageTop:document.querySelector('.bella-mosaic-story-stage')?.getBoundingClientRect().top,morphOpacity:getComputedStyle(document.querySelector('.bella-mosaic-story-morph')).opacity,progress:document.querySelector('.bella-infinite-gallery')?.dataset.mosaicInit}));
+          console.log('LIVE_BELLAMAZON_SCROLL',JSON.stringify(state));
+          if(Math.abs(state.stageTop)>5||Number(state.morphOpacity)<.6)throw Error('Bellamazon live: scroll transition unavailable');
+          console.log('LIVE_PAGE_ERRORS',JSON.stringify(errors));
+          if(errors.length)throw Error('Live browser JS errors');
+          console.log('LIVE_PAGES_CHECK_SUCCESS');
+          await browser.close();
+          JS
