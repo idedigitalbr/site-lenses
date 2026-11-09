@@ -111,7 +111,7 @@ check(bell.includes('bella-story-device') &&
       bell.includes('data-media-type="drone"') &&
       bell.includes('bella-mosaic-tile--concept'),
       'Bellamazon: tipos audiovisuais, stories ou conceitos da galeria ausentes');
-check(bell.includes('bellamazon-mosaic.css?v=8') && bell.includes('bellamazon-mosaic.js?v=8'),
+check(bell.includes('bellamazon-mosaic.css?v=8') && bell.includes('bellamazon-mosaic.js?v=9'),
       'Bellamazon: cache da galeria não atualizado');
 const sectionOfSolutions = bell.indexOf('<section class="bell-s5 bella-reuse-results"');
 const solutionsEnd = bell.indexOf('</section>', sectionOfSolutions);
@@ -142,7 +142,10 @@ for (const href of Array.from(bell.matchAll(/\b(?:href|src|poster)\s*=\s*["']([^
         'Bellamazon: arquivo local inexistente ' + cleaned);
 }
 const mosaicJS = read('assets/bellamazon-mosaic.js');
-check(mosaicJS.includes('trigger:space,start:"top top"') &&
+check(mosaicJS.includes('const desktop=!reduced&&') &&
+      mosaicJS.includes('trigger={start:0,end:1,progress:0,refresh:sync}') &&
+      mosaicJS.includes('window.addEventListener("scroll",schedule,{passive:true})') &&
+      mosaicJS.includes('trigger:space,start:"top top"') &&
       mosaicJS.includes('end:"bottom bottom"') &&
       !mosaicJS.includes('pin:section') && !mosaicJS.includes('pinSpacing:true') &&
       mosaicJS.includes('prefers-reduced-motion: reduce'),
