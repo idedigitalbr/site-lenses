@@ -449,45 +449,27 @@
     if(toggle)toggle.hidden=true;
     panelInfo.forEach(info=>info.setAttribute("aria-hidden","true"));
     space.classList.add("is-story-ready");
-    // Preserva o ScrollTrigger original, mas não depende da disponibilidade do CDN.
-    if(gsap&&ST){
-      gsap.registerPlugin(ST);
-      trigger=ST.create({
-        id:"bellamazon-solucoes-story",
-        trigger:space,start:"top top",end:"bottom bottom",
-        invalidateOnRefresh:true,
-        onUpdate:self=>renderDesktop(self.progress),
-        onRefresh:self=>renderDesktop(self.progress),
-        onEnter:self=>renderDesktop(self.progress),
-        onEnterBack:self=>renderDesktop(self.progress),
-        onLeave:()=>renderDesktop(1),
-        onLeaveBack:()=>renderDesktop(0)
-      });
+    // Driver determinístico de scroll NATIVO; sem mudanças de pin/refresh do GSAP.
+    // Preserva renderDesktop() e toda a direção de arte da transição original.
+    space.dataset.scrollDriver="native";
+    let queued=0;
+    const sync=()=>{
+      const start=space.getBoundingClientRect().top+window.scrollY;
+      const distance=Math.max(1,space.offsetHeight-stage.getBoundingClientRect().height);
+      trigger.start=start;
+      trigger.end=start+distance;
+      trigger.progress=cap((window.scrollY-start)/distance);
       renderDesktop(trigger.progress);
-      requestAnimationFrame(()=>ST.refresh());
-      if(document.fonts?.ready)document.fonts.ready.then(()=>ST.refresh());
-    }else{
-      // Fallback nativo: mesma função de morph, digitação e avanço horizontal.
-      // Scroll normal e palco CSS sticky — nenhuma captura de wheel ou pin.
-      let queued=0;
-      const sync=()=>{
-        const start=space.getBoundingClientRect().top+window.scrollY;
-        const distance=Math.max(1,space.offsetHeight-stage.getBoundingClientRect().height);
-        trigger.start=start;
-        trigger.end=start+distance;
-        trigger.progress=cap((window.scrollY-start)/distance);
-        renderDesktop(trigger.progress);
-      };
-      trigger={start:0,end:1,progress:0,refresh:sync};
-      const schedule=()=>{
-        if(queued)return;
-        queued=requestAnimationFrame(()=>{queued=0;sync();});
-      };
-      window.addEventListener("scroll",schedule,{passive:true});
-      window.addEventListener("resize",schedule,{passive:true});
-      requestAnimationFrame(sync);
-      if(document.fonts?.ready)document.fonts.ready.then(schedule);
-    }
+    };
+    trigger={start:0,end:1,progress:0,refresh:sync};
+    const schedule=()=>{
+      if(queued)return;
+      queued=requestAnimationFrame(()=>{queued=0;sync();});
+    };
+    window.addEventListener("scroll",schedule,{passive:true});
+    window.addEventListener("resize",schedule,{passive:true});
+    requestAnimationFrame(sync);
+    if(document.fonts?.ready)document.fonts.ready.then(schedule);
   }else setupMobile();
   if("ResizeObserver" in window){
     new ResizeObserver(()=>{
