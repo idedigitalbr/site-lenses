@@ -115,7 +115,13 @@
   // Mesmo efeito editorial quando o CDN de GSAP falha ou está bloqueado.
   const colorLerp=(from,to,progress)=>{
     if(gsap?.utils?.interpolate)return gsap.utils.interpolate(from,to,progress);
-    const rgb=hex=>[1,3,5].map(i=>parseInt(hex.slice(i,i+2),16));
+    const rgb=value=>{
+      const str=String(value).trim();
+      const match=str.match(/^rgba?\(\s*([\d.]+)\s*,\s*([\d.]+)\s*,\s*([\d.]+)/i);
+      if(match)return match.slice(1,4).map(Number);
+      const hex=str.replace(/^#/,"");
+      return [0,2,4].map(i=>parseInt(hex.slice(i,i+2),16));
+    };
     const a=rgb(from),b=rgb(to),t=cap(progress);
     return "rgb("+a.map((channel,i)=>Math.round(channel+(b[i]-channel)*t)).join(",")+")";
   };
