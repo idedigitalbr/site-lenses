@@ -145,14 +145,14 @@ const mosaicJS = read('assets/bellamazon-mosaic.js');
 check(mosaicJS.includes('const desktop=!reduced&&') &&
       mosaicJS.includes('trigger={start:0,end:1,progress:0,refresh:sync}') &&
       mosaicJS.includes('window.addEventListener("scroll",schedule,{passive:true})') &&
-      mosaicJS.includes('trigger:space,start:"top top"') &&
-      mosaicJS.includes('end:"bottom bottom"') &&
+      mosaicJS.includes('space.dataset.scrollDriver="native"') &&
+      mosaicJS.includes('window.addEventListener("scroll",schedule,{passive:true})') &&
       !mosaicJS.includes('pin:section') && !mosaicJS.includes('pinSpacing:true') &&
       mosaicJS.includes('prefers-reduced-motion: reduce'),
       'Bellamazon: a animação deve usar sticky e scroll nativo, nunca GSAP pin');
 check(mosaicJS.includes('paused=!paused') && mosaicJS.includes('aria-pressed'),
       'Bellamazon: controle de pausa incompleto');
-check(mosaicJS.includes('renderDesktop(self.progress)') &&
+check(mosaicJS.includes('renderDesktop(trigger.progress)') &&
       mosaicJS.includes('const weights=[1,1,1,1]') &&
       mosaicJS.includes('interpolateRect(target,center,grown)') &&
       mosaicJS.includes('morphCache') &&
@@ -167,6 +167,7 @@ const mosaicCSS = read('assets/bellamazon-mosaic.css');
 check(mosaicCSS.includes('.bella-mosaic-scroll-space.is-story-ready') &&
       mosaicCSS.includes('.bella-mosaic-story-stage') &&
       mosaicCSS.includes('position:sticky!important') &&
+      mosaicCSS.includes('clamp(3800px,480svh,5600px)') &&
       mosaicCSS.includes('overflow-x:clip!important'),
       'Bellamazon: faltam palco sticky e CSS do morph sem afetar o scroll nativo');
 check(mosaicCSS.includes('bella-mosaic-past-wash') &&
