@@ -193,7 +193,9 @@ check(fs.existsSync(path.join(process.cwd(),'scripts/check-generated-cases.mjs')
       'QA das páginas geradas ausente');
 const homeHTML = read('index.html');
 check(homeHTML.includes('class="hero-accessible-title"'), 'Home: H1 acessível ausente');
-check(homeHTML.includes('preload="none"') && homeHTML.includes('heroVideo'), 'Home: vídeo com preload antecipado');
+check(homeHTML.includes('preload="metadata"') && homeHTML.includes('autoplay') &&
+      homeHTML.includes('lenses-hero-optimized.mp4') && homeHTML.includes('heroVideo'),
+      'Home: autoplay ou preload de metadados do vídeo otimizado ausente');
 check(!homeHTML.includes('class="services-container reveal-on-scroll" style='),
       'Home: altura inline impede responsividade dos serviços');
 const componentCSS = read('assets/components.css');
