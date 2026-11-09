@@ -1,0 +1,33 @@
+name: Lenses browser QA (fix)
+on:
+  push:
+    branches: [fix/lenses-hero-bellamazon-scroll-20261109]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install Playwright client
+        run: npm install --no-save playwright@1.56.1
+      - name: Verify MP4 metadata and moov placement
+        run: |
+          ffprobe -v error -select_streams v:0 -show_entries stream=codec_name,width,height,bit_rate -show_entries format=duration,size -of json assets/paginas/home/s1-topo-hero/290926-dia-da-amazonia-lenses-v2.mp4 || true
+          python3 - <<'PY'
+          import pathlib
+          p=pathlib.Path('assets/paginas/home/s1-topo-hero/290926-dia-da-amazonia-lenses-v2.mp4')
+          s=p.read_bytes()
+          print('MP4_ATOMS', 'size=',len(s), 'moov_at=',s.find(b'moov'),'mdat_at=',s.find(b'mdat'))
+          PY
+      - name: Launch local static website
+        run: |
+          python3 -m http.server 8123 --bind 127.0.0.1 >/tmp/lenses-server.log 2>&1 &
+          for i in 1 2 3 4 5 6 7 8 9 10; do curl -fsS http://127.0.0.1:8123/ >/dev/null && break; sleep 1; done
+      - name: Test Chromium visual behavior and playback
+        run: node scripts/verify-browser-lenses.mjs
