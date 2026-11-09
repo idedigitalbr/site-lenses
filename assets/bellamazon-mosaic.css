@@ -362,7 +362,7 @@ body.bella-case{overflow-x:clip!important}
    =============================================================== */
 @media(min-width:1024px) and (prefers-reduced-motion:no-preference){
   .bella-case .bella-mosaic-scroll-space.is-story-ready{
-    height:calc(100svh + clamp(6500px,1160svh,11500px))!important;
+    height:calc(100svh + clamp(3800px,480svh,5600px))!important;
     overflow:visible!important;
     position:relative;
   }
