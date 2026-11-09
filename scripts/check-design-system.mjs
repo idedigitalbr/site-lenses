@@ -75,6 +75,11 @@ for (const [name, initial] of [['index.html', 'idle'], ['sobre.html', 'story']])
 for (const section of ['about-hero-clean','about-tech-section','about-cta-section']) check(!html['sobre.html'].includes('class="' + section + '"'), 'Sobre reintroduziu ' + section);
 for (const section of ['id="sobre"','id="fundamentos"']) check(html['sobre.html'].includes(section), 'Sobre perdeu ' + section);
 // QA específico do case V2 e da experiência editorial publicada.
+const homeHero = read('index.html');
+check(homeHero.includes('lenses-hero-optimized.mp4') &&
+      fs.existsSync(path.resolve('assets/paginas/home/s1-topo-hero/lenses-hero-optimized.mp4')) &&
+      fs.statSync(path.resolve('assets/paginas/home/s1-topo-hero/lenses-hero-optimized.mp4')).size < 20000000,
+      'Home: vídeo otimizado ausente ou pesado demais');
 const bell = read('casev2/bellamazon/index.html');
 const bellIDs = Array.from(bell.matchAll(/\bid\s*=\s*["']([^"']+)["']/gi), m=>m[1]);
 check(bellIDs.length === new Set(bellIDs).size, 'Bellamazon: IDs duplicados');
@@ -145,14 +150,14 @@ const mosaicJS = read('assets/bellamazon-mosaic.js');
 check(mosaicJS.includes('const desktop=!reduced&&') &&
       mosaicJS.includes('trigger={start:0,end:1,progress:0,refresh:sync}') &&
       mosaicJS.includes('window.addEventListener("scroll",schedule,{passive:true})') &&
-      mosaicJS.includes('trigger:space,start:"top top"') &&
-      mosaicJS.includes('end:"bottom bottom"') &&
+      mosaicJS.includes('space.dataset.scrollDriver="native"') &&
+      mosaicJS.includes('window.addEventListener("scroll",schedule,{passive:true})') &&
       !mosaicJS.includes('pin:section') && !mosaicJS.includes('pinSpacing:true') &&
       mosaicJS.includes('prefers-reduced-motion: reduce'),
       'Bellamazon: a animação deve usar sticky e scroll nativo, nunca GSAP pin');
 check(mosaicJS.includes('paused=!paused') && mosaicJS.includes('aria-pressed'),
       'Bellamazon: controle de pausa incompleto');
-check(mosaicJS.includes('renderDesktop(self.progress)') &&
+check(mosaicJS.includes('renderDesktop(trigger.progress)') &&
       mosaicJS.includes('const weights=[1,1,1,1]') &&
       mosaicJS.includes('interpolateRect(target,center,grown)') &&
       mosaicJS.includes('morphCache') &&
@@ -167,6 +172,7 @@ const mosaicCSS = read('assets/bellamazon-mosaic.css');
 check(mosaicCSS.includes('.bella-mosaic-scroll-space.is-story-ready') &&
       mosaicCSS.includes('.bella-mosaic-story-stage') &&
       mosaicCSS.includes('position:sticky!important') &&
+      mosaicCSS.includes('clamp(3800px,480svh,5600px)') &&
       mosaicCSS.includes('overflow-x:clip!important'),
       'Bellamazon: faltam palco sticky e CSS do morph sem afetar o scroll nativo');
 check(mosaicCSS.includes('bella-mosaic-past-wash') &&
@@ -187,7 +193,9 @@ check(fs.existsSync(path.join(process.cwd(),'scripts/check-generated-cases.mjs')
       'QA das páginas geradas ausente');
 const homeHTML = read('index.html');
 check(homeHTML.includes('class="hero-accessible-title"'), 'Home: H1 acessível ausente');
-check(homeHTML.includes('preload="none"') && homeHTML.includes('heroVideo'), 'Home: vídeo com preload antecipado');
+check(homeHTML.includes('preload="metadata"') && homeHTML.includes('autoplay') &&
+      homeHTML.includes('lenses-hero-optimized.mp4') && homeHTML.includes('heroVideo'),
+      'Home: autoplay ou preload de metadados do vídeo otimizado ausente');
 check(!homeHTML.includes('class="services-container reveal-on-scroll" style='),
       'Home: altura inline impede responsividade dos serviços');
 const componentCSS = read('assets/components.css');

@@ -201,7 +201,7 @@ section[id] {
   inset: 0;
   z-index: 0;
   overflow: hidden;
-  background-color: #000000;
+  background: #000000 url("paginas/sobre/hero-topo-sobre.webp") center center / cover no-repeat;
 }
 
 .hero-video-wrapper {
