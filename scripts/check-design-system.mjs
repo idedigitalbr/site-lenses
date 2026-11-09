@@ -111,7 +111,7 @@ check(bell.includes('bella-story-device') &&
       bell.includes('data-media-type="drone"') &&
       bell.includes('bella-mosaic-tile--concept'),
       'Bellamazon: tipos audiovisuais, stories ou conceitos da galeria ausentes');
-check(bell.includes('bellamazon-mosaic.css?v=8') && bell.includes('bellamazon-mosaic.js?v=9'),
+check(bell.includes('bellamazon-mosaic.css?v=8') && bell.includes('bellamazon-mosaic.js?v=10'),
       'Bellamazon: cache da galeria não atualizado');
 const sectionOfSolutions = bell.indexOf('<section class="bell-s5 bella-reuse-results"');
 const solutionsEnd = bell.indexOf('</section>', sectionOfSolutions);
