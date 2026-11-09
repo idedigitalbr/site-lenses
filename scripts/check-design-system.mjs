@@ -75,6 +75,11 @@ for (const [name, initial] of [['index.html', 'idle'], ['sobre.html', 'story']])
 for (const section of ['about-hero-clean','about-tech-section','about-cta-section']) check(!html['sobre.html'].includes('class="' + section + '"'), 'Sobre reintroduziu ' + section);
 for (const section of ['id="sobre"','id="fundamentos"']) check(html['sobre.html'].includes(section), 'Sobre perdeu ' + section);
 // QA específico do case V2 e da experiência editorial publicada.
+const homeHero = read('index.html');
+check(homeHero.includes('lenses-hero-optimized.mp4') &&
+      fs.existsSync(path.resolve('assets/paginas/home/s1-topo-hero/lenses-hero-optimized.mp4')) &&
+      fs.statSync(path.resolve('assets/paginas/home/s1-topo-hero/lenses-hero-optimized.mp4')).size < 20000000,
+      'Home: vídeo otimizado ausente ou pesado demais');
 const bell = read('casev2/bellamazon/index.html');
 const bellIDs = Array.from(bell.matchAll(/\bid\s*=\s*["']([^"']+)["']/gi), m=>m[1]);
 check(bellIDs.length === new Set(bellIDs).size, 'Bellamazon: IDs duplicados');
