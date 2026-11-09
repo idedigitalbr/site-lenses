@@ -50,7 +50,7 @@ for(const c of contexts){
    return {paused:v.paused,currentTime:v.currentTime,readyState:v.readyState,networkState:v.networkState,error:v.error?.message||null,src:v.currentSrc,poster:v.poster,autoplay:v.autoplay,preload:v.preload,duration:v.duration,buffered:v.buffered.length?v.buffered.end(v.buffered.length-1):0};
   });
   console.log("HOME HERO",JSON.stringify({video,errors}));
-  if(video.error||video.paused||video.currentTime===0||errors.length){fail++;console.error("HOME FAIL");}
+  if(video.error||video.paused||video.currentTime===0||!video.src.includes("lenses-hero-optimized.mp4")||errors.length){fail++;console.error("HOME FAIL");}
  }catch(error){fail++;console.error("HOME ERROR",String(error),JSON.stringify(errors));}
  await context.close();
 }
