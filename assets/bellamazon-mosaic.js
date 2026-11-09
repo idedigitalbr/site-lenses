@@ -107,11 +107,18 @@
   section.dataset.mosaicInit="1";
   const gsap=window.gsap,ST=window.ScrollTrigger;
   const reduced=matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const desktop=!!gsap&&!!ST&&!reduced&&matchMedia("(min-width:1024px)").matches;
+  const desktop=!reduced&&matchMedia("(min-width:1024px)").matches;
   const cap=x=>Math.max(0,Math.min(1,x));
   const portion=(x,a,b)=>cap((x-a)/(b-a));
   const ease=x=>{const p=cap(x);return p*p*(3-2*p);};
   const wrap=(x,length)=>((x%length)+length)%length;
+  // Mesmo efeito editorial quando o CDN de GSAP falha ou está bloqueado.
+  const colorLerp=(from,to,progress)=>{
+    if(gsap?.utils?.interpolate)return gsap.utils.interpolate(from,to,progress);
+    const rgb=hex=>[1,3,5].map(i=>parseInt(hex.slice(i,i+2),16));
+    const a=rgb(from),b=rgb(to),t=cap(progress);
+    return "rgb("+a.map((channel,i)=>Math.round(channel+(b[i]-channel)*t)).join(",")+")";
+  };
   const weights=[1,1,1,1];
   const total=weights.reduce((a,b)=>a+b,0);
   let trigger=null,chapter=-1,panelWidth=1,auto=null,manualTween=null,resume=null;
@@ -213,11 +220,11 @@
     const morphAlpha=ease(portion(t,.08,.15))*(1-ease(portion(t,.95,1)));
     const painted=blue;
     const fillAtLeft=ease(portion(reveal,.02,1));
-    const largeColor=gsap.utils.interpolate(
-      gsap.utils.interpolate(painted,"#ffffff",whiten),
+    const largeColor=colorLerp(
+      colorLerp(painted,"#ffffff",whiten),
       painted,fillAtLeft
     );
-    const fg=gsap.utils.interpolate("#ffffff","#202a44",whiten*(1-fillAtLeft));
+    const fg=colorLerp("#ffffff","#202a44",whiten*(1-fillAtLeft));
     const target=relativeRect(cards[idx]);
     const centerW=Math.min(stage.clientWidth*.47,515);
     const centerH=Math.min(stage.clientHeight*.83,700);
@@ -243,8 +250,8 @@
     morph.setAttribute("aria-hidden",String(morphAlpha<.12));
     const info=morph.firstElementChild;
     if(info){
-      info.style.backgroundColor=gsap.utils.interpolate(largeColor,"#ffffff",close);
-      info.style.color=gsap.utils.interpolate(fg,"#202a44",close);
+      info.style.backgroundColor=colorLerp(largeColor,"#ffffff",close);
+      info.style.color=colorLerp(fg,"#202a44",close);
       const txt=texts.get(idx);
       // Digitação sincronizada ao progresso; o mesmo lead permanece
       // visível no centro e na lateral, sem desaparecer/reiniciar.
@@ -273,13 +280,13 @@
       const active=i===idx && !old;
       card.style.opacity=String(old ? .34 : 1);
       card.style.backgroundColor=active?
-        gsap.utils.interpolate("#ffffff",blue,selected*(1-grown*.1)*(1-close)):
+        colorLerp("#ffffff",blue,selected*(1-grown*.1)*(1-close)):
         "#ffffff";
       const amount=active?selected*(1-grown*.1)*(1-close):0;
-      card.style.color=gsap.utils.interpolate("#5c6ca4","#ffffff",amount);
+      card.style.color=colorLerp("#5c6ca4","#ffffff",amount);
       const h=card.querySelector("h3"),p=card.querySelector("p");
-      if(h)h.style.color=gsap.utils.interpolate("#596da4","#ffffff",amount);
-      if(p)p.style.color=gsap.utils.interpolate("#61749c","#ffffff",amount);
+      if(h)h.style.color=colorLerp("#596da4","#ffffff",amount);
+      if(p)p.style.color=colorLerp("#61749c","#ffffff",amount);
       card.style.transform=active?"translateY("+(-5*selected*(1-grown))+"px) scale("+
         (1+selected*.015*(1-grown))+")":"";
       card.setAttribute("aria-pressed",String(active&&t<.2));
@@ -435,23 +442,46 @@
   if(desktop){
     if(toggle)toggle.hidden=true;
     panelInfo.forEach(info=>info.setAttribute("aria-hidden","true"));
-    gsap.registerPlugin(ST);
     space.classList.add("is-story-ready");
-    // Nem pin, nem pinSpacing: a área sticky ocupa espaço real no documento.
-    trigger=ST.create({
-      id:"bellamazon-solucoes-story",
-      trigger:space,start:"top top",end:"bottom bottom",
-      invalidateOnRefresh:true,
-      onUpdate:self=>renderDesktop(self.progress),
-      onRefresh:self=>renderDesktop(self.progress),
-      onEnter:self=>renderDesktop(self.progress),
-      onEnterBack:self=>renderDesktop(self.progress),
-      onLeave:()=>renderDesktop(1),
-      onLeaveBack:()=>renderDesktop(0)
-    });
-    renderDesktop(trigger.progress);
-    requestAnimationFrame(()=>ST.refresh());
-    if(document.fonts?.ready)document.fonts.ready.then(()=>ST.refresh());
+    // Preserva o ScrollTrigger original, mas não depende da disponibilidade do CDN.
+    if(gsap&&ST){
+      gsap.registerPlugin(ST);
+      trigger=ST.create({
+        id:"bellamazon-solucoes-story",
+        trigger:space,start:"top top",end:"bottom bottom",
+        invalidateOnRefresh:true,
+        onUpdate:self=>renderDesktop(self.progress),
+        onRefresh:self=>renderDesktop(self.progress),
+        onEnter:self=>renderDesktop(self.progress),
+        onEnterBack:self=>renderDesktop(self.progress),
+        onLeave:()=>renderDesktop(1),
+        onLeaveBack:()=>renderDesktop(0)
+      });
+      renderDesktop(trigger.progress);
+      requestAnimationFrame(()=>ST.refresh());
+      if(document.fonts?.ready)document.fonts.ready.then(()=>ST.refresh());
+    }else{
+      // Fallback nativo: mesma função de morph, digitação e avanço horizontal.
+      // Scroll normal e palco CSS sticky — nenhuma captura de wheel ou pin.
+      let queued=0;
+      const sync=()=>{
+        const start=space.getBoundingClientRect().top+window.scrollY;
+        const distance=Math.max(1,space.offsetHeight-stage.getBoundingClientRect().height);
+        trigger.start=start;
+        trigger.end=start+distance;
+        trigger.progress=cap((window.scrollY-start)/distance);
+        renderDesktop(trigger.progress);
+      };
+      trigger={start:0,end:1,progress:0,refresh:sync};
+      const schedule=()=>{
+        if(queued)return;
+        queued=requestAnimationFrame(()=>{queued=0;sync();});
+      };
+      window.addEventListener("scroll",schedule,{passive:true});
+      window.addEventListener("resize",schedule,{passive:true});
+      requestAnimationFrame(sync);
+      if(document.fonts?.ready)document.fonts.ready.then(schedule);
+    }
   }else setupMobile();
   if("ResizeObserver" in window){
     new ResizeObserver(()=>{
