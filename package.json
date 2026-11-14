@@ -1,0 +1,19 @@
+{
+  "name": "site-lenses",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Site institucional LENSES — Arquitetura homologada Astro 7 + Tailwind CSS v4",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "npm --prefix astro-poc run dev",
+    "build": "npm --prefix astro-poc run build",
+    "preview": "node scripts/serve-astro.mjs",
+    "serve:static": "node scripts/serve.mjs",
+    "check": "node scripts/check-design-system.mjs && npm --prefix astro-poc run check:architecture && npm --prefix astro-poc run check:parity",
+    "test:visual": "npm --prefix astro-poc run test:visual",
+    "test:cases": "node scripts/test-case-builder.mjs && node scripts/test-case-handoff.mjs"
+  }
+}

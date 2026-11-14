@@ -1,0 +1,8 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CaseArticle from '../components/CaseArticle.astro';
+import sample from '../../../data/cases/_modelo.json';
+---
+<BaseLayout title="Prévia técnica de case | LENSES" description="Exemplo fictício da estrutura de case da LENSES em Astro." noindex>
+  <CaseArticle caseData={sample} demo/>
+</BaseLayout>

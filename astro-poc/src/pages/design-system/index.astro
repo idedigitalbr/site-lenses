@@ -1,0 +1,52 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
+import StatCard from '../../components/StatCard.astro';
+import ActionLink from '../../components/ActionLink.astro';
+import ColorToken from '../../components/ColorToken.astro';
+import demo from '../../../../data/cases/_modelo.json';
+const base=import.meta.env.BASE_URL.replace(/\/?$/,'/');
+---
+<BaseLayout title="Design system vivo | LENSES" description="Vitrine dos componentes compartilhados LENSES usados no laboratório Astro." noindex>
+  <section class="poc-section poc-section--blue">
+    <div class="poc-shell">
+      <SectionHeading eyebrow="Identidade LENSES · fonte compartilhada" title="Design system vivo" lead="Os exemplos abaixo não são uma cópia do HTML das páginas: são exatamente os mesmos componentes renderizados pelo case." inverse/>
+      <ActionLink href={base+'preview/'} theme="light" label="Ver os componentes aplicados"/>
+    </div>
+  </section>
+  <section class="poc-section poc-section--surface" aria-label="Tokens oficiais da marca">
+    <div class="poc-shell">
+      <SectionHeading eyebrow="Tokens vivos da marca" title="Cores oficiais, uma única fonte" lead="Estas amostras usam CSS var() dos tokens originais da LENSES. As classes Tailwind bg-lenses-saboia e text-lenses-space apontam para os mesmos valores."/>
+      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <ColorToken title="Azul Sabóia · principal" token="--color-brand-saboia" value="#5C6CA4"/>
+        <ColorToken title="Azul Espacial · escuro" token="--color-brand-space-blue" value="#202A44"/>
+        <ColorToken title="Azul Sabóia · hover" token="--color-primary-hover" value="#4A588A"/>
+        <ColorToken title="Azul Sabóia · light" token="--color-primary-light" value="#7886BC"/>
+        <ColorToken title="Anti-flash" token="--color-brand-antiflash" value="#EDECED"/>
+        <ColorToken title="Branco" token="--color-brand-white" value="#FFFFFF"/>
+      </div>
+      <div class="mt-6 rounded-2xl bg-lenses-saboia p-6 text-white">
+        <strong class="font-lenses text-xl font-semibold">Teste real do Tailwind v4</strong>
+        <p class="mt-2 text-sm">Este painel é colorido pela classe bg-lenses-saboia, que lê o token oficial. Mudanças no token propagam para CSS tradicional e Tailwind.</p>
+      </div>
+    </div>
+  </section>
+  <section class="poc-section poc-section--surface">
+    <div class="poc-shell">
+      <SectionHeading eyebrow="Tipografia" title="Título editorial" lead="A fonte Inter, o espaçamento e as cores são definidos na camada de estilos única da experiência Astro. Os tokens são importados do repositório original."/>
+      <div class="poc-demo-card">
+        <span class="poc-overline">Padrão de botões</span>
+        <p><ActionLink href={base+'preview/'} label="Botão padrão"/></p>
+      </div>
+    </div>
+  </section>
+  <section class="poc-section">
+    <div class="poc-shell">
+      <SectionHeading eyebrow="Cards reais reutilizados" title="Indicadores" lead="StatCard é usado aqui e também na prévia de case. Alterações no componente refletem nos dois lugares."/>
+      <div class="poc-grid">
+        {demo.kpis.map(k=><StatCard label={k.label} value={k.value} description="Dado de demonstração, não verificado"/>)}
+      </div>
+      <p class="poc-notice">Todos os números deste protótipo são fictícios e usados apenas para validação de design.</p>
+    </div>
+  </section>
+</BaseLayout>

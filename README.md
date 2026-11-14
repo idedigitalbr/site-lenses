@@ -65,4 +65,16 @@ Página publicada no HTML estático da branch main:
 - **Estrutura:** hero, apresentação, 6 soluções, processo com 4 etapas, painel conceitual sem métricas inventadas, portfólio e CTA.
 - **Mídia:** reutiliza imagens já versionadas em assets/ do projeto, sem copiar prints nem colocar dados fictícios de clientes.
 - **QA:** scripts/check-design-system.mjs valida estrutura, âncoras, assets e navegação. Fazer revisão visual no navegador desktop/mobile depois do deploy.
-- **Migração Astro:** permanece isolada em experiment/astro-lenses-poc. Trazer esta página para a arquitetura Astro posteriormente, com os mesmos critérios de paridade visual.
+- **Arquitetura Astro Homologada (`astro-poc/`):** Astro 7 + Tailwind CSS v4 homologado e integrado na `main` com paridade visual de 100% (`0.000%` pixel diff) em todas as rotas (`Home`, `Sobre`, `Soluções > Digital` e `Bellamazon`), além das rotas de componentes compartilhados (`/lab/`, `/design-system/` e `/preview/`).
+
+## Comandos Padronizados (Astro + QA)
+
+Na raiz do projeto:
+
+    npm run dev          # Inicia o servidor de desenvolvimento Astro
+    npm run build        # Compila o projeto Astro e valida arquitetura + paridade byte-a-byte
+    npm run preview      # Serve a build Astro em http://localhost:4321/
+    npm run serve:static # Serve a raiz estática em http://localhost:3333/
+    npm run check        # Executa todos os testes de Design System, Arquitetura e Paridade
+    npm run test:visual  # Executa regressão visual Playwright (Desktop + Mobile)
+

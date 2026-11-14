@@ -1,0 +1,55 @@
+---
+import '../styles/system.css';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  noindex?: boolean;
+  active?: 'inicio' | 'sobre' | 'cases' | string;
+  isHome?: boolean;
+  hasCta?: boolean;
+}
+
+const {
+  title,
+  description,
+  noindex = false,
+  active,
+  isHome = false,
+  hasCta = true,
+} = Astro.props;
+
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="theme-color" content="#050505"/>
+    <meta name="description" content={description}/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:title" content={title}/>
+    <meta property="og:description" content={description}/>
+    <link rel="canonical" href={canonical.toString()}/>
+    {noindex && <meta name="robots" content="noindex,nofollow"/>}
+    <link rel="icon" type="image/png" sizes="32x32" href={base + "assets/imagens-diversas/logos/favicon-32x32.png"}/>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href={base + "assets/styles.css?v=20261017-digital"}/>
+    <title>{title}</title>
+  </head>
+  <body>
+    <div class="bg-ambient-layer"></div>
+    <div class="page-wrapper">
+      <SiteHeader active={active} isHome={isHome} hasCta={hasCta}/>
+      <main id="principal"><slot/></main>
+      <SiteFooter isHome={isHome}/>
+    </div>
+    <script src={base + "assets/script.js?v=20261017-digital"}></script>
+  </body>
+</html>

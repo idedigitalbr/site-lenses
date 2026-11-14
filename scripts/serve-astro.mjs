@@ -1,0 +1,67 @@
+import http from 'node:http';
+import fs from 'node:fs';
+import path from 'node:path';
+
+const PORT = Number(process.env.PORT || 4321);
+const ROOT = path.join(process.cwd(), 'astro-poc', 'dist');
+
+const MIME_TYPES = {
+  '.html': 'text/html; charset=utf-8',
+  '.css': 'text/css; charset=utf-8',
+  '.js': 'application/javascript; charset=utf-8',
+  '.mjs': 'application/javascript; charset=utf-8',
+  '.json': 'application/json; charset=utf-8',
+  '.png': 'image/png',
+  '.jpg': 'image/jpeg',
+  '.jpeg': 'image/jpeg',
+  '.webp': 'image/webp',
+  '.gif': 'image/gif',
+  '.svg': 'image/svg+xml',
+  '.mp4': 'video/mp4',
+  '.otf': 'font/otf',
+  '.ttf': 'font/ttf',
+  '.woff': 'font/woff',
+  '.woff2': 'font/woff2'
+};
+
+const server = http.createServer((req, res) => {
+  let reqPath = decodeURIComponent(req.url.split('?')[0]);
+  if (reqPath === '/site-lenses' || reqPath === '/site-lenses/') {
+    reqPath = '/index.html';
+  } else if (reqPath.startsWith('/site-lenses/')) {
+    reqPath = reqPath.slice('/site-lenses'.length);
+  }
+  if (reqPath === '/') reqPath = '/index.html';
+  
+  let fullPath = path.join(ROOT, reqPath);
+  
+  if (fs.existsSync(fullPath) && fs.statSync(fullPath).isDirectory()) {
+    fullPath = path.join(fullPath, 'index.html');
+  } else if (!fs.existsSync(fullPath) && fs.existsSync(fullPath + '.html')) {
+    fullPath = fullPath + '.html';
+  }
+
+  // Fallback to project root assets if not found in astro-poc/dist/assets
+  if (!fs.existsSync(fullPath) && reqPath.startsWith('/assets/')) {
+    const parentPath = path.join(process.cwd(), reqPath);
+    if (fs.existsSync(parentPath) && !fs.statSync(parentPath).isDirectory()) {
+      fullPath = parentPath;
+    }
+  }
+
+  if (!fs.existsSync(fullPath)) {
+    res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' });
+    res.end('404 Not Found');
+    return;
+  }
+
+  const ext = path.extname(fullPath).toLowerCase();
+  const contentType = MIME_TYPES[ext] || 'application/octet-stream';
+
+  res.writeHead(200, { 'Content-Type': contentType, 'Cache-Control': 'no-cache' });
+  fs.createReadStream(fullPath).pipe(res);
+});
+
+server.listen(PORT, () => {
+  console.log(`Servidor Astro rodando em http://localhost:${PORT}/`);
+});

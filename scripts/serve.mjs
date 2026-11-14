@@ -26,6 +26,11 @@ const MIME_TYPES = {
 
 const server = http.createServer((req, res) => {
   let reqPath = decodeURIComponent(req.url.split('?')[0]);
+  if (reqPath === '/site-lenses' || reqPath === '/site-lenses/') {
+    reqPath = '/index.html';
+  } else if (reqPath.startsWith('/site-lenses/')) {
+    reqPath = reqPath.slice('/site-lenses'.length);
+  }
   if (reqPath === '/') reqPath = '/index.html';
   
   let fullPath = path.join(ROOT, reqPath);

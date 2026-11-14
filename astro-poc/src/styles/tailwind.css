@@ -1,0 +1,30 @@
+/* Tailwind CSS v4 real: Vite @tailwindcss/vite + tokens canônicos.
+   Não carregar Preflight: ele reseta imagens, body, margens e borders;
+   desativá-lo é uma exigência de paridade visual durante a migração. */
+@layer theme, base, components, utilities;
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+@source "../components";
+@source "../pages";
+
+@theme inline {
+  --color-lenses-saboia: var(--color-brand-saboia);
+  --color-lenses-space: var(--color-brand-space-blue);
+  --color-lenses-hover: var(--color-primary-hover);
+  --color-lenses-light: var(--color-primary-light);
+  --color-lenses-white: var(--color-brand-white);
+  --color-lenses-muted: var(--color-brand-antiflash);
+  --color-lenses-active: var(--color-primary-active);
+  --color-lenses-subtle: var(--color-primary-subtle);
+  --color-lenses-surface: var(--bg-surface-light);
+  --color-lenses-surface-gray: var(--bg-surface-gray);
+  --font-lenses: var(--font-main);
+  --radius-lenses-pill: var(--radius-pill);
+  --shadow-lenses-glow: var(--shadow-blue-glow);
+  --text-lenses-heading: var(--type-heading-size);
+  --text-lenses-body: var(--type-body-support);
+  --text-lenses-caption: var(--type-caption-support);
+  --leading-lenses-body: var(--type-body-line-height);
+  --tracking-lenses-heading: var(--type-heading-letter-spacing);
+  --font-weight-lenses-heading: var(--type-heading-weight);
+}

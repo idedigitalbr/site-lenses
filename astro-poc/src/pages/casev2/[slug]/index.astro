@@ -1,0 +1,30 @@
+---
+import fs from 'node:fs';
+import path from 'node:path';
+import LegacyMirror from '../../../components/LegacyMirror.astro';
+
+/**
+ * Casos publicados continuam tendo a saída pixel-a-pixel aprovada.
+ * A API de dados será portada para Astro components gradualmente,
+ * somente após testes de regressão dos cartões/GSAP/dashboard.
+ */
+export function getStaticPaths() {
+  const root=path.resolve(process.cwd(),'..');
+  const dataDir=path.join(root,'data','cases');
+  if(!fs.existsSync(dataDir))return [];
+  return fs.readdirSync(dataDir)
+    .filter(file=>file.endsWith('.json')&&!file.startsWith('_'))
+    .map(file=>JSON.parse(fs.readFileSync(path.join(dataDir,file),'utf8')))
+    .filter(data=>data.status==='published'&&data.mediaApproved===true&&data.metricsVerified===true)
+    .filter(data=>data.slug!=='bellamazon'&&/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(data.slug))
+    .map(data=>{
+      const source='casev2/'+data.slug+'/index.html';
+      if(!fs.existsSync(path.join(root,source)))
+        throw new Error('Case publicado sem HTML gerado: '+source+
+          '. Execute node scripts/build-case.mjs data/cases/'+data.slug+'.json primeiro.');
+      return {params:{slug:data.slug},props:{source}};
+    });
+}
+const {source}=Astro.props;
+---
+<LegacyMirror source={source}/>

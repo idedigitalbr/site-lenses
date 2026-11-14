@@ -1,0 +1,117 @@
+---
+interface Props {
+  isHome?: boolean;
+}
+
+const {
+  isHome = false,
+} = Astro.props;
+
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+const homeHref = isHome ? '#inicio' : base;
+const prefooterGif = base + 'assets/paginas/home/s7-footer/prefooter-stage.gif';
+const logoOutlined = base + 'assets/imagens-diversas/logos/lenses-outlined-logo.png';
+const logoIde = base + 'assets/imagens-diversas/logos/logo-idedigital-white.webp';
+---
+
+<!-- 12. FOOTER — BLOCO ÚNICO: CENA CINEMATOGRÁFICA (GIF) + CONTEÚDO -->
+<footer class="footer" id="contato">
+  <!-- Mídia de fundo: GIF cinematográfico herdado do antigo pré-footer -->
+  <div class="footer-media" aria-hidden="true">
+    <img src={prefooterGif} alt="" class="footer-media-img" loading="lazy" decoding="async">
+  </div>
+
+  <!-- Overlay: escurece a lateral esquerda (leitura) e converge para preto na base -->
+  <div class="footer-overlay" aria-hidden="true"></div>
+
+  <div class="footer-container">
+    <!-- Grade de 5 colunas: Marca | Manifesto | Contato | Acompanhe | Ação -->
+    <div class="footer-grid">
+      <!-- Coluna 1: Marca / Logo empilhado oficial -->
+      <div class="footer-col footer-col--brand">
+        <a href={homeHref} class="footer-logo-link" aria-label="LENSES - Voltar ao início">
+          <img src={logoOutlined} alt="LENSES" class="footer-logo-img" loading="lazy" decoding="async">
+        </a>
+      </div>
+
+      <!-- Coluna 2: Manifesto editorial -->
+      <div class="footer-col footer-col--manifesto">
+        <span class="footer-brand-rule" aria-hidden="true"></span>
+        <p class="footer-manifesto">Transformamos ideias em grandes histórias.</p>
+        <p class="footer-text">Filmes, coberturas e experiências audiovisuais que conectam marcas e pessoas através de narrativas reais e de alto impacto.</p>
+      </div>
+
+      <!-- Coluna 3: Contato -->
+      <div class="footer-col">
+        <h3 class="footer-col-title">Contato</h3>
+        <ul class="footer-list">
+          <li>
+            <a href="https://wa.me/5591992000000" target="_blank" rel="noopener noreferrer" class="footer-list-item">
+              <svg class="footer-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+              <span>+55 91 99200-0000</span>
+            </a>
+          </li>
+          <li>
+            <a href="mailto:contato@lenses.com.br" class="footer-list-item">
+              <svg class="footer-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <span>contato@lenses.com.br</span>
+            </a>
+          </li>
+          <li>
+            <span class="footer-list-item">
+              <svg class="footer-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span>Belém, PA – Brasil</span>
+            </span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Coluna 4: Redes sociais -->
+      <div class="footer-col">
+        <h3 class="footer-col-title">Acompanhe</h3>
+        <ul class="footer-list">
+          <li>
+            <a href="https://instagram.com/lensesagencia" target="_blank" rel="noopener noreferrer" class="footer-list-item">
+              <svg class="footer-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16.11 8z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+              <span>@lensesagencia</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://youtube.com/@lensesagencia" target="_blank" rel="noopener noreferrer" class="footer-list-item">
+              <svg class="footer-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="4"/><path d="M10 9l5 3-5 3z"/></svg>
+              <span>Lenses no YouTube</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://linkedin.com/company/lensesagencia" target="_blank" rel="noopener noreferrer" class="footer-list-item">
+              <svg class="footer-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="4"/><path d="M7.2 10.5V17M7.2 7.4v.01M11.4 17v-3.6a2.4 2.4 0 0 1 4.8 0V17"/></svg>
+              <span>Lenses no LinkedIn</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Coluna 5: Chamada para ação -->
+      <div class="footer-col footer-col--cta">
+        <h3 class="footer-col-title">Vamos criar juntos?</h3>
+        <p class="footer-text">Fale com a nossa equipe e descubra como podemos dar vida ao seu próximo projeto.</p>
+        <a href="https://wa.me/5591992000000" target="_blank" rel="noopener noreferrer" class="footer-cta">
+          <span>Entrar em contato</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Barra inferior -->
+    <div class="footer-bottom">
+      <p class="footer-copyright">Copyright © 2026 Lenses – All rights reserved</p>
+      <a href="#" class="footer-bottom-link">Termos &amp; Privacidade</a>
+      <div class="footer-dev">
+        <span class="footer-dev-text">Desenvolvido por:</span>
+        <a href="https://digital.ideinstituto.com.br/" target="_blank" rel="noopener noreferrer" class="footer-dev-link" aria-label="IDE Digital - Abrir em nova aba">
+          <img src={logoIde} alt="IDE Digital" class="footer-dev-logo" loading="lazy">
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>

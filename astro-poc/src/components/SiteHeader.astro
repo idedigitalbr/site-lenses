@@ -1,0 +1,105 @@
+---
+interface Props {
+  active?: 'inicio' | 'sobre' | 'cases' | string;
+  isHome?: boolean;
+  hasCta?: boolean;
+}
+
+const {
+  active,
+  isHome = false,
+  hasCta = true,
+} = Astro.props;
+
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+
+const homeHref = isHome ? '#inicio' : base;
+const sobreHref = base + 'sobre.html';
+const casesHref = base + 'casev2/bellamazon/';
+const servicosHref = isHome ? '#servicos' : base + '#servicos';
+const contatoHref = '#contato';
+const logoSrc = base + 'assets/imagens-diversas/logos/logo-lenses-white.webp';
+---
+
+<!-- HEADER WRAPPER COM FAIXA SUPERIOR + MENU DINÂMICO (PADRÃO ZION) -->
+<header class="site-header is-top" id="siteHeader">
+  <!-- 0. FAIXA SUPERIOR COMPACTA (REFERÊNCIA ZION / 100% LARGURA) -->
+  <div class="top-blue-ticker" id="topTicker" aria-label="Destaques Lenses">
+    <div class="top-ticker-track">
+      <span class="ticker-text">amazônia em outro olhar</span>
+      <span class="ticker-text">produção audiovisual</span>
+      <span class="ticker-text">estratégia &amp; conteúdo</span>
+      <span class="ticker-text">cinematografia</span>
+      <span class="ticker-text">direção artística</span>
+      <span class="ticker-text">eventos &amp; festivais</span>
+      <span class="ticker-text">documentários</span>
+      <!-- Repetições para loop contínuo infinito perfeito -->
+      <span class="ticker-text">amazônia em outro olhar</span>
+      <span class="ticker-text">produção audiovisual</span>
+      <span class="ticker-text">estratégia &amp; conteúdo</span>
+      <span class="ticker-text">cinematografia</span>
+      <span class="ticker-text">direção artística</span>
+      <span class="ticker-text">eventos &amp; festivais</span>
+      <span class="ticker-text">documentários</span>
+      <span class="ticker-text">amazônia em outro olhar</span>
+      <span class="ticker-text">produção audiovisual</span>
+      <span class="ticker-text">estratégia &amp; conteúdo</span>
+      <span class="ticker-text">cinematografia</span>
+      <span class="ticker-text">direção artística</span>
+      <span class="ticker-text">eventos &amp; festivais</span>
+      <span class="ticker-text">documentários</span>
+    </div>
+  </div>
+
+  <!-- 1. NAVBAR / HEADER MENU DINÂMICO -->
+  <div class="nav" id="mainNav">
+    <div class="nav-container">
+      <!-- Lado esquerdo: Início | Sobre | Portfólio / Cases -->
+      <nav class="nav-actions nav-actions-left" aria-label="Menu Principal Esquerdo">
+        <a href={homeHref} class={`lnk ${active === 'inicio' ? 'is-active' : ''}`}>Início</a>
+        <a href={sobreHref} class={`lnk ${active === 'sobre' ? 'is-active' : ''}`}>Sobre</a>
+        <a href={casesHref} class={`lnk ${active === 'cases' ? 'is-active' : ''}`}>Portfólio / Cases</a>
+      </nav>
+
+      <!-- Centro: LOGO LENSES -->
+      <a href={homeHref} class="nav-logo" aria-label="Lenses - Início">
+        <img src={logoSrc} alt="LENSES" class="nav-logo-img">
+      </a>
+
+      <!-- Lado direito: Nossos Serviços | Botão CTA Contate-nos ou link Contato -->
+      <nav class="nav-actions nav-actions-right" aria-label="Menu Principal Direito">
+        <a href={servicosHref} class="lnk">Nossos Serviços</a>
+        {hasCta ? (
+          <a href={contatoHref} class="btn btn-pill">
+            <svg class="ico-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+            </svg>
+            <span>Contate-nos</span>
+          </a>
+        ) : (
+          <a href={contatoHref} class={`lnk ${active === 'contato' ? 'is-active' : ''}`}>Contato</a>
+        )}
+      </nav>
+
+      <button class="nav-mobile-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+
+    <!-- Mobile Drawer Nav -->
+    <div class="nav-mobile-drawer" id="mobileNav">
+      <nav class="nav-mobile-links">
+        <a href={homeHref} class={`mobile-lnk ${active === 'inicio' ? 'is-active' : ''}`}>Início</a>
+        <a href={sobreHref} class={`mobile-lnk ${active === 'sobre' ? 'is-active' : ''}`}>Sobre</a>
+        <a href={casesHref} class={`mobile-lnk ${active === 'cases' ? 'is-active' : ''}`}>Portfólio / Cases</a>
+        <a href={servicosHref} class="mobile-lnk">Nossos Serviços</a>
+        {hasCta ? (
+          <a href={contatoHref} class="btn btn-pill mobile-lnk">Contate-nos</a>
+        ) : (
+          <a href={contatoHref} class={`mobile-lnk ${active === 'contato' ? 'is-active' : ''}`}>Contato</a>
+        )}
+      </nav>
+    </div>
+  </div>
+</header>
