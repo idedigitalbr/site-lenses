@@ -50,6 +50,7 @@ const pages=[
   {name:'home',url:'',y:0},
   {name:'sobre',url:'sobre.html',y:0},
   {name:'solucoes-digital',url:'solucoes/digital/',y:0},
+  {name:'solucoes-audiovisual',url:'solucoes/audiovisual/',y:0},
   {name:'bellamazon',url:'casev2/bellamazon/',y:0},
   {name:'bellamazon-mid',url:'casev2/bellamazon/',y:900},
 ];

@@ -1,0 +1,612 @@
+/* LENSES | Solução Audiovisual · página institucional
+   Identidade cinematográfica escura, referenciando assets/tokens.css.
+   Não redefine header, navbar, footer ou animações globais. */
+
+body.audiovisual-page {
+  background: #06080F;
+  color: #EDECED;
+  font-family: var(--font-main, 'Inter', sans-serif);
+}
+
+.audiovisual-page .av-container {
+  width: min(1320px, calc(100% - 112px));
+  margin-inline: auto;
+}
+
+.audiovisual-page .av-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--color-brand-saboia, #5C6CA4);
+  font: 700 11px/1.5 var(--font-main);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.audiovisual-page .av-kicker:before {
+  content: "";
+  width: 22px;
+  height: 2px;
+  background: currentColor;
+  opacity: 0.85;
+}
+
+.audiovisual-page h1,
+.audiovisual-page h2,
+.audiovisual-page h3,
+.audiovisual-page p {
+  margin-top: 0;
+}
+
+.audiovisual-page .av-h2 {
+  font-size: clamp(34px, 4vw, 58px);
+  line-height: 1.1;
+  letter-spacing: -0.045em;
+  font-weight: 600;
+  color: #FFFFFF;
+}
+
+.audiovisual-page .av-h2 strong {
+  font-weight: 750;
+  color: var(--color-brand-saboia, #5C6CA4);
+  background: linear-gradient(135deg, #FFFFFF 20%, var(--color-brand-saboia) 100%);
+  -webkit-background-clip: text;
+  -webkit-fill-color: transparent;
+}
+
+.audiovisual-page .av-copy {
+  color: #A6B4DC;
+  font-size: clamp(15px, 1.15vw, 18px);
+  line-height: 1.7;
+  font-weight: 400;
+}
+
+.audiovisual-page .av-button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  border: 1px solid transparent;
+  text-decoration: none;
+  background: var(--color-brand-saboia, #5C6CA4);
+  color: #FFFFFF;
+  padding: 16px 28px;
+  border-radius: var(--radius-pill, 999px);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: all 0.28s ease;
+  box-shadow: 0 8px 24px rgba(92, 108, 164, 0.35);
+}
+
+.audiovisual-page .av-button:hover {
+  background: var(--color-primary-hover, #4A588A);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(92, 108, 164, 0.5);
+}
+
+.audiovisual-page .av-button:focus-visible {
+  outline: 2px solid var(--color-brand-saboia);
+  outline-offset: 4px;
+}
+
+.audiovisual-page .av-button--outline {
+  background: transparent;
+  color: #FFFFFF;
+  border-color: rgba(255, 255, 255, 0.25);
+  box-shadow: none;
+}
+
+.audiovisual-page .av-button--outline:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #FFFFFF;
+}
+
+.audiovisual-page .av-arrow {
+  font-size: 18px;
+  line-height: 1;
+}
+
+/* 01. HERO Cinematográfico com Vídeo */
+.audiovisual-page .av-hero {
+  min-height: min(740px, 86svh);
+  position: relative;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: #04060A;
+  isolation: isolate;
+}
+
+.audiovisual-page .av-hero__video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: brightness(0.65) contrast(1.1);
+  z-index: 0;
+}
+
+.audiovisual-page .av-hero:before {
+  position: absolute;
+  inset: 0;
+  content: "";
+  z-index: 1;
+  background: linear-gradient(90deg, rgba(4, 6, 10, 0.96) 0%, rgba(8, 12, 22, 0.90) 35%, rgba(12, 18, 34, 0.65) 65%, rgba(4, 6, 10, 0.85) 100%),
+              linear-gradient(0deg, rgba(6, 8, 15, 0.9) 0%, transparent 40%);
+}
+
+.audiovisual-page .av-hero__inner {
+  position: relative;
+  z-index: 3;
+  padding: 130px 0 60px;
+  color: #FFFFFF;
+  max-width: 780px;
+}
+
+.audiovisual-page .av-hero h1 {
+  font-size: clamp(64px, 8vw, 124px);
+  line-height: 0.92;
+  letter-spacing: -0.06em;
+  font-weight: 800;
+  margin: 22px 0 20px;
+  background: linear-gradient(135deg, #FFFFFF 40%, var(--color-brand-saboia, #5C6CA4) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.audiovisual-page .av-hero__lead {
+  font-size: clamp(18px, 1.8vw, 24px);
+  line-height: 1.4;
+  font-weight: 500;
+  color: #F1F4FB;
+  margin-bottom: 20px;
+}
+
+.audiovisual-page .av-hero__desc {
+  font-size: 16px;
+  line-height: 1.65;
+  color: #A6B4DC;
+  margin-bottom: 32px;
+  max-width: 580px;
+}
+
+.audiovisual-page .av-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+}
+
+/* 02. Intro Split */
+.audiovisual-page .av-intro {
+  display: grid;
+  grid-template-columns: 46% 36% 18%;
+  min-height: 520px;
+  background: #0A0E18;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.audiovisual-page .av-intro__media {
+  position: relative;
+  overflow: hidden;
+  background: #050508;
+}
+
+.audiovisual-page .av-intro__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: brightness(0.8) contrast(1.1);
+  display: block;
+}
+
+.audiovisual-page .av-intro__copy {
+  padding: clamp(48px, 6vw, 84px) clamp(32px, 4vw, 56px);
+  background: linear-gradient(135deg, #0C1120 0%, #0F162A 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.audiovisual-page .av-intro__copy h2 {
+  font-size: clamp(30px, 3.2vw, 48px);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.04em;
+  margin: 20px 0;
+  color: #FFFFFF;
+}
+
+.audiovisual-page .av-intro__copy h2 strong {
+  color: var(--color-brand-saboia, #5C6CA4);
+}
+
+.audiovisual-page .av-intro__stats {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: #080C14;
+  padding: 36px 32px;
+  gap: 32px;
+  border-left: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.audiovisual-page .av-intro__stat strong {
+  display: block;
+  font-size: clamp(38px, 3.8vw, 64px);
+  line-height: 1;
+  color: var(--color-brand-saboia, #5C6CA4);
+  font-weight: 750;
+  letter-spacing: -0.05em;
+}
+
+.audiovisual-page .av-intro__stat span {
+  display: block;
+  color: #A6B4DC;
+  font-size: 11px;
+  line-height: 1.4;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-weight: 700;
+  margin-top: 8px;
+}
+
+/* 03. Grid de Frentes Audiovisuais */
+.audiovisual-page .av-services {
+  padding: clamp(80px, 9vw, 120px) 0;
+  background: #06080F;
+  position: relative;
+  overflow: hidden;
+}
+
+.audiovisual-page .av-services__heading {
+  text-align: center;
+  max-width: 860px;
+  margin: 0 auto 60px;
+}
+
+.audiovisual-page .av-services__heading .av-kicker:before {
+  display: none;
+}
+
+.audiovisual-page .av-services__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  position: relative;
+  z-index: 1;
+}
+
+.audiovisual-page .av-card {
+  background: #0C111E;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 40px 32px;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.audiovisual-page .av-card:hover {
+  border-color: var(--color-brand-saboia, #5C6CA4);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(92, 108, 164, 0.2);
+}
+
+.audiovisual-page .av-card__icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  background: rgba(92, 108, 164, 0.15);
+  color: var(--color-brand-saboia, #5C6CA4);
+  display: grid;
+  place-items: center;
+  margin-bottom: 24px;
+  transition: all 0.25s ease;
+}
+
+.audiovisual-page .av-card:hover .av-card__icon {
+  background: var(--color-brand-saboia, #5C6CA4);
+  color: #FFFFFF;
+  transform: scale(1.05);
+}
+
+.audiovisual-page .av-card__icon svg {
+  width: 32px;
+  height: 32px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.audiovisual-page .av-card h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-bottom: 12px;
+  letter-spacing: -0.02em;
+}
+
+.audiovisual-page .av-card p {
+  color: #A6B4DC;
+  font-size: 14.5px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* 04. Processo / Pipeline de Produção */
+.audiovisual-page .av-process {
+  display: grid;
+  grid-template-columns: 48% 52%;
+  min-height: 680px;
+  background: #080C16;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.audiovisual-page .av-process__photos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  overflow: hidden;
+}
+
+.audiovisual-page .av-process__photos figure {
+  margin: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.audiovisual-page .av-process__photos figure:first-child {
+  grid-column: 1 / -1;
+}
+
+.audiovisual-page .av-process__photos img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: brightness(0.75) contrast(1.1);
+  transition: transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.audiovisual-page .av-process__photos figure:hover img {
+  transform: scale(1.06);
+}
+
+.audiovisual-page .av-process__content {
+  padding: clamp(56px, 7vw, 96px) clamp(36px, 5vw, 72px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.audiovisual-page .av-timeline {
+  list-style: none;
+  padding: 0;
+  margin: 40px 0 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.audiovisual-page .av-timeline li {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.audiovisual-page .av-timeline__num {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--color-brand-saboia, #5C6CA4);
+  color: var(--color-brand-saboia, #5C6CA4);
+  display: grid;
+  place-items: center;
+  font-weight: 750;
+  font-size: 15px;
+  flex-shrink: 0;
+  background: rgba(92, 108, 164, 0.1);
+}
+
+.audiovisual-page .av-timeline h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-bottom: 6px;
+}
+
+.audiovisual-page .av-timeline p {
+  color: #A6B4DC;
+  font-size: 14px;
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* 05. Portfólio / Vitrine de Cases */
+.audiovisual-page .av-portfolio {
+  padding: clamp(80px, 9vw, 120px) 0;
+  background: #06080F;
+}
+
+.audiovisual-page .av-portfolio__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  margin-top: 48px;
+}
+
+.audiovisual-page .av-case {
+  border-radius: 18px;
+  overflow: hidden;
+  background: #0B0F1A;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.audiovisual-page .av-case:hover {
+  border-color: var(--color-brand-saboia, #5C6CA4);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6);
+}
+
+.audiovisual-page .av-case__media {
+  aspect-ratio: 16/10;
+  position: relative;
+  overflow: hidden;
+}
+
+.audiovisual-page .av-case__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.audiovisual-page .av-case:hover .av-case__media img {
+  transform: scale(1.05);
+}
+
+.audiovisual-page .av-case__body {
+  padding: 24px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.audiovisual-page .av-case__tag {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-brand-saboia, #5C6CA4);
+  margin-bottom: 8px;
+}
+
+.audiovisual-page .av-case h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-bottom: 8px;
+}
+
+.audiovisual-page .av-case p {
+  color: #A6B4DC;
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.audiovisual-page .av-case__link {
+  margin-top: 16px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* 06. CTA Final */
+.audiovisual-page .av-cta {
+  padding: clamp(80px, 9vw, 110px) 0;
+  background: linear-gradient(135deg, #202A44 0%, #0F172B 100%);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+}
+
+.audiovisual-page .av-cta__inner {
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.audiovisual-page .av-cta h2 {
+  font-size: clamp(36px, 4.5vw, 60px);
+  font-weight: 750;
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+  color: #FFFFFF;
+  margin: 16px 0 20px;
+}
+
+.audiovisual-page .av-cta p {
+  font-size: clamp(16px, 1.2vw, 19px);
+  color: #CCD6F6;
+  line-height: 1.6;
+  margin-bottom: 36px;
+}
+
+/* Animações com Scroll (d-reveal) */
+.audiovisual-page.js-motion .av-reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.audiovisual-page.js-motion .av-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Responsividade */
+@media (max-width: 1024px) {
+  .audiovisual-page .av-intro {
+    grid-template-columns: 1fr;
+  }
+  .audiovisual-page .av-intro__stats {
+    flex-direction: row;
+    flex-wrap: wrap;
+    border-left: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  }
+  .audiovisual-page .av-services__grid,
+  .audiovisual-page .av-portfolio__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .audiovisual-page .av-process {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .audiovisual-page .av-container {
+    width: calc(100% - 40px);
+  }
+  .audiovisual-page .av-services__grid,
+  .audiovisual-page .av-portfolio__grid {
+    grid-template-columns: 1fr;
+  }
+  .audiovisual-page .av-hero h1 {
+    font-size: clamp(48px, 14vw, 76px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .audiovisual-page .av-reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .audiovisual-page .av-button,
+  .audiovisual-page .av-card,
+  .audiovisual-page .av-case {
+    transition: none !important;
+    transform: none !important;
+  }
+}

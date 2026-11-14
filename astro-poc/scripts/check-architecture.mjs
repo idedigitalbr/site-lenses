@@ -28,6 +28,7 @@ const checks=[
  ['Home sem redesenho',read('src/pages/index.astro').includes('LegacyMirror')],
  ['Bellamazon sem redesenho',read('src/pages/casev2/bellamazon/index.astro').includes('LegacyMirror')],
  ['Solução Digital presente',read('src/pages/solucoes/digital/index.astro').includes('LegacyMirror')],
+ ['Solução Audiovisual presente',read('src/pages/solucoes/audiovisual/index.astro').includes('LegacyMirror')],
  ['Sem deploy automático',!fs.existsSync(path.join(proj,'.github','workflows','deploy.yml'))],
 ];
 const bad=checks.filter(([,ok])=>!ok);

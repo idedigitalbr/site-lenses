@@ -16,6 +16,7 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 const homeHref = isHome ? '#inicio' : base;
 const sobreHref = base + 'sobre.html';
 const casesHref = base + 'casev2/bellamazon/';
+const audiovisualHref = base + 'solucoes/audiovisual/';
 const digitalHref = base + 'solucoes/digital/';
 const servicosHref = isHome ? '#servicos' : base + '#servicos';
 const contatoHref = '#contato';
@@ -69,9 +70,10 @@ const logoSrc = base + 'assets/imagens-diversas/logos/logo-lenses-white.webp';
 
       <!-- Lado direito: Submenu Soluções | Botão CTA Contate-nos ou link Contato -->
       <nav class="nav-actions nav-actions-right" aria-label="Menu Principal Direito">
-        <details class={`lenses-solutions-nav ${active === 'digital' ? 'is-current' : ''}`}>
+        <details class={`lenses-solutions-nav ${active === 'digital' || active === 'audiovisual' ? 'is-current' : ''}`}>
           <summary class="lnk">Soluções <span class="lenses-solutions-chevron" aria-hidden="true">⌄</span></summary>
           <div class="lenses-solutions-panel" role="group" aria-label="Páginas de soluções">
+            <a href={audiovisualHref} aria-current={active === 'audiovisual' ? 'page' : undefined}>Audiovisual <span aria-hidden="true">↗</span></a>
             <a href={digitalHref} aria-current={active === 'digital' ? 'page' : undefined}>Digital <span aria-hidden="true">↗</span></a>
             <a href={servicosHref}>Todos os serviços <span aria-hidden="true">↗</span></a>
           </div>
@@ -102,6 +104,7 @@ const logoSrc = base + 'assets/imagens-diversas/logos/logo-lenses-white.webp';
         <a href={casesHref} class={`mobile-lnk ${active === 'cases' ? 'is-active' : ''}`}>Portfólio / Cases</a>
         <div class="lenses-mobile-solutions">
           <span class="lenses-mobile-solutions__title">Soluções</span>
+          <a class={`mobile-lnk lenses-mobile-solutions__link ${active === 'audiovisual' ? 'is-active' : ''}`} href={audiovisualHref} aria-current={active === 'audiovisual' ? 'page' : undefined}>Audiovisual</a>
           <a class={`mobile-lnk lenses-mobile-solutions__link ${active === 'digital' ? 'is-active' : ''}`} href={digitalHref} aria-current={active === 'digital' ? 'page' : undefined}>Digital</a>
           <a class="mobile-lnk lenses-mobile-solutions__link" href={servicosHref}>Todos os serviços</a>
         </div>

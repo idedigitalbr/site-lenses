@@ -11,6 +11,7 @@ const tested=[
   ['Home','index.html','index.html',false],
   ['Bellamazon','casev2/bellamazon/index.html','casev2/bellamazon/index.html',false],
   ['Solução Digital','solucoes/digital/index.html','solucoes/digital/index.html',false],
+  ['Solução Audiovisual','solucoes/audiovisual/index.html','solucoes/audiovisual/index.html',false],
   ['404','404.html','404.html',true],
   ['Sobre antigo (alias)','sobre.html','sobre.html',true],
   ['Design system antigo (alias)','design-system-preview.html','design-system-preview.html',true],
@@ -35,7 +36,7 @@ for(const [label,source,target,exact] of tested){
  console.log('[Parity]',label, 'origem',hash(original),'saída',hash(produced));
 }
 for(const filename of ['tokens.css','base.css','components.css','pages.css','styles.css','typography.css',
-  'solucao-digital.css','solucao-digital.js','bellamazon-mosaic.js','bellamazon-dashboard.js']){
+  'solucao-digital.css','solucao-digital.js','solucao-audiovisual.css','solucao-audiovisual.js','bellamazon-mosaic.js','bellamazon-dashboard.js']){
  const src=path.join(repo,'assets',filename),out=path.join(dist,'assets',filename);
  if(!fs.existsSync(src)||!fs.existsSync(out))errors.push('Asset ausente '+filename);
  else if(fs.readFileSync(src).equals(fs.readFileSync(out))===false)

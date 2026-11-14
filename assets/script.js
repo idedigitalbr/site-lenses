@@ -26,9 +26,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const script = [...document.scripts].find(node => /\/assets\/script\.js(?:\?|$)/.test(node.src));
     if (!script) return;
     const urlFor = pathname => new URL(pathname, script.src).href;
+    const audiovisual = urlFor('../solucoes/audiovisual/');
     const digital = urlFor('../solucoes/digital/');
     const services = urlFor('../index.html#servicos');
-    const isDigital = new URL(location.href).pathname.replace(/index\.html$/, '').endsWith('/solucoes/digital/');
+    const pathClean = new URL(location.href).pathname.replace(/index\.html$/, '');
+    const isAudiovisual = pathClean.endsWith('/solucoes/audiovisual/');
+    const isDigital = pathClean.endsWith('/solucoes/digital/');
 
     const desktop = document.querySelector('.nav-actions-right');
     const previous = desktop && [...desktop.querySelectorAll('a.lnk')].find(link =>
@@ -36,9 +39,10 @@ document.addEventListener('DOMContentLoaded', () => {
     if (previous && !desktop.querySelector('.lenses-solutions-nav')) {
       const menu = document.createElement('details');
       menu.className = 'lenses-solutions-nav';
-      if (isDigital) menu.classList.add('is-current');
+      if (isDigital || isAudiovisual) menu.classList.add('is-current');
       menu.innerHTML = '<summary class="lnk">Soluções <span class="lenses-solutions-chevron" aria-hidden="true">⌄</span></summary>' +
         '<div class="lenses-solutions-panel" role="group" aria-label="Páginas de soluções">' +
+        '<a href="' + audiovisual + '"' + (isAudiovisual ? ' aria-current="page"' : '') + '>Audiovisual <span aria-hidden="true">↗</span></a>' +
         '<a href="' + digital + '"' + (isDigital ? ' aria-current="page"' : '') + '>Digital <span aria-hidden="true">↗</span></a>' +
         '<a href="' + services + '">Todos os serviços <span aria-hidden="true">↗</span></a></div>';
       previous.replaceWith(menu);
@@ -57,6 +61,8 @@ document.addEventListener('DOMContentLoaded', () => {
       const group = document.createElement('div');
       group.className = 'lenses-mobile-solutions';
       group.innerHTML = '<span class="lenses-mobile-solutions__title">Soluções</span>' +
+        '<a class="mobile-lnk lenses-mobile-solutions__link" href="' + audiovisual + '"' +
+        (isAudiovisual ? ' aria-current="page"' : '') + '>Audiovisual</a>' +
         '<a class="mobile-lnk lenses-mobile-solutions__link" href="' + digital + '"' +
         (isDigital ? ' aria-current="page"' : '') + '>Digital</a>' +
         '<a class="mobile-lnk lenses-mobile-solutions__link" href="' + services + '">Todos os serviços</a>';
