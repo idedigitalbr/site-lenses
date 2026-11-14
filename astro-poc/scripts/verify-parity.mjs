@@ -11,6 +11,7 @@ const tested=[
   ['Home','index.html','index.html',false],
   ['Bellamazon','casev2/bellamazon/index.html','casev2/bellamazon/index.html',false],
   ['Solução Digital','solucoes/digital/index.html','solucoes/digital/index.html',false],
+  ['404','404.html','404.html',true],
   ['Sobre antigo (alias)','sobre.html','sobre.html',true],
   ['Design system antigo (alias)','design-system-preview.html','design-system-preview.html',true],
 ];

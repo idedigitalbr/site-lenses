@@ -8,7 +8,7 @@ import {fileURLToPath} from 'node:url';
 const project=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const repo=path.resolve(project,'..');
 const dest=path.join(project,'dist');
-for(const alias of ['sobre.html','design-system-preview.html']){
+for(const alias of ['sobre.html','design-system-preview.html','404.html','robots.txt','sitemap.xml']){
   const input=path.join(repo,alias);
   if(fs.existsSync(input))fs.copyFileSync(input,path.join(dest,alias));
 }

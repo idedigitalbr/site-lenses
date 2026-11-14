@@ -1,0 +1,8 @@
+# robots.txt para o site institucional LENSES
+User-agent: *
+Allow: /
+Disallow: /.lenses-work/
+Disallow: /data/
+Disallow: /backups/
+
+Sitemap: https://idedigitalbr.github.io/site-lenses/sitemap.xml

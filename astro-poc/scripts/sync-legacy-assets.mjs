@@ -14,7 +14,7 @@ const dest=path.join(publicDir,'assets');
 if(!fs.existsSync(path.join(repo,'assets','tokens.css')))throw Error('Não está na pasta correta: tokens originais ausentes.');
 fs.mkdirSync(publicDir,{recursive:true});
 fs.cpSync(source,dest,{recursive:true,force:true,preserveTimestamps:true,filter:p=>!p.includes(path.sep+'.git'+path.sep)});
-for(const filename of ['sobre.html','design-system-preview.html']){
+for(const filename of ['sobre.html','design-system-preview.html','404.html','robots.txt','sitemap.xml']){
   const origin=path.join(repo,filename);
   if(fs.existsSync(origin))fs.copyFileSync(origin,path.join(publicDir,filename));
 }

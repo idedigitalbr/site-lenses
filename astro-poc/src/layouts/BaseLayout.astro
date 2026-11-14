@@ -44,6 +44,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <title>{title}</title>
   </head>
   <body>
+    <a href="#principal" class="skip-link">Pular para o conteúdo</a>
     <div class="bg-ambient-layer"></div>
     <div class="page-wrapper">
       <SiteHeader active={active} isHome={isHome} hasCta={hasCta}/>

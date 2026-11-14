@@ -31,6 +31,47 @@
   
   <!-- Estilos Oficiais -->
   <link rel="stylesheet" href="assets/styles.css?v=20261017-digital">
+
+  <!-- Schema.org Dados Estruturados (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://idedigitalbr.github.io/site-lenses/#organization",
+        "name": "LENSES",
+        "alternateName": "LENSES Agência e Produtora Audiovisual",
+        "url": "https://idedigitalbr.github.io/site-lenses/",
+        "logo": "https://idedigitalbr.github.io/site-lenses/assets/imagens-diversas/logos/logo-lenses-white.webp",
+        "description": "Produtora audiovisual e estúdio de ideias em movimento. Amazônia em outro olhar.",
+        "telephone": "+55-91-99200-0000",
+        "email": "contato@lenses.com.br",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Belém",
+          "addressRegion": "PA",
+          "addressCountry": "BR"
+        },
+        "sameAs": [
+          "https://instagram.com/lensesagencia",
+          "https://youtube.com/@lensesagencia",
+          "https://linkedin.com/company/lensesagencia"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://idedigitalbr.github.io/site-lenses/#website",
+        "url": "https://idedigitalbr.github.io/site-lenses/",
+        "name": "LENSES",
+        "publisher": {
+          "@id": "https://idedigitalbr.github.io/site-lenses/#organization"
+        },
+        "inLanguage": "pt-BR"
+      }
+    ]
+  }
+  </script>
 <style>
 /* Título semântico da Home: sem alteração no desenho aprovado do hero. */
 .hero-accessible-title{
@@ -42,6 +83,7 @@
 </style>
 </head>
 <body>
+  <a href="#inicio" class="skip-link">Pular para o conteúdo</a>
 
   <!-- Camada Decorativa de Iluminação de Fundo -->
   <div class="bg-ambient-layer"></div>
