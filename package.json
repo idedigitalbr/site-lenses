@@ -13,6 +13,7 @@
     "preview": "node scripts/serve-astro.mjs",
     "serve:static": "node scripts/serve.mjs",
     "check": "node scripts/check-design-system.mjs && npm --prefix astro-poc run check:architecture && npm --prefix astro-poc run check:parity",
+    "test": "npm run check && npm run test:cases",
     "test:visual": "npm --prefix astro-poc run test:visual",
     "test:cases": "node scripts/test-case-builder.mjs && node scripts/test-case-handoff.mjs"
   }

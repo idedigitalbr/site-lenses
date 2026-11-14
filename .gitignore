@@ -6,6 +6,13 @@ Thumbs.db
 *.log
 *.bak*
 
+# Astro POC build outputs & caches
+astro-poc/dist/
+astro-poc/.astro/
+astro-poc/public/
+astro-poc/visual-output/
+dist/
+
 # Design duplicates / raw dumps if not needed
 # (design-systems folder can be kept or excluded based on preference, standard git will track it)
 

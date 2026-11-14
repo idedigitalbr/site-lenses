@@ -4,12 +4,14 @@ Site institucional estático publicado no GitHub Pages a partir de main.
 
 **Links**
 - https://idedigitalbr.github.io/site-lenses/
-- https://idedigitalbr.github.io/site-lenses/sobre2/
+- https://idedigitalbr.github.io/site-lenses/sobre.html
+- https://idedigitalbr.github.io/site-lenses/solucoes/digital/
+- https://idedigitalbr.github.io/site-lenses/casev2/bellamazon/
 - https://idedigitalbr.github.io/site-lenses/design-system-preview.html
 
 **Arquitetura**
 - assets/tokens.css: valores canônicos da identidade.
-- assets/base.css: reset, tipografia, utilitários.
+- assets/base.css: reset, tipografia, utilitários, acessibilidade (WCAG skip-links).
 - assets/components.css: navbar, componentes, layout da Home, rodapé e responsividade.
 - assets/pages.css: página Sobre e componentes específicos.
 - assets/styles.css: ponto de entrada com imports na ordem original.
@@ -18,11 +20,11 @@ Site institucional estático publicado no GitHub Pages a partir de main.
 
 Rodar antes de publicar:
 
-    node scripts/check-design-system.mjs
+    npm run check
 
-A única página Sobre oficial é `sobre2/index.html`, acessível em `/sobre2/` e chamada apenas de **Sobre** no menu. As URLs antigas `sobre.html` e `sobre-nos.html` não têm mais conteúdo próprio: redirecionam para `/sobre2/`, preservando links externos. Os aliases `sobre2.html` e `Sobre2.html` também redirecionam.
+A página Sobre oficial é `sobre.html`, chamada apenas de **Sobre** no menu de navegação. Na infraestrutura Astro, a rota `/sobre2/` é mantida como espelho de compatibilidade para preservar links externos e legados sem quebra.
 
-**Painel Sobre / Contato:** um único componente `assets/about-split.js`, renderizado em `index.html` (fechado) e `sobre2/index.html` (aberto). Ambos usam a mesma foto, título, texto, métricas, CSS e ações.
+**Painel Sobre / Contato:** um único componente `assets/about-split.js`, renderizado em `index.html` (fechado) e `sobre.html` (aberto). Ambos usam a mesma foto, título, texto, métricas, CSS e ações.
 
 
 ## Cases reutilizáveis (out/2026)
@@ -76,5 +78,7 @@ Na raiz do projeto:
     npm run preview      # Serve a build Astro em http://localhost:4321/
     npm run serve:static # Serve a raiz estática em http://localhost:3333/
     npm run check        # Executa todos os testes de Design System, Arquitetura e Paridade
+    npm test             # Executa check completo + testes do pipeline de cases
+    npm run test:cases   # Executa os testes do pipeline e handoff de novos cases
     npm run test:visual  # Executa regressão visual Playwright (Desktop + Mobile)
 
