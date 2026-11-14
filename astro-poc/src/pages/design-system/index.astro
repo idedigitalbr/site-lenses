@@ -4,6 +4,8 @@ import SectionHeading from '../../components/SectionHeading.astro';
 import StatCard from '../../components/StatCard.astro';
 import ActionLink from '../../components/ActionLink.astro';
 import ColorToken from '../../components/ColorToken.astro';
+import ServiceCard from '../../components/ServiceCard.astro';
+import ClientLogoGrid from '../../components/ClientLogoGrid.astro';
 import demo from '../../../../data/cases/_modelo.json';
 const base=import.meta.env.BASE_URL.replace(/\/?$/,'/');
 ---
@@ -40,6 +42,34 @@ const base=import.meta.env.BASE_URL.replace(/\/?$/,'/');
       </div>
     </div>
   </section>
+  <section class="poc-section poc-section--surface">
+    <div class="poc-shell">
+      <SectionHeading eyebrow="Componentes de Soluções" title="Cards de Serviços" lead="Componente modular ServiceCard renderizado com Tailwind v4 e tokens da marca."/>
+      <div class="grid gap-6 md:grid-cols-3">
+        <ServiceCard
+          title="Filmes Publicitários"
+          eyebrow="Audiovisual"
+          description="Produção cinematográfica e narrativas de alto impacto para campanhas memoráveis."
+          imageSrc={base + "assets/paginas/home/s3-servicos/serv-filmes-publicitarios.jpg"}
+          href={base + "solucoes/digital/"}
+        />
+        <ServiceCard
+          title="Mapeamento de Cenários"
+          eyebrow="Estratégia"
+          description="Diagnóstico estratégico e identificação de oportunidades no ecossistema amazônico."
+          imageSrc={base + "assets/paginas/home/s3-servicos/serv-mapeamento-cenarios.jpg"}
+          href={base + "solucoes/digital/"}
+        />
+        <ServiceCard
+          title="Planejamento Estratégico"
+          eyebrow="Comunicação"
+          description="Posicionamento e planos táticos que conectam propósitos a resultados sustentáveis."
+          imageSrc={base + "assets/paginas/home/s3-servicos/serv-planejamento-estrategico.jpg"}
+          href={base + "solucoes/digital/"}
+        />
+      </div>
+    </div>
+  </section>
   <section class="poc-section">
     <div class="poc-shell">
       <SectionHeading eyebrow="Cards reais reutilizados" title="Indicadores" lead="StatCard é usado aqui e também na prévia de case. Alterações no componente refletem nos dois lugares."/>
@@ -49,4 +79,5 @@ const base=import.meta.env.BASE_URL.replace(/\/?$/,'/');
       <p class="poc-notice">Todos os números deste protótipo são fictícios e usados apenas para validação de design.</p>
     </div>
   </section>
+  <ClientLogoGrid />
 </BaseLayout>

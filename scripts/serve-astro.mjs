@@ -50,6 +50,12 @@ const server = http.createServer((req, res) => {
   }
 
   if (!fs.existsSync(fullPath)) {
+    const custom404 = path.join(ROOT, '404.html');
+    if (fs.existsSync(custom404)) {
+      res.writeHead(404, { 'Content-Type': 'text/html; charset=utf-8' });
+      fs.createReadStream(custom404).pipe(res);
+      return;
+    }
     res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' });
     res.end('404 Not Found');
     return;

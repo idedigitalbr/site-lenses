@@ -1,0 +1,71 @@
+---
+interface Props {
+  title: string;
+  imageSrc: string;
+  videoSrc?: string;
+  eyebrow?: string;
+  description?: string;
+  href?: string;
+}
+
+const {
+  title,
+  imageSrc,
+  videoSrc,
+  eyebrow,
+  description,
+  href,
+} = Astro.props;
+---
+
+<article class="group relative overflow-hidden rounded-2xl border border-white/10 bg-[#0A0D14] transition-all duration-300 hover:border-lenses-saboia hover:shadow-[0_8px_30px_rgba(92,108,164,0.25)]">
+  <div class="relative aspect-[16/10] w-full overflow-hidden">
+    <img
+      src={imageSrc}
+      alt={title}
+      class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+      loading="lazy"
+      decoding="async"
+    />
+    {videoSrc && (
+      <video
+        class="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+        src={videoSrc}
+        muted
+        loop
+        playsinline
+        preload="none"
+      />
+    )}
+    <div class="absolute inset-0 bg-gradient-to-t from-[#0A0D14] via-[#0A0D14]/40 to-transparent"></div>
+  </div>
+
+  <div class="relative p-6">
+    {eyebrow && (
+      <span class="mb-2 block text-xs font-semibold tracking-widest uppercase text-lenses-saboia">
+        {eyebrow}
+      </span>
+    )}
+    <h3 class="font-lenses text-xl font-bold tracking-tight text-white transition-colors duration-200 group-hover:text-lenses-saboia">
+      {title}
+    </h3>
+    {description && (
+      <p class="mt-2 text-sm leading-relaxed text-[#A6B4DC]">
+        {description}
+      </p>
+    )}
+    {href && (
+      <a
+        href={href}
+        class="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-white transition-colors hover:text-lenses-saboia"
+        aria-label={`Saiba mais sobre ${title}`}
+      >
+        <span>Saiba mais</span>
+        <svg class="h-4 w-4 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </svg>
+      </a>
+    )}
+  </div>
+</article>

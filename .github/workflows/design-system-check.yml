@@ -1,4 +1,4 @@
-name: Validar Design System
+name: Validar Integridade, Design System e Astro
 on:
   push:
     branches: [main]
@@ -6,11 +6,20 @@ on:
 permissions:
   contents: read
 jobs:
-  design-system:
+  test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: '20'
-      - run: node scripts/check-design-system.mjs
+          node-version: '22'
+      - name: Validar Design System e Pipeline de Cases
+        run: |
+          node scripts/check-design-system.mjs
+          node scripts/test-case-builder.mjs
+          node scripts/test-case-handoff.mjs
+      - name: Validar Astro, Arquitetura e Paridade
+        run: |
+          npm --prefix astro-poc ci
+          npm run build
+          npm run check

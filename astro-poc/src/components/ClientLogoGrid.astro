@@ -1,0 +1,62 @@
+---
+interface ClientLogo {
+  name: string;
+  imageSrc: string;
+  className?: string;
+}
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+  logos?: ClientLogo[];
+}
+
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+
+const defaultLogos: ClientLogo[] = [
+  { name: 'Hydro', imageSrc: base + 'assets/imagens-diversas/logos-clientes/hydro.png' },
+  { name: 'Albras', imageSrc: base + 'assets/imagens-diversas/logos-clientes/albras-seeklogo.png' },
+  { name: 'Hidrovias do Brasil', imageSrc: base + 'assets/imagens-diversas/logos-clientes/hidrovias-do-brasil.png' },
+  { name: 'Gás do Pará', imageSrc: base + 'assets/imagens-diversas/logos-clientes/gas-do-para.png' },
+  { name: 'Ativo Construções', imageSrc: base + 'assets/imagens-diversas/logos-clientes/ativo-construcoes.png' },
+  { name: 'Fontaim Serviços', imageSrc: base + 'assets/imagens-diversas/logos-clientes/fontaim-servicos.png' },
+  { name: 'Unitapajós', imageSrc: base + 'assets/imagens-diversas/logos-clientes/unitapajos.png' },
+  { name: 'Rochamar', imageSrc: base + 'assets/imagens-diversas/logos-clientes/rochamar_logo_vetorial.svg' },
+  { name: 'EuroChem', imageSrc: base + 'assets/imagens-diversas/logos-clientes/eurochem.png' },
+  { name: 'Solar Coca-Cola', imageSrc: base + 'assets/imagens-diversas/logos-clientes/solar-coca-cola.png' },
+  { name: 'NewFortress Energy', imageSrc: base + 'assets/imagens-diversas/logos-clientes/newfortress.png' },
+  { name: 'Mitsubishi Power', imageSrc: base + 'assets/imagens-diversas/logos-clientes/mitsubishi-power.png' },
+  { name: 'Consag Engenharia', imageSrc: base + 'assets/imagens-diversas/logos-clientes/consag-engenharia.png' },
+];
+
+const {
+  title = 'Marcas que confiam na LENSES',
+  subtitle = 'Parcerias que transformam ideias e propósitos em narrativas memoráveis.',
+  logos = defaultLogos,
+} = Astro.props;
+---
+
+<section class="poc-section poc-section--surface" aria-label="Clientes e parceiros">
+  <div class="poc-shell">
+    {(title || subtitle) && (
+      <div class="mb-10 text-center">
+        {title && <h2 class="font-lenses text-2xl font-bold tracking-tight text-white sm:text-3xl">{title}</h2>}
+        {subtitle && <p class="mx-auto mt-2 max-w-2xl text-sm text-[#A6B4DC]">{subtitle}</p>}
+      </div>
+    )}
+
+    <div class="grid grid-cols-2 items-center justify-items-center gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+      {logos.map((logo) => (
+        <div class="flex h-20 w-full items-center justify-center rounded-xl border border-white/5 bg-white/[0.03] p-4 transition-all duration-200 hover:border-lenses-saboia/40 hover:bg-white/[0.06] hover:scale-105">
+          <img
+            src={logo.imageSrc}
+            alt={logo.name}
+            class="max-h-10 max-w-[120px] object-contain opacity-70 grayscale transition-all duration-300 hover:opacity-100 hover:grayscale-0"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
